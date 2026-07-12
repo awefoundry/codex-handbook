@@ -13,7 +13,7 @@
 1. [Codex 是什么：能力、工作方式与使用边界](./01-Codex是什么.md)
 2. [Codex 适合哪些人：判断标准、典型场景与学习起点](./02-Codex适合哪些人.md)
 3. [Codex 能做什么和不能做什么：能力边界、使用条件与验证方法](./03-Codex能做什么和不能做什么.md)
-4. Chat、ChatGPT Work 和 Codex 的区别。
+4. [Chat、ChatGPT Work 和 Codex 怎么选：按任务与交付物判断](./04-Chat-Work和Codex怎么选.md)
 5. App、CLI、IDE 和 Cloud 的选择。
 6. 第一次使用前需要准备什么。
 7. 完成第一个真实任务。
