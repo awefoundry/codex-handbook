@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：使用入口选择
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -24,7 +22,7 @@
 
 ![OpenAI Quickstart 中的 ChatGPT Work、Codex 和 Chat 模式分工](../图片素材/00-从这里开始/02-Codex适合哪些人/01-官方Work与Codex模式选择.png)
 
-> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)，截图日期：2026-07-12。本图与上一篇文章共用，因为它直接展示了三种模式的官方分工。
+> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)。本图与上一篇文章共用，因为它直接展示了三种模式的官方分工。
 
 ## 三种模式的核心区别
 
@@ -206,4 +204,4 @@ Codex 的最终结果通常不是一段回答，而是一组可以检查的项�
 - [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 
-本文最后验证日期：2026-07-12。ChatGPT 和 Codex 的界面、模式名称与可用功能可能随版本、账号和工作区设置变化。
+ChatGPT 和 Codex 的界面、模式名称与可用功能可能随版本、账号和工作区设置变化。

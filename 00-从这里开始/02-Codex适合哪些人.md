@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：概念与选择
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -26,7 +24,7 @@ Codex 最适合这类任务：有明确的项目或文件作为上下文，需�
 
 ![OpenAI Quickstart 中的 ChatGPT Work、Codex 和 Chat 模式选择](../图片素材/00-从这里开始/02-Codex适合哪些人/01-官方Work与Codex模式选择.png)
 
-> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)，截图日期：2026-07-12。
+> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)。
 
 OpenAI 当前在 Quickstart 中给出的分工很清楚：研究、分析以及文档、演示文稿、电子表格等交付物可以选择 ChatGPT Work；需要代码库上下文和开发工具的软件开发任务选择 Codex；快速问题或普通对话使用 Chat。
 
@@ -188,4 +186,4 @@ OpenAI 当前在 Quickstart 中给出的分工很清楚：研究、分析以及�
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
 
-本文最后验证日期：2026-07-12。文中的人群分类和学习建议由本知识库根据任务特征整理，不是 OpenAI 官方用户分级。
+文中的人群分类和学习建议由本知识库根据任务特征整理，不是 OpenAI 官方用户分级。

@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：能力边界
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -134,7 +132,7 @@ OpenAI 官方文档把权限分为不同模式。权限决定 Codex 可以在什
 
 ![OpenAI 官方 Permissions 页面](../图片素材/00-从这里开始/03-Codex能做什么和不能做什么/01-官方Permissions权限模式.png)
 
-> 图片来源：[OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)，截图日期：2026-07-12。
+> 图片来源：[OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)。
 
 默认从需要审批的模式开始更合适。为了少点几次确认而直接开放全部权限，会扩大误删除、数据泄露和意外操作的影响范围。
 
@@ -233,4 +231,4 @@ Codex 可以帮助准备变更、执行检查和整理风险，但不能替团�
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing)
 - [Code review](https://learn.chatgpt.com/docs/code-review)
 
-本文最后验证日期：2026-07-12。具体能力会因使用入口、账号、项目配置、权限策略和功能成熟度而变化。
+具体能力会因使用入口、账号、项目配置、权限策略和功能成熟度而变化。

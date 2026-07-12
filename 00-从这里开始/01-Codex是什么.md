@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：概念与入门
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -22,7 +20,7 @@ Codex 是面向软件开发任务的 AI 编程助手。它可以在你提供的�
 
 ![OpenAI 官方文档中的 Codex 概览](../图片素材/00-从这里开始/01-Codex是什么/01-OpenAI官方Codex概览.png)
 
-> 图片来源：[OpenAI Codex 官方文档](https://developers.openai.com/codex/)，截图日期：2026-07-12。
+> 图片来源：[OpenAI Codex 官方文档](https://developers.openai.com/codex/)。
 
 ## Codex 是怎样完成任务的
 
@@ -112,7 +110,7 @@ OpenAI 当前提供桌面 App、CLI、IDE 扩展和云端等入口。它们面�
 
 ![OpenAI Quickstart 中的使用入口](../图片素材/00-从这里开始/01-Codex是什么/02-官方Quickstart与使用入口.png)
 
-> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)，截图日期：2026-07-12。
+> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)。
 
 - 桌面 App 适合在项目、文件和多个任务之间切换，也方便查看执行过程。
 - CLI 适合习惯终端、希望紧贴本地仓库工作的开发者。
@@ -174,4 +172,4 @@ OpenAI 当前提供桌面 App、CLI、IDE 扩展和云端等入口。它们面�
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing)
 
-本文最后验证日期：2026-07-12。Codex 更新较快，界面、入口和权限设置可能随版本调整。
+Codex 更新较快，界面、入口和权限设置可能随版本调整。

@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：使用误区与纠正方法
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -45,7 +43,7 @@ OpenAI 的 Codex Best Practices 已经列出一组常见错误，包括：
 
 ![OpenAI Best Practices 中的 Common mistakes](../图片素材/00-从这里开始/08-Codex新手常见误区/01-官方Best-Practices常见误区.png)
 
-> 图片来源：[Codex Best Practices](https://learn.chatgpt.com/guides/best-practices#common-mistakes)，截图日期：2026-07-12。本文以官方列表为基础，并结合前七篇中的任务、权限、Git 和验证方法进一步展开。
+> 图片来源：[Codex Best Practices](https://learn.chatgpt.com/guides/best-practices#common-mistakes)。本文以官方列表为基础，并结合前七篇中的任务、权限、Git 和验证方法进一步展开。
 
 下面有些内容是 OpenAI 官方直接给出的建议，有些是本知识库根据这些原则做的编辑归纳。涉及产品行为和权限边界时，以文末官方资料为准。
 
@@ -406,4 +404,4 @@ Codex 可以在短时间内修改很多文件，但代码量不是价值指标�
 - [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
 - [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
 
-本文最后验证日期：2026-07-12。Codex 的权限、配置、工具和任务管理方式可能随版本与工作区设置变化。
+Codex 的权限、配置、工具和任务管理方式可能随版本与工作区设置变化。

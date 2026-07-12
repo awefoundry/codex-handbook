@@ -3,8 +3,6 @@
 > 难度：基础
 >
 > 类型：使用入口选择
->
-> 验证日期：2026-07-12
 
 ## 这篇文章适合谁
 
@@ -40,7 +38,7 @@ App、CLI 和 IDE 都可以成为你在本机发起技术任务的入口，但�
 
 ![OpenAI Quickstart 中的 Codex 使用入口](../图片素材/00-从这里开始/01-Codex是什么/02-官方Quickstart与使用入口.png)
 
-> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)，截图日期：2026-07-12。本图与第 01 篇共用，用来说明 Codex 可以从不同工作界面进入。
+> 图片来源：[OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)。本图与第 01 篇共用，用来说明 Codex 可以从不同工作界面进入。
 
 ## 四种入口对照表
 
@@ -96,7 +94,7 @@ Codex CLI 适合终端优先的工作方式。它可以在当前仓库中读取�
 
 ![OpenAI Codex CLI 官方页面](../图片素材/00-从这里开始/05-App-CLI-IDE和Cloud怎么选/01-官方Codex-CLI界面.png)
 
-> 图片来源：[Codex CLI 官方文档](https://learn.chatgpt.com/docs/codex/cli)，截图日期：2026-07-12。页面将 CLI 定位为在终端中检查、编辑、运行代码并自动化重复工作。
+> 图片来源：[Codex CLI 官方文档](https://learn.chatgpt.com/docs/codex/cli)。页面将 CLI 定位为在终端中检查、编辑、运行代码并自动化重复工作。
 
 CLI 比较适合：
 
@@ -240,4 +238,4 @@ Codex IDE extension 不是传统的单行补全工具。它可以理解文件上
 - [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
 - [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
 
-本文最后验证日期：2026-07-12。Codex 的入口、支持的编辑器、安装方式和账号可用功能可能随版本、地区与工作区设置变化。
+Codex 的入口、支持的编辑器、安装方式和账号可用功能可能随版本、地区与工作区设置变化。
