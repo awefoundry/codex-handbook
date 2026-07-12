@@ -11,7 +11,7 @@
 ## 阅读顺序
 
 1. [Codex 是什么：能力、工作方式与使用边界](./01-Codex是什么.md)
-2. Codex 适合哪些人。
+2. [Codex 适合哪些人：判断标准、典型场景与学习起点](./02-Codex适合哪些人.md)
 3. Codex 能做什么、不能做什么。
 4. Chat、ChatGPT Work 和 Codex 的区别。
 5. App、CLI、IDE 和 Cloud 的选择。
