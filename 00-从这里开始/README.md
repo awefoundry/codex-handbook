@@ -8,12 +8,15 @@
 - 不确定 Codex 和普通 AI 对话有什么区别的人。
 - 想判断 Codex 是否适合自己工作的人。
 
-## 计划收录
+## 阅读顺序
 
-1. Codex 是什么。
-2. Codex 能做什么、不能做什么。
-3. Chat、ChatGPT Work 和 Codex 的区别。
-4. App、CLI、IDE 和 Cloud 的选择。
-5. 零基础、开发者和非程序员的学习路线。
+1. [Codex 是什么：能力、工作方式与使用边界](./01-Codex是什么.md)
+2. Codex 适合哪些人。
+3. Codex 能做什么、不能做什么。
+4. Chat、ChatGPT Work 和 Codex 的区别。
+5. App、CLI、IDE 和 Cloud 的选择。
+6. 第一次使用前需要准备什么。
+7. 完成第一个真实任务。
+8. Codex 新手常见误区。
 
 读完后进入 [安装与首次使用](../01-安装与首次使用/)。
