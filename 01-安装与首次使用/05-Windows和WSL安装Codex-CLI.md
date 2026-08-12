@@ -1,5 +1,9 @@
 # Windows 和 WSL 安装 Codex CLI
 
+> 验证环境：Codex CLI 0.146.1
+>
+> 最后验证：2026-08-12
+
 Windows 上有两种安装方式：直接使用 Windows，或在 WSL（Windows Subsystem for Linux）中使用。
 
 - 项目和工具主要在 `C:\`、`D:\`，平时使用 PowerShell：选 **Windows 原生**。
@@ -184,7 +188,87 @@ which -a codex
 
 ### 安装或登录超时
 
-先确认浏览器能打开 ChatGPT 和 OpenAI 页面，再检查代理、防火墙或公司网络。网络未连通时，重复安装通常没有用。
+按下面的顺序排查：先确认浏览器能打开 ChatGPT 和 OpenAI 页面，再检查当前终端中的代理环境变量、Codex CLI 版本和代理端口，最后重新打开终端。网络没有连通时，重复安装通常没有用。
+
+Windows 的“系统代理”不会保证命令行程序自动使用代理。`npm config set proxy` 和 `npm config set https-proxy` 也只影响 npm，不能代替 Codex CLI 所需的 `HTTP_PROXY`、`HTTPS_PROXY` 环境变量。
+
+先在代理软件中查看 HTTP 代理的监听地址和端口。下面用 `<代理地址>` 表示完整地址，例如 `http://主机地址:端口`。不要直接照抄别人的端口；协议、地址和端口必须与代理软件的实际设置一致。
+
+#### PowerShell：只对当前窗口生效
+
+```powershell
+$proxyUrl = Read-Host "请输入代理地址，例如 http://主机地址:端口"
+$env:HTTP_PROXY = $proxyUrl
+$env:HTTPS_PROXY = $proxyUrl
+```
+
+查看当前窗口中的设置：
+
+```powershell
+Get-ChildItem Env:HTTP_PROXY,Env:HTTPS_PROXY
+codex --version
+curl.exe -I https://developers.openai.com/codex/cli/
+```
+
+`curl.exe` 能收到 HTTP 响应后，再运行 `codex login status` 或 `codex` 检查 CLI。关闭这个 PowerShell 窗口后，上面的临时设置会消失。
+
+#### PowerShell：写入当前用户的环境变量
+
+确认临时设置有效后，再决定是否长期保存：
+
+```powershell
+$proxyUrl = Read-Host "请输入代理地址，例如 http://主机地址:端口"
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", $proxyUrl, "User")
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", $proxyUrl, "User")
+```
+
+写入后关闭并重新打开 PowerShell，再检查：
+
+```powershell
+Get-ChildItem Env:HTTP_PROXY,Env:HTTPS_PROXY
+```
+
+不再使用代理时，同时清除当前窗口和用户级设置：
+
+```powershell
+Remove-Item Env:HTTP_PROXY,Env:HTTPS_PROXY -ErrorAction SilentlyContinue
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", $null, "User")
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "User")
+```
+
+#### WSL：需要单独设置
+
+PowerShell 和 WSL 是两套环境。PowerShell 中设置的变量不会自动进入已经打开的 WSL 会话，需要在 WSL 终端中单独设置：
+
+```bash
+read -r -p "请输入代理地址，例如 http://主机地址:端口: " proxy_url
+export HTTP_PROXY="$proxy_url"
+export HTTPS_PROXY="$proxy_url"
+```
+
+然后检查变量和网络：
+
+```bash
+printf 'HTTP_PROXY=%s\nHTTPS_PROXY=%s\n' "$HTTP_PROXY" "$HTTPS_PROXY"
+codex --version
+curl -I https://developers.openai.com/codex/cli/
+```
+
+WSL 2 默认网络模式下，WSL 中的 `127.0.0.1` 通常指向 WSL 自己，不一定能访问只监听在 Windows 本机的代理端口。可以先查看 Windows 主机在当前 WSL 网络中的地址：
+
+```bash
+ip route show default | awk '{print $3}'
+```
+
+把查到的地址与代理端口组成代理 URL。代理软件还必须允许来自 WSL 的连接。使用 WSL 镜像网络，或代理软件明确支持 WSL 的 `localhost` 访问时，实际行为可能不同，应以连接测试结果为准。
+
+只需撤销当前 WSL 会话中的设置时运行：
+
+```bash
+unset HTTP_PROXY HTTPS_PROXY
+```
+
+如果把变量写进了 `~/.bashrc`、`~/.zshrc` 等 Shell 配置文件，还要删除对应行并重新打开终端。
 
 ## 参考资料
 
