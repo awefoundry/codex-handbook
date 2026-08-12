@@ -10,7 +10,7 @@
 |---|---|---|
 | 1 | [安装路线总览](./01-安装路线总览.md) | 待编写 |
 | 2 | [macOS 安装 Codex App](./02-macOS安装Codex-App.md) | 待实操与编写 |
-| 3 | [Windows 安装 Codex App](./03-Windows安装Codex-App.md) | 待实操与编写 |
+| 3 | [Windows 安装 Codex App](./03-Windows安装Codex-App.md) | 框架已建立，待实操与编写 |
 | 4 | [macOS 安装 Codex CLI](./04-macOS安装Codex-CLI.md) | 待实操与编写 |
 | 5 | [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md) | 待实操与编写 |
 | 6 | [VS Code 和兼容编辑器安装 Codex](./06-VS-Code和兼容编辑器安装Codex.md) | 待实操与编写 |
