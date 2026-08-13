@@ -1,0 +1,23 @@
+{
+  "style": "imagegzh 一号样式，本地无损处理",
+  "sourceDirectory": "../notion截图备份",
+  "outputDirectory": "../1.notion-配图",
+  "images": [
+    {"source": "4b63bacbcf64098729dd1bd0ef51a7ee.png", "output": "notion-01-official-site-gzh.png", "figure": "图一"},
+    {"source": "14ffcc6361d7a4f164cf6d4ed81f8fdf.png", "output": "notion-02-plugin-entry-gzh.png", "figure": "图二"},
+    {"source": "6b856e49a30b824218088ffd74c20203.png", "output": "notion-03-search-install-gzh.png", "figure": "图三"},
+    {"source": "9b2283374e8c73d96f62122c36947fcf.png", "output": "notion-04-open-chatgpt-gzh.png", "figure": "图四"},
+    {"source": "cff93cc97fc2ac1663800984bed4d6f8.png", "output": "notion-05-connection-notice-gzh.png", "figure": "图五"},
+    {"source": "b1f97d81d91bd71de27c2e8d24b996a7.png", "output": "notion-06-invoke-plugin-gzh.png", "figure": "图六"},
+    {"source": "5e885c2507ef2547b254d2eef3314d9e.png", "output": "notion-07-read-page-gzh.png", "figure": "图七"},
+    {"source": "10.png", "output": "notion-08-research-result-gzh.png", "figure": "图八"},
+    {"source": "608fad67060fbb173acb3bda7d33f72d.png", "output": "notion-09-overview-page-gzh.png", "figure": "图九"},
+    {"source": "1d46a1d8f13d362deeb1f549965b5d66.png", "output": "notion-10-image-database-gzh.png", "figure": "图十"},
+    {"source": "1b001a413d13c49fe61abe0b2aae2437.png", "output": "notion-11-video-database-gzh.png", "figure": "图十一"}
+  ],
+  "excluded": [
+    {"source": "6dcde3ae02c7cb89a2796303ea35eacf.png", "reason": "画面可见个人 Notion 工作区名称，保留备份但不处理、不引用"},
+    {"source": "c4188b75d475a925de680030397928da.png", "reason": "画面可见个人 Notion 工作区名称，仅保留原图备份，不处理、不引用"},
+    {"source": "../image.png", "reason": "画面含个人空间名称和登录上下文，不处理、不引用"}
+  ]
+}
