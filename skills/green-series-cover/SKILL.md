@@ -1,9 +1,9 @@
 ---
-name: wechat-cover-generator
-description: Generate Chinese WeChat public-account series covers from a fixed reference composition, adapting the left information panel to a supplied title and issue number. Use when creating, revising, or batch-generating this publication's article covers with HiAPI image2.0.
+name: green-series-cover
+description: Generate Chinese green-series article covers from a fixed mint-green reference composition, adapting the left information panel to a supplied title and issue number. Use when creating, revising, or batch-generating this publication's green WeChat public-account cover series with HiAPI image2.0.
 ---
 
-# WeChat Cover Generator
+# Green Series Cover
 
 Use the bundled reference image as the visual source of truth. Keep the right-side laptop, floating terminal panels, mint/white background, lighting, perspective, and overall 16:9 composition stable. Rebuild only the left information area for the requested article.
 
@@ -38,4 +38,4 @@ If HiAPI returns a task failure, report the returned error and do not present a 
 
 ## Output convention
 
-Prefer a deterministic output path supplied by the user. Otherwise write `wechat-cover-<issue>.png` in the current directory. Keep the original reference asset unchanged. Return the output path and HiAPI task ID, but never expose credentials.
+Prefer a deterministic output path supplied by the user. Otherwise write `green-series-cover-<issue>.png` in the current directory. Keep the original reference asset unchanged. Return the output path and HiAPI task ID, but never expose credentials.
