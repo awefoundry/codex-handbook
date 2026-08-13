@@ -1,0 +1,32 @@
+[
+  {
+    "source": "1.png",
+    "output": "1-gzh.png",
+    "original": "1048x508",
+    "processed": "1098x562"
+  },
+  {
+    "source": "2.png",
+    "output": "2-gzh.png",
+    "original": "1009x1077",
+    "processed": "1059x1131"
+  },
+  {
+    "source": "3.png",
+    "output": "3-gzh.png",
+    "original": "1260x1206",
+    "processed": "1310x1260"
+  },
+  {
+    "source": "4.png",
+    "output": "4-gzh.png",
+    "original": "1024x1024",
+    "processed": "1074x1078"
+  },
+  {
+    "source": "5.png",
+    "output": "5-gzh.png",
+    "original": "1254x1254",
+    "processed": "1304x1308"
+  }
+]
