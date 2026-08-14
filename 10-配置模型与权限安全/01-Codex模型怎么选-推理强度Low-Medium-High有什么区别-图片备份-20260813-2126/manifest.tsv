@@ -1,0 +1,2 @@
+filename	kind	width	height	article_section	purpose	source_url	author	published_at	timestamp	verification	expiry_risk	section	provenance
+01-openai-codex-models-page.png	web-screenshot	1280	4146	模型入口与官方推荐	证明官方模型页当前展示模型选择器、推理强度控件和推荐模型	https://developers.openai.com/codex/models	OpenAI	持续更新	不适用	verified-direct：Exa 发现，Jina Reader 读取，Playwright 打开并人工检查截图	高：模型列表和界面为持续更新内容，发布前复核	模型入口与官方推荐	OpenAI 官方公开文档页面；2026-08-14 Playwright 截图
