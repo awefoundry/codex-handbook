@@ -1,81 +1,122 @@
 # JetBrains 中使用 Codex
 
-JetBrains IDE 通过 AI Chat 提供 Codex 入口。下面的流程适用于 IntelliJ IDEA、PyCharm、WebStorm 等支持该集成的 IDE；不同产品版本的菜单名称可能略有差异。
+从 2025.3 开始，IntelliJ IDEA、PyCharm、WebStorm 等 JetBrains IDE 可以在 AI Chat 中直接调用 Codex。需要安装并启用 JetBrains AI Assistant，不需要另装 Codex 插件。
 
-![JetBrains 官方品牌图](image-11-jetbrains-official-logo.png)
-<p align="center">图 1：JetBrains 官方品牌图。来源：<a href="https://www.jetbrains.com/company/brand/">JetBrains Brand Guidelines</a>。</p>
+本文以 Windows 版 IntelliJ IDEA 为例。其他 JetBrains IDE 的入口大致相同，菜单名称可能因版本略有不同。
 
-![Codex 官方图标](image-10-codex-official-icon.png)
-<p align="center">图 2：Codex 官方图标。来源：<a href="https://marketplace.visualstudio.com/items?itemName=OpenAI.chatgpt">Visual Studio Marketplace 的 Codex 扩展页面</a>。</p>
+![JetBrains 中直接使用 Codex](00-封面-JetBrains中使用Codex-gzh.png)
 
-## 准备工作
+## 操作路线
 
-- 将项目作为完整目录打开，而不是只打开单个文件。
-- 确认项目使用的 JDK、Python、Node.js 或其他运行时已经可用。
-- 先提交或保存已有改动，避免把无关 diff 混进第一次任务。
+先准备项目和运行环境，再启用 AI Assistant、切换 Codex、完成认证，最后用只读任务试跑，并检查 diff 和验证结果。
 
-## 打开 AI Chat 并选择 Codex
+![JetBrains 官方品牌图](01-JetBrains官方品牌图-gzh.png)
+<p align="center">图一 JetBrains 官方品牌图，来源于 <a href="https://www.jetbrains.com/company/brand/">JetBrains Brand Guidelines</a></p>
 
-打开 AI Chat，在代理或模型选择器中选 Codex。第一次使用按提示完成 ChatGPT 登录；如果看不到 Codex，先更新 AI Assistant/相关插件，再重启 IDE 检查。
+![Codex 官方图标](02-Codex官方图标-gzh.png)
+<p align="center">图二 Codex 官方图标，来源于 <a href="https://marketplace.visualstudio.com/items?itemName=OpenAI.chatgpt">Visual Studio Marketplace 的 Codex 扩展页面</a></p>
 
-## 添加上下文并执行小任务
+## 开始前的准备
 
-打开目标文件，选中需要解释的代码，先发送：
+把项目作为完整目录打开。只打开单个文件时，Codex 看不到项目结构，分析和修改容易缺少上下文。
+
+项目需要的 JDK、Python、Node.js 或其他运行时也应提前安装。至少确认目标文件能正常打开，最好先在本机完成一次构建或测试。
+
+工作区已有改动时，先提交或暂存。之后查看 diff，会更容易分辨哪些内容来自 Codex。
+
+![JetBrains 的 Settings 入口](03-JetBrains设置入口-gzh.png)
+<p align="center">图三 从 JetBrains 菜单打开 Settings</p>
+
+## 第一步：启用 JetBrains AI
+
+第一次打开 AI Chat，面板会显示 `Let's Go`。点击它，按提示安装并启用 AI Assistant。
+
+![首次打开 JetBrains AI 的引导界面](04-JetBrains-AI首次引导-gzh.png)
+<p align="center">图四 首次打开 JetBrains AI 时的 Let's Go 入口，来源于 <a href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/">JetBrains 官方博客</a></p>
+
+如果 AI Chat 里没有 Codex，打开 `Settings → Plugins`，把 JetBrains AI Assistant 更新到最新版本并重启 IDE。仍然看不到时，确认 IDE 已升级到 2025.3 或更高版本。
+
+![在 Plugins 中搜索 JetBrains AI Assistant](05-搜索AI-Assistant插件-gzh.png)
+<p align="center">图五 在 Plugins 页面搜索 JetBrains AI Assistant</p>
+
+![JetBrains AI Assistant 插件详情](06-AI-Assistant插件详情-gzh.png)
+<p align="center">图六 JetBrains AI Assistant 插件详情页</p>
+
+## 第二步：切换到 Codex
+
+打开 AI Chat，点击输入框附近的 Agent 选择器。列表里可能同时有 Junie、Claude Agent 和 Codex，选择 Codex 即可。
+
+![AI Chat 的 Agent 选择器](07-Agent选择器-gzh.png)
+<p align="center">图七 AI Chat 的 Agent 选择器中出现 Codex，来源于 <a href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/">JetBrains 官方博客</a></p>
+
+## 第三步：完成登录
+
+第一次切换到 Codex 时，AI Chat 会要求选择认证方式。JetBrains 提供三种入口：JetBrains AI 订阅、ChatGPT 账号，或 OpenAI API Key。
+
+![Codex 的登录方式](08-Codex认证方式-gzh.png)
+<p align="center">图八 JetBrains AI、ChatGPT 和 API Key 三种认证入口，来源于 <a href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/">JetBrains 官方博客</a></p>
+
+没有 JetBrains 账号时，可在登录页使用 Google、GitHub、Apple 或邮箱注册/登录。
+
+![JetBrains 账号登录页面](09-JetBrains账号登录-gzh.png)
+<p align="center">图九 JetBrains 账号登录页面</p>
+
+已有 ChatGPT 账号的读者可直接选择 ChatGPT 登录；按实际用量计费则选择 API Key。密钥只填在 IDE 的认证窗口中，不要发到聊天框，也不要写入项目文件。
+
+JetBrains 曾在 2026 年 1 月推出限时免费活动。活动、额度和计费方式可能已经变化，以 IDE 和账号页面的当前说明为准。
+
+![Codex 限时免费提示](10-Codex限时活动提示-gzh.png)
+<p align="center">图十 JetBrains AI 中的 Codex 限时活动提示，截图信息可能已经过期，来源于 <a href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/">JetBrains 官方博客</a></p>
+
+## 第四步：选择模型和推理强度
+
+认证完成后，在输入框下方选择 Codex 模型和 Reasoning Effort。模型列表会随产品更新，截图中的名称只用于辨认入口。
+
+解释代码、修改一处逻辑或补一个小测试时，先使用默认推理强度。涉及多个文件、构建错误或复杂排查时，再提高档位。档位越高，等待时间通常越长。
+
+![Codex 的模型和推理强度选择](11-Codex模型与推理强度-gzh.png)
+<p align="center">图十一 Codex 的模型和 Reasoning Effort 选择界面，来源于 <a href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/">JetBrains 官方博客</a></p>
+
+## 第五步：先发一个只读任务
+
+打开目标文件，选中一小段代码，先让 Codex 解释和检查，不要马上修改。可以直接发送：
 
 ```text
 请只解释这段代码的执行路径，并指出一个可能的边界条件，不要修改文件。
 ```
 
-确认上下文无误后，再提出只涉及一个文件或一个测试的修改。完成后检查 IDE 的 diff，运行项目已有的最小测试，并确认没有生成临时文件或修改 IDE 配置。
+先确认它读对了文件、理解了上下文，再给一个范围明确的小任务，例如只补某个失败分支的单元测试，不改生产代码。
+
+执行过程中，AI Chat 会列出 Codex 读取的文件、运行的命令和当前进度。OpenAI 的官方演示中，Codex 收到 Gradle 构建错误后，会继续搜索项目文件并运行命令定位问题。
+
+![Codex 执行任务的进度展示](12-Codex任务进度-gzh.png)
+<p align="center">图十二 AI Chat 中显示 Codex 读取 Gradle 构建错误并搜索项目文件</p>
+
+第一次让 Codex 修改项目时，不要同时放开网络访问和过大的文件范围。任务越具体，越容易判断结果是否符合预期。
+
+## 第六步：审查修改并运行验证
+
+任务完成后，AI Chat 会列出改过的文件。逐个打开 IDE 的 diff 视图：先确认文件范围，再检查具体代码。
+
+![AI Chat 展示修改清单](13-AI-Chat修改清单-gzh.png)
+<p align="center">图十三 AI Chat 中列出本次任务修改过的文件</p>
+
+接着运行项目已有的最小验证。改了测试就运行对应测试，动了构建脚本就重新构建一次；同时检查是否生成临时文件，以及 `.idea` 目录是否混入无关配置。
+
+## 完成前再检查一次
+
+- [ ] 项目以完整目录打开，本机运行时可用。
+- [ ] 已通过 JetBrains AI、ChatGPT 或 API Key 完成认证。
+- [ ] 第一项任务先验证了文件和上下文，没有直接放开大范围修改。
+- [ ] 已逐个查看修改文件和 diff。
+- [ ] 已运行对应测试或最小构建。
+- [ ] 聊天记录和项目文件中没有 API Key、证书或令牌。
+
+完成这些检查后，JetBrains 里的第一项 Codex 任务就结束了。后续可以逐步扩大任务范围，但提交代码前仍应看完 diff 并确认验证结果。
 
 ## 参考资料
 
-- [Codex IDE extension](https://developers.openai.com/codex/ide)
+- [OpenAI Codex IDE 文档](https://developers.openai.com/codex/ide)
+- [JetBrains Codex 文档](https://www.jetbrains.com/help/ai-assistant/codex-agent.html)
+- [JetBrains 官方博客](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/)
 - [JetBrains Brand Guidelines](https://www.jetbrains.com/company/brand/)
-
-![B 站 JetBrains Codex 视频封面](image-11-bilibili-BV1Z6zrBCE8U.jpg)
-<p align="center">图 3：B 站“Codex in JetBrains IDEs | OpenAI”视频封面，原作者标注为 OpenAI，B 站搬运作者：伸手不见五趾。<a href="https://www.bilibili.com/video/BV1Z6zrBCE8U/">查看原视频</a>。封面仅作延伸观看入口，不代表官方界面。</p>
-
-## 计划覆盖
-
-- 支持的 JetBrains 环境和准备条件。
-- 打开 AI Chat 并选择 Codex。
-- 使用当前文件和项目上下文发起任务。
-- 审查修改并运行项目验证。
-
-## 配图要求
-
-- 官方 JetBrains 集成入口。
-- AI Chat、Codex 选择和登录状态。
-- 文件上下文、修改内容和验证结果。
-
-## 配图素材备用区（暂不计入正文图号）
-
-以下素材已下载到本文同目录，供正式写作时按章节挑选。优先使用 JetBrains 官方原图；视频抽帧只补充官方博客没有覆盖的真实任务过程。正式采用时再移动到对应段落，并统一重排图号。
-
-### 首选：JetBrains 官方产品截图
-
-1. `image-11-jetbrains-agent-picker.png`（2006×720）：AI Chat 的 Agent 选择器中出现 Codex。适合“打开 AI Chat 并选择 Codex”。来源：[JetBrains 官方博客](https://blog.jetbrains.com/ai/2026/03/codex-in-jetbrains-ides/)。
-2. `image-11-jetbrains-ai-first-run.png`（1280×254）：首次打开 JetBrains AI 时的 “Let's Go” 入口。适合“安装或启用 AI Assistant”。来源同上。
-3. `image-11-jetbrains-codex-login.png`（1280×720）：JetBrains AI、ChatGPT、API Key 三种 Codex 登录方式。适合“首次登录”。来源同上。
-4. `image-11-jetbrains-free-access.png`（1280×450）：JetBrains AI 内的 Codex 限时免费提示。该活动信息可能过期，只有在正文明确标注时效时才使用。来源同上。
-5. `image-11-jetbrains-model-choice.png`（1070×654）：Codex 的模型和推理强度选择界面。适合“选择模型与推理预算”。来源同上。
-
-### 补充：OpenAI 官方视频抽帧
-
-1. `image-11-openai-video-task-progress.jpg`（1920×1080，约 03:00）：Codex 读取 Gradle 构建错误、搜索项目文件并执行命令。适合说明真实项目上下文和任务执行状态。
-2. `image-11-openai-video-validation.jpg`（1920×1080，约 07:30）：AI Chat 展示多文件修改清单和 IDE diff。适合“审查修改并验证结果”。
-
-两张抽帧均来自 OpenAI 官方 YouTube 视频 [Codex in JetBrains IDEs](https://www.youtube.com/watch?v=1XkVsE9-ZK4)，发布于 2026 年 1 月 22 日。画面内包含演示者小窗，正式发布前可根据版式决定是否保留。
-
-### 延伸观看候选
-
-- `image-11-bilibili-BV1Z6zrBCE8U.jpg`：B 站搬运视频封面，只适合作为延伸观看入口，不用于解释产品界面。
-- JetBrains 官方博客内嵌的 OpenAI 官方演示是本轮最完整的视频来源；YouTube 搜索还找到第三方安装教程，但来源级别和界面时效均低于官方素材，本轮不下载。
-
-### 本轮查找记录
-
-- 查询覆盖：OpenAI/JetBrains 官方文档与博客、YouTube、B 站索引、X 与 Reddit 网页索引。
-- 成功链路：官方博客原图下载；YouTube 元数据核验、30 秒间隔联系表筛选、关键时间点精确抽帧。
-- 受限链路：B 站公开搜索接口返回 412，改用网页索引和已知 BV 链接核验；X、Reddit、小红书、Instagram 当前没有可用登录后端，因此未把未验证结果写入候选。
-- 取舍原则：官方产品图优先于社交转载；真实界面优先于封面；来源、用途、时间点不完整的图片不入库。
