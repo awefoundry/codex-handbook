@@ -6,7 +6,7 @@
 
 ## 先判断你安装的是哪一种
 
-更新和卸载必须沿用原来的渠道。先在 PowerShell 中执行：
+更新和卸载必须沿用原来的渠道。先在 PowerShell 中执行，
 
 ```powershell
 codex --version
@@ -14,7 +14,7 @@ Get-Command codex -All | Select-Object CommandType,Name,Source
 npm list --global @openai/codex --depth=0
 ```
 
-按结果判断：
+按结果判断，
 
 | 看到的结果 | 安装来源 | 更新方式 |
 |---|---|---|
@@ -26,7 +26,7 @@ npm list --global @openai/codex --depth=0
 
 ## 更新前检查
 
-先保存或提交项目改动，并记录版本：
+先保存或提交项目改动，并记录版本，
 
 ```powershell
 codex --version
@@ -38,49 +38,49 @@ codex --version
 
 ### npm 全局安装
 
-先确认当前 CLI 版本和命令路径：
+先确认当前 CLI 版本和命令路径，
 
 ```powershell
 codex --version
 Get-Command codex
 ```
 
-![PowerShell 中的 Codex 更新前版本](12-Codex更新与卸载-公众号配图/图一.png)
-<p align="center">图 1：更新前在 PowerShell 中核对 Codex CLI 版本。核验日期：2026-08-14。</p>
+![PowerShell 中的 Codex 更新前版本](../图片素材/01-安装与首次使用/12-Codex更新与卸载/01-Codex更新前版本.png)
+<p align="center">图 1，更新前在 PowerShell 中核对 Codex CLI 版本。核验日期，2026-08-14。</p>
 
-![PowerShell 中的 Codex 命令路径](12-Codex更新与卸载-公众号配图/图二.png)
-<p align="center">图 2：使用 `Get-Command codex` 核对当前命令路径。核验日期：2026-08-14。</p>
+![PowerShell 中的 Codex 命令路径](../图片素材/01-安装与首次使用/12-Codex更新与卸载/02-Codex命令路径.png)
+<p align="center">图 2，使用 `Get-Command codex` 核对当前命令路径。核验日期，2026-08-14。</p>
 
-确认项目改动已经保存或提交后，直接执行 npm 全局更新：
+确认项目改动已经保存或提交后，直接执行 npm 全局更新，
 
 ```powershell
 npm install -g @openai/codex@latest
 ```
 
-安装完成后重新打开一个 PowerShell 窗口，再检查版本和命令路径：
+安装完成后重新打开一个 PowerShell 窗口，再检查版本和命令路径，
 
 ```powershell
 codex --version
 Get-Command codex
 ```
 
-![PowerShell 中的 npm 更新结果](12-Codex更新与卸载-公众号配图/图三.png)
-<p align="center">图 3：执行 npm 全局更新后重新核对 Codex CLI 版本。核验日期：2026-08-14。</p>
+![PowerShell 中的 npm 更新结果](../图片素材/01-安装与首次使用/12-Codex更新与卸载/03-npm更新结果.png)
+<p align="center">图 3，执行 npm 全局更新后重新核对 Codex CLI 版本。核验日期，2026-08-14。</p>
 
-![PowerShell 中的 Codex 更新后版本和命令路径](12-Codex更新与卸载-公众号配图/图四.png)
-<p align="center">图 4：更新完成后重新核对 Codex CLI 版本和实际命令路径。核验日期：2026-08-14。</p>
+![PowerShell 中的 Codex 更新后版本和命令路径](../图片素材/01-安装与首次使用/12-Codex更新与卸载/04-Codex更新后版本.png)
+<p align="center">图 4，更新完成后重新核对 Codex CLI 版本和实际命令路径。核验日期，2026-08-14。</p>
 
 如果版本没有变化，先确认 `Get-Command codex` 返回的路径是否仍指向旧安装位置，再检查 npm 的全局安装目录和终端环境变量。不要在项目目录里直接删除旧文件。
 
 ### 官方安装脚本安装
 
-如果命令路径位于 `OpenAI\Codex\bin`，重新执行官方安装脚本即可覆盖到同一安装位置：
+如果命令路径位于 `OpenAI\Codex\bin`，重新执行官方安装脚本即可覆盖到同一安装位置，
 
 ```powershell
 irm https://chatgpt.com/codex/install.ps1 | iex
 ```
 
-安装完成后关闭旧终端，重新打开 PowerShell，再运行 `codex --version` 和 `Get-Command codex`。如果你想确认当前版本是否提供内置更新命令，可以先查看帮助：
+安装完成后关闭旧终端，重新打开 PowerShell，再运行 `codex --version` 和 `Get-Command codex`。如果你想确认当前版本是否提供内置更新命令，可以先查看帮助，
 
 ```powershell
 codex --help | Select-String -Pattern 'update'
@@ -90,7 +90,7 @@ codex --help | Select-String -Pattern 'update'
 
 ### 固定版本或回退
 
-需要暂时避开某个版本时，npm 安装可以指定已知版本：
+需要暂时避开某个版本时，npm 安装可以指定已知版本，
 
 ```powershell
 npm install -g @openai/codex@0.146.1
@@ -102,27 +102,27 @@ npm install -g @openai/codex@0.146.1
 
 如果安装的是 ChatGPT 桌面 App，更新和卸载由 Microsoft Store 或 Windows 设置管理，不走 npm。打开 Microsoft Store 搜索 ChatGPT，应用详情页会显示“更新”按钮；如果应用已经安装，搜索结果会显示“已安装”状态。
 
-![Microsoft Store 中的 ChatGPT 搜索结果](12-Codex更新与卸载-公众号配图/图五.png)
-<p align="center">图 5：Microsoft Store 搜索 ChatGPT 的结果页，截图用于确认应用安装状态。核验日期：2026-08-13。</p>
+![Microsoft Store 中的 ChatGPT 搜索结果](../图片素材/01-安装与首次使用/12-Codex更新与卸载/05-Microsoft-Store搜索结果.png)
+<p align="center">图 5，Microsoft Store 搜索 ChatGPT 的结果页，截图用于确认应用安装状态。核验日期，2026-08-13。</p>
 
 需要更新时，在应用详情页点击“更新”，等待商店完成安装，再重新打开 App。
 
-![Microsoft Store 中的 ChatGPT 更新按钮](12-Codex更新与卸载-公众号配图/图六.png)
-<p align="center">图 6：ChatGPT 桌面 App 的 Microsoft Store 详情页，显示“更新”按钮。核验日期：2026-08-13。</p>
+![Microsoft Store 中的 ChatGPT 更新按钮](../图片素材/01-安装与首次使用/12-Codex更新与卸载/06-Microsoft-Store更新按钮.png)
+<p align="center">图 6，ChatGPT 桌面 App 的 Microsoft Store 详情页，显示“更新”按钮。核验日期，2026-08-13。</p>
 
 需要卸载时，打开 `设置 → 应用 → 已安装的应用`，搜索 ChatGPT，展开右侧菜单并选择“卸载”。停在确认按钮之前，避免误删本地数据。
 
-![Windows 设置中的 ChatGPT 卸载入口](12-Codex更新与卸载-公众号配图/图七.png)
-<p align="center">图 7：Windows 设置中的 ChatGPT 应用菜单，已展开“卸载”入口。核验日期：2026-08-13。</p>
+![Windows 设置中的 ChatGPT 卸载入口](../图片素材/01-安装与首次使用/12-Codex更新与卸载/07-Windows设置卸载入口.png)
+<p align="center">图 7，Windows 设置中的 ChatGPT 应用菜单，已展开“卸载”入口。核验日期，2026-08-13。</p>
 
-如果使用的是 VS Code 扩展，在扩展市场中搜索 Codex，打开 **Codex – OpenAI’s coding agent** 的详情页，点击“卸载”。卸载扩展后重启 IDE，再确认侧栏入口已经消失。
+如果使用的是 VS Code 扩展，在扩展市场中搜索 Codex，打开由 OpenAI 发布的 Codex 扩展详情页，点击“卸载”。卸载扩展后重启 IDE，再确认侧栏入口已经消失。
 
-![VS Code 扩展市场中的 Codex 卸载入口](12-Codex更新与卸载-公众号配图/图八.png)
-<p align="center">图 8：VS Code 扩展详情页中的 Codex“卸载”入口。核验日期：2026-08-13。</p>
+![VS Code 扩展市场中的 Codex 卸载入口](../图片素材/01-安装与首次使用/12-Codex更新与卸载/08-VS-Code扩展卸载入口.png)
+<p align="center">图 8，VS Code 扩展详情页中的 Codex“卸载”入口。核验日期，2026-08-13。</p>
 
 ## 卸载时保留数据
 
-先退出登录：
+先退出登录，
 
 ```text
 codex logout
@@ -132,7 +132,7 @@ codex logout
 
 ### 按安装来源卸载 CLI
 
-npm 安装的 CLI 可以这样移除：
+npm 安装的 CLI 可以这样移除，
 
 ```powershell
 npm uninstall -g @openai/codex
@@ -142,7 +142,7 @@ npm uninstall -g @openai/codex
 
 ### 是否清理本地数据
 
-`codex logout` 只处理登录状态，不等于删除配置和会话。需要彻底清理时，先备份有用的配置，再逐项检查以下位置：
+`codex logout` 只处理登录状态，不等于删除配置和会话。需要彻底清理时，先备份有用的配置，再逐项检查以下位置，
 
 ```powershell
 Test-Path "$HOME\.codex"
@@ -159,18 +159,12 @@ Get-ChildItem "$HOME\.codex" -Force -ErrorAction SilentlyContinue
 4. 对官方安装脚本安装，重新执行安装脚本，并检查网络、代理和执行策略错误。
 5. 仍无法判断时，保留完整错误文字、版本号、操作系统和安装路径，再查阅[官方 CLI 文档](https://developers.openai.com/codex/cli/)。
 
-## 最后check
+## 完成后检查
 
-- App：应用不再出现在系统应用列表或启动入口中。
-- CLI：`Get-Command codex` 找不到命令，或返回的路径已不是旧安装位置。
-- IDE：扩展管理器中 Codex 状态为已卸载；重启 IDE 后侧栏入口消失。
-- 项目：项目文件、Git 分支和未提交改动没有被更新或卸载流程修改。
-
-
-
-更多 Codex 安装、登录和日常使用教程，可以访问我的免费教程网站 https://codexguide.io，上面会同步更新codex系列完整教程，方便系统学习。
-
-教程开源仓库也欢迎大家贡献支持 https://github.com/awefoundry/codex-handbook.git
+- App，应用不再出现在系统应用列表或启动入口中。
+- CLI，`Get-Command codex` 找不到命令，或返回的路径已不是旧安装位置。
+- IDE，扩展管理器中 Codex 状态为已卸载；重启 IDE 后侧栏入口消失。
+- 项目，项目文件、Git 分支和未提交改动没有被更新或卸载流程修改。
 
 ## 参考资料
 
