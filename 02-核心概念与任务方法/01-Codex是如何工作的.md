@@ -39,7 +39,7 @@ Agent 首先要把自然语言转成可执行目标。
 
 这句话交代了故障现象、修改边界和完成标准。Codex 接下来会先寻找登录页面、按钮事件、验证码请求和现有测试，然后再决定改哪里。
 
-![Codex 修复验证码按钮并运行测试的真实任务对话](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/图一.png)
+![Codex 修复验证码按钮并运行测试的真实任务对话](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/01-Codex任务修复与测试.png)
 
 <p align="center">图一　Codex 根据任务边界定位问题、修改文件，并用测试结果完成交付</p>
 
@@ -119,7 +119,7 @@ Codex 还会受到项目指令和权限限制。比如 `AGENTS.md` 要求使用 
 新结果回到“观察”，直到达到完成标准
 ```
 
-![Codex Agent 观察、行动和验证的循环](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/图二.png)
+![Codex Agent 观察、行动和验证的循环](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/02-Agent观察行动验证循环.png)
 
 <p align="center">图二　Agent 根据新结果反复观察、行动和验证，逐步得到答案</p>
 
@@ -137,7 +137,7 @@ Codex 还会受到项目指令和权限限制。比如 `AGENTS.md` 要求使用 
 | 执行方式 | 通常由你把答案复制到项目并运行 | Agent 可以编辑文件、运行命令，再根据结果继续处理 |
 | 完成判断 | 回答是否解决了问题 | 代码是否改对、检查是否通过、边界是否遵守 |
 
-![普通 ChatGPT 对话与 Codex 项目任务的工作方式对比](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/图三.png)
+![普通 ChatGPT 对话与 Codex 项目任务的工作方式对比](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/03-ChatGPT对话与Codex任务对比.png)
 
 <p align="center">图三　普通对话通常交付回答，Codex 会进入项目并沿着工具反馈继续工作</p>
 
@@ -159,7 +159,7 @@ Codex 还会受到项目指令和权限限制。比如 `AGENTS.md` 要求使用 
 4. **审批策略**　超出当前权限的操作可以要求用户确认，也可以被配置为直接拒绝。
 5. **项目规则**　`AGENTS.md` 等指令告诉 Codex 在技术权限允许的范围内，哪些操作仍然不该做。
 
-![Codex 工作区、沙箱、工具通道与审批边界](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/图四.png)
+![Codex 工作区、沙箱、工具通道与审批边界](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/04-工作区工具沙箱与审批边界.png)
 
 <p align="center">图四　项目文件位于受控工作区内，工具和外部访问需要经过沙箱与审批边界</p>
 
@@ -184,15 +184,3 @@ Codex 的最后一条消息只是摘要。真正的结果在文件差异、测�
 - [OpenAI 官方文档 Codex environments](https://learn.chatgpt.com/docs/environments/modes)
 - [OpenAI 官方文档 Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security)
 - [OpenAI 官方文档 Sandbox](https://learn.chatgpt.com/docs/sandboxing)
-
-## 继续学习 Codex
-
-更多中文教程、任务方法和实战案例，可以访问 [CodexGuide](https://codexguide.io)。
-
-## 关注公众号
-
-扫描下方二维码，获取后续教程更新。
-
-<p align="center">
-  <img src="../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/wechat-qr.png" alt="微信公众号二维码" width="180">
-</p>
