@@ -10,3 +10,7 @@
 - 从 Issue 到 Pull Request 的完整流程。
 - 使用 Codex Review 检查正确性、安全和测试风险。
 - 为提交和 PR 写清楚改了什么、为什么修改。
+
+## 已上线文章
+
+- [Codex 处理 GitHub Issue 并创建 Pull Request](./01-Codex处理GitHub-Issue并创建PR.md)
