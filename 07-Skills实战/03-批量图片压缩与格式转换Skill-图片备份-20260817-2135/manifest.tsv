@@ -1,0 +1,3 @@
+filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	expiry_risk	provenance
+01-github-img-converter-repository.png	official-ui-screenshot	1280	720	一、先看这个开源 Skill 能做什么	认识开源项目	证明 dutchbase/img-converter 是公开仓库，项目说明明确包含 Sharp、npm、CLI 和 MCP	https://github.com/dutchbase/img-converter	dutchbase	2026-03-10	-	verified-direct	GitHub 仓库页面与 main 分支内容会变化，发布前复核	official
+02-github-img-convert-skill-source.png	official-ui-screenshot	1280	720	一、先看这个开源 Skill 能做什么	确认现成 Skill	证明仓库根目录存在 SKILL.md，名称为 img-convert，并列出批处理和格式转换触发词	https://github.com/dutchbase/img-converter/blob/main/SKILL.md	dutchbase	2026-03-10	-	verified-direct	SKILL.md 位于 main 分支，内容可能更新，发布前复核	official

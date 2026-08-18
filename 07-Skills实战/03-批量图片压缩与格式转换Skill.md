@@ -4,6 +4,8 @@
 
 这篇实战使用 [dutchbase/img-converter](https://github.com/dutchbase/img-converter) 提供的 `img-convert` Skill。目标很具体：把指定文件夹中的图片统一限制在 1200px 宽，转成 WebP，质量设为 85，并把结果放进新目录。
 
+> 测试环境：Windows 11 24H2（26100.4652）；Codex Desktop 26.810.7004.0；Codex CLI 0.147.0；Node.js 22.22.3；skills 1.5.22；img-convert 1.0.4；2026-08-17 核验。
+
 > 当前状态：开源项目、安装方式和单图转换命令已经验证。批量处理截图和完整数据将在实测后补充。
 
 ## 一、先看这个开源 Skill 能做什么
@@ -165,3 +167,36 @@ img-convert batch jobs.json --json
 - Skill 源文件：[SKILL.md](https://github.com/dutchbase/img-converter/blob/main/SKILL.md)
 - npm 包：[`@dutchbase/img-convert`](https://www.npmjs.com/package/@dutchbase/img-convert)
 - 许可证：[MIT License](https://github.com/dutchbase/img-converter/blob/main/LICENSE)
+
+## 配图素材备用区（暂不计入正文图号）
+
+> 本节用于写作阶段选图，发布前应将采用的素材移动到对应正文段落并重新编号。旧界面、限时活动和第三方教程必须标注日期与来源。
+
+### 官方与可核验操作界面
+
+- `online/01-github-img-converter-repository.png`：适合“一、先看这个开源 Skill 能做什么”，证明公开仓库的项目定位包含 Sharp、npm、CLI 和 MCP；来源为 [dutchbase/img-converter](https://github.com/dutchbase/img-converter)，作者 dutchbase，仓库创建于 2026-03-10，2026-08-17 直接核验。GitHub 页面和 main 分支可能变化，发布前复核。
+- `online/02-github-img-convert-skill-source.png`：适合“一、先看这个开源 Skill 能做什么”，证明仓库根目录存在 `SKILL.md`，名称为 `img-convert`，并列出批处理和格式转换触发词；来源为 [SKILL.md](https://github.com/dutchbase/img-converter/blob/main/SKILL.md)，作者 dutchbase，源文件提交于 2026-03-10，2026-08-17 直接核验。main 分支内容可能变化，发布前复核。
+
+### 视频教程来源（仅作来源，不自动作为配图）
+
+- [使用 Google 的开源工具 libwebp 批量将图像转换为 WebP](https://www.bilibili.com/video/BV1bscteWEBv)：最爱小真寻，B 站，2025-01-14。视频使用 libwebp，不是本文的 `img-convert`，因此未截帧，只作命令行批量转换的延伸阅读。
+- [Convert Image Files to WebP From The Command Line](https://www.youtube.com/watch?v=N_N5xPq42Do)：SittingDev，YouTube，2021-02-25。视频使用 libwebp，不是本文工具，未截帧。
+- [What's the easiest way to convert multiple images into webP?](https://www.youtube.com/watch?v=lFSE88I3Ggs)：The Vibe Coder，YouTube，2026-03-20。视频展示另一款 GUI 工具，未截帧。
+
+### 需要作者亲自截图
+
+- [ ] `01-skill-list-result.png`：Codex Desktop 当前任务 → 终端 → 运行 `npx ... --list` → 显示 `Found 1 skill` 与 `img-convert`；隐藏用户名、私人路径和代理地址；停在列出结果，不安装。
+- [ ] `02-skill-install-success.png`：Codex Desktop 当前任务 → 终端 → 安装 `img-convert` Skill → 显示安装成功；隐藏全局目录中的个人路径；安装完成即停止。
+- [ ] `03-cli-help-and-version.png`：Codex Desktop 当前任务 → 终端 → 安装 CLI 并运行版本与帮助命令 → 显示 Node.js >=18 和关键参数；不要输出 `.npmrc`、令牌或私有 registry；不要启动 MCP。
+- [ ] `04-dry-run-file-list.png`：`D:\images\original` → 运行 `--dry-run --json` → 显示待处理文件、输出路径和 `dryRun: true`；仅使用公开测试图片副本；停在预演，不转换。
+- [ ] `05-batch-convert-json-result.png`：继续使用测试副本 → 去掉 `--dry-run` → 显示输入输出大小、压缩率、尺寸与成功失败数；不得删除或覆盖原图。
+- [ ] `06-original-output-folder-comparison.png`：Windows 文件资源管理器 → `D:\images` → 并排查看 `original` 与 `output`；隐藏个人云盘和最近使用记录；截图后不执行删除或覆盖。
+
+### 查找记录
+
+- GitHub：`dutchbase/img-converter`、`SKILL.md`；Playwright、GitHub API、Jina Reader；`verified-direct`；保存两张公开页面截图。
+- npm：`@dutchbase/img-convert`；npm registry API；`verified-direct`；网页被 Cloudflare 403 拦截，安全验证页不采用。
+- Exa：官方英文查询与中文批量转 WebP 查询；Exa via mcporter；`verified-index`；最终回到 GitHub 原始页面核验。
+- B 站：`批量 图片 转 WebP 命令行 Sharp`；B 站搜索 API；`verified-index`；找到 libwebp 教程，但工具不同，不截帧。
+- YouTube：`img-convert dutchbase image converter`、`batch convert images webp sharp cli tutorial`；yt-dlp；`verified-index`；结果均非本文工具，不截帧。
+- 小红书：`批量图片转 WebP`；无可用后端；`unavailable`；未登录、未绕过平台验证。
