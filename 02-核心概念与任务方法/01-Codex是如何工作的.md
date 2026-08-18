@@ -12,7 +12,7 @@
 
 ![Codex 从任务到代码验证的工作流程](../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/image-01-hiapi-cover.png)
 
-<p align="center">图一　Codex 把任务、代码修改和验证连接成一套完整工作流</p>
+<p align="center">图一　第二章第一篇：Codex 是如何工作的</p>
 
 ## 先记住这个工作模型
 
