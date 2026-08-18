@@ -25,7 +25,7 @@
 | 安装 CLI | Node 版本、npm 包版本与 CLI 帮助参数 | 本机真实终端 | 已保存 `manual/03-cli-help-and-version.png` |
 | dry-run | 文件列表、目标路径、未写入状态 | 本机真实终端 | 已保存 `manual/04-dry-run-file-list.png` |
 | 正式转换 | JSON 输出、压缩率、尺寸、成功失败数 | 本机真实终端 | 已保存 `manual/05-batch-convert-json-result.png` |
-| 检查产物 | 原图保留、WebP 输出和大小变化 | Windows 文件资源管理器 | 已保存 `manual/06-original-output-folder-comparison.png` |
+| 展示测试素材 | 三张公开原图与对应转换数据 | 原始图片像素拼接 | 已保存 `manual/06-original-images-collage.png` |
 
 ## 平台覆盖
 
@@ -55,7 +55,7 @@
 - 测试输入：Picsum 公开 JPG（1800×1200）、GitHub Mark PNG（560×560）、Google WebP Gallery 图片（550×368）。来源分别为 `https://picsum.photos/seed/codexguide-landscape/1800/1200`、`https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png`、`https://www.gstatic.com/webp/gallery/1.webp`。
 - dry-run：列出 3 项，全部为 `dryRun: true`，输出目录仍为空。
 - 正式转换：3 成功、0 失败；237,357 字节降至 144,698 字节，整体减少约 39.0%。大 JPG 减少 48.8%，PNG 减少 14.2%，原 WebP 重编码后增大 19.7%。
-- 截图原则：终端图来自实际 `cmd.exe` 窗口；文件对比图来自两个真实 Windows 文件资源管理器窗口，仅裁去含本机项目名的左侧导航。`compact-json.js` 只改变 JSON 换行，不改字段和值。
+- 配图原则：终端图来自实际 `cmd.exe` 窗口；结果图直接拼接三张公开测试原图，不使用文件资源管理器缩略图。`compact-json.js` 只改变 JSON 换行，不改字段和值。
 
 ## 视频元数据
 

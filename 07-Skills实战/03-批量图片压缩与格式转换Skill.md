@@ -153,7 +153,9 @@ img-convert batch jobs.json --json
 
 总大小减少 92,659 字节，整体压缩率约 39.0%。原图目录没有被覆盖，三个 WebP 都写入独立的 `output` 目录。
 
-![原图与 WebP 输出目录的真实文件对比](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/06-original-output-folder-comparison.png)
+下图直接使用三张公开测试原图拼接，标签列出对应的输出尺寸和文件大小变化。
+
+![三张公开测试原图拼接与转换结果](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/06-original-images-collage.png)
 
 ## 九、最后检查这些情况
 
@@ -195,7 +197,7 @@ img-convert batch jobs.json --json
 - [x] `03-cli-help-and-version.png`：真实终端显示 Node.js 22.22.3、包版本 1.0.4 和关键参数。
 - [x] `04-dry-run-file-list.png`：三张公开测试图片均显示 `dryRun: true`，输出目录为空。
 - [x] `05-batch-convert-json-result.png`：三张图片的输入/输出大小、压缩率、尺寸和格式均来自真实 CLI JSON。
-- [x] `06-original-output-folder-comparison.png`：两个真实文件资源管理器窗口并排显示原图与输出，左侧个人导航已裁掉。
+- [x] `06-original-images-collage.png`：直接使用三张公开测试原图拼接，并标注真实转换尺寸和文件大小变化。
 
 ### 查找记录
 
