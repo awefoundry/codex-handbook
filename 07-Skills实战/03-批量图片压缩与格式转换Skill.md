@@ -6,13 +6,15 @@
 
 > 测试环境：Windows 11 24H2（26100.4652）；Codex Desktop 26.810.7004.0；Codex CLI 0.147.0；Node.js 22.22.3；skills 1.5.22；img-convert 1.0.4；2026-08-17 核验。
 
-> 当前状态：开源项目、安装方式和单图转换命令已经验证。批量处理截图和完整数据将在实测后补充。
+> 当前状态：开源项目、Skill 与 CLI 安装、dry-run、三图批量转换和原图/输出目录对比均已于 2026-08-17 实测并截图。
 
 ## 一、先看这个开源 Skill 能做什么
 
 `img-convert` 基于 Sharp，仓库使用 MIT 许可证。项目同时提供命令行工具、Node.js API、MCP 服务和一份现成的 `SKILL.md`。这篇只使用最简单的组合：让 Codex 按 Skill 中的规则判断，再调用 CLI 处理本地图片。
 
 它支持 JPEG、PNG、WebP、AVIF、GIF 和 TIFF 输出，也能调整尺寸、压缩质量、旋转、裁边和读取图片信息。批量任务既可以传入 glob 路径，也可以使用 JSON 清单。
+
+![GitHub 上的 dutchbase/img-converter 公开仓库](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/online/01-github-img-converter-repository.png)
 
 安装前可以先让 `skills` 命令读取仓库，确认其中确实有 `img-convert`：
 
@@ -22,6 +24,10 @@ npx -y skills add https://github.com/dutchbase/img-converter --list
 
 命令应显示一个名为 `img-convert` 的 Skill。不要只凭第三方介绍页安装，仓库中的 [SKILL.md](https://github.com/dutchbase/img-converter/blob/main/SKILL.md) 才是实际内容。
 
+![skills 安装器识别出 img-convert](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/01-skill-list-result.png)
+
+![仓库中的 img-convert SKILL.md](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/online/02-github-img-convert-skill-source.png)
+
 ## 二、安装 Skill 和命令行工具
 
 先把 Skill 安装到 Codex 的全局技能目录：
@@ -29,6 +35,7 @@ npx -y skills add https://github.com/dutchbase/img-converter --list
 ```powershell
 npx -y skills add https://github.com/dutchbase/img-converter `
   --skill img-convert `
+  --agent codex `
   --global `
   --yes
 ```
@@ -39,6 +46,8 @@ Skill 只负责告诉 Codex 怎样使用工具，并不会自动安装 `img-conv
 npm install -g @dutchbase/img-convert
 ```
 
+本次安装成功，但 npm 同时提示其依赖的 `glob@10.5.0` 已弃用。这个警告不影响本文测试，不等于可以忽略：在生产目录或自动化流水线使用前，应重新检查包版本、依赖审计结果和仓库更新情况，先用可恢复的图片副本测试。
+
 这个工具要求 Node.js 18 或更高版本。安装完成后检查命令是否可用：
 
 ```powershell
@@ -48,7 +57,9 @@ img-convert info --help
 img-convert batch --help
 ```
 
-<!-- TODO：补充 Skill 与 CLI 安装成功的截图。 -->
+![img-convert Skill 定向安装到 Codex](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/02-skill-install-success.png)
+
+![CLI 安装、Node 和关键参数检查](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/03-cli-help-and-version.png)
 
 ## 三、把处理规则说清楚
 
@@ -83,6 +94,8 @@ img-convert "D:/images/original/**/*.{jpg,jpeg,png,webp}" `
 
 这里把 glob 路径放在引号中，让 `img-convert` 自己展开文件列表。Windows 下的 glob 要使用正斜杠 `/`，反斜杠会被当成转义符，可能导致一张图片都找不到。预演结果要核对三件事：文件数量是否正确、输出是否都指向新目录、有没有两个不同格式的同名文件最终写成同一个 `.webp`。
 
+![dry-run 列出三张图片且输出目录保持为空](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/04-dry-run-file-list.png)
+
 ## 五、确认后再批量转换
 
 预演没有问题，就去掉 `--dry-run`：
@@ -97,6 +110,10 @@ img-convert "D:/images/original/**/*.{jpg,jpeg,png,webp}" `
 ```
 
 `--json` 会返回每张图片的输入大小、输出大小、压缩比例、尺寸和保存路径。文章后面可以直接根据这些结果统计总共节省了多少空间，不需要手工逐张计算。
+
+![三张图片的真实批量转换 JSON 结果](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/05-batch-convert-json-result.png)
+
+截图中用 `compact-json.js` 只调整真实 JSON 的换行，字段和值没有改动。三张图片全部转换成功，失败数为 0。
 
 如果不同图片需要不同尺寸或格式，可以让 Codex 先生成 JSON 清单，再使用：
 
@@ -118,37 +135,25 @@ img-convert batch jobs.json --json
 
 这段要求把检查、预演、执行和汇报写在了一起。Skill 还会提醒 Codex 先读取陌生图片的信息，尤其注意透明通道和动画图片。
 
-## 七、用一张小图验证过命令
+## 七、用三张公开图片验证
 
-我先用一张 330×267 的 PNG 截图测试了相同参数。设置宽度为 1200px 后，输出仍是 330×267，说明小图没有被放大。文件从 23,493 字节变为 15,018 字节，减少 36.1%。
+测试集包含一张 1800×1200 JPG、一张 560×560 PNG 和一张 550×368 WebP。大图被等比缩到 1200×800；两张小图仍保持原尺寸，说明设置 `--width 1200` 不会把小图放大。
 
-```json
-{
-  "inputBytes": 23493,
-  "outputBytes": 15018,
-  "reduction": 36.1,
-  "width": 330,
-  "height": 267,
-  "format": "webp",
-  "quality": 85
-}
-```
-
-这只能证明命令可用。正式实测还要加入大尺寸照片、透明 PNG、竖图和已经是 WebP 的图片。
-
-<!-- TODO：补充批量处理前后的文件夹截图。 -->
+结果也说明“统一转 WebP”不等于每张都会更小。JPG 减少 48.8%，PNG 减少 14.2%，但原本已经压缩过的 WebP 重新编码后反而增大 19.7%。批量任务结束后必须检查负压缩率，不能只看成功数量。
 
 ## 八、记录批量处理结果
 
 | 项目 | 处理前 | 处理后 |
 | --- | ---: | ---: |
-| 图片数量 | 待补充 | 待补充 |
-| 总文件大小 | 待补充 | 待补充 |
-| 最大宽度 | 待补充 | 1200px |
+| 图片数量 | 3 | 3 |
+| 总文件大小 | 237,357 字节 | 144,698 字节 |
+| 最大宽度 | 1800px | 1200px |
 | 文件格式 | JPG/PNG/WebP | WebP |
-| 失败数量 | - | 待补充 |
+| 失败数量 | - | 0 |
 
-<!-- TODO：补充一组原图与 WebP 的清晰度对比图。 -->
+总大小减少 92,659 字节，整体压缩率约 39.0%。原图目录没有被覆盖，三个 WebP 都写入独立的 `output` 目录。
+
+![原图与 WebP 输出目录的真实文件对比](./03-批量图片压缩与格式转换Skill-图片备份-20260817-2135/manual/06-original-output-folder-comparison.png)
 
 ## 九、最后检查这些情况
 
@@ -185,12 +190,12 @@ img-convert batch jobs.json --json
 
 ### 需要作者亲自截图
 
-- [ ] `01-skill-list-result.png`：Codex Desktop 当前任务 → 终端 → 运行 `npx ... --list` → 显示 `Found 1 skill` 与 `img-convert`；隐藏用户名、私人路径和代理地址；停在列出结果，不安装。
-- [ ] `02-skill-install-success.png`：Codex Desktop 当前任务 → 终端 → 安装 `img-convert` Skill → 显示安装成功；隐藏全局目录中的个人路径；安装完成即停止。
-- [ ] `03-cli-help-and-version.png`：Codex Desktop 当前任务 → 终端 → 安装 CLI 并运行版本与帮助命令 → 显示 Node.js >=18 和关键参数；不要输出 `.npmrc`、令牌或私有 registry；不要启动 MCP。
-- [ ] `04-dry-run-file-list.png`：`D:\images\original` → 运行 `--dry-run --json` → 显示待处理文件、输出路径和 `dryRun: true`；仅使用公开测试图片副本；停在预演，不转换。
-- [ ] `05-batch-convert-json-result.png`：继续使用测试副本 → 去掉 `--dry-run` → 显示输入输出大小、压缩率、尺寸与成功失败数；不得删除或覆盖原图。
-- [ ] `06-original-output-folder-comparison.png`：Windows 文件资源管理器 → `D:\images` → 并排查看 `original` 与 `output`；隐藏个人云盘和最近使用记录；截图后不执行删除或覆盖。
+- [x] `01-skill-list-result.png`：真实终端显示 `Found 1 skill` 与 `img-convert`，无私人路径。
+- [x] `02-skill-install-success.png`：使用 `--agent codex` 定向安装，真实终端显示 `Installation complete`。
+- [x] `03-cli-help-and-version.png`：真实终端显示 Node.js 22.22.3、包版本 1.0.4 和关键参数。
+- [x] `04-dry-run-file-list.png`：三张公开测试图片均显示 `dryRun: true`，输出目录为空。
+- [x] `05-batch-convert-json-result.png`：三张图片的输入/输出大小、压缩率、尺寸和格式均来自真实 CLI JSON。
+- [x] `06-original-output-folder-comparison.png`：两个真实文件资源管理器窗口并排显示原图与输出，左侧个人导航已裁掉。
 
 ### 查找记录
 

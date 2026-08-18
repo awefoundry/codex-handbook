@@ -20,12 +20,12 @@
 |---|---|---|---|
 | 认识开源项目 | 公开仓库、Sharp/CLI/MCP 说明 | GitHub 仓库公开页面 | 已保存 `online/01-github-img-converter-repository.png` |
 | 确认现成 Skill | `SKILL.md`、`img-convert` 名称和触发范围 | GitHub SKILL.md 公开页面 | 已保存 `online/02-github-img-convert-skill-source.png` |
-| 检查可安装 Skill | `skills --list` 找到一个 Skill | 作者本机终端 | 待作者截图 `manual/01-skill-list-result.png` |
-| 安装 Skill | 安装成功且没有错误 | 作者本机终端 | 待作者截图 `manual/02-skill-install-success.png` |
-| 安装 CLI | Node 版本与 CLI 帮助参数 | 作者本机终端 | 待作者截图 `manual/03-cli-help-and-version.png` |
-| dry-run | 文件列表、目标路径、未写入状态 | 作者本机终端 | 待作者截图 `manual/04-dry-run-file-list.png` |
-| 正式转换 | JSON 输出、压缩率、尺寸、成功失败数 | 作者本机终端 | 待作者截图 `manual/05-batch-convert-json-result.png` |
-| 检查产物 | 原图保留、WebP 输出、大小和尺寸变化 | Windows 文件资源管理器 | 待作者截图 `manual/06-original-output-folder-comparison.png` |
+| 检查可安装 Skill | `skills --list` 找到一个 Skill | 本机真实终端 | 已保存 `manual/01-skill-list-result.png` |
+| 安装 Skill | 定向安装到 Codex 且没有错误 | 本机真实终端 | 已保存 `manual/02-skill-install-success.png` |
+| 安装 CLI | Node 版本、npm 包版本与 CLI 帮助参数 | 本机真实终端 | 已保存 `manual/03-cli-help-and-version.png` |
+| dry-run | 文件列表、目标路径、未写入状态 | 本机真实终端 | 已保存 `manual/04-dry-run-file-list.png` |
+| 正式转换 | JSON 输出、压缩率、尺寸、成功失败数 | 本机真实终端 | 已保存 `manual/05-batch-convert-json-result.png` |
+| 检查产物 | 原图保留、WebP 输出和大小变化 | Windows 文件资源管理器 | 已保存 `manual/06-original-output-folder-comparison.png` |
 
 ## 平台覆盖
 
@@ -46,6 +46,16 @@
 - 淘汰：npm 网页截图。Playwright 返回 HTTP 403，画面只有 Cloudflare 安全验证，不能证明安装步骤，也不进入 `manifest.tsv`。
 - 淘汰：父目录 `image.png`。它属于此前文章素材，和当前 `img-convert` 教程无关，没有复制。
 - 淘汰：B 站与 YouTube 视频帧。检索到的视频使用 libwebp/cwebp 或其他产品，不是本文开源 Skill；仅保留可追溯链接，不下载封面、不抽帧。
+
+## 本机实测记录
+
+- Skill 发现：`npx -y skills add https://github.com/dutchbase/img-converter --list` 返回 `Found 1 skill` 和 `img-convert`。
+- Skill 安装：未限定 agent 时安装器还会尝试 PromptScript，因此最终教程改为 `--agent codex`；定向安装显示 `Installation complete` 和 `Installed 1 skill`。
+- CLI 安装：`@dutchbase/img-convert` 1.0.4；Node.js 22.22.3。系统 npm 前缀不可写，截图测试使用 `D:\images\npm-global` 作为中性用户级前缀。
+- 测试输入：Picsum 公开 JPG（1800×1200）、GitHub Mark PNG（560×560）、Google WebP Gallery 图片（550×368）。来源分别为 `https://picsum.photos/seed/codexguide-landscape/1800/1200`、`https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png`、`https://www.gstatic.com/webp/gallery/1.webp`。
+- dry-run：列出 3 项，全部为 `dryRun: true`，输出目录仍为空。
+- 正式转换：3 成功、0 失败；237,357 字节降至 144,698 字节，整体减少约 39.0%。大 JPG 减少 48.8%，PNG 减少 14.2%，原 WebP 重编码后增大 19.7%。
+- 截图原则：终端图来自实际 `cmd.exe` 窗口；文件对比图来自两个真实 Windows 文件资源管理器窗口，仅裁去含本机项目名的左侧导航。`compact-json.js` 只改变 JSON 换行，不改字段和值。
 
 ## 视频元数据
 
