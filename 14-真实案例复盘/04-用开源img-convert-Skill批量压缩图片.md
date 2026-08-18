@@ -14,7 +14,7 @@
 
 它支持 JPEG、PNG、WebP、AVIF、GIF 和 TIFF 输出，也能调整尺寸、压缩质量、旋转、裁边和读取图片信息。批量任务既可以传入 glob 路径，也可以使用 JSON 清单。
 
-![GitHub 上的 dutchbase/img-converter 公开仓库](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/01-img-converter-GitHub仓库.png)
+![GitHub 上的 dutchbase/img-converter 公开仓库](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/01-img-converter-GitHub仓库.png)
 
 安装前可以先让 `skills` 命令读取仓库，确认其中确实有 `img-convert`。
 
@@ -24,9 +24,9 @@ npx -y skills add https://github.com/dutchbase/img-converter --list
 
 命令应显示一个名为 `img-convert` 的 Skill。不要只凭第三方介绍页安装，仓库中的 [SKILL.md](https://github.com/dutchbase/img-converter/blob/main/SKILL.md) 才是实际内容。
 
-![skills 安装器识别出 img-convert](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/02-skills识别img-convert.png)
+![skills 安装器识别出 img-convert](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/02-skills识别img-convert.png)
 
-![仓库中的 img-convert SKILL.md](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/03-img-convert-SKILL源码.png)
+![仓库中的 img-convert SKILL.md](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/03-img-convert-SKILL源码.png)
 
 ## 二、安装 Skill 和命令行工具
 
@@ -57,9 +57,9 @@ img-convert info --help
 img-convert batch --help
 ```
 
-![img-convert Skill 定向安装到 Codex](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/04-img-convert-Skill安装完成.png)
+![img-convert Skill 定向安装到 Codex](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/04-img-convert-Skill安装完成.png)
 
-![CLI 安装、Node 和关键参数检查](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/05-CLI安装与参数检查.png)
+![CLI 安装、Node 和关键参数检查](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/05-CLI安装与参数检查.png)
 
 ## 三、把处理规则说清楚
 
@@ -94,7 +94,7 @@ img-convert "D:/images/original/**/*.{jpg,jpeg,png,webp}" `
 
 这里把 glob 路径放在引号中，让 `img-convert` 自己展开文件列表。Windows 下的 glob 要使用正斜杠 `/`，反斜杠会被当成转义符，可能导致一张图片都找不到。预演后要核对文件数量和输出目录，还要检查两个不同格式的同名文件会不会写成同一个 `.webp`。
 
-![dry-run 列出三张图片且输出目录保持为空](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/06-dry-run预演结果.png)
+![dry-run 列出三张图片且输出目录保持为空](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/06-dry-run预演结果.png)
 
 ## 五、确认后再批量转换
 
@@ -111,7 +111,7 @@ img-convert "D:/images/original/**/*.{jpg,jpeg,png,webp}" `
 
 `--json` 会返回每张图片的输入大小、输出大小、压缩比例、尺寸和保存路径。文章后面可以直接根据这些结果统计总共节省了多少空间，不需要手工逐张计算。
 
-![三张图片的真实批量转换 JSON 结果](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/07-批量转换JSON结果.png)
+![三张图片的真实批量转换 JSON 结果](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/07-批量转换JSON结果.png)
 
 截图中用 `compact-json.js` 只调整真实 JSON 的换行，字段和值没有改动。三张图片全部转换成功，失败数为 0。
 
@@ -155,7 +155,7 @@ img-convert batch jobs.json --json
 
 下图直接使用三张公开测试原图拼接，标签列出对应的输出尺寸和文件大小变化。
 
-![三张公开测试原图拼接与转换结果](../图片素材/07-Skills实战/03-批量图片压缩与格式转换Skill/08-转换前后对比.png)
+![三张公开测试原图拼接与转换结果](../图片素材/14-真实案例复盘/04-用开源img-convert-Skill批量压缩图片/08-转换前后对比.png)
 
 ## 九、最后检查这些情况
 
