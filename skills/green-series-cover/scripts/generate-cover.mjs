@@ -11,7 +11,7 @@ const DEFAULT_REFERENCE = fileURLToPath(new URL('../assets/reference-cover.png',
 
 function usage(message) {
   if (message) console.error(`Error: ${message}`);
-  console.error('Usage: node scripts/generate-cover.mjs --title "..." --issue 1 [--output cover.png] [--reference path] [--model id]');
+  console.error('Usage: node scripts/generate-cover.mjs --title "..." --issue 1 [--chapter 2] [--output cover.png] [--reference path] [--model id]');
   process.exitCode = 2;
 }
 
@@ -19,7 +19,7 @@ function parseArgs(argv) {
   const options = { model: DEFAULT_MODEL, reference: DEFAULT_REFERENCE };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === '--title' || arg === '--issue' || arg === '--output' || arg === '--reference' || arg === '--model') {
+    if (arg === '--title' || arg === '--issue' || arg === '--chapter' || arg === '--output' || arg === '--reference' || arg === '--model') {
       const value = argv[++i];
       if (!value) return usage(`${arg} requires a value`);
       options[arg.slice(2)] = value;
@@ -33,7 +33,9 @@ function parseArgs(argv) {
   }
   if (!options.title?.trim()) return usage('--title is required');
   if (!/^[1-9][0-9]*$/.test(String(options.issue ?? ''))) return usage('--issue must be a positive integer');
+  if (options.chapter !== undefined && !/^[1-9][0-9]*$/.test(String(options.chapter))) return usage('--chapter must be a positive integer');
   options.issue = Number(options.issue);
+  if (options.chapter !== undefined) options.chapter = Number(options.chapter);
   options.output = options.output ? resolve(options.output) : resolve(`wechat-cover-${options.issue}.png`);
   options.reference = resolve(options.reference);
   return options;
@@ -64,15 +66,16 @@ async function requestJson(url, init) {
   return body?.data ?? body;
 }
 
-function promptFor({ title, issue }) {
+function promptFor({ title, issue, chapter }) {
+  const badgeText = chapter ? `第 ${chapter} 章 · 第 ${issue} 篇` : `系列第 ${issue} 篇`;
   return [
     'Use the supplied reference image as a locked visual composition for a Chinese WeChat public-account article cover.',
     'Preserve the right-side silver laptop, Windows blue screen, floating terminal/code panels, camera perspective, mint-white luminous background, teal line waves, soft shadows, and the clean 16:9 editorial technology style.',
     'Rebuild only the left 45 percent of the image for this article. Create a topic-relevant, simple editorial illustration or icon behind/around the left text without changing the right-side scene.',
-    `Render the exact Chinese issue badge text: 系列第 ${issue} 篇.`,
+    `Render the exact Chinese issue badge text: ${badgeText}.`,
     `Render the exact Chinese headline: ${title}.`,
     'Make the headline the largest left-side element with strong dark navy/black type and a restrained green/teal accent. Keep all text inside the left safe area and highly legible.',
-    'Do not add any other words, logos, watermarks, QR codes, URLs, fake UI copy, or brand marks. Do not alter the issue number or title.',
+    'Do not add any other words, logos, watermarks, QR codes, URLs, fake UI copy, or brand marks. Do not alter the chapter number, issue number, or title.',
   ].join(' ');
 }
 

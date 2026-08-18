@@ -1,6 +1,6 @@
 ---
 name: green-series-cover
-description: Generate Chinese green-series article covers from a fixed mint-green reference composition, adapting the left information panel to a supplied title and issue number. Use when creating, revising, or batch-generating this publication's green WeChat public-account cover series with HiAPI image2.0.
+description: Generate Chinese green-series article covers from a fixed mint-green reference composition, adapting the left information panel to a supplied title, issue number, and optional chapter number. Use when creating, revising, or batch-generating this publication's green WeChat public-account cover series with HiAPI image2.0.
 ---
 
 # Green Series Cover
@@ -14,6 +14,8 @@ Before generating, ask for both values if they were not supplied:
 - `title`: the article title, in Chinese when appropriate.
 - `issue`: the series issue number, a positive integer.
 
+Use optional `chapter` when numbering restarts inside each chapter or the cover needs to stay visually distinct from another chapter. Without it, the badge remains `系列第 <issue> 篇` for backward compatibility.
+
 Do not silently invent either value. Preserve the user's title verbatim in the prompt; do not rewrite its wording. If the title is long, request a shorter display title or use a deliberate two-line layout rather than shrinking it until unreadable.
 
 ## Generate
@@ -24,11 +26,17 @@ Run the bundled script from the skill directory:
 node scripts/generate-cover.mjs --title "Windows 安装 Codex" --issue 1 --output .\cover.png
 ```
 
+For a chapter-specific badge:
+
+```powershell
+node scripts/generate-cover.mjs --title "Codex 是如何工作的" --chapter 2 --issue 1 --output .\cover.png
+```
+
 The script reads `HIAPI_API_KEY` from the current environment, uses `gpt-image-2/image-to-image` by default, encodes `assets/reference-cover.png` as a data URL, submits an asynchronous HiAPI task, polls it, and downloads the first output. Never print or commit the API key. Override the reference with `--reference <path>` only when the user explicitly supplies a replacement.
 
 The generated prompt must require:
 
-- exact visible issue badge text `系列第 <issue> 篇`;
+- exact visible badge text `系列第 <issue> 篇`, or `第 <chapter> 章 · 第 <issue> 篇` when `--chapter` is supplied;
 - the supplied title as the dominant left headline;
 - a left-side illustration or motif that reflects the article topic;
 - no extra logos, watermark, QR code, invented claims, or unrelated text;
