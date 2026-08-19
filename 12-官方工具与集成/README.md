@@ -16,3 +16,5 @@
 
 - [Codex 远程控制另一台 Mac](./01-Codex远程控制另一台Mac.md)
 - [Codex 浏览器操作与登录态功能](./02-Codex浏览器操作与登录态功能.md)
+- [Codex 使用 Computer Use 操作桌面应用](./03-Codex使用Computer-Use操作桌面应用.md)
+- [Codex 连接 Sentry 排查线上错误](./04-Codex连接Sentry排查线上错误.md)

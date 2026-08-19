@@ -17,3 +17,4 @@
 ## 已上线文章
 
 - [从零创建 Codex Skill](./04-从零创建Codex-Skill.md)
+- [Codex 用 Record & Replay 生成可复用 Skill](./05-Codex用Record-and-Replay生成可复用Skill.md)
