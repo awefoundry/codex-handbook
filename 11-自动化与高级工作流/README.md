@@ -16,3 +16,5 @@
 
 - [Codex 在任务结束时捕捉可复用素材](./01-Codex在任务结束时捕捉可复用素材.md)
 - [Codex 跨会话协作功能](./02-Codex跨会话协作功能.md)
+- [Codex 使用 Goal 模式运行长任务](./05-Codex使用Goal模式运行长任务.md)
+- [Codex 使用 Subagents 并行处理任务](./06-Codex使用Subagents并行处理任务.md)
