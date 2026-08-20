@@ -66,17 +66,17 @@ Agent 对话」。
 
 比如在 OpenClaw 里，你可以这样启动一个 ACP harness：
 
-    
-    
-    # OpenClaw 作为 ACP harness 运行  
-    openclaw acp  
-      
-    # 指向远程 Gateway  
-    openclaw acp --url wss://my-server:18789 --token-file ~/.openclaw/gateway.token  
-      
-    # 绑定到特定 agent 会话  
-    openclaw acp --session agent:main:main  
-    
+
+
+    # OpenClaw 作为 ACP harness 运行
+    openclaw acp
+
+    # 指向远程 Gateway
+    openclaw acp --url wss://my-server:18789 --token-file ~/.openclaw/gateway.token
+
+    # 绑定到特定 agent 会话
+    openclaw acp --session agent:main:main
+
 
 编辑器只需要知道怎么跟 harness 说话，不需要知道后面是 Claude、Gemini 还是 DeepSeek，这层抽象让开发者可以自由组合编辑器和
 Agent，而不用关心底层实现。
@@ -100,37 +100,37 @@ JetBrains: Junie • OpenClaw • Cline、Goose、OpenHands、OpenCode...
 
 拿一个具体例子来说，假设想在 Zed 编辑器里用 Claude Code，以前完全不可能，现在只需要配置一下：
 
-    
-    
-    // ~/.config/zed/settings.json  
-    {  
-      "agent_servers": {  
-        "Claude Code": {  
-          "type": "custom",  
-          "command": "claude-agent-acp",  
-          "args": [],  
-          "env": {}  
-        }  
-      }  
-    }  
-    
+
+
+    // ~/.config/zed/settings.json
+    {
+      "agent_servers": {
+        "Claude Code": {
+          "type": "custom",
+          "command": "claude-agent-acp",
+          "args": [],
+          "env": {}
+        }
+      }
+    }
+
 
 或者想用 OpenClaw 的 agent：
 
-    
-    
-    // Zed settings  
-    {  
-      "agent_servers": {  
-        "OpenClaw ACP": {  
-          "type": "custom",  
-          "command": "openclaw",  
-          "args": ["acp", "--session", "agent:main:main"],  
-          "env": {}  
-        }  
-      }  
-    }  
-    
+
+
+    // Zed settings
+    {
+      "agent_servers": {
+        "OpenClaw ACP": {
+          "type": "custom",
+          "command": "openclaw",
+          "args": ["acp", "--session", "agent:main:main"],
+          "env": {}
+        }
+      }
+    }
+
 
 打开 Zed 的 Agent 面板，选择配置的 Agent，就能开始用了，体验和在终端里直接用 Claude Code 一样，但有了编辑器的 UI 加持。
 
@@ -138,15 +138,15 @@ JetBrains: Junie • OpenClaw • Cline、Goose、OpenHands、OpenCode...
 
 更有意思的是 agent 之间的协作，通过 acpx（ACP 的命令行客户端），可以让一个 Agent 调用另一个：
 
-    
-    
-    # 让 Codex 通过 ACP 访问 OpenClaw agent 的上下文  
-    acpx openclaw exec "总结一下当前项目的最新进展"  
-      
-    # 建立持久会话，多次交互  
-    acpx openclaw sessions ensure --name codex-bridge  
-    acpx openclaw -s codex-bridge "help me review this PR"  
-    
+
+
+    # 让 Codex 通过 ACP 访问 OpenClaw agent 的上下文
+    acpx openclaw exec "总结一下当前项目的最新进展"
+
+    # 建立持久会话，多次交互
+    acpx openclaw sessions ensure --name codex-bridge
+    acpx openclaw -s codex-bridge "help me review this PR"
+
 
 这意味着可以创建一个 multi-agent 工作流：一个 Agent 擅长代码生成，另一个擅长代码审查，第三个负责测试，它们通过 ACP
 标准接口通信，不需要任何自定义集成工作。

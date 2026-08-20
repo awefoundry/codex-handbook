@@ -20,21 +20,21 @@ OpenAI 官方出品的 AI 编程工具，可以理解为终端版 ChatGPT，专�
 
 ** 四种使用方式：  **
 
-  1. ** Codex  ** ** CLI  ** 在终端里直接对话写代码 
-  2. ** Cursor 插件  ** 在 Cursor 编辑器里用 Codex 模型 
-  3. ** VS Code 插件  ** 在 VS Code 里侧边栏对话 
-  4. ** Opencode  ** 在 Opencode 客户端里用 Codex 模型 
+  1. ** Codex  ** ** CLI  ** 在终端里直接对话写代码
+  2. ** Cursor 插件  ** 在 Cursor 编辑器里用 Codex 模型
+  3. ** VS Code 插件  ** 在 VS Code 里侧边栏对话
+  4. ** Opencode  ** 在 Opencode 客户端里用 Codex 模型
 
 ** 为什么推荐用？  **
 
-  * Plus 会员（$20/月）直接用，不用额外买 API 
-  * 比 Claude 稳定，不用担心封号 
-  * Codex 的使用体验越来越好，速度提升了 
+  * Plus 会员（$20/月）直接用，不用额外买 API
+  * 比 Claude 稳定，不用担心封号
+  * Codex 的使用体验越来越好，速度提升了
 
 ** 前提条件：  **
 
-  * 需要 ChatGPT Plus/Pro/Team 会员（免费账号不行） 
-  * 需要科学上网环境 
+  * 需要 ChatGPT Plus/Pro/Team 会员（免费账号不行）
+  * 需要科学上网环境
 
 ![Codex CLI 命令行界面 1](图片素材/09-CodexCLI国内使用与多入口配置/01-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-01.jpg)
 
@@ -66,10 +66,10 @@ Codex CLI 基于 Node.js 运行，需要  ** Node.js 22 或以上版本  ** 。
 
 ** 先检查是否已安装：  ** 打开终端（Mac）或 PowerShell（Windows），运行：
 
-    
-    
-    node -v  
-    
+
+
+    node -v
+
 
 ![Codex CLI 命令行界面 3](图片素材/09-CodexCLI国内使用与多入口配置/03-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-03.jpg)
 
@@ -77,11 +77,11 @@ Codex CLI 基于 Node.js 运行，需要  ** Node.js 22 或以上版本  ** 。
 
 ** 安装 Node.js：  **
 
-  1. 打开浏览器访问 https://nodejs.org/ 
+  1. 打开浏览器访问 https://nodejs.org/
 
 ![Codex CLI 命令行界面 4](图片素材/09-CodexCLI国内使用与多入口配置/04-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-04.jpg)
 
-  2. 官网提供两种安装方式，任选其一： 
+  2. 官网提供两种安装方式，任选其一：
 
 ** 方式一：下载安装程序（推荐新手）  **
 
@@ -97,18 +97,18 @@ Codex CLI 基于 Node.js 运行，需要  ** Node.js 22 或以上版本  ** 。
 
 直接复制到终端执行：
 
-    
-        # Mac/Linux 用户执行这段命令  
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash  
-    source ~/.bashrc  # 或 source ~/.zshrc  
-    nvm install 24  
-    
+
+        # Mac/Linux 用户执行这段命令
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    source ~/.bashrc  # 或 source ~/.zshrc
+    nvm install 24
+
 
 Windows 用户建议直接用方式一下载安装程序，更简单。
 
-     * ** Windows  ** ：下载  ` .msi  ` 文件，双击运行，一路点「下一步」即可 
-     * ** Mac  ** ：下载  ` .pkg  ` 文件，双击运行，按提示完成安装 
-  3. 安装完成后重新打开终端，运行  ` node -v  ` 确认版本 ≥ 22 
+     * ** Windows  ** ：下载  ` .msi  ` 文件，双击运行，一路点「下一步」即可
+     * ** Mac  ** ：下载  ` .pkg  ` 文件，双击运行，按提示完成安装
+  3. 安装完成后重新打开终端，运行  ` node -v  ` 确认版本 ≥ 22
 
 ###  2.2 安装 Codex CLI
 
@@ -116,36 +116,36 @@ Windows 用户建议直接用方式一下载安装程序，更简单。
 
 ** 方式一：npm 安装（推荐）  **
 
-    
-    
-    # 安装 Codex 最新版  
-    npm install -g @openai/codex@latest  
-    
+
+
+    # 安装 Codex 最新版
+    npm install -g @openai/codex@latest
+
 
 这个命令会从 npm 官方仓库下载并安装最新版本的 Codex 工具。
 
 如果遇到权限问题，可以用 sudo：
 
-    
-    
-    sudo npm install -g @openai/codex@latest  
-    
+
+
+    sudo npm install -g @openai/codex@latest
+
 
 ![Codex CLI 命令行界面 7](图片素材/09-CodexCLI国内使用与多入口配置/07-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-07.jpg)
 
 国内网络慢可以用镜像加速：
 
-    
-    
-    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com  
-    
+
+
+    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com
+
 
 ** 方式二：Homebrew 安装  **
 
-    
-    
-    brew install codex  
-    
+
+
+    brew install codex
+
 
 ####  Windows 用户
 
@@ -155,17 +155,17 @@ Windows 用户建议直接用方式一下载安装程序，更简单。
 
 ** 第二步：执行安装命令  **
 
-    
-    
-    npm install -g @openai/codex@latest  
-    
+
+
+    npm install -g @openai/codex@latest
+
 
 同样国内网络慢可以用镜像加速：
 
-    
-    
-    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com  
-    
+
+
+    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com
+
 
 > “
 >
@@ -175,10 +175,10 @@ Windows 用户建议直接用方式一下载安装程序，更简单。
 
 安装完成后，运行：
 
-    
-    
-    codex --version  
-    
+
+
+    codex --version
+
 
 看到版本号就说明安装成功了。
 
@@ -192,10 +192,10 @@ Codex CLI 支持两种授权方式：
 
 终端输入  ` codex  ` ：
 
-    
-    
-    codex  
-    
+
+
+    codex
+
 
 如果你没有配置任何第三方的 API key 的话，输入这个命令会弹出下面的弹框，这是官网的返回。
 
@@ -234,59 +234,59 @@ Codex CLI 支持两种授权方式：
 
 ** 第一步：创建配置目录  **
 
-    
-    
-    mkdir -p ~/.codex  
-    
+
+
+    mkdir -p ~/.codex
+
 
 ** 第二步：创建 config.toml 配置文件  **
 
-    
-    
-    nano ~/.codex/config.toml  
-    
+
+
+    nano ~/.codex/config.toml
+
 
 填入以下内容（根据你的服务商修改）：
 
-    
-    
-    model_provider = "custom"  
-    model = "gpt-5-codex"  # 改成你的服务商支持的模型  
-    model_reasoning_effort = "high"  
-    disable_response_storage = true  
-    preferred_auth_method = "apikey"  
-      
-    [model_providers.custom]  
-    name = "custom"  
-    base_url = "https://api.xxx.com/v1"  # 改成你的服务商 API 地址  
-    wire_api = "responses"  
-    requires_openai_auth = true  
-    
+
+
+    model_provider = "custom"
+    model = "gpt-5-codex"  # 改成你的服务商支持的模型
+    model_reasoning_effort = "high"
+    disable_response_storage = true
+    preferred_auth_method = "apikey"
+
+    [model_providers.custom]
+    name = "custom"
+    base_url = "https://api.xxx.com/v1"  # 改成你的服务商 API 地址
+    wire_api = "responses"
+    requires_openai_auth = true
+
 
 ** 第三步：创建 auth.json 存放 API Key  **
 
-    
-    
-    nano ~/.codex/auth.json  
-    
+
+
+    nano ~/.codex/auth.json
+
 
 填入：
 
-    
-    
-    {  
-      "OPENAI_API_KEY": "sk-你的API密钥"  
-    }  
-    
+
+
+    {
+      "OPENAI_API_KEY": "sk-你的API密钥"
+    }
+
 
 ![Codex CLI 命令行界面 15](图片素材/09-CodexCLI国内使用与多入口配置/15-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-15.jpg)
 
 ** 第四步：验证配置  **
 
-    
-    
-    codex  
-    
+
+
+    codex
+
 
 如果配置正确，就能正常使用了。
 
@@ -303,24 +303,24 @@ Codex CLI 支持两种授权方式：
 
 ** 启动和退出  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` codex  ` |  启动交互模式，进入对话界面  |  需要多轮对话完成复杂任务   
-` codex "你的问题"  ` |  启动时提问  |  快速问一个简单问题（感觉没必要）   
-` /quit  ` 或  ` Ctrl+C  ` |  退出 Codex  |  结束当前会话   
-  
+命令  |  说明  |  使用场景
+---|---|---
+` codex  ` |  启动交互模式，进入对话界面  |  需要多轮对话完成复杂任务
+` codex "你的问题"  ` |  启动时提问  |  快速问一个简单问题（感觉没必要）
+` /quit  ` 或  ` Ctrl+C  ` |  退出 Codex  |  结束当前会话
+
 ** 常用交互命令  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` /model  ` |  切换模型和 reasoning effort  |  简单任务切低配省额度，复杂任务切高配   
-` /approvals  ` |  设置哪些操作需要确认、哪些自动执行  |  信任度高的项目开 full access，重要项目开 default   
-` /status  ` |  查看当前模型、权限模式、token 使用情况  |  检查还剩多少额度   
-` /clear  ` |  清空当前对话历史，重新开始  |  换个话题，不想让之前的对话影响回答   
-` /compact  ` |  压缩上下文，对话太长时用这个释放空间  |  聊了很久 token 快用完时（也会自动压缩）   
-` /new  ` |  开始新对话（不退出当前会话）  |  当前任务完成，开始下一个任务   
-` /review  ` |  审查当前代码改动，找出问题  |  写完代码让 AI 帮忙 review   
-  
+命令  |  说明  |  使用场景
+---|---|---
+` /model  ` |  切换模型和 reasoning effort  |  简单任务切低配省额度，复杂任务切高配
+` /approvals  ` |  设置哪些操作需要确认、哪些自动执行  |  信任度高的项目开 full access，重要项目开 default
+` /status  ` |  查看当前模型、权限模式、token 使用情况  |  检查还剩多少额度
+` /clear  ` |  清空当前对话历史，重新开始  |  换个话题，不想让之前的对话影响回答
+` /compact  ` |  压缩上下文，对话太长时用这个释放空间  |  聊了很久 token 快用完时（也会自动压缩）
+` /new  ` |  开始新对话（不退出当前会话）  |  当前任务完成，开始下一个任务
+` /review  ` |  审查当前代码改动，找出问题  |  写完代码让 AI 帮忙 review
+
 下面是部分命令的截图。
 
 ![Codex CLI 命令行界面 17](图片素材/09-CodexCLI国内使用与多入口配置/17-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-17.jpg)
@@ -338,36 +338,36 @@ Codex CLI 支持两种授权方式：
 
 ** 会话管理  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` /resume  ` |  恢复之前保存的对话  |  第二天继续昨天的重构任务   
-` /fork  ` |  从当前对话分叉出一个新对话  |  想尝试不同方案但保留当前进度   
-  
+命令  |  说明  |  使用场景
+---|---|---
+` /resume  ` |  恢复之前保存的对话  |  第二天继续昨天的重构任务
+` /fork  ` |  从当前对话分叉出一个新对话  |  想尝试不同方案但保留当前进度
+
 ** 进阶功能  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` /skills  ` |  使用技能来优化 Codex 执行特定任务  |  让 AI 用特定技能处理任务（下面有单独介绍，非常推荐！！）   
-` /experimental  ` |  开启/关闭实验性功能  |  尝鲜新功能   
-  
+命令  |  说明  |  使用场景
+---|---|---
+` /skills  ` |  使用技能来优化 Codex 执行特定任务  |  让 AI 用特定技能处理任务（下面有单独介绍，非常推荐！！）
+` /experimental  ` |  开启/关闭实验性功能  |  尝鲜新功能
+
 ####  进阶命令（高手进阶）
 
 ** 启动参数  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` codex --full-auto  ` |  全自动模式，AI 直接执行不需确认  |  批量处理文件、自动化脚本   
-` codex -a on-request  ` |  让模型每次执行命令前都需要你确认  |  重要项目，想逐步确认每个操作   
-` codex --model gpt-5-codex  ` |  指定使用的模型  |  临时切换模型不想改配置   
-` codex --help  ` |  查看所有可用参数  |  忘记某个参数怎么写   
+命令  |  说明  |  使用场景
+---|---|---
+` codex --full-auto  ` |  全自动模式，AI 直接执行不需确认  |  批量处理文件、自动化脚本
+` codex -a on-request  ` |  让模型每次执行命令前都需要你确认  |  重要项目，想逐步确认每个操作
+` codex --model gpt-5-codex  ` |  指定使用的模型  |  临时切换模型不想改配置
+` codex --help  ` |  查看所有可用参数  |  忘记某个参数怎么写
 ![Codex CLI 命令行界面 23](图片素材/09-CodexCLI国内使用与多入口配置/23-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-23.jpg)
 
 ** 危险但方便的操作（谨慎使用）  **
 
-命令  |  说明  |  使用场景   
----|---|---  
-` codex --dangerously-bypass-approvals-and-sandbox  ` |  跳过所有确认并禁用沙盒，AI 完全自主执行  |  每次都要手动确认好麻烦   
-  
+命令  |  说明  |  使用场景
+---|---|---
+` codex --dangerously-bypass-approvals-and-sandbox  ` |  跳过所有确认并禁用沙盒，AI 完全自主执行  |  每次都要手动确认好麻烦
+
 > “
 >
 > 建议在测试环境或你完全信任 AI 输出时使用，颇具规模的生产环境慎用！
@@ -385,11 +385,11 @@ Codex 是多模态模型，能看懂截图里的文字、界面元素等信息�
 
 ** 2\. 指定工作目录  **
 
-    
-    
-    cd /path/to/your/project  
-    codex  
-    
+
+
+    cd /path/to/your/project
+    codex
+
 
 Codex 会自动读取当前目录的代码上下文。
 
@@ -409,10 +409,10 @@ Codex 会自动保存对话历史，下次启动时用  ` /resume  ` 可以恢�
 
 ###  3.1 安装插件
 
-  1. 打开 VS Code 
-  2. 左侧扩展商店 
+  1. 打开 VS Code
+  2. 左侧扩展商店
   3. 搜索  ` Codex  `
-  4. 找到 OpenAI 官方的  ** Codex  ** 插件，点击安装 
+  4. 找到 OpenAI 官方的  ** Codex  ** 插件，点击安装
 
 ![Codex CLI 命令行界面 25](图片素材/09-CodexCLI国内使用与多入口配置/25-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-25.jpg)
 
@@ -420,10 +420,10 @@ Codex 会自动保存对话历史，下次启动时用  ` /resume  ` 可以恢�
 
 安装后，左侧边栏会出现 Codex 图标：
 
-  1. 点击 Codex 图标，弹出登录提示 
-  2. 点击登录，浏览器会自动打开授权页面（和 CLI 一样） 
-  3. 用 ChatGPT Plus 账号授权 
-  4. 授权成功后，回到 VS Code 就能在侧边栏对话了 
+  1. 点击 Codex 图标，弹出登录提示
+  2. 点击登录，浏览器会自动打开授权页面（和 CLI 一样）
+  3. 用 ChatGPT Plus 账号授权
+  4. 授权成功后，回到 VS Code 就能在侧边栏对话了
 
 ![Codex CLI 命令行界面 26](图片素材/09-CodexCLI国内使用与多入口配置/26-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-26.jpg)
 
@@ -443,8 +443,8 @@ Cursor 是目前最火的 AI 编程编辑器之一，本身自带 Claude 模型�
 
 和 VS Code 一样，在 Cursor 的扩展商店搜索 Codex 插件安装。
 
-  * 如果已经配置了 API Key，安装后直接可用 
-  * 如果没有配置，需要授权登录 ChatGPT 账号 
+  * 如果已经配置了 API Key，安装后直接可用
+  * 如果没有配置，需要授权登录 ChatGPT 账号
 
 ![Codex CLI 命令行界面 28](图片素材/09-CodexCLI国内使用与多入口配置/28-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-28.jpg)
 
@@ -462,13 +462,13 @@ Cursor 是目前最火的 AI 编程编辑器之一，本身自带 Claude 模型�
 
 操作步骤：
 
-    
-    
-    1. 打开 Cursor 设置  
-    2. 点击 Models，向下滚动找到 "OpenAI API Key"  
-    3. 填入你的 API Key  
-    4. 在对话框选择 Codex 系相关的模型  
-    
+
+
+    1. 打开 Cursor 设置
+    2. 点击 Models，向下滚动找到 "OpenAI API Key"
+    3. 填入你的 API Key
+    4. 在对话框选择 Codex 系相关的模型
+
 
 ![Codex CLI 命令行界面 29](图片素材/09-CodexCLI国内使用与多入口配置/29-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-29.jpg)
 
@@ -527,26 +527,26 @@ Codex 支持 OpenCode，允许用户直接在 Opencode 中使用 Codex 订阅和
 
 ##  六、常见问题 & 踩坑指南
 
-问题  |  原因  |  解决方案   
----|---|---  
-安装时报错  ` npm ERR  ` |  Node 版本太低  |  升级到 Node 22+   
-登录后一直 thinking  |  网络问题  |  开全局代理，或设置环境变量（见下方）   
-Cursor 里找不到 Codex 模型  |  版本问题  |  更新 Cursor 到最新版   
-` /model  ` 命令无响应  |  网络延迟  |  等待几秒，或检查代理设置   
-  
+问题  |  原因  |  解决方案
+---|---|---
+安装时报错  ` npm ERR  ` |  Node 版本太低  |  升级到 Node 22+
+登录后一直 thinking  |  网络问题  |  开全局代理，或设置环境变量（见下方）
+Cursor 里找不到 Codex 模型  |  版本问题  |  更新 Cursor 到最新版
+` /model  ` 命令无响应  |  网络延迟  |  等待几秒，或检查代理设置
+
 ** 网络问题解决方案：  **
 
 如果遇到一直 thinking 或连接超时，在终端设置代理：
 
-    
-    
-    # 临时设置（当前终端有效）  
-    export HTTPS_PROXY=http://127.0.0.1:7890  
-    export HTTP_PROXY=http://127.0.0.1:7890  
-      
-    # 然后启动 Codex  
-    codex  
-    
+
+
+    # 临时设置（当前终端有效）
+    export HTTPS_PROXY=http://127.0.0.1:7890
+    export HTTP_PROXY=http://127.0.0.1:7890
+
+    # 然后启动 Codex
+    codex
+
 
 把  ` 7890  ` 换成你的代理端口。
 

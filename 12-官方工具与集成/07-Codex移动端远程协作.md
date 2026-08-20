@@ -49,10 +49,10 @@ GA，Plus、Pro、Business、Enterprise、Education 这些付费用户都能用�
 
 ##  两分钟配对
 
-  1. 电脑上打开 Codex App，侧边栏选 Set up Codex mobile。 
-  2. 手机扫屏幕上的二维码，自动跳转到 ChatGPT。 
-  3. 确认账号和工作区一致，过一遍 MFA 或 passkey。 
-  4. 完事，主机出现在手机端 Codex 里。 
+  1. 电脑上打开 Codex App，侧边栏选 Set up Codex mobile。
+  2. 手机扫屏幕上的二维码，自动跳转到 ChatGPT。
+  3. 确认账号和工作区一致，过一遍 MFA 或 passkey。
+  4. 完事，主机出现在手机端 Codex 里。
 
 配好之后去 Settings 里的 Connections
 看一眼，那里能管理已配对设备。有个选项建议顺手打开：保持机器唤醒。不然你人在地铁上，电脑在家睡着了，白配。
