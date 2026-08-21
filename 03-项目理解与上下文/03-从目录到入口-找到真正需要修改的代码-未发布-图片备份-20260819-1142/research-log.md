@@ -10,4 +10,4 @@
 | X | `Codex 定位代码入口、搜索调用方和关键逻辑` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Twitter 后端，未直接搜索。 |
 | 小红书 | `Codex 定位代码入口、搜索调用方和关键逻辑` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到小红书后端，未直接搜索。 |
 | Reddit | `Codex 定位代码入口、搜索调用方和关键逻辑` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Reddit 后端，未直接搜索。 |
-| 本地实操 | 当前栏目入口与最小文件集 | `computer-use` + Finder/TextEdit | partial | 2026-08-21 已采集 3 张真实本机界面；Finder 素材目录图已裁掉本机用户名；TextEdit 图片明确标注为脱敏记录，不冒充 Terminal 或 Codex 执行画面。 |
+| 本地实操 | 当前栏目入口与最小文件集 | 公开 GitHub `githubtraining/hellogitworld` 的 shell 只读命令 + `computer-use`/TextEdit | verified-local | 2026-08-21 新增 2 张截图；真实查看 `src/Main.groovy`、`src/Sum.groovy` 及关联测试，未修改示例仓库；TextEdit 图片为脱敏展示，不冒充 Terminal 或 Codex 执行画面。 |

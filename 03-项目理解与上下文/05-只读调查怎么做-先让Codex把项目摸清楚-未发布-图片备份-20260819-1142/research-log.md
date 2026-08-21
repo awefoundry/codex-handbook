@@ -10,4 +10,4 @@
 | X | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Twitter 后端，未直接搜索。 |
 | 小红书 | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到小红书后端，未直接搜索。 |
 | Reddit | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Reddit 后端，未直接搜索。 |
-| 本地实操 | 目录内只读搜索与调查边界 | `computer-use` + Finder/TextEdit | partial | 2026-08-21 已采集 Finder 搜索、脱敏调查边界和素材目录 3 张配图；完整 Codex 调查报告与调查前后 Git 状态对照仍待补拍。 |
+| 本地实操 | 目录内只读搜索与调查边界 | 公开 GitHub `githubtraining/hellogitworld` 的 shell 只读命令 + `computer-use`/TextEdit | verified-local | 2026-08-21 新增调查报告与 Git 状态 2 张截图；调查前后 `git status --short` 均无输出，未执行清理、重置或修改；截图为脱敏记录，不冒充 Codex UI。 |

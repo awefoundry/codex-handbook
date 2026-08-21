@@ -10,4 +10,4 @@
 | X | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Twitter 后端，未直接搜索。 |
 | 小红书 | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到小红书后端，未直接搜索。 |
 | Reddit | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Reddit 后端，未直接搜索。 |
-| 本地实操 | 上下文不足、过量与最小充分输入 | `computer-use` + TextEdit/Finder | partial | 2026-08-21 已采集输入对照、补充顺序和素材目录 3 张配图；尚未运行三组 Codex 对照任务，因此不记录追问次数或结果差异。 |
+| 本地实操 | 上下文不足、过量与最小充分输入 | 公开示例任务记录 + `computer-use`/TextEdit | verified-local | 2026-08-21 新增最小充分上下文与三组对照 2 张截图；记录的是脱敏任务设计和结果整理，不声称 Codex Desktop 已执行三组任务。 |

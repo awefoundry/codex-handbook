@@ -2,3 +2,5 @@ filename	kind	width	height	article_section	section	purpose	source_url	author	pub
 05-01-目录内只读搜索结果.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	证明搜索范围限定在当前栏目并显示关键词命中		Codex computer-use		2026-08-21	verified-local	Finder 真实搜索结果；已裁掉含本机用户名的侧栏	low
 05-02-只读调查边界与结论.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	展示真实只读命令、禁止事项和当前调查结论		Codex computer-use		2026-08-21	verified-local	TextEdit 脱敏记录；未冒充完整 Codex 调查结果	low
 05-03-manual 配图文件.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	展示已落盘的配图文件，便于补拍完整调查报告		Codex computer-use		2026-08-21	verified-local	Finder 真实素材目录；已裁掉含本机用户名的侧栏	low
+05-03-调查报告结果.png	local-screenshot	586	476	配图素材备用区	公开示例代码只读调查	展示事实、推断、未知项和建议步骤的调查报告	https://github.com/githubtraining/hellogitworld	Codex computer-use		2026-08-21	verified-local	真实 shell 只读结果经 TextEdit 脱敏展示；停在批准修改前	low
+05-04-Git状态确认.png	local-screenshot	586	476	配图素材备用区	公开示例代码只读调查	展示调查前后 git status --short 均无输出	https://github.com/githubtraining/hellogitworld	Codex computer-use		2026-08-21	verified-local	真实 shell 只读结果经 TextEdit 脱敏展示；未执行清理、重置或其他破坏性命令	low
