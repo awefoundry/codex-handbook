@@ -13,7 +13,7 @@
 
 ## AI 生成补充图
 
-- `05-ai-permission-sandbox-approval-layers.png` 是 AI 生成的概念示意，不是 Codex Desktop、CLI 或审批窗口截图；仅用于帮助读者建立“技术边界 → 工作区范围 → 人工审批”的关系。
+- `05-ai-permission-sandbox-approval-layers.png` 是 AI 生成的油画风格概念示意，不是 Codex Desktop、CLI 或审批窗口截图；仅用于帮助读者建立“技术边界 → 工作区范围 → 人工审批”的关系。
 - 生成约束：不使用品牌标识、真实 UI、命令文字、账号信息或二维码；最终文件已检查并登记为 `ai-generated-illustration`，不能替代作者实拍或官方界面证据。
 
 ## 查询记录
