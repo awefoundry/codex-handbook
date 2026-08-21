@@ -20,3 +20,4 @@
 - [Codex 使用 Subagents 并行处理任务](./06-Codex使用Subagents并行处理任务.md)
 - [Codex CLI 管理多条任务线：命名、切换与 fork](./02-CodexCLI管理多条任务线.md)
 - [Codex CLI 长任务如何恢复：保存、继续与检查会话](./03-CodexCLI恢复长任务.md)
+- [Codex 自动化与定时任务：从手动流程到 CI 执行](./04-Codex自动化与定时任务-从手动流程到稳定执行.md)

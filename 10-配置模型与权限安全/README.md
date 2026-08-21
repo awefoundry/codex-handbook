@@ -15,3 +15,4 @@
 ## 已上线文章
 
 - [Codex 模型怎么选：推理强度 Low、Medium、High 有什么区别](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
+- [Codex 任务总跑偏？先检查这 5 个设置](./08-Codex设置检查清单-让任务按预期执行.md)

@@ -18,3 +18,4 @@
 
 - [Codex 接入 ACP](./06-Codex接入ACP.md)
 - [Codex 使用 Remotion 和 HyperFrames 制作视频](./07-Codex使用Remotion和HyperFrames制作视频.md)
+- [Codex 插件安全检查：用 HOL Guard 评估第三方工具风险](./01-Codex插件安全检查-HOL-Guard.md)

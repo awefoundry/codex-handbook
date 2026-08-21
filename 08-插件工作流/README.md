@@ -15,3 +15,4 @@
 
 1. [在 Codex 中连接 Notion：把调研结果写入数据库](./01-Codex连接Notion并写入数据库.md)
 2. [Codex 内容生产工作流](./03-Codex内容生产工作流.md)
+3. [GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程](./04-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)
