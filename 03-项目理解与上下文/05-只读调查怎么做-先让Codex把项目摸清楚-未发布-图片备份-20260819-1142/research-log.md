@@ -10,4 +10,4 @@
 | X | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Twitter 后端，未直接搜索。 |
 | 小红书 | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到小红书后端，未直接搜索。 |
 | Reddit | `Codex Ask mode、只读调查和实施前计划` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Reddit 后端，未直接搜索。 |
-| 本地实操 | 文章计划中的真实操作步骤 | 作者后续补拍 | pending | 初始化阶段不使用装饰图或模拟 UI；按 `manual-steps.md` 补拍真实 Codex、编辑器和终端操作界面。 |
+| 本地实操 | 目录内只读搜索与调查边界 | `computer-use` + Finder/TextEdit | partial | 2026-08-21 已采集 Finder 搜索、脱敏调查边界和素材目录 3 张配图；完整 Codex 调查报告与调查前后 Git 状态对照仍待补拍。 |
