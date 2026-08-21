@@ -17,3 +17,4 @@
 ## 已上线文章
 
 - [Codex 接入 ACP](./06-Codex接入ACP.md)
+- [Codex 使用 Remotion 和 HyperFrames 制作视频](./07-Codex使用Remotion和HyperFrames制作视频.md)
