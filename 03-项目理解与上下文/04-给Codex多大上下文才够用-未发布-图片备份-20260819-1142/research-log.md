@@ -10,4 +10,4 @@
 | X | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Twitter 后端，未直接搜索。 |
 | 小红书 | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到小红书后端，未直接搜索。 |
 | Reddit | `Codex 上下文选择、文件路径、diff 和任务范围` | 无可用后端 | unavailable | Agent Reach Doctor 未检测到 Reddit 后端，未直接搜索。 |
-| 本地实操 | 文章计划中的真实操作步骤 | 作者后续补拍 | pending | 初始化阶段不使用装饰图或模拟 UI；按 `manual-steps.md` 补拍真实 Codex、编辑器和终端操作界面。 |
+| 本地实操 | 上下文不足、过量与最小充分输入 | `computer-use` + TextEdit/Finder | partial | 2026-08-21 已采集输入对照、补充顺序和素材目录 3 张配图；尚未运行三组 Codex 对照任务，因此不记录追问次数或结果差异。 |
