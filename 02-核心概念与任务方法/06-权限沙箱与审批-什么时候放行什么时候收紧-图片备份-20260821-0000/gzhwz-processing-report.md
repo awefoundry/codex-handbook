@@ -11,9 +11,9 @@
 | `online/01-openai-agent-approvals-security.png` | `online/图一.png` | “1. 先把三个概念分开”概念列表之后 | 官方文档截图，已目检；保留页面文字和导航，未补写 UI 事实 |
 | `online/05-ai-permission-sandbox-approval-layers.png` | `online/图二.png` | “1. 先把三个概念分开”贯穿任务说明之后 | 已打开检查，主体完整；油画笔触、边界和审批闸门清晰；圆角、细边框、轻阴影符合 imagegzh 一号样式 |
 | `online/02-openai-sandboxing.png` | `online/图三.png` | “2. 常见动作分别需要什么能力”动作列表之后 | OpenAI 官方文档截图，已目检；沙箱边界文字清晰；imagegzh 一号样式验收通过 |
-| `online/03-openai-permissions-profiles.png` | `online/图四.png` | “4. 哪些情况可以放行”放行条件之后 | OpenAI 官方文档截图，已目检；权限档位清晰；imagegzh 一号样式验收通过 |
-| `online/04-openai-auto-review.png` | `online/图五.png` | “5. 哪些情况应该收紧或拒绝”收紧条件之后 | OpenAI 官方文档截图，已目检；自动审阅说明清晰；imagegzh 一号样式验收通过 |
-| `online/05-openai-agent-internet-access.png` | `online/图六.png` | “6. 用最小权限完成一次真实任务”场景说明之后 | OpenAI 官方文档截图，已目检；网络访问说明清晰；imagegzh 一号样式验收通过 |
+| `online/03-openai-permissions-profiles.png` | `online/图四.png` | 未采用正文，保留备用 | OpenAI 官方文档截图，已目检；权限档位清晰；imagegzh 一号样式验收通过 |
+| `online/04-openai-auto-review.png` | `online/图五.png` | 未采用正文，保留备用 | OpenAI 官方文档截图，已目检；自动审阅说明清晰；imagegzh 一号样式验收通过 |
+| `online/05-openai-agent-internet-access.png` | `online/图六.png` | 未采用正文，保留备用 | OpenAI 官方文档截图，已目检；网络访问说明清晰；imagegzh 一号样式验收通过 |
 
 原图保留在 `online/01-openai-*.png` 至 `05-openai-*.png` 及 `05-ai-permission-sandbox-approval-layers.png` 中，正文仅引用处理后的 `online/图一.png` 至 `online/图六.png`。
 
@@ -21,9 +21,10 @@
 
 ## 编号与正文验收
 
-- 正文图片总数：6。
-- `图一` 至 `图六` 与正文从上到下的首次出现顺序一致，引用文件名与路径可解析、无断链。
-- `图二` 为 AI 生成教学示意；`图一`、`图三` 至 `图六` 为 `94bd342` 提供的 OpenAI 官方文档截图，已在图注中区分概念参考与本机实测边界。
+- 正文图片总数：3。
+- `图一` 至 `图三` 与正文从上到下的首次出现顺序一致，引用文件名与路径可解析、无断链。
+- `图二` 为 AI 生成教学示意；`图一`、`图三` 为 `94bd342` 提供的 OpenAI 官方文档截图，已在图注中区分概念参考与本机实测边界。
+- `图四` 至 `图六` 已处理但未采用正文，继续保留在素材目录作为备用，不计入排版操作。
 - `manual/` 下的 `图一.png` 至 `图五.png` 为未引用的备选素材（含 AI 示意图副本与带完整浏览器框架的官方页面截图），不计入正文编号；作者实拍截图仍按 `manual-steps.md` 待补。
 
 ## 链接埋点
