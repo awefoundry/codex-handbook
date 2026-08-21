@@ -1,4 +1,4 @@
 filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	provenance	expiry_risk
-manual/04-01-三组上下文输入对照.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	对比上下文不足、过量与最小充分输入		Codex computer-use		2026-08-21	verified-local	TextEdit 公开示例；不代表 Codex 已执行任务	low
-manual/04-02-最小充分上下文补充顺序.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	展示分轮补充上下文与停止信号		Codex computer-use		2026-08-21	verified-local	TextEdit 方法清单；未包含账号或线程信息	low
-manual/04-03-manual 配图文件.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	展示已落盘的配图文件，便于替换为真实实验结果		Codex computer-use		2026-08-21	verified-local	Finder 真实素材目录；已裁掉含本机用户名的侧栏	low
+04-01-三组上下文输入对照.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	对比上下文不足、过量与最小充分输入		Codex computer-use		2026-08-21	verified-local	TextEdit 公开示例；不代表 Codex 已执行任务	low
+04-02-最小充分上下文补充顺序.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	展示分轮补充上下文与停止信号		Codex computer-use		2026-08-21	verified-local	TextEdit 方法清单；未包含账号或线程信息	low
+04-03-manual 配图文件.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	展示已落盘的配图文件，便于替换为真实实验结果		Codex computer-use		2026-08-21	verified-local	Finder 真实素材目录；已裁掉含本机用户名的侧栏	low
