@@ -1,0 +1,2 @@
+原始文件	输出文件	处理说明
+wechat-qr-original-630x632.png	../图片素材/02-核心概念与任务方法/01-Codex是如何工作的/wechat-qr.png	按用户要求缩小二维码像素尺寸；正文保持普通 Markdown 图片引用

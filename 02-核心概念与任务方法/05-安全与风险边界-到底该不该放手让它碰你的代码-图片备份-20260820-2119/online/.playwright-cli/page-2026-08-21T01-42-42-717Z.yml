@@ -1,0 +1,407 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - text: For the complete documentation index, see
+    - link "llms.txt" [ref=e3] [cursor=pointer]:
+      - /url: /llms.txt
+    - text: . Markdown versions of documentation pages are available by appending
+    - code [ref=e4]: .md
+    - text: to the page URL.
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - link "ChatGPT" [ref=e7] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e12]:
+        - link "Home" [ref=e14] [cursor=pointer]:
+          - /url: /
+        - link "Docs" [ref=e16] [cursor=pointer]:
+          - /url: /docs
+        - link "Use cases" [ref=e18] [cursor=pointer]:
+          - /url: /use-cases
+        - link "Resources" [ref=e20] [cursor=pointer]:
+          - /url: /resources
+      - generic [ref=e21]:
+        - button "Start searching" [ref=e22] [cursor=pointer]
+        - link "Try ChatGPT" [ref=e30] [cursor=pointer]:
+          - /url: https://chatgpt.com/
+        - button "Toggle light and dark theme" [ref=e35] [cursor=pointer]
+  - navigation "Docs sections" [ref=e39]:
+    - link "Overview" [ref=e40] [cursor=pointer]:
+      - /url: /docs
+    - link "Features" [ref=e42] [cursor=pointer]:
+      - /url: /docs/features
+    - link "Configuration" [ref=e44] [cursor=pointer]:
+      - /url: /docs/configuration
+    - link "Developers" [ref=e46] [cursor=pointer]:
+      - /url: /docs/developers
+    - link "Security" [ref=e48] [cursor=pointer]:
+      - /url: /docs/security-administration
+    - link "Administration" [ref=e51] [cursor=pointer]:
+      - /url: /docs/administration
+  - generic [ref=e54]:
+    - navigation [ref=e56]:
+      - list [ref=e58]:
+        - listitem [ref=e59]:
+          - link "Overview" [ref=e60] [cursor=pointer]:
+            - /url: /docs/security-administration
+      - generic [ref=e62]:
+        - heading "Permissions" [level=3] [ref=e63]
+        - list [ref=e64]:
+          - listitem [ref=e65]:
+            - link "Profiles" [ref=e66] [cursor=pointer]:
+              - /url: /docs/permissions
+          - listitem [ref=e68]:
+            - link "Sandboxing" [ref=e69] [cursor=pointer]:
+              - /url: /docs/sandboxing
+          - listitem [ref=e71]:
+            - link "Auto-review" [ref=e72] [cursor=pointer]:
+              - /url: /docs/sandboxing/auto-review
+          - listitem [ref=e74]:
+            - link "Agent approvals & security" [ref=e75] [cursor=pointer]:
+              - /url: /docs/agent-approvals-security
+          - listitem [ref=e77]:
+            - link "Internet access" [ref=e78] [cursor=pointer]:
+              - /url: /docs/cloud/internet-access
+      - generic [ref=e80]:
+        - heading "Codex Security" [level=3] [ref=e81]
+        - list [ref=e82]:
+          - listitem [ref=e83]:
+            - link "Overview" [ref=e84] [cursor=pointer]:
+              - /url: /docs/security
+          - listitem [ref=e86]:
+            - group [ref=e87]:
+              - generic "Codex Security plugin" [ref=e88] [cursor=pointer]
+          - listitem [ref=e92]:
+            - group [ref=e93]:
+              - generic "Codex Security CLI" [ref=e94] [cursor=pointer]
+          - listitem [ref=e98]:
+            - link "TypeScript SDK" [ref=e99] [cursor=pointer]:
+              - /url: /docs/security/sdk
+          - listitem [ref=e101]:
+            - group [ref=e102]:
+              - generic "Codex Security cloud" [ref=e103] [cursor=pointer]
+      - generic [ref=e107]:
+        - heading "Cyber safety" [level=3] [ref=e108]
+        - list [ref=e109]:
+          - listitem [ref=e110]:
+            - link "Models & Trusted Access" [ref=e111] [cursor=pointer]:
+              - /url: /docs/cyber-safety
+          - listitem [ref=e113]:
+            - link "Recommended configuration" [ref=e114] [cursor=pointer]:
+              - /url: /docs/cyber-safety/recommended-configuration
+    - main [ref=e116]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - button "ChatGPT desktop app" [ref=e125] [cursor=pointer]
+          - navigation [ref=e132]:
+            - list [ref=e136]:
+              - listitem [ref=e137]:
+                - link "What the sandbox does" [ref=e138] [cursor=pointer]:
+                  - /url: "#app-what-the-sandbox-does"
+              - listitem [ref=e139]:
+                - link "Why it matters" [ref=e140] [cursor=pointer]:
+                  - /url: "#app-why-it-matters"
+              - listitem [ref=e141]:
+                - link "Getting started" [ref=e142] [cursor=pointer]:
+                  - /url: "#app-getting-started"
+              - listitem [ref=e143]:
+                - link "How permissions work" [ref=e144] [cursor=pointer]:
+                  - /url: "#how-permissions-work"
+              - listitem [ref=e145]:
+                - link "Configure defaults" [ref=e146] [cursor=pointer]:
+                  - /url: "#app-configure-defaults"
+          - button "Copy Page" [ref=e148] [cursor=pointer]
+        - generic [ref=e153]:
+          - generic [ref=e155]:
+            - heading "Sandbox" [level=1] [ref=e157]
+            - paragraph [ref=e158]: How sandboxing works across ChatGPT and Codex clients
+          - article [ref=e159]:
+            - generic [ref=e160]:
+              - paragraph [ref=e161]:
+                - text: The sandbox is the boundary that lets the agent act autonomously without giving it unrestricted access to your machine. When a local chat runs commands in the
+                - strong [ref=e162]: ChatGPT desktop app
+                - text: ","
+                - strong [ref=e163]: Codex CLI
+                - text: ", or"
+                - strong [ref=e164]: IDE extension
+                - text: ", those commands run inside a constrained environment instead of running with full access by default."
+              - paragraph [ref=e165]: That environment defines what the agent can do on its own, such as which files it can modify and whether commands can use the network. When a task stays inside those boundaries, the agent can keep moving without stopping for confirmation. When it needs to go beyond them, the approval flow takes over.
+              - paragraph [ref=e174]: Sandboxing and approvals are different controls that work together. The sandbox defines technical boundaries. The approval policy decides when the agent must stop and ask before crossing them.
+              - heading "What the sandbox does Copy link to what the sandbox does" [level=2] [ref=e175]:
+                - generic [ref=e176]: What the sandbox does
+                - button "Copy link to what the sandbox does" [ref=e177] [cursor=pointer]
+              - paragraph [ref=e180]:
+                - text: The sandbox applies to spawned commands, not just to built-in file operations. If the agent runs tools like
+                - code [ref=e181]: git
+                - text: ", package managers, or test runners, those commands inherit the same sandbox boundaries."
+              - paragraph [ref=e182]: "Codex uses platform-native enforcement on each OS. The implementation differs between macOS, Linux, WSL2, and native Windows, but the idea is the same across surfaces: give the agent a bounded place to work so routine tasks can run autonomously inside clear limits."
+              - heading "Why it matters Copy link to why it matters" [level=2] [ref=e183]:
+                - generic [ref=e184]: Why it matters
+                - button "Copy link to why it matters" [ref=e185] [cursor=pointer]
+              - paragraph [ref=e188]: The sandbox reduces approval fatigue. Instead of asking you to confirm every low-risk command, the agent can read files, make edits, and run routine project commands within the boundary you already approved.
+              - paragraph [ref=e189]: It also gives you a clearer trust model for agentic work. You aren’t just trusting the agent’s intentions; you are trusting that the agent is operating inside enforced limits. That makes it easier to let the agent work independently while still knowing when it will stop and ask for help.
+              - heading "Getting started Copy link to getting started" [level=2] [ref=e190]:
+                - generic [ref=e191]: Getting started
+                - button "Copy link to getting started" [ref=e192] [cursor=pointer]
+              - paragraph [ref=e195]: The default permissions mode applies sandboxing automatically.
+              - heading "Prerequisites Copy link to prerequisites" [level=3] [ref=e196]:
+                - generic [ref=e197]: Prerequisites
+                - button "Copy link to prerequisites" [ref=e198] [cursor=pointer]
+              - paragraph [ref=e201]:
+                - text: "On"
+                - strong [ref=e202]: macOS
+                - text: ", sandboxing works out of the box using the built-in Seatbelt framework."
+              - paragraph [ref=e203]:
+                - text: "On"
+                - strong [ref=e204]: Windows
+                - text: ", Codex uses the native"
+                - link "Windows sandbox" [ref=e205] [cursor=pointer]:
+                  - /url: /docs/windows/windows-sandbox#windows-sandbox
+                - text: when you run in PowerShell and the Linux sandbox implementation when you run in WSL2.
+              - paragraph [ref=e206]:
+                - text: "On"
+                - strong [ref=e207]: Linux and WSL2
+                - text: ", install"
+                - code [ref=e208]: bubblewrap
+                - text: "with your package manager first:"
+              - generic [ref=e209]:
+                - generic [ref=e210]:
+                  - generic [ref=e211]: Choose an option
+                  - group "Choose an option" [ref=e214]:
+                    - radio "Ubuntu/Debian" [checked] [ref=e215] [cursor=pointer]
+                    - radio "Fedora" [ref=e218] [cursor=pointer]
+                - region "Ubuntu/Debian" [ref=e222]:
+                  - generic [ref=e225]:
+                    - code [ref=e226]:
+                      - generic [ref=e227]: sudo apt install bubblewrap
+                    - generic [ref=e228]:
+                      - button "Copy code to clipboard" [ref=e229] [cursor=pointer]
+                      - status [ref=e232]
+              - paragraph [ref=e233]:
+                - text: Codex uses the first
+                - code [ref=e234]: bwrap
+                - text: executable it finds on
+                - code [ref=e235]: PATH
+                - text: . If no
+                - code [ref=e236]: bwrap
+                - text: executable is available, Codex falls back to a bundled helper, but that helper requires support for unprivileged user namespace creation. Installing the distribution package that provides
+                - code [ref=e237]: bwrap
+                - text: keeps this setup reliable.
+              - paragraph [ref=e238]:
+                - text: Codex surfaces a startup warning when
+                - code [ref=e239]: bwrap
+                - text: is missing or when the helper can’t create the needed user namespace. On distributions that restrict this AppArmor setting, prefer loading the
+                - code [ref=e240]: bwrap
+                - text: AppArmor profile so
+                - code [ref=e241]: bwrap
+                - text: can keep working without disabling the restriction globally.
+              - generic [ref=e249]:
+                - paragraph [ref=e250]:
+                  - strong [ref=e251]: "Ubuntu AppArmor note:"
+                  - text: On Ubuntu 25.04, installing
+                  - code [ref=e252]: bubblewrap
+                  - text: from Ubuntu’s package repository should work without extra AppArmor setup. The
+                  - code [ref=e253]: bwrap-userns-restrict
+                  - text: profile ships in the
+                  - code [ref=e254]: apparmor
+                  - text: package at
+                  - code [ref=e255]: /etc/apparmor.d/bwrap-userns-restrict
+                  - text: .
+                - paragraph [ref=e256]:
+                  - text: On Ubuntu 24.04, Codex may still warn that it can’t create the needed user namespace after
+                  - code [ref=e257]: bubblewrap
+                  - text: "is installed. Copy and load the extra profile:"
+                - generic [ref=e258]:
+                  - code [ref=e259]:
+                    - generic [ref=e260]: sudo apt update
+                    - generic [ref=e261]: sudo apt install apparmor-profiles apparmor-utils
+                    - generic [ref=e262]: sudo install -m 0644 \
+                    - generic [ref=e263]: /usr/share/apparmor/extra-profiles/bwrap-userns-restrict \
+                    - generic [ref=e264]: /etc/apparmor.d/bwrap-userns-restrict
+                    - generic [ref=e265]: sudo apparmor_parser -r /etc/apparmor.d/bwrap-userns-restrict
+                  - generic [ref=e266]:
+                    - button "Copy code to clipboard" [ref=e267] [cursor=pointer]
+                    - status [ref=e270]
+                - paragraph [ref=e271]:
+                  - code [ref=e272]: apparmor_parser -r
+                  - text: "loads the profile into the kernel without a reboot. You can also reload all AppArmor profiles:"
+                - generic [ref=e273]:
+                  - code [ref=e274]:
+                    - generic [ref=e275]: sudo systemctl reload apparmor.service
+                  - generic [ref=e276]:
+                    - button "Copy code to clipboard" [ref=e277] [cursor=pointer]
+                    - status [ref=e280]
+                - paragraph [ref=e281]: "If that profile is unavailable or does not resolve the issue, you can disable the AppArmor unprivileged user namespace restriction with:"
+                - generic [ref=e282]:
+                  - code [ref=e283]:
+                    - generic [ref=e284]: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+                  - generic [ref=e285]:
+                    - button "Copy code to clipboard" [ref=e286] [cursor=pointer]
+                    - status [ref=e289]
+            - heading "How permissions work Copy link to how permissions work" [level=2] [ref=e290]:
+              - generic [ref=e291]: How permissions work
+              - button "Copy link to how permissions work" [ref=e292] [cursor=pointer]
+            - generic [ref=e295]:
+              - paragraph [ref=e296]: Use the permissions control for your surface to change how Codex handles local actions.
+              - paragraph [ref=e297]: Approvals determine when Codex pauses before an action, while the sandbox determines which files and network resources commands can access. When an approval offers different scopes, such as approving once or for the session, choose the narrowest scope that lets the task continue. Keep the project boundary as the default; use separate projects or worktrees instead of broadening access across unrelated repositories.
+            - generic [ref=e298]:
+              - paragraph [ref=e299]:
+                - text: In the ChatGPT desktop app, use the permissions control beneath the composer. Depending on your configuration, the menu can include
+                - strong [ref=e300]: Ask for approval
+                - text: ","
+                - strong [ref=e301]: Approve for me
+                - text: for eligible approval requests,
+                - strong [ref=e302]: Full access
+                - text: ", and named or custom permissions profiles."
+              - generic [ref=e306]:
+                - generic [ref=e308]:
+                  - generic [ref=e309]: Ask Codex anything.
+                  - generic [ref=e310]:
+                    - generic [ref=e311]:
+                      - button "Add attachment" [ref=e312] [cursor=pointer]
+                      - generic [ref=e315]:
+                        - button "Ask for approval" [expanded] [ref=e316] [cursor=pointer]
+                        - generic [ref=e321]:
+                          - menuitemradio "Ask for approval" [checked] [ref=e322] [cursor=pointer]
+                          - menuitemradio "Approve for me" [ref=e328] [cursor=pointer]
+                          - menuitemradio "Full access" [ref=e333] [cursor=pointer]
+                          - menuitemradio "Custom (config.toml)" [ref=e339] [cursor=pointer]
+                    - generic [ref=e344]:
+                      - button "Model and reasoning settings" [ref=e345] [cursor=pointer]:
+                        - generic [ref=e346]: 5.6 Sol Medium
+                      - button "Voice input" [ref=e349] [cursor=pointer]
+                      - button "Send" [ref=e353] [cursor=pointer]
+                - generic [ref=e356]:
+                  - heading "Ask for approval" [level=4] [ref=e360]
+                  - paragraph [ref=e361]: Codex can read and edit files in the current workspace and run routine local commands. It asks before using the internet or going beyond the workspace boundary.
+                  - generic [ref=e362]:
+                    - generic [ref=e363]:
+                      - term [ref=e364]: Sandbox
+                      - definition [ref=e365]:
+                        - code [ref=e366]: workspace-write
+                    - generic [ref=e367]:
+                      - term [ref=e368]: Approvals policy
+                      - definition [ref=e369]:
+                        - code [ref=e370]: on-request
+                    - generic [ref=e371]:
+                      - term [ref=e372]: Reviewer
+                      - definition [ref=e373]:
+                        - code [ref=e374]: user
+            - generic [ref=e375]:
+              - heading "Configure defaults Copy link to configure defaults" [level=2] [ref=e376]:
+                - generic [ref=e377]: Configure defaults
+                - button "Copy link to configure defaults" [ref=e378] [cursor=pointer]
+              - paragraph [ref=e381]:
+                - text: To start with the same behavior every time, set defaults in
+                - code [ref=e382]: config.toml
+                - text: .
+                - link "Config basics" [ref=e383] [cursor=pointer]:
+                  - /url: /docs/config-file/config-basic
+                - text: explains how it works, and the
+                - link "Configuration reference" [ref=e384] [cursor=pointer]:
+                  - /url: /docs/config-file/config-reference
+                - text: documents the exact keys for
+                - code [ref=e385]: sandbox_mode
+                - text: ","
+                - code [ref=e386]: approval_policy
+                - text: ","
+                - code [ref=e387]: approvals_reviewer
+                - text: ", and"
+                - code [ref=e388]: sandbox_workspace_write.writable_roots
+                - text: . Use those settings to decide how much autonomy the agent gets by default, which directories it can write to, when it should pause for approval, and who reviews eligible approval requests.
+              - paragraph [ref=e389]: "At a high level, the common sandbox modes are:"
+              - list [ref=e390]:
+                - listitem [ref=e391]:
+                  - code [ref=e392]: read-only
+                  - text: ": The agent can inspect files, but it can’t edit files or run commands without approval."
+                - listitem [ref=e393]:
+                  - code [ref=e394]: workspace-write
+                  - text: ": The agent can read files, edit within the workspace, and run routine local commands inside that boundary. This is the default low-friction mode for local work."
+                - listitem [ref=e395]:
+                  - code [ref=e396]: danger-full-access
+                  - text: ": The agent runs without sandbox restrictions. This removes the filesystem and network boundaries and should be used only when you want the agent to act with full access."
+              - paragraph [ref=e397]: "The common approval policies are:"
+              - list [ref=e398]:
+                - listitem [ref=e399]:
+                  - code [ref=e400]: untrusted
+                  - text: ": The agent asks before running commands that aren’t in its trusted set."
+                - listitem [ref=e401]:
+                  - code [ref=e402]: on-request
+                  - text: ": The agent works inside the sandbox by default and asks when it needs to go beyond that boundary."
+                - listitem [ref=e403]:
+                  - code [ref=e404]: never
+                  - text: ": The agent doesn’t stop for approval prompts."
+              - paragraph [ref=e405]:
+                - text: When approvals are interactive, you can also choose who reviews them with
+                - code [ref=e406]: approvals_reviewer
+                - text: ":"
+              - list [ref=e407]:
+                - listitem [ref=e408]:
+                  - code [ref=e409]: user
+                  - text: ": approval prompts surface to the user. This is the default."
+                - listitem [ref=e410]:
+                  - code [ref=e411]: auto_review
+                  - text: ": eligible approval prompts go to a reviewer agent (see"
+                  - link "automatic review" [ref=e412] [cursor=pointer]:
+                    - /url: /docs/sandboxing/auto-review
+                  - text: ).
+              - paragraph [ref=e413]:
+                - text: Full access means using
+                - code [ref=e414]: sandbox_mode = "danger-full-access"
+                - text: together with
+                - code [ref=e415]: approval_policy = "never"
+                - text: . By contrast, the lower-risk local automation preset is
+                - code [ref=e416]: sandbox_mode = "workspace-write"
+                - text: together with
+                - code [ref=e417]: approval_policy = "on-request"
+                - text: ", or the matching CLI flags"
+                - code [ref=e418]: "--sandbox workspace-write --ask-for-approval on-request"
+                - text: . You can then keep
+                - code [ref=e419]: approvals_reviewer = "user"
+                - text: for manual approvals or set
+                - code [ref=e420]: approvals_reviewer = "auto_review"
+                - text: for automatic approval review.
+              - paragraph [ref=e421]: If you need the agent to work across more than one directory, writable roots let you extend the places it can modify without removing the sandbox entirely. If you need a broader or narrower trust boundary, adjust the default sandbox mode and approval policy instead of relying on one-off exceptions.
+              - paragraph [ref=e422]:
+                - text: When a workflow needs a specific exception, use
+                - link "rules" [ref=e423] [cursor=pointer]:
+                  - /url: /docs/agent-configuration/rules
+                - text: . Rules let you allow, prompt, or forbid command prefixes outside the sandbox, which is often a better fit than broadly expanding access. For IDE-specific settings entry points, see
+                - link "Codex IDE extension settings" [ref=e424] [cursor=pointer]:
+                  - /url: /docs/developer-settings?surface=ide
+                - text: .
+              - paragraph [ref=e425]:
+                - text: Automatic review, when available, doesn’t change the sandbox boundary. It’s one possible
+                - code [ref=e426]: approvals_reviewer
+                - text: for approval requests at that boundary, such as sandbox escalations, blocked network access, or side-effecting tool calls that still need approval. Actions already allowed inside the sandbox run without extra review. For the reviewer lifecycle, trigger types, denial semantics, and configuration details, see
+                - link "automatic review" [ref=e427] [cursor=pointer]:
+                  - /url: /docs/sandboxing/auto-review
+                - text: .
+              - paragraph [ref=e428]:
+                - text: Platform details live in the platform-specific docs. For native Windows setup, behavior, and troubleshooting, see
+                - link "Windows" [ref=e429] [cursor=pointer]:
+                  - /url: /docs/windows/windows-sandbox
+                - text: . For admin requirements and organization-level constraints on sandboxing and approvals, see
+                - link "Agent approvals & security" [ref=e430] [cursor=pointer]:
+                  - /url: /docs/agent-approvals-security
+                - text: .
+      - navigation [ref=e433]:
+        - generic [ref=e434]:
+          - link "Previous Profiles" [ref=e435] [cursor=pointer]:
+            - /url: /docs/permissions
+            - generic [ref=e438]:
+              - generic [ref=e439]: Previous
+              - generic [ref=e440]: Profiles
+          - link "Next Auto-review" [ref=e441] [cursor=pointer]:
+            - /url: /docs/sandboxing/auto-review
+            - generic [ref=e442]:
+              - generic [ref=e443]: Next
+              - generic [ref=e444]: Auto-review
+  - generic:
+    - button "Ask AI" [ref=e448] [cursor=pointer]
+    - dialog [ref=e450]:
+      - banner [ref=e451]:
+        - heading "Docs agent" [level=2] [ref=e452]
+        - generic [ref=e453]:
+          - button "Start a new docs agent chat" [ref=e454] [cursor=pointer]
+          - button "Close docs agent" [ref=e457] [cursor=pointer]
+      - paragraph [ref=e462]: Loading docs agent...

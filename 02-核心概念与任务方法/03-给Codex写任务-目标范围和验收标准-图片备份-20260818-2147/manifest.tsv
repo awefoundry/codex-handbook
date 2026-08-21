@@ -1,0 +1,7 @@
+filename	kind	width	height	article_section	purpose	source_url	author	published_at	timestamp	verification	expiry_risk
+01-提示词-第一版.png	manual-screenshot	694	77	四轮案例：目标	展示只有故障愿望、缺少入口和验收条件的第一版任务	local://user-provided/codex-clipboard-4b0b91ad-c704-4a45-9b8f-55d1646dad2a.png	作者实拍（用户提供）	2026-08-19		已目检；终端画面与脱敏临时项目一致	Codex 终端字体和界面可能变化
+02-提示词-第二版.png	manual-screenshot	709	96	四轮案例：上下文	展示补充可观察故障现象并要求先调查的第二版任务	local://user-provided/codex-clipboard-a6f7581a-49d5-43a1-81eb-2189094f1320.png	作者实拍（用户提供）	2026-08-19		已目检；显示 loading、复现和暂不修改要求	Codex 终端字体和界面可能变化
+03-提示词-第三版.png	manual-screenshot	1026	127	四轮案例：范围与边界	展示指定入口、允许文件和禁止修改区域的第三版任务	local://user-provided/codex-clipboard-b15ddcc1-a30d-4b69-a7b0-82488eaca0e3.png	作者实拍（用户提供）	2026-08-19		已目检；显示 src/login.js、测试和等待确认	Codex 终端字体和界面可能变化
+04-提示词-第四版.png	manual-screenshot	1010	145	四轮案例：验收	展示加入行为、回归测试、npm test、diff 和不提交要求的第四版任务	local://user-provided/codex-clipboard-25cc871e-bc79-4cec-b783-b1dc5dbbe155.png	作者实拍（用户提供）	2026-08-19		已目检；完成标准完整可读	Codex 终端字体和界面可能变化
+05-Codex首次调查-去提示.png	manual-screenshot	849	536	调查优先	移除无关技能预算提示后，展示 Codex 读取项目文件、定位 loading 和登录测试的首次调查动作	local://user-provided/codex-clipboard-16b41229-5ff5-4483-8488-7240b375f43b.png	作者实拍（用户提供，裁剪拼接）	2026-08-19		已目检；未显示敏感数据，停在调查阶段	Codex 输出格式和技能提示可能变化
+06-Codex调查边界-去提示.png	manual-screenshot	1023	670	调查优先：边界	移除无关技能预算提示后，展示 Codex 发现目录不是 Git 仓库仍继续读取目标文件的边界反馈	local://user-provided/codex-clipboard-e8b59503-9710-4cdd-adc4-c223ac7d0dc0.png	作者实拍（用户提供，裁剪拼接）	2026-08-19		已目检；保留原始命令、fatal 信息和文件读取结果	Codex 输出格式和技能提示可能变化

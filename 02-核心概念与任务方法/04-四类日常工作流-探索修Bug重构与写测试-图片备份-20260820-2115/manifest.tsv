@@ -1,0 +1,6 @@
+filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	provenance	expiry_risk
+hiapi-workflow-overview-source.png	generated-image	1254	1254	开头总览	四类工作流总览	HIAPI 生成的四格功能叙事图，说明项目地图、错误日志、重构积木和测试清单	https://local.invalid/hiapi-generated-overview	Codex 内置 image_gen（HIAPI icon skill 任务）	2026-08-21		视觉检查通过	generated-by-hiapi-icon-skills	生成模型和风格会变化，发布前复核
+01-task-start.png	manual-screenshot	1042	1193	初始化与项目探索	初始化 Prompt 与项目地图	证明用户已发送初始化 Prompt，Codex 完成只读检查并输出项目地图	https://local.invalid/user-provided-attachment	用户提供	2026-08-20		视觉检查通过	user-provided-local-attachment	终端界面和模型版本会变化，发布前复核
+02-project-exploration.png	manual-screenshot	1038	771	探索陌生项目	项目交接式探索	证明 Codex 读取 README、源码和测试，并给出项目地图与疑点	https://local.invalid/user-provided-attachment	用户提供	2026-08-20		视觉检查通过	user-provided-local-attachment	终端界面会变化，发布前复核
+03-bug-reproduce-and-fix.png	manual-screenshot	1026	781	修 Bug	运行时与修复边界	证明 Codex 检查 Python 运行时并诚实报告当前无法执行测试	https://local.invalid/user-provided-attachment	用户提供	2026-08-20		视觉检查通过	user-provided-local-attachment	运行时配置变化，发布前复核
+04-refactor-test-summary.png	manual-screenshot	1084	466	重构与写测试	小步重构和验证复盘	证明 Codex 识别重复逻辑、编辑有限文件，并说明测试未执行的原因	https://local.invalid/user-provided-attachment	用户提供	2026-08-20		视觉检查通过	user-provided-local-attachment	测试环境变化，发布前复核

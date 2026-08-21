@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 3,
+  "presetSchemaVersion": 2,
+  "runId": "run-20260819040710-0065",
+  "style": "ink-accent",
+  "styleNameZh": "墨线跳色",
+  "palette": "mint-morning",
+  "paletteNameZh": "薄荷清晨",
+  "mode": "individual",
+  "icons": [
+    "斜杠菜单控制面板",
+    "复杂任务推进流程",
+    "输入方式分层"
+  ],
+  "ratio": "1:1",
+  "background": "#FAF9F5",
+  "references": [],
+  "jobCount": 3,
+  "status": "approved",
+  "requestHash": "sha256:0b84b182d2727b5dda30c4909b7fe14228dc373741d1f1555b8437cdce188d02",
+  "execution": {
+    "provider": "codex_builtin_image_gen",
+    "paidHiapiTask": false,
+    "transparentPostProcess": false
+  },
+  "results": [
+    {
+      "file": "..\\online\\figure-01-slash-menu.png",
+      "bytes": 1125999,
+      "sha256": "cb0d90e11631479b1937ebf266b5484e4e25a126cb3813edf348c139b928acd1"
+    },
+    {
+      "file": "..\\online\\figure-02-task-flow.png",
+      "bytes": 905148,
+      "sha256": "e0e9835f797ee5ec6e587b24b438404d7ff01f8d4519b2ec7e544c937774abf8"
+    },
+    {
+      "file": "..\\online\\figure-03-input-layers.png",
+      "bytes": 1082642,
+      "sha256": "df6d298026bfa3eb1124e9213725ce283211da61d3caafba8b093ad29553a79a"
+    }
+  ],
+  "qc": {
+    "status": "pass",
+    "note": "三张公众号成品均已逐张目检：主题准确、主体完整、手机端留白可用；无文字、Logo、水印或裁切问题；透明图已统一铺晨雾白底。",
+    "reviewedAt": "2026-08-19T04:23:09.711Z"
+  },
+  "createdAt": "2026-08-19T04:07:10.108Z",
+  "updatedAt": "2026-08-19T04:23:09.712Z"
+}

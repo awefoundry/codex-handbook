@@ -1,0 +1,317 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - text: For the complete documentation index, see
+    - link "llms.txt" [ref=f3e3] [cursor=pointer]:
+      - /url: /llms.txt
+    - text: . Markdown versions of documentation pages are available by appending
+    - code [ref=f3e4]: .md
+    - text: to the page URL.
+  - banner [ref=f3e5]:
+    - generic [ref=f3e6]:
+      - link "ChatGPT" [ref=f3e7] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f3e12]:
+        - link "Home" [ref=f3e14] [cursor=pointer]:
+          - /url: /
+        - link "Docs" [ref=f3e16] [cursor=pointer]:
+          - /url: /docs
+        - link "Use cases" [ref=f3e18] [cursor=pointer]:
+          - /url: /use-cases
+        - link "Resources" [ref=f3e20] [cursor=pointer]:
+          - /url: /resources
+      - generic [ref=f3e21]:
+        - button "Start searching" [ref=f3e22] [cursor=pointer]
+        - link "Try ChatGPT" [ref=f3e30] [cursor=pointer]:
+          - /url: https://chatgpt.com/
+        - button "Toggle light and dark theme" [ref=f3e35] [cursor=pointer]
+  - navigation "Docs sections" [ref=f3e39]:
+    - link "Overview" [ref=f3e40] [cursor=pointer]:
+      - /url: /docs
+    - link "Features" [ref=f3e42] [cursor=pointer]:
+      - /url: /docs/features
+    - link "Configuration" [ref=f3e44] [cursor=pointer]:
+      - /url: /docs/configuration
+    - link "Developers" [ref=f3e47] [cursor=pointer]:
+      - /url: /docs/developers
+    - link "Security" [ref=f3e49] [cursor=pointer]:
+      - /url: /docs/security-administration
+    - link "Administration" [ref=f3e51] [cursor=pointer]:
+      - /url: /docs/administration
+  - generic [ref=f3e54]:
+    - navigation [ref=f3e56]:
+      - list [ref=f3e58]:
+        - listitem [ref=f3e59]:
+          - link "Overview" [ref=f3e60] [cursor=pointer]:
+            - /url: /docs/configuration
+      - generic [ref=f3e62]:
+        - heading "Customization" [level=3] [ref=f3e63]
+        - list [ref=f3e64]:
+          - listitem [ref=f3e65]:
+            - link "Overview" [ref=f3e66] [cursor=pointer]:
+              - /url: /docs/customization/overview
+          - listitem [ref=f3e68]:
+            - link "Memories" [ref=f3e69] [cursor=pointer]:
+              - /url: /docs/customization/memories
+          - listitem [ref=f3e71]:
+            - link "Computer History" [ref=f3e72] [cursor=pointer]:
+              - /url: /docs/customization/computer-history
+      - generic [ref=f3e74]:
+        - heading "Config file" [level=3] [ref=f3e75]
+        - list [ref=f3e76]:
+          - listitem [ref=f3e77]:
+            - link "Config Basics" [ref=f3e78] [cursor=pointer]:
+              - /url: /docs/config-file/config-basic
+          - listitem [ref=f3e80]:
+            - link "Advanced Config" [ref=f3e81] [cursor=pointer]:
+              - /url: /docs/config-file/config-advanced
+          - listitem [ref=f3e83]:
+            - link "Config Reference" [ref=f3e84] [cursor=pointer]:
+              - /url: /docs/config-file/config-reference
+          - listitem [ref=f3e86]:
+            - link "Environment Variables" [ref=f3e87] [cursor=pointer]:
+              - /url: /docs/config-file/environment-variables
+          - listitem [ref=f3e89]:
+            - link "Sample Config" [ref=f3e90] [cursor=pointer]:
+              - /url: /docs/config-file/config-sample
+      - generic [ref=f3e92]:
+        - heading "Agent configuration" [level=3] [ref=f3e93]
+        - list [ref=f3e94]:
+          - listitem [ref=f3e95]:
+            - link "AGENTS.md" [ref=f3e96] [cursor=pointer]:
+              - /url: /docs/agent-configuration/agents-md
+          - listitem [ref=f3e98]:
+            - link "Subagents" [ref=f3e99] [cursor=pointer]:
+              - /url: /docs/agent-configuration/subagents
+          - listitem [ref=f3e101]:
+            - link "Speed" [ref=f3e102] [cursor=pointer]:
+              - /url: /docs/agent-configuration/speed
+          - listitem [ref=f3e104]:
+            - link "Rules" [ref=f3e105] [cursor=pointer]:
+              - /url: /docs/agent-configuration/rules
+      - generic [ref=f3e107]:
+        - heading "Extend ChatGPT and Codex" [level=3] [ref=f3e108]
+        - list [ref=f3e109]:
+          - listitem [ref=f3e110]:
+            - link "Record & Replay" [ref=f3e111] [cursor=pointer]:
+              - /url: /docs/extend/record-and-replay
+          - listitem [ref=f3e113]:
+            - link "MCP" [ref=f3e114] [cursor=pointer]:
+              - /url: /docs/extend/mcp
+      - generic [ref=f3e116]:
+        - heading "Linux" [level=3] [ref=f3e117]
+        - list [ref=f3e118]:
+          - listitem [ref=f3e119]:
+            - link "Desktop app" [ref=f3e120] [cursor=pointer]:
+              - /url: /docs/linux/linux-app
+      - generic [ref=f3e122]:
+        - heading "Windows" [level=3] [ref=f3e123]
+        - list [ref=f3e124]:
+          - listitem [ref=f3e125]:
+            - link "Desktop app" [ref=f3e126] [cursor=pointer]:
+              - /url: /docs/windows/windows-app
+          - listitem [ref=f3e128]:
+            - link "Windows sandbox" [ref=f3e129] [cursor=pointer]:
+              - /url: /docs/windows/windows-sandbox
+          - listitem [ref=f3e131]:
+            - link "WSL" [ref=f3e132] [cursor=pointer]:
+              - /url: /docs/windows/wsl
+    - main [ref=f3e134]:
+      - generic [ref=f3e136]:
+        - generic [ref=f3e137]:
+          - navigation [ref=f3e139]:
+            - list [ref=f3e142]:
+              - listitem [ref=f3e143]:
+                - link "Configure the Windows sandbox" [ref=f3e144] [cursor=pointer]:
+                  - /url: "#configure-the-windows-sandbox"
+              - listitem [ref=f3e145]:
+                - link "Troubleshooting and FAQ" [ref=f3e146] [cursor=pointer]:
+                  - /url: "#troubleshooting-and-faq"
+          - button "Copy Page" [ref=f3e148] [cursor=pointer]
+        - generic [ref=f3e153]:
+          - generic [ref=f3e155]:
+            - heading "Windows sandbox" [level=1] [ref=f3e157]
+            - paragraph [ref=f3e158]: Configure and troubleshoot the native Codex sandbox on Windows
+          - article [ref=f3e159]:
+            - paragraph [ref=f3e160]:
+              - text: Use Codex on Windows with the native
+              - link "ChatGPT desktop app" [ref=f3e161] [cursor=pointer]:
+                - /url: /docs/windows/windows-app
+              - text: ", the"
+              - link "CLI" [ref=f3e162] [cursor=pointer]:
+                - /url: /docs/codex/cli
+              - text: ", or the"
+              - link "IDE extension" [ref=f3e163] [cursor=pointer]:
+                - /url: /docs/codex/ide
+              - text: .
+            - paragraph [ref=f3e164]: The ChatGPT desktop app on Windows supports core workflows such as parallel chats, worktrees, scheduled tasks, Git functionality, the built-in browser, file previews, plugins, and skills.
+            - paragraph [ref=f3e165]: The app can run natively in PowerShell with a Windows sandbox instead of requiring WSL or a virtual machine. This keeps Codex in Windows-native workflows while enforcing bounded filesystem and network permissions.
+            - button "Open ChatGPT desktop app Windows sandbox setup prompt above the message composer" [ref=f3e167]:
+              - img "ChatGPT desktop app Windows sandbox setup prompt above the message composer" [ref=f3e168]
+            - link "Use the ChatGPT desktop app on Windows Work across projects, run parallel chats, and review results in one place with the native Windows app." [ref=f3e171] [cursor=pointer]:
+              - /url: /docs/windows/windows-app
+              - generic [ref=f3e175]:
+                - generic [ref=f3e176]: Use the ChatGPT desktop app on Windows
+                - generic [ref=f3e177]: Work across projects, run parallel chats, and review results in one place with the native Windows app.
+            - paragraph [ref=f3e181]: "The native Windows sandbox has two modes:"
+            - list [ref=f3e182]:
+              - listitem [ref=f3e183]:
+                - text: natively on Windows with the stronger
+                - code [ref=f3e184]: elevated
+                - text: sandbox,
+              - listitem [ref=f3e185]:
+                - text: natively on Windows with the fallback
+                - code [ref=f3e186]: unelevated
+                - text: sandbox.
+            - heading "Configure the Windows sandbox Copy link to configure the windows sandbox" [level=2] [ref=f3e187]:
+              - generic [ref=f3e188]: Configure the Windows sandbox
+              - button "Copy link to configure the windows sandbox" [ref=f3e189] [cursor=pointer]
+            - paragraph [ref=f3e192]: When you run Codex natively on Windows, agent mode uses a Windows sandbox to block filesystem writes outside the working folder and prevent network access without your explicit approval.
+            - paragraph [ref=f3e193]:
+              - text: Native Windows sandbox support includes two modes that you can configure in
+              - code [ref=f3e194]: config.toml
+              - text: ":"
+            - generic [ref=f3e195]:
+              - code [ref=f3e196]:
+                - generic [ref=f3e197]: "[windows]"
+                - generic [ref=f3e198]: "sandbox = \"elevated\" # or \"unelevated\""
+              - generic [ref=f3e199]:
+                - button "Copy code to clipboard" [ref=f3e200] [cursor=pointer]
+                - status [ref=f3e203]
+            - paragraph [ref=f3e204]:
+              - code [ref=f3e205]: elevated
+              - text: is the preferred native Windows sandbox. It uses dedicated lower-privilege sandbox users, filesystem permission boundaries, firewall rules, and local policy changes needed for commands that run in the sandbox.
+            - paragraph [ref=f3e206]:
+              - code [ref=f3e207]: unelevated
+              - text: is the fallback native Windows sandbox. It runs commands with a restricted Windows token derived from your current user, applies ACL-based filesystem boundaries, and uses environment-level offline controls instead of the dedicated offline-user firewall rule. It’s weaker than
+              - code [ref=f3e208]: elevated
+              - text: ", but it is still useful when administrator-approved setup is blocked by local or enterprise policy."
+            - paragraph [ref=f3e209]:
+              - text: If both modes are available, use
+              - code [ref=f3e210]: elevated
+              - text: . If the default native sandbox doesn’t work in your environment, use
+              - code [ref=f3e211]: unelevated
+              - text: as a fallback while you troubleshoot the setup.
+            - paragraph [ref=f3e212]:
+              - text: Enterprise administrators can constrain which native sandbox implementations Codex can use through
+              - link [ref=f3e213] [cursor=pointer]:
+                - /url: /docs/enterprise/managed-configuration#admin-enforced-requirements-requirementstoml
+                - code [ref=f3e214]: requirements.toml
+              - text: ":"
+            - generic [ref=f3e215]:
+              - code [ref=f3e216]:
+                - generic [ref=f3e217]: "[windows]"
+                - generic [ref=f3e218]: allowed_sandbox_implementations = ["elevated"]
+              - generic [ref=f3e219]:
+                - button "Copy code to clipboard" [ref=f3e220] [cursor=pointer]
+                - status [ref=f3e223]
+            - paragraph [ref=f3e224]:
+              - text: This example requires the
+              - code [ref=f3e225]: elevated
+              - text: sandbox and prevents users from falling back to
+              - code [ref=f3e226]: unelevated
+              - text: . To permit either implementation, include both values; Codex prefers
+              - code [ref=f3e227]: elevated
+              - text: when no mode is selected. See the
+              - link [ref=f3e228] [cursor=pointer]:
+                - /url: /docs/config-file/config-reference#requirementstoml
+                - code [ref=f3e229]: requirements.toml
+                - text: reference
+              - text: for the supported values.
+            - paragraph [ref=f3e230]:
+              - text: By default, both sandbox modes also use a private desktop for stronger UI isolation. Set
+              - code [ref=f3e231]: windows.sandbox_private_desktop = false
+              - text: only if you need the older
+              - code [ref=f3e232]: Winsta0\\Default
+              - text: behavior for compatibility.
+            - heading "Sandbox permissions Copy link to sandbox permissions" [level=3] [ref=f3e233]:
+              - generic [ref=f3e234]: Sandbox permissions
+              - button "Copy link to sandbox permissions" [ref=f3e235] [cursor=pointer]
+            - paragraph [ref=f3e246]:
+              - text: Running Codex in full access mode means Codex is not limited to your project directory and might perform unintentional destructive actions that can lead to data loss. For safer automation, keep sandbox boundaries in place and use
+              - link "rules" [ref=f3e247] [cursor=pointer]:
+                - /url: /docs/agent-configuration/rules
+              - text: for specific exceptions, or set your
+              - link "approval policy to never" [ref=f3e248] [cursor=pointer]:
+                - /url: /docs/agent-approvals-security#run-without-approval-prompts
+              - text: to have Codex attempt to solve problems without asking for escalated permissions, based on your
+              - link "approval and security setup" [ref=f3e249] [cursor=pointer]:
+                - /url: /docs/agent-approvals-security
+              - text: .
+            - heading "Windows version matrix Copy link to windows version matrix" [level=3] [ref=f3e250]:
+              - generic [ref=f3e251]: Windows version matrix
+              - button "Copy link to windows version matrix" [ref=f3e252] [cursor=pointer]
+            - table [ref=f3e256]:
+              - rowgroup [ref=f3e257]:
+                - row [ref=f3e258]:
+                  - columnheader "Windows version" [ref=f3e259]
+                  - columnheader "Support level" [ref=f3e260]
+                  - columnheader "Notes" [ref=f3e261]
+              - rowgroup [ref=f3e262]:
+                - row [ref=f3e263]:
+                  - cell "Windows 11" [ref=f3e264]
+                  - cell "Recommended" [ref=f3e265]
+                  - cell "Best baseline for Codex on Windows. Use this if you are standardizing an enterprise deployment." [ref=f3e266]
+                - row [ref=f3e267]:
+                  - cell "Recent, fully updated Windows 10" [ref=f3e268]
+                  - cell "Best effort" [ref=f3e269]
+                  - cell "Can work, but is less reliable than Windows 11. For Windows 10, Codex depends on modern console support, including ConPTY. In practice, Windows 10 version 1809 or newer is required." [ref=f3e270]
+                - row [ref=f3e271]:
+                  - cell "Older Windows 10 builds" [ref=f3e272]
+                  - cell "Not recommended" [ref=f3e273]
+                  - cell "More likely to miss required console components such as ConPTY and more likely to fail in enterprise setups." [ref=f3e274]
+            - paragraph [ref=f3e275]: "Additional environment assumptions:"
+            - list [ref=f3e276]:
+              - listitem [ref=f3e277]:
+                - code [ref=f3e278]: winget
+                - text: should be available. If it’s missing, update Windows or install the Windows Package Manager before setting up Codex.
+              - listitem [ref=f3e279]: The recommended native sandbox depends on administrator-approved setup.
+              - listitem [ref=f3e280]: Some enterprise-managed devices block the required setup steps even when the OS version itself is acceptable.
+            - heading "Grant sandbox read access Copy link to grant sandbox read access" [level=3] [ref=f3e281]:
+              - generic [ref=f3e282]: Grant sandbox read access
+              - button "Copy link to grant sandbox read access" [ref=f3e283] [cursor=pointer]
+            - paragraph [ref=f3e286]: "When a command fails because the Windows sandbox can’t read a directory, use:"
+            - generic [ref=f3e287]:
+              - code [ref=f3e288]:
+                - generic [ref=f3e289]: /sandbox-add-read-dir C:\absolute\directory\path
+              - generic [ref=f3e290]:
+                - button "Copy code to clipboard" [ref=f3e291] [cursor=pointer]
+                - status [ref=f3e294]
+            - paragraph [ref=f3e295]: The path must be an existing absolute directory. After the command succeeds, later commands that run in the sandbox can read that directory during the current session.
+            - paragraph [ref=f3e296]:
+              - text: Use the native Windows sandbox by default. Choose
+              - link "WSL" [ref=f3e297] [cursor=pointer]:
+                - /url: /docs/windows/wsl
+              - text: when you need Linux-native tooling, your workflow already lives in WSL2, or neither native Windows sandbox mode meets your needs.
+            - heading "Troubleshooting and FAQ Copy link to troubleshooting and faq" [level=2] [ref=f3e298]:
+              - generic [ref=f3e299]: Troubleshooting and FAQ
+              - button "Copy link to troubleshooting and faq" [ref=f3e300] [cursor=pointer]
+            - paragraph [ref=f3e303]: If you are troubleshooting a managed Windows machine, start with the native sandbox mode, Windows version, and any policy error shown by Codex. Most native Windows support issues come from sandbox setup, logon rights, or filesystem permissions rather than from the editor itself.
+            - button "My native sandbox setup failed" [ref=f3e306] [cursor=pointer]
+            - button "Codex switched me to the unelevated sandbox" [ref=f3e313] [cursor=pointer]
+            - button "I see Windows error 1385" [ref=f3e320] [cursor=pointer]
+            - button "Codex warns that some folders are writable by Everyone" [ref=f3e327] [cursor=pointer]
+            - button "Sandboxed commands cannot reach the network" [ref=f3e334] [cursor=pointer]
+            - button "Sandboxing worked before and then stopped" [ref=f3e341] [cursor=pointer]
+            - button "I need to send diagnostics to OpenAI" [ref=f3e348] [cursor=pointer]
+            - button "The IDE extension is installed but unresponsive" [ref=f3e355] [cursor=pointer]
+      - navigation [ref=f3e362]:
+        - generic [ref=f3e363]:
+          - link "Previous Desktop app" [ref=f3e364] [cursor=pointer]:
+            - /url: /docs/windows/windows-app
+            - generic [ref=f3e367]:
+              - generic [ref=f3e368]: Previous
+              - generic [ref=f3e369]: Desktop app
+          - link "Next WSL" [ref=f3e370] [cursor=pointer]:
+            - /url: /docs/windows/wsl
+            - generic [ref=f3e371]:
+              - generic [ref=f3e372]: Next
+              - generic [ref=f3e373]: WSL
+  - generic:
+    - button "Ask AI" [ref=f3e377] [cursor=pointer]
+    - dialog [ref=f3e379]:
+      - banner [ref=f3e380]:
+        - heading "Docs agent" [level=2] [ref=f3e381]
+        - generic [ref=f3e382]:
+          - button "Start a new docs agent chat" [ref=f3e383] [cursor=pointer]
+          - button "Close docs agent" [ref=f3e386] [cursor=pointer]
+      - paragraph [ref=f3e391]: Loading docs agent...

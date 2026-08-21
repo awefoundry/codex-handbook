@@ -1,0 +1,10 @@
+source	output	role	processing
+exec-233b803a-30e9-4227-aa1c-cbe8dfff51ce.png	图一.png	原创解释图：五步闭环	image_gen 生成后按 imagegzh 一号样式处理
+01-提示词-第一版.png	图二.png	作者实拍：第一版 prompt	imagegzh 一号样式；保留终端文字
+02-提示词-第二版.png	图三.png	作者实拍：第二版 prompt	imagegzh 一号样式；保留终端文字
+03-提示词-第三版.png	图四.png	作者实拍：第三版 prompt	imagegzh 一号样式；保留终端文字
+04-提示词-第四版.png	图五.png	作者实拍：第四版 prompt	imagegzh 一号样式；保留终端文字
+exec-2d088ea2-4835-446e-868f-8122569ab71f.png	图六.png	原创解释图：任务说明书与验收证据	image_gen 生成后按 imagegzh 一号样式处理
+05-Codex首次调查-去提示.png	图七.png	作者实拍：首次调查	imagegzh 一号样式；保留原始调查输出
+06-Codex调查边界-去提示.png	图八.png	作者实拍：环境边界	imagegzh 一号样式；保留原始边界反馈
+wechat-qr.png	wechat-qr.png	微信 CTA	原样复制；不经过 imagegzh

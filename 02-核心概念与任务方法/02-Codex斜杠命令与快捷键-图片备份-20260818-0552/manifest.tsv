@@ -1,0 +1,4 @@
+filename	kind	width	height	article_section	purpose	source_url	author	published_at	timestamp	verification	expiry_risk
+figure-01-slash-menu.png	generated illustration	1080	1080	Desktop App：先掌握六个高频入口	说明斜杠菜单是会话控制面板	local generated via Codex image_gen	Codex image_gen		2026-08-19	visually inspected; white background; no text or logo	low
+figure-02-task-flow.png	generated illustration	1080	1080	复杂任务可以这样串起来	表现规划、推进、检查和完成的连续流程	local generated via Codex image_gen	Codex image_gen		2026-08-19	visually inspected; flattened to warm white; no text or logo	low
+figure-03-input-layers.png	generated illustration	1080	1080	/、$ 和普通文字不是一回事	表现程序控制、Skill 调用和任务描述的分层关系	local generated via Codex image_gen	Codex image_gen		2026-08-19	visually inspected; white background; no text or logo	low
