@@ -4,16 +4,12 @@
 
 | 项目 | 版本/状态 | 获取方式或来源 | 核验日期 | 适用性/备注 |
 |---|---|---|---|---|
-| 操作系统 | Windows 11 24H2（Build 26100） | PowerShell `Get-ComputerInfo` | 2026-08-19 | 本系列截图和命令在 Windows 环境核验 |
-| IDE / 宿主应用 | Codex Desktop 26.814.5167.0 | PowerShell `Get-AppxPackage OpenAI.Codex` | 2026-08-19 | 用于任务界面和过程截图 |
-| Codex | Desktop 26.814.5167.0；CLI 0.147.0 | Appx 包信息；`codex --version` | 2026-08-19 | 正文需注明所演示的具体入口 |
-| 目标插件 / App / Connector | 不适用 | 本篇主题不依赖独立插件、App 或 Connector | 2026-08-19 | 后续若引入工具需补充版本和来源 |
-| 其他关键依赖 | Git 2.47.0.windows.2 | `git --version` | 2026-08-19 | 用于仓库状态、历史和差异核验 |
+| 操作系统 | macOS 15.7.5（Build 24G624） | `sw_vers` | 2026-08-21 | Finder 与 TextEdit 配图的真实环境 |
+| IDE / 宿主应用 | Codex/ChatGPT App 26.721.41059 | `/Applications/ChatGPT.app` 元数据 | 2026-08-21 | 通过 computer-use 控制 Finder 与 TextEdit |
+| Codex | Codex/ChatGPT App 26.721.41059 | App 元数据 | 2026-08-21 | 完整 Codex 只读任务尚未执行 |
+| 目标插件 / App / Connector | 不适用 | 本篇主题不依赖独立插件或 Connector | 2026-08-21 | — |
+| 其他关键依赖 | Git 版本待核验 | 待在 Mac mini 上执行 `git --version` | 2026-08-21 | 版本尚未核验 |
 
-## 2026-08-21 首批配图采集环境
+## 调查状态
 
-| 项目 | 版本/状态 | 获取方式或来源 | 核验日期 | 适用性/备注 |
-|---|---|---|---|---|
-| 操作系统 | macOS 15.7.5（Build 24G624） | `sw_vers` | 2026-08-21 | 本次 Finder 与 TextEdit 配图的真实环境 |
-| 宿主应用 | Codex/ChatGPT App 26.721.41059 | `/Applications/ChatGPT.app` 元数据 | 2026-08-21 | 通过 `computer-use` 控制 Finder 与 TextEdit |
-| 调查状态 | 完成目录内 Finder 搜索和仓库只读检查 | 本次采集记录 | 2026-08-21 | 完整 Codex 只读任务和调查前后 Git 对照仍待补拍 |
+已完成目录内 Finder 搜索和仓库只读检查；完整 Codex 只读任务和调查前后 Git 对照仍待补拍。
