@@ -19,3 +19,4 @@
 - [用 HIAPI 中文图标 Skill，做一套真正统一的产品图标](./02-HIAPI中文图标生成Skill.md)
 - [Codex 协助客座文章外链实验](./03-Codex协助客座文章外链实验.md)
 - [用开源 img-convert Skill 批量压缩图片](./04-用开源img-convert-Skill批量压缩图片.md)
+- [Codex 协助出海 SEO：第一次购买客座文章的核验流程](./05-Codex协助出海SEO实战.md)
