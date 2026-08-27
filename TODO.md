@@ -1,6 +1,6 @@
 # TODO
 
-- 2026-08-26：初始化《Codex 安全检查清单：把权限配置变成可复用的日常流程》的文章专属 `-图片备份-20260820-0459/` 工作区；更新 Windows 11 Build 26100、Codex CLI 0.147.0 环境记录，补充官方 sandbox/approval/network 来源、三阶段视觉证据矩阵和作者脱敏截图步骤。验证：`validate_gzh_workspace.py` 通过，`manifest.tsv` 保持空候选；待作者补拍 `07-01-start-checklist.png`、`07-02-approval-check.png`、`07-03-final-diff-check.png` 后再进入 `gzhwz` 发布前处理。
+- 2026-08-26：收件并核验《Codex 安全检查清单：把权限配置变成可复用的日常流程》的三张作者脱敏截图，登记到文章专属 `-图片备份-20260820-0459/manual/` 与 `manifest.tsv`；第一张限定为分支/工作区证据，第二张为未批准审批提示，第三张为提交前 diff 与最小检查结果。验证：`validate_gzh_workspace.py`、`validate_manifest.py` 和 `git diff --check` 通过，后续截图已推送到 scoped PR。
 
 # 2026-08-21：初始化“权限、沙箱与审批”公众号文章工作区
 

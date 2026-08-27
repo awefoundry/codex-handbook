@@ -1,1 +1,4 @@
 filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	provenance	expiry_risk
+07-01-start-checklist.png	manual-screenshot	808	630	任务开始前	07-01	证明临时仓库的 security-check-demo 分支与干净工作区状态；不证明未显示的 profile、sandbox 或网络开关	https://developers.openai.com/codex/config-file/config-basic	作者本人	2026-08-26	2026-08-26	人工目检；已确认未含账号、token 或敏感文件	author-captured	Codex Desktop UI 可能随版本变化，发布前复核
+07-02-approval-check.png	manual-screenshot	819	473	执行中审批	07-02	证明工作区外无害写入请求显示完整命令、目标目录与一次性批准范围	https://developers.openai.com/codex/agent-approvals-security	作者本人	2026-08-26	2026-08-26	人工目检；审批保持未批准并已取消	author-captured	Codex Desktop UI 可能随版本变化，发布前复核
+07-03-final-diff-check.png	manual-screenshot	836	705	交付前复核	07-03	证明提交前 diff、git diff --check 通过结果，以及未提交/未推送/未部署状态	https://developers.openai.com/codex/agent-approvals-security	作者本人	2026-08-26	2026-08-26	人工目检；未点击提交、推送、部署或发布	author-captured	Codex Desktop UI 可能随版本变化，发布前复核
