@@ -1,0 +1,5 @@
+filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	provenance	expiry_risk
+11-web-01-openai-agents-md.png	official-page-screenshot	1280	720	官方规则依据	官方文档	展示 AGENTS.md 全局作用域、项目作用域与目录层级合并顺序	https://developers.openai.com/codex/guides/agents-md	OpenAI	2026-08-27		verified-direct	OpenAI 官方公开文档，经 Playwright 打开并目检	medium-changing-ui
+11-web-02-openai-customization.png	official-page-screenshot	1280	720	信息载体分工	官方文档	展示 AGENTS.md、Memories、Skills、MCP 与 Subagents 的互补分工	https://developers.openai.com/codex/concepts/customization	OpenAI	2026-08-27		verified-direct	OpenAI 官方公开文档，经 Playwright 打开并目检	medium-changing-ui
+11-generated-context-layers.png	generated-explanatory	1672	941	结果分类	解释型配图	用四层文件架构解释长期规则、项目说明、任务记录和一次性调查的落位关系	https://github.com/awefoundry/codex-handbook	Codex image_gen	2026-08-27		verified-direct	本次任务生成的解释型配图，不代表真实软件界面	low
+11-generated-expiry-check.png	generated-explanatory	1672	941	过期信息检查	解释型配图	用维护闭环解释更新时间、责任角色、失效条件、证据来源和复核节点	https://github.com/awefoundry/codex-handbook	Codex image_gen	2026-08-27		verified-direct	本次任务生成的解释型配图，不代表真实软件界面	low
