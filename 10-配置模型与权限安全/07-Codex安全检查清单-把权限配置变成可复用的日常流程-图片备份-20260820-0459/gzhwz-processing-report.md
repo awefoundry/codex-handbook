@@ -9,7 +9,9 @@
 - `manual/07-01-start-checklist.png` -> `正文配图/图一.png`：保留分支与工作区证据，未延伸解读未显示的权限字段。
 - `manual/07-02-approval-check.png` -> `正文配图/图二.png`：遮挡本机路径，保留审批提示与拒绝/允许一次状态。
 - `manual/07-03-final-diff-check.png` -> `正文配图/图三.png`：保留 diff、`git diff --check` 结果和未提交状态。
+- `illustrations/task_gptimage_1787800110352_7d893845-1.png` -> `正文配图/图四.png`：ZimaCode GPT Image 2 生成的三个检查节点流程图，用于概念说明，不替代真实界面证据。
 - 三张发布图均使用 imagegzh 一号样式：透明圆角外框、浅灰边框、紧凑留白；逐张检查可打开、文字清晰、主体完整。
+- 图四为解释型插图，已检查中文标签、布局和 16:9 比例；与三张案例截图分开说明。
 
 ## 链接与引流
 
