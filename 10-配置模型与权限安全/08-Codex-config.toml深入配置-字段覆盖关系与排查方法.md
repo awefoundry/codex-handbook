@@ -2,13 +2,13 @@
 
 > 测试环境：Windows 11 24H2；Codex CLI 0.147.0；PowerShell 7.6.4；2026-08-27 核验。
 
-Codex 的配置问题通常不是“字段不会写”，而是“写在了错误的层级”。同一个 `model`、`sandbox_mode` 或 `approval_policy`，可能同时出现在用户配置、Profile、项目配置和命令行里。只打开某个文件看一眼，不能证明它就是最终生效值。
+Codex 的配置问题往往出在层级。同一个 `model`、`sandbox_mode` 或 `approval_policy`，可能同时出现在用户配置、Profile、项目配置和命令行里。只打开某个文件看一眼，不能证明它就是最终生效值。
 
 本文建立一套可复用的判断方法：先定位配置来源，再按优先级推导最终值，最后用一个低风险任务验证运行时行为。文中的字段和值以 [OpenAI 配置参考](https://developers.openai.com/codex/config-file/config-reference) 为准；本机 CLI 为 `0.147.0`，升级后应重新核对。
 
 ## 先建立配置心智模型
 
-把配置分成四个问题会更容易排查：
+遇到配置问题，我通常先问四件事：
 
 - **来源**：这个值来自哪个文件或参数？
 - **覆盖**：是否有更高优先级的同名键？
@@ -43,6 +43,8 @@ $codexRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USER
 Resolve-Path (Join-Path $codexRoot "config.toml") -ErrorAction SilentlyContinue
 ```
 
+![Windows Terminal 中的 Codex 配置路径与 CLI 版本基线](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法-发布素材/正文配图/图一.png)
+
 项目配置只能覆盖它允许覆盖的项目字段。官方当前明确列出的项目层禁用键包括 `model_provider`、`model_providers`、`openai_base_url`、`notify`、`profile`、`profiles`、`otel` 等。看到这些键时，Codex 会忽略它们并在启动时给出警告；提供商、通知、遥测和 Profile 选择应放在用户或受管控层。
 
 ## 常用字段怎么分组
@@ -65,7 +67,7 @@ Resolve-Path (Join-Path $codexRoot "config.toml") -ErrorAction SilentlyContinue
 
 ### 一个保守的起点
 
-下面配置只包含常用且容易验证的键。它适合个人开发起点，不包含凭据、代理密码或真实机器路径。
+可以先从下面这份保守配置开始。它只放常用、容易验证的键，不包含凭据、代理密码或真实机器路径。
 
 ```toml
 model = "gpt-5.6"
@@ -114,7 +116,7 @@ codex exec --ephemeral --profile review "只读检查当前变更并总结风险
 专用参数优先于通用 `-c`：
 
 ```powershell
-codex --model gpt-5.6-terra --sandbox read-only --ask-for-approval on-request
+codex --model gpt-5.6-terra --sandbox read-only
 ```
 
 任意键可以用 TOML 值覆盖，值不是 JSON：
@@ -129,7 +131,7 @@ PowerShell 会处理引号和空格；先在命令行验证，再决定是否写
 
 ## 从最小改动开始验证
 
-配置验证要验证“行为”，而不是只验证“文件能打开”。建议每次只改一个字段，并保留一份备份：
+配置验证要看“行为”，不能只确认“文件能打开”。每次只改一个字段，并保留一份备份：
 
 ```powershell
 $configPath = Join-Path $codexRoot "config.toml"
@@ -145,11 +147,13 @@ Get-Content -LiteralPath $configPath
 $probeRoot = Join-Path $env:TEMP "codex-config-probe"
 New-Item -ItemType Directory -Force -Path $probeRoot | Out-Null
 Set-Content -LiteralPath (Join-Path $probeRoot "probe.txt") -Value "read-ok" -Encoding utf8
-codex exec --ephemeral --sandbox read-only --ask-for-approval on-request -C $probeRoot `
+codex exec --ephemeral --sandbox read-only --skip-git-repo-check -C $probeRoot `
   "读取 probe.txt，尝试创建 write-probe.txt；被拒绝时不要重试，并报告 READ、WRITE 结果"
 ```
 
 预期是 `READ=ALLOWED`、`WRITE=DENIED`。这里验证的是沙箱行为，不代表所有命令都能运行。
+
+![Codex CLI 只读沙箱探针结果](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法-发布素材/正文配图/图二.png)
 
 ### 配置被覆盖：同一字段的高层值
 
@@ -212,30 +216,6 @@ CLI 覆盖：--sandbox read-only
 
 如果你正在整理团队的 Codex 配置、权限和 CI 约束，可以继续查看 [CodexGuide 配置、模型与权限安全专题](https://codexguide.io/guides?utm_source=wechat&utm_medium=article&utm_campaign=codex-config-deep-dive&utm_content=closing-website-01)。
 
-## 配图素材备用区（暂不计入正文图号）
+如果你在实际配置中遇到覆盖或权限问题，可以通过微信继续交流。
 
-本节是 `gzhstart` 工作区的备份材料索引，发布前如需配图，请将经过核验的素材移动到正文段落并重新编号。
-
-### 官方与可核验操作界面
-
-- `01-openai-config-basics.png`：配置心智模型 / 配置路径；1280×720；证明官方页面展示用户级 `~/.codex/config.toml`、项目 `.codex/config.toml` 与项目信任说明；来源：[OpenAI Config basics](https://developers.openai.com/codex/config-file/config-basic)，OpenAI Developers，2026-08-27；Playwright 真实浏览器截图，`verified-direct`。
-- `02-openai-config-advanced.png`：Profile、项目层和临时覆盖；1280×720；证明独立 Profile 文件、`--profile` 选择方式和顶层配置键写法；来源：[OpenAI Advanced Configuration](https://developers.openai.com/codex/config-file/config-advanced)，OpenAI Developers，2026-08-27；Playwright 真实浏览器截图，`verified-direct`。
-- `03-openai-config-reference.png`：常用字段与项目层限制；1280×720；证明项目层禁用键、配置参考入口和 `requirements.toml` 关联；来源：[OpenAI Configuration Reference](https://developers.openai.com/codex/config-file/config-reference)，OpenAI Developers，2026-08-27；Playwright 真实浏览器截图，`verified-direct`。
-- `04-ai-config-precedence.png`：生效优先级；1672×941；AI 生成的配置层级教学示意图，非官方界面；依据 OpenAI Config basics 绘制，发布时须保留“AI 示意图”标注。
-- `05-ai-config-troubleshooting.png`：配置不生效的排查顺序；1774×887；AI 生成的 PATH、TRUST、TOML、OVERRIDE、RELOAD 流程示意图，非官方界面；依据 OpenAI Configuration Reference 绘制，发布时须保留“AI 示意图”标注。
-
-### 视频教程来源（仅作来源，不自动作为配图）
-
-本轮未采用视频截帧。没有把视频封面、缩略图或裸链接列为图片候选。
-
-### 需要作者亲自截图
-
-- [x] `01-config-paths-and-version.png`：当前 Windows Terminal/PowerShell → `.\manual\prepare-windows-capture.ps1 baseline`；证明实际 `CODEX_HOME`、CLI 版本和 `config.toml` 是否存在；隐藏用户名、完整用户路径和账号信息；停在命令输出处。
-- [x] `02-status-readonly-probe.png`：当前 Windows Terminal/PowerShell → `.\manual\prepare-windows-capture.ps1 readonly`；证明 `read-only` 下读取允许、写入拒绝；隐藏临时目录、账号、环境变量和令牌；停在探针结果处。
-
-### 查找记录
-
-- 官方网页：配置基础、高级配置、配置参考、审批与安全；Jina Reader `verified-direct`，Playwright 三张截图已保存到 `online/` 并目检通过。
-- Bilibili：`Codex config.toml 配置 排查`；B站搜索 API 可用，但本轮未发现需要截取的当前 CLI 操作画面，`no-qualified-result`。
-- YouTube：`Codex config.toml configuration troubleshooting`；`yt-dlp` 可用，但本轮未保存视频帧，`no-qualified-result`。
-- X / 小红书：doctor 显示无 active backend，未声称直接搜索，`unavailable`。
+![通过微信交流 Codex 配置问题](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法-发布素材/wechat-qr.png)

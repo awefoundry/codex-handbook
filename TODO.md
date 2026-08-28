@@ -1,5 +1,7 @@
 # TODO
 
+- 2026-08-28：按 `gzhwz` 处理《Codex config.toml 深入配置：字段、覆盖关系与排查方法》：润色正文，修正 Codex CLI 0.147.0 的只读命令，使用 imagegzh 一号样式整理 2 张终端案例图，加入网站与微信 CTA，并建立唯一 `gzhwz-processing-report.md`。验证：正文图片引用、二维码哈希、网站 HTTP 200、图片四角透明、`validate_gzh_workspace.py` 和 `validate_manifest.py` 均通过；封面停在标题确认闸门。
+
 - 2026-08-28：完善《Codex config.toml 深入配置：字段、覆盖关系与排查方法》并收齐 2 张 Windows Terminal 作者截图：配置路径/CLI 版本基线，以及 `read-only` 沙箱读取允许、写入拒绝结果；同步更新文章附录、环境记录、截图脚本和 `manifest.tsv`。验证：Codex CLI 0.147.0 实跑输出 `sandbox=read-only`、`READ=ALLOWED`、`WRITE=DENIED`；两张 PNG 已脱敏并目检通过；`validate_gzh_workspace.py`、`validate_manifest.py` 和文章 `git diff --check` 通过。
 
 # 2026-08-21：初始化“权限、沙箱与审批”公众号文章工作区

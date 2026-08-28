@@ -9,6 +9,7 @@
 | Codex | Codex CLI 0.147.0 | `codex --version` | 2026-08-27 | 用于 `config.toml`、Profile、`-c` 和沙箱验证 |
 | 目标插件 / App / Connector | 不适用 | 本文不依赖独立插件、App 或 Connector | 2026-08-27 | 不猜测持续部署服务的版本 |
 | PowerShell | 7.6.4 | `$PSVersionTable.PSVersion` | 2026-08-27 | 用于 Windows 路径与探针命令 |
+| 图片处理 | Python 3.13.5；Pillow 12.3.0 | `python -c "import sys; import PIL; print(sys.version.split()[0]); print(PIL.__version__)"` | 2026-08-28 | 用于按 imagegzh 一号样式生成正文配图，不覆盖原始终端截图 |
 | 配置参考 | OpenAI Codex 官方文档（页面于 2026-08-27 读取） | `https://developers.openai.com/codex/config-file/config-reference` | 2026-08-27 | 字段和值随 CLI 版本变化，发布前应重新核对 |
 
 ## Windows 本机截图基线
