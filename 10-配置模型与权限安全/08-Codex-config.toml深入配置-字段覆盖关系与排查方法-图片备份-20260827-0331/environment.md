@@ -15,4 +15,4 @@
 
 ## Windows 本机截图基线
 
-本机截图阶段使用 `manual/prepare-windows-capture.ps1 baseline` 记录当前 Windows 电脑上的 `CODEX_HOME`、Codex CLI 版本和 `config.toml` 存在性。当前已在 Windows Terminal 中核验 Codex CLI `0.147.0`，`config.toml` 状态为 `present`；截图命令不会读取配置文件内容，也不修改真实配置。只读探针截图完成后，已补充最终封面：`cover/cover.png`，1672 × 941，16:9 目标比例偏差约 0.06%；封面为 ZimaCode 生成原图，未做程序叠字。
+本机截图阶段使用 `manual/prepare-windows-capture.ps1 baseline` 记录当前 Windows 电脑上的 `CODEX_HOME`、Codex CLI 版本和 `config.toml` 存在性。当前已在 Windows Terminal 中核验 Codex CLI `0.147.0`，`config.toml` 状态为 `present`；截图命令不会读取配置文件内容，也不修改真实配置。只读探针截图完成后，已补充最终封面：`正文配图/封面.png`，1672 × 941，16:9 目标比例偏差约 0.06%；封面为 ZimaCode 生成原图，未做程序叠字。
