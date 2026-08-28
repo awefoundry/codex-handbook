@@ -12,6 +12,7 @@
 | 图片处理 | Python 3.13.5；Pillow 12.3.0 | `python -c "import sys; import PIL; print(sys.version.split()[0]); print(PIL.__version__)"` | 2026-08-28 | 用于按 imagegzh 一号样式生成正文配图，不覆盖原始终端截图 |
 | 配置参考 | OpenAI Codex 官方文档（页面于 2026-08-27 读取） | `https://developers.openai.com/codex/config-file/config-reference` | 2026-08-27 | 字段和值随 CLI 版本变化，发布前应重新核对 |
 | 封面生成 | ZimaCode GPT Image 2；`engine=web`；`gpt-image-2-text-to-image` | `D:\CodexHome\skills\zimacode-gpt-image-2\scripts\zimacode-gpt-image-2.mjs` | 2026-08-28 | 任务 ID 见处理报告；仅记录服务与模型，不记录 API Key |
+| 解释型插图 | ZimaCode GPT Image 2；`engine=web`；`gpt-image-2-text-to-image` | `D:\CodexHome\skills\zimacode-gpt-image-2\scripts\zimacode-gpt-image-2.mjs` | 2026-08-28 | 生成配置优先级和排查流程示意图；任务 ID 见处理报告；非官方界面 |
 
 ## Windows 本机截图基线
 
