@@ -39,4 +39,12 @@
 - `validate_gzh_workspace.py`：通过。
 - `validate_manifest.py`：通过（合并 `online/` 与 `manual/` 的临时校验目录）。
 - 正文图片引用、发布素材目录和备份映射：通过。
-- 公众号标题：待作者确认；标题确认前不生成封面。
+- 公众号标题：`Codex 配置不生效怎么办？从路径到沙箱的排查方法`（作者已确认）。
+
+## 封面生成记录
+
+- 技能分工：`baoyu-cover-image` 负责概念型、mono、digital、title-only、balanced、16:9 参数；`banner-design` 复核中央 70–80% 安全区与标题可读性；`design` 复核 graphite/off-white/green/amber 配色、层级和留白；`zimacode-gpt-image-2` 使用固定 `https://gen.bunjs.dev`、`engine=web`、`gpt-image-2-text-to-image` 实际生成。
+- 最终封面：`../08-Codex-config.toml深入配置-字段覆盖关系与排查方法-发布素材/cover/cover.png`。
+- 生成任务：`task_gptimage_1787889030004_33e6cdd1`（首候选）；`task_gptimage_1787889238590_3f80a74f`（标题修正版）；`task_gptimage_1787889360749_15fa9745`（最终候选）。
+- 最终文件尺寸：`1672 × 941`，实际比例 `1.7768:1`，目标 `16:9`（1.7778:1），比例偏差约 `0.06%`。
+- 验收：最终图主体完整，标题位于左侧安全区、两行清晰，未包含账号、路径、令牌、二维码或 Logo；三次原图均保留，未使用 Pillow、SVG、HTML 或其他程序叠加/修补文字。模型对全角问号存在字形偏差，最终图的问号外观接近半角，已记录为发布前人工确认项。

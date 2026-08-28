@@ -11,7 +11,8 @@
 | PowerShell | 7.6.4 | `$PSVersionTable.PSVersion` | 2026-08-27 | 用于 Windows 路径与探针命令 |
 | 图片处理 | Python 3.13.5；Pillow 12.3.0 | `python -c "import sys; import PIL; print(sys.version.split()[0]); print(PIL.__version__)"` | 2026-08-28 | 用于按 imagegzh 一号样式生成正文配图，不覆盖原始终端截图 |
 | 配置参考 | OpenAI Codex 官方文档（页面于 2026-08-27 读取） | `https://developers.openai.com/codex/config-file/config-reference` | 2026-08-27 | 字段和值随 CLI 版本变化，发布前应重新核对 |
+| 封面生成 | ZimaCode GPT Image 2；`engine=web`；`gpt-image-2-text-to-image` | `D:\CodexHome\skills\zimacode-gpt-image-2\scripts\zimacode-gpt-image-2.mjs` | 2026-08-28 | 任务 ID 见处理报告；仅记录服务与模型，不记录 API Key |
 
 ## Windows 本机截图基线
 
-本机截图阶段使用 `manual/prepare-windows-capture.ps1 baseline` 记录当前 Windows 电脑上的 `CODEX_HOME`、Codex CLI 版本和 `config.toml` 存在性。当前已在 Windows Terminal 中核验 Codex CLI `0.147.0`，`config.toml` 状态为 `present`；截图命令不会读取配置文件内容，也不修改真实配置。只读探针截图完成后，再把最终 PNG 收件信息补入本节。
+本机截图阶段使用 `manual/prepare-windows-capture.ps1 baseline` 记录当前 Windows 电脑上的 `CODEX_HOME`、Codex CLI 版本和 `config.toml` 存在性。当前已在 Windows Terminal 中核验 Codex CLI `0.147.0`，`config.toml` 状态为 `present`；截图命令不会读取配置文件内容，也不修改真实配置。只读探针截图完成后，已补充最终封面：`cover/cover.png`，1672 × 941，16:9 目标比例偏差约 0.06%；封面为 ZimaCode 生成原图，未做程序叠字。
