@@ -1,5 +1,7 @@
 # TODO
 
+- 2026-08-28：完善《Codex config.toml 深入配置：字段、覆盖关系与排查方法》并收齐 2 张 Windows Terminal 作者截图：配置路径/CLI 版本基线，以及 `read-only` 沙箱读取允许、写入拒绝结果；同步更新文章附录、环境记录、截图脚本和 `manifest.tsv`。验证：Codex CLI 0.147.0 实跑输出 `sandbox=read-only`、`READ=ALLOWED`、`WRITE=DENIED`；两张 PNG 已脱敏并目检通过；`validate_gzh_workspace.py`、`validate_manifest.py` 和文章 `git diff --check` 通过。
+
 # 2026-08-21：初始化“权限、沙箱与审批”公众号文章工作区
 
 - 改动：为 `02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md` 创建文章专属 `-图片备份-20260821-0000/`，补充 Windows/Codex 环境基线、4 张可追溯操作证据、视觉证据矩阵、跨平台核验记录、作者亲自拍摄清单和文末配图备用区。
