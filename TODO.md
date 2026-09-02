@@ -1,4 +1,5 @@
 # TODO
+- 2026-09-02：将《Codex 如何读懂 Git：status、diff、log 与 blame》的终端截图流程收敛为 3 张：现场摘要、差异范围、历史与 blame；每张图只保留一个终端停点，不再为单条命令、`git diff --check` 或 Codex 提示词重复截图。验证：文章配图清单为 3 项，三段 PowerShell 命令在离线演示仓库可执行。
 - 2026-09-01：完善《Codex 如何读懂 Git：status、diff、log 与 blame》：补充比较基线、status 两列、diff 比较范围、log/show 历史检索、blame 启发式边界、只读 Codex 提示词和离线练习，并修正练习夹具路径。验证：Git 2.47.0 与 Codex CLI 0.147.0 可用，文章无尾随空格、占位符和不成对反引号，练习仓库命令已实际运行。
 
 # 2026-08-21：初始化“权限、沙箱与审批”公众号文章工作区

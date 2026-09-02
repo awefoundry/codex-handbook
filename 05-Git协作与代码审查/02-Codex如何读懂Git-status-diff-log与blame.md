@@ -238,6 +238,46 @@ Git 的重命名判断是基于相似度的启发式结果，不是文件系统�
 
 这个练习只读，不需要提交、推送或清理现场。若使用自己的测试仓库，先复制一份或创建临时分支，不要在真实项目里故意制造脏改动。
 
+## 截图方案：三张足够
+
+不需要为每条命令单独截图。进入上面的演示仓库后，依次执行三个停点；每个停点截一张终端图，保留命令和完整输出。
+
+### 1. 现场摘要
+
+```powershell
+Write-Host '=== 1/3 baseline ==='
+git status --short --branch
+git diff --stat
+git diff --cached --stat
+git ls-files --others --exclude-standard
+```
+
+这张图证明分支关系、工作区改动、暂存区改动和未跟踪文件。看到 `?? notes/` 时不要展开或上传其中可能含有个人信息的文件。
+
+### 2. 差异范围
+
+```powershell
+Write-Host '=== 2/3 diff ==='
+git diff --name-status
+git diff --cached --name-status
+git diff HEAD -- src tests
+git diff --check
+Write-Host "diff-check exit=$LASTEXITCODE"
+```
+
+这张图证明默认 `diff`、暂存区 `diff` 和相对 `HEAD` 的合计差异。`diff-check exit=0` 只表示没有发现空白错误或冲突标记，不代表测试已经通过。
+
+### 3. 历史与单行来源
+
+```powershell
+Write-Host '=== 3/3 history ==='
+git log --graph --decorate --oneline --all -n 8
+git log --follow --oneline -- src/LoginForm.txt
+git blame -w -M -C -C -L 1,2 -- src/LoginForm.txt
+```
+
+这张图把提交时间线、文件重命名历史和行级归属放在一起。不要截取完整用户名、私有路径或业务数据；如果输出过长，只保留最近 8 次提交和目标行附近的结果，不要删掉命令本身。
+
 ## 常见误区与验收清单
 
 - [ ] 能说明 `git diff`、`git diff --cached`、`git diff HEAD` 的比较两端。
@@ -276,7 +316,11 @@ Git 的重命名判断是基于相似度的启发式结果，不是文件系统�
 
 ### 需要作者亲自截图
 
-- [ ] `02-git-evidence-chain.png`：在脱敏测试仓库依次运行 `git status`、`git diff --stat`、`git diff --check`、`git log` 和一条 `git blame`；隐藏路径、用户名和业务数据；停在输出复核处。
+- [ ] `02-git-status-baseline.png`：执行“1. 现场摘要”，展示分支关系、工作区/暂存区统计和未跟踪列表。
+- [ ] `03-git-diff-scope.png`：执行“2. 差异范围”，展示两种 `diff`、合计差异和 `diff-check exit=0`。
+- [ ] `04-git-history-blame.png`：执行“3. 历史与单行来源”，展示 `log`、`--follow` 和局部 `blame`。
+
+三张图即可覆盖本文的证据链；不要再为 `git diff --check`、Codex 提示词或同一命令的重复输出单独截图。所有截图都要隐藏个人路径、用户名、令牌和业务数据。
 
 ### 查找记录
 
