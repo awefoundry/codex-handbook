@@ -24,8 +24,8 @@
 | Node.js | v22.22.3 | `node --version` | 2026-09-04 | 运行 HiAPI 任务提交与轮询脚本 |
 | Python | 3.13.5 | `python --version` | 2026-09-04 | 本地图片处理 |
 | Pillow | 12.3.0 | `python -c "from PIL import Image; import PIL; print(PIL.__version__)"` | 2026-09-04 | 生成 PNG 圆角、边框和透明画布 |
-| HiAPI Key | 存在，未输出值 | PowerShell 检查环境变量是否存在 | 2026-09-04 | 提交两张已授权概念插图任务 |
-| HiAPI | `gpt-image-2/text-to-image`；`1K`；`16:9` | dry-run 请求体检查与实际任务返回 | 2026-09-04 | 生成两张概念插图 |
+| HiAPI Key | 存在，未输出值 | PowerShell 检查环境变量是否存在 | 2026-09-04 | 提交两张入选概念插图任务；另有一张探索图未进入正文 |
+| HiAPI | `gpt-image-2/text-to-image`；`1K`；`16:9` | dry-run 请求体检查与实际任务返回 | 2026-09-04 | 生成两张入选概念插图；探索图未用于发布正文 |
 | Codex 原生 `image_gen` | 当前会话内置位图生成工具 | 封面生成调用与生成文件 | 2026-09-04 | 生成公众号封面原图；随后仅做尺寸调整 |
 
 ## 封面生成证据
