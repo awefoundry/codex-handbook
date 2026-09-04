@@ -56,25 +56,27 @@
 
 - [GitHub About pull request reviews](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-
-## 配图素材备用区（暂不计入正文图号）
-
-> 本节用于写作阶段选图，发布前应将采用的素材移动到对应正文段落并重新编号。旧界面、限时活动和第三方教程必须标注日期与来源。
-
 ### 官方与可核验操作界面
 
-- 暂无合格候选。当前优先使用作者实拍终端和测试 PR；未把其他文章目录中的截图、视频封面、缩略图、Logo 或裸视频链接当作本篇配图。
+- `pull-request-tabs-changed-files.png`（1308×122）：审查 PR 的改动范围；证明进入 `Files changed`。来源：GitHub Docs，`https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request`；作者：GitHub Docs；发布日期未标注；2026-09-04 打开原图核验。GitHub 界面可能更新。
+- `diff-settings-menu.png`（2288×656）：审查 PR 的改动范围；证明可切换 Unified/Split 并隐藏 whitespace。来源同上；作者：GitHub Docs；发布日期未标注；2026-09-04 打开原图核验。截图中的仓库内容和计数只是官方示例。
+- `review-changes-button.png`（2114×416）：提交审查意见；证明打开 `Review changes`。来源同上；作者：GitHub Docs；发布日期未标注；2026-09-04 打开原图核验。GitHub 界面可能更新。
+- `abandon-review-button.png`（1316×1078）：提交审查意见；证明 `Finish your review` 面板提供 Comment、Approve、Request changes 和 Submit review。来源同上；作者：GitHub Docs；发布日期未标注；2026-09-04 打开原图核验。图中示例内容不属于本文测试结果。
+- `viewed-checkbox.png`（2150×112）：审查完成后的范围确认；证明可以勾选 `Viewed`。来源同上；作者：GitHub Docs；发布日期未标注；2026-09-04 打开原图核验。GitHub 界面可能更新。
 
 ### 视频教程来源（仅作来源，不自动作为配图）
 
-- 暂无合格视频截帧。Bilibili、YouTube 的初始化检索未产生能直接证明本文步骤的合格画面；X/Twitter 和小红书没有可用的 active backend，未声称直接搜索。
+- [How to Review a Pull Request in GitHub the RIGHT Way](https://www.youtube.com/watch?v=lSnbOtw4izI)：CoderDave，YouTube，发布日期未从索引元数据确认；仅通过 `yt-dlp` 获取元数据，未抽取可证明本文步骤的精确帧，因此不列入图片候选。
+- [GitHub Crash Course: Creating Code Reviews](https://www.youtube.com/watch?v=GbjI2x0dMK0)：Andrew Dimmer，YouTube，发布日期未从索引元数据确认；仅作观看参考，不使用封面或未经核验的帧。
 
 ### 需要作者亲自截图
 
-- [ ] `01-commit-pr-evidence-terminal.png`：终端 → `git diff --stat` / `git diff --check` / `git add -p` → 提交摘要；隐藏账号、令牌、客户数据和私有路径；停在推送或其他不可逆操作之前。
-- [ ] `02-pr-description-scope-risk.png`：GitHub 测试 PR → `Conversation` → PR 描述；隐藏仓库名、组织名、评论者邮箱、内部链接和客户数据；停在提交评论、合并或关闭 PR 之前。
+- [ ] `01-commit-pr-evidence-terminal.png`：PowerShell → 检查 Git 版本 → 创建 `%TEMP%\commit-pr-review-demo` 一次性仓库 → `git diff --stat` → `git diff --check` → `git add -p` → `git diff --cached --stat` → `git show --stat --oneline HEAD`；隐藏用户名、邮箱、远程地址、令牌、客户数据和真实私有路径；停在本地提交摘要之后。
+- [ ] `02-pr-description-scope-risk.png`：已登录 GitHub 测试仓库 → `Pull requests` → 测试 PR → `Conversation`；画面包含五个 PR 描述字段；隐藏仓库名、组织名、评论者邮箱、内部链接、客户数据和令牌；停在提交评论、请求审查、合并或关闭之前。
 
 ### 查找记录
 
 - 平台：GitHub 官方文档、Conventional Commits、Bilibili、YouTube、X/Twitter、小红书；查询与验证状态详见本文章专属工作区的 `research-log.md`。
-- 工作区：`./05-怎样写出可审查的Commit和PR-范围验证证据与风险-图片备份-20260903-2116/`。
+- 官方候选文件位于：`05-怎样写出可审查的Commit和PR-范围验证证据与风险-图片备份-20260903-2116/online/`。
+- 视频封面、缩略图、Logo、无关图片文件预览和裸视频链接均未作为图片候选。
+
