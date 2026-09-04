@@ -8,6 +8,7 @@
 - 处理环境：Windows 10 Pro 24H2；PowerShell 5.1；Node.js v22.22.3；Python 3.13.5 + Pillow 12.3.0；Git 2.47.0.windows.2；2026-09-04 核验。完整记录：`environment.md`。
 - 正文配图数量：6 张；其中 2 张为 HiAPI 生成概念插图，3 张为终端案例截图，1 张为 GitHub Docs 界面截图；二维码是结尾 CTA 素材，不计入正文图号。
 - 三张终端案例原图保留在 `manual/` 作为内部证据备份；发布版图二至图四按正文顺序分别展示初始化与差异统计、差异检查与完整 diff、交互式暂存与提交复核，并用不可逆纯色遮挡个人路径。
+- 本轮新增 3 张作者补充终端截图：`manual/05-terminal-followup-initialize.png`、`manual/06-terminal-followup-diff-and-stage.png`、`manual/07-terminal-followup-commit.png`。它们用于补充初始化、diff、交互式暂存和提交复核证据，不进入正文图号；正文继续使用已脱敏验收的图二至图四。
 
 ## 正文修改
 
