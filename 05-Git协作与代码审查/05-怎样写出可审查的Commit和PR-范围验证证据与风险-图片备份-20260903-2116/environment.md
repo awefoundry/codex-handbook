@@ -15,7 +15,7 @@
 
 - 本文要证明的是：如何拆分提交、如何提供可复核的验证命令、如何在 PR 中写清风险与回滚，以及如何避免把未执行的测试写成已通过。
 - 初始化阶段没有复制其他文章目录中的图片，也没有把视频封面、缩略图、Logo 或裸视频链接作为配图候选。
-- `manifest.tsv` 暂无条目；等待作者按 `manual-steps.md` 完成本机实拍后，再把合格截图登记为候选。
+- `manifest.tsv` 已登记本篇使用的 GitHub Docs、终端案例和概念插图候选；未进入正文的候选仍保留在 `online/`。
 
 ## 本轮 gzhwz 处理工具
 
@@ -26,3 +26,10 @@
 | Pillow | 12.3.0 | `python -c "from PIL import Image; import PIL; print(PIL.__version__)"` | 2026-09-04 | 生成 PNG 圆角、边框和透明画布 |
 | HiAPI Key | 存在，未输出值 | PowerShell 检查环境变量是否存在 | 2026-09-04 | 提交两张已授权概念插图任务 |
 | HiAPI | `gpt-image-2/text-to-image`；`1K`；`16:9` | dry-run 请求体检查与实际任务返回 | 2026-09-04 | 生成两张概念插图 |
+| Codex 原生 `image_gen` | 当前会话内置位图生成工具 | 封面生成调用与生成文件 | 2026-09-04 | 生成公众号封面原图；随后仅做尺寸调整 |
+
+## 封面生成证据
+
+- 完整提示词保存在 `发布素材/prompts/01-cover-commit-pr-review.md`。
+- 原始生成文件由工具保存为 `D:\CodexHome\generated_images\01a069fa-87e9-7002-ae3f-94c4dd155f77\call_lwS4uepNMbOYtmVkipebTEM7.png`，尺寸为 1922×818。
+- 发布封面使用 Pillow 缩放为 940×400；未进行文字重绘、擦除或覆盖。
