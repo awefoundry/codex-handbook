@@ -33,3 +33,10 @@
 - 完整提示词保存在 `发布素材/prompts/01-cover-commit-pr-review.md`。
 - 原始生成文件由工具保存为 `D:\CodexHome\generated_images\01a069fa-87e9-7002-ae3f-94c4dd155f77\call_lwS4uepNMbOYtmVkipebTEM7.png`，尺寸为 1922×818。
 - 发布封面使用 Pillow 缩放为 940×400；未进行文字重绘、擦除或覆盖。
+
+## 本轮 HiAPI 生成记录
+
+- 2026-09-04 使用已存在的 `HIAPI_API_KEY` 调用 `https://api.hiapi.ai/v1/tasks`，模型为 `gpt-image-2/text-to-image`，输入参数为 `resolution=1K`、`aspect_ratio=16:9`。
+- 生成前执行本地 dry-run，仅检查 endpoint、模型、比例、密钥存在状态和提示词长度，未提交任务。
+- 任务 `tk-hiapi-01M1PGW7ZARGHX41VFA28N5KA2` 与 `tk-hiapi-01M1PGW7ZQZ5SK449JTT6VR511` 均返回 `success`，原图下载到 `hiapi-source/`；未记录密钥值。
+- 原图经 Pillow 12.3.0 处理为 `1600×900` 透明圆角画布，发布图替换为 `发布素材/正文配图/图一.png` 与 `图五.png`；两张成品均用 `view_image` 验收。

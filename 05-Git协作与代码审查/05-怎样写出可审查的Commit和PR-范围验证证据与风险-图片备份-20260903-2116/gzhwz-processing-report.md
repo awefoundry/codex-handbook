@@ -24,11 +24,11 @@
 
 | 正文编号 | 原始素材 | 处理后文件 | 类型 | 尺寸 | 验收 |
 |---|---|---|---|---|---|
-| 图一 | `hiapi-source/01-hiapi-commit-scope.png` | `正文配图/图一.png` | HiAPI 生成概念插图 | 1280×720，16:9 | 已用 `view_image` 检查。表达 diff 进入聚焦提交、无关修改留在工作区；无可读账号、路径、Token、Logo、二维码或水印。 |
+| 图一 | `hiapi-source/01-hiapi-commit-scope-20260904.png` | `正文配图/图一.png` | HiAPI 生成概念插图 | 1600×900，16:9 | 已用 `view_image` 检查。表达 diff 进入聚焦提交、无关修改留在工作区；无可读账号、路径、Token、Logo、二维码或水印；四角透明、边框和阴影符合一号样式。 |
 | 图二 | `manual/02-terminal-initialize.png` | `正文配图/图二.png` | 终端案例截图 | 2016×656，原始比例 | 保留初始化结果、示例文件创建、工作区状态和 `git diff --stat`；本机路径及初始化输出中的完整目录已用不可逆纯色遮挡，命令和结果可读。 |
 | 图三 | `manual/03-terminal-diff.png` | `正文配图/图三.png` | 终端案例截图 | 2016×1046，原始比例 | 保留 `git diff --check`、完整 diff、README.md 与 login.txt 的变化；本机路径已遮挡，diff 文字和颜色可读。 |
 | 图四 | `manual/04-terminal-commit.png` | `正文配图/图四.png` | 终端案例截图 | 2016×1472，原始比例 | 保留 `git add -p`、暂存区检查、提交、`git show` 和最终状态；本机路径已遮挡，提交信息和范围结果可读。 |
-| 图五 | `hiapi-source/02-hiapi-pr-description.png` | `正文配图/图五.png` | HiAPI 生成概念插图 | 1280×720，16:9 | 已用 `view_image` 检查。表达 PR 描述的改动、动机、验证、风险和待确认字段；无可读账号、路径、Token、Logo、二维码或水印。 |
+| 图五 | `hiapi-source/02-hiapi-pr-evidence-20260904.png` | `正文配图/图五.png` | HiAPI 生成概念插图 | 1600×900，16:9 | 已用 `view_image` 检查。表达 PR 描述的改动、动机、验证、风险与回滚字段关系；无可读账号、路径、Token、Logo、二维码或水印；四角透明、边框和阴影符合一号样式。 |
 | 图六 | `online/diff-settings-menu.png` | `正文配图/图六.png` | GitHub Docs 官方界面截图 | 2304×672，原始比例 | 已用 `view_image` 检查。保留 Files changed、Unified/Split 和 Hide whitespace 设置；示例仓库内容不作为本文测试结果。 |
 
 ## 网络素材记录
@@ -42,9 +42,9 @@
 - 模型：`gpt-image-2/text-to-image`
 - 参数：`resolution=1K`、`aspect_ratio=16:9`
 - 调用前已执行 dry-run，确认模型、比例、运行环境和密钥存在状态；dry-run 未提交生成任务。
-- 入选图一任务：`tk-hiapi-01M1NRN8JWYMG739PQWCPX3AE1`。
-- 入选图三任务：`tk-hiapi-01M1NRNBFTXP2BW4D4MVVG674Z`。
-- 另有探索任务 `tk-hiapi-01M1NRNEFTWZM7JY8PRS9YYEVQ` 已成功生成，但未进入发布正文，也不计入正文配图数量。三项任务的生成原图均未覆盖，入选发布图由本地 Pillow 处理。
+- 新图一任务：`tk-hiapi-01M1PGW7ZARGHX41VFA28N5KA2`。
+- 新图五任务：`tk-hiapi-01M1PGW7ZQZ5SK449JTT6VR511`。
+- 两项任务均成功生成并下载原图，随后由本地 Pillow 处理为 `1600×900` 透明圆角画布；旧版 HiAPI 原图和旧版发布图仍保留在备份工作区，未覆盖。
 - 提示词要求无文字、无品牌、无账号、无路径、无 Token、无二维码、无水印；生成后已用 `view_image` 检查。
 
 ## 封面生成
@@ -95,3 +95,9 @@ exception_reason: none
 - 正文未出现“用户提供”“用户素材”“用户截图”“投稿截图”“作者截图”、本机绝对路径、内部处理文件名或任务 ID。
 - 封面为 940×400、2.35:1，标题和视觉主体已通过 `view_image` 验收；原始生成图保留在 `online/cover-generated-original.png`。
 - 仍需确认：GitHub Docs 界面可能随平台更新；网站 CTA 的发布后点击数据待记录。
+
+## 本轮篇幅处理
+
+- 正文压缩并重新排序后约 4712 个文件字符、2338 个中文字符，保留六张正文图、PR 模板、网站 CTA、微信 CTA 和参考资料。
+- `check_prose.py` 的硬性规则检查无 AI 黑话、重复段落和重复句，但其固定的中文字符下限为 3000；本篇按用户指定的约 2500 字篇幅保留 2338 个中文字符，过短项属于篇幅目标与脚本阈值冲突，未通过增加重复内容规避。
+- 工作区校验：`validate_gzh_workspace.py` 通过；正文图片引用、发布目录、透明角和尺寸检查通过。
