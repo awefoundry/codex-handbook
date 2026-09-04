@@ -71,7 +71,7 @@
 
 ### 需要作者亲自截图
 
-- [ ] `01-commit-pr-evidence-terminal.png`：PowerShell → 检查 Git 版本 → 创建 `%TEMP%\commit-pr-review-demo` 一次性仓库 → `git diff --stat` → `git diff --check` → `git add -p` → `git diff --cached --stat` → `git show --stat --oneline HEAD`；隐藏用户名、邮箱、远程地址、令牌、客户数据和真实私有路径；停在本地提交摘要之后。
+- [x] `01-commit-pr-evidence-terminal.png`：已收到用户提供的终端截图，并裁掉顶部标签栏；画面保留 Git/PowerShell 版本、`git diff --stat`、`git diff --check`、`git add -p` 和当前输入提示。截图仍含本机用户名与临时路径，发布前按需要打码。
 - [ ] `02-pr-description-scope-risk.png`：已登录 GitHub 测试仓库 → `Pull requests` → 测试 PR → `Conversation`；画面包含五个 PR 描述字段；隐藏仓库名、组织名、评论者邮箱、内部链接、客户数据和令牌；停在提交评论、请求审查、合并或关闭之前。
 
 ### 查找记录
