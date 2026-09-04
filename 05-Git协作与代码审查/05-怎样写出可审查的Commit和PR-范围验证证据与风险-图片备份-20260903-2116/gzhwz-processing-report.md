@@ -6,8 +6,8 @@
 - 正文：`05-怎样写出可审查的Commit和PR-范围验证证据与风险.md`
 - 已确认公众号标题：`Commit 不只写“改了什么”：一份可复核的 PR 审查方法`
 - 处理环境：Windows 10 Pro 24H2；PowerShell 5.1；Node.js v22.22.3；Python 3.13.5 + Pillow 12.3.0；Git 2.47.0.windows.2；2026-09-04 核验。完整记录：`environment.md`。
-- 正文配图数量：4 张；其中 2 张为 HiAPI 生成概念插图；二维码是结尾 CTA 素材，不计入正文图号。
-- 原有终端案例保留在 `manual/` 作为内部证据备份。发布版图二只保留差异块和选择提示，并用纯色遮挡个人路径。
+- 正文配图数量：6 张；其中 2 张为 HiAPI 生成概念插图，3 张为终端案例截图，1 张为 GitHub Docs 界面截图；二维码是结尾 CTA 素材，不计入正文图号。
+- 三张终端案例原图保留在 `manual/` 作为内部证据备份；发布版图二至图四按正文顺序分别展示初始化与差异统计、差异检查与完整 diff、交互式暂存与提交复核，并用不可逆纯色遮挡个人路径。
 
 ## 正文修改
 
@@ -24,13 +24,15 @@
 | 正文编号 | 原始素材 | 处理后文件 | 类型 | 尺寸 | 验收 |
 |---|---|---|---|---|---|
 | 图一 | `hiapi-source/01-hiapi-commit-scope.png` | `正文配图/图一.png` | HiAPI 生成概念插图 | 1280×720，16:9 | 已用 `view_image` 检查。表达 diff 进入聚焦提交、无关修改留在工作区；无可读账号、路径、Token、Logo、二维码或水印。 |
-| 图二 | `manual/01-commit-pr-evidence-terminal.png` | `正文配图/图二.png` | 终端案例裁切图 | 1129×249，原始比例 | 只保留 `login.txt` 差异块和 `git add -p` 选择提示；个人路径已用纯色不可逆遮挡，未放入其他账号、令牌或二维码。 |
-| 图三 | `hiapi-source/02-hiapi-pr-description.png` | `正文配图/图三.png` | HiAPI 生成概念插图 | 1280×720，16:9 | 已用 `view_image` 检查。表达 PR 描述的改动、动机、验证、风险和待确认字段；无可读账号、路径、Token、Logo、二维码或水印。 |
-| 图四 | `online/diff-settings-menu.png` | `正文配图/图四.png` | GitHub Docs 官方界面截图 | 2304×672，原始比例 | 已用 `view_image` 检查。保留 Files changed、Unified/Split 和 Hide whitespace 设置；示例仓库内容不作为本文测试结果。 |
+| 图二 | `manual/02-terminal-initialize.png` | `正文配图/图二.png` | 终端案例截图 | 2016×656，原始比例 | 保留初始化结果、示例文件创建、工作区状态和 `git diff --stat`；本机路径及初始化输出中的完整目录已用不可逆纯色遮挡，命令和结果可读。 |
+| 图三 | `manual/03-terminal-diff.png` | `正文配图/图三.png` | 终端案例截图 | 2016×1046，原始比例 | 保留 `git diff --check`、完整 diff、README.md 与 login.txt 的变化；本机路径已遮挡，diff 文字和颜色可读。 |
+| 图四 | `manual/04-terminal-commit.png` | `正文配图/图四.png` | 终端案例截图 | 2016×1472，原始比例 | 保留 `git add -p`、暂存区检查、提交、`git show` 和最终状态；本机路径已遮挡，提交信息和范围结果可读。 |
+| 图五 | `hiapi-source/02-hiapi-pr-description.png` | `正文配图/图五.png` | HiAPI 生成概念插图 | 1280×720，16:9 | 已用 `view_image` 检查。表达 PR 描述的改动、动机、验证、风险和待确认字段；无可读账号、路径、Token、Logo、二维码或水印。 |
+| 图六 | `online/diff-settings-menu.png` | `正文配图/图六.png` | GitHub Docs 官方界面截图 | 2304×672，原始比例 | 已用 `view_image` 检查。保留 Files changed、Unified/Split 和 Hide whitespace 设置；示例仓库内容不作为本文测试结果。 |
 
 ## 网络素材记录
 
-- GitHub Docs 官方界面截图来源页面为 `https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request`，图四只用于解释 diff 视图设置。
+- GitHub Docs 官方界面截图来源页面为 `https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request`，图六只用于解释 diff 视图设置。
 - 其他官方候选保留在 `online/`，未进入正文配图目录；正文没有把示例仓库内容写成本文测试结果。
 
 ## HiAPI 概念插图
@@ -85,10 +87,10 @@ exception_reason: none
 
 ## 验收
 
-- 正文图片引用按首次出现顺序为 `正文配图/图一.png`、`正文配图/图二.png`、`正文配图/图三.png`、`正文配图/图四.png`，与文件逐项对应。
-- `正文配图/` 只包含四张正文图，没有原始截图、未采用概念图和二维码。
+- 正文图片引用按首次出现顺序为 `正文配图/图一.png`、`正文配图/图二.png`、`正文配图/图三.png`、`正文配图/图四.png`、`正文配图/图五.png`、`正文配图/图六.png`，与文件逐项对应。
+- `正文配图/` 只包含六张正文图，没有原始截图、未采用概念图和二维码。
 - 发布正文未出现“用户提供”“用户素材”“用户截图”“投稿截图”“作者截图”、本机绝对路径、内部处理文件名或任务 ID。
-- 入选生成概念图均为 16:9，比例误差为 0；图二为 1129×249 证据裁切图，主体和文字可读；未采用的探索图和原始素材均保留在备份目录。
+- 入选生成概念图均为 16:9，比例误差为 0；图二至图四为终端案例截图，分别为 2016×656、2016×1046、2016×1472，主体和文字可读；未采用的探索图和原始素材均保留在备份目录。
 - 正文未出现“用户提供”“用户素材”“用户截图”“投稿截图”“作者截图”、本机绝对路径、内部处理文件名或任务 ID。
 - 封面为 940×400、2.35:1，标题和视觉主体已通过 `view_image` 验收；原始生成图保留在 `online/cover-generated-original.png`。
 - 仍需确认：GitHub Docs 界面可能随平台更新；网站 CTA 的发布后点击数据待记录。

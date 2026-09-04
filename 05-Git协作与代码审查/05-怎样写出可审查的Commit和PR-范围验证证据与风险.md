@@ -39,9 +39,9 @@ git add -p login.txt
 
 提示出现后输入 `y` 接受当前 hunk，输入 `n` 保留它，输入 `q` 退出。若一个 hunk 里混有两个主题，可以用 `s` 尝试拆分，再逐块判断。
 
-![git add -p 只暂存 login.txt 的差异块](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图二.png)
+![初始化示例仓库并查看工作区差异统计](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图二.png)
 
-图二 交互式暂存停在当前 hunk 的选择提示，暂存动作仍然有明确边界。
+图二 初始化示例仓库后，先用状态和差异统计确认当前工作区确实有两类改动。
 
 接着检查暂存区。
 
@@ -50,6 +50,10 @@ git diff --cached --stat
 git diff --cached --check
 git status --short
 ```
+
+![检查空白错误并查看 README.md 与 login.txt 的完整差异](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图三.png)
+
+图三 `git diff --check` 没有输出错误，随后用完整 diff 对照 README.md 与 login.txt 的具体变化。
 
 理想结果是，暂存区只包含当前提交需要的文件，其他改动仍显示为未暂存。这里保留工作区的无关修改很正常，也比为了提交方便而顺手格式化整份文件更容易回看。
 
@@ -65,6 +69,10 @@ git -c user.name='Review Demo' `
 git show --stat --oneline --decorate HEAD
 git status --short
 ```
+
+![交互式暂存、提交和提交后范围复核](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图四.png)
+
+图四 只暂存 login.txt 的 hunk，提交后用 `git show` 和最终状态检查确认 README.md 仍留在工作区。
 
 `git show` 用来核对刚刚写入的提交，最后的 `git status --short` 用来确认无关修改还留在工作区。提交后发现范围不对，先停下来检查，不要用新的大提交把问题盖住。
 
@@ -90,9 +98,9 @@ PR 描述不需要写成项目周报。把审查者真正需要的信息放在�
 - 未覆盖真实网络超时场景。
 ```
 
-![PR 描述中的改动、动机、验证、风险与回滚字段](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图三.png)
+![PR 描述中的改动、动机、验证、风险与回滚字段](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图五.png)
 
-图三 PR 描述把改动范围、动机、验证、风险和待确认项分开写，审查者可以按字段定位问题。
+图五 PR 描述把改动范围、动机、验证、风险和待确认项分开写，审查者可以按字段定位问题。
 
 “如何验证”只写实际执行过的命令和结果。没有运行过的测试放进“待确认”，不要为了让 PR 看起来完整而写成通过。
 
@@ -102,9 +110,9 @@ PR 描述不需要写成项目周报。把审查者真正需要的信息放在�
 
 代码审查时，先进入 PR 的 `Files changed`，再按文件查看 diff。GitHub 的[审查页面](https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request)支持切换 Unified 和 Split 视图，也可以隐藏空白差异。改动较多时，先把格式噪声排除，再看真正的代码变化。
 
-![GitHub Files changed 中的 diff 视图设置](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图四.png)
+![GitHub Files changed 中的 diff 视图设置](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/正文配图/图六.png)
 
-图四 在 `Files changed` 中选择 Unified 或 Split，并按需要隐藏空白差异。
+图六 在 `Files changed` 中选择 Unified 或 Split，并按需要隐藏空白差异。
 
 看完一个文件后勾选 `Viewed`，可以让后续审查者知道哪些范围已经检查过。需要提交意见时，打开 `Review changes`，选择 Comment、Approve 或 Request changes，并在意见中写清文件、代码位置、触发条件和可能后果。
 
