@@ -1,0 +1,4 @@
+interface:
+  display_name: "imageGZH"
+  short_description: "将网页截图整理为适合微信公众号文章的紧凑圆角配图样式"
+  default_prompt: "使用 @imageGZH 处理这张图片：保留内容不变，使用紧凑白色细边框、8-12px圆角和极轻阴影。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WeChat Article Start"
+  short_description: "Initialize WeChat articles with real operation screenshots"
+  default_prompt: "Use $gzhstart to initialize this WeChat article, search only its article directory for screenshots, and prepare a screenshot inbox containing real operation UI screenshots or verified tutorial frames, never generic shared-folder assets or video covers."

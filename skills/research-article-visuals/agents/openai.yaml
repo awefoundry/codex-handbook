@@ -1,0 +1,4 @@
+interface:
+  display_name: "Article Visual Research"
+  short_description: "Find and verify traceable visuals for articles"
+  default_prompt: "Use $research-article-visuals to research and organize traceable visual assets for this article."
