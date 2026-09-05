@@ -1,3 +1,5 @@
+- 2026-09-05：补充待办：Bing Webmaster Tools 中的 `codexguide.io` 需要重新绑定或重新验证所有权；完成后检查验证标签、Sitemap 提交状态、关键页面抓取和 `npm run seo:bing` 结果。验证：已写入 `项目交接文档.md`，未记录 Bing 登录资料、验证文件、验证码或其他凭据。
+
 - 2026-09-05：补充核心仓库链接：教程内容与 Skill 仓库为 `https://github.com/awefoundry/codex-handbook`，网站代码与部署仓库为 `https://github.com/chengyoushu/codexguide`；已写入 `项目交接文档.md`，并明确两者分别对应教程仓库和网站仓库。
 
 - 2026-09-05：补充 Cloudflare 交接信息：正式域名 `codexguide.io` 在 Cloudflare 中管理；后续核对 DNS、域名与 Worker 绑定、证书或生产路由时，以 Cloudflare 中该域名的当前配置为准，再按既有生产发布流程操作。验证：已将截图中的有效域名信息写入 `项目交接文档.md`，未记录账号邮箱、登录资料、API Token 或其他凭据。
