@@ -1,3 +1,5 @@
+- 2026-09-05：补充核心仓库链接：教程内容与 Skill 仓库为 `https://github.com/awefoundry/codex-handbook`，网站代码与部署仓库为 `https://github.com/chengyoushu/codexguide`；已写入 `项目交接文档.md`，并明确两者分别对应教程仓库和网站仓库。
+
 - 2026-09-05：补充 Cloudflare 交接信息：正式域名 `codexguide.io` 在 Cloudflare 中管理；后续核对 DNS、域名与 Worker 绑定、证书或生产路由时，以 Cloudflare 中该域名的当前配置为准，再按既有生产发布流程操作。验证：已将截图中的有效域名信息写入 `项目交接文档.md`，未记录账号邮箱、登录资料、API Token 或其他凭据。
 
 - 2026-09-04：补充公众号状态信息：日常学Python公众号草稿箱中的文章目前均未发布，属于待确认草稿；已写入 `项目交接文档.md`，并注明后续需逐篇核对内容、配图、排版、链接和发布状态。验证：未填写公众号发布操作，发布章节继续保持空白。
