@@ -1,3 +1,5 @@
+- 2026-09-05：根据公众号后台截图补充「日常学Python」未发布草稿清单：`Commit 不只写“改了什么”：一份可复核的 PR 审查方法`（21:35）、`从 Issue 到 Pull Request，一次完整的团队协作闭环`（21:33）、`Merge、Squash、Rebase 怎么选：合并策略与冲突处理`（07:57）。按负责人说明，原文提到 GitHub；三篇均仍是未发布草稿。验证：仅记录截图可见状态和文章标题，未上传截图或记录后台凭据，公众号发布章节继续保持空白。
+
 - 2026-09-05：补充待办：Bing Webmaster Tools 中的 `codexguide.io` 需要重新绑定或重新验证所有权；完成后检查验证标签、Sitemap 提交状态、关键页面抓取和 `npm run seo:bing` 结果。验证：已写入 `项目交接文档.md`，未记录 Bing 登录资料、验证文件、验证码或其他凭据。
 
 - 2026-09-05：补充核心仓库链接：教程内容与 Skill 仓库为 `https://github.com/awefoundry/codex-handbook`，网站代码与部署仓库为 `https://github.com/chengyoushu/codexguide`；已写入 `项目交接文档.md`，并明确两者分别对应教程仓库和网站仓库。
