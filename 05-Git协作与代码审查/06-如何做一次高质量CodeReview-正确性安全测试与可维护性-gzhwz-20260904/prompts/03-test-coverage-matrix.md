@@ -1,0 +1,7 @@
+# 测试覆盖矩阵配图提示词
+
+Create a polished 16:9 explanatory editorial illustration for a Chinese software engineering article about Code Review and test coverage. Make the main subject a simple test coverage matrix with five rows for normal input, boundary value, exception response, insufficient permission, and backward compatibility. Use clear visual states: green check marks for covered cases, yellow question marks for cases needing confirmation, and red warning marks for risky uncovered cases. Beside the matrix, show a small code-diff panel and an arrow leading to a review decision, so the image explains that a changed branch needs matching evidence.
+
+Use a bright white background, deep graphite lines, restrained low-saturation green, red, and yellow accents, and generous whitespace. Keep the matrix large enough to remain legible on a phone. Use only these short labels if text is rendered: “正常输入”, “边界值”, “异常返回”, “权限不足”, “兼容旧行为”, “覆盖”, “待确认”, “风险”. Do not add any other words. If Chinese text cannot be rendered reliably, use numbered rows and unambiguous icons rather than malformed text.
+
+Do not use real GitHub UI, real logos, real URLs, usernames, repository names, file paths, API keys, tokens, QR codes, watermarks, people, or invented percentages. No cyberpunk, neon, purple gradients, decorative orbs, or dense fake interface copy. The result must be a content-specific conceptual diagram, not a generic tech background.
