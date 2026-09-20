@@ -1,10 +1,8 @@
 # 登录 Codex
 
-> 验证环境：Codex CLI 0.146.1
->
-> 最后验证：2026-08-12
+> 官方资料核对：2026-09-18；本仓库本轮未完成 App、CLI 或 IDE 的客户端实测。
 
-安装好 Codex App、CLI 或编辑器扩展后，下一步就是登录。三种入口的操作略有不同，都支持 ChatGPT 账号；本地使用也能改用 API Key。下面按 App、CLI 和 IDE 分别说明。
+安装好 ChatGPT 桌面应用里的 Codex、Codex CLI 或 IDE 扩展后，下一步就是登录。官方认证文档确认三种本地入口都支持 ChatGPT 登录和 API Key 登录；Codex Cloud 要求使用 ChatGPT 登录。下面按 App、CLI 和 IDE 分别说明，按钮和版本差异以当前客户端为准。
 
 ## 先选登录方式
 
@@ -65,67 +63,27 @@ API Key 和 ChatGPT 订阅使用不同的计费与权限体系。API Key 在 Ope
 
 ### 1. 用 ChatGPT 登录
 
-在 PowerShell、Terminal 或 WSL 中进入项目目录，启动 Codex：
+在 PowerShell、Terminal 或 WSL 中进入练习项目目录，启动 Codex：
 
 ```powershell
 codex
 ```
 
-第一次启动时选择 **Continue to sign in**，再在浏览器中完成授权。也可以直接执行：
-
-```text
-codex login
-```
+第一次启动时选择当前界面提供的 ChatGPT 登录方式，再在浏览器中完成授权。官方 CLI Quickstart 的共同步骤是“进入项目目录并运行 `codex`”；本轮不把版本相关的子命令作为首期必做步骤。
 
 ![Codex CLI 启动后的界面](../图片备份/241431.png)
 
 图 4：Codex CLI 启动后的界面。输入提示词前，先确认顶部显示的模型和目录符合预期。
 
-没有图形界面的机器，可以使用设备码登录：
+无图形界面的设备码或其他登录方式是否可用，取决于当前 CLI 版本和账号策略。本轮不把它写成通用必做步骤；需要时先运行 `codex --help`，以当前版本输出为准。
 
-```text
-codex login --device-auth
-```
+### 2. 需要 API Key 时再按当前入口操作
 
-设备码只对当前登录流程有效，不要把它写进脚本或截图。如果命令无法使用，先运行 `codex login --help` 查看当前版本支持的选项。
+官方认证文档确认 API Key 可用于本地 App、CLI 和 IDE，但具体输入入口和命令参数可能随客户端版本变化。首期练习不要求 API Key；如果确实需要按量计费的 API 工作流，请打开当前客户端的登录帮助和[官方认证文档](https://learn.chatgpt.com/docs/auth)，不要直接复制旧教程中的参数。API Key 不要写进命令行历史、提示词、仓库或截图。
 
-### 2. 用 API Key 登录
+### 3. 用只读请求确认当前环境
 
-不要把 Key 直接写进命令行参数或 Shell 历史。先把它放进当前会话的环境变量，再通过标准输入交给 Codex。
-
-PowerShell：
-
-```powershell
-$env:OPENAI_API_KEY | codex login --with-api-key
-```
-
-macOS、Linux 或 WSL：
-
-```bash
-printf '%s' "$OPENAI_API_KEY" | codex login --with-api-key
-```
-
-如果组织提供的是 Access Token，可以使用：
-
-```bash
-printf '%s' "$CODEX_ACCESS_TOKEN" | codex login --with-access-token
-```
-
-其他客户端未必提供相同入口。命令执行后，不要把环境变量值或认证文件提交到 Git。
-
-### 3. 检查登录状态
-
-CLI 可以直接报告当前认证状态：
-
-```text
-codex login status
-```
-
-![Codex CLI 登录状态](../图片备份/81c618dd-3ac8-4d0e-8482-f097d952c466.png)
-
-图 5：`codex login status` 返回 `Logged in using ChatGPT`，表示当前 CLI 已完成 ChatGPT 登录。
-
-如果输出显示已经通过 ChatGPT 或 API Key 登录，再运行一次 `codex`，发送一条只读请求，例如“请读取当前目录的 README，不要修改文件”。能正常读取文件，说明登录、项目路径和基础权限都没有问题。
+登录后，在同一个练习目录运行 `codex`，发送：“请读取当前目录的 README 或任务说明，不要修改文件。”能正常进入会话并读取允许访问的文件，才说明当前登录、项目路径和基础权限至少能支持首期练习。不要把登录截图或认证文件当作唯一成功证据。
 
 ## IDE：登录入口和返回编辑器
 
@@ -149,14 +107,9 @@ VS Code、Cursor 等兼容编辑器会在 Codex 侧栏中显示登录按钮。�
 
 App 和 IDE 都能从账号菜单退出，再用目标账号重新登录。菜单名称和位置可能随版本变化，但不要通过删除配置目录来“强制切换”，否则其他本地设置也可能一起丢失。
 
-CLI 可以使用：
+CLI 的退出与重新登录入口可能随版本变化。需要切换账号时，优先使用当前客户端提供的退出入口；不要删除整个配置目录来“强制切换”。
 
-```text
-codex logout
-codex login
-```
-
-退出后先用 `codex login status` 确认状态，再登录另一个账号。Windows 和 WSL 是两套独立环境，需要分别检查；一边退出不会自动让另一边退出。
+Windows 和 WSL 是两套独立环境，需要分别检查；一边退出不会自动让另一边退出。
 
 ## 凭据存储和安全边界
 
@@ -177,7 +130,7 @@ codex login
 | --- | --- |
 | 点击登录没有浏览器 | 默认浏览器、弹窗拦截、网络和代理 |
 | 浏览器登录成功，客户端仍未登录 | 回到原来的 App/IDE 窗口，重新打开登录面板；必要时重启客户端 |
-| CLI 找不到登录状态 | 在同一套环境中运行 `codex login status`；Windows 和 WSL 的认证状态彼此独立 |
+| CLI 无法进入会话 | 在同一套环境中运行 `codex`，观察当前版本提供的登录提示；Windows 和 WSL 的认证状态彼此独立 |
 | API Key 登录失败 | 环境变量是否存在、Key 是否有效、组织和计费是否允许调用 |
 | Cloud 无法使用 | 确认使用的是 ChatGPT 登录，而不是 API Key；再检查账号、工作区和 MFA 要求 |
 
@@ -187,7 +140,7 @@ codex login
 
 - [ ] 我知道当前入口使用的是 ChatGPT 还是 API Key。
 - [ ] 浏览器授权后，我回到了原来的 App、CLI 或 IDE。
-- [ ] App 或 IDE 不再显示登录按钮，CLI 的 `codex login status` 状态正常。
+- [ ] App 或 IDE 不再显示登录按钮，CLI 能在当前练习目录进入会话并接受只读请求。
 - [ ] 我没有在截图、仓库或终端记录中暴露凭据。
 - [ ] 如果要使用 Cloud，我确认账号使用 ChatGPT 登录并满足工作区要求。
 
@@ -200,7 +153,7 @@ codex login
 ## 参考资料
 
 - [OpenAI Authentication](https://learn.chatgpt.com/docs/auth)
-- [OpenAI Codex CLI](https://developers.openai.com/codex/cli/)
+- [OpenAI Codex CLI](https://learn.chatgpt.com/docs/codex/cli)
 - [第一次使用 Codex 前要准备什么](../00-从这里开始/06-第一次使用前要准备什么.md)
 - [Windows 安装 Codex App](./03-Windows安装Codex-App.md)
 - [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)
