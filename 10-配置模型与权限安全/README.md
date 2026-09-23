@@ -16,4 +16,6 @@
 
 - [Codex 模型怎么选：推理强度 Low、Medium、High 有什么区别](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 与其他编程模型怎么比较：从任务类型和验证条件出发](./02-Codex与其他编程模型比较.md)
+- [Codex config.toml配置指南：最小配置、生效检查与常见问题](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
+- [Codex AGENTS.md教程：项目规则、读取范围与生效检查](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
 - [Codex 沙箱与主机权限：一次权限边界风险复盘](./08-Codex沙箱与主机权限风险.md)
