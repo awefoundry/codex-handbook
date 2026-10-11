@@ -1,0 +1,6 @@
+filename	kind	width	height	article_section	section	purpose	source_url	author	published_at	timestamp	verification	provenance	expiry_risk
+03-01-项目目录与文章工作区.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	证明栏目目录、三篇正文与素材工作区的对应关系		Codex computer-use		2026-08-21	verified-local	Finder 真实界面；已裁掉含本机用户名的侧栏	low
+03-02-入口定位与最小文件集.png	local-screenshot	586	476	配图素材备用区	官方与可核验操作界面	展示基于当前仓库只读命令整理的入口和最小文件集		Codex computer-use		2026-08-21	verified-local	TextEdit 脱敏记录；正文已注明不是 Terminal 或任务执行画面	low
+03-03-manual 配图文件.png	local-screenshot	760	436	配图素材备用区	官方与可核验操作界面	展示已落盘的配图文件，方便继续补拍入口调用关系		Codex computer-use		2026-08-21	verified-local	Finder 真实素材目录；已裁掉含本机用户名的侧栏	low
+03-03-入口调用关系.png	local-screenshot	586	476	配图素材备用区	公开示例代码只读调查	展示 Main.groovy 到 Sum.groovy 的静态入口与符号调用关系	https://github.com/githubtraining/hellogitworld	Codex computer-use		2026-08-21	verified-local	真实 shell 只读结果经 TextEdit 脱敏展示；未执行修改或显示凭据	low
+03-04-最小改动文件集.png	local-screenshot	586	476	配图素材备用区	公开示例代码只读调查	展示建议修改文件与关联测试，并停在应用补丁之前	https://github.com/githubtraining/hellogitworld	Codex computer-use		2026-08-21	verified-local	真实 shell 只读结果经 TextEdit 脱敏展示；未执行修改或显示凭据	low
