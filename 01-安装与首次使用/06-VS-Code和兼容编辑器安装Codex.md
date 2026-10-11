@@ -24,7 +24,6 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 搜索 `Codex`，搜索结果里可能有多个同名扩展。官方扩展的名称是“Codex – OpenAI's coding agent”，发布者是带认证标志的 OpenAI。
 
 ![VS Code 扩展市场中的 Codex](image-7.png)
-<p align="center">图 1｜VS Code 扩展市场中的 Codex</p>
 
 ### 2. 核对扩展详情并安装
 
@@ -33,7 +32,6 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 安装完成后，编辑器右上方和侧栏顶部会出现 Codex 入口，也就是图中箭头指向的位置。
 
 ![Codex 扩展详情页和安装后出现的入口](image-9.png)
-<p align="center">图 2｜Codex 扩展详情页，箭头处是安装后出现的 Codex 入口</p>
 
 ### 3. 打开 Codex 侧栏
 
@@ -44,7 +42,6 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 网络正常时，侧栏会显示登录界面，可以选择“通过 ChatGPT 登录”或“使用 API 密钥”。
 
 ![Codex 登录界面](image-10.png)
-<p align="center">图 3｜Codex 登录界面</p>
 
 点击“通过 ChatGPT 登录”后，浏览器会打开登录页面。完成登录和授权后，回到 VS Code，侧栏会刷新为已登录状态。
 
@@ -57,12 +54,10 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 登录后，侧栏会显示首次使用的说明，按引导点击“下一步”。
 
 ![首次设置引导](image-11.png)
-<p align="center">图 4｜首次设置引导</p>
 
 设置完成后，侧栏会进入对话界面，可以发送第一条消息。
 
 ![设置完成后的对话界面](image-12.png)
-<p align="center">图 5｜设置完成后的对话界面</p>
 
 ---
 
@@ -73,7 +68,6 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 从左上角的“文件”菜单选择“打开文件夹”，打开要处理的项目。Codex 只能看到你打开的项目里的文件。
 
 ![从文件菜单打开项目文件夹](image-13.png)
-<p align="center">图 6｜从“文件”菜单打开项目文件夹</p>
 
 ### 2. 先发一个只读请求
 
@@ -82,7 +76,6 @@ Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完�
 第一次使用时，建议先让 Codex 只读了解项目，或者解释一个函数，并在请求里写明“不要修改文件”。
 
 ![让 Codex 只读了解当前工作区](image-14.png)
-<p align="center">图 7｜让 Codex 只读了解当前工作区</p>
 
 > **建议的第一次任务**：先让 Codex 解释一个函数，或完成一个范围很小的修改。确认修改、检查和撤销流程都正常后，再交给它更大的任务。
 
@@ -97,14 +90,12 @@ Cursor 的操作方式与 VS Code 接近，扩展市场和 Codex 入口的位置
 打开 Cursor 的扩展市场，搜索 `Codex`。和 VS Code 一样，核对发布者 OpenAI 和标识符 `openai.chatgpt` 后点击“安装”。
 
 ![在 Cursor 中搜索并安装 Codex](image-20.png)
-<p align="center">图 8｜在 Cursor 中搜索并安装 Codex</p>
 
 ### 2. 找到 Codex 入口
 
 安装后，Codex 入口可能收在侧栏顶部的下拉菜单里。点击下拉箭头，选择 Codex。
 
 ![从侧栏下拉菜单找到 Codex](image-16.png)
-<p align="center">图 9｜从侧栏下拉菜单找到 Codex</p>
 
 仍然没有看到 Codex 时，先切换到其他面板再切回来；还是没有，就重启 Cursor。
 
@@ -113,12 +104,10 @@ Cursor 的操作方式与 VS Code 接近，扩展市场和 Codex 入口的位置
 第一次打开时，侧栏会先显示权限、可能出错和账户用量的说明，点击“继续”。
 
 ![Cursor 中首次打开 Codex 的说明](image-17.png)
-<p align="center">图 10｜Cursor 中首次打开 Codex 的说明</p>
 
 然后点击“通过 ChatGPT 登录”，按浏览器中的提示完成登录，再回到 Cursor。VS Code 和 Cursor 可以使用同一个 ChatGPT 账号。
 
 ![在 Cursor 中通过 ChatGPT 登录](image-19.png)
-<p align="center">图 11｜在 Cursor 中通过 ChatGPT 登录</p>
 
 ---
 
