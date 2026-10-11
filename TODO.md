@@ -1,4 +1,5 @@
 # TODO
+- 2026-09-04：按 `gzhstart` 初始化《Merge、Squash、Rebase 怎么选：合并策略与冲突处理》：创建文章专属图片备份工作区，核验 Windows 10 Pro build 26100、Codex CLI 0.147.0 与 Git 2.47.0.windows.2，补齐视觉证据矩阵、官方资料与平台覆盖记录、作者终端/测试 PR 截图步骤，并更新文章末尾备用区；当前无合格外部配图，等待作者实拍。验证：`init_gzh_workspace.py --article` 创建工作区，`validate_gzh_workspace.py` 通过，`agent-reach doctor --json` 与 `check-update` 已执行且 Agent Reach v1.5.0 为最新。
 
 - 2026-09-05：完成《从 Issue 到 Pull Request，一次完整的团队协作闭环》提交整理：将正文引用从被忽略的图片备份目录切换到可发布素材目录，纳入 9 张正文图、第二版封面、默认二维码和封面提示词；正文保持 2000–3000 字要求。验证：图片引用全部存在，正文图号连续，git diff --check 通过；未带入原始素材、处理脚本、缓存或其他文章改动。
 
