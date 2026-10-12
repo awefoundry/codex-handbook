@@ -14,5 +14,7 @@
 ## 已上线文章
 
 1. [在 Codex 中连接 Notion：把调研结果写入数据库](./01-Codex连接Notion并写入数据库.md)
-2. [Codex 内容生产工作流](./03-Codex内容生产工作流.md)
-3. [Codex 插件入口：安装、调用与权限边界](./04-Codex插件入口与工作流.md)
+2. [Codex 处理文档、表格、幻灯片和 PDF 的完整工作流](./02-Codex文档交付工作流.md)
+3. [Codex 内容生产工作流](./03-Codex内容生产工作流.md)
+4. [Codex 插件入口：安装、调用与权限边界](./04-Codex插件入口与工作流.md)
+5. [GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程](./04-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)
