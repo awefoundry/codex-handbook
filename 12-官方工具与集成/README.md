@@ -18,6 +18,8 @@
 - [Codex 浏览器操作与登录态功能](./02-Codex浏览器操作与登录态功能.md)
 - [Codex 使用 Computer Use 操作桌面应用](./03-Codex使用Computer-Use操作桌面应用.md)
 - [Codex 连接 Sentry 排查线上错误](./04-Codex连接Sentry排查线上错误.md)
+- [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)
+- [Codex Automations 定时执行任务，创建、检查与运行条件](./06-Codex-Automations定时任务.md)
 - [Codex 移动端远程协作](./07-Codex移动端远程协作.md)
 - [Codex 桌面端任务工作流](./08-Codex桌面端任务工作流.md)
 - [Codex CLI 使用与多入口配置](./09-CodexCLI国内使用与多入口配置.md)

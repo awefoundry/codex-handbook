@@ -19,3 +19,4 @@
 - [用 Codex 批量压缩图片并转换为 WebP](./03-批量图片压缩与格式转换Skill.md)
 - [从零创建 Codex Skill](./04-从零创建Codex-Skill.md)
 - [Codex 用 Record & Replay 生成可复用 Skill](./05-Codex用Record-and-Replay生成可复用Skill.md)
+- [给 Codex 写一个专属 Skill：从重复提示词到可复用工作流](./06-给Codex写一个专属Skill.md)
