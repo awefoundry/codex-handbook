@@ -35,7 +35,7 @@ OpenAI 官方出品的 AI 编程工具，可以理解为终端版 ChatGPT，专�
 
 ** 前提条件：  **
 
-  * 需要 ChatGPT Plus/Pro/Team 会员（免费账号不行）
+  * 需要支持 Codex 的 ChatGPT 套餐（Free、Go 及以上都包含 Codex）
   * 需要科学上网环境
 
 ![Codex CLI 命令行界面 1](图片素材/09-CodexCLI国内使用与多入口配置/01-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-01.jpg)
@@ -50,7 +50,7 @@ OpenAI 官方出品的 AI 编程工具，可以理解为终端版 ChatGPT，专�
 
 ###  1.2 订阅 Plus 会员（必须）
 
-** 因为Codex 只对付费用户开放，免费账号用不了。  ** Plus（  月  ）  、  （  200/月）、Team，任意一种都行。
+** Codex 现在 Free、Go、Plus、Pro、Team 等套餐都可以使用。  ** 免费用户以实际界面能看到 Codex 入口为准，官方说明：Free 和 Go 包含 Codex（Free 标准速度、Go 每月的量更大），Plus 及更高套餐可选型号和用量更多。
 
 不过ChatGPT 要绑海外卡支付，国内的visa不行，对国内用户不友好，网上可能也有一些方法，如果想省事的话找代充平台。
 
@@ -253,7 +253,7 @@ Codex CLI 支持两种授权方式：
 
 
     model_provider = "custom"
-    model = "gpt-5-codex"  # 改成你的服务商支持的模型
+    model = "gpt-6.1-sol"  # 改成你的服务商支持的模型
     model_reasoning_effort = "high"
     disable_response_storage = true
     preferred_auth_method = "apikey"
@@ -296,7 +296,7 @@ Codex CLI 支持两种授权方式：
 
 > “
 >
-> ** 注意：  ** 第三方 API 需要支持 Codex 相关模型（比如  ` gpt-5-codex  `
+> ** 注意：  ** 第三方 API 需要支持 Codex 相关模型（比如  ` gpt-6.1-sol  `
 > ）才能正常使用。配置前先确认服务商是否提供对应模型。
 
 ###  ** 2.4  ** ** CLI  ** ** 常用命令  **
@@ -360,7 +360,7 @@ Codex CLI 支持两种授权方式：
 ---|---|---
 ` codex --full-auto  ` |  全自动模式，AI 直接执行不需确认  |  批量处理文件、自动化脚本
 ` codex -a on-request  ` |  让模型每次执行命令前都需要你确认  |  重要项目，想逐步确认每个操作
-` codex --model gpt-5-codex  ` |  指定使用的模型  |  临时切换模型不想改配置
+` codex --model gpt-6.1-sol  ` |  指定使用的模型  |  临时切换模型不想改配置
 ` codex --help  ` |  查看所有可用参数  |  忘记某个参数怎么写
 ![Codex CLI 命令行界面 23](图片素材/09-CodexCLI国内使用与多入口配置/23-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-23.jpg)
 

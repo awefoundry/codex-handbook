@@ -16,8 +16,8 @@
 
 全程手机不烫，流量没走几兆，模型调用、代码、终端都在家里那台电脑上，手机只是个遥控器。
 
-这就是 Codex Remote！刚出预览版的时候只支持 Mac 主机，不少人卡在配对这一步；现在正式
-GA，Plus、Pro、Business、Enterprise、Education 这些付费用户都能用了，Windows 主机也补上了。
+这就是 Codex Remote！刚出预览版的时候只支持 Mac 主机，不少人卡在配对这一步；后来正式
+GA，付费套餐陆续开放，Windows 主机也补上了。能不能用取决于套餐和工作区设置，以你账号里的实际入口为准。
 
 一句话概括：手机变遥控器，电脑变成你的随身机房。
 
@@ -41,7 +41,7 @@ GA，Plus、Pro、Business、Enterprise、Education 这些付费用户都能用�
 
 几个硬门槛提前说，免得你扫半天码找不到入口。
 
-首先得是付费 ChatGPT 计划，其次两端 App 都要更到最新版，手机 ChatGPT 加电脑 Codex App，缺一不可。手机上找不到 Codex
+首先得是支持 Codex 的 ChatGPT 计划（Free、Go 及以上都包含 Codex，但远端控制这类能力对套餐有要求，以你账号里的实际入口为准）。其次两端 App 都要更到最新版，手机 ChatGPT 加电脑 Codex App，缺一不可。手机上找不到 Codex
 入口，八成是版本没更。
 
 配对只能从电脑上的 Codex App 发起，CLI 和 IDE 插件里没有这个入口，别在终端里翻了。
