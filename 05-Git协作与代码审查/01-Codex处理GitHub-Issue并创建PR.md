@@ -1,5 +1,7 @@
 # Codex 处理 GitHub Issue 并创建 Pull Request
 
+> 本文在线版：[codexguide.io/guides/codex-github-issue-to-pr](https://codexguide.io/guides/codex-github-issue-to-pr)
+
 > 难度　进阶
 >
 > 类型　GitHub 协作与代码审查

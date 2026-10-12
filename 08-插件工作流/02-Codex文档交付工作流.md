@@ -1,5 +1,7 @@
 # Codex 处理文档、表格、幻灯片和 PDF 的完整工作流
 
+> 本文在线版：[codexguide.io/guides/codex-document-delivery-workflow](https://codexguide.io/guides/codex-document-delivery-workflow)
+
 > 难度 | 进阶
 >
 > 类型 | 插件工作流

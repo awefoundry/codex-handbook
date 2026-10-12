@@ -1,5 +1,7 @@
 # Codex 新手常见误区：哪些做法最容易让任务失控
 
+> 本文在线版：[codexguide.io/guides/codex-xin-shou-chang-jian-wu-qu](https://codexguide.io/guides/codex-xin-shou-chang-jian-wu-qu)
+
 > 难度：基础
 >
 > 类型：使用误区与纠正方法

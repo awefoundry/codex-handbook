@@ -1,5 +1,7 @@
 # Codex 适合哪些人：判断标准、典型场景与学习起点
 
+> 本文在线版：[codexguide.io/guides/codex-shi-he-na-xie-ren](https://codexguide.io/guides/codex-shi-he-na-xie-ren)
+
 > 难度：基础
 >
 > 类型：概念与选择

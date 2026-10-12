@@ -1,5 +1,7 @@
 # Codex 用 Record & Replay 生成可复用 Skill
 
+> 本文在线版：[codexguide.io/guides/codex-record-replay-skill](https://codexguide.io/guides/codex-record-replay-skill)
+
 > 难度：进阶
 >
 > 类型：Skill 创建与复用

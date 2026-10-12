@@ -1,5 +1,7 @@
 # Codex CLI 长任务如何恢复：保存、继续与检查会话
 
+> 本文在线版：[codexguide.io/guides/codex-cli-resume-long-task](https://codexguide.io/guides/codex-cli-resume-long-task)
+
 > 难度：进阶
 >
 > 类型：长任务与会话恢复

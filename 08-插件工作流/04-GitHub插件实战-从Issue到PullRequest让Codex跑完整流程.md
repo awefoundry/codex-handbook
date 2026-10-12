@@ -1,5 +1,7 @@
 # GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程
 
+> 本文在线版：[codexguide.io/guides/codex-github-issue-pr-workflow](https://codexguide.io/guides/codex-github-issue-pr-workflow)
+
 之前，我拿一个积压了很久的小 Issue 做了个实验，不打开编辑器，全程只在 GitHub 的 Issue 和 PR 评论区里 @codex
 给它派活，看它能把这条 Issue 推进到什么程度。
 

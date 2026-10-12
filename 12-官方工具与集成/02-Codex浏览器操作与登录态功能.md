@@ -1,5 +1,7 @@
 # Codex 浏览器操作与登录态功能
 
+> 本文在线版：[codexguide.io/guides/codex-browser-login-state](https://codexguide.io/guides/codex-browser-login-state)
+
 Codex 现在可以通过浏览器扩展、内置浏览器和 Computer Use 操作网页或桌面应用。这几种入口的登录态、操作范围和限制不同，选错入口容易在任务中途卡住。
 
 前几天让 Codex 通过浏览器扩展走一遍开放平台的应用权限发布流程。它先在我开着的标签页里找到之前保留的权限页，直接接管并进入发布流程。

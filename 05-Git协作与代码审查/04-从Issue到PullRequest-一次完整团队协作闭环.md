@@ -355,8 +355,4 @@ PR 上的讨论必须和代码状态保持一致。修复后推送新提交，�
 
 ## 继续实践
 
-如果你准备把这套流程接进自己的项目，可以到 [CodexGuide Git 协作与代码审查专题](https://codexguide.io/advanced?utm_source=wechat&utm_medium=article&utm_campaign=issue-to-pull-request&utm_content=closing-website-01) 继续查看分支隔离、提交组织和 Review 方法。
-
-如果你的情况涉及分支冲突、权限审批、CI 失败或回滚判断，可以扫码添加微信，带上脱敏后的 Issue、`git status`、PR 描述和验证输出一起交流。
-
-![微信二维码](./04-从Issue到PullRequest-发布素材/wechat-qr.png)
+如果你准备把这套流程接进自己的项目，可以到 [CodexGuide Git 协作与代码审查专题](https://codexguide.io/advanced) 继续查看分支隔离、提交组织和 Review 方法。

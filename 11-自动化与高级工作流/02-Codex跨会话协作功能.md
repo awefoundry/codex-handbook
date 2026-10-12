@@ -1,5 +1,7 @@
 # Codex 跨会话协作功能
 
+> 本文在线版：[codexguide.io/guides/codex-cross-session-collaboration](https://codexguide.io/guides/codex-cross-session-collaboration)
+
 Codex 的跨会话协作功能，我已经用了一段时间。它帮我省掉了很多来回搬运信息的时间。
 
 下面是我目前的使用场景。

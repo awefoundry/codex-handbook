@@ -1,5 +1,7 @@
 # 在 Zed 中通过 ACP 使用 Codex CLI
 
+> 本文在线版：[codexguide.io/guides/codex-zed-acp-integration](https://codexguide.io/guides/codex-zed-acp-integration)
+
 > 难度 | 进阶
 >
 > 类型 | 社区生态与项目评测

@@ -1,5 +1,7 @@
 # 用 HIAPI 中文图标 Skill，做一套真正统一的产品图标
 
+> 本文在线版：[codexguide.io/cases/hiapi-zhong-wen-tu-biao-skill](https://codexguide.io/cases/hiapi-zhong-wen-tu-biao-skill)
+
 单独做一枚图标不算难，难的是让一组图标看起来像同一套。主体大小、视角、材质和留白只要有一项没对齐，摆在一起就容易显得散。
 
 这篇文章用 [HIAPI 中文图标 Skill](https://github.com/HiAPIAI/hiapi-icon-skills) 走一遍完整流程：先确定风格和色板，再做 2×2 试稿，接着把同一张参照图交给三个模型，比较它们对图标语义、材质和体积感的处理。文中的提示词可以直接复制，再按你的产品改图标名称和颜色。
@@ -94,7 +96,7 @@ $env:HIAPI_API_KEY = "你的 Key"
 
 这次测试的步骤很简单：先用 2×2 试稿确定图标内容，再把同一张参照图交给三个模型。因为输入条件相同，主体大小、投影和材质上的差别一眼就能看出来。挑选结果时先核对图标含义，确认没有跑题，再比较视觉效果。
 
-如果你也想用这套流程做产品图标，可以先去 [HIAPI](https://www.hiapi.ai/en/register?aff=AR3h) 注册账号，再安装上面的中文图标 Skill。也欢迎添加微信 `257735`，和我进一步交流。
+如果你也想用这套流程做产品图标，可以先去 [HIAPI](https://www.hiapi.ai/en/register?aff=AR3h) 注册账号（推广链接），再安装上面的中文图标 Skill。
 
 HIAPI 中文图标 Skill 开源仓库：[https://github.com/HiAPIAI/hiapi-icon-skills](https://github.com/HiAPIAI/hiapi-icon-skills)
 

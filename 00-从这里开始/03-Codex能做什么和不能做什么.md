@@ -1,5 +1,7 @@
 # Codex 能做什么和不能做什么：能力边界、使用条件与验证方法
 
+> 本文在线版：[codexguide.io/guides/codex-neng-zuo-shen-me](https://codexguide.io/guides/codex-neng-zuo-shen-me)
+
 > 难度：基础
 >
 > 类型：能力边界

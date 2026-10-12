@@ -1,5 +1,7 @@
 # Codex 任务总跑偏？先检查这 5 个设置
 
+> 本文在线版：[codexguide.io/guides/codex-settings-checklist](https://codexguide.io/guides/codex-settings-checklist)
+
 忙了一圈，使用体验还是别扭。
 
 让它改一个小问题，它顺手碰了旁边几个文件。任务正在执行，临时补一句要求，不知道它会立刻改方向，还是等前面的工作结束。回复有时太长，有时又省掉了想看的解释。权限收得太紧，读文件、改代码、跑命令一路都在等确认。

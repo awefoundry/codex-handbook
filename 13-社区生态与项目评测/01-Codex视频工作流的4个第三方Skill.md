@@ -1,5 +1,7 @@
 # Codex 视频工作流，4 个第三方 Skill 的用途、依赖与限制
 
+> 本文在线版：[codexguide.io/guides/codex-video-workflow-skills](https://codexguide.io/guides/codex-video-workflow-skills)
+
 > 难度 | 进阶
 >
 > 类型 | 第三方项目观察

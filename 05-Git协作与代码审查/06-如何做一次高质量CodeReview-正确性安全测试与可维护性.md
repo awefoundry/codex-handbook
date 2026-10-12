@@ -14,7 +14,7 @@ GitHub 的 Review 页面会把 Conversation、Commits、Checks 和 Files changed
 
 图一  GitHub Pull Request 中的 `Files changed` 标签。
 
-如果你想把目标、差异和测试证据放进同一套检查顺序，可以继续看 [CodexGuide 验证流程](https://codexguide.io/codex/validation?utm_source=wechat&utm_medium=article&utm_campaign=code-review-quality&utm_content=contextual-validation-01)，再回到下面逐项审查。
+如果你想把目标、差异和测试证据放进同一套检查顺序，可以继续看 [CodexGuide 验证流程](https://codexguide.io/codex/validation)，再回到下面逐项审查。
 
 ## 推荐顺序
 
@@ -114,8 +114,4 @@ Review 做完以后，至少应该能回答四个问题。改了什么，为什�
 
 ## 继续实践
 
-如果你准备把 Git 协作、代码差异和 Review 规则放进一套日常流程，可以到 [CodexGuide Git 协作与代码审查专题](https://codexguide.io/advanced?utm_source=wechat&utm_medium=article&utm_campaign=code-review-quality&utm_content=closing-website-01) 继续查看相关教程。
-
-如果你在实际 Review 中遇到权限边界、测试缺口或评论难以落地的问题，可以扫码添加微信，带上 PR 目标、变更范围和已经运行的验证结果一起交流。
-
-![微信二维码](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/wechat-qr.png)
+如果你准备把 Git 协作、代码差异和 Review 规则放进一套日常流程，可以到 [CodexGuide Git 协作与代码审查专题](https://codexguide.io/advanced) 继续查看相关教程。

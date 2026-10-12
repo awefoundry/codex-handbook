@@ -1,5 +1,7 @@
 # Codex 桌面端协作设置，从入口到权限与任务纠偏
 
+> 本文在线版：[codexguide.io/guides/codex-desktop-collaboration-settings](https://codexguide.io/guides/codex-desktop-collaboration-settings)
+
 > 难度 | 基础
 >
 > 类型 | 设置与权限

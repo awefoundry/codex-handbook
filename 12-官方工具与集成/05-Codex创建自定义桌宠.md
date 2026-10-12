@@ -1,5 +1,7 @@
 # Codex 创建自定义桌宠，从参考图到动画精灵图
 
+> 本文在线版：[codexguide.io/guides/codex-create-custom-pet](https://codexguide.io/guides/codex-create-custom-pet)
+
 > 难度 | 进阶
 >
 > 类型 | 官方工具与集成

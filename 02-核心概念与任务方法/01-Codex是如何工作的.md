@@ -1,5 +1,7 @@
 # Codex 是如何工作的
 
+> 本文在线版：[codexguide.io/guides/codex-shi-ru-he-gong-zuo](https://codexguide.io/guides/codex-shi-ru-he-gong-zuo)
+
 > 难度　基础
 >
 > 类型　核心概念

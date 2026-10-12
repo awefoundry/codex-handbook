@@ -1,8 +1,6 @@
 # Codex 常用功能清单：把容易漏掉的能力补齐
 
-去阅读**
-
-** 设置星标 学习更多AI出海知识  **
+> 本文在线版：[codexguide.io/guides/codex-changyong-gongneng-qingdan](https://codexguide.io/guides/codex-changyong-gongneng-qingdan)
 
 很多人第一次用 Codex，会把所有事情都扔进同一个任务。
 

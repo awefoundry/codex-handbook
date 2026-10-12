@@ -1,5 +1,7 @@
 # Codex Automations 定时执行任务，创建、检查与运行条件
 
+> 本文在线版：[codexguide.io/guides/codex-automations-scheduled-tasks](https://codexguide.io/guides/codex-automations-scheduled-tasks)
+
 > 难度 | 进阶
 >
 > 类型 | 官方工具与集成

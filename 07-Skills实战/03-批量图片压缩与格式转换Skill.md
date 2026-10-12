@@ -1,5 +1,7 @@
 # 用 Codex 批量压缩图片并转换为 WebP
 
+> 本文在线版：[codexguide.io/guides/codex-batch-image-conversion-skill](https://codexguide.io/guides/codex-batch-image-conversion-skill)
+
 文章配图经常需要限制宽度、转换格式和控制文件大小。`img-convert` Skill 可以让 Codex 按固定规则检查图片，再调用命令行工具批量处理。
 
 本文使用 [dutchbase/img-converter](https://github.com/dutchbase/img-converter) 提供的 `img-convert` Skill，把指定目录中的图片限制在 1200px 宽，转换成质量 85 的 WebP，并写入独立输出目录。

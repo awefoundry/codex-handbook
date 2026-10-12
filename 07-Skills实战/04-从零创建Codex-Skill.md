@@ -1,5 +1,7 @@
 # 从零创建 Codex Skill
 
+> 本文在线版：[codexguide.io/guides/create-codex-skill](https://codexguide.io/guides/create-codex-skill)
+
 > 难度　进阶
 >
 > 类型　Skill 编写与调试

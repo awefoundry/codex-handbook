@@ -1,5 +1,7 @@
 # Codex 如何读懂 Git，status、diff、log 与 blame
 
+> 本文在线版：[codexguide.io/guides/codex-git-status-diff-log-blame](https://codexguide.io/guides/codex-git-status-diff-log-blame)
+
 > 难度 基础
 >
 > 类型 概念与实操

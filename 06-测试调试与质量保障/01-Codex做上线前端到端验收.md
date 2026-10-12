@@ -1,5 +1,7 @@
 # Codex 做上线前端到端验收
 
+> 本文在线版：[codexguide.io/guides/codex-browser-e2e-acceptance](https://codexguide.io/guides/codex-browser-e2e-acceptance)
+
 最近不停在上一些小功能，就需要验收。
 
 验收时有几个麻烦点。它涉及登录态、数据、扣费、历史记录等。只看代码或者只跑单元测试都不够，最后一定要有人在真实环境里过一遍完整流程。

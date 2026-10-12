@@ -1,5 +1,7 @@
 # 给 Codex 写一个专属 Skill：从重复提示词到可复用工作流
 
+> 本文在线版：[codexguide.io/guides/codex-zhuan-shu-skill](https://codexguide.io/guides/codex-zhuan-shu-skill)
+
 
 用 Codex 久了，发现自己攒了一堆万能咒语。
 

@@ -1,5 +1,7 @@
 # Codex 在任务结束时捕捉可复用素材
 
+> 本文在线版：[codexguide.io/guides/codex-capture-reusable-content](https://codexguide.io/guides/codex-capture-reusable-content)
+
 一个任务刚结束时，操作步骤、失败原因和取舍还在当前上下文里。等到几天后再整理，很多细节已经需要重新查。可以给 Codex 增加一条任务结束规则，只在确实出现可复用经验时生成素材候选。
 
 这条规则适合经常用 Codex 做项目维护、工具接入和流程改进的人。它只负责记录线索，不自动发布内容，也不应把私密配置写进素材库。

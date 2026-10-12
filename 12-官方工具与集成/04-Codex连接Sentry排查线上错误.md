@@ -1,5 +1,7 @@
 # Codex 连接 Sentry 排查线上错误
 
+> 本文在线版：[codexguide.io/guides/codex-sentry-error-triage](https://codexguide.io/guides/codex-sentry-error-triage)
+
 > 难度：进阶
 >
 > 类型：官方工具与集成
