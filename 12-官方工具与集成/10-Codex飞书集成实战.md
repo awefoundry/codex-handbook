@@ -1,8 +1,6 @@
 # Codex 接入飞书：从群聊指令到本地任务执行
 
-去阅读**
-
-** 设置星标 学习更多AI出海知识  **
+> 本文在线版：[codexguide.io/guides/codex-feishu-ji-cheng-shi-zhan](https://codexguide.io/guides/codex-feishu-ji-cheng-shi-zhan)
 
 用 Codex 有个一直没解决的别扭，它跑在我电脑的终端里，可我人不总在电脑前。
 
@@ -147,60 +145,4 @@ CPU 照样跑，等你回到座位，终端自动交还给你。
 延伸阅读：
 
   * feishu-codex-bridge 项目仓库：https://github.com/modelzen/feishu-codex-bridge 
-  * Codex CLI 官方文档：https://developers.openai.com/codex/cli 
-
-* * *
-
-最近发现一个好用的 AI 生图工具，分享一下。
-
-
-
-** 想了解更多可以加我  vx: 257735  聊。  **
-
-** [ 出海赚钱案例：一个人做了个开源UI库，不融资不投广告，45天30万美元
-
-**
-
-** [ 出海建站必备：一小时搞定自建邮件，免费！
-
-**
-
-** [ OpenClaw 真香！我让它每天帮我干这些活
-
-**
-
-** [ 出海赚钱案例：一个人用 PHP 做到月入 17 万美金，利润率 99%！
-
-**
-
-** [ （2026年最新）Codex CLI 国内使用全攻略：终端 + VSCode + Cursor + Opencode 四种姿势全搞定
-
-**
-
-** [ 从海外公司注册到 Stripe 收款，跑通了出海收付款全流程（实操分享）
-
-**
-
-** [ 玩转 Claude Code Hooks：让自动化渗透到每个环节
-
-**
-
-预览时标签不可点
-
-阅读
-
-知道了
-
-****
-
-取消  允许
-
-****
-
-取消  允许
-
-****
-
-取消  允许
-
-__
+  * Codex CLI 官方文档：https://developers.openai.com/codex/cli

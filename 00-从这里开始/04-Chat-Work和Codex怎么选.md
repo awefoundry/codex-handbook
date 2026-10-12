@@ -1,5 +1,7 @@
 # Chat、ChatGPT Work 和 Codex 怎么选：按任务与交付物判断
 
+> 本文在线版：[codexguide.io/guides/chat-work-he-codex-zen-me-xuan](https://codexguide.io/guides/chat-work-he-codex-zen-me-xuan)
+
 > 难度：基础
 >
 > 类型：使用入口选择

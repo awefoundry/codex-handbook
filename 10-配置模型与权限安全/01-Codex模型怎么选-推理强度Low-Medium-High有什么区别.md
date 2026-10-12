@@ -1,5 +1,7 @@
 # Codex 模型怎么选？推理强度 Low、Medium、High 有什么区别
 
+> 本文在线版：[codexguide.io/guides/codex-model-reasoning-effort](https://codexguide.io/guides/codex-model-reasoning-effort)
+
 > 测试环境：Windows 11 24H2；Codex Desktop 26.803.10989.0；Codex CLI 0.146.1；2026-08-14 核验。
 
 > 名称提醒。截至核验日期，Codex 桌面端把最低档显示为 **Light**，CLI 显示为 **Low**。本文标题沿用读者更常搜索的 Low，正文会在对应界面中说明名称差异。
@@ -166,5 +168,3 @@ Codex 的子智能体也支持为不同角色指定模型。官方示例会让�
 - [Pat Simmons 的 GPT-5.6 Sol 测试](https://www.youtube.com/watch?v=rdqgMNjvhMY)，Pat Simmons，2026-07-10
 
 想继续系统学习 Codex，可以访问 [CodexGuide 教程网站](https://codexguide.io)。
-
-使用 Codex 时遇到问题，可以添加微信 `257735`，备注“模型选择”。

@@ -1,5 +1,7 @@
 # Codex 任务收尾系统，用 Markdown 保存状态、决策与可复用流程
 
+> 本文在线版：[codexguide.io/guides/codex-task-closeout-memory-system](https://codexguide.io/guides/codex-task-closeout-memory-system)
+
 > 难度 | 进阶
 >
 > 类型 | 知识管理与任务交接

@@ -1,5 +1,7 @@
 # Codex 内容生产工作流
 
+> 本文在线版：[codexguide.io/guides/codex-content-production-workflow](https://codexguide.io/guides/codex-content-production-workflow)
+
 Codex 可以把内容生产拆成一组可检查的任务。调研留下来源，写作读取事实表，配图说明用途，发布后的数据再回到下一轮选题。这样做适合需要持续更新教程、博客或社交内容的人，也适合多人协作的内容团队。
 
 这套方法不要求一次装齐所有插件。先选出当前最耗时间的两三个环节，用一个真实选题跑通，再决定要不要增加工具。

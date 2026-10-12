@@ -1,5 +1,7 @@
 # Codex 远程控制另一台 Mac
 
+> 本文在线版：[codexguide.io/guides/codex-remote-control-mac](https://codexguide.io/guides/codex-remote-control-mac)
+
 场景很具体。你有一台 MacBook Air，还有一台始终插电的 Mac mini。之前要远程进去操作 Codex ，现在不需要了，你可以直接在主机操作远程 Mac 的 Codex。
 
 如果项目在公司的 devbox 或其他 Linux 主机上，则使用 SSH 连接。

@@ -1,5 +1,7 @@
 # Codex 使用 Subagents 并行处理任务
 
+> 本文在线版：[codexguide.io/guides/codex-subagents-parallel-work](https://codexguide.io/guides/codex-subagents-parallel-work)
+
 > 难度：进阶
 >
 > 类型：多 Agent 协作

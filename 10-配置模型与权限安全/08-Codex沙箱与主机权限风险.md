@@ -1,8 +1,6 @@
 # Codex 沙箱与主机权限：一次权限边界风险复盘
 
-去阅读**
-
-** 设置星标 学习更多AI出海知识  **
+> 本文在线版：[codexguide.io/guides/codex-sha-xiang-yu-zhu-ji-quan-feng-xian](https://codexguide.io/guides/codex-sha-xiang-yu-zhu-ji-quan-feng-xian)
 
 用 Codex、Cursor、Gemini CLI 这些 AI 编程工具的人，心里多少都揣着一个默认的安心，反正它有沙箱。
 
@@ -154,59 +152,3 @@ diff 时用 git -c diff.external= diff 强制禁掉外部 diff 工具，直接�
 > to-rce
 >
 > Codex CLI 官方文档：https://developers.openai.com/codex/cli
-
-* * *
-
-最近发现一个好用的 AI 生图工具，分享一下。
-
-
-
-** 想了解更多可以加我  vx: 257735  聊。  **
-
-** [ 出海赚钱案例：一个人做了个开源UI库，不融资不投广告，45天30万美元
-
-**
-
-** [ 出海建站必备：一小时搞定自建邮件，免费！
-
-**
-
-** [ OpenClaw 真香！我让它每天帮我干这些活
-
-**
-
-** [ 出海赚钱案例：一个人用 PHP 做到月入 17 万美金，利润率 99%！
-
-**
-
-** [ （2026年最新）Codex CLI 国内使用全攻略：终端 + VSCode + Cursor + Opencode 四种姿势全搞定
-
-**
-
-** [ 从海外公司注册到 Stripe 收款，跑通了出海收付款全流程（实操分享）
-
-**
-
-** [ 玩转 Claude Code Hooks：让自动化渗透到每个环节
-
-**
-
-预览时标签不可点
-
-阅读
-
-知道了
-
-****
-
-取消  允许
-
-****
-
-取消  允许
-
-****
-
-取消  允许
-
-__

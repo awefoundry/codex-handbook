@@ -1,5 +1,7 @@
 # Codex 使用 Archify 生成可验证的代码架构图
 
+> 本文在线版：[codexguide.io/guides/codex-archify-architecture-diagrams](https://codexguide.io/guides/codex-archify-architecture-diagrams)
+
 > 难度 | 进阶
 >
 > 类型 | 社区生态与项目评测

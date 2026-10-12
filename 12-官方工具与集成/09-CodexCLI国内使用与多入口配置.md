@@ -1,6 +1,8 @@
 
 # Codex CLI 使用与多入口配置：终端、编辑器和网络排查
 
+> 本文在线版：[codexguide.io/guides/codex-cli-multi-entry-setup](https://codexguide.io/guides/codex-cli-multi-entry-setup)
+
 
 
 
@@ -230,7 +232,7 @@ Codex CLI 支持两种授权方式：
 ####  方式二：使用第三方 API（适合有 API key 的用户）
 
 如果你有支持 Codex 模型的第三方 API 服务，可以通过配置文件使用，不需要 ChatGPT Plus 账号，比如 aigocode.com
-这个中转服务站。
+这个中转服务站（推广信息）。
 
 ** 第一步：创建配置目录  **
 

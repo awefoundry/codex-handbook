@@ -1,5 +1,7 @@
 # Codex CLI 管理多条任务线：命名、切换与 fork
 
+> 本文在线版：[codexguide.io/guides/codex-cli-manage-multiple-sessions](https://codexguide.io/guides/codex-cli-manage-multiple-sessions)
+
 > 难度：进阶
 >
 > 类型：CLI 会话管理

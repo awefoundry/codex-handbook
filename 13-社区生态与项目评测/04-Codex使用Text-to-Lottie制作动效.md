@@ -1,5 +1,7 @@
 # Codex 使用 Text-to-Lottie 制作界面动效
 
+> 本文在线版：[codexguide.io/guides/codex-text-to-lottie-animation](https://codexguide.io/guides/codex-text-to-lottie-animation)
+
 > 难度 | 进阶
 >
 > 类型 | 社区生态与项目评测

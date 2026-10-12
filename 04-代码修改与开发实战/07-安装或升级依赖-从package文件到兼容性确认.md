@@ -1,5 +1,7 @@
 # Codex 升级依赖：从 package 文件到兼容性确认
 
+> 本文在线版：[codexguide.io/guides/codex-sheng-ji-yi-lai-package-jian-rong-xing](https://codexguide.io/guides/codex-sheng-ji-yi-lai-package-jian-rong-xing)
+
 > 测试环境：Windows 11 24H2（Build 26100）；PowerShell 7.6.4；Codex CLI 0.147.0；Node.js 22.22.3；npm 10.9.8；Git 2.47.0；2026-09-03 核验。
 
 依赖升级的命令通常只有一行，影响却会落到导入路径、运行时版本、锁文件和下游调用方。把 `date-fns` 从 v2 升到 v3，当作一次小型变更来处理，能更早发现问题，也更容易回滚。

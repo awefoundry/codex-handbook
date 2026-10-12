@@ -1,5 +1,7 @@
 # Codex 插件安全检查：用 HOL Guard 评估第三方工具风险
 
+> 本文在线版：[codexguide.io/guides/codex-plugin-security-hol-guard](https://codexguide.io/guides/codex-plugin-security-hol-guard)
+
 
 现在装一个 AI 编程插件有多容易？一行命令的事。
 

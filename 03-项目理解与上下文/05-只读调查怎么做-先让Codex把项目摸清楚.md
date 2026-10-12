@@ -1,5 +1,7 @@
 # Codex 只读调查：先把项目摸清楚再改代码
 
+> 本文在线版：[codexguide.io/guides/codex-zhi-du-diao-cha-xian-ba-xiang-mu-mo-qing-chu-zai-gai-dai-ma](https://codexguide.io/guides/codex-zhi-du-diao-cha-xian-ba-xiang-mu-mo-qing-chu-zai-gai-dai-ma)
+
 > 配图采集环境：macOS 15.7.5（Build 24G624）；Codex/ChatGPT App 26.721.41059；2026-08-21 核验。Codex 实操部分在 Windows 环境完成，正文会单独说明。
 
 ## 先摸清项目，再决定改不改

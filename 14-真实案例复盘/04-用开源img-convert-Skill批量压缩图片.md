@@ -1,5 +1,7 @@
 # 用开源 img-convert Skill 批量压缩图片
 
+> 本文在线版：[codexguide.io/cases/img-convert-pi-liang-ya-suo-tu-pian](https://codexguide.io/cases/img-convert-pi-liang-ya-suo-tu-pian)
+
 整理文章配图时，我经常重复做几件事。限制图片宽度，转成 WebP，控制文件大小，最后确认原图没有被覆盖。这个流程已经有人做成了开源工具和 Skill，没必要从零写一套。
 
 这篇实战使用 [dutchbase/img-converter](https://github.com/dutchbase/img-converter) 提供的 `img-convert` Skill。目标是把指定文件夹中的图片统一限制在 1200px 宽，转成质量 85 的 WebP，并把结果放进新目录。

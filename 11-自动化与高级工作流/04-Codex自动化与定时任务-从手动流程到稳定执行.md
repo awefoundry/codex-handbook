@@ -1,5 +1,7 @@
 # Codex 自动化与定时任务：从手动流程到 CI 执行
 
+> 本文在线版：[codexguide.io/guides/codex-automation-ci-scheduled-tasks](https://codexguide.io/guides/codex-automation-ci-scheduled-tasks)
+
 
 用 Codex 的人，绝大多数都是这么用的：打开终端，输  ` codex  `
 ，进到那个交互界面，然后跟它一来一回地聊，你说要求，它改代码，看一眼再说下一句。

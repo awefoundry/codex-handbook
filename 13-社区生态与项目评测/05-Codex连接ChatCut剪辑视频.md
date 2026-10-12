@@ -1,5 +1,7 @@
 # Codex 连接 ChatCut 完成视频粗剪、字幕与导出
 
+> 本文在线版：[codexguide.io/guides/codex-chatcut-video-editing](https://codexguide.io/guides/codex-chatcut-video-editing)
+
 > 难度 | 进阶
 >
 > 类型 | 社区生态与项目评测

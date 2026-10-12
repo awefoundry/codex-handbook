@@ -1,5 +1,7 @@
 # Codex 是什么：能力、工作方式与使用边界
 
+> 本文在线版：[codexguide.io/guides/codex-shi-shen-me](https://codexguide.io/guides/codex-shi-shen-me)
+
 > 难度：基础
 >
 > 类型：概念与入门

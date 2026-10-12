@@ -1,5 +1,7 @@
 # Codex 使用 Goal 模式运行长任务
 
+> 本文在线版：[codexguide.io/guides/codex-goal-mode-long-running-work](https://codexguide.io/guides/codex-goal-mode-long-running-work)
+
 > 难度：进阶
 >
 > 类型：长任务与持续执行

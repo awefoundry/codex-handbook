@@ -1,5 +1,7 @@
 # Codex 协助客座文章外链实验
 
+> 本文在线版：[codexguide.io/cases/codex-guest-post-case](https://codexguide.io/cases/codex-guest-post-case)
+
 这篇记录一次由 Codex 协助完成的客座文章外链实验，重点是它怎样整理筛选条件、检查提交字段和复核发布结果。
 
 之前我对客座文章这种外链方式只停留在概念上，知道它大概是找一个相关网站，发布一篇带链接的文章，用来给目标页面增加相关性和权重。

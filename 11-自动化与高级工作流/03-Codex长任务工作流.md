@@ -1,5 +1,7 @@
 # Codex 长任务工作流，分开讨论、执行、审查与交接
 
+> 本文在线版：[codexguide.io/guides/codex-long-task-collaboration-workflow](https://codexguide.io/guides/codex-long-task-collaboration-workflow)
+
 > 难度 | 进阶
 >
 > 类型 | 长任务与多 Agent 协作

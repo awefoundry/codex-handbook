@@ -1,5 +1,7 @@
 # 用Codex修复Bug并补回归测试：从复现到最小补丁
 
+> 本文在线版：[codexguide.io/guides/codex-xiu-fu-ke-fu-xian-bug](https://codexguide.io/guides/codex-xiu-fu-ke-fu-xian-bug)
+
 这是一篇完成基础课程后的选学教程。你会在一个独立的 JavaScript 练习副本中，复现订单缺少金额字段时出现的 `NaN`，先用测试固定正确期望，再让 Codex 做最小修改，最后检查差异，并确认新测试确实能抓住旧错误。
 
 本练习只约定四件事：输入 `12.5` 显示 `¥12.50`，输入 `0` 显示 `¥0.00`，订单没有 `amount` 或格式化函数收到 `undefined` 时显示 `--`，订单顺序和接口结构保持不变。`null`、空字符串、非数字文本、币种转换和精度策略不在本次范围内。

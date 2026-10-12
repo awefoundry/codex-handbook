@@ -1,5 +1,7 @@
 # Codex App、CLI、IDE 和 Cloud 怎么选：按工作环境与任务方式判断
 
+> 本文在线版：[codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan](https://codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan)
+
 > 难度：基础
 >
 > 类型：使用入口选择

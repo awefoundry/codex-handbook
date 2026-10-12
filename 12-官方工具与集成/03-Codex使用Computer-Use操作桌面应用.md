@@ -1,5 +1,7 @@
 # Codex 使用 Computer Use 操作桌面应用
 
+> 本文在线版：[codexguide.io/guides/codex-computer-use-desktop-apps](https://codexguide.io/guides/codex-computer-use-desktop-apps)
+
 > 难度：进阶
 >
 > 类型：官方工具与集成

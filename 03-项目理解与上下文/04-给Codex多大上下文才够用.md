@@ -1,5 +1,7 @@
 # 给 Codex 喂上下文，喂多少才算够？我用三组实验测出来了
 
+> 本文在线版：[codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao](https://codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao)
+
 > 配图采集环境：macOS 15.7.5（Build 24G624）；Codex/ChatGPT App 26.721.41059；2026-08-21 核验。Codex 三组实验在 Windows 环境完成，正文会单独说明。
 
 ## 上下文给多少，决定它先做什么

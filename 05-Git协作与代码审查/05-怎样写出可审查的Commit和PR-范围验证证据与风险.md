@@ -147,11 +147,7 @@ PR 描述不需要写成周报。下面这五个字段足以让审查者知道�
 
 这份清单只能减少遗漏，不能替代对 diff 的正确性、安全性和维护成本判断。
 
-把完整验收方法放进实际开发任务时，可以继续看[《修改后如何验证：从 diff 到回归检查》](https://codexguide.io/codex/validation?utm_source=wechat&utm_medium=article&utm_campaign=reviewable-commit-pr&utm_content=closing-website-01)，按改动范围、测试结果和最终状态逐项核对。
-
-如果你对提交范围、PR 描述或审查证据有具体问题，可以扫码添加微信，带上脱敏后的命令输出或 PR 文本一起交流。
-
-![微信二维码](./05-怎样写出可审查的Commit和PR-范围验证证据与风险-发布素材/wechat-qr.png)
+把完整验收方法放进实际开发任务时，可以继续看[《修改后如何验证：从 diff 到回归检查》](https://codexguide.io/codex/validation)，按改动范围、测试结果和最终状态逐项核对。
 
 ## 参考资料
 
