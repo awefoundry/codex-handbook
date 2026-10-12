@@ -60,7 +60,7 @@ crontab 定时任务里，让 AI 变成一个能被自动化调度的东西。
 ** 指定模型和思考强度。  ** 自动化任务往往不需要顶配模型，用  ` -m  ` 挑一个够用的就行，思考强度用配置覆盖参数  ` -c  `
 来调，比如让它别想太久、快点出结果：
 
-    codex exec -m gpt-5.1-codex \  
+    codex exec -m gpt-6-luna \
       -c model_reasoning_effort="low" \  
     "把这个文件里的 print 全换成 logging"  
     

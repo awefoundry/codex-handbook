@@ -9,17 +9,16 @@
 
 
 
-Sam Altman 昨天在 X 上宣布 Codex 桌面版正式上线 Mac
-平台。也是立马试用了一下，可视化界面操作起来确实方便，多个线程可以独立工作互不影响，Skill 管理也比较直观，还新增了定时任务功能。
+Codex 桌面版最早只上线 Mac 平台（2026 年 8 月），那批截图就是当时录的。可视化界面用起来确实方便，多个线程可以独立工作互不影响，Skill 管理也比较直观，还新增了定时任务功能。
 
 ![Codex 桌面端任务界面 1](图片素材/08-Codex桌面端任务工作流/01-Codex桌面版来了比我想象中要好得多-01.jpg)
 
-下载地址：  ** openai.com/codex  ** 官方说后续会支持 Windows，目前只有 Mac 版本。
+下载地址：  ** openai.com/codex  ** Windows 版本后来也已经上线；如果你在 Windows 上，直接装当前版本即可。
 
-限时福利：Free 和 Go 用户也能用，付费用户 rate limit 翻倍。
+当时是限时福利：Free 和 Go 用户也能用。这项福利后来变成了长期政策，Free 和 Go 套餐现在默认包含 Codex。
 
-官方博客提到"For a limited time we're including Codex with ChatGPT Free and
-Go"，不确定这个限时会持续多久，想试的可以抓紧。
+官方博客当时写的是“For a limited time we're including Codex with ChatGPT Free and
+Go”。现在已经不需要赶这个窗口期，Free 和 Go 都能直接使用 Codex。
 
 ![Codex 桌面端任务界面 2](图片素材/08-Codex桌面端任务工作流/02-Codex桌面版来了比我想象中要好得多-02.jpg)
 
