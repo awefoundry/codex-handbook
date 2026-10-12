@@ -106,5 +106,5 @@ privacy_review: pending
 
 ## 参考资料
 
-- [Codex 的 AGENTS.md 说明](https://developers.openai.com/codex/guides/agents-md)
-- [Codex 官方文档](https://developers.openai.com/codex/)
+- [Codex 的 AGENTS.md 说明](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+- [Codex 官方文档](https://learn.chatgpt.com/docs)

@@ -226,7 +226,7 @@ Codex 可以帮助准备变更、执行检查和整理风险，但不能替团�
 
 ## 参考资料
 
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 - [OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)

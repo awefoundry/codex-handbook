@@ -234,7 +234,7 @@ node --test sensitivity-check/test/formatAmount.test.mjs
 
 ## 参考资料
 
-- [OpenAI Codex Best Practices](https://developers.openai.com/codex/learn/best-practices/)
+- [OpenAI Codex Best Practices](https://learn.chatgpt.com/guides/best-practices)
 - [Node.js `node:test` 文档](https://nodejs.org/api/test.html)
 - [Node.js `node:assert` 文档](https://nodejs.org/api/assert.html)
 

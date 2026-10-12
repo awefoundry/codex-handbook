@@ -145,4 +145,4 @@ CPU 照样跑，等你回到座位，终端自动交还给你。
 延伸阅读：
 
   * feishu-codex-bridge 项目仓库：https://github.com/modelzen/feishu-codex-bridge 
-  * Codex CLI 官方文档：https://developers.openai.com/codex/cli
+  * Codex CLI 官方文档：https://learn.chatgpt.com/docs/codex/cli

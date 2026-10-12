@@ -74,6 +74,6 @@ PDF 验收要覆盖页数、目录、字体嵌入、链接、表格分页和图�
 
 ## 参考资料
 
-- [Codex Skills](https://developers.openai.com/codex/skills)
-- [Codex Plugins](https://developers.openai.com/codex/plugins)
-- [Generate slide decks](https://developers.openai.com/codex/use-cases/generate-slide-decks)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)
+- [Codex Plugins](https://learn.chatgpt.com/docs/plugins)
+- [Generate slide decks](https://learn.chatgpt.com/use-cases/generate-slide-decks)

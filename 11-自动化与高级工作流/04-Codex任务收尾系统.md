@@ -117,6 +117,6 @@ Codex/
 ## 参考资料
 
 - [Andrej Karpathy 的 LLM Wiki 原始构想](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-- [Codex AGENTS.md](https://developers.openai.com/codex/guides/agents-md)
-- [Codex Memories](https://developers.openai.com/codex/memories)
+- [Codex AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+- [Codex Memories](https://learn.chatgpt.com/docs/customization/memories?surface=app)
 - [Obsidian Create a vault](https://help.obsidian.md/vault)

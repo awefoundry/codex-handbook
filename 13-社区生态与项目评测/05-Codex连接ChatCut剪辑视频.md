@@ -85,5 +85,5 @@ ChatCut 是第三方视频编辑服务。通过它提供的插件和 MCP 工具�
 
 - [ChatCut 插件仓库](https://github.com/ChatCut-Inc/agent-plugin)
 - [ChatCut 官网](https://chatcut.io/)
-- [Codex Plugins](https://developers.openai.com/codex/plugins)
-- [Codex MCP](https://developers.openai.com/codex/mcp)
+- [Codex Plugins](https://learn.chatgpt.com/docs/plugins)
+- [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)

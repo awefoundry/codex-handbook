@@ -44,6 +44,6 @@ macOS 可以在你处理其他事情时运行部分后台任务，具体取决�
 
 ## 参考资料
 
-- [Computer Use](https://developers.openai.com/codex/computer-use)
-- [Computer Use 设置](https://developers.openai.com/codex/app/computer-use)
-- [Use your computer with ChatGPT](https://developers.openai.com/codex/use-cases/use-your-computer-with-codex)
+- [Computer Use](https://learn.chatgpt.com/docs/computer-use)
+- [Computer Use 设置](https://learn.chatgpt.com/docs/computer-use)
+- [Use your computer with ChatGPT](https://learn.chatgpt.com/use-cases/use-your-computer-with-codex)

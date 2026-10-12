@@ -1,5 +1,5 @@
 
-# Codex 桌面端任务工作流：项目切换、并行任务与本地协作
+# Codex 桌面端任务工作流
 
 > 本文在线版：[codexguide.io/guides/codex-desktop-task-workflow](https://codexguide.io/guides/codex-desktop-task-workflow)
 

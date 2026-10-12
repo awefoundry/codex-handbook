@@ -1,4 +1,4 @@
-# Codex 用 Record & Replay 生成可复用 Skill
+# Codex Record & Replay：生成可复用 Skill
 
 > 本文在线版：[codexguide.io/guides/codex-record-replay-skill](https://codexguide.io/guides/codex-record-replay-skill)
 
@@ -52,6 +52,6 @@ Record & Replay 适合个人快速得到一个可用草稿。需要多人安装�
 
 ## 参考资料
 
-- [Record & Replay](https://developers.openai.com/codex/record-and-replay)
-- [Agent Skills](https://developers.openai.com/codex/skills)
-- [Build plugins](https://developers.openai.com/codex/build-plugins)
+- [Record & Replay](https://learn.chatgpt.com/docs/extend/record-and-replay)
+- [Agent Skills](https://learn.chatgpt.com/docs/build-skills)
+- [Build plugins](https://learn.chatgpt.com/docs/build-plugins)

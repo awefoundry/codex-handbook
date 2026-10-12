@@ -29,7 +29,7 @@ PS C:\Users\你的用户名>
 irm https://chatgpt.com/codex/install.ps1 | iex
 ```
 
-这条命令会下载并执行官方安装脚本。如果是公司电脑，或你对远程脚本比较敏感，请先打开[官方文档](https://developers.openai.com/codex/cli/)查看安装说明，再决定是否执行。
+这条命令会下载并执行官方安装脚本。如果是公司电脑，或你对远程脚本比较敏感，请先打开[官方文档](https://learn.chatgpt.com/docs/codex/cli)查看安装说明，再决定是否执行。
 
 也可以使用 npm 安装。电脑需要先安装 [Node.js LTS](https://nodejs.org/)，安装后重新打开终端：
 
@@ -94,7 +94,7 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 sudo apt update && sudo apt install curl
 ```
 
-这条命令会下载并执行官方安装脚本。如果你对远程脚本比较敏感，请先查看[官方文档](https://developers.openai.com/codex/cli/)中的安装说明。
+这条命令会下载并执行官方安装脚本。如果你对远程脚本比较敏感，请先查看[官方文档](https://learn.chatgpt.com/docs/codex/cli)中的安装说明。
 
 如果已经在 WSL 中安装 Node.js，也可以改用 npm：
 
@@ -207,7 +207,7 @@ $env:HTTPS_PROXY = $proxyUrl
 ```powershell
 Get-ChildItem Env:HTTP_PROXY,Env:HTTPS_PROXY
 codex --version
-curl.exe -I https://developers.openai.com/codex/cli/
+curl.exe -I https://learn.chatgpt.com/docs/codex/cli
 ```
 
 `curl.exe` 能收到 HTTP 响应后，再运行 `codex login status` 或 `codex` 检查 CLI。关闭这个 PowerShell 窗口后，上面的临时设置会消失。
@@ -251,7 +251,7 @@ export HTTPS_PROXY="$proxy_url"
 ```bash
 printf 'HTTP_PROXY=%s\nHTTPS_PROXY=%s\n' "$HTTP_PROXY" "$HTTPS_PROXY"
 codex --version
-curl -I https://developers.openai.com/codex/cli/
+curl -I https://learn.chatgpt.com/docs/codex/cli
 ```
 
 WSL 2 默认网络模式下，WSL 中的 `127.0.0.1` 通常指向 WSL 自己，不一定能访问只监听在 Windows 本机的代理端口。可以先查看 Windows 主机在当前 WSL 网络中的地址：
@@ -272,5 +272,5 @@ unset HTTP_PROXY HTTPS_PROXY
 
 ## 参考资料
 
-- [OpenAI Codex CLI 官方文档](https://developers.openai.com/codex/cli/)
+- [OpenAI Codex CLI 官方文档](https://learn.chatgpt.com/docs/codex/cli)
 - [Microsoft WSL 安装指南](https://learn.microsoft.com/windows/wsl/install)

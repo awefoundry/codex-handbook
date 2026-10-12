@@ -157,7 +157,7 @@ Get-ChildItem "$HOME\.codex" -Force -ErrorAction SilentlyContinue
 2. 运行 `Get-Command codex -All`，确认实际执行的路径。
 3. 对 npm 安装运行 `npm prefix --global`，检查全局目录是否在 PATH 中。
 4. 对官方安装脚本安装，重新执行安装脚本，并检查网络、代理和执行策略错误。
-5. 仍无法判断时，保留完整错误文字、版本号、操作系统和安装路径，再查阅[官方 CLI 文档](https://developers.openai.com/codex/cli/)。
+5. 仍无法判断时，保留完整错误文字、版本号、操作系统和安装路径，再查阅[官方 CLI 文档](https://learn.chatgpt.com/docs/codex/cli)。
 
 ## 完成后检查
 
@@ -168,6 +168,6 @@ Get-ChildItem "$HOME\.codex" -Force -ErrorAction SilentlyContinue
 
 ## 参考资料
 
-- [Codex CLI 命令参考](https://developers.openai.com/codex/cli/reference)
-- [Codex IDE extension](https://developers.openai.com/codex/ide)
-- [Codex Changelog](https://developers.openai.com/codex/changelog)
+- [Codex CLI 命令参考](https://learn.chatgpt.com/docs/developer-commands?surface=cli)
+- [Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)
+- [Codex Changelog](https://learn.chatgpt.com/docs/changelog)

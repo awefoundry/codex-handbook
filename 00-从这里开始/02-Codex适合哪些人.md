@@ -119,7 +119,7 @@ OpenAI Quickstart 当前把研究、分析以及文档、演示文稿、电子�
 ## 参考资料
 
 - [OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
 

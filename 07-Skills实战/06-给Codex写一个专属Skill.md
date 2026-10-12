@@ -165,7 +165,7 @@ PR、跑固定的检查流程——一个个都教给 Codex。写第一个的时
 
 延伸阅读：
 
-•  Codex Skills 官方文档：https://developers.openai.com/codex/skills
+•  Codex Skills 官方文档：https://learn.chatgpt.com/docs/build-skills
 
 •  开放 Agent Skills 标准：https://agentskills.io
 

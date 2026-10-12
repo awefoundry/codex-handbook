@@ -1,4 +1,4 @@
-# 给 Codex 喂上下文，喂多少才算够？我用三组实验测出来了
+# 给 Codex 多大上下文才够用：三组实验的结果
 
 > 本文在线版：[codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao](https://codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao)
 

@@ -97,9 +97,9 @@ Skills 用来保存可复用的工作流程，不负责修复含糊的任务边�
 
 ## 参考资料
 
-- [Codex Quickstart](https://developers.openai.com/codex/quickstart)
-- [Codex app settings](https://developers.openai.com/codex/app/settings)
-- [Codex permissions](https://developers.openai.com/codex/permissions)
-- [Codex Memories](https://developers.openai.com/codex/memories)
+- [Codex Quickstart](https://learn.chatgpt.com/docs/quickstart)
+- [Codex app settings](https://learn.chatgpt.com/docs/reference/settings)
+- [Codex permissions](https://learn.chatgpt.com/docs/permissions)
+- [Codex Memories](https://learn.chatgpt.com/docs/customization/memories?surface=app)
 - [Prompting 中的 Steering 与 Queue](https://learn.chatgpt.com/docs/prompting)
-- [Codex Skills](https://developers.openai.com/codex/skills)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)

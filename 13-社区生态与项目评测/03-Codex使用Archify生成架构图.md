@@ -84,4 +84,4 @@ Archify 适合 README、技术方案和架构评审中的展示图。小型流�
 ## 参考资料
 
 - [Archify 项目仓库](https://github.com/tt-a1i/archify)
-- [Codex Skills](https://developers.openai.com/codex/skills)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)

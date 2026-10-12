@@ -60,6 +60,6 @@ Subagent 是独立的工作线程。主 Agent 负责拆分、分派、等待和�
 
 ## 参考资料
 
-- [Subagents](https://developers.openai.com/codex/concepts/subagents)
-- [Customization](https://developers.openai.com/codex/concepts/customization)
-- [Configuration Reference](https://developers.openai.com/codex/config-reference)
+- [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+- [Customization](https://learn.chatgpt.com/docs/customization/overview)
+- [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)

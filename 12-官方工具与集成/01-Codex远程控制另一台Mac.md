@@ -124,5 +124,5 @@ Host devbox
 
 ## 参考链接
 
-- [Codex Remote connections 官方文档](https://developers.openai.com/codex/remote-connections)
+- [Codex Remote connections 官方文档](https://learn.chatgpt.com/docs/remote-connections)
 - [OpenAI 官方公告：Work with Codex from anywhere](https://openai.com/index/work-with-codex-from-anywhere/)

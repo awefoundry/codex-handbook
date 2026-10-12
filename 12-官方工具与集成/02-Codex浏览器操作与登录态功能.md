@@ -108,4 +108,4 @@ CLI 也在补充远程连接和任务管理能力，具体入口以当前版本�
 
 ## 参考资料
 
-- [Codex 官方文档](https://developers.openai.com/codex/)
+- [Codex 官方文档](https://learn.chatgpt.com/docs)

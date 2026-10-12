@@ -85,4 +85,4 @@ npx skills add diffusionstudio/lottie
 ## 参考资料
 
 - [Text-to-Lottie 项目仓库](https://github.com/diffusionstudio/lottie)
-- [Codex Skills](https://developers.openai.com/codex/skills)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)

@@ -188,9 +188,9 @@ Codex 可以读取 Issue 和仓库上下文、修改代码、运行测试、准�
 
 ## 参考资料
 
-- [OpenAI Codex cloud](https://developers.openai.com/codex/cloud)
-- [OpenAI 在 GitHub 中使用 Codex review](https://developers.openai.com/codex/third-party/github)
-- [OpenAI Codex code review](https://developers.openai.com/codex/code-review)
+- [OpenAI Codex cloud](https://learn.chatgpt.com/docs/cloud)
+- [OpenAI 在 GitHub 中使用 Codex review](https://learn.chatgpt.com/docs/third-party/github)
+- [OpenAI Codex code review](https://learn.chatgpt.com/docs/code-review)
 - [GitHub Issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue)
 - [GitHub Pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 - [原始公众号文章](https://mp.weixin.qq.com/s?__biz=MzAwMDg5MTAyMw==&mid=2247521409&idx=1&sn=f787a786c39e53f2e69ea1f320dbf3ae&chksm=9bad188b7b0e52fdf576c0a84d551d2b411151d3c0c1f0ce842f74363f85f351cd34d42fc602#rd)

@@ -115,8 +115,8 @@ Codex 也支持把自定义 Agent 定义放在用户或项目的 `.codex/agents/
 
 ## 参考资料
 
-- [Codex app commands](https://developers.openai.com/codex/app/commands)
-- [Codex IDE commands](https://developers.openai.com/codex/ide/commands)
-- [Codex Subagents](https://developers.openai.com/codex/subagents)
-- [Codex Developer commands](https://developers.openai.com/codex/developer-commands)
+- [Codex app commands](https://learn.chatgpt.com/docs/reference/commands)
+- [Codex IDE commands](https://learn.chatgpt.com/docs/developer-commands?surface=ide)
+- [Codex Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+- [Codex Developer commands](https://learn.chatgpt.com/docs/developer-commands)
 - [Prompting 中的 Steering 与 Queue](https://learn.chatgpt.com/docs/prompting)

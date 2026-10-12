@@ -404,6 +404,6 @@ Codex 可以在短时间内修改很多文件，但代码量不是价值指标�
 - [Build plugins](https://learn.chatgpt.com/docs/build-plugins)
 - [Scheduled tasks](https://learn.chatgpt.com/docs/automations)
 - [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 
 Codex 的权限、配置、工具和任务管理方式可能随版本与工作区设置变化。

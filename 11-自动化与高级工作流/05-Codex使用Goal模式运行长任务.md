@@ -1,4 +1,4 @@
-# Codex 使用 Goal 模式运行长任务
+# Codex Goal 模式：运行长任务
 
 > 本文在线版：[codexguide.io/guides/codex-goal-mode-long-running-work](https://codexguide.io/guides/codex-goal-mode-long-running-work)
 
@@ -69,6 +69,6 @@ Goal 会受当前会话的上下文、模型用量和运行环境限制。预算
 
 ## 参考资料
 
-- [Long-running work](https://developers.openai.com/codex/long-running-work)
-- [Slash commands in Codex CLI](https://developers.openai.com/codex/cli/slash-commands)
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Long-running work](https://learn.chatgpt.com/docs/long-running-work)
+- [Slash commands in Codex CLI](https://learn.chatgpt.com/docs/developer-commands?surface=cli)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)

@@ -1,5 +1,5 @@
 
-# Codex 接入 ACP：在兼容开发工具中复用编码代理能力
+# Codex 接入 ACP：连接兼容开发工具
 
 > 本文在线版：[codexguide.io/guides/codex-acp-integration](https://codexguide.io/guides/codex-acp-integration)
 

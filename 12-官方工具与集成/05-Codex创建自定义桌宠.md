@@ -82,5 +82,5 @@ Codex 桌面应用支持 Pets。你可以先启用内置宠物，也可以通过
 
 ## 参考资料
 
-- [Codex Pets](https://developers.openai.com/codex/pets)
-- [Codex Skills](https://developers.openai.com/codex/skills)
+- [Codex Pets](https://learn.chatgpt.com/docs/pets)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)

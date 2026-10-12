@@ -158,9 +158,9 @@ Codex 的子智能体也支持为不同角色指定模型。官方示例会让�
 
 ## 参考资料
 
-- [Models - OpenAI Codex](https://developers.openai.com/codex/models)
-- [Pricing - OpenAI Codex](https://developers.openai.com/codex/pricing)
-- [Subagents - OpenAI Codex](https://developers.openai.com/codex/subagents)
+- [Models - OpenAI Codex](https://learn.chatgpt.com/docs/models)
+- [Pricing - OpenAI Codex](https://learn.chatgpt.com/docs/pricing)
+- [Subagents - OpenAI Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents)
 - [GPT-5.6 benchmarks across Intelligence, Speed and Cost](https://artificialanalysis.ai/articles/gpt-5-6-has-landed)，Artificial Analysis，2026-07-09
 - [An Evaluation of OpenAI GPT-5.6 Sol & Terra](https://www.sonarsource.com/blog/openai-gpt-5-6-sol-and-terra/)，Sonar，2026-08-06
 - [CodeRabbit 对 Sol 与 Terra 的代码任务测评](https://www.coderabbit.ai/blog/gpt-5-6-sol-and-terra-benchmark)，CodeRabbit，2026-07-09

@@ -1,5 +1,5 @@
 
-# Codex CLI 使用与多入口配置：终端、编辑器和网络排查
+# Codex CLI 安装、登录与多入口排查
 
 > 本文在线版：[codexguide.io/guides/codex-cli-multi-entry-setup](https://codexguide.io/guides/codex-cli-multi-entry-setup)
 
@@ -562,6 +562,6 @@ Codex CLI 的入口和参数会随版本变化。完成安装后，先确认登�
 
 参考资料：
 
-- [Codex CLI 官方文档](https://developers.openai.com/codex/cli)
+- [Codex CLI 官方文档](https://learn.chatgpt.com/docs/codex/cli)
 
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)

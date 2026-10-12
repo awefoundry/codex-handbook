@@ -1,5 +1,5 @@
 
-# Codex 移动端远程协作：用手机查看、分派和跟进电脑上的任务
+# Codex 移动端远程协作
 
 > 本文在线版：[codexguide.io/guides/codex-mobile-remote-collaboration](https://codexguide.io/guides/codex-mobile-remote-collaboration)
 
@@ -99,5 +99,5 @@ Codex 这个远程控制，本质上是把人必须坐在电脑前这个前提�
 
 > 延伸阅读：
 >
-> 官方文档：https://developers.openai.com/codex/remote-connections
+> 官方文档：https://learn.chatgpt.com/docs/remote-connections
 

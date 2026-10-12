@@ -238,6 +238,6 @@ Codex IDE extension 不是传统的单行补全工具。它可以理解文件上
 - [Codex cloud](https://learn.chatgpt.com/docs/cloud)
 - [Local environments](https://learn.chatgpt.com/docs/environments/local-environment)
 - [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 
 Codex 的入口、支持的编辑器、安装方式和账号可用功能可能随版本、地区与工作区设置变化。
