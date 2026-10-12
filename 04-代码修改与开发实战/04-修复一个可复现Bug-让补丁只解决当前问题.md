@@ -238,4 +238,4 @@ node --test sensitivity-check/test/formatAmount.test.mjs
 - [Node.js `node:test` 文档](https://nodejs.org/api/test.html)
 - [Node.js `node:assert` 文档](https://nodejs.org/api/assert.html)
 
-原文标题为《Codex 修复可复现 Bug：让补丁只解决当前问题》，作者记录沿用 codx编辑组，原始发表时间为 2026-09-01。原文另有 Windows 11 24H2（Build 26100）、PowerShell 7.6.4、Codex CLI 0.147.0、Git 2.47.0、2026-08-30 核验的历史环境记录；本轮未重跑该环境，也不据此推断原作者是否执行过新回归测试。本轮教学示例和命令于 2026-09-23 在 macOS 15.6、Node.js v22.11.0 的独立临时副本中执行；未验证 App、交互式 CLI、IDE 和其他操作系统中的端到端行为。
+原文标题为《Codex 修复可复现 Bug：让补丁只解决当前问题》，作者记录统一为 CodexGuide，原始发表时间为 2026-09-01。原文另有 Windows 11 24H2（Build 26100）、PowerShell 7.6.4、Codex CLI 0.147.0、Git 2.47.0、2026-08-30 核验的历史环境记录；本轮未重跑该环境，也不据此推断原作者是否执行过新回归测试。本轮教学示例和命令于 2026-09-23 在 macOS 15.6、Node.js v22.11.0 的独立临时副本中执行；未验证 App、交互式 CLI、IDE 和其他操作系统中的端到端行为。
