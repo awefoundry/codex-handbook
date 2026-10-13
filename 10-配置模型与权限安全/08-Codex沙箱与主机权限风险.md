@@ -148,7 +148,6 @@ diff 时用 git -c diff.external= diff 强制禁掉外部 diff 工具，直接�
 
 > 延伸阅读：
 >
-> Codex GitPwned 漏洞深度拆解：https://www.pillar.security/blog/gitpwned-allowlist-
-> to-rce
+> Codex GitPwned 漏洞深度拆解：https://www.pillar.security/blog/gitpwned-allowlist-to-rce
 >
-> Codex CLI 官方文档：https://developers.openai.com/codex/cli
+> Codex CLI 官方文档：https://learn.chatgpt.com/docs/codex/cli

@@ -126,5 +126,5 @@ Cursor 的操作方式与 VS Code 接近，扩展市场和 Codex 入口的位置
 
 ## 参考资料
 
-- [OpenAI：Codex IDE extension](https://developers.openai.com/codex/ide)
+- [OpenAI：Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)
 - [Visual Studio Marketplace：Codex – OpenAI's coding agent](https://marketplace.visualstudio.com/items?itemName=OpenAI.chatgpt)

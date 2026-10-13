@@ -115,4 +115,4 @@ python3 scripts/migrate_to_codex.py --force
 - [Remotion Agent Skills](https://github.com/remotion-dev/skills)
 - [Digital Samba Video Toolkit](https://github.com/digitalsamba/claude-code-video-toolkit)
 - [Digital Samba 的 Codex 迁移说明](https://github.com/digitalsamba/claude-code-video-toolkit/blob/main/docs/codex.md)
-- [Codex Skills 官方文档](https://developers.openai.com/codex/skills)
+- [Codex Skills 官方文档](https://learn.chatgpt.com/docs/build-skills)

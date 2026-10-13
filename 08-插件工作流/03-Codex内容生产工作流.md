@@ -112,6 +112,6 @@ Skill 是一套供 Codex 遵循的任务方法。插件还可能包含 Skills、
 
 ## 参考资料
 
-- [Codex Skills](https://developers.openai.com/codex/skills)
-- [Codex Plugins](https://developers.openai.com/codex/plugins)
+- [Codex Skills](https://learn.chatgpt.com/docs/build-skills)
+- [Codex Plugins](https://learn.chatgpt.com/docs/plugins)
 - [OpenAI Plugins 仓库](https://github.com/openai/plugins)

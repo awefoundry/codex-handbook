@@ -203,7 +203,7 @@ Codex 的最终结果通常不是一段回答，而是一组可以检查的项�
 - [OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)
 - [Use ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt)
 - [Get started with Work](https://learn.chatgpt.com/docs/get-started-with-work)
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 
 ChatGPT 和 Codex 的界面、模式名称与可用功能可能随版本、账号和工作区设置变化。

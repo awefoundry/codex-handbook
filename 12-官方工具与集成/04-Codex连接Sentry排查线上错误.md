@@ -49,6 +49,6 @@ Sentry 里的事件、请求参数和用户上下文可能包含敏感数据。�
 
 ## 参考资料
 
-- [Model Context Protocol](https://developers.openai.com/codex/mcp)
-- [Automate bug triage](https://developers.openai.com/codex/use-cases/automation-bug-triage)
-- [Codex 官方文档](https://developers.openai.com/codex/)
+- [Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp?surface=cli)
+- [Automate bug triage](https://learn.chatgpt.com/use-cases/automation-bug-triage)
+- [Codex 官方文档](https://learn.chatgpt.com/docs)

@@ -151,9 +151,9 @@ Codex 启动时不会把所有 Skill 全文塞进上下文。它先看到名称�
 
 ## 参考资料
 
-- [OpenAI Build skills](https://developers.openai.com/codex/skills)
-- [OpenAI Codex customization](https://developers.openai.com/codex/concepts/customization)
-- [OpenAI Codex best practices](https://developers.openai.com/codex/learn/best-practices)
+- [OpenAI Build skills](https://learn.chatgpt.com/docs/build-skills)
+- [OpenAI Codex customization](https://learn.chatgpt.com/docs/customization/overview)
+- [OpenAI Codex best practices](https://learn.chatgpt.com/guides/best-practices)
 - [原始公众号文章](https://mp.weixin.qq.com/s?__biz=MzAwMDg5MTAyMw==&mid=2247521461&idx=1&sn=c1991f8612a6443af76cff8df9cc4ad3&chksm=9b5043639049220389dab5485957088b07b83dae4657aa9d47bc2681478d50b24baba1796131#rd)
 
 本文根据 OpenAI 2026 年 8 月 18 日可访问的 Skill 文档核对。不同 Codex 入口对 Standalone Skill 和插件 Skill 的支持范围可能不同。

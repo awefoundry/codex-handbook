@@ -16,7 +16,7 @@ Codex 是面向软件开发任务的 AI 编程助手。它可以在你提供的�
 
 ![OpenAI 官方文档中的 Codex 概览](../图片素材/00-从这里开始/01-Codex是什么/01-OpenAI官方Codex概览.png)
 
-> 图片来源：[OpenAI Codex 官方文档](https://developers.openai.com/codex/)。
+> 图片来源：[OpenAI Codex 官方文档](https://learn.chatgpt.com/docs)。
 
 ## 这篇文章适合谁
 
@@ -168,7 +168,7 @@ OpenAI 当前提供桌面 App、CLI、IDE 扩展和云端等入口。它们面�
 
 ## 参考资料
 
-- [Codex Manual](https://developers.openai.com/codex/codex-manual.md)
+- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 - [OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)

@@ -114,7 +114,7 @@ JetBrains 曾在 2026 年 1 月推出限时免费活动。活动、额度和计�
 
 ## 参考资料
 
-- [OpenAI Codex IDE 文档](https://developers.openai.com/codex/ide)
+- [OpenAI Codex IDE 文档](https://learn.chatgpt.com/docs/codex/ide)
 - [JetBrains Codex 文档](https://www.jetbrains.com/help/ai-assistant/codex-agent.html)
 - [JetBrains 官方博客](https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/)
 - [JetBrains Brand Guidelines](https://www.jetbrains.com/company/brand/)

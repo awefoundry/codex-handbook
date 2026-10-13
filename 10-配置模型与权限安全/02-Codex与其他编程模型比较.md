@@ -1,4 +1,4 @@
-# Codex 与其他编程模型怎么比较：从任务类型和验证条件出发
+# Codex 与其他编程模型比较：模型选择与实际工作流
 
 > 本文在线版：[codexguide.io/guides/codex-yu-qita-biancheng-moxing-bijiao](https://codexguide.io/guides/codex-yu-qita-biancheng-moxing-bijiao)
 

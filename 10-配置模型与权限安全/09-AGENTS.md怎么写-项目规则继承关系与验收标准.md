@@ -31,7 +31,7 @@
 
 ## 当前官方读取规则
 
-下面是依据 [OpenAI 的 AGENTS.md 文档](https://developers.openai.com/codex/agent-configuration/agents-md)整理的规则，核对日期为 **2026-09-22**。具体入口仍可能随 Codex 版本变化，遇到差异应以当前文档和 `codex --help` 为准。
+下面是依据 [OpenAI 的 AGENTS.md 文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md)整理的规则，核对日期为 **2026-09-22**。具体入口仍可能随 Codex 版本变化，遇到差异应以当前文档和 `codex --help` 为准。
 
 1. **全局层**：默认在 `CODEX_HOME` 指向的目录中查找；没有设置时通常是 `~/.codex`。同一目录优先使用非空的 `AGENTS.override.md`，没有它才使用 `AGENTS.md`。
 2. **项目层**：从项目根目录（通常是 Git 根目录）走到当前工作目录；如果找不到项目根，就只检查当前目录。每一级目录按 `AGENTS.override.md`、`AGENTS.md` 和 `project_doc_fallback_filenames` 中的备用文件名查找，每一级最多加入一个文件。
@@ -170,7 +170,7 @@ rm AGENTS.md.bak
 
 ## 相关阅读与资料边界
 
-- [OpenAI：Custom instructions with AGENTS.md](https://developers.openai.com/codex/agent-configuration/agents-md)
+- [OpenAI：Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
 - [Codex config.toml 配置指南](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
 - [从目录到入口](../03-项目理解与上下文/03-从目录到入口-找到真正需要修改的代码.md)

@@ -138,8 +138,8 @@ P0/P1）、按指令推修复回分支，这一串确实能大幅省掉机械劳
 
 延伸阅读：
 
-  * Codex cloud 官方文档：https://developers.openai.com/codex/cloud 
-  * Codex 代码审查（GitHub）：https://developers.openai.com/codex/third-party/github 
-  * Codex 开发者集成总览：https://developers.openai.com/codex/developers 
+  * Codex cloud 官方文档：https://learn.chatgpt.com/docs/cloud 
+  * Codex 代码审查（GitHub）：https://learn.chatgpt.com/docs/third-party/github 
+  * Codex 开发者集成总览：https://learn.chatgpt.com/docs/developers 
 
 * * *

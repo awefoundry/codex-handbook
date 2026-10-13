@@ -58,5 +58,5 @@ Automations 可以让 Codex 桌面应用按计划重复运行任务。它适合�
 
 ## 参考资料
 
-- [Codex Automations](https://developers.openai.com/codex/app/automations)
-- [Codex App](https://developers.openai.com/codex/app)
+- [Codex Automations](https://learn.chatgpt.com/docs/automations?surface=app)
+- [Codex App](https://learn.chatgpt.com/docs/app)

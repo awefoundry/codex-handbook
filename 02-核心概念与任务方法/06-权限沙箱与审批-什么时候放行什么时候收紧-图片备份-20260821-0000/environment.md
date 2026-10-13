@@ -7,7 +7,7 @@
 | 操作系统 | Windows 11 24H2，构建 26100 | PowerShell `Get-ComputerInfo -Property WindowsProductName,WindowsVersion,OsBuildNumber`；系统接口将产品名兼容性回报为 Windows 10 Pro，以构建号判定 24H2 | 2026-08-21 | 文章计划演示原生 Windows 上的 Codex Desktop 与 CLI 权限行为 |
 | IDE / 宿主应用 | Codex Desktop 26.814.5517.0 | PowerShell `Get-AppxPackage` 查询 `OpenAI.Codex` 包版本 | 2026-08-21 | 影响权限菜单与审批提示界面 |
 | Codex | Codex CLI 0.147.0 | 本机执行 `codex --version` | 2026-08-21 | 用于只读、工作区写入和网络审批对照实验 |
-| 目标插件 / App / Connector | 无独立插件；官方 OpenAI 文档为持续更新服务 | 直接打开 `https://developers.openai.com/codex/agent-approvals-security` 与 `https://developers.openai.com/codex/concepts/sandboxing`，均跳转至 ChatGPT Learn 当前文档 | 2026-08-21 | 不虚构网页服务版本；页面内容和 UI 可能持续变化 |
+| 目标插件 / App / Connector | 无独立插件；官方 OpenAI 文档为持续更新服务 | 直接打开 `https://learn.chatgpt.com/docs/agent-approvals-security` 与 `https://learn.chatgpt.com/docs/sandboxing`，均跳转至 ChatGPT Learn 当前文档 | 2026-08-21 | 不虚构网页服务版本；页面内容和 UI 可能持续变化 |
 | 其他关键依赖 | Playwright CLI（通过 `npx --package @playwright/cli` 临时调用）；Agent Reach 平台路由 | `Get-Command npx`；`agent-reach doctor --json` | 2026-08-21 | 仅用于公开页面核验和素材检索，不进入正文环境摘要 |
 
 ## 平台可用性记录

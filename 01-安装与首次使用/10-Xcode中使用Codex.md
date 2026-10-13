@@ -30,7 +30,7 @@ Codex 在 Xcode 中通过 Coding Assistant 集成。准备好一个可以回退�
 
 ## 参考资料
 
-- [Codex IDE extension](https://developers.openai.com/codex/ide)
+- [Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)
 - [Apple Developer：Xcode](https://developer.apple.com/xcode/)
 
 ![B 站 Xcode 与 Codex 实战视频封面](image-10-bilibili-BV1wSfTBuE7V.jpg)

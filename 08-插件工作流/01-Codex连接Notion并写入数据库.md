@@ -122,4 +122,4 @@ Codex 完成检索后，先在任务中检查结构化结果，不要立刻写�
 ## 参考资料
 
 - [Notion 官方网站](https://www.notion.com/)
-- [OpenAI Codex 文档](https://developers.openai.com/codex/)
+- [OpenAI Codex 文档](https://learn.chatgpt.com/docs)
