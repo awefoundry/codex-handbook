@@ -5,7 +5,7 @@ seo_title: Codex 容量不足与额度重置：at capacity、用量耗尽怎么�
 description: 看到 Selected model is at capacity，先分清是服务容量、用量耗尽，还是重置时机问题。本文按官方文档说明怎么查 Settings → Usage 与 /status，以及自动重置、banked reset、付费即时重置各自怎么用。
 lede: 容量满、额度用完、重置还没到，是三件不同的事。先对症，再决定等、换模型，还是用重置。
 url: /guides/codex-model-at-capacity-usage-reset
-status: published
+status: draft
 section: guides
 category: K-troubleshooting
 topic: 故障排查与恢复
