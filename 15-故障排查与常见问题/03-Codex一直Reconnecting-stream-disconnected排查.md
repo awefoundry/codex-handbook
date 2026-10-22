@@ -49,6 +49,11 @@ faq:
 
 ## 先看懂报错：三句话分别是什么意思
 
+
+下面是桌面端一次典型现场：先反复 `Reconnecting... x/5`，随后出现 `stream disconnected before completion`（对话与 Request ID 已打码，仅保留报错链路）：
+
+![图一　Reconnecting 1/5～5/5 后出现 stream disconnected（对话已打码；图源公开 issue，仅作报错示意）](../图片素材/15-故障排查与常见问题/03-Codex一直Reconnecting-stream-disconnected排查/图一-Reconnecting与stream-disconnected.png)
+
 | 你看到的文案 | 大致含义 | 先别做什么 |
 |---|---|---|
 | `Reconnecting... x/5` | 当前流式传输断了，客户端在按流重试预算重连。Configuration Reference 里自定义 provider 的 `stream_max_retries` **默认 5**，与界面「x/5」一致 | 不要在第一次出现时就狂改代理 |
