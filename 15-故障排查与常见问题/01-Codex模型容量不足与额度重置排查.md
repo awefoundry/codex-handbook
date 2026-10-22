@@ -50,7 +50,11 @@ faq:
 
 ## 先做 60 秒分流
 
-打开桌面端 **Settings → Usage**（有的界面写作 Usage & billing）。CLI 正在跑会话时，输入 `/status`。看清楚两样东西：
+打开桌面端 **Settings → Usage**（侧栏在 Personal 分组里，当前选中项会高亮）。有的说明写作 Usage & billing；CLI 正在跑会话时，输入 `/status`。
+
+![图一 Settings 侧栏，Personal 分组中 Usage 项高亮](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图一.png)
+
+看清楚两样东西：
 
 1. **还有没有剩余额度**（5 小时窗、每周窗，或你套餐显示的其他主额度）。
 2. **下一次自动刷新时间**写在哪里。
@@ -90,7 +94,11 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 
 官方建议：接近或已经碰到 Codex 限制时，打开 Settings 或用量面板，看**哪一档额度耗尽**、credits 余额、以及显示的重置时间；CLI 会话里用 `/status`。
 
-常见结构（具体是否两档并存，以你的套餐和面板为准）：
+Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly limit、剩余百分比与 Resets in 倒计时），下方是 Credits（余额与 Add more／Automatic reload）。界面写明额度在 Codex、Work、Workspace Agents 与 ChatGPT for Excel 之间共享，不含普通 Chat。
+
+![图二 Usage Overview：Weekly limit 剩余与重置倒计时、Credits 余额（数字为某次截图像例，不是承诺值）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图二.png)
+
+常见结构（具体是否两档并存、卡片文案以你的套餐和面板为准）：
 
 - **5 小时窗**：控制一段短窗口内能用多少。上一窗结束后，你在 Work／Codex **再发第一条消息**时，新窗才开始。你可能在一周额度还很多时，先撞上 5 小时限制。
 - **每周窗**：控制这一周主用量的上限。
@@ -121,8 +129,12 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 
 ### Banked reset 怎么用（官方要点）
 
-1. 桌面端打开 **Settings → Usage & billing**（网页端打开 Usage；官方写明移动端目前没有这套控件）。
-2. 点类似 “1 reset available”／“Full reset” 的摘要，看清覆盖哪些额度、何时过期，再确认。
+同一 Usage 页往下还能看到 **Usage limit resets**：说明可用 reset 恢复 5-hour limit、weekly limit 或两者；并显示 Available 数量与近 30 天 History。下面这张是 Available 为 0、近 30 天无 banked reset 记录的例子。
+
+![图三 Usage limit resets：Available 数量与近 30 天 History（本例 Available 0，数字为截图像例）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图三.png)
+
+1. 桌面端打开 **Settings → Usage**（网页端打开 Usage；官方写明移动端目前没有这套控件）。
+2. 在 **Usage limit resets** 里查看 Available；若有可用重置，再点进摘要（界面也可能写作 “1 reset available”／“Full reset”），看清覆盖哪些额度、何时过期，再确认。
 3. CLI 可用 `/usage` 里的 Redeem reset；若版本没有该项，改用桌面或网页。
 
 补充规则（来自官方 banked reset 说明）：
