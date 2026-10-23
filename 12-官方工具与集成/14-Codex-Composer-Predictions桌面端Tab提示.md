@@ -5,7 +5,7 @@ seo_title: Codex Composer Predictions：Tab 接受提示、开关与额度
 description: Composer Predictions 会在 Codex 桌面端根据当前对话，在输入框里建议下一条消息。本文按官方文档说明使用条件、Tab 接受后怎么改、它用了哪些上下文、怎么在 Settings 里关掉，以及为什么生成建议本身不计入用量。
 lede: 按 Tab 只是把建议放进输入框，不会替你发送。生成建议不花额度，发出去才算。
 url: /guides/codex-composer-predictions
-status: draft
+status: published
 section: guides
 category: L-tools-integrations
 topic: 官方工具与集成
@@ -33,7 +33,7 @@ faq:
 
 # Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度
 
-> 本文计划路径：[codexguide.io/guides/codex-composer-predictions](https://codexguide.io/guides/codex-composer-predictions)
+> 本文在线版：[codexguide.io/guides/codex-composer-predictions](https://codexguide.io/guides/codex-composer-predictions)
 
 > 核对依据：learn.chatgpt.com《Composer Predictions》，2026-10-23 核对。功能目前是 beta，以官方文档为准。
 

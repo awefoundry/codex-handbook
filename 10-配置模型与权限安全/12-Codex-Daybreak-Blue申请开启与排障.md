@@ -5,7 +5,7 @@ seo_title: Codex Daybreak Blue：申请、App 开关、CLI /daybreak 与排障
 description: Daybreak 是 OpenAI 面向授权网络安全工作的 Trusted Access 计划。本文按 Help Center 说明个人申请 Daybreak Blue 要准备什么、在 Codex App 和 CLI 里怎么打开、管理员要开哪些开关，以及审批后仍看到安全提示时怎么逐项排查。
 lede: 批下来不等于已经生效。账号、工作区、开关、模型四样对上，Daybreak Blue 才会在请求里起作用。
 url: /guides/codex-daybreak-blue
-status: draft
+status: published
 section: guides
 category: F-config-model-security
 topic: 配置模型与权限安全
@@ -33,7 +33,7 @@ faq:
 
 # Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查
 
-> 本文计划路径：[codexguide.io/guides/codex-daybreak-blue](https://codexguide.io/guides/codex-daybreak-blue)
+> 本文在线版：[codexguide.io/guides/codex-daybreak-blue](https://codexguide.io/guides/codex-daybreak-blue)
 
 > 核对依据：OpenAI Help Center《OpenAI Daybreak - Trusted Access for Cyber overview》和《Troubleshooting OpenAI Daybreak》，2026-10-23 核对。本文只讲授权防御场景下的申请与开关，不涉及 Daybreak Red 的使用，也不讨论任何攻击性操作。
 

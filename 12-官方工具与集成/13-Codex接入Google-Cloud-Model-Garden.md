@@ -5,7 +5,7 @@ seo_title: Codex × Google Cloud Model Garden：私有预览、计费与本地�
 description: OpenAI 模型和 Codex 工作流正在进入 Google Cloud Model Garden，目前是面向部分企业客户的私有预览。本文只整理 OpenAI 与 Google Cloud 两篇官方公告写明的内容：上了哪些模型、怎么申请、账单怎么走、治理承诺，以及本地 Codex CLI/Desktop 接入目前公开到哪一步。
 lede: 现在是私有预览，公开信息只到「可以接」。具体怎么接，以获批后的官方指引为准。
 url: /guides/codex-google-cloud-model-garden
-status: draft
+status: published
 section: guides
 category: L-tools-integrations
 topic: 官方工具与集成
@@ -33,7 +33,7 @@ faq:
 
 # Codex 接入 Google Cloud Model Garden：私有预览申请、Marketplace 计费，以及本地 CLI/Desktop 接 GCP 推理的公开边界
 
-> 本文计划路径：[codexguide.io/guides/codex-google-cloud-model-garden](https://codexguide.io/guides/codex-google-cloud-model-garden)
+> 本文在线版：[codexguide.io/guides/codex-google-cloud-model-garden](https://codexguide.io/guides/codex-google-cloud-model-garden)
 
 > 核对依据：OpenAI 官方博文《OpenAI models are coming to Google Cloud》与 Google Cloud 博文《Google Cloud brings OpenAI models to customers》，均发布于 2026-10-21，本文于 2026-10-23 核对。**这是私有预览阶段的说明，GA 时细节可能变化。**
 
