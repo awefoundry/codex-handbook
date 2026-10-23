@@ -78,9 +78,9 @@ Computer Use 让 Codex 看屏幕、点击窗口、输入文字，适合命令行
 - **屏幕录制（Screen Recording）**：让它看到目标应用；
 - **辅助功能（Accessibility）**：让它能点击、输入、导航。
 
-![系统设置 → 辅助功能里打开 Codex Computer Use（其他应用已打码）](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/02-正文配图.jpg)
+![系统设置 → 辅助功能里打开 Codex Computer Use（其他应用已打码）](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/02-正文配图.png)
 
-![屏幕录制权限：把 Codex Computer Use 拖到列表里允许截屏](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/03-正文配图.jpg)
+![屏幕录制权限：把 Codex Computer Use 拖到列表里允许截屏](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/03-正文配图.png)
 
 如果之后它看不到或控制不了某个应用，回到 **系统设置 → 隐私与安全性**，检查这两项里的 Codex Computer Use。
 
@@ -184,7 +184,7 @@ Open @Chrome and verify the checkout page still works after the latest changes.
 
 任务进行时，Computer Use 能看到目标应用的屏幕内容、截图，能操作窗口、菜单、键盘输入和剪贴板。打开的页面和文件，都可能被当作上下文处理。截图也受你的 ChatGPT 数据控制设置约束。
 
-![任务记录：浏览器与 Computer Use 的操作步骤会逐条显示](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/04-正文配图.jpg)
+![任务记录：浏览器与 Computer Use 的操作步骤会逐条显示](../图片素材/12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用/04-正文配图.png)
 
 ## 怎么验收
 
