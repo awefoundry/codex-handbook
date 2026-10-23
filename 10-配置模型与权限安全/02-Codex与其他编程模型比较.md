@@ -1,209 +1,157 @@
-# Codex 与其他编程模型比较：模型选择与实际工作流
+---
+id: codex-vs-claude-code
+title: Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol 对照工作流
+seo_title: Codex 与 Claude Code 怎么选：GPT-6.1 Sol、Luna、Astra 对照
+description: 用工作流而不是跑分来选工具。对照 Codex（GPT-6.1 Sol／Luna／Astra）与 Claude Code 的入口、模型、上下文与计费边界，给出可落地的分工建议。
+lede: 先问任务落在哪条工作流，再选产品和模型；别用过期跑分代替自己的试用。
+url: /guides/codex-yu-qita-biancheng-moxing-bijiao
+status: draft
+section: guides
+category: B-core-concepts
+topic: 核心概念与任务方法
+content_type: 指南
+source_tag: 官方功能
+entry_tags: [App, CLI, IDE, Cloud, ChatGPT Work]
+difficulty: 基础
+order: 2
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-08-21
+date_modified: 2026-10-22
+client_validation_pending: false
+models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
+official_ref: https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex
+keywords: [Codex vs Claude Code, GPT-6.1 Sol, Claude Code, Astra, Luna, 编程助手怎么选]
+related: [how-codex-works, usage-limits-credits, permissions-sandbox-approvals]
+faq:
+  - q: GPT-6.1 Sol 能在普通 ChatGPT 对话里用吗？
+    a: 按官方说明，GPT-6.1 Sol、GPT-6 Sol、GPT-6 Luna 面向 ChatGPT Work 与 Codex，不在普通 Chat 对话里提供。可用性还取决于套餐、工作区设置与放量进度。
+  - q: Codex 和 Claude Code 谁的上下文更大？
+    a: 不能直接比「一个数字」。ChatGPT Work／Codex 里 GPT-6.1 Sol 的默认上下文窗口官方写为 50 万 token；Claude Code 当前主力模型在 Anthropic 文档中多为 100 万 token 上下文。API 侧规格、是否开启长上下文、计费规则也不同，以你实际客户端为准。
+  - q: 一定要二选一吗？
+    a: 不必。很多人按任务拆：日常改仓、审 diff、长任务挂云端用 Codex；另一边用 Claude Code 做探索式起草或多 agent 协作。关键是同一任务别两边各改一半却不合并。
+---
+
+# Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol 对照工作流
 
 > 本文在线版：[codexguide.io/guides/codex-yu-qita-biancheng-moxing-bijiao](https://codexguide.io/guides/codex-yu-qita-biancheng-moxing-bijiao)
 
-两大模型同一天发布新版本，这是要直接PK的意思啊，AI圈又热闹起来了。
+> 核对依据：OpenAI Help《ChatGPT Work and Codex》、learn.chatgpt.com《Models》／Codex Cloud／CLI，以及 Anthropic《Claude Code Overview》《Model configuration》《Models overview》。文中「我的用法」是工作流建议，不是官方排名。界面与模型可用性会随套餐和放量变化。
 
-Anthropic 放出 Opus 4.6，之后 OpenAI 放出 GPT-5.3-Codex。
+上一版写的是「GPT-5.3-Codex 对 Opus 4.6」那种发版日对撞。那套模型名和很多截图里的跑分，到 2026-10 已经过时了。
 
-今天还看到了这张图，有点难绷。
+这一版换成更耐用的问题：**Codex 和 Claude Code 各自适合什么工作流？在 Codex 里，什么时候用 GPT-6.1 Sol，什么时候上 Astra 或 Luna？**
 
-![Codex 操作步骤配图 01](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/01-操作步骤.jpg)
+不比「谁总分更高」。官方公开的产品面、模型用途、上下文与计费边界，才是能核对、能复查的选择依据。第三方评测截图、社交帖里的百分比，一律不当成定论。
 
-这俩是我现在用得最多的主力模型，一个负责日常创作和主力编程，一个负责搜索研究和精准改 bug，现在同时升级了。
+## 1. 先把产品和模型分开
 
-先各自一句话总结：
+很多人问「Sol 和 Claude 谁强」，其实混了两层：
 
-Claude Opus 4.6：更强规划、更长自主任务、百万 token 上下文（beta）
+| 层级 | Codex 一侧（OpenAI） | Claude Code 一侧（Anthropic） |
+|---|---|---|
+| 产品／入口 | ChatGPT 桌面端 Codex 视图、Codex CLI、IDE 扩展、Codex Cloud（网页／移动端可继续云端任务） | 终端 CLI、VS Code／JetBrains 扩展、Claude 桌面端 Code 标签、浏览器 claude.ai/code |
+| 编程向模型（示例） | Work／Codex：`gpt-6.1-sol`、`gpt-6-sol`、`gpt-6-luna`；符合条件时还有 `gpt-6-astra` | 别名如 `sonnet`／`opus`／`haiku`／`fable`，在 Anthropic API 上常解析到 Sonnet 5.5、Opus 5.5、Haiku 5.5、Fable 5.1 等（其他云厂商可能滞后） |
+| 计费入口 | 用 ChatGPT 登录则走套餐用量与 credits；自备 API Key 则走 API 价 | Claude 订阅或 Anthropic Console／第三方提供商；Fable 等在部分套餐上可能走 usage credits |
 
-![Codex 操作步骤配图 02](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/02-操作步骤.jpg)
+官方把 Chat、Work、Codex 分得很清楚：Chat 管日常对话；Work 管较长的多步交付物；**Codex 专做软件开发与技术工作**。GPT-6.1 Sol／Sol／Luna **只在 Work 与 Codex**，不进普通 Chat。
 
-GPT-5.3-Codex：融合 5.2-Codex 编码能力和 5.2 推理能力，速度快 25%，token 消耗减半
+Claude Code 则是「读仓库、改文件、跑命令」的 agentic 编码工具，多入口共用同一套引擎；项目级 `CLAUDE.md`（或已有的 `AGENTS.md`）、skills、MCP 可跨终端／IDE／桌面／网页生效。
 
-![Codex 操作步骤配图 03](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/03-操作步骤.jpg)
+## 2. Codex 这边：2026-10 怎么选模型
 
-##  Opus 4.6：编程更严谨，上下文翻了 5 倍
+按 learn.chatgpt.com《Models》的推荐口径（可用性以你的账号与客户端为准）：
 
-官方文档：https://www.anthropic.com/news/claude-opus-4-6
+| 模型 | 官方怎么定位 | 更适合的任务感 |
+|---|---|---|
+| **GPT-6 Astra** | 复杂端到端工作里能力最强的一档：跨代码、应用与研究，需要持续推理与判断 | 难拆、要强判断、踩坑成本高的长链路 |
+| **GPT-6.1 Sol** | Near-Astra 表现、成本低于 Astra；适合重复、长跑的代码／应用／文档工作 | **日常主力编程与长任务**（官方也写：复杂 coding／agentic 优先考虑它） |
+| **GPT-6 Luna** | 最高效档：明确、可重复、高吞吐 | 抽取、分类、改造、结构化摘要、范围清楚的小改 |
 
-###  模型能力升级
+补充几条容易踩坑的官方事实：
 
-Opus 4.6 在编码上的改进方向：规划更周密，先想清楚再动手；能更长时间地执行 agent 任务；代码审查和调试能力更强，能更有效地发现自身错误。
+1. **推理强度会换速度与用量。** 桌面端／网页 Work 可用模型与推理控制；CLI 用 `/model` 或 `--model`／`-m`。更高 effort 常更慢、更耗 token。
+2. **Ultra 与 Max 不是「默认更聪明」。** Max 给单任务更多推理时间；Ultra 用子 agent 并行拆复杂任务。Luna **支持到 Max，但不支持 Ultra**。多数任务不需要 Max／Ultra。
+3. **速度档另算。** Ultrafast 可降低 Astra／GPT-6.1 Sol 延迟，但有套餐门槛（公开说明里，上线时面向 Pro $500 与符合条件的 Enterprise／Edu）；Plus、Pro $100／$200、Business 上线时不可用。Astra／Sol 还会按 Standard／Fast 等规则扣用量，具体以 Pricing 与 Usage 面板为准。
+4. **上下文要分入口说。** Help 写明：ChatGPT Work／Codex 里 GPT-6.1 Sol **默认上下文窗口 50 万 token**；套餐内用量覆盖的 Sol 长上下文不另加「长上下文附加费」，但更长对话仍计入用量。API 文档里 `gpt-6.1-sol` 的规格窗口更大——**不要把 API 规格直接当成桌面 Codex 的额度说明**。
+5. **企业／Edu 常默认关 GPT-6.1 Sol**，要管理员打开。Free／Go 不在 Sol 首发范围；桌面端看不到 Astra 时，先更新 ChatGPT Desktop，且 Astra 需要较新的 Codex CLI（Help 写明 **0.153.0+**）。
 
-之前 Claude 经常被吐槽太自信，一路错到底也不回头检查，这次有了改善。Cognition（Devin 团队）的反馈是 bug
-捕获率明显提升，Cursor 团队也说它在代码审查上表现很好。
+CLI 示例（模型名以你账号可用为准）：
 
-** Opus 系列首次支持 100 万 token 上下文窗口（beta）！！  **
+```bash
+codex --model gpt-6.1-sol
+codex exec -m gpt-6.1-sol "Review the current changes"
+```
 
-之前 Opus 只有 200K，这次直接翻了 5 倍。对做 Coding
-的人来说，上下文容量有多重要不用多说。唯一要注意的就是考虑一下消耗，可能计费会比较夸张。
+配置默认本地模型时，桌面端、CLI、IDE 共用 `config.toml`，例如：`model = "gpt-6.1-sol"`。
 
-Opus 4.6 在这方面的表现相当不错：MRCR v2 的 8-needle 1M 测试中，Opus 4.6 得分 76%，而 Sonnet 4.5 只有
-18.5%。这是一个质变级的提升，意味着百万行代码库、长文档分析、多轮对话都能 hold 住，不是摆设。
+云端侧：Codex Cloud 在已发布环境里跑编码任务，电脑休眠也能继续；可从桌面、网页或移动端跟进。本地文件夹、终端、开发工具仍主要在桌面 Codex／CLI／IDE。
 
-输出上限也从之前的 64K 翻倍到了 128K token，一次性输出更多内容，减少分轮请求的麻烦。
+## 3. Claude Code 这边：对照着看什么
 
-###  跑分表现
+用 Anthropic 文档能核对的产品事实来对照，而不是「听说谁更会写前端」：
 
-再来看看跑分吧，每次新的模型出来都少不了这个环节。
+| 维度 | Claude Code 官方可见能力 | 和 Codex 对照时怎么读 |
+|---|---|---|
+| 入口 | 终端、IDE、桌面 Code、网页／移动端云会话；可在入口间 teleport／Remote Control | 两边都是「多入口同一工作流」，不是「只有一个 CLI」 |
+| 模型别名 | `sonnet` 日常编码、`opus` 复杂推理、`haiku` 简单快任务、`fable` 最长程／最难；另有 `opusplan` 等 | 别拿「Opus」和「Sol」硬比名字；比的是任务档位 |
+| 上下文 | 当前一代模型在 Models overview 中多为 **1M token** 上下文、最高输出 128K（以模型页为准） | Codex 桌面 Sol 默认 50 万；比窗口大小前先确认你用的是哪一侧、哪一档 |
+| 并行 | subagents、Agent view、**Agent teams（实验性，默认关闭）**、Projects／threads、dynamic workflows | Codex 侧有 Ultra（子 agent）与云端多任务；机制不同，不要当成同一功能名 |
+| 项目约定 | `CLAUDE.md`／skills／hooks／MCP | Codex 侧有 Skills、plugins、项目说明与权限沙箱；团队规范两边都能做，只是文件与菜单不同 |
+| 日程与自动化 | 云端／桌面 scheduled tasks、`/loop`、GitHub／GitLab 等 CI 集成 | ChatGPT／Work 也有 scheduled／事件触发任务；Codex Cloud 管云端编码任务——别混成「只有一家能挂机」 |
 
-![Codex 操作步骤配图 04](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/04-操作步骤.jpg)
+模型与 effort：Claude Code 用 `/model`、`--model` 或设置里的 `model`；effort 多档（如 low／medium／high／xhigh／max），自适应思考由模型按任务复杂度分配。**Fable 在部分套餐会要求 usage credits 并弹出确认**——这是官方写明的计费行为，不是「模型坏了」。
 
-Opus 4.6 在多个评测上拿到了最高分。Terminal-Bench 2.0（终端编程能力）65.4%，GDPval-
-AA（真实工作任务，涵盖金融、法律等领域）Elo 1606 分，比 GPT-5.2 高 144 分，比前代 Opus 4.5 高 190 分。
+Agent teams：文档写明最适合可并行拆开的研究／审阅、新模块、竞争性假设调试、跨层改动；顺序依赖强或同文件抢改时，单会话或 subagent 更合适，且团队协作 **显著更耗 token**。
 
-![Codex 操作步骤配图 05](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/05-操作步骤.jpg)
+## 4. 一张表：按工作流选，不按口号选
 
-BrowseComp（网络搜索能力）84.0%，远超第二名 GPT-5.2 Pro 的 77.9%。Humanity's Last
-Exam（复杂多学科推理）和 ARC AGI 2（流体智力测试，68.8%）也都是最高分。
+| 你的场景 | 更值得先试 | 原因（可核对的产品差异） |
+|---|---|---|
+| 已在 ChatGPT 付费体系，想本地改仓＋偶发云端挂任务 | **Codex + GPT-6.1 Sol** | Sol 面向 Work／Codex；与 Work 共享套餐用量；Cloud 可休眠后续跑 |
+| 最难的端到端判断、愿意付出更高用量 | Codex 上 **Astra**（若套餐开放） | 官方把 Astra 标为最强能力档；可能比 Sol 更快耗尽额度 |
+| 大批量、范围清楚的小改／抽取 | Codex **Luna**，或 Claude Code **haiku** | 两边都有「高效／高吞吐」档 |
+| 终端／IDE 里深度探索陌生大仓，习惯 `CLAUDE.md` 与 skills | **Claude Code**（日常 `sonnet`，难推理 `opus`） | 文档把「读全仓、跨文件改、跑命令」写成主路径 |
+| 要多人并行、互相质疑的长研究／大模块 | Claude Code **Agent teams**（实验）或 Codex **Ultra**（可拆分时） | 都是并行，但开启方式、默认是否可用、计费完全不同 |
+| 电脑常关、任务要在云端继续 | Codex Cloud，或 Claude 网页／移动云会话 | 两边都有云端续跑；环境与密钥配置各自跟官方设置走 |
+| 只要「写邮件／做幻灯」 | 先看 **ChatGPT Work** 或 Claude 通用产品，不必硬上 Codex／Claude Code | Codex 官方定位是软件开发；Work 才是通用长任务交付 |
 
-在 OSWorld（操作电脑能力）上拿了 72.7%，比 Opus 4.5 的 66.3% 提升不少，说明 Claude 越来越会操控电脑了，越来越智能
-agent化了。
+## 5. 我的用法（建议，非官方）
 
-###  新功能和产品更新
+不是「永远只留一个」。我更接近下面这种拆分——你可以整段换掉，但建议**先固定两周再改规则**，否则用量和对账都会乱：
 
-** Context Compaction（上下文压缩）。  ** 之前 Claude Code 里的 /compact
-命令已经能手动触发上下文压缩，或者在检测到接近限制时自动总结对话。
+1. **默认编程长任务：Codex + GPT-6.1 Sol。** 新功能、修 bug、跑测试、开 PR 风格审查，先走这一条。推理从默认档起，不够再加；不要一上来 Max／Ultra。
+2. **明显吃力或判断链很长：同一会话里升 Astra（若有权限），或拆成「先计划后执行」。** 升模型前先看 Settings → Usage，避免为了「感觉更强」提前打穿周额度。
+3. **机械、可验收的小批处理：Luna。** 例如按固定模板改配置、抽字段、写重复样板。
+4. **探索陌生仓、长上下文阅读、要 Agent teams 试水：Claude Code。** 输出仍以 Git diff／PR 为准；不要两边各改一半文件却不合并。
+5. **权限与密钥：两边都按最小权限。** Codex 的沙箱／审批见姊妹篇《权限、沙箱与审批》；Claude Code 同样不要为省事长期全放行。
 
-这次的改进是在 API 层面，模型自己能判断什么时候该压缩、压缩哪些内容，配合百万 token 上下文，长任务能跑更久而不会因为上下文溢出中断。
+刻意不做的事：
 
-![Codex 操作步骤配图 06](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/06-操作步骤.jpg)
+- 不把某一天的 Terminal-Bench／SWE-Bench 截图写进「谁赢了」。基准版本、提示词、工具环境不同，数字不能直接横比。
+- 不把「同事说更好用」写成产品事实。
+- 不假设 API 价目表等于 ChatGPT 套餐体验；登录方式一变，账单逻辑就变。
 
-** Adaptive Thinking（自适应思考）。  ** 以前 extended thinking
-只能开或关，没有中间状态。简单问题开了深度思考就是浪费。现在 Claude 能自己判断问题的复杂度，简单问题快速回答，复杂问题多想一会儿。
+## 6. 60 秒自检
 
-配合新增的 Effort 控制（low / medium / high / max 四档，默认 high），开发者可以在速度、成本、质量之间灵活调整。
+开新任务前问自己三句：
 
-** Agent Teams（多 Agent 团队协作）。  ** 这是 Claude Code 的一个重要更新，目前是 research
-preview。以前用 Claude Code 是一个 agent 在干活，现在可以启动多个 agent
-并行工作，一个审代码、一个写测试、一个改文档，最后汇总结果。
-
-和之前的 subagent 不同，subagent 只能向主 agent 报告结果，Agent Teams
-的成员之间可以直接沟通、互相质疑、共享发现，不需要通过负责人中转。你可以用 Shift+Up/Down 或 tmux 直接接管任何一个 subagent。
-
-** Claude in Excel 增强 + Claude in PowerPoint 首发。  ** Excel
-插件现在支持数据透视表、图表修改、条件格式、排序筛选、数据验证，不只是写公式了。
-
-PowerPoint 插件进入 research preview，能读懂你的模板、字体、配色，生成的 PPT 不用大改。这两个插件对 Max、Team 和
-Enterprise 用户开放。
-
-![Codex 操作步骤配图 07](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/07-操作步骤.jpg)
-
-价格保持不变，  25 per million tokens（输入/输出）。超过 200K token 的上下文有额外定价，  37.50 per
-million tokens。
-
-##  GPT-5.3-Codex：更快更省，模型开始造模型
-
-OpenAI 官方：https://openai.com/index/introducing-gpt-5-3-codex
-
-###  模型能力升级
-
-GPT-5.3-Codex 融合了 GPT-5.2-Codex 的前沿编码性能和 GPT-5.2 的推理及专业知识能力，同时速度提升 25%。
-
-Sam Altman 在推文里补充了一个更直观的数据：完成相同任务所需的 token 不到 5.2-Codex 的一半。
-
-速度更快、消耗更少，这对跑长任务的开发者来说是实打实的省钱。
-
-这次最值得关注的一点是，OpenAI 在博客里说 GPT-5.3-Codex 是他们第一个"  ** 在创造自己的过程中发挥重要作用的模型  ** "。
-
-![Codex 操作步骤配图 08](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/08-操作步骤.jpg)
-
-Codex 团队用早期版本来 debug 自己的训练过程、管理部署、诊断测试结果。
-
-工程团队用它定位 context 渲染 bug 和缓存命中率问题；
-
-数据团队用它建数据管道、分析结果，三分钟内就能对上千个数据点生成摘要。
-
-** 模型造模型。  ** 挺有意思的。
-
-** Mid-task steerability（任务中途可调整）。  ** 这是 5.3 主打的差异化功能。
-
-以前 Codex agent 跑起来只能等结果，现在可以中途提问、调整方向、讨论方案，不会丢失上下文。
-
-Codex 还会频繁汇报进展，让你随时了解关键决策和进度，官方说体验像和同事协作一样。在 Settings > General > Follow-up
-behavior 里开启。
-
-前端生成能力也有明显提升。官方对比了 GPT-5.3-Codex 和 GPT-5.2-Codex 生成的落地页，5.3
-会自动把年付方案显示为折算后的月价让折扣更直观，还会做自动轮播的多条用户评价，整体更接近生产级别的页面。
-
-![Codex 操作步骤配图 09](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/09-操作步骤.jpg)
-
-OpenAI 还测试了让 5.3-Codex 用 "develop web game" Skill 配合通用跟进提示（修复
-bug、改进游戏），在几天时间里自主迭代了数百万 token，做出了一个有 8 张地图和道具系统的赛车游戏，以及一个有氧气和压力管理系统的潜水游戏。
-
-![Codex 操作步骤配图 10](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/10-操作步骤.jpg)
-![Codex 操作步骤配图 11](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/11-操作步骤.jpg)
-
-###  跑分表现
-
-Terminal-Bench 2.0 从 64%（5.2-Codex）跳到 77.3%，提升明显。
-
-![Codex 操作步骤配图 12](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/12-操作步骤.jpg)
-
-OSWorld-Verified 从 38.2% 跳到 64.7%，接近翻倍，computer use 能力大幅增强。
-
-![Codex 操作步骤配图 13](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/13-操作步骤.jpg)
-
-SWE-Bench Pro 是 56.8%，比 5.2 的 56.4% 提升不大，但这个 benchmark 覆盖
-Python、Go、JavaScript、TypeScript 四种语言，比 SWE-bench Verified 更难也更抗数据污染。
-
-![Codex 操作步骤配图 14](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/14-操作步骤.jpg)
-
-网络安全 CTF 挑战从 67.4% 提升到 77.6%，SWE-Lancer IC Diamond 从 76% 提升到 81.4%。
-
-###  新功能和产品更新
-
-** 网络安全能力首次被标记为 High Capability。  **
-
-这是 OpenAI Preparedness Framework 下第一个在网络安全领域被标记为高能力的模型，也是第一个专门训练来发现软件漏洞的模型。
-
-![Codex 操作步骤配图 15](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/15-操作步骤.jpg)
-
-OpenAI 同时投了 $10M API credits 用于网络防御研究，推出了 Trusted Access for Cyber
-试点项目，还在扩展安全研究 agent Aardvark 的私测范围。
-
-目前 GPT-5.3-Codex 通过 ChatGPT 付费订阅使用，API 还没开放。桌面 App 暂时只支持 Mac Apple
-Silicon（M1+）。
-
-##  两家怎么比
-
-产品形态上，
-
-OpenAI 把 Codex 做成了桌面 App、CLI、IDE 插件、Web 端全线打通的产品。不过这点 Claude 也一样，claude.ai Web
-端、桌面 App、Claude Code CLI、各 IDE 插件都有，两家在产品覆盖面上基本持平。
-
-然后就是说实话跑分这个东西参考一下就好。
-
-一方面两家的评测基准有很多细节差异，OSWorld、SWE-bench、GDPval 用的都是不同版本或不同评测方法，表面上的数字高低说明不了太多问题。
-
-另一方面，很多模型跑分很高但用起来就是不顺手，反过来有些模型跑分一般但在某些场景下特别好用。
-
-关于产品路线的差异。
-
-两家都在往 agent 方向走，但产品化思路不太一样。
-
-Claude 这边是嵌入式路线，直接做了 Excel 和 PowerPoint 插件，嵌入你现有的工作流。Agent Teams 让多个 agent
-并行协作，Cowork 让 Claude 在后台自主多任务。
-
-产品矩阵更全，百万 token 上下文也是 GPT-5.3 的 128K 的 8 倍，对大项目的体验提升是质变级的。
-
-OpenAI 这边是平台化路线，把 Codex 做成了一站式产品（App + CLI + IDE + Web），Skills 系统让 Codex
-能对齐团队规范，Automations 能在后台自动处理 issue 分类、告警监控这些日常杂活。Mid-task steerability
-让长任务的交互体验更好。
-
-如果你想开箱即用地增强办公效率，Claude 的插件更方便。如果你习惯在一个产品里一站式搞定开发工作，Codex 的体验更完整。
-
-我自己的工作流大概率不会大变：Claude Code 打草稿做主力开发，Codex
-接手后续精准调试和长任务。两边同时升级，都去试试吧，找到自己的最佳使用方式。
-
-![Codex 操作步骤配图 16](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/16-操作步骤.jpg)
-![Codex 操作步骤配图 17](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/17-操作步骤.jpg)
-
-现在算力已经变成了生产力，Opus 4.6 百万上下文一开，跑个大项目 token 消耗很可观。如果你是重度用户，比如用 OpenClaw 跑自动化、用
-Claude Code 做大项目开发，API 费用会是一笔不小的开支。
-
-
-
-
-![Codex 操作步骤配图 18](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/18-操作步骤.jpg)
-![Codex 操作步骤配图 19](../图片素材/10-配置模型与权限安全/02-Codex与其他编程模型比较/19-操作步骤.jpg)
+1. **任务要落在本地仓库，还是云端环境？** → 决定 Codex 本地／Cloud，或 Claude Code 本地／网页云会话。
+2. **这是难判断的长链路，还是范围清楚的重复活？** → Sol／Astra／Luna（或 sonnet／opus／haiku／fable）。
+3. **账单从哪条走？** ChatGPT 套餐用量、API Key、Claude 订阅还是 credits？→ 先看 Usage／账单页，再开长任务。
+
+答得清，就不容易买错模型、开错入口。
+
+## 参考资料
+
+- [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex)
+- [Models（ChatGPT Learn）](https://learn.chatgpt.com/docs/models)
+- [Codex Cloud](https://learn.chatgpt.com/docs/cloud)
+- [Codex CLI](https://learn.chatgpt.com/docs/codex/cli)
+- [GPT-6.1 Sol（API 模型页）](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+- [Claude Code Overview](https://code.claude.com/docs/en/overview)
+- [Claude Code Model configuration](https://code.claude.com/docs/en/model-config)
+- [Claude Models overview](https://platform.claude.com/docs/en/models/overview)
+- [Orchestrate teams of Claude Code sessions](https://code.claude.com/docs/en/agent-teams)
+
+想继续系统学习 Codex，可以访问 [CodexGuide 教程网站](https://codexguide.io)。

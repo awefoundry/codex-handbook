@@ -17,6 +17,7 @@
 ## 已上线文章
 
 - [用 Codex 批量压缩图片并转换为 WebP](./03-批量图片压缩与格式转换Skill.md)
-- [从零创建 Codex Skill](./04-从零创建Codex-Skill.md)
+- [从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包](./04-从零创建Codex-Skill.md)
+- [Codex 检查 PHP2Shell 漏洞：安装 OpenAI 官方 php2shell-checker Skill](./07-Codex检查网站是否受PHP2Shell漏洞影响-官方php2shell-checker-Skill.md)
 - [Codex 用 Record & Replay 生成可复用 Skill](./05-Codex用Record-and-Replay生成可复用Skill.md)
 - [给 Codex 写一个专属 Skill：从重复提示词到可复用工作流](./06-给Codex写一个专属Skill.md)
