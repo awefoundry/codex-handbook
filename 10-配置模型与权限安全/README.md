@@ -20,4 +20,5 @@
 - [Codex config.toml配置指南：最小配置、生效检查与常见问题](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [Codex 沙箱与主机权限：一次权限边界风险复盘](./08-Codex沙箱与主机权限风险.md)
 - [Codex 任务总跑偏？先检查这 5 个设置](./08-Codex设置检查清单-让任务按预期执行.md)
-- [Codex AGENTS.md教程：项目规则、读取范围与生效检查](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
+- [Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
+- [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./12-Codex-Daybreak-Blue申请开启与排障.md)
