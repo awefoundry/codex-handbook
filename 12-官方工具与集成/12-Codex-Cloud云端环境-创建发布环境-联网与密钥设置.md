@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/environments/cloud-environments
 keywords: [Codex Cloud, 云端环境, cloud environments, 网络密钥, network secrets, Install script, Start skill, Personal vault, codex cloud, codex apply]
 related: [worktree-parallel-chats]

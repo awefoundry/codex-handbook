@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/reference/troubleshooting
 keywords: [Codex Reconnecting, Codex stream disconnected, Codex 一直重连, Codex 国内代理, Codex WebSocket, CODEX_CA_CERTIFICATE]
 related: [desktop-crashpad-disk-space, model-at-capacity-usage-reset]

@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/agent-configuration/rules
 keywords: [Codex Rules, prefix_rule, default.rules, execpolicy, 命令白名单, allow prompt forbidden]
 related: [permissions-sandbox-approvals, hooks-guide, advanced-config-toml]

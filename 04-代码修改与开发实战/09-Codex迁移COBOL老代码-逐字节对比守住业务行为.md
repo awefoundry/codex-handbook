@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-astra, gpt-6-luna]
 official_ref: https://openai.com/index/low-resource-programming-languages/
 keywords: [Codex COBOL 迁移, MultiLangBench, GPT-6.1 Sol COBOL, 老代码现代化, 逐字节对比, GnuCOBOL]

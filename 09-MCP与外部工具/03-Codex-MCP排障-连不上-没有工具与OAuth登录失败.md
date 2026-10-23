@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/extend/mcp
 keywords: [Codex MCP 排障, MCP 连不上, startup timeout, mcp login, MCP OAuth, enabled_tools, tool_timeout]

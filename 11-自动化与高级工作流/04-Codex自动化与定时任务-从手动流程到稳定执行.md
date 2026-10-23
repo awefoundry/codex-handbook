@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-21
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/non-interactive-mode
 keywords: [codex exec, Codex GitHub Action, Codex CI, openai/codex-action, Codex 非交互模式, CODEX_API_KEY]
 related: [codex-automations-scheduled-tasks, codex-github-issue-pr-workflow, codex-rules-prefix-rule]

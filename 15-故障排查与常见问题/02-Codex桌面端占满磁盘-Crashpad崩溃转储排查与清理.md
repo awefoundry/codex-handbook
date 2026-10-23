@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/reference/troubleshooting
 keywords: [Codex 占用磁盘, Codex Crashpad, Crashpad pending, Codex 桌面端磁盘空间, Codex worktree 清理]
 related: [worktree-parallel-chats, model-at-capacity-usage-reset, cli-manage-multiple-sessions]

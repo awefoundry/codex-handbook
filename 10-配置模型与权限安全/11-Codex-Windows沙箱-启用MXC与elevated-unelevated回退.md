@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/windows/windows-sandbox
 keywords: [Codex Windows 沙箱, Codex MXC, prefer_mxc, elevated sandbox, unelevated, Codex PowerShell]
 related: [permissions-sandbox-approvals]

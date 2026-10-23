@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-19
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/agent-configuration/subagents
 keywords: [Codex Subagents, Codex 子 Agent, Codex 自定义 Agent, agents.max_concurrent_threads_per_session, default_subagent_model, Codex /subagents]
 related: [worktree-parallel-chats, model-reasoning-effort, goal-mode-long-running-work]
@@ -41,8 +40,6 @@ faq:
 主聊天里一边定需求、一边塞满探索笔记、测试日志和堆栈，时间一长，真正有用的约束会被冲淡。官方把这类问题叫 **上下文污染（context pollution）** 和 **上下文腐烂（context rot）**：中间噪声把主线程占满，后续判断更容易偏。
 
 **Subagents** 的做法是：把可并行、噪声大的工作挪到独立线程，只把摘要交回主 Agent。适合代码库探索、测试／日志排查、安全与可维护性审查这类「读得多、结论可并列」的活；并行写同一组文件时要格外小心。
-
-![主 Agent 分派多个子 Agent 并汇总结果](./06-Codex使用Subagents并行处理任务/01-正文配图.jpg)
 
 ## 2026-10 更新说明：自定义 Agent 不能覆盖沙箱和 MCP
 
@@ -153,8 +150,6 @@ Skill 默认从父级继承；自定义 Agent 可以按上面方式再收窄。
 | `model_provider` | 跟父 provider |
 | `mcp_servers` | 跟父 MCP；要在父会话配置 |
 
-![内置 Agent 与自定义 Agent 的配置边界](./06-Codex使用Subagents并行处理任务/03-正文配图.jpg)
-
 ### 最小可复制示例（PR 审查三人组）
 
 项目 `.codex/config.toml`：
@@ -243,8 +238,6 @@ ChatGPT Work 网页侧栏主要是只读活动列表，不提供逐个停止／�
 - **非交互** 流程，或无法弹出新审批时：需要新审批的操作会 **失败**，错误回到父工作流。
 
 自定义文件里的「请勿编辑」只是指令约束，**不是**另一套沙箱。真要收紧写入，仍改父会话权限，或把写操作留到单独、可控的执行线程／Worktree。
-
-![子 Agent 提示词中对分工、等待方式和返回摘要的约束](./06-Codex使用Subagents并行处理任务/02-正文配图.jpg)
 
 ## 用量和磁盘：为什么更费，怎样控并发
 

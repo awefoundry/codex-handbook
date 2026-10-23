@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://github.com/openai/php2shell-checker
 keywords: [Codex PHP2Shell, php2shell-checker, phpcheck-url, phpcheck-server, CVE-2026-109618, CVE-2026-109619, $skill-installer]

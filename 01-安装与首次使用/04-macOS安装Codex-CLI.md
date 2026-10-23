@@ -19,7 +19,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/codex/cli
 keywords: [macOS 安装 Codex CLI, Homebrew 安装 Codex, brew install --cask codex, npm @openai/codex, codex login]
 related: [windows-wsl-install-codex-cli, deng-lu-codex, install-login-faq]

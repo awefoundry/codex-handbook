@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/import
 keywords: [Claude Code 迁移 Codex, Codex /import, CLAUDE.md 转 AGENTS.md, Cursor 迁移 Codex, Codex 导入配置]
 related: [create-codex-skill, mcp-getting-started, hooks-guide]

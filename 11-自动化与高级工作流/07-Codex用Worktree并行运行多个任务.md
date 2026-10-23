@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/environments/git-worktrees
 keywords: [Codex worktree, Git worktree 并行, Handoff, .worktreeinclude, Codex 并行任务]
 related: []

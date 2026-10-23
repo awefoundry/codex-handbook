@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting
 keywords: [Codex 用量, Codex 额度, usage limits, Fast mode, credits]
@@ -58,7 +57,7 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 
 官方写明：适用套餐里，**Codex、ChatGPT Work、Workspace Agents、ChatGPT for Excel** 等可共用同一份主用量／credits 池；**普通 Chat 对话不计入**这份共享池。面板上也会有类似说明。
 
-![图一 Usage Overview：Plan limits、Credits 与共享说明（数字为某次截图像例，不是承诺值）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图一.png)
+![图一 Usage Overview：Plan limits、Credits 与共享说明（新截图；数字为某次像例，不是承诺值）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图一.png)
 
 **读百分比时注意标签**：有的界面写「left／剩余」，有的写「used／已用」。看错方向，会把「还剩 74%」当成「已经用了 74%」。
 
@@ -114,6 +113,8 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 
 **Fast**：在支持的模型上加速（文档举例含 GPT-6.1 Sol、GPT-6 Astra、GPT-6 Sol、GPT-6 Luna 等，以你账号可见为准）。CLI 可用 `/fast` 开关；也可用 `config.toml` 持久化（`service_tier = "fast"` 与 `[features].fast_mode = true`）。桌面端、CLI、IDE 扩展在 ChatGPT 登录下可用。
 
+**GPT-5.6 的 Fast 另有速度说明**：官方 Speed 页写明，对 GPT-5.6，Fast 的 **speed increase is 1.5×**——这是**速度**倍率，与上表通用的 **计费／用量**倍率（内含 2.5×、credits／企业按量 2×）不是同一回事。本文不把 1.5× 写成计费系数；以 [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) 原文为准。
+
 **Ultrafast**：更低延迟的 Astra／GPT-6.1 Sol。当前公开说明里，面向 **Pro $500** 与符合条件的 **Enterprise／Edu**；**Plus、Pro $100、Pro $200、Business** 等自助套餐在发布时**不包含**，**单靠买 credits 也不会解锁**。Pro $500 上：先按 8× 吃内含，内含用尽后再按 6× 吃 credits。
 
 把「开了 Fast 所以掉得快」当成计费故障之前，先算一遍倍率是否解释得通。
@@ -130,7 +131,7 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 - 任务开始时余额为正、并发耗尽后结束，余额可能短暂为负；之后的购买／自动充值可能先抵负再加可用额度。
 - Free／Go：**部分**账号可能看到买 credits；看不到 Add credits 就表示当前账号还不可买。买 credits **不会**提高套餐内含上限。
 
-![图二 Usage 页下方：Usage limit resets 与 Credit usage history（本例无 banked reset／无 credit 记录，仅为界面示意）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图二.png)
+![图二 Usage 页下方：Usage limit resets 与 Credit usage history（新截图；本例无 banked reset／无 credit 记录，仅为界面示意）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图二.png)
 
 **Credits 与重置别混**：
 

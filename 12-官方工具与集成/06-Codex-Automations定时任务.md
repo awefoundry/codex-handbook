@@ -60,9 +60,9 @@ faq:
 
 ## 2. 在桌面端创建一条定时任务
 
-打开桌面端侧边栏 **Scheduled**（旧版可能仍显示 Automations）。可从模板开始，也可新建空白任务。创建时至少核对：名称、项目、提示词、计划；模型和推理强度可保持默认，也可显式指定。
+打开桌面端侧边栏 **Scheduled**（旧版／本批截图可能仍显示 Automations 或 Automations Beta；功能同一套，以你客户端当前侧栏名为准）。可从模板开始，也可新建空白任务。创建时至少核对：名称、项目、提示词、计划；模型和推理强度可保持默认，也可显式指定。
 
-![Scheduled／Automations 任务列表与模板入口（旧截图可能仍写 Automations）](../图片素材/12-官方工具与集成/06-Codex-Automations定时任务/01-Automations任务列表.png)
+![Scheduled／Automations 任务列表与模板入口（本批保留旧截图：侧栏仍标 Automations／Beta；现行入口为 Scheduled，勿按截图旧名找菜单）](../图片素材/12-官方工具与集成/06-Codex-Automations定时任务/01-Automations任务列表.png)
 
 | 字段 | 应写内容 | 检查重点 |
 |---|---|---|

@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/customization/memories
 keywords: [Codex Memories, Codex 记忆, /memories, memories.generate_memories, ~/.codex/memories]
 related: [usage-limits-credits, hooks-guide]
@@ -54,6 +53,11 @@ Codex 可以把以前对话里有用的信息带到之后的任务里。这个�
 
 **Computer History**（文档说明为 macOS 桌面功能）会把允许范围内的应用与网站活动整理成记忆和时间线，供 ChatGPT／Codex 引用。删 Codex 记忆时，本机若提供该功能，会**一并清空 Computer History**（见后文删除一节）。
 
+![图一　ChatGPT 网页 Settings → Personalization 的「ChatGPT memory」开关（这是网页记忆，不是 Codex 本机 Memories；数字与开关状态仅为截图像例）](../图片素材/11-自动化与高级工作流/09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图二-ChatGPT网页记忆开关.png)
+
+![图二　同一 Personalization 页里的 Custom instructions：ChatGPT 与 Codex 分行（Codex 指令跨桌面与网页同步；与本机 Memories 库是不同能力）](../图片素材/11-自动化与高级工作流/09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图三-Personalization中的Codex自定义指令入口.png)
+
+
 **不是什么：**
 
 1. **不是团队强制规则库。** 官方原话要点：必须遵守的团队指引放在 `AGENTS.md` 或入库文档；把 Memories 当成**有帮助的回忆层**，不要当成「永远生效的唯一规则来源」。
@@ -73,6 +77,10 @@ Codex 可以把以前对话里有用的信息带到之后的任务里。这个�
 3. （可选）用 **Allow memories from tool-assisted chats** 决定：用过 MCP 或网页搜索等工具辅助的对话，能不能参与后续记忆生成
 
 同一页还有 **Delete Codex memories**（确认后重置本机记忆库；见后文）。
+
+![图三　Codex 桌面端 Settings → 个性化：启用本地记忆（Codex Memories）及相关开关（自定义指令内容已打码）](../图片素材/10-配置模型与权限安全/02-Codex桌面端协作设置/02-自定义指令与Memories.png)
+
+同一页若还出现 **Chronicle Research Preview** 等开关，以你客户端当前可见项为准；本文只覆盖 Memories 相关开关，不展开该预览功能。
 
 ### CLI 与配置文件
 

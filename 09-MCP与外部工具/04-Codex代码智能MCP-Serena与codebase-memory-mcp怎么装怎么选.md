@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 keywords: [Codex Serena, codebase-memory-mcp, 代码智能 MCP, Codex 大仓库, LSP MCP, 调用链]
 related: [mcp-getting-started, mcp-servers-recommended, mcp-troubleshooting]

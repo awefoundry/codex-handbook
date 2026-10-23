@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://learn.chatgpt.com/docs/hooks
 keywords: [Codex Hooks, hooks.json, PreToolUse, Stop hook, /hooks, Codex 生命周期钩子]
 related: [plugin-development-marketplace, create-codex-skill]

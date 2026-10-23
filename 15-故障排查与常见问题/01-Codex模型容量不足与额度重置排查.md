@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting
 keywords: [Codex at capacity, Selected model is at capacity, Codex 额度重置, usage reset, banked reset]
@@ -52,7 +51,7 @@ faq:
 
 打开桌面端 **Settings → Usage**（侧栏在 Personal 分组里，当前选中项会高亮）。有的说明写作 Usage & billing；CLI 正在跑会话时，输入 `/status`。
 
-![图一 Settings 侧栏，Personal 分组中 Usage 项高亮](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图一.png)
+![图一 Settings 侧栏，Personal 分组中 Usage 项高亮（新截图，无账号信息）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图一.png)
 
 看清楚两样东西：
 
@@ -78,15 +77,15 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 
 界面上常见的样子是任务进行中突然出现英文提示，有时还会带自动重试倒计时（对话内容已打码，仅保留报错文案）：
 
-![图四　任务进行中多次出现 Selected model is at capacity，并显示重试倒计时（对话已打码；图源公开 issue，仅作报错示意）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图四-at-capacity任务中重试.png)
+![图二　任务进行中多次出现 Selected model is at capacity，并显示重试倒计时（对话已打码；图源公开 issue，仅作报错示意）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图四-at-capacity任务中重试.png)
 
 工具刚跑完、正要继续时也可能同一条提示再冒出来：
 
-![图五　读取文件／搜索后再次出现 at capacity（对话已打码）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图五-at-capacity工具执行后.png)
+![图三　读取文件／搜索后再次出现 at capacity（对话已打码）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图五-at-capacity工具执行后.png)
 
 长会话里还可能连续多次出现，甚至夹杂 remote compact 相关错误——仍应先按「容量／路由」而不是「额度清零」来分流：
 
-![图六　同一会话中多次 at capacity（对话与配图已打码）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图六-at-capacity长会话多次.png)
+![图四　同一会话中多次 at capacity（对话与配图已打码）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图六-at-capacity长会话多次.png)
 
 ### 我的用法：容量提示时的顺序
 
@@ -109,7 +108,7 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 
 Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly limit、剩余百分比与 Resets in 倒计时），下方是 Credits（余额与 Add more／Automatic reload）。界面写明额度在 Codex、Work、Workspace Agents 与 ChatGPT for Excel 之间共享，不含普通 Chat。
 
-![图二 Usage Overview：Weekly limit 剩余与重置倒计时、Credits 余额（数字为某次截图像例，不是承诺值）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图二.png)
+![图五 Usage Overview：Weekly limit 剩余与重置倒计时、Credits 余额（新截图；数字为某次像例，不是承诺值）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图二.png)
 
 常见结构（具体是否两档并存、卡片文案以你的套餐和面板为准）：
 
@@ -144,7 +143,7 @@ Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly
 
 同一 Usage 页往下还能看到 **Usage limit resets**：说明可用 reset 恢复 5-hour limit、weekly limit 或两者；并显示 Available 数量与近 30 天 History。下面这张是 Available 为 0、近 30 天无 banked reset 记录的例子。
 
-![图三 Usage limit resets：Available 数量与近 30 天 History（本例 Available 0，数字为截图像例）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图三.png)
+![图六 Usage limit resets 与 Credit usage history（新截图；本例 Available 0／暂无 credit 记录，仅为界面示意）](../图片素材/15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查/图三.png)
 
 1. 桌面端打开 **Settings → Usage**（网页端打开 Usage；官方写明移动端目前没有这套控件）。
 2. 在 **Usage limit resets** 里查看 Available；若有可用重置，再点进摘要（界面也可能写作 “1 reset available”／“Full reset”），看清覆盖哪些额度、何时过期，再确认。

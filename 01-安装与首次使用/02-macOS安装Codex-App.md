@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
 date_modified: 2026-10-22
-client_validation_pending: true
 official_ref: https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app
 keywords: [macOS 安装 Codex, Codex App 安装, ChatGPT 桌面端 macOS, Codex 首次登录, 打开本地文件夹]
 howto: true
