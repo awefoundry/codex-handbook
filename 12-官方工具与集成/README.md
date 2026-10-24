@@ -25,3 +25,5 @@
 - [Codex CLI 使用与多入口配置](./09-CodexCLI国内使用与多入口配置.md)
 - [Codex 接入飞书：从群聊指令到本地任务执行](./10-Codex飞书集成实战.md)
 - [Codex 常用功能清单：把容易漏掉的能力补齐](./11-Codex常用功能清单.md)
+- [Codex CLI /presets 预设与内联 /model、/permissions：0.164.0 一条命令切换模型、推理强度和权限](./15-Codex-CLI-presets预设与内联model-permissions命令.md)
+- [Codex 接入 Amazon Bedrock：CLI 登录向导、Runtime 与 Mantle 怎么选，以及 API Key 和 AWS 凭证怎么配](./16-Codex接入Amazon-Bedrock-登录向导与配置.md)

@@ -1,87 +1,246 @@
-# Codex config.toml配置指南：最小配置、生效检查与常见问题
+---
+id: config-toml-guide
+title: Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）
+seo_title: Codex config.toml 配置指南：层级、-c 覆盖、Profile 与生效检查
+description: Codex 的 config.toml 按 7 个层级解析，CLI 参数、受信任项目、Profile 文件、用户配置依次覆盖。本文用 0.164.0 隔离实测演示怎么看 exec 启动摘要确认生效值、-c 临时覆盖、Profile 单独文件写法、--strict-config 查错，以及不生效时的排查顺序。
+url: /advanced/config-toml
+status: published
+section: advanced
+category: F-config-model-security
+topic: 配置、模型与权限
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [CLI, IDE, App]
+difficulty: 进阶
+order: 8
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-09-22
+date_modified: 2026-10-24
+verified_on: 2026-10-24
+tested_cli_version: 0.164.0
+models: [gpt-6.1-sol]
+official_ref: https://learn.chatgpt.com/docs/config-file/config-basic
+keywords: [config.toml, Codex 配置, 配置优先级, Codex profile, -c 覆盖, strict-config]
+related: [codex-cli-presets-inline-model, codex-amazon-bedrock]
+howto: false
+faq:
+  - q: Codex 的 config.toml 在哪里？
+    a: 用户配置在 ~/.codex/config.toml，设置了 CODEX_HOME 时在 $CODEX_HOME/config.toml。项目配置放在仓库里的 .codex/config.toml，只有项目受信任时才加载。
+  - q: 0.134.0 以后 Profile 怎么写？
+    a: 每个 Profile 是单独的文件 ~/.codex/<名字>.config.toml，用顶层键书写，运行时用 --profile <名字> 选择。config.toml 里的 [profiles.<名字>] 表和 profile = "<名字>" 选择器不再生效。
+  - q: 怎么确认某个值最终生效了？
+    a: 交互界面用 /status；脚本里看 codex exec 开头打印的启动摘要，里面有 model、provider、approval、sandbox、reasoning effort 等最终值。
+---
 
-`config.toml` 适合保存稳定的运行偏好，例如默认审批策略、沙箱模式和推理强度。它不应被当成“把所有开关抄一遍”的总配置，也不应成为绕过审批或扩大权限的捷径。
+# Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）
 
-本文保留原文的配置来源、覆盖关系、只读探针和回滚思路，改成一套更小的可操作流程。示例使用独立的 `CODEX_HOME` 和临时项目，不会改写维护者的 `~/.codex`，也不包含凭据。
+> 本文在线版：[codexguide.io/advanced/config-toml](https://codexguide.io/advanced/config-toml)
 
-## 什么时候需要配置
+> 核对依据：OpenAI 官方文档 [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)、[Advanced Config](https://learn.chatgpt.com/docs/config-file/config-advanced)、[Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) 和 [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)。实测环境是 Linux 上的 `codex-cli 0.164.0`，使用独立的 `CODEX_HOME` 和临时项目，**没有登录**，所以只验证到配置解析和启动摘要，没有发出模型请求。核对日期 2026-10-24。
 
-如果默认设置已经能完成任务，可以先不创建或修改 `config.toml`。只有在下面情况出现时，再考虑写配置：
+`config.toml` 用来保存稳定的运行偏好：默认模型、推理强度、审批策略、沙箱、MCP 服务器等。它不是“把所有开关抄一遍”的总配置，也不是绕过审批、扩大权限的捷径。
 
-- 每次任务都要重复选择同一个审批或沙箱边界；
-- 个人默认模型或推理强度需要固定；
-- 某个项目需要一个经过审查的最低安全基线；
-- 需要用 Profile 把审查、日常开发和 CI 的偏好分开。
+这篇讲三件事：配置从哪几层来、谁覆盖谁；怎么临时覆盖和分场景切换；改完怎么确认真的生效了。
 
-一次性实验优先用命令行参数或 `-c/--config` 覆盖，确认行为后再决定是否落到文件。不要为了“自动化方便”把 `danger-full-access`、`approval_policy = "never"` 或真实密钥写成默认入门配置。
+## 什么时候需要写配置
 
-## 配置从哪里来
+默认设置能完成任务时，不必急着建 `config.toml`。出现下面的情况再写：
 
-根据 [OpenAI Config basics](https://learn.chatgpt.com/docs/config-file/config-basic) 和 [Advanced Config](https://learn.chatgpt.com/docs/config-file/config-advanced)（核对日期：**2026-09-22**），常见来源如下：
+- 每次都要重复选同一个审批或沙箱边界；
+- 想固定个人默认的模型或推理强度；
+- 某个项目需要一份团队共享、经过审查的最低安全基线；
+- 想把审查、日常开发、CI 的偏好分开（用 Profile 文件）。
 
-| 层级 | 位置或入口 | 适用范围 |
+一次性试验用命令行参数或 `-c` 覆盖，确认行为后再写进文件。只想在当前会话里换模型或权限，0.164.0 起可以直接用内联的 `/model`、`/permissions`，见 [Codex CLI /presets 与内联 /model、/permissions](../12-官方工具与集成/15-Codex-CLI-presets预设与内联model-permissions命令.md)。
+
+## 配置从哪里来：7 个层级
+
+官方文档给出的解析顺序，**越靠上优先级越高**：
+
+| 优先级 | 来源 | 说明 |
 | --- | --- | --- |
-| 命令行 | 专用参数、`-c/--config` | 只影响当前命令，优先级最高 |
-| 项目 | 项目根到当前目录的 `.codex/config.toml` | 仅在项目受信任时加载，越靠近当前目录越优先 |
-| Profile | `CODEX_HOME/<name>.config.toml`，用 `--profile <name>` 选择 | 在用户配置之上叠加一组差异值 |
-| 用户 | `~/.codex/config.toml`，或 `CODEX_HOME` 指定的目录 | 个人默认值 |
-| 工作区托管 | 登录工作区下发的配置 | 可能提供组织默认值 |
-| 系统 | Unix 常见为 `/etc/codex/config.toml` | 管理员提供的系统默认值 |
-| 内置默认 | Codex 自带 | 前面没有值时使用 |
+| 1 | CLI 参数和 `-c` / `--config` | 只影响这一次运行 |
+| 2 | 项目配置 `.codex/config.toml` | 从项目根目录到当前目录逐层加载，离当前目录最近的优先；**只在项目受信任时加载** |
+| 3 | Profile 文件 | 用 `--profile <名字>` 选择，文件是 `~/.codex/<名字>.config.toml` |
+| 4 | 用户配置 | `~/.codex/config.toml`（设置了 `CODEX_HOME` 时在该目录下） |
+| 5 | 云端托管的 `config.toml` 默认值 | 登录的工作区下发时才有 |
+| 6 | 系统配置 | Unix 上是 `/etc/codex/config.toml`（存在时） |
+| 7 | 内置默认值 | 前面都没设置时使用 |
 
-Codex 按键解析这些层级，而不是简单地用高层文件替换低层文件。项目未受信任时，项目级 `.codex/` 层会被跳过；管理员还可以通过 `requirements.toml` 强制限制某些值，本地文件不能把它放宽。
+几点要注意：
 
-## 一份最小、保守的配置
+- Codex 是**按键**合并这些层的，不是用高层文件整个替换低层文件。
+- 项目被标为不受信任时，项目里的 `.codex/` 层（配置、hooks、规则）全部跳过；用户和系统层照常加载。
+- 托管机器上，组织还可以用 `requirements.toml` 限制取值，比如禁止 `approval_policy = "never"` 或 `sandbox_mode = "danger-full-access"`。这是约束，不是默认值，本地配置放宽不了。
+- 项目配置里的相对路径（比如 `model_instructions_file`）相对于该 `.codex/` 目录解析。
 
-下面只固定三个容易解释的字段：
+### 实测：谁覆盖了谁
+
+在一个隔离目录里，用户配置写 `model_reasoning_effort = "medium"`，Profile 文件 `review.config.toml` 写 `"high"`，项目 `.codex/config.toml` 写 `"xhigh"`，再分别运行 `codex exec`，看启动摘要里的 `reasoning effort` 一行：
+
+| 运行方式 | 实测结果 | 说明 |
+| --- | --- | --- |
+| 只有用户配置 | `medium` | 第 4 层 |
+| 加 `--profile review` | `high` | Profile（第 3 层）覆盖用户配置 |
+| `--profile review -c model_reasoning_effort="low"` | `low` | `-c`（第 1 层）覆盖 Profile |
+| 项目**未受信任**，项目里写了 `xhigh` | `medium` | 项目层被跳过 |
+| 项目**受信任**，再加 `--profile review` | `xhigh` | 项目层（第 2 层）覆盖 Profile |
+
+结果和官方顺序一致。
+
+## 一份保守的最小配置
 
 ```toml
-# $CODEX_HOME/config.toml 或 ~/.codex/config.toml
+# ~/.codex/config.toml（或 $CODEX_HOME/config.toml）
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 model_reasoning_effort = "medium"
 ```
 
-- `approval_policy = "on-request"`：需要时暂停并等待确认。它控制询问时机，不等于授予额外权限。
-- `sandbox_mode = "read-only"`：命令只能在只读边界内工作，适合先调查项目。要修改文件时，在当前命令显式选择合适的工作区策略，并在完成后恢复。
-- `model_reasoning_effort = "medium"`：对支持该字段的模型调整推理投入；模型是否支持某个值要以当前入口和官方参考为准。
+- `approval_policy = "on-request"`：需要时停下来等你确认。它控制**什么时候问**，不额外授予权限。
+- `sandbox_mode = "read-only"`：命令只能在只读边界内运行，适合先调查项目。需要改文件时，在这次运行里显式选合适的沙箱。
+- `model_reasoning_effort = "medium"`：调整模型的推理投入。官方列出的取值有 `low`、`medium`、`high`、`xhigh`、`max`、`ultra`，但**能用哪些取决于模型和客户端**。
 
-需要控制网页搜索时，可以单独增加：
+想固定默认模型，加一行 `model = "gpt-6.1-sol"`（需要你的账号能用这个模型）。
+
+### 权限配置（permission profiles）
+
+除了 `sandbox_mode`，Codex 还支持命名的权限配置，用来复用文件系统和网络策略。内置三个：`:read-only`、`:workspace`、`:danger-full-access`。自定义的写在 `[permissions.<名字>]` 表里，并把 `default_permissions` 设成同名。细节见官方 [Permissions](https://learn.chatgpt.com/docs/permissions) 文档和[权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
+
+### 网页搜索
 
 ```toml
 web_search = "cached"
 ```
 
-`cached` 使用搜索缓存；`indexed`、`live` 和 `disabled` 是其他官方列出的模式。网页结果仍是外部输入，不能把搜索结果当作可信指令。
+官方列出的 4 个取值：
 
-## exec 与 interactive 怎么选
+- `cached`（默认）：从 OpenAI 维护的搜索缓存返回结果，不实时抓网页，能减少来自任意网页的提示注入；
+- `indexed`：只有经过搜索索引放行时才访问外部网页；
+- `live`：实时抓取最新网页，等同 `--search`；
+- `disabled`：关闭网页搜索工具。
 
-`exec` 适合一次性命令、脚本和 CI；interactive 适合调查、修改和需要持续确认的任务。两者都要留下完成证据：前者看退出码、输出和测试，后者看 diff、测试和人工检查。入口和参数会随版本变化，先运行当前 `codex --help`，不要把旧教程的选项直接复制进脚本。
+搜索结果仍然是外部输入，不能当成可信指令。
 
-## sandbox、permissions 与 approval policy
+### 项目级配置
 
-`sandbox_mode` 规定命令执行时的访问边界，权限配置描述允许触碰的资源，`approval_policy` 决定何时暂停询问。它们不是一个开关。遇到拒绝时先看路径、当前工作目录和实际参数，再决定是否需要批准；不要用扩大权限掩盖路径或配置错误。具体边界可继续查看[权限与安全边界](./08-Codex沙箱与主机权限风险.md)和 [CodexGuide 权限与验证 FAQ](https://codexguide.io/guides/faq#permissions)。
-
-## slash commands 速查
-
-斜杠命令属于交互入口，具体可用项会随当前版本和入口变化。使用前先查看当前帮助；重复且稳定的项目约定沉淀到 `AGENTS.md`，重复流程再考虑 Skill。命令完成后仍要检查 diff 和验证结果。
-
-项目级配置只放团队愿意共享的最低边界，例如：
+项目配置只放团队愿意共享的最低边界：
 
 ```toml
-# <repo>/.codex/config.toml
+# <仓库>/.codex/config.toml
 sandbox_mode = "read-only"
 ```
 
-不要把 API Key、代理密码、个人路径、`auth.json` 或账号信息放进仓库。项目配置是否加载还取决于项目是否受信任。
+不要把 API Key、代理密码、个人路径、`auth.json` 或账号信息放进仓库。项目配置也不能覆盖改写凭证去向等敏感设置，详见 Advanced Config 的 Project config files 一节。
 
-## 用隔离目录检查配置语法
+## -c 临时覆盖
 
-先创建一个临时配置目录，不碰真实用户配置：
+优先用专用参数（比如 `--model`、`--sandbox`），没有专用参数时用 `-c` / `--config`：
 
 ```bash
-probe_home="$(mktemp -d /tmp/codex-config-home.XXXXXX)"
-probe_project="$(mktemp -d /tmp/codex-config-project.XXXXXX)"
+codex --model gpt-6.1-sol
+codex --config model='"gpt-6.1-sol"'
+codex --config sandbox_workspace_write.network_access=true
+codex --config 'shell_environment_policy.include_only=["PATH","HOME"]'
+```
+
+规则（来自官方 Advanced Config）：
+
+- 键可以用点号写嵌套值，比如 `mcp_servers.context7.enabled=false`；
+- 值按 **TOML** 解析，不是 JSON；拿不准时给整个值加引号，免得 shell 按空格拆开；
+- 值解析不成 TOML 时，Codex 当成字符串处理。
+
+`codex exec` 后面同样可以接 `-c`。0.164.0 还修了一个问题：以前 `-c` 同时写在多级命令上时（比如 `codex -c … mcp add -c …`），只有最深一级的值会保留；现在每一级的覆盖都会按顺序收集（[#56022](https://github.com/openai/codex/pull/56022)）。
+
+## Profile 文件：0.134.0 以后的写法
+
+Profile 把一组差异值存成单独的文件，用 `--profile` 切换：
+
+```toml
+# ~/.codex/review.config.toml
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
+```
+
+```bash
+codex --profile review
+codex exec --profile review "review this change"
+```
+
+- 文件名是 `<名字>.config.toml`，名字只能用字母、数字、连字符和下划线；
+- 文件里直接写**顶层键**，不要再包一层 `[profiles.review]`；
+- Profile 叠加在用户配置之上，所以只写和用户配置不同的值。
+
+**旧写法已失效**：从 Codex 0.134.0 起，`--profile` 不再读取 `config.toml` 里的 `[profiles.<名字>]` 表，顶层的 `profile = "<名字>"` 选择器也不再支持。旧配置要把内容搬到单独的 Profile 文件里，再删掉原来的表和选择器。
+
+## 改完怎么确认生效
+
+### 交互界面：/status
+
+在 CLI 里运行 `/status`，可以看到当前的模型、provider、权限等。注意内联 `/model`、`/permissions` 改的是当前会话，`/status` 显示的是会话里的实际值，不一定等于配置文件。
+
+### 脚本里：看 codex exec 的启动摘要
+
+`codex exec` 每次启动都会先打印一段摘要，里面就是各层合并后的最终值。实测（没有登录，摘要打印完后请求因 401 失败，摘要本身不受影响）：
+
+```text
+OpenAI Codex v0.164.0
+--------
+workdir: ~/codex-probe/project
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: …
+--------
+```
+
+（workdir 已换成示例路径，session id 已省略。）
+
+这段摘要在“有没有生效”的排查里最有用：改一个值、跑一次，看对应那一行变了没有。
+
+### 关于 exec 里的 approval
+
+上面的配置写的是 `approval_policy = "on-request"`，但 `codex exec` 的摘要显示 `approval: never`。实测把全局参数放到子命令前（`codex --ask-for-approval on-request exec …`），摘要仍然是 `never`。
+
+`exec` 是非交互运行，没有人在旁边点批准。官方 [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode) 的建议是：
+
+- `codex exec` 默认在**只读沙箱**里运行；
+- 需要改文件时用 `--sandbox workspace-write`，更大的权限只在隔离的 CI 或容器里用；
+- `--full-auto` 已不再支持；想让审批请求走自动审查，用 `--approve-for-me`；
+- 需要不加载 `$CODEX_HOME/config.toml` 的运行时，用 `--ignore-user-config`。
+
+所以在脚本里控制边界，靠的是**沙箱**，而不是指望 exec 停下来问你。本文旧版曾建议用 `codex --ask-for-approval on-request exec …` 让 exec 按需审批，0.164.0 实测并不能改变摘要里的 `approval: never`，这条建议已删除。
+
+### 用 --strict-config 查拼写错误
+
+实测不加 `--strict-config` 时，配置里的未知字段不会报错，`codex exec` 照常启动，写错的键等于没写。在要运行的子命令上加 `--strict-config`，未知字段会直接报错：
+
+```bash
+codex exec --strict-config "只读列出当前目录文件"
+```
+
+实测在配置里加一行 `not_a_real_key = 1`：
+
+```text
+Error loading config.toml:
+~/codex-probe/home/config.toml:4:1: unknown configuration field `not_a_real_key`
+  |
+4 | not_a_real_key = 1
+```
+
+（路径已换成示例路径。）报错给出了文件、行号和字段名。
+
+### 在隔离目录里试
+
+不想动真实的 `~/.codex` 时，建一个临时目录当 `CODEX_HOME`：
+
+```bash
+probe_home="$HOME/codex-probe/home"
+probe_project="$HOME/codex-probe/project"
 mkdir -p "$probe_home" "$probe_project"
 
 cat > "$probe_home/config.toml" <<'TOML'
@@ -90,73 +249,29 @@ sandbox_mode = "read-only"
 model_reasoning_effort = "medium"
 TOML
 
-CODEX_HOME="$probe_home" codex --version
-CODEX_HOME="$probe_home" codex exec --help
-```
-
-正常应显示当前 CLI 版本和帮助文本；这只能证明文件能被读取到帮助命令，不代表已完成模型调用。本轮（2026-09-23）维护环境实际核对到的是 `codex-cli 0.156.0`。
-
-需要严格检查未知字段时，在真正执行的子命令上加 `--strict-config`：
-
-```bash
 CODEX_HOME="$probe_home" codex exec --strict-config --ephemeral \
   --skip-git-repo-check -C "$probe_project" \
-  "只读检查当前目录并说明配置来源；不要修改文件。"
-```
-
-如果字段名称、类型或 TOML 语法有问题，先修复配置错误；如果随后停在登录、网络或模型连接，则说明配置解析已经走过，但本次行为验证没有完成。不要把网络失败写成“配置生效”。
-
-本轮在 Codex CLI 0.156.0 的隔离探针中，合法配置通过了解析，未知字段被 `--strict-config` 拒绝；发起模型请求前的启动摘要显示 `approval: never`，随后因网络无法连接而中断。因此不能据此确认 `approval_policy = "on-request"` 在 `exec` 入口的最终生效方式。需要对照命令级审批时，把全局参数放在子命令前，例如 `codex --ask-for-approval on-request exec ...`；不要把 `--ask-for-approval` 直接放在 `codex exec` 后面。
-
-## 先用临时覆盖，再写入文件
-
-验证某一个字段时，用 `-c` 临时覆盖：
-
-```bash
-CODEX_HOME="$probe_home" codex exec --ephemeral \
-  --sandbox read-only -C "$probe_project" \
-  -c 'model_reasoning_effort="low"' \
   "只读列出当前目录文件，不修改任何内容。"
 ```
 
-专用参数和 `-c` 都只影响这次命令。若项目配置中把 `sandbox_mode` 写成 `workspace-write`，上面的 `--sandbox read-only` 仍然明确指定了当前命令的沙箱边界。命令是否能继续运行，还取决于认证、项目受信任状态和组织策略。
+- 没有登录时，命令会在打印摘要之后的模型请求阶段失败。这只说明配置解析完成了，**不代表**模型行为验证完成。
+- 实测把 `CODEX_HOME` 放在 `/tmp` 下时，会先出现一行 `WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir "/tmp"`，之后照常继续。放在用户目录下就没有这行。
+- 新的隔离目录里没有登录信息，想做真实请求的测试，需要在这个目录里重新登录。
 
-## 用最小行为探针检查实际结果
+## 改了却没生效：排查顺序
 
-在临时项目写入一份无敏感信息的文件：
+1. **路径**：在运行 Codex 的同一个终端里 `echo "$CODEX_HOME"`；确认文件名是 `config.toml`，不是 `config.toml.txt`。
+2. **环境**：Windows、WSL、macOS/Linux 各有自己的用户目录。不要在 Windows 目录里改完，却从 WSL 启动 Codex。
+3. **项目信任**：项目不受信任时，项目里的 `.codex/config.toml`、hooks 和规则会一起被跳过。
+4. **语法和字段**：检查引号、布尔值、表头和重复键；用 `--strict-config` 抓未知字段。字段对照[官方 Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)。
+5. **旧 Profile 写法**：还在用 `[profiles.x]` 或 `profile = "x"`？0.134.0 起不再生效，改成单独文件。
+6. **覆盖顺序**：按上面的 7 层表，逐层找是谁给了最终值。跑一次 `codex exec` 看摘要最快。
+7. **组织约束**：管理员的 `requirements.toml` 不能被本地配置绕过，被拒绝的值找管理员确认。
+8. **重新启动**：配置在每次新运行开始时读取。结束当前会话，从目标目录重新启动再检查。
 
-```bash
-printf 'read-ok\n' > "$probe_project/probe.txt"
-CODEX_HOME="$probe_home" codex exec --ephemeral --sandbox read-only \
-  --skip-git-repo-check -C "$probe_project" \
-  "读取 probe.txt，然后尝试创建 write-probe.txt；被拒绝时不要重试，分别报告读取和写入结果。"
-```
+## 备份与恢复
 
-你要核对的是实际文件状态和命令输出：
-
-```bash
-cat "$probe_project/probe.txt"
-if [ -e "$probe_project/write-probe.txt" ]; then echo 'WRITE=CREATED'; else echo 'WRITE=NOT_CREATED'; fi
-```
-
-预期是能读取 `probe.txt`，并且 `write-probe.txt` 没有创建。这个探针验证的是当前命令的只读沙箱行为，不证明所有模型、入口或项目配置都相同。没有登录或网络时，命令会在模型请求阶段失败，应把结果记录为“未完成行为验证”。
-
-交互式会话可用当前客户端提供的状态命令或界面信息核对工作目录和权限；命令名会随版本变化，先运行 `codex --help` 或 `codex exec --help`，不要把旧教程中的菜单名称当成固定事实。
-
-## “改了却没生效”的排查顺序
-
-1. **路径**：在实际运行 Codex 的同一个终端中检查 `echo "$CODEX_HOME"`；确认文件名是 `config.toml`，不是 `config.toml.txt`。
-2. **环境**：Windows、WSL 和 macOS/Linux 有各自的用户目录；不要在 Windows 文件夹里改完，却从 WSL 启动 Codex。
-3. **项目信任**：确认项目已受信任。未受信任时，项目 `.codex/config.toml`、hooks 和规则会一起跳过。
-4. **TOML**：检查引号、布尔值、表头和重复键；用 `--strict-config` 的实际执行命令捕获未知字段。
-5. **字段和值**：对照[官方配置参考](https://learn.chatgpt.com/docs/config-file/config-reference)和当前 `codex --help`，不要复制旧版本的字段、废弃值或模型名。
-6. **覆盖顺序**：记录 CLI 参数、最近的项目配置、Profile、用户配置、托管/系统配置，逐项确认是谁提供了最终值。
-7. **受管控约束**：管理员的 `requirements.toml` 不能由本地配置绕过；遇到被拒绝的值，应联系维护者确认允许范围。
-8. **重新启动**：配置和项目规则通常在一次新运行开始时读取。结束当前会话，重新从目标目录启动后再做探针。
-
-## 备份、恢复和清理
-
-修改真实用户配置前先做备份；示例只展示命令形式，执行前确认路径：
+改真实配置前先备份：
 
 ```bash
 codex_root="${CODEX_HOME:-$HOME/.codex}"
@@ -165,27 +280,33 @@ backup_path="$config_path.bak.$(date +%Y%m%d-%H%M%S)"
 cp "$config_path" "$backup_path"
 ```
 
-确认新配置有问题时，用备份恢复：
+出问题时恢复，再重新启动：
 
 ```bash
 cp "$backup_path" "$config_path"
 ```
 
-恢复后重新启动 Codex，再用只读探针确认行为。清理临时练习目录即可：
+练习用的隔离目录用完删掉即可：
 
 ```bash
-rm -rf "$probe_home" "$probe_project"
+rm -rf "$HOME/codex-probe"
 ```
 
-不要把备份、日志、`auth.json`、环境变量或真实用户路径提交到仓库。`approval_policy = "never"` 与 `danger-full-access` 会移除重要防线，只能在已经有外层隔离并经过专门审查的环境中讨论，不能作为新手默认值。
+不要把备份、日志、`auth.json`、环境变量或真实用户路径提交到仓库。`approval_policy = "never"` 和 `danger-full-access` 会去掉重要防线，只适合有外层隔离、经过专门审查的环境，不能当新手默认值。
 
-## 相关阅读与核对边界
+## 相关阅读
 
-- [OpenAI Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)
-- [OpenAI Advanced Config](https://learn.chatgpt.com/docs/config-file/config-advanced)
-- [OpenAI Config Reference](https://learn.chatgpt.com/docs/config-file/config-reference)
-- [OpenAI Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
-- [Codex AGENTS.md教程](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
+- [Codex 模型和推理强度怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
+- [Codex 沙箱与主机权限风险](./08-Codex沙箱与主机权限风险.md)
+- [Codex AGENTS.md 教程](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)：项目规则写在 AGENTS.md，运行配置写在 config.toml。
+- [Codex 接入 Amazon Bedrock](../12-官方工具与集成/16-Codex接入Amazon-Bedrock-登录向导与配置.md)：用 `model_provider` 切换模型来源。
 
-官方字段、配置层级和项目受信任条件于 2026-09-22 核对；本轮（2026-09-23）本地 CLI 版本为 0.156.0。实际模型调用、App/IDE 菜单、组织托管配置和浏览器展示没有在本轮完成验证，不能据此宣称已实测。
+## 参考资料
+
+- [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)
+- [Advanced Config](https://learn.chatgpt.com/docs/config-file/config-advanced)
+- [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+- [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)
+- [Permissions](https://learn.chatgpt.com/docs/permissions)
+- [Codex CLI 0.164.0 发布说明](https://github.com/openai/codex/releases/tag/rust-v0.164.0)

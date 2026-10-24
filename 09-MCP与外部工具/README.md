@@ -11,3 +11,7 @@
 - 工具范围、审批策略和超时设置。
 - Notion、GitHub、文档、浏览器等连接实操。
 - 连不上、没有工具和认证失败的排查方法。
+
+## 已上线文章
+
+- [Codex Site tools（WebMCP）入门：网站怎么把操作交给内置浏览器里的 Codex，以及怎么给自己的网站加工具](./05-Codex-Site-tools-WebMCP网站工具入门.md)
