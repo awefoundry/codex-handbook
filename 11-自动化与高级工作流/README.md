@@ -21,5 +21,5 @@
 - [Codex 长任务工作流，分开讨论、执行、审查与交接](./03-Codex长任务工作流.md)
 - [Codex 任务收尾系统，用 Markdown 保存状态、决策与可复用流程](./04-Codex任务收尾系统.md)
 - [Codex 自动化与定时任务：从手动流程到 CI 执行](./04-Codex自动化与定时任务-从手动流程到稳定执行.md)
-- [Codex 使用 Goal 模式运行长任务](./05-Codex使用Goal模式运行长任务.md)
+- [Codex Goal 模式：用 /goal 跑长任务，完成标准怎么写、怎么暂停和并行](./05-Codex使用Goal模式运行长任务.md)
 - [Codex 使用 Subagents 并行处理任务](./06-Codex使用Subagents并行处理任务.md)
