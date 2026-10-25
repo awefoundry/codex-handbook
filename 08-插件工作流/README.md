@@ -18,3 +18,4 @@
 3. [Codex 内容生产工作流](./03-Codex内容生产工作流.md)
 4. [Codex 插件入口：安装、调用与权限边界](./04-Codex插件入口与工作流.md)
 5. [GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程](./04-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)
+6. [Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活（0.164.0 实测）](./06-Codex安装Superpowers插件-需求计划TDD工作流.md)

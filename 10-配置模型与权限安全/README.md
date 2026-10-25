@@ -21,3 +21,4 @@
 - [Codex 沙箱与主机权限：一次权限边界风险复盘](./08-Codex沙箱与主机权限风险.md)
 - [Codex 任务总跑偏？先检查这 5 个设置](./08-Codex设置检查清单-让任务按预期执行.md)
 - [Codex AGENTS.md教程：项目规则、读取范围与生效检查](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
+- [Codex 自定义模型提供商：model_providers 和 openai_base_url 怎么配，请求到底发去哪（0.164.0 实测）](./13-Codex自定义模型提供商-model_providers与openai_base_url.md)
