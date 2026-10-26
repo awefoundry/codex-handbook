@@ -11,3 +11,7 @@
 - 工具范围、审批策略和超时设置。
 - Notion、GitHub、文档、浏览器等连接实操。
 - 连不上、没有工具和认证失败的排查方法。
+
+## 已上线文章
+
+- [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)

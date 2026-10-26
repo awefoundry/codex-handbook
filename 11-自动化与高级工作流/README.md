@@ -14,7 +14,7 @@
 
 ## 已上线文章
 
-- [Codex 在任务结束时捕捉可复用素材](./01-Codex在任务结束时捕捉可复用素材.md)
+- [Codex 任务结束时捕捉可复用素材：用 AGENTS.md 规则和 Stop Hook 生成素材候选](./01-Codex在任务结束时捕捉可复用素材.md)
 - [Codex 跨会话协作功能](./02-Codex跨会话协作功能.md)
 - [Codex CLI 管理多条任务线：命名、切换与 fork](./02-CodexCLI管理多条任务线.md)
 - [Codex CLI 长任务如何恢复：保存、继续与检查会话](./03-CodexCLI恢复长任务.md)
