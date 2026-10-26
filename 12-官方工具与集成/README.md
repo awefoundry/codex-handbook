@@ -16,7 +16,7 @@
 
 - [Codex 远程连接：用手机或另一台电脑控制 Mac / Windows，SSH 远程项目和跨设备交接](./01-Codex远程控制另一台Mac.md)
 - [Codex 浏览器操作与登录态功能](./02-Codex浏览器操作与登录态功能.md)
-- [Codex 使用 Computer Use 操作桌面应用](./03-Codex使用Computer-Use操作桌面应用.md)
+- [Codex 使用 Computer Use 操作桌面应用（2026-10 更新）：安装授权、Win/macOS 差异，以及高风险场景的停手规则](./03-Codex使用Computer-Use操作桌面应用.md)
 - [Codex 连接 Sentry 排查线上错误](./04-Codex连接Sentry排查线上错误.md)
 - [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)
 - [Codex 定时任务（Scheduled tasks）怎么用：创建、查看结果，以及和 codex exec + cron 怎么分工](./06-Codex-Automations定时任务.md)
@@ -26,3 +26,5 @@
 - [Codex 接入飞书：从群聊指令到本地任务执行](./10-Codex飞书集成实战.md)
 - [Codex 常用功能清单（2026-10）：/config、即时 Steer、/keymap，以及仍值得每天用的几项](./11-Codex常用功能清单.md)
 - [Codex Cloud 云端环境配置：发布可复用环境、设置联网与网络密钥](./12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)
+- [Codex 接入 Google Cloud Model Garden：私有预览申请、Marketplace 计费，以及本地 CLI/Desktop 接 GCP 推理的公开边界](./13-Codex接入Google-Cloud-Model-Garden.md)
+- [Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度](./14-Codex-Composer-Predictions桌面端Tab提示.md)
