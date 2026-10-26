@@ -12,6 +12,12 @@
 - 上下文丢失、任务中断和结果偏离。
 - Git 冲突、脏工作区和误修改处理。
 
+## 已收入文章
+
+- [Codex「Selected model is at capacity」与额度重置：怎么判断、怎么等、怎么少踩坑](./01-Codex模型容量不足与额度重置排查.md)
+- [Codex 桌面端占满磁盘怎么办：排查 Crashpad 崩溃转储，并安全清理 worktree 与会话数据](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)
+- [Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序](./03-Codex一直Reconnecting-stream-disconnected排查.md)
+
 ## 首期练习的直接排查
 
 这些问题对应[首次任务：修改本地网页并检查结果](../00-从这里开始/07-完成第一个真实任务.md)和[结果检查文章](../01-安装与首次使用/09-完成第一次修改并检查结果.md)。
