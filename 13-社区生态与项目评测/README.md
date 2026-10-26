@@ -18,9 +18,10 @@
 
 - [Codex 视频工作流，4 个第三方 Skill 的用途、依赖与限制](./01-Codex视频工作流的4个第三方Skill.md)
 - [Codex 插件安全检查：用 HOL Guard 评估第三方工具风险](./01-Codex插件安全检查-HOL-Guard.md)
-- [在 Zed 中通过 ACP 使用 Codex CLI](./02-Zed通过ACP使用Codex.md)
+- [在 Zed 中通过 ACP 使用 Codex CLI](./02-Zed通过ACP使用Codex.md)（已合并到《Codex 接入 ACP》）
 - [Codex 使用 Archify 生成可验证的代码架构图](./03-Codex使用Archify生成架构图.md)
 - [Codex 使用 Text-to-Lottie 制作界面动效](./04-Codex使用Text-to-Lottie制作动效.md)
 - [Codex 连接 ChatCut 完成视频粗剪、字幕与导出](./05-Codex连接ChatCut剪辑视频.md)
-- [Codex 接入 ACP](./06-Codex接入ACP.md)
+- [Codex 接入 ACP：在 Zed 和 JetBrains 里从 ACP Registry 安装 Codex，其他客户端用 codex-acp](./06-Codex接入ACP.md)
 - [Codex 使用 Remotion 和 HyperFrames 制作视频](./07-Codex使用Remotion和HyperFrames制作视频.md)
+- [Codex 安装 Google 官方 Android Skills 插件](./08-Codex安装Google官方Android-Skills插件.md)

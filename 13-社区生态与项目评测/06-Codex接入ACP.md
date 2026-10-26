@@ -1,198 +1,193 @@
+---
+id: codex-acp-integration
+title: Codex 接入 ACP：在 Zed 和 JetBrains 里从 ACP Registry 安装 Codex，其他客户端用 codex-acp，以及 ACP 和 MCP 怎么分工
+seo_title: Codex 接入 ACP：Registry 安装、codex-acp、与 MCP 分工
+description: ACP 让 Zed、JetBrains 等编辑器直接使用 Codex。本文合并站内两篇旧教程，按 2026-10 现状重写：从 ACP Registry 安装，其他客户端用 @agentclientprotocol/codex-acp，登录与审批怎么处理，ACP 与 MCP 怎么分工，以及第一次连接后的验证方法。
+lede: 编辑器用 ACP 连上 Codex；认证、计费、沙箱仍由 Codex 自己管。
+url: /guides/codex-acp-integration
+redirect_from:
+  - /guides/codex-zed-acp-integration
+status: published
+section: guides
+category: G-community
+topic: 社区生态与编辑器接入
+content_type: 指南
+source_tag: 社区协议
+entry_tags: [CLI, IDE]
+difficulty: 进阶
+order: 6
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-08-20
+date_modified: 2026-10-22
+client_validation_pending: false
+models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
+official_ref: https://zed.dev/docs/ai/external-agents
+keywords: [Codex ACP, Zed Codex, codex-acp, ACP Registry, Agent Client Protocol, JetBrains Codex]
+related: [permissions-sandbox-approvals, advanced-config-toml, advanced-mcp]
+faq:
+  - q: 给 Zed／JetBrains 配的 OpenAI API Key，能直接给 ACP 里的 Codex 用吗？
+    a: 不能默认共用。Zed 官方 External Agents 文档写明：Codex 作为 External Agent 时自己负责认证和计费；给 Zed Agent 配的 OpenAI API Key 不会自动配置 Codex。JetBrains 侧 Registry 安装的 Agent 也走各自的登录／密钥流程。
+  - q: zed-industries/codex-acp 还能装吗？
+    a: 仓库已归档，README 要求新安装改用 agentclientprotocol/codex-acp（npm：@agentclientprotocol/codex-acp）。Zed／JetBrains 优先从 ACP Registry 装 Codex。
+  - q: OpenAI 官方有没有「Codex 原生 ACP」文档？
+    a: 截至 2026-10-22，learn.chatgpt.com／developers.openai.com 讲的是 Codex App Server 与 MCP，没有单独的官方 ACP 接入页。编辑器侧通过社区维护的 codex-acp 适配器把 ACP 请求转到 App Server。
+---
 
-# Codex 接入 ACP：连接兼容开发工具
+# Codex 接入 ACP：在 Zed 和 JetBrains 里从 ACP Registry 安装 Codex，其他客户端用 codex-acp，以及 ACP 和 MCP 怎么分工
 
 > 本文在线版：[codexguide.io/guides/codex-acp-integration](https://codexguide.io/guides/codex-acp-integration)
 
+> 核对依据：Zed《[External Agents](https://zed.dev/docs/ai/external-agents)》、JetBrains AI Assistant《[Agent Client Protocol (ACP)](https://www.jetbrains.com/help/ai-assistant/acp.html)》、[ACP Registry](https://agentclientprotocol.com/get-started/registry)、适配器 [agentclientprotocol/codex-acp](https://github.com/agentclientprotocol/codex-acp) README（npm `@agentclientprotocol/codex-acp`）、以及 OpenAI《[Codex App Server](https://learn.chatgpt.com/docs/app-server)》。文中「我的用法」是操作顺序建议。界面文案随客户端变化，以你当前菜单为准。
 
+想在 **Zed** 或 **JetBrains** 里用 Codex 的会话、diff 与审批界面，同时继续用 Codex 自己的登录、模型和沙箱——走的是 **Agent Client Protocol（ACP）**，不是把编辑器里的 OpenAI 模型配置「转成」Codex。
 
+本文把站内两篇旧稿合成一条主线，并按 2026-10 可访问的文档更新安装路径：**ACP Registry**、适配器迁仓、以及 **ACP 与 MCP 的分工**。
 
+合并说明（阅读时可跳过）：
 
+- 主页面 URL 不变：`/guides/codex-acp-integration`（知识库路径仍为 `13-社区生态与项目评测/06-Codex接入ACP.md`）。
+- 旧文 `/guides/codex-zed-acp-integration`（原 `13/02`）应 301 到本页；见 frontmatter `redirect_from`。
+- 原 `13/06` 里用 Claude Code／OpenClaw 的 `settings.json` 示例、以及「Codex 通过 Zed 自有适配器接入」的过时说法已删除；Zed／JetBrains 实操以 Registry 为准。
 
+## 1. 先认清它是什么
 
-现在 AI 编程工具越来越多，但有一个问题一直没解决：它们之间不互通。
+**ACP** 规定编辑器（客户端）和编程 Agent（服务端）怎么对话：开线程、流式输出、展示工具调用、把文件修改与命令执行的审批弹回 UI。协议基于 JSON-RPC；常见跑法是 Agent 作为本地子进程，经 **stdio** 与编辑器通信。
 
-Claude Code 有自己的客户端，Codex 也有自己的 app，Cursor 的 Agent 只能在 Cursor
-里用，每个工具都是封闭的，想把某个 Agent 放到另一个编辑器里用，或者让不同 Agent 协作处理同一个项目，做不到。
+**Codex 侧**仍负责读仓库、跑命令、改文件、沙箱与额度。编辑器只是 ACP 宿主，不会替你「绕过」Codex 的审批策略。
 
-这个问题其实不新鲜，十几年前，编程语言工具也是同样的局面，每个编辑器都得自己做语法高亮、自动补全、错误检查，后来出了一个叫 LSP
-的协议，把这层通信统一了，VS Code 能成功很大程度上就是因为这个。
+OpenAI 官方给深度嵌入式客户端用的是 **Codex App Server**（见官方 App Server 文档）。社区维护的 **`codex-acp`** 适配器做的事是：以 stdio ACP agent 的身份启动，再对接 Codex App Server，把 ACP 请求／事件与 Codex 操作互译。截至 2026-10-22，官方文档站没有单独的「Codex 原生 ACP」页面；编辑器接入依赖这条适配器路径（或客户端从 Registry 代你装好的同一发行物）。
 
-这个问题听起来熟悉吗？
+**我的用法**：日常只从 ACP Registry 装 Codex；只有客户端没有 Registry、或要钉死某个 npm 版本时，再手写 `npx -y @agentclientprotocol/codex-acp`。
 
-现在 AI 编程领域也有了类似的协议——Agent Client Protocol（ACP），让任何编辑器能接入任何 AI 编程 Agent。
+## 2. ACP 和 MCP 怎么分工
 
-目标很简单：让任何编辑器能用任何 AI 编程 Agent。
+两者常被混谈，但管的不是同一条边：
 
-![Codex ACP 配置界面 1](图片素材/06-Codex接入ACP/01-ClaudeCodeCodexCursor终于能互通了一个协议打通所有AI编程工具-01.jpg)
+| | **ACP** | **MCP** |
+|---|---|---|
+| 解决什么 | 编辑器 ↔ Agent 的会话、流式输出、审批 UI | Agent ↔ 外部工具／数据（数据库、文档服务、API 等） |
+| 谁当客户端 | 编辑器／IDE | Codex（或其他 Agent） |
+| 典型入口 | Zed Agent Panel、JetBrains AI Chat 的 Agents | `~/.codex/config.toml`、客户端转发的 MCP 列表、`/mcp` |
 
-##  ACP 是什么
+一次任务里可以同时用两者：编辑器经 ACP 管 Codex 线程；Codex 再经 MCP 调外部服务。Zed 文档写明：Zed 里配置的 MCP 服务器**可以**经 ACP 转发给 External Agent；Agent 也可能继续读自己的原生 MCP 配置。JetBrains 在 Agents 页提供「Pass custom MCP servers」「Pass IntelliJ MCP server」开关，把 IDE 侧 MCP 暴露给已安装 Agent。
 
-Agent Client Protocol 是一个标准化的通信协议，定义了代码编辑器和 AI 编程 Agent 之间如何对话。
+ACP **不会**自动把编辑器里的模型 API Key 变成 Codex 登录态，也**不会**取消 Codex 的沙箱与审批。
 
-简单说：它让任何支持 ACP 的编辑器都能用任何支持 ACP 的 Agent，不再是「Claude Code 只能在终端用」或「Cursor 只能用自己的
-Agent」，可以在 Zed 里用 Claude Code，在 VS Code 里用 Gemini CLI，随便组合。
+## 3. 适配器迁仓：用哪个仓库、哪个包
 
-技术上它基于 JSON-RPC，支持两种运行方式：
+| 项目 | 状态（2026-10 核对） | 新安装应使用 |
+|---|---|---|
+| [zed-industries/codex-acp](https://github.com/zed-industries/codex-acp) | 已归档；README 写明开发迁走 | 不要再跟旧 npm `@zed-industries/codex-acp` 做新环境 |
+| [agentclientprotocol/codex-acp](https://github.com/agentclientprotocol/codex-acp) | 当前适配器；基于 Codex App Server | npm：`@agentclientprotocol/codex-acp` |
+| [ACP Registry](https://agentclientprotocol.com/get-started/registry) | 策展列表；当前列出 **Codex 2.2.2**，仓库指向 agentclientprotocol/codex-acp | Zed／JetBrains 的「Install from Registry」优先 |
 
-** • 本地模式  ** ：Agent 作为编辑器的子进程运行，通过 stdio 通信
+适配器 README 写明的安装命令（核对时以仓库为准）：
 
-** • 远程模式  ** ：Agent 跑在云端，通过 HTTP/WebSocket 连接
+```bash
+npx -y @agentclientprotocol/codex-acp
+```
 
-和 MCP（Model Context Protocol）的关系是互补的：MCP 解决「Agent 怎么获取外部工具和数据」，ACP 解决「编辑器怎么和
-Agent 对话」。
+或全局安装后检查版本：
 
-一个管 Agent 的输入，一个管 Agent 的输出。
+```bash
+npm install -g @agentclientprotocol/codex-acp
+codex-acp --version
+```
 
-##  Harness：Agent 的“容器”
+包内会带兼容的 `@openai/codex` 依赖。只有当你要指定另一份 Codex 二进制时，才设 `CODEX_PATH`：
 
-这是 ACP 生态里一个很重要的概念。
+```bash
+CODEX_PATH=/path/to/codex npx -y @agentclientprotocol/codex-acp
+```
 
-如果说 ACP 是协议本身，那 Harness 就是“管理 Agent 生命周期的容器”。
+认证由适配器在初始化时广告给客户端，README 列出的方式包括：**ChatGPT 登录**、环境变量 **`CODEX_API_KEY` 或 `OPENAI_API_KEY`**，以及客户端若协商了 gateway 能力时的自定义网关。无界面时可设 `NO_BROWSER=1` 隐藏浏览器登录项。密钥放进环境变量或系统密钥环，不要写进可提交的 settings／仓库。
 
-类比一下：
+## 4. 在 Zed 里用 Codex（ACP Registry）
 
-•  ** Docker 是应用的容器  ** — 管理应用的启动、停止、网络、存储
+按 Zed《External Agents》：
 
-•  ** Harness 是 Agent 的容器  ** — 管理 Agent 的启动、会话、权限、通信
+1. 打开 Registry：命令面板运行 `zed: acp registry`；或 **Agent Settings → External Agents → Add Agent → Install from Registry**。  
+2. 安装列表中的 **Codex**（与 Registry 上的 Codex 条目对应）。  
+3. 在 Agent Panel／Threads Sidebar 的新建线程菜单里选 **Codex**，开一条 Codex 线程。  
+4. 用 **Codex 线程自己的登录／登出流程**完成认证。给 Zed Agent 配的 OpenAI API Key **不会**自动变成 Codex 凭证。
 
-具体来说，Harness 负责：
+Zed 还说明：External Agent 的计费、条款与数据留存在你与 Agent 提供方之间；Zed 不把 External Agents 计入 Zed 自家模型计费。调试可开 `dev: open acp logs`。
 
-• 启动和停止 Agent 进程
+若必须手动挂自定义 Agent，Zed 文档给出的是通用 `agent_servers` 形态（`type: custom`、`command`、`args`、`env`），命令指向能讲 ACP 的可执行文件。新环境优先 Registry，避免继续依赖已归档的 zed-industries 发行物。
 
-• 管理多个并发会话（你可以同时跑多个任务）
+## 5. 在 JetBrains 里用 Codex（Install From ACP Registry）
 
-• 处理权限控制（Agent 要执行命令、读写文件时的审批流）
+按 JetBrains AI Assistant ACP 文档：
 
+1. 打开 **AI Chat**，在聊天模式选择器里选 **Install From ACP Registry**；或到 **Settings → Tools → AI Assistant → Agents**。  
+2. 在 Agents 页安装 **Codex**（以 Registry 当时列出的名称为准）。  
+3. 按需打开 **Pass custom MCP servers**／**Pass IntelliJ MCP server**，把 IDE 里已配的 MCP 暴露给 Agent。  
+4. 首次使用时按提示完成该 Agent 的认证（文档写：Registry Agent 支持认证流程，首次可能要求 API key 等）。  
+5. 在 AI Chat 里选中已安装的 Codex，再发提示。
 
-• 管理会话的保存/恢复/关闭
+文档还写明：连接 ACP Agent **不要求** JetBrains AI 订阅；**WSL 上目前不支持** ACP Agent；组织若通过 IDE Services／Central 管控，Registry 可见项可能被裁剪。更新／卸载仍在同一 Agents 页。出问题可 **Get ACP Logs**；需要更细请求／响应时再开 Registry 键 `llm.agent.extended.logging`（日志可能含聊天内容，分享前先脱敏）。
 
-比如在 OpenClaw 里，你可以这样启动一个 ACP harness：
+Registry 没有你要的 Agent、或要钉死启动命令时，用 **Add Custom Agent**：IDE 会创建／打开 `~/.jetbrains/acp.json`。文档给出的结构是 `agent_servers` 下每个显示名对应 `command`／`args`／`env`。手动跑 Codex 适配器时，把 `command`／`args` 指到本机的 `npx`（或全局 `codex-acp`）以及 README 中的包名即可，**不要**把 API Key 写进可提交文件；多数 Agent 更期望你先在终端完成登录，凭证落在用户配置里。
 
+## 6. 其他 ACP 客户端：手动跑适配器
 
+Zed／JetBrains 之外、且支持自定义 ACP agent 的客户端：用当前适配器作为 stdio 进程，例如：
 
-    # OpenClaw 作为 ACP harness 运行
-    openclaw acp
+```bash
+npx -y @agentclientprotocol/codex-acp
+```
 
-    # 指向远程 Gateway
-    openclaw acp --url wss://my-server:18789 --token-file ~/.openclaw/gateway.token
+客户端如何填写「命令 + 参数」、工作目录、环境变量，以**该客户端**文档为准，不能把 Zed 菜单步骤原样套过去。模型、审批、沙箱、Skills 仍由 Codex／适配器能力协商决定。
 
-    # 绑定到特定 agent 会话
-    openclaw acp --session agent:main:main
+## 7. 第一次连接后怎么验
 
+装好并登录后，先用只读任务确认工作目录，再各试一次拒绝／批准写文件：
 
-编辑器只需要知道怎么跟 harness 说话，不需要知道后面是 Claude、Gemini 还是 DeepSeek，这层抽象让开发者可以自由组合编辑器和
-Agent，而不用关心底层实现。
+```text
+读取当前项目的 README，不要修改任何文件。
+告诉我主要语言、启动命令和测试命令，并给出对应文件路径。
+```
 
-##  生态现状：30+ Agent 已接入
+通过后再让它改一个**临时、可丢弃**的文件：看编辑器是否显示 diff；你点拒绝时磁盘是否不变；批准后内容是否真实写入。命令执行类操作同样先拒绝一次、再批准一次。
 
-这不是纸上谈兵。截止现在，已经有 30 多个 Agent 实现了 ACP：
+**我的用法**：验证通过前不要把审批策略放到最松；远程／SSH 项目要单独确认凭证落在哪一侧（Zed 文档提醒：本地钥匙串里的 LLM Key 不等于 External Agent 的凭证）。
 
-• Anthropic: Claude Code（通过 Zed 的 SDK adapter） • OpenAI: Codex CLI（通过 Zed 的
-adapter） • Google: Gemini CLI • Cursor • GitHub Copilot（public preview） •
-JetBrains: Junie • OpenClaw • Cline、Goose、OpenHands、OpenCode...
+## 8. 在 ACP 里能用到哪些 Codex 能力
 
-客户端（编辑器）方面，Zed 是最积极的推动者——它原生支持 ACP，可以接入任何 ACP Agent，VS Code 和 JetBrains 也在跟进。
+以适配器 README（2.2.x）为准，常见能力包括：
 
-这意味着什么？以前你选 Claude Code 就意味着只能在终端用，现在你可以在 Zed 里直接用它，享受编辑器的所有 UI 优势（diff
-预览、文件树、内联显示），或者可以用 acpx 让两个 Agent 协作。
+- 认证：ChatGPT、API Key、（可选）自定义网关  
+- 会话配置：模型、推理强度、审批与沙箱相关模式  
+- 事件：命令、文件变更、权限请求、MCP 工具调用、终端输出、推理／计划、联网搜索等（具体展示取决于客户端有没有实现对应 UI）  
+- 斜杠命令：`/status`、`/mcp`（含 `/mcp reconnect`）、`/skills`、`/goal`、`/review`、`/review-branch`、`/review-commit`、`/compact`、`/logout`，以及已配置的 Skills  
+- 客户端经 ACP 提供的 MCP（stdio 命令型与 HTTP）
 
-![Codex ACP 配置界面 2](图片素材/06-Codex接入ACP/02-ClaudeCodeCodexCursor终于能互通了一个协议打通所有AI编程工具-02.jpg)
+和原生 Codex App／CLI／官方 IDE 扩展比，ACP 路径多了一层适配器与客户端能力协商：**菜单里能点不等于协议能力齐全**。审查、合并、CI 仍按你的仓库规矩来；编辑器显示「成功」不能代替 Git 与测试验收。
 
-##  实操：在 Zed 里用 Claude Code
+## 9. 常见问题与排查
 
-拿一个具体例子来说，假设想在 Zed 编辑器里用 Claude Code，以前完全不可能，现在只需要配置一下：
+**登录失败／额度不对**  
+先确认走的是 Codex 线程内登录，而不是编辑器全局的 OpenAI／Anthropic 提供方配置。ChatGPT 订阅与 API Key 计费路径不同，以 Codex 账号侧为准。
 
+**装的是旧适配器**  
+若 settings 或脚本仍指向 `zed-industries/codex-acp` 或 `@zed-industries/codex-acp`，改为 Registry 安装或 `@agentclientprotocol/codex-acp`。
 
+**MCP 工具在 ACP 线程里看不到**  
+分别查：编辑器是否把 MCP 转发给 External Agent；Codex 原生 `config.toml` 是否另有一份；适配器 `/mcp` 状态。Zed／JetBrains 都强调「两边都要看」。
 
-    // ~/.config/zed/settings.json
-    {
-      "agent_servers": {
-        "Claude Code": {
-          "type": "custom",
-          "command": "claude-agent-acp",
-          "args": [],
-          "env": {}
-        }
-      }
-    }
+**版本对不齐**  
+分别核对：编辑器版本、Registry／npm 上的 Codex／适配器版本、本机 `CODEX_PATH` 是否指向过旧二进制。Zed 用 ACP logs；JetBrains 用 Get ACP Logs。
 
+**官方协议选型**  
+要自研深度宿主（认证、历史、审批、事件流）时，读 OpenAI **App Server** 文档。只要在已有 ACP 客户端里用 Codex，走 Registry／`codex-acp` 即可，不必自己实现 App Server 客户端。
 
-或者想用 OpenClaw 的 agent：
+## 10. 参考资料
 
-
-
-    // Zed settings
-    {
-      "agent_servers": {
-        "OpenClaw ACP": {
-          "type": "custom",
-          "command": "openclaw",
-          "args": ["acp", "--session", "agent:main:main"],
-          "env": {}
-        }
-      }
-    }
-
-
-打开 Zed 的 Agent 面板，选择配置的 Agent，就能开始用了，体验和在终端里直接用 Claude Code 一样，但有了编辑器的 UI 加持。
-
-##  进阶：让不同 Agent 协作
-
-更有意思的是 agent 之间的协作，通过 acpx（ACP 的命令行客户端），可以让一个 Agent 调用另一个：
-
-
-
-    # 让 Codex 通过 ACP 访问 OpenClaw agent 的上下文
-    acpx openclaw exec "总结一下当前项目的最新进展"
-
-    # 建立持久会话，多次交互
-    acpx openclaw sessions ensure --name codex-bridge
-    acpx openclaw -s codex-bridge "help me review this PR"
-
-
-这意味着可以创建一个 multi-agent 工作流：一个 Agent 擅长代码生成，另一个擅长代码审查，第三个负责测试，它们通过 ACP
-标准接口通信，不需要任何自定义集成工作。
-
-再比如 OpenClaw 里的 sessions_spawn 工具，可以直接以 ACP 模式启动一个子 agent，指定用哪个 harness，子
-agent 完成任务后自动报告结果，这就是harness 管理 agent 生命周期的具体体现。
-
-##  ACP vs MCP：别混淆
-
-很多人容易把 ACP 和 MCP 混淆。
-
-• MCP (Model Context Protocol) — 解决的是Agent 怎么获取外部能力，比如接数据库、调 API、读文档，Agent 是
-MCP 的客户端。
-
-• ACP (Agent Client Protocol) — 解决的是编辑器怎么和 Agent 对话，管理会话、权限、流式输出、工具调用审批，编辑器是
-ACP 的客户端。
-
-两者是配合关系：编辑器通过 ACP 跟 Agent 说话，Agent 通过 MCP 获取外部工具和数据，编辑器还可以把自己配置的 MCP server 传给
-Agent，让 Agent 直接用。
-
-** ACP 管「人怎么和 Agent 交互」，MCP 管「Agent 怎么和世界交互」。  **
-
-![Codex ACP 配置界面 3](图片素材/06-Codex接入ACP/03-ClaudeCodeCodexCursor终于能互通了一个协议打通所有AI编程工具-03.jpg)
-
-##  写在最后
-
-简单来说，ACP 做的事情就是把编辑器和 AI Agent 之间的对话方式统一了，以前每家都各做各的，现在有了一个共同的接口规范，Harness
-则是这个体系里管 Agent 启停、会话和权限的那一层。
-
-目前支持 ACP 的 Agent 已经超过 30 个，包括 Claude Code、Codex、Gemini CLI、Cursor、Copilot
-这些主流工具，编辑器端 Zed 已经原生支持，VS Code 和 JetBrains 也在跟进，不过很多集成还在早期阶段，实际体验可能和成熟产品有差距。
-
-> 官网：https://agentclientprotocol.com/
->
-> 规范文档：https://agentclientprotocol.com/protocol/overview.md
->
-> 支持 Agent 列表：https://agentclientprotocol.com/get-started/agents.md
-
-## 七、总结
-
-ACP 让 Codex 可以在支持该协议的开发工具中被调用，但实际能力取决于客户端和代理端的实现。配置完成后，先用一个只读任务验证连接，再逐步开放编辑、命令执行和网络权限。
-
-参考资料：
-
-- [Agent Client Protocol](https://agentclientprotocol.com/)
-
-- [ACP 协议概览](https://agentclientprotocol.com/protocol/overview.md)
+- [Zed External Agents](https://zed.dev/docs/ai/external-agents)  
+- [JetBrains AI Assistant · ACP](https://www.jetbrains.com/help/ai-assistant/acp.html)  
+- [ACP Registry](https://agentclientprotocol.com/get-started/registry)（Codex 条目）  
+- [agentclientprotocol/codex-acp](https://github.com/agentclientprotocol/codex-acp) · npm [`@agentclientprotocol/codex-acp`](https://www.npmjs.com/package/@agentclientprotocol/codex-acp)  
+- 归档说明：[zed-industries/codex-acp](https://github.com/zed-industries/codex-acp)  
+- OpenAI《[Codex App Server](https://learn.chatgpt.com/docs/app-server)》·《[Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp)》  
+- 协议站点：[agentclientprotocol.com](https://agentclientprotocol.com/)
