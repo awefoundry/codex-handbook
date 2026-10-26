@@ -1,3 +1,12 @@
+---
+title: "给 Codex 多大上下文才够用：三组实验的结果"
+description: "用 Codex 处理任务时，上下文给多少，直接决定它先做什么。给少了，它反复追问；给多了，它要在噪声里翻找目标；给到刚好，它能直接定位问题。"
+url: /guides/codex-shang-xia-wen-gei-duo-shao
+status: published
+date_published: 2026-08-23
+date_modified: 2026-10-26
+---
+
 # 给 Codex 多大上下文才够用：三组实验的结果
 
 > 本文在线版：[codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao](https://codexguide.io/guides/codex-shang-xia-wen-gei-duo-shao)

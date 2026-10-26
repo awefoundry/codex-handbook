@@ -196,7 +196,7 @@ Open @Chrome and verify the checkout page still works after the latest changes.
 ## 相关阅读
 
 - [Codex 浏览器操作与登录态功能](./02-Codex浏览器操作与登录态功能.md)
-- [Codex 沙箱与主机权限风险](../10-配置模型与权限安全/08-Codex沙箱与主机权限风险.md)
+- [Codex 沙箱与主机权限风险](../10-配置模型与权限安全/05-Codex沙箱与主机权限风险.md)
 - [Codex 远程控制另一台 Mac](./01-Codex远程控制另一台Mac.md)
 
 ## 参考

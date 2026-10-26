@@ -1,3 +1,12 @@
+---
+title: "用 HIAPI 中文图标 Skill，做一套真正统一的产品图标"
+description: "单独做一枚图标不算难，难的是让一组图标看起来像同一套。主体大小、视角、材质和留白只要有一项没对齐，摆在一起就容易显得散。"
+url: /cases/hiapi-zhong-wen-tu-biao-skill
+status: published
+date_published: 2026-08-12
+date_modified: 2026-10-26
+---
+
 # 用 HIAPI 中文图标 Skill，做一套真正统一的产品图标
 
 > 本文在线版：[codexguide.io/cases/hiapi-zhong-wen-tu-biao-skill](https://codexguide.io/cases/hiapi-zhong-wen-tu-biao-skill)

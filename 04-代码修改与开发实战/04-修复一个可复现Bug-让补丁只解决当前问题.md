@@ -1,3 +1,12 @@
+---
+title: "用Codex修复Bug并补回归测试：从复现到最小补丁"
+description: "这是一篇完成基础课程后的选学教程。你会在一个独立的 JavaScript 练习副本中，复现订单缺少金额字段时出现的 NaN，先用测试固定正确期望，再让 Codex 做最小修改，最后检查差异，并确认新测试确实能抓住旧错误。"
+url: /guides/codex-xiu-fu-ke-fu-xian-bug
+status: published
+date_published: 2026-09-01
+date_modified: 2026-10-13
+---
+
 # 用Codex修复Bug并补回归测试：从复现到最小补丁
 
 > 本文在线版：[codexguide.io/guides/codex-xiu-fu-ke-fu-xian-bug](https://codexguide.io/guides/codex-xiu-fu-ke-fu-xian-bug)

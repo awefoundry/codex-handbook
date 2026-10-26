@@ -1,3 +1,10 @@
+---
+title: "Windows 和 WSL 安装 Codex CLI"
+description: "Windows 上有两种安装方式：直接使用 Windows，或在 WSL（Windows Subsystem for Linux）中使用。"
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Windows 和 WSL 安装 Codex CLI
 
 > 验证环境：Codex CLI 0.146.1

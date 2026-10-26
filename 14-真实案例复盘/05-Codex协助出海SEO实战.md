@@ -2,8 +2,8 @@
 id: codex-chu-hai-seo-shi-zhan
 title: Codex 协助出海 SEO：第一次购买客座文章的核验流程
 url: /guides/codex-chu-hai-seo-shi-zhan
-status: redirected
 redirect_to: /cases/codex-guest-post-case
+status: redirected
 ---
 
 # Codex 协助出海 SEO：第一次购买客座文章的核验流程

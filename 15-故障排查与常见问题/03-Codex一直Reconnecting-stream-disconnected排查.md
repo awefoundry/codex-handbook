@@ -34,7 +34,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-reconnecting-network-troubleshooting](https://codexguide.io/guides/codex-reconnecting-network-troubleshooting)
 
-> 核对依据：learn.chatgpt.com 的 Troubleshooting、Environment variables、Configuration Reference／Advanced Configuration；[status.openai.com](https://status.openai.com/)；openai/codex 上与重连相关的 **issue 讨论**（#18960、#13041、#14297、#3355 等，只作症状对照）。文中「我的用法」是排查顺序建议，不是官方规定。**本预览环境没有国内代理／公司 CA／真机 Mac 实验室**，代理与证书步骤标为需本机验证（`client_validation_pending: true`）。
+> 核对依据：learn.chatgpt.com 的 Troubleshooting、Environment variables、Configuration Reference／Advanced Configuration；[status.openai.com](https://status.openai.com/)；openai/codex 上与重连相关的 **issue 讨论**（#18960、#13041、#14297、#3355 等，只作症状对照）。文中「我的用法」是排查顺序建议，不是官方规定。**本预览环境没有国内代理／公司 CA／真机 Mac 实验室**，代理与证书步骤标为需本机验证。
 
 发了一条提示，界面却在转：`Reconnecting... 2/5`，下面挂着 `stream disconnected before completion: websocket closed by server before response.completed`；有人会连到 `5/5`，再看到 `Falling back from WebSockets to HTTPS transport`。睡眠唤醒、换网或公司网关后，请求也可能直接失败。这些在 openai/codex [#18960](https://github.com/openai/codex/issues/18960)、[#13041](https://github.com/openai/codex/issues/13041)、[#14297](https://github.com/openai/codex/issues/14297)、[#3355](https://github.com/openai/codex/issues/3355) 里反复出现——**是社区症状，不是 OpenAI 正式故障公告**。
 

@@ -1,3 +1,11 @@
+---
+title: "Codex CLI 安装、登录与多入口排查"
+description: "现在三大主流的编程工具分别是 Codex、Claude Code 以及 Gemini。Claude Code 的综合能力很强，也是我的主力编程工具，但它封号太严重了，对国内极其不友好，使用门槛比较高，要找到靠谱的渠道。"
+url: /guides/codex-cli-multi-entry-setup
+status: published
+date_published: 2026-08-20
+date_modified: 2026-10-13
+---
 
 # Codex CLI 安装、登录与多入口排查
 

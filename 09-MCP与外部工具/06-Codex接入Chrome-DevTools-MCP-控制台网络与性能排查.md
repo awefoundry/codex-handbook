@@ -311,7 +311,7 @@ enabled_tools = [
 default_tools_approval_mode = "writes"
 ```
 
-这些字段都来自 OpenAI 官方 [MCP 文档](https://learn.chatgpt.com/docs/extend/mcp)：`enabled_tools` / `disabled_tools` 控制可用工具，`default_tools_approval_mode` 可选 `auto`、`prompt`、`writes`、`approve`，`tool_timeout_sec` 默认 60 秒（录性能轨迹可能更久，所以这里调到 120）。不想用时把 `enabled = false` 写进这一节，不用删除配置。更多字段见 [config.toml 深入配置](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
+这些字段都来自 OpenAI 官方 [MCP 文档](https://learn.chatgpt.com/docs/extend/mcp)：`enabled_tools` / `disabled_tools` 控制可用工具，`default_tools_approval_mode` 可选 `auto`、`prompt`、`writes`、`approve`，`tool_timeout_sec` 默认 60 秒（录性能轨迹可能更久，所以这里调到 120）。不想用时把 `enabled = false` 写进这一节，不用删除配置。更多字段见 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
 
 ## 常见问题
 

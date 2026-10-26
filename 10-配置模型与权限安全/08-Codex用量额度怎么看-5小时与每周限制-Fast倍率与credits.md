@@ -57,7 +57,7 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 
 官方写明：适用套餐里，**Codex、ChatGPT Work、Workspace Agents、ChatGPT for Excel** 等可共用同一份主用量／credits 池；**普通 Chat 对话不计入**这份共享池。面板上也会有类似说明。
 
-![图一 Usage Overview：Plan limits、Credits 与共享说明（新截图；数字为某次像例，不是承诺值）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图一.png)
+![图一 Usage Overview：Plan limits、Credits 与共享说明（新截图；数字为某次像例，不是承诺值）](../图片素材/10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图一.png)
 
 **读百分比时注意标签**：有的界面写「left／剩余」，有的写「used／已用」。看错方向，会把「还剩 74%」当成「已经用了 74%」。
 
@@ -131,7 +131,7 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 - 任务开始时余额为正、并发耗尽后结束，余额可能短暂为负；之后的购买／自动充值可能先抵负再加可用额度。
 - Free／Go：**部分**账号可能看到买 credits；看不到 Add credits 就表示当前账号还不可买。买 credits **不会**提高套餐内含上限。
 
-![图二 Usage 页下方：Usage limit resets 与 Credit usage history（新截图；本例无 banked reset／无 credit 记录，仅为界面示意）](../图片素材/10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图二.png)
+![图二 Usage 页下方：Usage limit resets 与 Credit usage history（新截图；本例无 banked reset／无 credit 记录，仅为界面示意）](../图片素材/10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits/图二.png)
 
 **Credits 与重置别混**：
 

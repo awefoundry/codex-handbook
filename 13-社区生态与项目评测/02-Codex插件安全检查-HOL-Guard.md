@@ -1,3 +1,12 @@
+---
+title: "Codex 插件安全检查：用 HOL Guard 评估第三方工具风险"
+description: "现在装一个 AI 编程插件有多容易？一行命令的事。"
+url: /guides/codex-plugin-security-hol-guard
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-12
+---
+
 # Codex 插件安全检查：用 HOL Guard 评估第三方工具风险
 
 > 本文在线版：[codexguide.io/guides/codex-plugin-security-hol-guard](https://codexguide.io/guides/codex-plugin-security-hol-guard)
@@ -33,7 +42,7 @@ Actions 有没有被人做手脚、代码里有没有  ` eval  ` 这种高危写
 
 一句话概括：  ** 扫描器管"这插件能不能信",Guard 管"这一步操作能不能放"。  ** 一个在装之前，一个在运行时，两头都堵上。
 
-![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/Codex插件安全检查-HOL-Guard/01-Codex实操图-01.jpg)
+![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/02-Codex插件安全检查-HOL-Guard/01-Codex实操图-01.jpg)
 
 ##  装之前怎么扫：给插件打一个体检分
 
@@ -74,7 +83,7 @@ Actions 有没有被人做手脚、代码里有没有  ` eval  ` 这种高危写
 
 这样小插件不吃亏，大插件也别想靠堆功能刷分。
 
-![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/Codex插件安全检查-HOL-Guard/02-Codex实操图-02.jpg)
+![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/02-Codex插件安全检查-HOL-Guard/02-Codex实操图-02.jpg)
 
 光打分还不够，它还有一整套配套命令：  ` lint  ` 给你写插件时的规范建议，  ` verify  ` 检查能不能正常安装运行，  ` submit
 ` 给提交市场做门禁，  ` doctor  ` 出问题时做诊断。
@@ -123,7 +132,7 @@ Guard 的核心是拦截。它守在你的 agent 前面，每个工具动作执�
 
 官方的建议很实在：拿不准就从 Balanced 开始，用一周，回头看看它都拦了些啥，再决定要不要升到 Strict。
 
-![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/Codex插件安全检查-HOL-Guard/03-Codex实操图-03.jpg)
+![Codex 实操界面与结果](../图片素材/13-社区生态与项目评测/02-Codex插件安全检查-HOL-Guard/03-Codex实操图-03.jpg)
 
 ##  被拦了怎么办，误杀也能一键放行
 

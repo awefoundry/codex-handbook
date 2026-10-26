@@ -20,8 +20,8 @@ date_published: 2026-10-22
 date_modified: 2026-10-22
 official_ref: https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app
 keywords: [macOS 安装 Codex, Codex App 安装, ChatGPT 桌面端 macOS, Codex 首次登录, 打开本地文件夹]
-howto: true
 related: [login-codex, open-first-local-project, app-cli-ide-cloud-choice, desktop-crashpad-disk-space]
+howto: true
 faq:
   - q: 现在还有单独的「Codex App」安装包吗？
     a: 没有必要再找旧的独立 Codex 安装包。自 2026-07-09 起，Codex 已并入 ChatGPT 桌面端（macOS／Windows）。已有 Codex 用户按应用内更新即可；首次安装从 chatgpt.com/download 下载新的 ChatGPT 桌面端，登录后在左上角切到 Codex。
@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/macos-install-codex-app](https://codexguide.io/guides/macos-install-codex-app)
 
-> 核对依据：OpenAI Help Center《[Downloading the ChatGPT macOS app](https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app)》《[Moving to the new ChatGPT desktop app](https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app)》；learn.chatgpt.com《[ChatGPT desktop app](https://learn.chatgpt.com/docs/app)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Projects and chats](https://learn.chatgpt.com/docs/projects)》《[Commands](https://learn.chatgpt.com/docs/reference/commands)》；changelog 中 2026-07-09「Use Codex in the ChatGPT desktop app」说明。**本预览在 Linux 箱完成，没有真机 macOS 截图与安装包形态复验**（`client_validation_pending: true`）。下文不编造未见于官方文档的菜单文案；安装包若为磁盘映像，按 macOS 常见「拖入应用程序」流程描述，以你本机下载结果为准。
+> 核对依据：OpenAI Help Center《[Downloading the ChatGPT macOS app](https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app)》《[Moving to the new ChatGPT desktop app](https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app)》；learn.chatgpt.com《[ChatGPT desktop app](https://learn.chatgpt.com/docs/app)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Projects and chats](https://learn.chatgpt.com/docs/projects)》《[Commands](https://learn.chatgpt.com/docs/reference/commands)》；changelog 中 2026-07-09「Use Codex in the ChatGPT desktop app」说明。**本预览在 Linux 箱完成，没有真机 macOS 截图与安装包形态复验**。下文不编造未见于官方文档的菜单文案；安装包若为磁盘映像，按 macOS 常见「拖入应用程序」流程描述，以你本机下载结果为准。
 
 你要在 Mac 上用 Codex 改本地代码，入口已经不是「再找一个叫 Codex 的独立安装包」，而是 **ChatGPT 桌面端里的 Codex 视图**。这篇只覆盖一条线：官方下载 → 装到「应用程序」→ 首次启动与系统提示 → ChatGPT 登录 → 切到 Codex → 打开本地文件夹并确认能开新对话。登录细节、排障清单与「第一次改文件」分别交给同目录的登录文与项目文。
 

@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-automation-ci-scheduled-tasks](https://codexguide.io/guides/codex-automation-ci-scheduled-tasks)
 
-> 核对依据：learn.chatgpt.com《[Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)》《[Codex GitHub Action](https://learn.chatgpt.com/docs/github-action)》与 [openai/codex-action](https://github.com/openai/codex-action)（2026-10-22）。「我的用法」非官方强制流程。未在真实 runner 完整跑通示例，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com《[Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)》《[Codex GitHub Action](https://learn.chatgpt.com/docs/github-action)》与 [openai/codex-action](https://github.com/openai/codex-action)（2026-10-22）。「我的用法」非官方强制流程。未在真实 runner 完整跑通示例。
 
 日常多半是敲 `codex`、在交互界面边聊边改。扫日志、补 changelog、PR 只读审查这类活，不必一直盯着点确认。
 
@@ -49,7 +49,7 @@ faq:
 2. **可复制的 Actions 示例**：PR 评审，以及「CI 失败后出补丁」双 job（密钥与写权限拆开）。
 3. **API Key 安全**：`OPENAI_API_KEY`／`CODEX_API_KEY` 勿写成会跑仓库可控代码的 **job 级** `env`；只绑 Codex 步骤；优先 `openai/codex-action`。
 
-桌面／网页 **Scheduled tasks**（旧称 Automations）见《[定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md)》；交互式 Issue→PR 见《[GitHub Issue 到 PR](../08-插件工作流/04-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)》。
+桌面／网页 **Scheduled tasks**（旧称 Automations）见《[定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md)》；交互式 Issue→PR 见《[GitHub Issue 到 PR](../08-插件工作流/05-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)》。
 
 ## 交互模式和 exec 模式差在哪
 
@@ -125,7 +125,7 @@ codex exec --ephemeral "triage this repository and suggest next steps"
 - `--ignore-user-config`：不加载 `$CODEX_HOME/config.toml`
 - `--ignore-rules`：跳过用户与项目的 execpolicy `.rules` 文件
 
-适合 runner 上只要仓库声明行为的场景。Rules 写法见《[Codex Rules（prefix_rule）](./10-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)》。
+适合 runner 上只要仓库声明行为的场景。Rules 写法见《[Codex Rules（prefix_rule）](./13-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)》。
 
 若启用了 `required = true` 的 MCP 且初始化失败，`codex exec` 会直接退出，不会静默少工具继续。
 

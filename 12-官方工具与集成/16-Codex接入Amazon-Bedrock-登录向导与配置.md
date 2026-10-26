@@ -248,7 +248,7 @@ aws sts get-caller-identity --profile codex-bedrock
 
 ## 相关阅读
 
-- [Codex config.toml 配置指南](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)：provider、`-c` 临时覆盖和配置层级。
+- [Codex config.toml 配置指南](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)：provider、`-c` 临时覆盖和配置层级。
 - [Codex 模型和推理强度怎么选](../10-配置模型与权限安全/01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [App、CLI、IDE 和 Cloud 怎么选](../00-从这里开始/05-App-CLI-IDE和Cloud怎么选.md)：Bedrock 下 Cloud 不可用，先确认入口。
 

@@ -1,3 +1,12 @@
+---
+title: "用 Codex 批量压缩图片并转换为 WebP"
+description: "文章配图经常需要限制宽度、转换格式和控制文件大小。img-convert Skill 可以让 Codex 按固定规则检查图片，再调用命令行工具批量处理。"
+url: /guides/codex-batch-image-conversion-skill
+status: published
+date_published: 2026-08-17
+date_modified: 2026-10-12
+---
+
 # 用 Codex 批量压缩图片并转换为 WebP
 
 > 本文在线版：[codexguide.io/guides/codex-batch-image-conversion-skill](https://codexguide.io/guides/codex-batch-image-conversion-skill)

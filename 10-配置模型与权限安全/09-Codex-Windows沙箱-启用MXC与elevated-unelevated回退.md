@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-windows-sandbox-mxc](https://codexguide.io/guides/codex-windows-sandbox-mxc)
 
-> 核对依据：learn.chatgpt.com《[Windows sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox)》（Configure and troubleshoot the native Codex sandbox on Windows）。文中「我的用法」是操作顺序建议，不是官方强制规定。本文写作环境**没有**可用的 Windows 11 真机做端到端验证，frontmatter 已标 `client_validation_pending: true`；文中命令与版本号均直接来自上述官方页，未另编 PowerShell 探测脚本。
+> 核对依据：learn.chatgpt.com《[Windows sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox)》（Configure and troubleshoot the native Codex sandbox on Windows）。文中「我的用法」是操作顺序建议，不是官方强制规定。本文写作环境**没有**可用的 Windows 11 真机做端到端验证；文中命令与版本号均直接来自上述官方页，未另编 PowerShell 探测脚本。
 
 Codex 在 Windows 上可以用 **ChatGPT 桌面端、CLI 或 IDE 扩展**运行。桌面端支持并行聊天、worktree、定时任务、Git、内置浏览器、文件预览、插件与 Skills 等核心流程；更关键的是——**可以原生跑在 PowerShell 里，用 Windows 沙箱约束文件与网络权限，而不必先装 WSL 或虚拟机**。
 

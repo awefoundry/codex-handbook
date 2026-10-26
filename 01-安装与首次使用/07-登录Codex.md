@@ -1,3 +1,12 @@
+---
+title: "登录 Codex 并确认入口可用"
+description: "本课只处理认证和入口可用性，不读取练习目录，也不要求你同时操作 App、CLI 和 IDE。选择你在上一课准备好的那个入口即可。"
+url: /guides/deng-lu-codex
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-12
+---
+
 # 登录 Codex 并确认入口可用
 
 > 本文在线版：[codexguide.io/guides/deng-lu-codex](https://codexguide.io/guides/deng-lu-codex)

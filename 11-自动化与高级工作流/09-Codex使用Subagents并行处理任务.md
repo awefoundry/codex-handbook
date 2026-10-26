@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-subagents-parallel-work](https://codexguide.io/guides/codex-subagents-parallel-work)
 
-> 核对依据：learn.chatgpt.com《Subagents》（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。本机未对真实多 Agent 会话逐项实测，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com《Subagents》（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。本机未对真实多 Agent 会话逐项实测。
 
 主聊天里一边定需求、一边塞满探索笔记、测试日志和堆栈，时间一长，真正有用的约束会被冲淡。官方把这类问题叫 **上下文污染（context pollution）** 和 **上下文腐烂（context rot）**：中间噪声把主线程占满，后续判断更容易偏。
 

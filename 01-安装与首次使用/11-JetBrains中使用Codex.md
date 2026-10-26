@@ -1,3 +1,10 @@
+---
+title: "JetBrains 中使用 Codex"
+description: "从 2025.3 开始，IntelliJ IDEA、PyCharm、WebStorm 等 JetBrains IDE 可以在 AI Chat 中直接调用 Codex。需要安装并启用 JetBrains AI Assistant，不需要另装 Codex 插件。"
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # JetBrains 中使用 Codex
 
 从 2025.3 开始，IntelliJ IDEA、PyCharm、WebStorm 等 JetBrains IDE 可以在 AI Chat 中直接调用 Codex。需要安装并启用 JetBrains AI Assistant，不需要另装 Codex 插件。
