@@ -15,7 +15,7 @@
 ## 已上线文章
 
 - [Codex 远程连接：用手机或另一台电脑控制 Mac / Windows，SSH 远程项目和跨设备交接](./01-Codex远程控制另一台Mac.md)
-- [Codex 浏览器操作与登录态功能](./02-Codex浏览器操作与登录态功能.md)
+- [Codex 浏览器操作与登录态：内置浏览器、浏览器扩展和 Computer Use 怎么选](./02-Codex浏览器操作与登录态功能.md)
 - [Codex 使用 Computer Use 操作桌面应用（2026-10 更新）：安装授权、Win/macOS 差异，以及高风险场景的停手规则](./03-Codex使用Computer-Use操作桌面应用.md)
 - [Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法（0.164.0 实测）](./04-Codex连接Sentry排查线上错误.md)
 - [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)

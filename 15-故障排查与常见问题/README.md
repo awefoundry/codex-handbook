@@ -18,6 +18,10 @@
 - [Codex 桌面端占满磁盘怎么办：排查 Crashpad 崩溃转储，并安全清理 worktree 与会话数据](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)
 - [Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序](./03-Codex一直Reconnecting-stream-disconnected排查.md)
 
+## 已上线文章
+
+- [Codex doctor 自检：一条命令排查安装、配置、登录和网络问题](./04-Codex-doctor自检-安装配置登录与网络排查.md)
+
 ## 首期练习的直接排查
 
 这些问题对应[首次任务：修改本地网页并检查结果](../00-从这里开始/07-完成第一个真实任务.md)和[结果检查文章](../01-安装与首次使用/09-完成第一次修改并检查结果.md)。
