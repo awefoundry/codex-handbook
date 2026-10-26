@@ -13,4 +13,5 @@
 
 ## 已上线文章
 
-- [Codex 做上线前端到端验收](./01-Codex做上线前端到端验收.md)
+- [Codex 做上线前端到端验收：用浏览器扩展接管已登录的浏览器，按测试用例逐条取证](./01-Codex做上线前端到端验收.md)
+- [Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI（0.6.0 实测）](./02-Codex-Security-CLI本地扫描仓库漏洞.md)

@@ -24,3 +24,4 @@
 - [Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits](./10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex Windows 沙箱配置：启用 MXC 原生隔离，以及 elevated / unelevated 回退](./11-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./12-Codex-Daybreak-Blue申请开启与排障.md)
+- [Codex 自定义模型提供商：model_providers 和 openai_base_url 怎么配，请求到底发去哪（0.164.0 实测）](./13-Codex自定义模型提供商-model_providers与openai_base_url.md)
