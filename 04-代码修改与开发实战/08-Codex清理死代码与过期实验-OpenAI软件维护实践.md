@@ -5,7 +5,7 @@ seo_title: Codex 清理死代码：OpenAI 合并 1,400+ 维护 PR 的方法与 P
 description: OpenAI Core Experimentation 用 Codex 合并了 1,400 多个维护 PR，删除 80 万行以上代码。本文拆解清理死代码、审计过期实验、修 flaky 测试和给 CI 提速时用的 prompt，对比 GPT-6 Astra 与 GPT-6.1 Sol 的成本，并说明怎样从自己仓库的一个小任务开始试。
 lede: 维护债会跟着交付速度一起涨。OpenAI 用短 prompt + 证据 + 小 PR 的方式，把死代码和过期实验清成可审查的批量维护。
 url: /guides/codex-dead-code-cleanup-software-maintenance
-status: draft
+status: published
 section: guides
 category: D-project-dev
 topic: 代码修改与开发实战
@@ -33,7 +33,7 @@ faq:
 
 # Codex 清理死代码与过期实验：OpenAI 用 GPT-6 系列合并 1,400+ 个维护 PR 的方法与 Prompt
 
-> 本文计划路径：[codexguide.io/guides/codex-dead-code-cleanup-software-maintenance](https://codexguide.io/guides/codex-dead-code-cleanup-software-maintenance)
+> 本文在线版：[codexguide.io/guides/codex-dead-code-cleanup-software-maintenance](https://codexguide.io/guides/codex-dead-code-cleanup-software-maintenance)
 
 > 核对依据：OpenAI 开发者博客 [Maintaining software with the GPT-6 family](https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family)（Rodrigo Roim / Core Experimentation，页面日期 2026-10-14）。文中数字与 prompt 结构以该文为准；「我的用法」是落地建议，不是官方规定。
 

@@ -5,7 +5,7 @@ seo_title: Codex Rules：prefix_rule 白名单／黑名单与 execpolicy check
 description: Codex 在沙箱外跑命令时，可用 Rules 按前缀决定放行、询问或禁止。本文按官方实验文档讲清 default.rules、prefix_rule、冲突优先级、组合命令拆分，以及用 codex execpolicy check 自测与加载顺序。
 lede: Rules 只管沙箱外的命令前缀。先分清它和沙箱／审批的边界，再写白名单与黑名单，并用 execpolicy check 自测。
 url: /guides/codex-rules-prefix-rule
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -33,7 +33,7 @@ faq:
 
 # Codex Rules 怎么写：用 prefix_rule 设置命令白名单和黑名单，看懂 allow / prompt / forbidden，并用 codex execpolicy check 测试
 
-> 本文计划路径：[codexguide.io/guides/codex-rules-prefix-rule](https://codexguide.io/guides/codex-rules-prefix-rule)
+> 本文在线版：[codexguide.io/guides/codex-rules-prefix-rule](https://codexguide.io/guides/codex-rules-prefix-rule)
 
 > 核对依据：learn.chatgpt.com《Rules》（developers.openai.com 同页会 308 到该文档）、以及《Non-interactive mode》中的 `--ignore-rules`（2026-10-22 抓取）。**官方标明 Rules 为实验功能，接口与行为可能变化。** 文中「我的用法」是操作建议，不是官方强制规定。本机未在真实 Codex TUI 里点选允许列表或跑完整会话，`client_validation_pending: true`；规则形状与 `execpolicy check` 命令按官方文档编写。
 

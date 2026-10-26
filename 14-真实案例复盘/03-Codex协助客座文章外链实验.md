@@ -7,7 +7,7 @@ lede: 客座外链不是下单就结束。先定边界，再让 Codex 跑筛选�
 url: /cases/codex-guest-post-case
 redirect_from:
   - /guides/codex-chu-hai-seo-shi-zhan
-status: draft
+status: published
 section: cases
 category: J-cases
 topic: 任务方法与项目理解

@@ -10,7 +10,7 @@
 
 GitHub 的 Review 页面会把 Conversation、Commits、Checks 和 Files changed 分开。审查代码时，先进入 `Files changed`，确认这次变更实际涉及哪些文件。
 
-![GitHub Pull Request 中的 Files changed 标签](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/正文配图/图一.png)
+![GitHub Pull Request 中的 Files changed 标签](../图片素材/05-Git协作与代码审查/06-如何做一次高质量CodeReview-正确性安全测试与可维护性/图一.png)
 
 图一  GitHub Pull Request 中的 `Files changed` 标签。
 
@@ -28,7 +28,7 @@ GitHub 的 Review 页面会把 Conversation、Commits、Checks 和 Files changed
 
 逐文件查看时，完成一个文件后可以标记 `Viewed`，这样能保留审查进度，也能减少重复查看。
 
-![GitHub Review 中的 Viewed 选项](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/正文配图/图二.png)
+![GitHub Review 中的 Viewed 选项](../图片素材/05-Git协作与代码审查/06-如何做一次高质量CodeReview-正确性安全测试与可维护性/图二.png)
 
 图二  GitHub Review 中用于标记文件已查看的 `Viewed` 选项。
 
@@ -44,13 +44,13 @@ GitHub 的 Review 页面会把 Conversation、Commits、Checks 和 Files changed
 
 提交审查结论时，Review 页面会提供 `Approve`、`Request changes` 和 `Comment` 等选项。选择哪一种，应该取决于问题是否阻断合并，而不是评论数量。
 
-![GitHub Pull Request 中的 Review changes 按钮](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/正文配图/图三.png)
+![GitHub Pull Request 中的 Review changes 按钮](../图片素材/05-Git协作与代码审查/06-如何做一次高质量CodeReview-正确性安全测试与可维护性/图三.png)
 
 图三  GitHub Pull Request 中提交审查结论的 `Review changes` 按钮。
 
 把这五步放在同一条线上，Review 就有了固定的检查路径。先确认改动要解决什么，再判断范围和风险，最后用测试证据支撑结论。
 
-![高质量 Code Review 的五步检查顺序](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/正文配图/图四.png)
+![高质量 Code Review 的五步检查顺序](../图片素材/05-Git协作与代码审查/06-如何做一次高质量CodeReview-正确性安全测试与可维护性/图四.png)
 
 图四  高质量 Code Review 的五步检查顺序。
 
@@ -103,13 +103,13 @@ Review 做完以后，至少应该能回答四个问题。改了什么，为什�
 
 测试也要跟着变更走。新增了一个分支，就要检查对应的正常输入、边界值、异常返回和权限场景；矩阵里出现空白或风险标记时，Review 结论不能只写“测试通过”。
 
-![Code Review 测试覆盖矩阵](06-如何做一次高质量CodeReview-正确性安全测试与可维护性-gzhwz-20260904/正文配图/图五.png)
+![Code Review 测试覆盖矩阵](../图片素材/05-Git协作与代码审查/06-如何做一次高质量CodeReview-正确性安全测试与可维护性/图五.png)
 
 图五  用测试覆盖矩阵检查新增行为和风险分支。
 
 ## 参考资料
 
-- [GitHub Reviewing proposed changes](https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes)
+- [GitHub Reviewing proposed changes](https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request)
 - [GitLab Code review guidelines](https://docs.gitlab.com/development/code_review/)
 
 ## 继续实践

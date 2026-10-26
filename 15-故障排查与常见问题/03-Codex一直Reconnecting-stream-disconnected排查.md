@@ -5,7 +5,7 @@ seo_title: Codex Reconnecting / stream disconnected：代理、证书与 WebSock
 description: Codex 回复前反复 Reconnecting 1/5～5/5，或报 stream disconnected before completion，多数和网络、代理、证书或 WebSocket 回退有关，也可能是服务端问题。本文按官方文档给出排查顺序：先看 Status，再查本机网络与代理、公司 CA、WebSocket 回退与客户端版本，最后用 Feedback ID 反馈。
 lede: 先别急着改代理。Reconnecting x/5 往往是流式传输在重试——先分清是服务端、本机网络，还是证书／WebSocket。
 url: /guides/codex-reconnecting-network-troubleshooting
-status: draft
+status: published
 section: guides
 category: K-troubleshooting
 topic: 故障排查与恢复
@@ -32,7 +32,7 @@ faq:
 
 # Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序（国内代理、公司证书、WebSocket 回退）
 
-> 本文计划路径：[codexguide.io/guides/codex-reconnecting-network-troubleshooting](https://codexguide.io/guides/codex-reconnecting-network-troubleshooting)
+> 本文在线版：[codexguide.io/guides/codex-reconnecting-network-troubleshooting](https://codexguide.io/guides/codex-reconnecting-network-troubleshooting)
 
 > 核对依据：learn.chatgpt.com 的 Troubleshooting、Environment variables、Configuration Reference／Advanced Configuration；[status.openai.com](https://status.openai.com/)；openai/codex 上与重连相关的 **issue 讨论**（#18960、#13041、#14297、#3355 等，只作症状对照）。文中「我的用法」是排查顺序建议，不是官方规定。**本预览环境没有国内代理／公司 CA／真机 Mac 实验室**，代理与证书步骤标为需本机验证（`client_validation_pending: true`）。
 
@@ -44,7 +44,7 @@ faq:
 
 1. **Status**（服务端）→ 2. **本机网络／睡眠唤醒** → 3. **代理／TUN／系统代理** → 4. **公司 CA（`CODEX_CA_CERTIFICATE`）** → 5. **WebSocket 回退与自定义 provider** → 6. **客户端版本** → 7. **Feedback ID 与日志**。
 
-额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](/guides/codex-model-at-capacity-usage-reset)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](/guides/codex-desktop-crashpad-disk-space)》（id：`desktop-crashpad-disk-space`）。
+额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)》（id：`desktop-crashpad-disk-space`）。
 
 ## 先看懂报错：三句话分别是什么意思
 

@@ -12,13 +12,13 @@
 
 如果你还在练习怎样把需求交给 Codex，可以先看《别再对 Codex 许愿：一张任务单让它少走弯路》，再回到这里处理 Git 协作部分。
 
-![从 Issue 到 Pull Request 的协作流程图](./04-从Issue到PullRequest-发布素材/正文配图/图一.png)
+![从 Issue 到 Pull Request 的协作流程图](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图一.png)
 
 图一：状态、diff、测试和 Review 结果共同组成交付证据。
 
 Issue、调查、分支、测试、PR、Review 和合并共同组成一条可以回查的证据链。下面这张概念图把它们压缩成一条从问题到合并的路径，后文的每一步都应该能回到其中一个节点。
 
-![从 Issue 到合并的交付证据链](./04-从Issue到PullRequest-发布素材/正文配图/图二.png)
+![从 Issue 到合并的交付证据链](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图二.png)
 
 图二：每个协作节点都应留下可回查的状态、改动或验证结果。
 
@@ -36,13 +36,13 @@ Issue、调查、分支、测试、PR、Review 和合并共同组成一条可以
 验收：失败路径测试通过，聚焦测试和 lint 通过，diff 没有无关文件。
 ```
 
-![Issue 模板列表中的空白 Issue 入口](./04-从Issue到PullRequest-发布素材/正文配图/图三.png)
+![Issue 模板列表中的空白 Issue 入口](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图三.png)
 
 图三：已有模板无法覆盖场景时，可以从空白 Issue 开始。
 
 如果仓库使用结构化 Issue Form，可以把标题、现象、版本和运行环境拆成固定字段，减少关键信息遗漏。
 
-![结构化 Bug Report 表单示例](./04-从Issue到PullRequest-发布素材/正文配图/图四.png)
+![结构化 Bug Report 表单示例](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图四.png)
 
 图四：结构化表单把复现所需的信息拆成可填写字段。
 
@@ -178,7 +178,7 @@ git push -u origin fix/login-error
 
 进入 PR 后，先从 `Files changed` 查看实际文件范围，再核对改动是否仍然对应 Issue。
 
-![Pull Request 的 Files changed 入口](./04-从Issue到PullRequest-发布素材/正文配图/图五.png)
+![Pull Request 的 Files changed 入口](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图五.png)
 
 图五：Files changed 是检查 PR 文件范围的入口。
 
@@ -220,11 +220,11 @@ Review 意见回来后，先按影响范围处理。阻断合并的问题要优�
 
 Review 意见回来后，通常会经过“定位问题、追加修改、重新验证、再次审查”这一轮反馈。把它看成循环，而不是一次性批改，能避免修复提交脱离原评论，也能让每次复查都有新的证据。
 
-![Review 意见到再次审查的反馈循环](./04-从Issue到PullRequest-发布素材/正文配图/图六.png)
+![Review 意见到再次审查的反馈循环](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图六.png)
 
 图六：Review 意见通过修改提交和验证结果回到下一轮审查。
 
-![Pull Request diff 中的行内评论入口](./04-从Issue到PullRequest-发布素材/正文配图/图七.png)
+![Pull Request diff 中的行内评论入口](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图七.png)
 
 图七：行内评论把 Review 意见绑定到具体改动位置。
 
@@ -261,11 +261,11 @@ Codex 的 Review 结果仍然需要人核对。自动化工具可以减少漏看
 
 提交 Review 时，要明确这是普通评论、批准，还是要求修改；三种动作对应不同的协作信号。
 
-![Pull Request 的 Review 提交选项](./04-从Issue到PullRequest-发布素材/正文配图/图八.png)
+![Pull Request 的 Review 提交选项](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图八.png)
 
 图八：提交 Review 前明确选择 Comment、Approve 或 Request changes。
 
-![修复后测试与代码差异验证](./04-从Issue到PullRequest-发布素材/正文配图/图九.png)
+![修复后测试与代码差异验证](../图片素材/05-Git协作与代码审查/04-从Issue到PullRequest-一次完整团队协作闭环/图九.png)
 
 图九：聚焦测试通过，diff 显示失败路径补上 finally 状态清理。
 

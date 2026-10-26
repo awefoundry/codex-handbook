@@ -5,7 +5,7 @@ seo_title: Codex 与 Claude Code 怎么选：GPT-6.1 Sol、Luna、Astra 对照
 description: 用工作流而不是跑分来选工具。对照 Codex（GPT-6.1 Sol／Luna／Astra）与 Claude Code 的入口、模型、上下文与计费边界，给出可落地的分工建议。
 lede: 先问任务落在哪条工作流，再选产品和模型；别用过期跑分代替自己的试用。
 url: /guides/codex-yu-qita-biancheng-moxing-bijiao
-status: draft
+status: published
 section: guides
 category: B-core-concepts
 topic: 核心概念与任务方法

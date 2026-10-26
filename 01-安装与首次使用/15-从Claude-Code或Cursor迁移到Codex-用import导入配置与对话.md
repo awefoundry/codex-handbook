@@ -5,7 +5,7 @@ seo_title: 从 Claude Code／Cursor 迁移到 Codex：/import 导入配置与对
 description: 从 Claude Code 或 Cursor 换到 Codex，不必从头配置。本文按官方 Import 文档走一遍：桌面端与 CLI 各能导入什么，指令文件、settings、Skills、MCP、Hooks 会落到哪，CLI 的 50 条／30 天对话上限，以及导入后必须复查的五类设置。
 lede: 先用 /import（或桌面端 Settings → Import）把能搬的搬过来，再按官方清单把权限、MCP、Hooks 和命令模板核对一遍。
 url: /guides/codex-import-from-claude-code-cursor
-status: draft
+status: published
 section: guides
 category: B-install-login
 topic: 认识、安装与环境
@@ -33,7 +33,7 @@ faq:
 
 # 从 Claude Code 或 Cursor 迁移到 Codex：用 /import 导入 CLAUDE.md、Skills、MCP、Hooks 和最近 30 天对话，导入后要检查什么
 
-> 本文计划路径：[codexguide.io/guides/codex-import-from-claude-code-cursor](https://codexguide.io/guides/codex-import-from-claude-code-cursor)
+> 本文在线版：[codexguide.io/guides/codex-import-from-claude-code-cursor](https://codexguide.io/guides/codex-import-from-claude-code-cursor)
 
 > 核对依据：learn.chatgpt.com《[Import from another agent](https://learn.chatgpt.com/docs/import)》、同站《[Developer commands](https://learn.chatgpt.com/docs/developer-commands)》中的 `/import` 说明，以及 Codex CLI `0.140.0` release notes（首次加入 `/import`）与 2026-08-11 What’s new（桌面端导入与 Cursor）。文中「我的用法」是操作顺序建议，不是官方强制流程。本文未在本机实装 Claude Code／Cursor 做端到端导入，`client_validation_pending: true`。
 

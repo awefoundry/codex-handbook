@@ -5,7 +5,7 @@ seo_title: Codex Worktree：并行任务、Handoff 与 .worktreeinclude
 description: 用 Codex 的 Git worktree 在同一项目里并行开多个聊天，互不踩 Local；学会 Hand off 交回本地、.worktreeinclude 带上忽略文件，以及托管 worktree 的清理规则。
 lede: Local 是前台，Worktree 是后台。并行改代码时先隔离，确认后再用 Handoff 交回本地。
 url: /guides/codex-worktree-parallel-chats
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -33,7 +33,7 @@ faq:
 
 # Codex Worktree 教程：用 Git worktree 并行跑多个任务，并把结果交回本地（Handoff）
 
-> 本文计划路径：[codexguide.io/guides/codex-worktree-parallel-chats](https://codexguide.io/guides/codex-worktree-parallel-chats)
+> 本文在线版：[codexguide.io/guides/codex-worktree-parallel-chats](https://codexguide.io/guides/codex-worktree-parallel-chats)
 
 > 核对依据：learn.chatgpt.com / developers.openai.com 的 Worktrees、Local environments、Troubleshooting，以及 Developer commands／Slash commands 中与 worktree 相关的条目。文中「我的用法」是工作流建议，不是官方规定。
 

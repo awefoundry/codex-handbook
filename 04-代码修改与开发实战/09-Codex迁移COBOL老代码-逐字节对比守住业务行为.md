@@ -5,7 +5,7 @@ seo_title: Codex 迁移 COBOL：读懂 MultiLangBench，用逐字节对比守住
 description: OpenAI 自测称 GPT-6.1 Sol 在 COBOL 迁移评测上低推理强度准确率 86.6%、调高后 97.9%。本文先讲清数字怎么测、能说明什么，再给出用 Codex 录行为基线、迁移到 Java／Python，并用逐字节对比守住业务行为的工作流。
 lede: 老系统现代化最怕「跑得通但算不对」。先读懂官方评测在测什么，再用可复现的字节级对照，把迁移变成可验收的工程。
 url: /guides/codex-cobol-legacy-migration
-status: draft
+status: published
 section: guides
 category: D-project-dev
 topic: 代码修改与开发实战
@@ -34,7 +34,7 @@ faq:
 
 # 用 Codex 迁移 COBOL 老代码：从 OpenAI 新评测看模型怎么选，再用逐字节对比守住业务行为
 
-> 本文计划路径：[codexguide.io/guides/codex-cobol-legacy-migration](https://codexguide.io/guides/codex-cobol-legacy-migration)
+> 本文在线版：[codexguide.io/guides/codex-cobol-legacy-migration](https://codexguide.io/guides/codex-cobol-legacy-migration)
 
 > 核对依据：OpenAI 官方文章 [Advancing coding in low-resource programming languages](https://openai.com/index/low-resource-programming-languages/)（页面日期 2026-10-19）；开源评测 [openai/MultiLangBench](https://github.com/openai/MultiLangBench) README；模型入口 [learn.chatgpt.com/docs/models](https://learn.chatgpt.com/docs/models)；GnuCOBOL 官网编译器说明。**文中评测数字均为 OpenAI 厂商自测，已逐项标注。**「我的用法」是落地工作流，不是官方规定。本预览**未**在本机跑通 GnuCOBOL 端到端迁移（`client_validation_pending: true`），示例程序与命令仅作可照抄的流程模板。
 

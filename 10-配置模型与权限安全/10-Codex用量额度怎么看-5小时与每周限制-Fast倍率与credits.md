@@ -5,7 +5,7 @@ seo_title: Codex 用量额度：5 小时／每周限制、Fast 倍率与 credits
 description: 读懂 Settings → Usage 里的 5 小时与每周限制，弄清 Fast／Ultrafast 倍率与 credits 怎么扣，以及觉得被多扣时按官方路径怎么自查与联系 Support。
 lede: 额度不是「发了几条消息」那么简单。先会读面板，再决定要不要开 Fast、买 credits，或怀疑计数有误。
 url: /guides/codex-usage-limits-credits
-status: draft
+status: published
 section: guides
 category: J-config-security
 topic: 配置模型与权限安全
@@ -33,7 +33,7 @@ faq:
 
 # Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits，以及觉得被多扣时怎么查
 
-> 本文计划路径：[codexguide.io/guides/codex-usage-limits-credits](https://codexguide.io/guides/codex-usage-limits-credits)
+> 本文在线版：[codexguide.io/guides/codex-usage-limits-credits](https://codexguide.io/guides/codex-usage-limits-credits)
 
 > 核对依据：OpenAI Help Center 的 Codex 套餐与用量、个人计划 credits、以及 learn.chatgpt.com 的 Pricing／Speed。文中「我的用法」是使用建议，不是官方规定。
 

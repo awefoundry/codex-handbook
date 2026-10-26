@@ -1,6 +1,0 @@
-interface:
-  display_name: "绿色系列封面"
-  short_description: "按标题和期数生成绿色系列公众号封面"
-  default_prompt: "Use $green-series-cover to create a green-series cover from a title and issue number."
-policy:
-  allow_implicit_invocation: true
