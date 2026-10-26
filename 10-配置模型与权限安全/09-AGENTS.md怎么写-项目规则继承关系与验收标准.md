@@ -1,57 +1,132 @@
-# Codex AGENTS.md教程：项目规则、读取范围与生效检查
+---
+id: agents-md
+title: Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
+seo_title: Codex AGENTS.md 怎么写：继承规则、验收与 Memories/Skills 分工
+description: AGENTS.md 用来固定项目约定、目录边界和验收命令。本文按官方文档更新读取与合并规则（override、fallback、32 KiB 上限），说明它和 config.toml、Memories、Skills 的分工，并给出一套能用文件和 diff 证明规则生效的本地验收方法。
+lede: 必须遵守的规则写进仓库里的 AGENTS.md；可以忘的偏好交给 Memories；可复用的流程做成 Skill。
+url: /advanced/agents-md
+status: published
+section: advanced
+category: F-config-model-security
+topic: 配置模型与权限安全
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [CLI, App, IDE]
+difficulty: 进阶
+order: 9
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-09-22
+date_modified: 2026-10-23
+official_ref: https://learn.chatgpt.com/docs/agent-configuration/agents-md
+keywords: [Codex AGENTS.md, AGENTS.override.md, project_doc_max_bytes, project_doc_fallback_filenames, Codex 项目规则]
+related: [codex-memories, create-codex-skill]
+faq:
+  - q: 改了 AGENTS.md，当前会话会马上用新规则吗？
+    a: 不会。官方说明 Codex 在每次运行开始时建立指令链，TUI 通常是每次启动会话时一次。改完要重新启动 Codex 或开新命令。
+  - q: 同一目录同时有 AGENTS.md 和 AGENTS.override.md，会合并吗？
+    a: 不会。每个目录最多只取一个文件，顺序是 AGENTS.override.md、AGENTS.md、fallback 文件名，取到第一个非空的就停。
+  - q: 团队规则能只放在 Memories 里吗？
+    a: 不建议。官方 Memories 文档明确说，必须遵守的团队规则应放在 AGENTS.md 或入库文档里，记忆只是辅助的回忆层。
+---
 
-`AGENTS.md` 用来保存会在多个任务中重复使用的项目约定：项目是什么、哪些目录可以改、怎样验证、哪些动作要先请人确认。它能减少重复提醒，但不能替你决定需求，也不能代替沙箱、操作系统权限、审批或人工验收。
+# Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
 
-本文沿用原文的项目规则、继承关系和验收思路，补上一个不依赖 Node 或测试脚本的本地网页练习。练习只使用 `/tmp` 下的副本；示例输出是帮助你判断结果的样子，不代表本机已经完成一次模型任务。
+> 本文在线版：[codexguide.io/advanced/agents-md](https://codexguide.io/advanced/agents-md)
 
-## 它解决什么问题
+> 核对依据：learn.chatgpt.com 的《Custom instructions with AGENTS.md》《Memories》《Build skills》，2026-10-23 核对。练习命令沿用上一版（2026-09-23 对照 Codex CLI 0.156.0 帮助文本），没有在本次更新中重新跑模型任务。
 
-把下面这些稳定约定写进项目规则，Codex 每次进入项目时都能获得同一份上下文：
+**2026-10 更新说明**：补了和 Memories、Skills 的分工表；读取规则按当前官方文档重新核对，加上「空文件会被跳过」「到达上限后停止添加」等细节；验收部分改为优先使用官方给的检查命令。
 
-- 项目的用途、主要目录和工作边界；
-- 真实存在的启动、检查或构建命令；
-- 哪些文件允许修改，哪些文件由工具生成；
-- 什么时候算完成，删除、部署、生产写入等动作何时必须停下来请人确认。
+`AGENTS.md` 存的是要在很多任务里反复用到的项目约定：项目是做什么的、哪些目录能改、怎么验证、哪些动作必须先问人。它能省掉每次开工时的重复交代，但不能替你判断需求，也代替不了沙箱、系统权限、审批和人工验收。
 
-它不解决下面几件事：
+## 它解决什么，不解决什么
 
-- **不等于安全隔离**：写“不要删除文件”不能阻止命令删除文件。能访问什么由沙箱、操作系统权限和审批共同决定；
-- **不等于任务提示**：当前任务的目标、范围和交付时间仍应写在本次请求里；
-- **不等于 `config.toml`**：配置文件控制模型、沙箱、审批等运行设置，`AGENTS.md` 主要提供项目上下文和协作约定；
-- **不等于测试结果**：Codex 说“我已读取”只是一段回复，不能证明读取了预期文件。要用路径、diff、命令输出或页面检查核对。
+适合写进去的：
 
-## 它和提示词、配置、权限怎么分工
+- 项目用途、主要目录、工作边界；
+- 真实存在的构建、检查、测试命令；
+- 哪些文件能改，哪些是工具生成的；
+- 怎样算完成；删除、部署、写生产数据这类动作要先停下来确认。
 
-| 载体 | 负责什么 | 适合放什么 | 不能代替什么 |
+它不负责的：
+
+- **安全隔离**。写一句「不要删除文件」挡不住删除命令。能访问什么，是沙箱、系统权限和审批一起决定的。
+- **当次任务**。这次要做什么、范围多大，写在当次的请求里。
+- **运行配置**。模型、沙箱、审批默认值放在 `config.toml`。
+- **验收结果**。Codex 回一句「我读到了」不算证据，要看路径、diff 和命令输出。
+
+## 和提示词、config.toml、Memories、Skills 怎么分工
+
+一条规则该写 AGENTS.md 还是交给 Memories、要不要做成 Skill，可以按下表分。表是本站的分法，依据是官方各自文档的定位。
+
+| 载体 | 管什么 | 适合放 | 不适合放 |
 | --- | --- | --- | --- |
-| 一次性任务提示 | 当前目标和当前限制 | “只改 `index.html`，完成后说明检查结果” | 长期项目约定 |
-| `AGENTS.md` | 项目规则和验收习惯 | 目录边界、真实命令、完成标准 | 沙箱、权限和需求判断 |
-| `config.toml` | Codex 的运行配置 | 模型、推理强度、审批和沙箱默认值 | 项目业务规则 |
-| 运行权限 | 能访问和执行什么 | 工作区写入、网络、系统资源 | 判断修改是否正确 |
+| 当次提示词 | 这一次的目标和限制 | 「只改 `index.html`，改完说明检查结果」 | 长期约定 |
+| `AGENTS.md` | 项目必须遵守的规则 | 目录边界、真实命令、完成标准、必须先问人的动作 | 密钥、一次性任务、权限隔离 |
+| `config.toml` | Codex 自身的运行配置 | 模型、推理强度、审批和沙箱默认值、`project_doc_max_bytes` | 业务规则 |
+| Memories | 从过往对话里提炼的本机回忆 | 个人偏好、上次的排查习惯这类可以忘、可以过期的东西 | 团队红线、必须每次都生效的规则 |
+| Skills | 可复用的工作流程包 | 有固定步骤、可能带脚本和参考资料的流程，比如「修 CI」「发版检查」 | 每个任务都要遵守的项目约定 |
+| 运行权限 | 能访问、能执行什么 | 工作区写入、网络、系统资源 | 判断改得对不对 |
 
-## 当前官方读取规则
+三条判断依据都来自官方文档：
 
-下面是依据 [OpenAI 的 AGENTS.md 文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md)整理的规则，核对日期为 **2026-09-22**。具体入口仍可能随 Codex 版本变化，遇到差异应以当前文档和 `codex --help` 为准。
+- **Memories**：官方原话是把必须遵守的团队规则放在 `AGENTS.md` 或入库文档里，记忆只当辅助的回忆层。本地 Codex 记忆默认关闭，存在 `~/.codex/memories/`，按机器生效，换台机器就没有了。
+- **Skills**：一个 Skill 是带 `SKILL.md` 的目录，Codex 先只看名字和描述，决定要用时才读完整内容。所以 Skill 适合「需要时才调用」的流程，不适合「每次都要遵守」的规则。
+- **AGENTS.md**：每次运行开始时都会读进来，适合放始终生效的约定。
 
-1. **全局层**：默认在 `CODEX_HOME` 指向的目录中查找；没有设置时通常是 `~/.codex`。同一目录优先使用非空的 `AGENTS.override.md`，没有它才使用 `AGENTS.md`。
-2. **项目层**：从项目根目录（通常是 Git 根目录）走到当前工作目录；如果找不到项目根，就只检查当前目录。每一级目录按 `AGENTS.override.md`、`AGENTS.md` 和 `project_doc_fallback_filenames` 中的备用文件名查找，每一级最多加入一个文件。
-3. **合并顺序**：先加入根目录规则，再加入更靠近当前目录的规则。后加入的具体规则可以补充或覆盖前面的约定。
-4. **大小上限**：合并后的项目说明默认受 `project_doc_max_bytes` 限制，官方文档当前给出的默认值是 32 KiB。太长时，应拆到更具体的目录或在确认影响后调整上限。
-5. **读取时机**：规则在一次运行开始时建立指令链；修改文件后重启 Codex，再检查新的规则是否进入下一次运行。
+一个简单的判断：**这条规则如果某次没生效，会不会出事？** 会出事，写进 AGENTS.md；只是不方便，可以交给 Memories；是一串步骤而不是一条规则，做成 Skill，再在 AGENTS.md 里写一句什么时候该用它。
 
-如果同一目录同时存在 `AGENTS.override.md` 和 `AGENTS.md`，普通文件不会再被加入这一层。备用文件名不是自动猜出来的，必须通过配置声明。
+## 当前官方读取与合并规则
 
-## 用一个独立网页副本练习
+依据官方《Custom instructions with AGENTS.md》，2026-10-23 核对：
 
-这个例子没有 `package.json`、Node 或测试脚本，所以不会编造 `npm test`。它只检查文件范围、HTML 是否存在和 Git diff 是否干净。
+1. **何时读取**：Codex 在启动时建立指令链，每次运行一次；TUI 里通常是每次启动会话一次。改了文件要重启或开新命令才生效，没有需要手动清的缓存。
+2. **全局层**：在 Codex home 目录（默认 `~/.codex`，设置了 `CODEX_HOME` 则以它为准）读 `AGENTS.override.md`，没有才读 `AGENTS.md`。这一层只用第一个非空文件。
+3. **项目层**：从项目根（通常是 Git 根）往下走到当前工作目录；找不到项目根就只看当前目录。每一级按 `AGENTS.override.md` → `AGENTS.md` → `project_doc_fallback_filenames` 里的名字依次找，**每个目录最多取一个文件**。
+4. **合并顺序**：从根往下拼接，中间用空行隔开。越靠近当前目录的文件越靠后，所以能覆盖前面的约定。
+5. **空文件与上限**：空文件会被跳过；合并后的大小到达 `project_doc_max_bytes`（默认 32 KiB）就停止添加。内容太多时，提高上限或拆到更具体的子目录。
+6. **fallback 文件名**：不会自动识别。要在 `config.toml` 里写 `project_doc_fallback_filenames`，例如 `["TEAM_GUIDE.md", ".agents.md"]`；不在列表里的文件名一律忽略。
 
-### 1. 创建练习目录和规则
+两个容易踩的点：同一目录里有 `AGENTS.override.md` 时，同目录的 `AGENTS.md` 会被忽略；Codex 只往下走到当前目录为止，所以专用规则要放在离那部分代码最近的地方。
 
-在 macOS 或 Linux 终端输入：
+## 最小可维护模板
+
+```markdown
+# 项目规则
+
+## 项目是什么
+- 一句话说明用途和主要目录。
+
+## 可以改的范围
+- 允许修改：`src/`、`docs/`
+- 不要手改：`dist/`（构建生成）
+
+## 命令（只写真实存在的）
+- 安装依赖：……
+- 检查：……
+- 测试：……（项目没有测试就写「没有测试脚本，不要声称运行过测试」）
+
+## 怎样算完成
+- 相关检查命令通过，并在回复里贴出实际输出。
+- 说明改了哪些文件。
+
+## 必须先问人的动作
+- 删除文件、改数据库结构、部署、改 CI 配置、新增生产依赖。
+```
+
+写的时候注意三点：命令要真实存在，写一个跑不了的 `npm test` 只会让 Codex 白白报错或乱编结果；「完成」要能检查，「代码质量好」不算；必须先问人的动作，同时也要在审批和沙箱里设好，AGENTS.md 只是提醒。
+
+如果项目用 Codex 做 GitHub 代码审查，官方建议在离相关代码最近的 `AGENTS.md` 里加一个 `## Code Review Rules` 小节，格式和 lint 类检查留给 CI。
+
+## 本地验收：用一个网页副本练习
+
+这个练习不依赖 Node 或测试脚本，只在 `/tmp` 下的副本里做，用文件范围和 Git diff 判断规则是否生效。
+
+### 1. 建练习目录和规则
 
 ```bash
 probe="$(mktemp -d /tmp/codex-agents-probe.XXXXXX)"
-mkdir -p "$probe"
 cd "$probe"
 
 cat > index.html <<'HTML'
@@ -61,7 +136,6 @@ cat > index.html <<'HTML'
   <title>规则练习页</title>
   <body>
     <h1>第一次修改前</h1>
-    <p>这是一份可回滚的本地网页副本。</p>
   </body>
 </html>
 HTML
@@ -71,108 +145,91 @@ cat > AGENTS.md <<'RULES'
 
 - 这是一个只有一个 HTML 文件的练习项目。
 - 本次任务只允许修改 `index.html`，不要创建或删除其他文件。
-- 修改后检查 `git diff --check`，并说明实际检查了什么。
+- 修改后运行 `git diff --check`，并说明实际检查了什么。
 - 这个项目没有测试脚本，不要运行或声称运行 `npm test`。
 RULES
 
-git init -q
-git add index.html AGENTS.md
-git commit -qm "建立 AGENTS.md 练习基线"
-printf '练习目录：%s\n' "$probe"
+git init -q && git add . && git commit -qm "AGENTS.md 练习基线"
 ```
 
-正常应看到一个临时目录路径。先运行 `git status --short --branch`，应只有分支信息，没有未提交改动。路径或权限异常时，先确认 `probe` 变量和当前目录，再继续。
+### 2. 先让 Codex 说出它读到了什么
 
-### 2. 让 Codex 先报告规则来源
-
-在同一目录启动一次只读任务：
+官方给的检查方式是：
 
 ```bash
-codex exec --ephemeral --sandbox read-only -C "$probe" \
-  "先不要修改文件。列出你实际读取的 AGENTS.md 路径，说明每条规则如何限制本次任务，并指出项目是否存在可运行的测试命令。最后给出你会检查的文件。"
+codex --ask-for-approval never "Summarize the current instructions."
 ```
 
-正常回答应至少提到练习目录中的 `AGENTS.md`、只修改 `index.html`、不运行不存在的测试。这里的回答只是线索；把它保存下来或让模型自报路径，都不能单独证明规则已生效。当前环境若未登录或无法连接模型，命令会停在认证或网络错误，这只说明客户端任务未完成。
+正常情况下，Codex 会按顺序复述全局和项目规则。这只是线索，不是证据。
 
-### 3. 用一个小任务检查实际作用
-
-确认基线没有改动后，再执行一个只改标题的任务：
+想看实际加载了哪些文件，官方建议开启明文 TUI 日志：
 
 ```bash
-codex exec --ephemeral --sandbox workspace-write -C "$probe" \
-  "把 index.html 的 h1 改成‘规则已生效’，只修改这个文件。完成后说明实际运行过的检查；不要创建、删除或修改其他文件。"
+codex -c log_dir=./.codex-log
+# 然后查看 ./.codex-log/codex-tui.log
 ```
 
-接着由你自己检查：
+### 3. 用一个小任务看规则有没有起作用
+
+```bash
+codex exec --sandbox workspace-write -C "$probe" \
+  "把 index.html 的 h1 改成‘规则已生效’，只修改这个文件。完成后说明实际运行过的检查。"
+```
+
+然后自己检查：
 
 ```bash
 git status --short
-git diff -- index.html
 git diff --name-only
 git diff --check
 ```
 
-正常结果是：只有 `index.html` 出现在差异中，`h1` 改成了目标文字，`git diff --check` 没有输出。若出现其他文件、没有 diff 或检查命令被跳过，先不要宣布规则生效；回到规则路径、当前工作目录和权限设置逐项核对。即使规则写了“不要删除文件”，也仍要把删除动作当作高风险操作单独确认。
+合格的结果：差异里只有 `index.html`，`h1` 改对了，`git diff --check` 没有输出，回复里没有声称跑过 `npm test`。出现别的文件或者检查被跳过，先别认定规则生效，回到下面的排查顺序。
 
-## 怎样确认规则来源和覆盖关系
-
-在练习目录逐层查看，而不是只看根目录：
-
-```bash
-find "$probe" \( -name 'AGENTS.md' -o -name 'AGENTS.override.md' \) -print
-printf '项目根：'; git rev-parse --show-toplevel
-printf '当前目录：'; pwd
-```
-
-如果要练习子目录覆盖，可以创建 `pages/AGENTS.override.md`，然后从 `pages/` 启动下一次 Codex：
+### 4. 练习子目录覆盖
 
 ```bash
 mkdir -p "$probe/pages"
 cat > "$probe/pages/AGENTS.override.md" <<'RULES'
 # 子目录规则
-
 - 当前目录的任务只能修改当前目录中的文件。
 RULES
 
-cd "$probe/pages"
-git rev-parse --show-toplevel
+codex --cd pages --ask-for-approval never "Show which instruction files are active."
 ```
 
-正常应仍然返回练习项目根目录；下一次运行时，根目录规则先进入，`pages/AGENTS.override.md` 再补充当前目录限制。若普通 `AGENTS.md` 与 override 同层，先检查是否误以为两份都会合并。
+预期顺序：全局文件（如果有）在前，根目录 `AGENTS.md` 其次，`pages/AGENTS.override.md` 最后。
 
-## 没生效时按这个顺序排查
+练习完删掉 `$probe` 目录即可。不要在真实项目或 `~/.codex` 里直接删规则文件，先看 `git status` 和影响范围。
 
-1. **目录**：确认启动目录在目标项目内，`git rev-parse --show-toplevel` 返回了预期根目录。
-2. **文件名**：确认是 `AGENTS.md` 或 `AGENTS.override.md`，不是 `AGENTS.md.txt`；文件不能是空的。
-3. **同层替代**：检查同一目录是否有 override 文件，或配置是否指定了另一个 fallback 文件名。
-4. **范围**：确认规则所在目录确实覆盖当前要改的文件；更具体目录的规则可能改变前面的约定。
-5. **大小和语法**：检查规则是否超过 `project_doc_max_bytes`，Markdown 标题和列表是否写完整。
-6. **重启**：关闭当前运行，重新从目标目录启动；不要假设改完文件后旧会话会自动重载。
-7. **证据**：重新查看模型列出的路径、`git diff --name-only` 和实际检查输出。只凭“我读到了”仍然不够。
+## 没生效时按这个顺序查
 
-## 修改或移除练习规则
+1. **目录**：是不是在目标项目里启动的？可以用 `codex status` 看工作区根目录对不对。
+2. **文件名和内容**：是 `AGENTS.md`，不是 `AGENTS.md.txt`；文件不能是空的。
+3. **上层的 override**：往上找有没有 `AGENTS.override.md`，包括 Codex home 目录里的。
+4. **fallback 名**：`project_doc_fallback_filenames` 有没有拼错；改完配置要重启。
+5. **截断**：合并后是否超过 `project_doc_max_bytes`，靠后的规则可能没进来。
+6. **CODEX_HOME**：启动前 `echo $CODEX_HOME`。值不是默认的话，Codex 读的可能不是你改的那个目录。
+7. **重启**：关掉当前会话，从目标目录重新启动。
+8. **证据**：看日志、`git diff --name-only` 和实际命令输出。
 
-先保留回滚点，再修改规则：
+## 常见误区
 
-```bash
-cp AGENTS.md AGENTS.md.bak
-$EDITOR AGENTS.md
-git diff -- AGENTS.md
-```
+- **把安全隔离写进 AGENTS.md**。「不要访问网络」要靠沙箱设置，规则只是提醒。
+- **把一次性任务写进全局规则**。「这周先修登录 bug」放在 `~/.codex/AGENTS.md` 里，下个项目也会读到。
+- **规则只放在 Memories 里**。换台机器、关掉记忆、清空记忆以后，规则就没了。
+- **把长流程塞进 AGENTS.md**。几十步的发版流程每次都读进上下文，占预算；做成 Skill，在 AGENTS.md 里写一句什么时候用它。
+- **写不存在的命令**。Codex 要么报错，要么在回复里含糊带过。
 
-确认新规则在下一次运行中被读取后，再删除备份：
+## 相关阅读
 
-```bash
-rm AGENTS.md.bak
-```
+- [Codex config.toml 深入配置](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
+- [权限与安全边界](https://codexguide.io/advanced/permissions-security)
+- [从零创建 Codex Skill](https://codexguide.io/guides/create-codex-skill)
+- [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
 
-要移除规则，先删掉练习目录里的文件，再启动一次只读任务确认没有其他层级的同名规则。不要直接删除真实项目或用户目录中的规则；先查看 `git status`、备份文件和影响范围。
-
-## 相关阅读与资料边界
+## 参考
 
 - [OpenAI：Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
-- [Codex config.toml 配置指南](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
-- [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
-- [从目录到入口](../03-项目理解与上下文/03-从目录到入口-找到真正需要修改的代码.md)
-
-本文的官方读取规则于 2026-09-22 核对。本轮（2026-09-23）核对到 Codex CLI 0.156.0 的版本和帮助文本；没有把隔离环境中的模型调用、App、IDE 或网页展示说成已实测。
+- [OpenAI：Memories](https://learn.chatgpt.com/docs/customization/memories)
+- [OpenAI：Build skills](https://learn.chatgpt.com/docs/build-skills)
