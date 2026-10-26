@@ -1,3 +1,12 @@
+---
+title: "Codex 使用 Text-to-Lottie 制作界面动效"
+description: "Text-to-Lottie 是第三方 Skill。它让 Codex 根据文字要求创建或修改 Lottie 动画，并用预览项目检查运动、循环和透明背景。"
+url: /guides/codex-text-to-lottie-animation
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 使用 Text-to-Lottie 制作界面动效
 
 > 本文在线版：[codexguide.io/guides/codex-text-to-lottie-animation](https://codexguide.io/guides/codex-text-to-lottie-animation)
@@ -8,7 +17,7 @@
 
 Text-to-Lottie 是第三方 Skill。它让 Codex 根据文字要求创建或修改 Lottie 动画，并用预览项目检查运动、循环和透明背景。
 
-![Codex 根据文字要求生成 Lottie 界面动效](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/01-Codex生成Lottie动效.jpg)
+![Codex 根据文字要求生成 Lottie 界面动效](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/01-Codex生成Lottie动效.jpg)
 
 ## 先了解 Lottie 文件
 
@@ -16,9 +25,9 @@ Lottie 用 JSON 描述矢量图形和关键帧。它适合图标反馈、加载�
 
 Text-to-Lottie 也不是图像模型。它提供给 Agent 一套生成、预览和检查动画文件的工作流，最终质量仍取决于素材、约束和验收。
 
-![Text-to-Lottie 的项目仓库与 Skill 文件](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/02-Text-to-Lottie项目仓库.png)
+![Text-to-Lottie 的项目仓库与 Skill 文件](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/02-Text-to-Lottie项目仓库.png)
 
-![定位、菜单和收藏等基础图标的动画示例](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/03-Lottie基础动效示例.gif)
+![定位、菜单和收藏等基础图标的动画示例](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/03-Lottie基础动效示例.gif)
 
 ## 安装 Skill
 
@@ -30,7 +39,7 @@ npx skills add diffusionstudio/lottie
 
 安装第三方 Skill 前先检查仓库、依赖和权限。完成后新建 Codex 任务，确认它能读取 Skill。项目需要 Node.js 或预览依赖时，按仓库 README 安装，不能假定所有环境已经具备。
 
-![Text-to-Lottie 创建动画文件和本地预览项目](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/04-Text-to-Lottie创建预览项目.png)
+![Text-to-Lottie 创建动画文件和本地预览项目](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/04-Text-to-Lottie创建预览项目.png)
 
 ## 第一次生成
 
@@ -45,7 +54,7 @@ npx skills add diffusionstudio/lottie
 生成 JSON 后启动预览，并检查首帧、末帧和画布边界。
 ```
 
-![Codex 根据文字中的时间和运动要求生成动效](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/05-文字描述生成动效演示.gif)
+![Codex 根据文字中的时间和运动要求生成动效](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/05-文字描述生成动效演示.gif)
 
 动效提示词至少要交代素材、画布、运动、时长和循环。只写“做得高级一点”，Codex 无法知道应该改速度、缓动还是图形。
 
@@ -53,21 +62,21 @@ npx skills add diffusionstudio/lottie
 
 已有 SVG 或品牌图标时，把源文件交给 Codex，并要求保留路径与颜色。没有素材时先让它生成静态构图，确认轮廓后再加运动。这样比同时修改造型和动画更容易定位问题。
 
-![从文字、图标素材到 Lottie 文件与多端使用的工作流](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/06-Codex与动效文件工作流.jpg)
+![从文字、图标素材到 Lottie 文件与多端使用的工作流](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/06-Codex与动效文件工作流.jpg)
 
-![在预览界面中检查 Lottie 动画的画布和播放效果](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/07-Lottie预览与检查界面.jpg)
+![在预览界面中检查 Lottie 动画的画布和播放效果](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/07-Lottie预览与检查界面.jpg)
 
 ## 检查常见动效
 
 加载动画需要无缝循环，成功反馈通常播放一次，通知铃铛应在短暂摆动后回到稳定位置。每种用途的停止条件不同，不能只确认文件能打开。
 
-![云朵轮廓和状态点的循环动画](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/08-Lottie云朵动画示例.gif)
+![云朵轮廓和状态点的循环动画](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/08-Lottie云朵动画示例.gif)
 
-![环形线条动效的循环效果](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/09-Lottie环形动画示例.gif)
+![环形线条动效的循环效果](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/09-Lottie环形动画示例.gif)
 
 验收时检查首尾帧是否跳动，主体有没有超出画布，透明背景是否正确，速度在实际界面中是否合适。还要在目标播放器中测试。浏览器预览正常，不能证明 iOS、Android 或 Flutter 的播放器支持文件中的全部特性。
 
-![为界面动效准备图标、时间和运动参考素材](../图片素材/13-社区生态与项目评测/04-Codex使用Text-to-Lottie制作动效/10-Lottie动效设计素材.jpg)
+![为界面动效准备图标、时间和运动参考素材](../图片素材/13-社区生态与项目评测/05-Codex使用Text-to-Lottie制作动效/10-Lottie动效设计素材.jpg)
 
 ## 修改已有动画
 

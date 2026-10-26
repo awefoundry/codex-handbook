@@ -1,3 +1,12 @@
+---
+title: "在 Codex 中连接 Notion：把调研结果写入数据库"
+description: "这篇教程适合已经能在 Codex 桌面端创建任务，并希望把调研结果直接整理到 Notion 的读者。完成后，你会连接 Notion 插件、验证页面读取权限，并把一组结构化资料写入两个数据库。"
+url: /guides/codex-notion-plugin-workflow
+status: published
+date_published: 2026-08-17
+date_modified: 2026-10-13
+---
+
 # 在 Codex 中连接 Notion：把调研结果写入数据库
 
 > 本文在线版：[codexguide.io/guides/codex-notion-plugin-workflow](https://codexguide.io/guides/codex-notion-plugin-workflow)

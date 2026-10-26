@@ -126,7 +126,7 @@ CLI、IDE 扩展和网页端，官方文档里都没有提到。
 ## 相关阅读
 
 - [Codex 桌面端任务工作流](./08-Codex桌面端任务工作流.md)
-- [Codex 设置检查清单](../10-配置模型与权限安全/08-Codex设置检查清单-让任务按预期执行.md)
+- [Codex 设置检查清单](../10-配置模型与权限安全/06-Codex设置检查清单-让任务按预期执行.md)
 - [App、CLI、IDE 和 Cloud 怎么选](https://codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan)
 
 ## 参考

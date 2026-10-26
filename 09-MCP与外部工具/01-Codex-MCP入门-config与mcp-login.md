@@ -278,7 +278,7 @@ output_token_limit = 30000
 - 计划中：《Codex MCP 排障》（连不上、没有工具、OAuth 失败）→ `09-MCP与外部工具/03-…`
 - 计划中：《代码智能 MCP：Serena 与 codebase-memory-mcp》→ `09-MCP与外部工具/04-…`
 - 权限与沙箱总览：知识库 `02-核心概念与任务方法/06-权限沙箱与审批-…`（网站 `/guides/codex-quan-xian-sha-xiang-yu-shen-pi`）
-- 沙箱与主机风险：`10-配置模型与权限安全/08-Codex沙箱与主机权限风险.md`
+- 沙箱与主机风险：`10-配置模型与权限安全/05-Codex沙箱与主机权限风险.md`
 
 ## 参考资料
 

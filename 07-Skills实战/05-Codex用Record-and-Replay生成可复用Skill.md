@@ -1,3 +1,12 @@
+---
+title: "Codex Record & Replay：生成可复用 Skill"
+description: "如果你有一套重复做、步骤稳定、但很难完整写成说明的桌面流程，可以用 Record & Replay 让 Codex 观察一次操作，再生成一个可复用的 Skill。"
+url: /guides/codex-record-replay-skill
+status: published
+date_published: 2026-08-19
+date_modified: 2026-10-13
+---
+
 # Codex Record & Replay：生成可复用 Skill
 
 > 本文在线版：[codexguide.io/guides/codex-record-replay-skill](https://codexguide.io/guides/codex-record-replay-skill)

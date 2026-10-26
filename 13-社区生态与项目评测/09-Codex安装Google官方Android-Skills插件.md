@@ -36,7 +36,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-android-skills-plugin](https://codexguide.io/guides/codex-android-skills-plugin)
 
-> 核对依据：Google《[android/skills](https://github.com/android/skills)》README 与 `.codex-plugin/plugin.json`、Android Developers《[Overview of Android skills](https://developer.android.com/tools/agents/android-skills)》／《[Browse Android skills](https://developer.android.com/tools/agents/android-skills/browse)》、OpenAI《[Plugins](https://developers.openai.com/codex/plugins)》与 CLI《[Developer commands](https://developers.openai.com/codex/cli/slash-commands)》中的 `codex plugin`／`codex plugin marketplace`，以及上游 `build-system/agp/agp-9-upgrade/SKILL.md`。文中「我的用法」是操作顺序建议。本预览环境无 Android 工程、未登录本机 Codex 实装插件，故不写假终端输出与假截图；`client_validation_pending: true`。
+> 核对依据：Google《[android/skills](https://github.com/android/skills)》README 与 `.codex-plugin/plugin.json`、Android Developers《[Overview of Android skills](https://developer.android.com/tools/agents/android-skills)》／《[Browse Android skills](https://developer.android.com/tools/agents/android-skills/browse)》、OpenAI《[Plugins](https://developers.openai.com/codex/plugins)》与 CLI《[Developer commands](https://developers.openai.com/codex/cli/slash-commands)》中的 `codex plugin`／`codex plugin marketplace`，以及上游 `build-system/agp/agp-9-upgrade/SKILL.md`。文中「我的用法」是操作顺序建议。本预览环境无 Android 工程、未登录本机 Codex 实装插件，故不写假终端输出与假截图。
 
 安卓工程里，AGP 升级、edge-to-edge、R8 keep 规则、Navigation 3 这类题，模型「会写 Kotlin」不等于「按 developer.android.com 当前最佳实践走完」。Google 把评测里模型容易翻车的工作流，收成一套遵循 [Agent Skills](https://agentskills.io/home) 开放标准的 `SKILL.md`，仓库是 **[android/skills](https://github.com/android/skills)**，并提供 **Codex 插件**安装方式。
 
@@ -183,7 +183,7 @@ android skills update wear-compose-m3
 
 - 不贴「某次 `./gradlew build` 已通过」的假日志  
 - 不放假 Android Studio 截图  
-- frontmatter 已标 `client_validation_pending: true`
+- 本节不是本机实测成绩
 
 ### 5.1 技能边界（先读 description）
 
@@ -247,7 +247,7 @@ Troubleshooting：Paparazzi **v2.0.0-alpha04 及更早** 与 AGP 9 有已知问�
 不要跑 clean，不要添加 android.disallowKotlinSourceSets=false。
 ```
 
-你本地通过 Verification 三项后，再考虑去掉 `client_validation_pending`、补打码截图进知识库——那是真机验证，不是本文能伪造的部分。
+你本地通过 Verification 三项后，再考虑补打码截图进知识库——那是真机验证，不是本文能伪造的部分。
 
 ## 6. 安全与预期管理
 

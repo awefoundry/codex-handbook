@@ -1,3 +1,12 @@
+---
+title: "Codex 是如何工作的"
+description: "第一次看 Codex 工作，很容易把它理解成“会写代码的 ChatGPT”。你输入一句话，等一会儿，它就改好了几个文件。"
+url: /guides/codex-shi-ru-he-gong-zuo
+status: published
+date_published: 2026-08-17
+date_modified: 2026-10-12
+---
+
 # Codex 是如何工作的
 
 > 本文在线版：[codexguide.io/guides/codex-shi-ru-he-gong-zuo](https://codexguide.io/guides/codex-shi-ru-he-gong-zuo)

@@ -1,3 +1,10 @@
+---
+title: "Xcode 中使用 Codex"
+description: "Codex 在 Xcode 中通过 Coding Assistant 集成。准备好一个可以回退的 Xcode 项目后，先确认登录状态，再从当前文件或选中代码发起小任务。"
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Xcode 中使用 Codex
 
 Codex 在 Xcode 中通过 Coding Assistant 集成。准备好一个可以回退的 Xcode 项目后，先确认登录状态，再从当前文件或选中代码发起小任务。

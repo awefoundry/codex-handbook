@@ -12,7 +12,7 @@
 
 | 顺序 | 内容 | 状态 |
 |---|---|---|
-| 1 | [安装路线总览](./01-安装路线总览.md) | 待编写 |
+| 1 | [安装路线总览](./01-安装路线总览.md) | 已收入 |
 | 2 | [macOS 安装 Codex App：下载、安装、首次登录与进入 Codex 工作区](./02-macOS安装Codex-App.md) | 已收入 |
 | 3 | [Windows 安装 Codex App](./03-Windows安装Codex-App.md) | 已上线 |
 | 4 | [macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式](./04-macOS安装Codex-CLI.md) | 已收入 |

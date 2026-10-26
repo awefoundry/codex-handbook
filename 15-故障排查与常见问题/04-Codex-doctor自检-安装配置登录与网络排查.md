@@ -147,7 +147,7 @@ Background Server
 ```
 
 - 磁盘剩余空间低于 5 GiB 会警告，低于 1 GiB 会判定失败。
-- `config.toml parse` 不是 `ok` 时，说明配置文件有语法错误，先修它。字段之间的覆盖关系见 [config.toml 深入配置](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
+- `config.toml parse` 不是 `ok` 时，说明配置文件有语法错误，先修它。字段之间的覆盖关系见 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
 - `update action` 会告诉你按当前安装方式该用哪条命令更新，不用猜是 npm 还是 Homebrew。
 
 ## 常见警告和失败怎么处理

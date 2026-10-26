@@ -1,3 +1,12 @@
+---
+title: "Codex 如何读懂 Git，status、diff、log 与 blame"
+description: "代码审查的第一步是先把比较范围说清楚。不要直接让 Codex 总结“这个提交做了什么”，因为当前工作区、暂存区、某个提交和远程分支可能是四个不同的现场。"
+url: /guides/codex-git-status-diff-log-blame
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-12
+---
+
 # Codex 如何读懂 Git，status、diff、log 与 blame
 
 > 本文在线版：[codexguide.io/guides/codex-git-status-diff-log-blame](https://codexguide.io/guides/codex-git-status-diff-log-blame)

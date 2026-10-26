@@ -1,3 +1,11 @@
+---
+title: "Codex 桌面端任务工作流"
+description: "Codex 桌面版最早只上线 Mac 平台（2026 年 8 月），那批截图就是当时录的。可视化界面用起来确实方便，多个线程可以独立工作互不影响，Skill 管理也比较直观，还新增了定时任务功能。"
+url: /guides/codex-desktop-task-workflow
+status: published
+date_published: 2026-08-20
+date_modified: 2026-10-13
+---
 
 # Codex 桌面端任务工作流
 

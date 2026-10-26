@@ -1,3 +1,12 @@
+---
+title: "Codex 创建自定义桌宠，从参考图到动画精灵图"
+description: "Codex 桌面应用支持 Pets。你可以先启用内置宠物，也可以通过设置页里的自定义入口安装 hatch-pet Skill，再用一张参考图制作自己的动画角色。"
+url: /guides/codex-create-custom-pet
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 创建自定义桌宠，从参考图到动画精灵图
 
 > 本文在线版：[codexguide.io/guides/codex-create-custom-pet](https://codexguide.io/guides/codex-create-custom-pet)
