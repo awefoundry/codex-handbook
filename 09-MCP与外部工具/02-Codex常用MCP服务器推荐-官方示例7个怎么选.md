@@ -5,7 +5,7 @@ seo_title: Codex 常用 MCP 推荐：官方示例 7 个服务器怎么选与怎�
 description: Codex 官方 MCP 文档列出的 7 个示例服务器怎么选：Docs 与 Context7 查文档，Playwright 与 Chrome DevTools 控浏览器，GitHub、Sentry、Figma 做协作与线上排查。附安装命令出处、权限与「别一次装太多」建议。
 lede: 官方列了 7 个常用 MCP，不等于要一次全装。先分清 Skill／插件／MCP，再按任务挑一两个。
 url: /guides/codex-mcp-servers-recommended
-status: draft
+status: published
 section: guides
 category: G-extensions
 topic: MCP与外部工具
@@ -33,11 +33,11 @@ faq:
 
 # Codex 常用 MCP 推荐：官方列出的 7 个 MCP 服务器（Docs、Context7、Playwright、Chrome DevTools、GitHub、Sentry、Figma）怎么选
 
-> 本文计划路径：[codexguide.io/guides/codex-mcp-servers-recommended](https://codexguide.io/guides/codex-mcp-servers-recommended)
+> 本文在线版：[codexguide.io/guides/codex-mcp-servers-recommended](https://codexguide.io/guides/codex-mcp-servers-recommended)
 
 > 核对依据：learn.chatgpt.com／developers.openai.com 的 MCP 扩展文档「Examples of useful MCP servers」、Docs MCP、各服务器官方安装页，以及 Configuration Reference 中的 `mcp_servers.*`。文中「我的用法」是操作建议，不是官方规定。本文**未在本机逐个实测**全部 7 个服务器的安装与登录；安装命令以各官方文档原文为准。
 
-入门篇讲的是怎么配、怎么登录、怎么收紧权限（计划中的姊妹篇《[Codex MCP 入门](/guides/codex-mcp-getting-started)》）。这篇接着讲：**官方示例里那 7 个，该装哪些、各自解决什么问题。**
+入门篇讲的是怎么配、怎么登录、怎么收紧权限（计划中的姊妹篇《[Codex MCP 入门](./01-Codex-MCP入门-config与mcp-login.md)》）。这篇接着讲：**官方示例里那 7 个，该装哪些、各自解决什么问题。**
 
 ## 先分清 Skill、插件和 MCP 各管什么
 

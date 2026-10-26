@@ -5,7 +5,7 @@ seo_title: Codex 安装 Google Android Skills：marketplace 与 AGP 9 工作流
 description: Google 官方 android/skills 可作为 Codex 插件安装：先 marketplace add，再装 android-skills。本文按官方 README 与 Plugins 文档写清安装、核对技能清单（本稿核对时为 33 个），以及按上游 agp-9-upgrade 技能说明走 AGP 9 升级工作流；本环境无 Android 工程，未伪造实测输出。
 lede: 把 Google 维护的 Android Skills 一次装进 Codex，再按官方技能说明驱动 AGP 9 升级，而不是凭记忆硬改 Gradle。
 url: /guides/codex-android-skills-plugin
-status: draft
+status: published
 section: guides
 category: I-ecosystem
 topic: 社区生态与编辑器接入
@@ -34,7 +34,7 @@ faq:
 
 # Codex 安装 Google 官方 Android Skills 插件：用 codex plugin marketplace 装好 33 个安卓开发技能，再用 AGP 9 升级做一次实测
 
-> 本文计划路径：[codexguide.io/guides/codex-android-skills-plugin](https://codexguide.io/guides/codex-android-skills-plugin)
+> 本文在线版：[codexguide.io/guides/codex-android-skills-plugin](https://codexguide.io/guides/codex-android-skills-plugin)
 
 > 核对依据：Google《[android/skills](https://github.com/android/skills)》README 与 `.codex-plugin/plugin.json`、Android Developers《[Overview of Android skills](https://developer.android.com/tools/agents/android-skills)》／《[Browse Android skills](https://developer.android.com/tools/agents/android-skills/browse)》、OpenAI《[Plugins](https://developers.openai.com/codex/plugins)》与 CLI《[Developer commands](https://developers.openai.com/codex/cli/slash-commands)》中的 `codex plugin`／`codex plugin marketplace`，以及上游 `build-system/agp/agp-9-upgrade/SKILL.md`。文中「我的用法」是操作顺序建议。本预览环境无 Android 工程、未登录本机 Codex 实装插件，故不写假终端输出与假截图；`client_validation_pending: true`。
 

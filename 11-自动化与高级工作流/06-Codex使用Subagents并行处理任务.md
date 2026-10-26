@@ -5,7 +5,7 @@ seo_title: Codex Subagents：内置 Agent、自定义 TOML 与 [agents] 配置
 description: Codex 可以把独立工作交给多个子 Agent 并行处理再汇总。本文按 2026 年 10 月官方文档更新：改正自定义 Agent 不能覆盖沙箱与 MCP 的说法，讲清 default／worker／explorer、自定义 TOML、[agents] 默认模型与并发，以及 /subagents 审批和用量注意点。
 lede: 子 Agent 适合只读探索和可并行的审查；沙箱、审批和 MCP 跟父会话走，自定义 TOML 改不了这三项。
 url: /guides/codex-subagents-parallel-work
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作

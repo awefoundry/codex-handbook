@@ -5,7 +5,7 @@ seo_title: Codex Memories：开启、~/.codex/memories、/memories 与省额度
 description: Codex Memories 默认关闭，开启后会把过往对话里有用的信息记到本机，并可能在后台调用模型生成记忆、消耗额度。本文按官方文档讲清开启方式、存储位置、/memories 按对话控制、关键配置键，以及和 AGENTS.md 怎么分工。
 lede: Memories 是本机回忆层，不是团队强制规则。先会开关与额度门槛，再决定要不要让后台生成。
 url: /guides/codex-memories
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -33,7 +33,7 @@ faq:
 
 # Codex Memories 记忆功能怎么用：开启方式、~/.codex/memories 存储位置、/memories 按对话控制，以及避免后台生成消耗额度
 
-> 本文计划路径：[codexguide.io/guides/codex-memories](https://codexguide.io/guides/codex-memories)
+> 本文在线版：[codexguide.io/guides/codex-memories](https://codexguide.io/guides/codex-memories)
 
 > 核对依据：learn.chatgpt.com《Memories》、Developer commands（`/memories`）、Configuration Reference（`features.memories` 与 `memories.*`）（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复结论。本机未完整走通桌面端记忆 UI 与目录实拍，`client_validation_pending: true`。
 

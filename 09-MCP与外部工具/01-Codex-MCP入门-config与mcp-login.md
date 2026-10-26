@@ -5,7 +5,7 @@ seo_title: Codex MCP 入门：config.toml、mcp login、Docs MCP 与工具权限
 description: 从零用 Codex 接入 MCP：弄清 STDIO 与 Streamable HTTP，用 config.toml 或 codex mcp add 配置，用 mcp login／Authenticate 完成 OAuth，实操 Docs MCP 与 Context7，并划清工具白名单与审批边界。
 lede: MCP 是让 Codex 调用外部工具的协议。先选对传输方式，再配好登录与权限，别一上来就装一堆服务器。
 url: /guides/codex-mcp-getting-started
-status: draft
+status: published
 section: guides
 category: G-extensions
 topic: MCP与外部工具
@@ -33,7 +33,7 @@ faq:
 
 # Codex MCP 入门：config.toml、/mcp login、Docs MCP 与权限边界
 
-> 本文计划路径：[codexguide.io/guides/codex-mcp-getting-started](https://codexguide.io/guides/codex-mcp-getting-started)
+> 本文在线版：[codexguide.io/guides/codex-mcp-getting-started](https://codexguide.io/guides/codex-mcp-getting-started)
 
 > 核对依据：learn.chatgpt.com／developers.openai.com 的 MCP 扩展文档、Docs MCP、Configuration Reference，以及 Codex CLI 0.161.0 changelog（`/mcp login`）。文中「我的用法」是操作建议，不是官方规定。
 

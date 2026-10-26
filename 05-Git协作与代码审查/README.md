@@ -15,26 +15,26 @@
 
 ### 一、先把 Git 现场和隔离方式搞清楚
 
-1. [Git 协作前先检查什么：仓库、分支与脏工作区](./01-Git协作前先检查什么-仓库分支与脏工作区.md)
+1. Git 协作前先检查什么：仓库、分支与脏工作区（规划中）
 2. [Codex 如何读懂 Git：status、diff、log 与 blame](./02-Codex如何读懂Git-status-diff-log与blame.md)
-3. [分支和 Worktree 怎么选：隔离任务、并行工作与恢复现场](./03-分支和Worktree怎么选-隔离任务并行工作与恢复现场.md)
+3. 分支和 Worktree 怎么选：隔离任务、并行工作与恢复现场（规划中）
 
 ### 二、从 Issue 走到可审查的 PR
 
 4. [从 Issue 到 Pull Request：一次完整的团队协作闭环](./04-从Issue到PullRequest-一次完整团队协作闭环.md)
 5. [怎样写出可审查的 Commit 和 PR：范围、证据与风险](./05-怎样写出可审查的Commit和PR-范围验证证据与风险.md)
 6. [如何做一次高质量 Code Review：正确性、安全、测试与可维护性](./06-如何做一次高质量CodeReview-正确性安全测试与可维护性.md)
-7. [Review 反馈怎么处理：追加提交、修改 PR 与保持讨论清晰](./07-Review反馈怎么处理-追加提交修改PR与保持讨论清晰.md)
+7. Review 反馈怎么处理：追加提交、修改 PR 与保持讨论清晰（规划中）
 
 ### 三、处理合并风险并建立团队门禁
 
-8. [Merge、Squash、Rebase 怎么选：合并策略与冲突处理](./08-Merge-Squash-Rebase怎么选-合并策略与冲突处理.md)
-9. [把协作规则自动化：分支保护、Code Owners 与 CI 门禁](./09-把协作规则自动化-分支保护CodeOwners与CI门禁.md)
+8. Merge、Squash、Rebase 怎么选：合并策略与冲突处理（规划中）
+9. 把协作规则自动化：分支保护、Code Owners 与 CI 门禁（规划中）
 
 ### 四、让 Codex 进入 Review 环节
 
-10. [让 Codex 参与 Pull Request Review：规则、触发与安全边界](./10-让Codex参与PullRequestReview-Review规则与安全审查.md)
-11. [实战复盘：Codex 如何把一个 Bug 修复交付成可审查 PR](./11-实战复盘-Codex如何把Bug修复交付成可审查PR.md)
+10. 让 Codex 参与 Pull Request Review：规则、触发与安全边界（规划中）
+11. 实战复盘：Codex 如何把一个 Bug 修复交付成可审查 PR（规划中）
 
 ## 每篇文章的最低交付标准
 

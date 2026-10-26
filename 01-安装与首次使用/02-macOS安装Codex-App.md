@@ -5,7 +5,7 @@ seo_title: macOS 安装 Codex App：官方下载、拖入应用程序与首次�
 description: 在 Mac 上从 chatgpt.com/download 安装整合了 Codex 的 ChatGPT 桌面端：核对 macOS 14 与芯片、安装到「应用程序」、用 ChatGPT 登录，再切换到 Codex 并打开本地文件夹。本稿未在真机 Mac 复验，配图待补。
 lede: Codex 已并入 ChatGPT 桌面端。在 Mac 上只要走官方下载、装进「应用程序」、完成浏览器登录，就能进 Codex 工作区打开本地项目。
 url: /guides/macos-install-codex-app
-status: draft
+status: published
 section: guides
 category: B-install-login
 topic: 认识、安装与环境
@@ -33,7 +33,7 @@ faq:
 
 # macOS 安装 Codex App：下载、安装、首次登录与进入 Codex 工作区
 
-> 本文计划路径：[codexguide.io/guides/macos-install-codex-app](https://codexguide.io/guides/macos-install-codex-app)
+> 本文在线版：[codexguide.io/guides/macos-install-codex-app](https://codexguide.io/guides/macos-install-codex-app)
 
 > 核对依据：OpenAI Help Center《[Downloading the ChatGPT macOS app](https://help.openai.com/en/articles/9275200-downloading-the-chatgpt-macos-app)》《[Moving to the new ChatGPT desktop app](https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app)》；learn.chatgpt.com《[ChatGPT desktop app](https://learn.chatgpt.com/docs/app)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Projects and chats](https://learn.chatgpt.com/docs/projects)》《[Commands](https://learn.chatgpt.com/docs/reference/commands)》；changelog 中 2026-07-09「Use Codex in the ChatGPT desktop app」说明。**本预览在 Linux 箱完成，没有真机 macOS 截图与安装包形态复验**（`client_validation_pending: true`）。下文不编造未见于官方文档的菜单文案；安装包若为磁盘映像，按 macOS 常见「拖入应用程序」流程描述，以你本机下载结果为准。
 

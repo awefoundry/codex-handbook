@@ -5,7 +5,7 @@ seo_title: macOS 安装 Codex CLI：脚本、npm、brew --cask 与首次登录
 description: 在 macOS 上用官方安装脚本、npm 全局包或 Homebrew Cask 安装 Codex CLI，完成 ChatGPT 或 API Key 登录，并在项目目录跑通第一个只读任务。命令对照 learn.chatgpt.com 现行文档，纠正缺少 --cask 与「必须 Plus」的旧说法。
 lede: 三种安装方式选一种即可；装完先登录，再在项目目录发一条明确「不要改文件」的只读任务。
 url: /guides/macos-install-codex-cli
-status: draft
+status: published
 section: guides
 category: B-install-login
 topic: 认识、安装与环境
@@ -33,7 +33,7 @@ faq:
 
 # macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式，登录并跑通第一个只读任务
 
-> 本文计划路径：[codexguide.io/guides/macos-install-codex-cli](https://codexguide.io/guides/macos-install-codex-cli)
+> 本文在线版：[codexguide.io/guides/macos-install-codex-cli](https://codexguide.io/guides/macos-install-codex-cli)
 
 > 核对依据：learn.chatgpt.com《[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Pricing](https://learn.chatgpt.com/docs/pricing)》《[Developer commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli)》，以及 [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)、npm 包 `@openai/codex`。文中「我的用法」是操作建议，不是官方强制规定。本篇尚未在真实 Mac 终端逐条截图验证，故 `client_validation_pending: true`；命令以官方文档原文为准。
 
@@ -82,7 +82,7 @@ faq:
 curl -fsSL https://chatgpt.com/codex/install.sh | sh
 ```
 
-这条命令会下载并执行官方安装脚本。默认从 `https://releases.openai.com/codex` 取包，必要时回退到 GitHub Releases。若你对「管道进 shell」敏感，先打开 [Codex CLI 文档](https://learn.chatgpt.com/docs/codex/cli)核对原文，再决定是否执行；也可以先把脚本下载到本地审阅后再 `sh`。
+这条命令会下载并执行官方安装脚本。安装包列表见 [OpenAI Codex GitHub Releases](https://github.com/openai/codex/releases)。若你对「管道进 shell」敏感，先打开 [Codex CLI 文档](https://learn.chatgpt.com/docs/codex/cli)核对原文，再决定是否执行；也可以先把脚本下载到本地审阅后再 `sh`。
 
 更新时官方写的是**再跑同一条安装命令**，不是另找神秘 `codex update`（是否提供 `update` 子命令以你本机 `codex --help` 为准）。
 

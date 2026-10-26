@@ -5,7 +5,7 @@ seo_title: Codex 检查 PHP2Shell：官方 php2shell-checker Skill 与升级版�
 description: PHP 于 2026-10-21 披露两个可未认证远程执行代码的严重漏洞（常称 PHP2Shell）。OpenAI 同步发布官方 Codex Skill php2shell-checker。本文按仓库 README 与 SKILL.md，说明如何用 $skill-installer 安装，$phpcheck-url／$phpcheck-server 怎么查，如何理解 OK、VULNERABLE、UNKNOWN，以及应升级到哪些 PHP.net 安全版本。
 lede: 先装上 OpenAI 官方检查 Skill，看懂三种结果，再按 PHP.net 公告升级——检查器不做漏洞利用探测。
 url: /guides/codex-php2shell-checker-skill
-status: draft
+status: published
 section: guides
 category: G-skills
 topic: Skills 与外部工具
@@ -34,7 +34,7 @@ faq:
 
 # Codex 检查 PHP2Shell 漏洞：安装 OpenAI 官方 php2shell-checker Skill，看懂 OK / VULNERABLE / UNKNOWN，再升级到 PHP 8.5.12、8.4.27、8.3.36 或 8.2.35
 
-> 本文计划路径：[codexguide.io/guides/codex-php2shell-checker-skill](https://codexguide.io/guides/codex-php2shell-checker-skill)
+> 本文在线版：[codexguide.io/guides/codex-php2shell-checker-skill](https://codexguide.io/guides/codex-php2shell-checker-skill)
 
 > 核对依据：OpenAI《[php2shell-checker](https://github.com/openai/php2shell-checker)》README 与 `skills/phpcheck-url/SKILL.md`、`skills/phpcheck-server/SKILL.md`、OpenAI《[Patch the Planet: global response coordination as agents uncover critical vulnerabilities](https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/)》（2026-10-21）、PHP.net《[Security advisory: Critical remote code execution vulnerabilities, update now](https://www.php.net/archive/2026.php#2026-10-21-5)》及 GHSA 公告页。文中「我的用法」是操作顺序建议。本预览环境**没有**可对真实业务站做检查的授权测试站点，故不写假终端输出、不编造扫描结果、不放假截图；`client_validation_pending: true`。安全事实只引用上述官方来源，**不写利用细节、PoC、payload 或攻击步骤**。
 

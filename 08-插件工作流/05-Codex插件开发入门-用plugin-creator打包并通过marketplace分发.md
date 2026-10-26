@@ -5,7 +5,7 @@ seo_title: Codex 插件开发：plugin-creator、plugin.json 与 marketplace 分
 description: 手里攒了几个 Skill 和 MCP 配置，怎样做成团队一键安装的 Codex 插件？按官方 Package your plugin：用 $plugin-creator 生成脚手架，写 plugin.json／mcp.json，弄清 Hooks 限制，再用 marketplace.json 与 codex plugin marketplace 命令分发。
 lede: Skill 适合本机创作；要给别人安装、或和 MCP／Hooks 一起带走，就打成插件，再用 marketplace 分发。
 url: /guides/codex-plugin-development-marketplace
-status: draft
+status: published
 section: guides
 category: G-extensions
 topic: Skills 与外部工具
@@ -33,7 +33,7 @@ faq:
 
 # Codex 插件开发入门：用 $plugin-creator 打包 Skills、MCP 与 Hooks，再用 marketplace 分发
 
-> 本文计划路径：[codexguide.io/guides/codex-plugin-development-marketplace](https://codexguide.io/guides/codex-plugin-development-marketplace)
+> 本文在线版：[codexguide.io/guides/codex-plugin-development-marketplace](https://codexguide.io/guides/codex-plugin-development-marketplace)
 
 > 核对依据：OpenAI《[Package your plugin](https://developers.openai.com/codex/plugins/build)》（与 [plugins/build/plugins](https://developers.openai.com/plugins/build/plugins) 同文）、[Plugins](https://developers.openai.com/codex/plugins)、以及面向对话创建的 [Build plugins](https://learn.chatgpt.com/docs/build-plugins)。文中「我的用法」是操作顺序建议，不是官方强制流程。本机未跑通 `$plugin-creator` 与桌面端安装，界面文案以你当前客户端为准。
 

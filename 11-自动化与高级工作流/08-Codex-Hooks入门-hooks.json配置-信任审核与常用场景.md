@@ -5,7 +5,7 @@ seo_title: Codex Hooks 入门：hooks.json、/hooks 信任、PreToolUse 与 Stop
 description: Codex Hooks 能在会话开始、命令执行前后、回合结束时自动跑你的脚本。本文讲清 hooks.json 放哪、为何要先在 /hooks 里信任，并给出拦截危险命令与回合结束检查两个可复制例子，以及超时、关闭与常见坑。
 lede: Hooks 是生命周期护栏，不是完整安全边界。先放对文件、在 /hooks 里信任，再写 PreToolUse 与 Stop。
 url: /guides/codex-hooks-guide
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -33,7 +33,7 @@ faq:
 
 # Codex Hooks 入门：hooks.json 放在哪、怎么用 /hooks 信任，以及拦截危险命令、回合结束自动检查的写法
 
-> 本文计划路径：[codexguide.io/guides/codex-hooks-guide](https://codexguide.io/guides/codex-hooks-guide)
+> 本文在线版：[codexguide.io/guides/codex-hooks-guide](https://codexguide.io/guides/codex-hooks-guide)
 
 > 核对依据：learn.chatgpt.com／developers.openai.com 的 Hooks 文档（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复步骤。本机未跑通真实 Codex hook 脚本，`client_validation_pending: true`。
 

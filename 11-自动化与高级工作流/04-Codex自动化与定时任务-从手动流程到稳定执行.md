@@ -5,7 +5,7 @@ seo_title: Codex 自动化与 CI：codex exec、GitHub Action 与 API Key 安全
 description: codex exec 可以让 Codex 在脚本和 CI 里一次性跑完任务。本文按 2026 年 10 月官方文档更新：可复制的 GitHub Action 工作流 YAML、--full-auto 停用后的写法、API Key 避免 job 级泄露、--json 事件流与 --output-schema，以及 resume 两阶段流水线。
 lede: 无人值守用 codex exec；CI 优先 openai/codex-action，密钥只绑 Codex 那一步。
 url: /guides/codex-automation-ci-scheduled-tasks
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -49,7 +49,7 @@ faq:
 2. **可复制的 Actions 示例**：PR 评审，以及「CI 失败后出补丁」双 job（密钥与写权限拆开）。
 3. **API Key 安全**：`OPENAI_API_KEY`／`CODEX_API_KEY` 勿写成会跑仓库可控代码的 **job 级** `env`；只绑 Codex 步骤；优先 `openai/codex-action`。
 
-桌面／网页 **Scheduled tasks**（旧称 Automations）见《[定时任务](/guides/codex-automations-scheduled-tasks)》；交互式 Issue→PR 见《[GitHub Issue 到 PR](/guides/codex-github-issue-pr-workflow)》。
+桌面／网页 **Scheduled tasks**（旧称 Automations）见《[定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md)》；交互式 Issue→PR 见《[GitHub Issue 到 PR](../08-插件工作流/04-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)》。
 
 ## 交互模式和 exec 模式差在哪
 
@@ -125,7 +125,7 @@ codex exec --ephemeral "triage this repository and suggest next steps"
 - `--ignore-user-config`：不加载 `$CODEX_HOME/config.toml`
 - `--ignore-rules`：跳过用户与项目的 execpolicy `.rules` 文件
 
-适合 runner 上只要仓库声明行为的场景。Rules 写法见《[Codex Rules（prefix_rule）](/guides/codex-rules-prefix-rule)》。
+适合 runner 上只要仓库声明行为的场景。Rules 写法见《[Codex Rules（prefix_rule）](./10-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)》。
 
 若启用了 `required = true` 的 MCP 且初始化失败，`codex exec` 会直接退出，不会静默少工具继续。
 
@@ -408,7 +408,7 @@ for f in src/*.py; do
 done
 ```
 
-定时调度（桌面／网页 Scheduled，以及和 crontab／CI 的分工）见《[Codex 定时任务（Scheduled tasks）](/guides/codex-automations-scheduled-tasks)》。本篇只保证 exec／CI 的权限、输出、密钥与 Action YAML 写对。
+定时调度（桌面／网页 Scheduled，以及和 crontab／CI 的分工）见《[Codex 定时任务（Scheduled tasks）](../12-官方工具与集成/06-Codex-Automations定时任务.md)》。本篇只保证 exec／CI 的权限、输出、密钥与 Action YAML 写对。
 
 
 ## 快速对照清单

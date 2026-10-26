@@ -5,7 +5,7 @@ seo_title: Codex Windows 沙箱：启用 MXC、验证命令与 elevated／unelev
 description: 在 Windows 上用原生沙箱跑 Codex，不必先上 WSL。本文按官方 Windows sandbox 文档讲清 mxc、elevated、unelevated 三种实现，桌面端如何自动优先 MXC，CLI 怎样写 prefer_mxc，一条官方验证命令，以及回退与常见报错怎么处理。
 lede: 能开 MXC 就开；开不了就优先 elevated，unelevated 只当临时回退——再配上官方那条验证命令。
 url: /guides/codex-windows-sandbox-mxc
-status: draft
+status: published
 section: guides
 category: F-config-model-security
 topic: 配置模型与权限安全
@@ -33,7 +33,7 @@ faq:
 
 # Codex Windows 沙箱配置：启用 MXC 原生隔离、一条命令验证，以及 elevated / unelevated 回退和常见报错
 
-> 本文计划路径：[codexguide.io/guides/codex-windows-sandbox-mxc](https://codexguide.io/guides/codex-windows-sandbox-mxc)
+> 本文在线版：[codexguide.io/guides/codex-windows-sandbox-mxc](https://codexguide.io/guides/codex-windows-sandbox-mxc)
 
 > 核对依据：learn.chatgpt.com《[Windows sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox)》（Configure and troubleshoot the native Codex sandbox on Windows）。文中「我的用法」是操作顺序建议，不是官方强制规定。本文写作环境**没有**可用的 Windows 11 真机做端到端验证，frontmatter 已标 `client_validation_pending: true`；文中命令与版本号均直接来自上述官方页，未另编 PowerShell 探测脚本。
 

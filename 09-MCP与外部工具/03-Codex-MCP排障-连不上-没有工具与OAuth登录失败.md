@@ -5,7 +5,7 @@ seo_title: Codex MCP 排障：连不上、没有工具、OAuth 失败排查顺�
 description: Codex 接了 MCP 却用不起来？按「进程能否启动 → 工具是否加载 → 认证是否有效 → 调用是否超时」排查，讲清 startup_timeout_sec、enabled_tools、env_vars、OAuth 注册与回调等关键设置，并整理社区常见症状。
 lede: MCP 坏了别同时改十处。先分清是哪一层，再对着官方设置逐项查。
 url: /guides/codex-mcp-troubleshooting
-status: draft
+status: published
 section: guides
 category: G-extensions
 topic: MCP与外部工具
@@ -33,7 +33,7 @@ faq:
 
 # Codex MCP 排障：服务器连不上、工具不显示、OAuth 登录失败，按这个顺序查
 
-> 本文计划路径：[codexguide.io/guides/codex-mcp-troubleshooting](https://codexguide.io/guides/codex-mcp-troubleshooting)
+> 本文在线版：[codexguide.io/guides/codex-mcp-troubleshooting](https://codexguide.io/guides/codex-mcp-troubleshooting)
 
 > 核对依据：learn.chatgpt.com／developers.openai.com 的 MCP 扩展文档与 Configuration Reference（`mcp_servers.*`、`mcp_oauth_*`），以及 Codex MCP server 移除说明。文中「我的用法」是操作建议；社区 issue 只作症状对照，不是官方修复承诺。
 

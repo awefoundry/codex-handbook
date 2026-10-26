@@ -5,7 +5,7 @@ seo_title: Codex Cloud 云端环境：创建发布、联网、网络密钥与 co
 description: Codex Cloud 在云端跑编程任务，电脑休眠也能继续。本文按 2026 年 10 月官方文档，讲清如何创建并发布可复用环境，如何设置联网、环境变量与网络密钥，以及用 codex cloud／codex apply 把结果拉回本地。
 lede: 把装依赖、起服务、联网策略做成可发布的云端环境；新任务从这份快照起步，本地电脑睡着也不耽误。
 url: /guides/codex-cloud-environments
-status: draft
+status: published
 section: guides
 category: H-automation
 topic: 自动化与多任务协作
@@ -33,7 +33,7 @@ faq:
 
 # Codex Cloud 云端环境配置：发布可复用环境、设置联网与网络密钥，让任务在电脑休眠时继续运行
 
-> 本文计划路径：[codexguide.io/guides/codex-cloud-environments](https://codexguide.io/guides/codex-cloud-environments)
+> 本文在线版：[codexguide.io/guides/codex-cloud-environments](https://codexguide.io/guides/codex-cloud-environments)
 
 > 核对依据：learn.chatgpt.com 的 Cloud environments、DevDay 2026（Reusable cloud environments）、Codex Cloud（Legacy）Internet access、Developer commands（`codex cloud`／`codex apply`）。文中「我的用法」是工作流建议，不是官方规定。本机未登录可用的 Codex Cloud 账户做端到端验证，界面文案以你当前网页／桌面端为准。
 

@@ -5,7 +5,7 @@ seo_title: Codex 占满磁盘：Crashpad pending 排查与安全清理（macOS�
 description: Mac 磁盘突然被吃掉几十到几百 GB，可能是 Codex 桌面端的 Crashpad 崩溃转储在后台堆积。本文教你用 du 核对 pending 目录、按社区实践安全清理，并顺带检查 worktree、会话与日志占用；说明官方尚未发布 Crashpad 清理指南。
 lede: 应用还能用，磁盘却越来越满时，先量 Crashpad pending，再动刀——而且只动转储，不动整棵应用目录。
 url: /guides/codex-desktop-crashpad-disk-space
-status: draft
+status: published
 section: guides
 category: K-troubleshooting
 topic: 故障排查与恢复
@@ -32,7 +32,7 @@ faq:
 
 # Codex 桌面端占满磁盘怎么办：排查 Crashpad 崩溃转储，并安全清理 worktree 与会话数据（macOS）
 
-> 本文计划路径：[codexguide.io/guides/codex-desktop-crashpad-disk-space](https://codexguide.io/guides/codex-desktop-crashpad-disk-space)
+> 本文在线版：[codexguide.io/guides/codex-desktop-crashpad-disk-space](https://codexguide.io/guides/codex-desktop-crashpad-disk-space)
 
 > 核对依据：learn.chatgpt.com 的 Troubleshooting、Worktrees；openai/codex 上与 Crashpad 相关的 **issue 讨论**（#25921、#36982、#51361 等，标为社区报告，不是官方清理手册）。文中「我的用法」是排查顺序建议，不是官方规定。**OpenAI 尚未发布正式的 Crashpad 清理指南**；下列清理步骤均按社区实践整理，并加上安全边界。
 
@@ -167,11 +167,11 @@ du -sh \
 
 **Worktree：** 官方 Worktrees 文档写明，每个 worktree 自带文件、依赖、构建缓存，磁盘很容易涨；桌面端默认**保留最近 15 个** Codex 管理的 worktree，可在设置里改上限或改手管。钉住的聊天、进行中的聊天、永久 worktree，不会按同一套「随便删」规则处理。定时任务频繁时，官方也提醒会积累大量 worktree——归档不再需要的定时运行、避免无必要地 pin。
 
-托管 worktree 怎么开、怎么 Handoff、自动清理规则的完整说明，见姊妹篇《[Codex Worktree 教程](/guides/codex-worktree-parallel-chats)》（知识库 `11-自动化与高级工作流/07-…`，id：`worktree-parallel-chats`）。**本篇只提醒：磁盘告急时，先分清 Crashpad 转储 vs 仍在用的 worktree，不要为了腾空间删掉未交接的工作副本。**
+托管 worktree 怎么开、怎么 Handoff、自动清理规则的完整说明，见姊妹篇《[Codex Worktree 教程](../11-自动化与高级工作流/07-Codex用Worktree并行运行多个任务.md)》（知识库 `11-自动化与高级工作流/07-…`，id：`worktree-parallel-chats`）。**本篇只提醒：磁盘告急时，先分清 Crashpad 转储 vs 仍在用的 worktree，不要为了腾空间删掉未交接的工作副本。**
 
-会话／归档体积异常时，优先在客户端里归档或删除**你确认不再需要**的聊天；CLI 多会话命名、恢复与归档见《[Codex CLI 管理多条任务线](/guides/codex-cli-manage-multiple-sessions)》（id：`cli-manage-multiple-sessions`）。分享日志前，官方要求先检查是否含敏感信息。
+会话／归档体积异常时，优先在客户端里归档或删除**你确认不再需要**的聊天；CLI 多会话命名、恢复与归档见《[Codex CLI 管理多条任务线](../11-自动化与高级工作流/02-CodexCLI管理多条任务线.md)》（id：`cli-manage-multiple-sessions`）。分享日志前，官方要求先检查是否含敏感信息。
 
-额度／容量类「用不了」和「磁盘满了」不是一类问题：前者见《[容量不足与额度重置](/guides/codex-model-at-capacity-usage-reset)》（id：`model-at-capacity-usage-reset`）。
+额度／容量类「用不了」和「磁盘满了」不是一类问题：前者见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。
 
 ## 向官方反馈时带什么（不要公开 dump）
 
