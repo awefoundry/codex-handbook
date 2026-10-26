@@ -28,3 +28,5 @@
 - [Codex Cloud 云端环境配置：发布可复用环境、设置联网与网络密钥](./12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)
 - [Codex 接入 Google Cloud Model Garden：私有预览申请、Marketplace 计费，以及本地 CLI/Desktop 接 GCP 推理的公开边界](./13-Codex接入Google-Cloud-Model-Garden.md)
 - [Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度](./14-Codex-Composer-Predictions桌面端Tab提示.md)
+- [Codex CLI /presets 预设与内联 /model、/permissions：0.164.0 一条命令切换模型、推理强度和权限](./15-Codex-CLI-presets预设与内联model-permissions命令.md)
+- [Codex 接入 Amazon Bedrock：CLI 登录向导、Runtime 与 Mantle 怎么选，以及 API Key 和 AWS 凭证怎么配](./16-Codex接入Amazon-Bedrock-登录向导与配置.md)

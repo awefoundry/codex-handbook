@@ -21,7 +21,7 @@
 - [Codex 长任务工作流，分开讨论、执行、审查与交接](./03-Codex长任务工作流.md)
 - [Codex 任务收尾系统，用 Markdown 保存状态、决策与可复用流程](./04-Codex任务收尾系统.md)
 - [Codex 自动化与 CI：codex exec 非交互模式、GitHub Action 与结构化输出](./04-Codex自动化与定时任务-从手动流程到稳定执行.md)
-- [Codex 使用 Goal 模式运行长任务](./05-Codex使用Goal模式运行长任务.md)
+- [Codex Goal 模式：用 /goal 跑长任务，完成标准怎么写、怎么暂停和并行](./05-Codex使用Goal模式运行长任务.md)
 - [Codex Subagents 怎么用：内置 Agent、自定义 TOML 与并发设置](./06-Codex使用Subagents并行处理任务.md)
 - [Codex Worktree 教程：用 Git worktree 并行跑多个任务，并把结果交回本地](./07-Codex用Worktree并行运行多个任务.md)
 - [Codex Hooks 入门：hooks.json 放在哪、怎么用 /hooks 信任](./08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)

@@ -18,3 +18,4 @@
 - [Codex 常用 MCP 推荐：官方列出的 7 个 MCP 服务器怎么选](./02-Codex常用MCP服务器推荐-官方示例7个怎么选.md)
 - [Codex MCP 排障：服务器连不上、工具不显示、OAuth 登录失败](./03-Codex-MCP排障-连不上-没有工具与OAuth登录失败.md)
 - [Codex 代码智能 MCP 实测：Serena 和 codebase-memory-mcp 怎么装、怎么选](./04-Codex代码智能MCP-Serena与codebase-memory-mcp怎么装怎么选.md)
+- [Codex Site tools（WebMCP）入门：网站怎么把操作交给内置浏览器里的 Codex，以及怎么给自己的网站加工具](./05-Codex-Site-tools-WebMCP网站工具入门.md)
