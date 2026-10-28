@@ -25,5 +25,5 @@
 - [Codex Subagents 怎么用：内置 Agent、自定义 TOML 与并发设置](./06-Codex使用Subagents并行处理任务.md)
 - [Codex Worktree 教程：用 Git worktree 并行跑多个任务，并把结果交回本地](./07-Codex用Worktree并行运行多个任务.md)
 - [Codex Hooks 入门：hooks.json 放在哪、怎么用 /hooks 信任](./08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)
-- [Codex Memories 记忆功能怎么用：开启方式、存储位置与按对话控制](./09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制.md)
+- [Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度](./09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制.md)
 - [Codex Rules 怎么写：用 prefix_rule 设置命令白名单和黑名单](./10-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)

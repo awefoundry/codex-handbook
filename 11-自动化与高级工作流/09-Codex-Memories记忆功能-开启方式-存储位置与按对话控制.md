@@ -1,8 +1,8 @@
 ---
 id: codex-memories
-title: Codex Memories 记忆功能怎么用：开启方式、~/.codex/memories 存储位置、/memories 按对话控制，以及避免后台生成消耗额度
-seo_title: Codex Memories：开启、~/.codex/memories、/memories 与省额度
-description: Codex Memories 默认关闭，开启后会把过往对话里有用的信息记到本机，并可能在后台调用模型生成记忆、消耗额度。本文按官方文档讲清开启方式、存储位置、/memories 按对话控制、关键配置键，以及和 AGENTS.md 怎么分工。
+title: Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
+seo_title: Codex Memories：开启、memories 与 memories_v2 目录、/memories 与省额度
+description: Codex Memories 默认关闭，开启后会在后台把旧对话整理成本地记忆，并可能消耗额度。本文按官方文档和 0.165.0 实测讲清开启方式、memories 与 memories_v2 两个目录、/memories 按对话控制、常用配置键，以及外部 Agent 记忆导入目前的状态。
 lede: Memories 是本机回忆层，不是团队强制规则。先会开关与额度门槛，再决定要不要让后台生成。
 url: /guides/codex-memories
 status: published
@@ -17,12 +17,16 @@ order: 9
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-10-22
+date_modified: 2026-10-28
+verified_on: 2026-10-28
+tested_cli_version: 0.165.0
 official_ref: https://learn.chatgpt.com/docs/customization/memories
-keywords: [Codex Memories, Codex 记忆, /memories, memories.generate_memories, ~/.codex/memories]
+keywords: [Codex Memories, Codex 记忆, memories_v2, /memories, memories.generate_memories, ~/.codex/memories]
 related: [usage-limits-credits, hooks-guide]
 howto: true
 faq:
+  - q: 为什么我的记忆在 ~/.codex/memories_v2，而不是文档写的 ~/.codex/memories？
+    a: Codex CLI 0.165.0 起，如果开启记忆时 Codex home 下还没有 memories 目录，又没有手动指定版本，就默认用新版记忆（v2），文件写到 memories_v2。已经有 memories 目录的老用户继续用原来的 v1。截至 2026-10-28 官方 Memories 页仍写 ~/.codex/memories，两个目录以你本机实际为准。
   - q: 开了 Memories，闲置时额度还在掉，是什么情况？
     a: 后台记忆生成会调用模型，可能在你看起来「闲着」时仍消耗用量。社区报告见 openai/codex#19732、#19105。可先把 memories.generate_memories 设为 false（仍可读已有记忆，若 use_memories 仍为 true），或提高 memories.min_rate_limit_remaining_percent；剩余额度低于门槛时官方会跳过后台生成。
   - q: /memories 会改全局设置吗？
@@ -31,15 +35,43 @@ faq:
     a: 必须始终遵守的团队规则、验收标准和目录边界写进 AGENTS.md（或入库文档）。Memories 只作辅助回忆层，不要当成唯一规则来源。官方：Keep required team guidance in AGENTS.md… Treat memories as a helpful recall layer。
 ---
 
-# Codex Memories 记忆功能怎么用：开启方式、~/.codex/memories 存储位置、/memories 按对话控制，以及避免后台生成消耗额度
+# Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
 
 > 本文在线版：[codexguide.io/guides/codex-memories](https://codexguide.io/guides/codex-memories)
 
-> 核对依据：learn.chatgpt.com《Memories》、Developer commands（`/memories`）、Configuration Reference（`features.memories` 与 `memories.*`）（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复结论。本机未完整走通桌面端记忆 UI 与目录实拍，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com《Memories》、Developer commands（`/memories`）、Configuration Reference（`features.memories` 与 `memories.*`）（2026-10-22 抓取）；2026-10-28 按 [openai/codex rust-v0.165.0](https://github.com/openai/codex/releases/tag/rust-v0.165.0) 的 Release 说明、[PR #56211](https://github.com/openai/codex/pull/56211)、[PR #56414](https://github.com/openai/codex/pull/56414) 和源码补充 v1 / v2 目录变化，并在 Linux 上用 `codex-cli 0.165.0` 实测目录生成。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复结论。桌面端截图来自 10-22 首发版本，本次没有重拍。
 
 Codex 可以把以前对话里有用的信息带到之后的任务里。这个能力叫 **Memories（本地记忆）**，**默认关闭**。打开之后，它会在后台从**符合条件**的旧对话里抽出记忆文件；生成过程要调模型，**可能消耗额度**——即使你当时没有在打字。
 
 这篇按官方 Memories 页组织：它和 ChatGPT 网页记忆、`AGENTS.md` 有什么区别；怎么开；怎么生成、存在哪；怎样用 `/memories` 按对话控制；怎样用配置省额度、控隐私；删除会清掉什么；什么必须写进 `AGENTS.md`。
+
+## 更新说明（2026-10-28）：0.165.0 的两处变化
+
+**1. 新用户默认用 v2，文件写到 `memories_v2`。** 0.165.0 源码的规则是：开启了 Memories、`config.toml` 里没写 `memories.version`、也没把 `memories.dual_write` 设成 `false`，并且 Codex home 下还没有 `memories` 目录，就用 v2（[PR #56211](https://github.com/openai/codex/pull/56211)）。v1 和 v2 分开存放：
+
+| 版本 | 目录 | 谁会用到 |
+|---|---|---|
+| v1 | `~/.codex/memories/` | 0.165.0 之前就开过记忆的用户（目录已存在），或显式写了 `version = "v1"` |
+| v2 | `~/.codex/memories_v2/` | 0.165.0 起第一次开启记忆的用户 |
+
+本机实测（Linux，`codex-cli 0.165.0`，每次用全新的 `CODEX_HOME`，只写 `[features] memories = true`，跑一次 `codex exec`）：
+
+| 起始状态 | 跑完后生成的记忆目录 |
+|---|---|
+| 全新目录 | `memories_v2/`（里面有 `rollout_summaries/`、`extensions/` 等） |
+| 事先建好空的 `memories/` | 仍是 `memories/`，没有 `memories_v2/` |
+| 加 `[memories] dual_write = false` | `memories/` |
+
+`memories.version`（`v1` / `v2`）和 `memories.dual_write` 这两个键在源码里有，**截至 2026-10-28 官方 Configuration Reference 还没收录**，官方 Memories 页也还写着 `~/.codex/memories/`。没有特别需要就别手动改版本；要排查时，先看自己的 Codex home 下实际是哪个目录。
+
+**2. 外部 Agent 记忆导入：已合入，但默认没开。** 0.165.0 的 Release 说明提到支持导入外部 Agent 的记忆，导入结果写进 `memories_v2`（[PR #56414](https://github.com/openai/codex/pull/56414)）。但本机 `codex features list` 的输出是：
+
+```text
+external_agent_memory_import             under development  false
+memories                                 stable             true
+```
+
+也就是这项还在开发中、默认关闭（第二行的 `true` 是因为测试配置里开了 memories）。从 Claude Code 等工具迁移配置和对话，目前还是看 [用 import 导入配置与对话](../01-安装与首次使用/15-从Claude-Code或Cursor迁移到Codex-用import导入配置与对话.md)。
 
 ## Memories 是什么（以及不是什么）
 
@@ -127,17 +159,19 @@ IDE 扩展使用**所连接 Codex 主机**上的本地记忆库。主机已开�
 | `memories.max_rollouts_per_startup` | 每次启动处理候选上限 | 默认 `16`，上限 `128` |
 | `memories.min_rate_limit_remaining_percent` | 开始生成前要求的最低剩余额度百分比 | 默认 `25`，限制在 `0`–`100` |
 
-因此：「刚聊完立刻去 `~/.codex/memories/` 找新文件」常常什么都没有——多半还在等闲置窗口，或被额度门槛／短会话规则跳过。这是预期行为，不是一定坏了。
+因此：「刚聊完立刻去 `~/.codex/memories/`（或 `memories_v2/`）找新文件」常常什么都没有——多半还在等闲置窗口，或被额度门槛／短会话规则跳过。这是预期行为，不是一定坏了。
 
-## 存在哪里：`~/.codex/memories/` 与 `CODEX_HOME`
+## 存在哪里：`memories/`、`memories_v2/` 与 `CODEX_HOME`
 
 Codex 把记忆存在 **Codex home** 下。默认是 `~/.codex`；若设置了环境变量 `CODEX_HOME`，则以该目录为准（详见官方 Config and state locations）。
 
-主记忆文件在：
+官方 Memories 页写的主记忆目录是：
 
 ```text
 ~/.codex/memories/
 ```
+
+0.165.0 起第一次开启记忆的用户，目录会是 `~/.codex/memories_v2/`（见上文「更新说明」）。下面说的内容和注意事项两个目录都适用。
 
 官方描述其内容包括：**摘要、持久条目、近期输入，以及来自过往对话的佐证材料**。
 
@@ -267,12 +301,14 @@ AGENTS.md 的写法与继承关系见《[AGENTS.md 怎么写](https://codexguide
 3. 额度紧 → 提高 `min_rate_limit_remaining_percent`；对照 Usage 面板
 4. 工具／搜索噪声大 → `disable_on_external_context = true`
 5. 单次敏感对话 → `/memories` 关掉使用或生成
-6. 必须遵守的规则 → 写进 `AGENTS.md`，不要只靠记忆
-7. 要清空 → Delete Codex memories（并知道会连带 Computer History）
+6. 找不到记忆文件 → 先看 Codex home 下是 `memories/` 还是 `memories_v2/`
+7. 必须遵守的规则 → 写进 `AGENTS.md`，不要只靠记忆
+8. 要清空 → Delete Codex memories（并知道会连带 Computer History）
 
 ## 参考
 
 - [Memories（官方）](https://learn.chatgpt.com/docs/customization/memories)
 - [Developer commands · `/memories`](https://learn.chatgpt.com/docs/developer-commands)
 - [Configuration Reference · `features.memories`／`memories.*`](https://learn.chatgpt.com/docs/config-file/config-reference)
+- [openai/codex rust-v0.165.0 Release](https://github.com/openai/codex/releases/tag/rust-v0.165.0)、[PR #56211](https://github.com/openai/codex/pull/56211)、[PR #56414](https://github.com/openai/codex/pull/56414)
 - 社区报告（症状对照，非修复手册）：[openai/codex#19732](https://github.com/openai/codex/issues/19732)、[#19105](https://github.com/openai/codex/issues/19105)、[#30299](https://github.com/openai/codex/issues/30299)、[#19195](https://github.com/openai/codex/issues/19195)
