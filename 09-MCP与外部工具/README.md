@@ -23,3 +23,4 @@
 ## 已上线文章
 
 - [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 安装 OpenAI Developers 插件：安全创建 API Key、写入 .env.local 与排查 API 报错](./08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)
