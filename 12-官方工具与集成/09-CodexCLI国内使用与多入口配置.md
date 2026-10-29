@@ -1,567 +1,311 @@
+---
+id: codex-cli-multi-entry-setup
+title: Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
+seo_title: Codex CLI 安装与登录：ChatGPT 登录、API Key 登录、IDE 扩展怎么配
+description: 一篇讲清 Codex CLI 的安装、登录和多入口：四种官方安装方式，ChatGPT 登录和 API Key 登录的区别与命令，远程和无浏览器环境怎么登录，凭证存在哪，IDE 扩展怎么装，以及接第三方模型该用 model_providers。登录命令在 0.165.0 实测。
+lede: 先选入口，再选登录方式。两种登录方式的计费完全不同，这是最常踩的坑。
+url: /guides/codex-cli-multi-entry-setup
+status: published
+section: guides
+category: B-install-login
+topic: 认识、安装与环境
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [CLI, IDE, App]
+difficulty: 基础
+order: 9
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-08-20
+date_modified: 2026-10-29
+verified_on: 2026-10-29
+tested_cli_version: 0.165.0
+official_ref: https://learn.chatgpt.com/docs/auth
+keywords: [Codex CLI 安装, Codex 登录, Codex API Key 登录, codex login, Codex VS Code 扩展]
+faq:
+  - q: 用 Codex CLI 必须订阅 Plus 吗？
+    a: 用 ChatGPT 账号登录的话，按官方 Pricing 页，个人方案里从 Plus 开始包含 CLI 和 IDE 扩展；Free 和 Go 目前只列了桌面端的 GPT-6 Luna，而且是逐步开放。不想订阅也可以用 OpenAI API Key 登录 CLI，按标准 API 价格计费。
+  - q: ChatGPT 登录和 API Key 登录有什么区别？
+    a: ChatGPT 登录用的是订阅包含的 Codex 用量上限和 credits；API Key 登录按 API 标准价格从你的 API 组织扣费，不占订阅额度，但一些依赖 ChatGPT 工作区或云端服务的功能受限或不可用，Codex cloud 只支持 ChatGPT 登录。
+  - q: 远程服务器上没有浏览器，怎么用 ChatGPT 账号登录？
+    a: 优先用设备码登录 codex login --device-auth（需要先在 ChatGPT 安全设置里开启）。不行的话，可以用 SSH 把本地 1455 端口转发过去，或者在有浏览器的机器上登录后，把 ~/.codex/auth.json 复制过去。
+  - q: 接第三方或自建模型，要手改 auth.json 吗？
+    a: 不要。auth.json 是 Codex 自己维护的登录缓存。接其他模型服务应该在 config.toml 里定义 model_providers，用 env_key 指定从哪个环境变量读 Key。
+  - q: ChatGPT Pro 送的 API 额度能用来付 API Key 登录的 Codex 费用吗？
+    a: 不能。官方写明这项权益不覆盖通过 API Key 使用 Codex 的用量。
+related: [macos-install-codex-cli, codex-custom-model-provider, codex-chatgpt-subscription-api-credits, codex-doctor]
+---
 
-# Codex CLI 安装、登录与多入口排查
+# Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
 
 > 本文在线版：[codexguide.io/guides/codex-cli-multi-entry-setup](https://codexguide.io/guides/codex-cli-multi-entry-setup)
 
-
-
-
-
-
-
-现在三大主流的编程工具分别是 Codex、Claude Code 以及 Gemini。Claude Code
-的综合能力很强，也是我的主力编程工具，但它封号太严重了，对国内极其不友好，使用门槛比较高，要找到靠谱的渠道。
-
-Gemini 目前在前端设计方面优势比较明显。Codex
-普遍认为在代码审查方面做得比较出色，因为它分析很严谨，这导致的另一个问题就是速度会比较慢。但它使用起来门槛要低，因为现在 ChatGPT
-只要你充了会员就可以直接用 Codex，而且现在用下来发现它的速度有所提升。
-
-##  ** Codex 是什么？  **
-
-OpenAI 官方出品的 AI 编程工具，可以理解为终端版 ChatGPT，专门用来写代码。
-
-** 四种使用方式：  **
-
-  1. ** Codex  ** ** CLI  ** 在终端里直接对话写代码
-  2. ** Cursor 插件  ** 在 Cursor 编辑器里用 Codex 模型
-  3. ** VS Code 插件  ** 在 VS Code 里侧边栏对话
-  4. ** Opencode  ** 在 Opencode 客户端里用 Codex 模型
-
-** 为什么推荐用？  **
-
-  * Plus 会员（$20/月）直接用，不用额外买 API
-  * 比 Claude 稳定，不用担心封号
-  * Codex 的使用体验越来越好，速度提升了
-
-** 前提条件：  **
-
-  * 需要支持 Codex 的 ChatGPT 套餐（Free、Go 及以上都包含 Codex）
-  * 需要科学上网环境
-
-![Codex CLI 命令行界面 1](图片素材/09-CodexCLI国内使用与多入口配置/01-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-01.jpg)
-
-##  一、前置准备
-
-###  1.1 注册 ChatGPT 账号
-
-如果你已经有账号，跳过这一步。官网注册地址：https://chat.openai.com/
-
-国内邮箱可用（QQ、163、Outlook 都行），不需要国外手机号，需要科学上网环境。
-
-###  1.2 订阅 Plus 会员（必须）
-
-** Codex 现在 Free、Go、Plus、Pro、Team 等套餐都可以使用。  ** 免费用户以实际界面能看到 Codex 入口为准，官方说明：Free 和 Go 包含 Codex（Free 标准速度、Go 每月的量更大），Plus 及更高套餐可选型号和用量更多。
-
-不过ChatGPT 要绑海外卡支付，国内的visa不行，对国内用户不友好，网上可能也有一些方法，如果想省事的话找代充平台。
-
-全网最稳！ChatGPT Plus 微信直充，2分钟到账（亲测丝滑）
-
-升级成功后，在 ChatGPT 设置页能看到 Plus 标识。
-
-![Codex CLI 命令行界面 2](图片素材/09-CodexCLI国内使用与多入口配置/02-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-02.jpg)
-
-##  二、Codex CLI（命令行）
-
-###  2.1 安装 Node.js 环境（前提条件）
-
-Codex CLI 基于 Node.js 运行，需要  ** Node.js 22 或以上版本  ** 。
-
-** 先检查是否已安装：  ** 打开终端（Mac）或 PowerShell（Windows），运行：
-
-
-
-    node -v
-
-
-![Codex CLI 命令行界面 3](图片素材/09-CodexCLI国内使用与多入口配置/03-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-03.jpg)
-
-如果显示版本号 ≥ 22，跳过安装直接看 2.2。如果版本低于 22 或提示命令不存在，按下面步骤安装：
-
-** 安装 Node.js：  **
-
-  1. 打开浏览器访问 https://nodejs.org/
-
-![Codex CLI 命令行界面 4](图片素材/09-CodexCLI国内使用与多入口配置/04-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-04.jpg)
-
-  2. 官网提供两种安装方式，任选其一：
-
-** 方式一：下载安装程序（推荐新手）  **
-
-页面下方有下载按钮，点击下载安装包：
-
-![Codex CLI 命令行界面 5](图片素材/09-CodexCLI国内使用与多入口配置/05-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-05.jpg)
-
-** 方式二：命令行安装（适合有终端经验的用户）  **
-
-官网会显示一段安装命令（基于 nvm，一个 Node.js 版本管理工具）
-
-![Codex CLI 命令行界面 6](图片素材/09-CodexCLI国内使用与多入口配置/06-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-06.jpg)
-
-直接复制到终端执行：
-
-
-        # Mac/Linux 用户执行这段命令
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-    source ~/.bashrc  # 或 source ~/.zshrc
-    nvm install 24
-
-
-Windows 用户建议直接用方式一下载安装程序，更简单。
-
-     * ** Windows  ** ：下载  ` .msi  ` 文件，双击运行，一路点「下一步」即可
-     * ** Mac  ** ：下载  ` .pkg  ` 文件，双击运行，按提示完成安装
-  3. 安装完成后重新打开终端，运行  ` node -v  ` 确认版本 ≥ 22
-
-###  2.2 安装 Codex CLI
-
-####  Mac 用户
-
-** 方式一：npm 安装（推荐）  **
-
-
-
-    # 安装 Codex 最新版
-    npm install -g @openai/codex@latest
-
-
-这个命令会从 npm 官方仓库下载并安装最新版本的 Codex 工具。
-
-如果遇到权限问题，可以用 sudo：
-
-
-
-    sudo npm install -g @openai/codex@latest
-
-
-![Codex CLI 命令行界面 7](图片素材/09-CodexCLI国内使用与多入口配置/07-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-07.jpg)
-
-国内网络慢可以用镜像加速：
-
-
-
-    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com
-
-
-** 方式二：Homebrew 安装  **
-
-
-
-    brew install codex
-
-
-####  Windows 用户
-
-** 第一步：打开 PowerShell（管理员模式）  **
-
-右键点击开始菜单 → 选择 Windows PowerShell 或 终端
-
-** 第二步：执行安装命令  **
-
-
-
-    npm install -g @openai/codex@latest
-
-
-同样国内网络慢可以用镜像加速：
-
-
-
-    npm install -g @openai/codex@latest --registry=https://registry.npmmirror.com
-
-
-> “
+> 核对依据：OpenAI 官方文档 [Codex CLI](https://learn.chatgpt.com/docs/codex/cli)、[Authentication](https://learn.chatgpt.com/docs/auth)、[Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide) 和 [Pricing](https://learn.chatgpt.com/docs/pricing)。「API Key 登录」一节在 Linux 上用 `codex-cli 0.165.0`、一个单独的 `CODEX_HOME` 和一把**假的** Key 实测，命令输出原样贴出；ChatGPT 账号登录和 IDE 步骤按官方文档整理，本机没有浏览器登录和桌面 App，没有截图。核对日期 2026-10-29（北京时间）。
 >
-> Windows ：如果遇到权限问题，用管理员模式运行 PowerShell
+> 2026-10-29 改写说明：旧版按个人经验写成，订阅要求没区分登录方式，还有「手写 auth.json 接第三方 API」这类有风险的做法，这一版按官方文档和实测重写。
 
-####  验证安装成功
+## 先选入口
 
-安装完成后，运行：
+Codex 有好几个入口，登录信息大部分是共用的：
 
+| 入口 | 适合 | 安装 |
+|---|---|---|
+| **Codex CLI**（终端） | 习惯终端、要接脚本和 CI、在远程服务器上干活 | 本文「安装 Codex CLI」 |
+| **IDE 扩展**（VS Code、Cursor、Windsurf） | 边看代码边改，想直接用编辑器里打开的文件和选中内容 | 本文「IDE 扩展」 |
+| **Xcode、JetBrains** | 用这两类 IDE 的人 | 各自 IDE 自带的集成，见[Xcode 中使用 Codex](../01-安装与首次使用/10-Xcode中使用Codex.md)、[JetBrains 中使用 Codex](../01-安装与首次使用/11-JetBrains中使用Codex.md) |
+| **ChatGPT 桌面端** | 想要图形界面、多任务并行 | 见[安装路线总览](../01-安装与首次使用/01-安装路线总览.md) |
+| **Codex cloud** | 把任务交给云端跑 | 只支持 ChatGPT 账号登录 |
 
+官方文档写明：CLI 和 IDE 扩展**共用同一份登录缓存**，在其中一个退出登录，另一个下次启动也要重新登录。
 
-    codex --version
+## 安装 Codex CLI
 
+官方给了四种方式，任选一种。
 
-看到版本号就说明安装成功了。
+**macOS / Linux：官方安装脚本**
 
-![Codex CLI 命令行界面 8](图片素材/09-CodexCLI国内使用与多入口配置/08-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-08.jpg)
+```bash
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
 
-###  2.3 登录授权
+**Windows：PowerShell 安装脚本**（在新开的 PowerShell 窗口里运行）
 
-Codex CLI 支持两种授权方式：
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+```
 
-####  方式一：ChatGPT 官方账号登录（推荐）
+**npm**
 
-终端输入  ` codex  ` ：
+```bash
+npm install -g @openai/codex
+```
 
+**Homebrew**
 
+```bash
+brew install --cask codex
+```
 
-    codex
+更新：安装脚本重新运行一遍即可；npm 用同一条命令；Homebrew 用 `brew upgrade --cask codex`。
 
+装好以后确认版本：
 
-如果你没有配置任何第三方的 API key 的话，输入这个命令会弹出下面的弹框，这是官网的返回。
+```bash
+codex --version
+```
 
-![Codex CLI 命令行界面 9](图片素材/09-CodexCLI国内使用与多入口配置/09-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-09.jpg)
+```text
+codex-cli 0.165.0
+```
 
-选择使用官网登录，就会跳转到官网，如果没有自动打开官网的话，也可以复制它提供的链接手动打开。
+分系统的详细步骤（含 WSL）见[macOS 安装 Codex CLI](../01-安装与首次使用/04-macOS安装Codex-CLI.md)和[Windows 和 WSL 安装 Codex CLI](../01-安装与首次使用/05-Windows和WSL安装Codex-CLI.md)。
 
-![Codex CLI 命令行界面 10](图片素材/09-CodexCLI国内使用与多入口配置/10-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-10.jpg)
+## 两种登录方式，计费完全不同
 
-然后登录自己的 ChatGPT 账号，有会员的那一个。
+| | ChatGPT 账号登录 | API Key 登录 |
+|---|---|---|
+| 怎么付费 | 用订阅包含的 Codex 用量上限和 credits | 按 OpenAI API 标准价格，从你的 API 组织扣费 |
+| 需要什么 | ChatGPT 账号 | [OpenAI Platform](https://platform.openai.com/api-keys) 上的 API Key |
+| 功能 | 完整 | 本地工作可以用；依赖 ChatGPT 工作区或云端服务的功能受限或不可用；Codex cloud 不能用 |
+| 数据规则 | 跟随 ChatGPT 工作区的权限和数据设置 | 跟随 API 组织的数据保留和共享设置 |
+| 适合 | 日常交互使用 | 脚本、CI/CD 等程序化场景 |
 
-![Codex CLI 命令行界面 11](图片素材/09-CodexCLI国内使用与多入口配置/11-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-11.jpg)
+关于「必须订阅 Plus 才能用」：要分登录方式看。按官方 [Pricing](https://learn.chatgpt.com/docs/pricing) 页（2026-10-29 核对）：
 
-看到这个界面就是登录成功了。
+- **ChatGPT 账号登录**：个人方案里，Plus 是列出「网页版、CLI、IDE 扩展、iOS」的最低一档；Pro 包含 Plus 的全部内容，分 100、200、500 美元三档；Business、Enterprise、Edu 走团队方案。Free 和 Go 目前只列了「桌面端使用 GPT-6 Luna（标准速度），逐步开放」，没有列 CLI。
+- **API Key 登录**：不需要 ChatGPT 订阅，CLI 按 API 标准价格计费，官方定位是 CI 这类共享环境里的自动化。
 
-![Codex CLI 命令行界面 12](图片素材/09-CodexCLI国内使用与多入口配置/12-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-12.jpg)
+方案内容会调整，以官方页面为准。
 
-进入到下面这个页面，它会提示你现在 Codex 在哪个目录下面工作。
+另一个容易混的点：ChatGPT Pro 和 Business 订阅送的 **API 额度**不能用来支付 API Key 登录 Codex 的费用，见[Codex 与 ChatGPT 订阅 API 额度](../10-配置模型与权限安全/16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)。
 
-![Codex CLI 命令行界面 13](图片素材/09-CodexCLI国内使用与多入口配置/13-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-13.jpg)
+## 登录方式一：ChatGPT 账号
 
-选项 1 表示允许AI 直接修改这个目录下的文件，或者直接运行终端命令，期间不会跳出任何确认提示。
+在项目目录运行 `codex`，第一次会让你选登录方式，选 **Sign in with ChatGPT**。也可以直接：
 
-选项2 表示 Codex 在修改任何一行代码或执行任何一条指令前，都会让你手动确认。
+```bash
+codex login
+```
 
-一般让它自动执行的情况比较多，每次都确认太麻烦了。选择之后就可以开始使用了。
+Codex 会打开浏览器，登录后浏览器把凭证交回终端。登录过程中，Codex 在本机 `localhost:1455` 起一个回调服务接收结果。登录会话在使用中会自动刷新，一般不用反复登录。
 
-授权成功后，token 自动保存到  ` ~/.codex/  ` 目录，下次启动不用重复登录。
+图形界面的详细步骤见[登录 Codex](../01-安装与首次使用/07-登录Codex.md)。
 
-![Codex CLI 命令行界面 14](图片素材/09-CodexCLI国内使用与多入口配置/14-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-14.jpg)
+## 登录方式二：API Key（0.165.0 实测）
 
-####  方式二：使用第三方 API（适合有 API key 的用户）
+官方推荐的写法是从标准输入读 Key，避免 Key 出现在命令行参数和 shell 历史里：
 
-如果你有支持 Codex 模型的第三方 API 服务，可以通过配置文件使用，不需要 ChatGPT Plus 账号，比如 aigocode.com
-这个中转服务站（推广信息）。
+```bash
+printenv OPENAI_API_KEY | codex login --with-api-key
+```
 
-** 第一步：创建配置目录  **
+下面是用一把**假 Key** 在 0.165.0 上的完整实测输出（Key 尾号是假的）。
 
+登录前：
 
+```text
+$ codex login status
+Not logged in
+```
 
-    mkdir -p ~/.codex
+（退出码 1）
 
+登录：
 
-** 第二步：创建 config.toml 配置文件  **
+```text
+$ printenv OPENAI_API_KEY | codex login --with-api-key
+Reading API key from stdin...
+API key saved. Authentication is checked when you send a request.
+```
 
+注意最后一句：**保存时不校验 Key 是否有效**，要等第一次真正发请求才知道。
 
+查看状态（Key 中间部分被自动隐藏）：
 
-    nano ~/.codex/config.toml
+```text
+$ codex login status
+API key configured - sk-proj-***00000
+Authentication is checked when you send a request.
+```
 
+保存位置：默认写进 `$CODEX_HOME/auth.json`（默认 `~/.codex/auth.json`），实测文件权限是 `600`，里面记录的登录方式是 `"auth_mode": "apikey"`。
 
-填入以下内容（根据你的服务商修改）：
+退出登录：
 
+```text
+$ codex logout
+Successfully logged out
+```
 
+退出后 `auth.json` 被删除，`codex login status` 又回到 `Not logged in`。
 
-    model_provider = "custom"
-    model = "gpt-6.1-sol"  # 改成你的服务商支持的模型
-    model_reasoning_effort = "high"
-    disable_response_storage = true
-    preferred_auth_method = "apikey"
+在 IDE 扩展里用 Key：未登录界面选 **Use API Key**，输入后点 **OK**。桌面端选 **Sign in another way**，输入 Key 后点 **Continue**。
 
-    [model_providers.custom]
-    name = "custom"
-    base_url = "https://api.xxx.com/v1"  # 改成你的服务商 API 地址
-    wire_api = "responses"
-    requires_openai_auth = true
+## 远程服务器、无浏览器环境怎么登录
 
+在 SSH 远程机器、容器里用 ChatGPT 账号登录时，浏览器回调可能走不通。官方给了三种办法，按顺序试：
 
-** 第三步：创建 auth.json 存放 API Key  **
+**1. 设备码登录（beta，首选）**
 
+先在 ChatGPT 的安全设置里开启设备码登录（个人账号自己开；工作区由管理员在权限里开），然后：
 
+```bash
+codex login --device-auth
+```
 
-    nano ~/.codex/auth.json
+在浏览器里打开它给的链接，登录后输入一次性代码。交互界面里也可以选 **Sign in with Device Code**。
 
+**2. SSH 转发回调端口**
 
-填入：
+在你本地电脑上：
 
+```bash
+ssh -L 1455:localhost:1455 user@remote
+```
 
+然后在这个 SSH 会话里运行 `codex login`，在本地浏览器打开它打印的地址。
 
-    {
-      "OPENAI_API_KEY": "sk-你的API密钥"
-    }
+**3. 复制登录缓存**
 
+在有浏览器的机器上 `codex login`，然后把 `~/.codex/auth.json` 复制到远程机器的同一位置：
 
-![Codex CLI 命令行界面 15](图片素材/09-CodexCLI国内使用与多入口配置/15-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-15.jpg)
+```bash
+ssh user@remote 'mkdir -p ~/.codex'
+scp ~/.codex/auth.json user@remote:~/.codex/auth.json
+```
 
-** 第四步：验证配置  **
+**`auth.json` 相当于密码**：里面有访问令牌，不要提交到仓库、贴进工单或发到聊天里。如果你的系统把凭证存在系统凭证库而不是这个文件里，这个办法不适用，见下一节。
 
+脚本和 CI 里，官方仍然推荐默认用 API Key。
 
+## 凭证存在哪
 
-    codex
+用 `config.toml` 里的 `cli_auth_credentials_store` 控制：
 
+```toml
+# file | keyring | auto | ephemeral
+cli_auth_credentials_store = "keyring"
+```
 
-如果配置正确，就能正常使用了。
+| 取值 | 行为 |
+|---|---|
+| `file` | 存在 `CODEX_HOME` 下的 `auth.json`（默认 `~/.codex`） |
+| `keyring` | 存在系统凭证库；凭证库不可用时直接失败 |
+| `auto` | 有系统凭证库就用，没有就退回 `auth.json` |
+| `ephemeral` | 只存在当前进程的内存里 |
 
-![Codex CLI 命令行界面 16](图片素材/09-CodexCLI国内使用与多入口配置/16-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-16.jpg)
+公司或团队管理的环境，管理员可能强制了登录方式（`forced_login_method = "chatgpt"` 或 `"api"`）或指定工作区。登录方式不符合时，Codex 会自动退出登录并退出。
 
-> “
->
-> ** 注意：  ** 第三方 API 需要支持 Codex 相关模型（比如  ` gpt-6.1-sol  `
-> ）才能正常使用。配置前先确认服务商是否提供对应模型。
+登录失败要排查时，直接运行 `codex login` 会在日志目录下写一个 `codex-login.log`。
 
-###  ** 2.4  ** ** CLI  ** ** 常用命令  **
+## 公司网络和证书
 
-####  基础命令（新手使用必会）
+如果公司网络用了 TLS 代理或私有根证书，登录前设置 `CODEX_CA_CERTIFICATE` 指向 PEM 证书包：
 
-** 启动和退出  **
+```bash
+export CODEX_CA_CERTIFICATE=/path/to/corporate-root-ca.pem
+codex login
+```
 
-命令  |  说明  |  使用场景
----|---|---
-` codex  ` |  启动交互模式，进入对话界面  |  需要多轮对话完成复杂任务
-` codex "你的问题"  ` |  启动时提问  |  快速问一个简单问题（感觉没必要）
-` /quit  ` 或  ` Ctrl+C  ` |  退出 Codex  |  结束当前会话
+没设置时 Codex 会读 `SSL_CERT_FILE`。登录、普通 HTTPS 请求和 WebSocket 连接都用这套证书设置。
 
-** 常用交互命令  **
+关于地区：OpenAI 的服务只在支持的国家和地区提供，本文不提供绕过地区限制的方法。连接经常断开、一直 Reconnecting 的排查见[Codex 一直 Reconnecting 排查](../15-故障排查与常见问题/03-Codex一直Reconnecting-stream-disconnected排查.md)；安装、配置、登录和网络的一键自检见[Codex doctor 自检](../15-故障排查与常见问题/04-Codex-doctor自检-安装配置登录与网络排查.md)。
 
-命令  |  说明  |  使用场景
----|---|---
-` /model  ` |  切换模型和 reasoning effort  |  简单任务切低配省额度，复杂任务切高配
-` /approvals  ` |  设置哪些操作需要确认、哪些自动执行  |  信任度高的项目开 full access，重要项目开 default
-` /status  ` |  查看当前模型、权限模式、token 使用情况  |  检查还剩多少额度
-` /clear  ` |  清空当前对话历史，重新开始  |  换个话题，不想让之前的对话影响回答
-` /compact  ` |  压缩上下文，对话太长时用这个释放空间  |  聊了很久 token 快用完时（也会自动压缩）
-` /new  ` |  开始新对话（不退出当前会话）  |  当前任务完成，开始下一个任务
-` /review  ` |  审查当前代码改动，找出问题  |  写完代码让 AI 帮忙 review
+## IDE 扩展
 
-下面是部分命令的截图。
+官方文档：VS Code 及其兼容编辑器用 Codex 扩展；Xcode 和 JetBrains 用各自的集成。
 
-![Codex CLI 命令行界面 17](图片素材/09-CodexCLI国内使用与多入口配置/17-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-17.jpg)
-/model
-![Codex CLI 命令行界面 18](图片素材/09-CodexCLI国内使用与多入口配置/18-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-18.jpg)
-/approvals
-![Codex CLI 命令行界面 19](图片素材/09-CodexCLI国内使用与多入口配置/19-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-19.jpg)
-/compact
-![Codex CLI 命令行界面 20](图片素材/09-CodexCLI国内使用与多入口配置/20-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-20.jpg)
-/status
-![Codex CLI 命令行界面 21](图片素材/09-CodexCLI国内使用与多入口配置/21-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-21.jpg)
-/new
-![Codex CLI 命令行界面 22](图片素材/09-CodexCLI国内使用与多入口配置/22-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-22.jpg)
-/review
+1. **安装**：VS Code、Cursor、Windsurf 在扩展市场搜 Codex（扩展 ID `openai.chatgpt`），或从 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) 安装。
+2. **打开**：点侧边栏的 Codex 图标。找不到的话，打开命令面板运行 **Codex: Open Codex Sidebar**。
+3. **登录**：选 **Sign in with ChatGPT**，或选 **Use API Key**。已经在 CLI 登录过的，扩展会用同一份登录缓存。
 
-** 会话管理  **
+详细步骤见[VS Code 和兼容编辑器安装 Codex](../01-安装与首次使用/06-VS-Code和兼容编辑器安装Codex.md)。
 
-命令  |  说明  |  使用场景
----|---|---
-` /resume  ` |  恢复之前保存的对话  |  第二天继续昨天的重构任务
-` /fork  ` |  从当前对话分叉出一个新对话  |  想尝试不同方案但保留当前进度
+关于 Cursor：在 Cursor 里装的是同一个 Codex 扩展，登录和计费规则跟上面一样。Cursor 自己的模型选择属于 Cursor 的功能，计费走 Cursor 的方案或你在 Cursor 里填的 Key，不在本文范围内。
 
-** 进阶功能  **
+## 接第三方或自建模型：用 model_providers
 
-命令  |  说明  |  使用场景
----|---|---
-` /skills  ` |  使用技能来优化 Codex 执行特定任务  |  让 AI 用特定技能处理任务（下面有单独介绍，非常推荐！！）
-` /experimental  ` |  开启/关闭实验性功能  |  尝鲜新功能
+如果你要通过公司的模型网关、LLM 代理或其他兼容服务使用 Codex，**不要手改 `auth.json`**。正确做法是在 `config.toml` 里定义一个模型提供商，并选择它的认证方式：
 
-####  进阶命令（高手进阶）
+- `requires_openai_auth = true`：仍用 OpenAI 登录（ChatGPT 或 API Key），适合通过代理访问 OpenAI 模型。此时 `env_key` 会被忽略。
+- `env_key = "环境变量名"`：从你指定的环境变量读这个服务商的 Key。
+- `[model_providers.<id>.gateway_oauth]`：通过公司身份系统在浏览器登录网关。
+- `[model_providers.<id>.auth]`：从本机安装的凭证助手命令获取令牌。
+- 不需要凭证的本地模型：上面这些认证设置都不写。
 
-** 启动参数  **
+```toml
+model_provider = "mygateway"
 
-命令  |  说明  |  使用场景
----|---|---
-` codex --full-auto  ` |  全自动模式，AI 直接执行不需确认  |  批量处理文件、自动化脚本
-` codex -a on-request  ` |  让模型每次执行命令前都需要你确认  |  重要项目，想逐步确认每个操作
-` codex --model gpt-6.1-sol  ` |  指定使用的模型  |  临时切换模型不想改配置
-` codex --help  ` |  查看所有可用参数  |  忘记某个参数怎么写
-![Codex CLI 命令行界面 23](图片素材/09-CodexCLI国内使用与多入口配置/23-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-23.jpg)
+[model_providers.mygateway]
+name = "My Gateway"
+base_url = "https://gateway.example.com/v1"
+env_key = "MYGATEWAY_API_KEY"
+```
 
-** 危险但方便的操作（谨慎使用）  **
+上面的服务地址和名称只是示意。注意 `wire_api` 目前只支持 `responses`（不写时就是它），也就是说对方服务需要兼容 OpenAI Responses 接口。完整字段、请求到底发去哪、怎么验证，见[Codex 自定义模型提供商](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)。
 
-命令  |  说明  |  使用场景
----|---|---
-` codex --dangerously-bypass-approvals-and-sandbox  ` |  跳过所有确认并禁用沙盒，AI 完全自主执行  |  每次都要手动确认好麻烦
+## 常见问题
 
-> “
->
-> 建议在测试环境或你完全信任 AI 输出时使用，颇具规模的生产环境慎用！
+| 现象 | 先查什么 |
+|---|---|
+| `codex: command not found` | 安装脚本或 npm 的安装目录不在 `PATH` 里；新开一个终端再试 |
+| `codex login status` 显示已配置 API Key，但请求报认证错误 | 保存时不校验 Key；检查 Key 是否被撤销、是否属于正确的组织和项目 |
+| 用 API Key 登录后某些功能不见了 | 正常，部分依赖 ChatGPT 工作区或云端的功能不支持 API Key 登录，见 [Pricing 的功能对比](https://learn.chatgpt.com/docs/pricing#feature-availability) |
+| 部分插件用不了 | API Key 登录只支持部分 OpenAI 官方插件，有些插件的连接流程需要 API Key 登录不支持的 OAuth 能力 |
+| 登录后被自动退出 | 管理员可能强制了登录方式或工作区，问管理员 |
+| 远程机器上浏览器登录卡住 | 用设备码登录，或 SSH 转发 1455 端口 |
 
-![Codex CLI 命令行界面 24](图片素材/09-CodexCLI国内使用与多入口配置/24-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-24.jpg)
+更多安装和登录问题见[安装登录常见问题](../01-安装与首次使用/13-安装登录常见问题.md)。
 
-这些命令不需要全都记住，用的最多的可能就是启动命令、review 审查、compact 压缩、skills 查看技能这些了。codex在  ** 代码审查
-** 这块是公认的比较强的。
+## 下一步
 
-####  实用技巧
+- 分系统安装：[macOS 安装 Codex CLI](../01-安装与首次使用/04-macOS安装Codex-CLI.md)
+- 图形界面登录：[登录 Codex](../01-安装与首次使用/07-登录Codex.md)
+- 接其他模型服务：[Codex 自定义模型提供商](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)
 
-** 1\. 截图报错，让 AI 帮你修  **
+## 参考资料
 
-Codex 是多模态模型，能看懂截图里的文字、界面元素等信息，能根据截图中显示的报错内容来分析问题、推断原因，并给出修复建议。
-
-** 2\. 指定工作目录  **
-
-
-
-    cd /path/to/your/project
-    codex
-
-
-Codex 会自动读取当前目录的代码上下文。
-
-** 3\. 恢复之前的对话  **
-
-Codex 会自动保存对话历史，下次启动时用  ` /resume  ` 可以恢复之前的对话继续工作。
-
-** 4\. 上下文太长时压缩  **
-
-对话久了 token 会用完，用  ` /compact  ` 压缩上下文继续工作。
-
-* * *
-
-##  三、VS Code 插件
-
-不习惯用命令行的话，推荐 VS Code 插件，更直观。
-
-###  3.1 安装插件
-
-  1. 打开 VS Code
-  2. 左侧扩展商店
-  3. 搜索  ` Codex  `
-  4. 找到 OpenAI 官方的  ** Codex  ** 插件，点击安装
-
-![Codex CLI 命令行界面 25](图片素材/09-CodexCLI国内使用与多入口配置/25-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-25.jpg)
-
-###  3.2 登录使用
-
-安装后，左侧边栏会出现 Codex 图标：
-
-  1. 点击 Codex 图标，弹出登录提示
-  2. 点击登录，浏览器会自动打开授权页面（和 CLI 一样）
-  3. 用 ChatGPT Plus 账号授权
-  4. 授权成功后，回到 VS Code 就能在侧边栏对话了
-
-![Codex CLI 命令行界面 26](图片素材/09-CodexCLI国内使用与多入口配置/26-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-26.jpg)
-
-###  3.3 使用技巧
-
-** 选中代码快速提问  **
-
-选中一段代码 → 右键 → 选择  ` Ask Codex  ` → AI 会针对选中的代码回答
-
-![Codex CLI 命令行界面 27](图片素材/09-CodexCLI国内使用与多入口配置/27-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-27.jpg)
-
-##  四、Cursor 集成
-
-Cursor 是目前最火的 AI 编程编辑器之一，本身自带 Claude 模型，但你也可以切换成 Codex 模型。
-
-###  方式一：安装 Codex 插件
-
-和 VS Code 一样，在 Cursor 的扩展商店搜索 Codex 插件安装。
-
-  * 如果已经配置了 API Key，安装后直接可用
-  * 如果没有配置，需要授权登录 ChatGPT 账号
-
-![Codex CLI 命令行界面 28](图片素材/09-CodexCLI国内使用与多入口配置/28-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-28.jpg)
-
-###  方式二：对话框切换模型
-
-在 Cursor 的 AI 对话框中直接切换到 Codex 模型。
-
-> “
->
-> ** 注意：  ** 这种方式走的是 OpenAI API 计费，不是 ChatGPT Plus 会员额度。你需要在
-> platform.openai.com 有 API 余额，并在 Cursor Settings → Models → OpenAI API Key
-> 里填入你的 Key。
-
-这个操作步骤有需要的话可以试一下，我平常用cursor不多，如果发现有新的使用方法，欢迎留言指正。
-
-操作步骤：
-
-
-
-    1. 打开 Cursor 设置
-    2. 点击 Models，向下滚动找到 "OpenAI API Key"
-    3. 填入你的 API Key
-    4. 在对话框选择 Codex 系相关的模型
-
-
-![Codex CLI 命令行界面 29](图片素材/09-CodexCLI国内使用与多入口配置/29-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-29.jpg)
-
-###  地区限制问题
-
-如果遇到报错：  ` This model provider doesn't serve your region  ` ，说明 Cursor
-检测模型服务商不对你这个IP所属地区开放。
-
-** 解决方案：  ** 开全局代理（增强模式/系统代理）。如果开了还是报错，可能是 Cursor 没有走系统代理，可以尝试在 Cursor
-Settings 里搜索 proxy 配置代理地址。
-
-** 如果代理问题不好解决，建议用Codex 插件或者直接用 Codex CLI / Opencode，这些方式更稳定。  **
-
-* * *
-
-##  五、Opencode 集成
-
-Codex 支持 OpenCode，允许用户直接在 Opencode 中使用 Codex 订阅和使用限制，也就是可以直接登录自己的 pro 或者 plus
-账号使用。
-
-我这里就分享一下客户端连接的过程，用命令行也是一样的。
-
-首先下载一下 Opencode 客户端，地址：https://opencode.ai/download
-
-![Codex CLI 命令行界面 30](图片素材/09-CodexCLI国内使用与多入口配置/30-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-30.jpg)
-
-安装完之后就进入到这个页面，还是什么都没有的状态。
-
-![Codex CLI 命令行界面 31](图片素材/09-CodexCLI国内使用与多入口配置/31-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-31.jpg)
-
-看了一下，macOS 版目前没有“添加模型”的按钮（我这边是 macOS 15.7.3，OpenCode Desktop
-1.1.34）我就以这个版本测试了，具体的要看你们的系统和安装的版本，Windows 有些版本左下角会出现 “+”添加模型。
-
-左上角的加号可以添加项目。
-
-![Codex CLI 命令行界面 32](图片素材/09-CodexCLI国内使用与多入口配置/32-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-32.jpg)
-
-在对话框输入 /model 命令可以选择模型，右上角有个 连接供应商 按钮。
-
-![Codex CLI 命令行界面 33](图片素材/09-CodexCLI国内使用与多入口配置/33-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-33.jpg)
-![Codex CLI 命令行界面 34](图片素材/09-CodexCLI国内使用与多入口配置/34-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-34.jpg)
-
-选择 连接OpenAI，如果你开了会员的话，这里登录你的 ChatGPT 账号。
-
-![Codex CLI 命令行界面 35](图片素材/09-CodexCLI国内使用与多入口配置/35-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-35.jpg)
-
-需要授权或直接跳转到 ChatGPT 登录页面，和上面的流程是一样的。
-
-![Codex CLI 命令行界面 36](图片素材/09-CodexCLI国内使用与多入口配置/36-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-36.jpg)
-![Codex CLI 命令行界面 37](图片素材/09-CodexCLI国内使用与多入口配置/37-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-37.jpg)
-
-授权成功就可以使用了 ChatGPT 的模型了，然后在这个地方可以管理模型。
-
-![Codex CLI 命令行界面 38](图片素材/09-CodexCLI国内使用与多入口配置/38-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-38.jpg)
-![Codex CLI 命令行界面 39](图片素材/09-CodexCLI国内使用与多入口配置/39-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-39.jpg)
-
-##  六、常见问题 & 踩坑指南
-
-问题  |  原因  |  解决方案
----|---|---
-安装时报错  ` npm ERR  ` |  Node 版本太低  |  升级到 Node 22+
-登录后一直 thinking  |  网络问题  |  开全局代理，或设置环境变量（见下方）
-Cursor 里找不到 Codex 模型  |  版本问题  |  更新 Cursor 到最新版
-` /model  ` 命令无响应  |  网络延迟  |  等待几秒，或检查代理设置
-
-** 网络问题解决方案：  **
-
-如果遇到一直 thinking 或连接超时，在终端设置代理：
-
-
-
-    # 临时设置（当前终端有效）
-    export HTTPS_PROXY=http://127.0.0.1:7890
-    export HTTP_PROXY=http://127.0.0.1:7890
-
-    # 然后启动 Codex
-    codex
-
-
-把  ` 7890  ` 换成你的代理端口。
-
-原稿还包含一张外部工作流示例图，保留在这里作为上下文参考：
-
-![Codex CLI 相关工作流示例](图片素材/09-CodexCLI国内使用与多入口配置/40-2026年最新CodexCLI国内使用全攻略终端VSCodeCursorOpencode四种姿势全搞定-40.jpg)
-
-## 七、总结
-
-Codex CLI 的入口和参数会随版本变化。完成安装后，先确认登录状态，再用一个可回退的小任务验证命令、权限和网络设置。
-
-参考资料：
-
-- [Codex CLI 官方文档](https://learn.chatgpt.com/docs/codex/cli)
-
-- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
+- OpenAI 官方文档：[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)
+- OpenAI 官方文档：[Authentication](https://learn.chatgpt.com/docs/auth)
+- OpenAI 官方文档：[Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)
+- OpenAI 官方文档：[Pricing](https://learn.chatgpt.com/docs/pricing)
