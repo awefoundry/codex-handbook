@@ -1,151 +1,201 @@
+---
+id: codex-desktop-task-workflow
+title: Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
+seo_title: Codex 桌面端任务：项目、并行对话、审查与定时任务
+description: Codex 在 ChatGPT 桌面应用里使用，支持 macOS、Windows 和 Linux。本文按官方文档整理选项目或文件夹、并行开对话、Plan 与 Goal、审查改动、通知和定时任务，并说明它和设置篇怎么分工。
+lede: 桌面端现在是 ChatGPT 应用里的 Codex。这篇只讲任务怎么往下做；权限、个性和自定义指令放在设置篇。
+url: /guides/codex-desktop-task-workflow
+status: published
+section: guides
+category: L-tools-integrations
+topic: 官方工具与集成
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [App]
+difficulty: 基础
+order: 8
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-08-20
+date_modified: 2026-10-31
+verified_on: 2026-10-31
+models: [gpt-6.1-sol]
+official_ref: https://learn.chatgpt.com/docs/app
+keywords: [Codex 桌面端, ChatGPT 桌面应用 Codex, Codex 项目与对话, Codex 并行任务, Codex 桌面端工作流]
+related: [codex-automations-scheduled-tasks, codex-appshots, codex-goal-mode-long-running-work]
+howto: false
+faq:
+  - q: 还要单独下载一个只含 Codex 的桌面版吗？
+    a: 不用。官方文档写的是安装 ChatGPT 桌面应用，登录后在应用里选择 ChatGPT 或 Codex。下载页列出 macOS、Windows 和 Linux。
+  - q: 这篇和桌面端协作设置那篇怎么分？
+    a: 设置篇讲入口、自定义指令、个性、权限和追问怎么排队。这篇讲选工作位置、并行对话、Plan 和 Goal、审查、通知和定时任务。
+  - q: CLI 和 IDE 里能管理定时任务吗？
+    a: 官方写明不能。创建和管理在 ChatGPT 网页或桌面应用的 Scheduled 里。CLI 和 IDE 适合先把提示词、Skill 或工作区改动试出来。
+---
 
-# Codex 桌面端任务工作流
+# Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
 
 > 本文在线版：[codexguide.io/guides/codex-desktop-task-workflow](https://codexguide.io/guides/codex-desktop-task-workflow)
 
+> 核对依据：2026-10-31 的官方文档 [ChatGPT desktop app](https://learn.chatgpt.com/docs/app)、[Projects and chats](https://learn.chatgpt.com/docs/projects)、[Long-running work](https://learn.chatgpt.com/docs/long-running-work)、[Code review](https://learn.chatgpt.com/docs/code-review)、[Notifications](https://learn.chatgpt.com/docs/notifications)、[Scheduled tasks](https://learn.chatgpt.com/docs/automations)、[Plugins](https://learn.chatgpt.com/docs/plugins)。本文没有运行桌面应用，没有新截图。旧文里 2026 年 8 月独立 Codex 桌面版的截图已经删除，那些界面不能再当作当前步骤。
 
+Codex 的桌面用法，是在 ChatGPT 桌面应用里选 Codex，而不是再装一个单独的 “Codex 桌面版”。官方开始步骤是：安装应用，登录，选择工作位置，发送第一条消息。下载页写的是 macOS、Windows 或 Linux。
 
+应用里可以选择 ChatGPT 或 Codex。选了 ChatGPT 之后，输入框上方还可以在 Chat 和 Work 之间切换。选了 Codex 之后，从 New chat 开始。临时问题可以指向 New chat，再点它右侧的 Quick chat 图标。
 
+权限、个性、自定义指令和追问是排队还是立刻打断，写在 [Codex 桌面端协作设置](../10-配置模型与权限安全/02-Codex桌面端协作设置.md)。这篇不重复那些开关，只讲一件任务从哪里开始、怎么并行、怎么验收。
 
+## 选工作位置
 
+官方把工作位置分成几类。
 
-Codex 桌面版最早只上线 Mac 平台（2026 年 8 月），那批截图就是当时录的。可视化界面用起来确实方便，多个线程可以独立工作互不影响，Skill 管理也比较直观，还新增了定时任务功能。
+**ChatGPT 项目。** 适合会持续做、会产出多份结果、或者要共用同一批文件和说明的工作。项目里有 Chats 和 Sources。项目说明对其中的对话都生效。这种项目不能直接读电脑上的文件夹，需要的材料要上传或连接进来。
 
-![Codex 桌面端任务界面 1](图片素材/08-Codex桌面端任务工作流/01-Codex桌面版来了比我想象中要好得多-01.jpg)
+**本地项目。** 给对话访问电脑上的一个或多个文件夹，例如一份代码库。添加或修改文件夹：打开项目菜单，选 Edit project，用 Add folder 挂上多个文件夹。每个挂上的文件夹，ChatGPT 都可以读和改。把其中一个标成 Make primary，新对话就从主文件夹开始。Codex 也用主文件夹做 Git 操作，并在这里自动发现 `AGENTS.md`、skills 和 `config.toml`。次要文件夹仍可搜索、阅读和编辑，但不会自动发现那些项目文件。远程项目目前只支持一个文件夹。
 
-下载地址：  ** openai.com/codex  ** Windows 版本后来也已经上线；如果你在 Windows 上，直接装当前版本即可。
+无关的工作拆成不同项目，避免每个对话都能碰到整个仓库。审查窗可以显示同一项目里多个仓库的改动。Pull request 和 worktree 操作针对主仓库。在 worktree 里开始的对话，其他文件夹仍然挂着。
 
-当时是限时福利：Free 和 Go 用户也能用。这项福利后来变成了长期政策，Free 和 Go 套餐现在默认包含 Codex。
+项目和 worktree 只负责把工作分开。命令能读什么、改什么、能不能上网，仍由沙箱决定。
 
-官方博客当时写的是“For a limited time we're including Codex with ChatGPT Free and
-Go”。现在已经不需要赶这个窗口期，Free 和 Go 都能直接使用 Codex。
+**不建项目。** 在 Codex 里，Recents 旁边的 New chat 可以不带项目开始。适合一次性、不需要共享项目文件和说明的工作。
 
-![Codex 桌面端任务界面 2](图片素材/08-Codex桌面端任务工作流/02-Codex桌面版来了比我想象中要好得多-02.jpg)
+**Quick chat。** 打开的是普通 ChatGPT 对话，不会出现在 Codex 侧栏。快捷键是 macOS 的 Cmd+Option+N，Windows 和 Linux 的 Ctrl+Alt+N。
 
-官网文档：https://openai.com/zh-Hans-CN/index/introducing-the-codex-app/
+CLI 和 IDE 没有桌面应用这份 Projects 视图。CLI 把启动目录当作项目，也可以用 `codex --cd`。IDE 把当前打开的文件夹或工作区当作项目。
 
-通常一手信息是最有价值的。
+## 并行处理多个任务
 
-![Codex 桌面端任务界面 3](图片素材/08-Codex桌面端任务工作流/03-Codex桌面版来了比我想象中要好得多-03.jpg)
+官方的做法是：一个明确结果开一个对话。项目负责把相关对话放在一起，每个对话保留自己的记录。
 
-##  智能体的指挥中心
+可以同时跑多个对话。不要让两个对话同时改同一批文件。写代码时，用 worktree 给并行对话各自一份检出。Goal 的并行规则相同：每个对话有自己的目标和结果。细节见 [Codex Goal 模式](../11-自动化与高级工作流/05-Codex使用Goal模式运行长任务.md)。
 
-Codex Desktop 的核心优势在于并行工作流管理。你可以同时运行多个独立的 Agent 线程，一个查
-bug，一个讨论需求，一个策划活动，切换起来很流畅。
+把相关对话留在侧栏里的办法，文档写的是：
 
-在 CLI 版本里需要开多个终端窗口才能实现。可视化界面让任务状态一目了然，对非技术人员或者不熟悉命令行的人来说更友好。
+- 固定项目，或从 Projects 视图固定。
+- 固定经常回去的对话。
+- 用结果来命名，例如 “Checkout accessibility review”。
+- 在 Projects 视图里搜索项目。从侧栏打开 Search chats，按一句原话或分支名找旧对话。Search chats 没有默认快捷键，可以在 Settings > Keyboard Shortcuts 里指定。
+- 做完后归档对话。项目菜单里的 Archive chats 会把该项目的对话一起归档。
 
-![Codex 桌面端任务界面 4](图片素材/08-Codex桌面端任务工作流/04-Codex桌面版来了比我想象中要好得多-04.jpg)
+固定只改变侧栏位置，不增加上下文，也不改变 Codex 能访问的文件。已归档的对话从 Settings > Archived chats 恢复。同一篇文档的另一段把恢复路径写成 Settings > Data Controls > Archived chats。两处措辞不一样，以你当前版本的设置页为准。
 
-相比 Claude Code，Codex Desktop 更侧重于项目级的任务编排和可视化管理，而 Claude Code 在 IDE
-集成和代码编辑体验上更深入。两者都支持 Skills 和 MCP，但使用场景有所不同。
+## Plan 模式和 Goal
 
-##  Skills 管理界面
+长任务先写清结果、约束和怎样算做完。相关步骤留在同一个对话里，Codex 才能用同一份上下文决定下一步，以及何时停止。
 
-桌面版提供了可视化的 Skills 管理界面，所有已安装的 Skill 都在这里。我平时用 Claude Code
-比较多，所以这边只有两个元技能。下面有很多官方推荐的 Skill，可以一键安装。
+官方文档写明，在桌面应用、Codex CLI 和 IDE 扩展里都可以输入 `/goal`。目标文本既是第一条提示，也是完成标准。
 
-![Codex 桌面端任务界面 5](图片素材/08-Codex桌面端任务工作流/05-Codex桌面版来了比我想象中要好得多-05.jpg)
+结果还不清楚时，先用 `/plan`，让它问你问题、列出约束，再收成一条带可检查标准的目标，然后用 `/goal` 开始。
 
-比如 Figma Skill，让 Codex 能直接读取 Figma 设计稿，自动生成 React + Tailwind 代码，还会校验是否 1:1 还原。
+完成标准尽量包含三样：
 
-简单说下这两个核心 Skill：
+| 要素 | 写什么 |
+|---|---|
+| 结果 | 要得到的东西，而不是只写“去改一下” |
+| 约束 | 必须用的工具、不能动的边界、兼容要求 |
+| 验证 | 测试、测量或审查标准 |
 
-  * ** Skill Creator  ** ：用来创建自定义技能。官方提供了十几个现成技能，你也可以用 Skill Creator 自己做一个。
-  * ** Skill Installer  ** ：从官方仓库安装技能。点右下角的 Try 按钮，它会开一个新对话，然后你可以问它"有什么可以安装的技能？"（其实都是从 OpenAI 官方技能库拉取的，和页面推荐的那些一样）
+桌面应用里，目标进度条在输入框上方，可以暂停、继续、编辑或清除目标。运行中也可以再发消息补充约束。想看进度解释、又不打断主对话时，用 side chat。预计要断网时先暂停，恢复后再继续。
 
-![Codex 桌面端任务界面 6](图片素材/08-Codex桌面端任务工作流/06-Codex桌面版来了比我想象中要好得多-06.jpg)
-![Codex 桌面端任务界面 7](图片素材/08-Codex桌面端任务工作流/07-Codex桌面版来了比我想象中要好得多-07.jpg)
+开始 Goal 不会放宽权限。沙箱和审批策略保持原样，需要决定时会停下来。
 
-##  定时任务
+本地长任务可以在设置里打开 Prevent sleep while running。文档这句话写的是让 Mac 保持清醒。通知或桌宠用来看对话是否在等输入、是否可以审查。
 
-这是 Desktop 的新功能，CLI 和 IDE 插件都没有。Automations 让 Codex 定时自动执行任务，比如每天早上自动分类 GitHub
-issues，每天下班前生成日报，定期检查 CI 是否挂了，定时扫描代码里的 bug。
+## 审查改动
 
-![Codex 桌面端任务界面 8](图片素材/08-Codex桌面端任务工作流/08-Codex桌面版来了比我想象中要好得多-08.jpg)
+本地改动用应用里的审查窗。官方写明，审查窗反映的是 Git 仓库的状态，不限于 Codex 刚改的文件，也包括你自己和其他未提交的改动。项目还不是 Git 仓库时，应用会提示先建仓库。
 
-官方提供了几个模板：
+默认看的是 Unstaged changes。还可以切换：
 
-模板  |  用途
----|---
-📅 扫描最近提交  |  检查 24h 内的 commit，找潜在 bug 并建议修复
-📄 生成周报  |  从已合并的 PR 生成 release notes
-🌤 Git 日报  |  总结昨天的 git 活动，用于站会汇报
-📈 CI 失败汇总  |  总结 CI 失败和不稳定测试，建议修复
-🏆 做个小游戏  |  创建一个简单的经典小游戏（有点好玩）
-🥜 技能建议  |  根据最近 PR 和 review 推荐该学什么
-📝 周更汇总  |  汇总本周 PR、发布、事故、review
-📈 性能回归检测  |  对比 benchmark，标记性能下降
-🔧 依赖漂移检测  |  检测依赖和 SDK 版本漂移，建议对齐
+| 范围 | 看什么 |
+|---|---|
+| Staged | Git 暂存区 |
+| Commit | 某一次提交 |
+| Branch | 相对基线分支的差异 |
+| Last turn | 最近一轮助手的改动 |
 
-比如 扫描最近提交 这个定时任务可以自定义这些：
+多个文件夹属于不同 Git 仓库时，审查标题栏可以切换仓库。Last turn 可以选择 All repos。Unstaged、Staged、Branch 作用在你选中的那个仓库。
 
-字段  |  作用
----|---
-Name  |  任务名称（Daily bug scan）
-Projects  |  选择要扫描的项目文件夹
-Prompt  |  任务指令（可以自定义）
-Schedule  |  执行时间：每天 09:00，可选周一到周日
-![Codex 桌面端任务界面 9](图片素材/08-Codex桌面端任务工作流/09-Codex桌面版来了比我想象中要好得多-09.jpg)
+在输入框输入 `/review`，可以选择相对基线分支审查，或审查未提交的改动。Codex 会给出按优先级排列的发现，并且不修改工作区。
 
-执行完会进入"待审队列"，你来最终确认。
+行内评论：在审查窗里悬停一行，点出现的加号，写下意见，再发一条消息说明意图，例如要求按这些评论做最小修改。评论本身是审查意见，跟一条消息 Codex 才会去处理。
 
-需要注意的是，定时任务需要电脑开着 + App（客户端） 开着才会执行，目前是 Beta 功能，可能有
-bug。官方博客提到未来会支持"云端触发"，就不用一直开着电脑了。
+暂存和还原可以作用在整份 diff、单个文件或单个 hunk。满意的部分暂存，不要的部分还原。同一个文件同时有暂存和未暂存的改动时，审查窗两边都会出现，这是 Git 的正常状态。
 
-![Codex 桌面端任务界面 10](图片素材/08-Codex桌面端任务工作流/10-Codex桌面版来了比我想象中要好得多-10.jpg)
+点击文件名通常会在你选定的编辑器里打开。按住 Command 再点一行，会打开那一行。默认编辑器在开发者设置里选。
 
-我这个检查了过去 24 小时的 git 历史，没有提交记录，所以没有可扫描的内容。遵守了 Grounding
-rules，没有造bug，没活干就老实说没活干，自动归档到 Archived。
+设置里还可以把 `/review` 改成 Detached，让审查另开一个对话。路径是 Settings > General > Code review。
 
-##  界面逻辑
+Pull request 用 Code Review 插件，和本地 `/review` 不是同一个入口。插件可以看描述、改动、评论和检查。GitHub 代码审查已正式提供。GitLab 合并请求支持在文档里标为预览。桌面应用自带 Code Review，可以从已安装插件把它固定到侧栏。在对话里审查不会自动在 GitHub 上发评论或合并，要你自己选择提交。
 
-Codex Desktop 的组织结构是：
+## 通知和长任务跟进
 
-项目（Project） └── 线程（Threads） └── 对话记录
+[Notifications](https://learn.chatgpt.com/docs/notifications) 写明，桌面通知在设置里选择：从不提示、只在 ChatGPT 在后台时提示，或总是提示。权限请求和提问可以单独开关。操作系统可能会再要一次通知权限。
 
-一个项目可以有多个线程，每个线程是一个独立任务，Automations 可以针对特定项目运行。
+Activity 可用时，侧栏的铃铛列出未读、正在跑、或在等你回复的对话。快捷键是 macOS 的 Cmd+Option+U，Windows 的 Ctrl+Alt+U。筛选可以包括 Work、Chat、Pinned 和 Scheduled，视当前界面而定。
 
-![Codex 桌面端任务界面 11](图片素材/08-Codex桌面端任务工作流/11-Codex桌面版来了比我想象中要好得多-11.jpg)
-![Codex 桌面端任务界面 12](图片素材/08-Codex桌面端任务工作流/12-Codex桌面版来了比我想象中要好得多-12.jpg)
+macOS 上的浮动桌宠也可以在你使用其他应用时显示 Running、Needs input、Ready 或 Blocked。把窗口拍进对话用的是 Appshots，见 [Codex Appshots](./18-Codex-Appshots-把当前应用窗口发给对话.md)。
 
-比如三个任务同时进行：一个查 bug、一个讨论需求、一个策划活动，切换起来比较流畅。
+IDE 扩展没有单独的通知开关。要在回合结束时跑外部程序，在连接的 Codex 主机上配置 `notify`。
 
-##  实用的设置项
+## 定时任务入口
 
-** 防休眠模式  ** ：开启后，Codex 跑任务时电脑不会自动休眠。跑个长任务出去倒杯水，回来不用担心电脑睡着了任务断掉。
+侧栏里的 Scheduled 是定时任务的收件箱。有发现的运行会出现在这里，未读标记表示需要看。
 
-** 追问排队  ** ：当 AI 还在执行任务时，你发的新消息会自动排队等候，不会打断它。想到什么随时补充，不用等它跑完再说。
+官方文档现在的名称是 Scheduled tasks。创建和管理在 ChatGPT 网页或桌面应用里。CLI 和 IDE 扩展都没有这份管理界面，只适合先试提示词、Skill 或工作区。
 
-![Codex 桌面端任务界面 13](图片素材/08-Codex桌面端任务工作流/13-Codex桌面版来了比我想象中要好得多-13.jpg)
+桌面应用里，定时任务可以针对本地项目，跑在项目目录或隔离的 worktree 里。需要读本地文件时，电脑要开着，应用也要开着。Git 仓库可以选择本地目录或新 worktree。worktree 把定时改动和你正在改的文件分开。直接跑在本地项目里时，它可能改到你还在编辑的文件。没有版本控制的项目，任务直接跑在项目目录。
 
-** Personality 切换  ** ：输入  ` /personality  ` 可以切换两种风格：
+两种用法：
 
-  * Friendly：解释详细，像个耐心的同事
-  * Pragmatic：废话少说，直接给答案
+- 独立任务：每次运行新开一个对话，结果进 Scheduled。适合各次互不依赖，或一个任务要扫多个项目。
+- 对话内任务：回到同一个对话，带着已有上下文。适合盯住一次还没结束的操作，或按固定节奏继续审查。
 
-![Codex 桌面端任务界面 14](图片素材/08-Codex桌面端任务工作流/14-Codex桌面版来了比我想象中要好得多-14.jpg)
+自定义周期可以编辑 RFC 5545 的 RRULE，文档举例是 `RRULE:FREQ=MONTHLY;BYMONTHDAY=1;BYHOUR=9;BYMINUTE=0`。
 
-写代码赶进度选 Pragmatic，学习探索选 Friendly。很多人吐槽 AI 话太多，现在可以自己选了。
+事件触发（Gmail、Slack、GitHub）在网页和移动端的符合条件套餐上提供。文档写明桌面应用、CLI 和 IDE 扩展都不能用事件触发。
 
-** MCP 生态  ** ：可以一键连接 Linear、Notion、Figma 等常用工具，让 AI 直接操作你的项目管理、设计稿、文档。
+定时任务无人值守，使用你的默认沙箱。文档建议从能完成任务的最小权限开始。组织若禁止 `approval_policy = "never"`，任务会退回你所选权限模式的审批行为。
 
-** Custom instructions  ** ：可以写一段"人设"，比如"我习惯用 TypeScript + React"，Codex 会记住。
+如果已有定时任务还指向 GPT-5.5，官方写明要改成套餐和工作区提供的 `gpt-6.1-sol`（GPT-6.1 Sol）。这条退役适用于用 ChatGPT 登录的 Codex。用 API 密钥的会话不在这条之内。
 
-![Codex 桌面端任务界面 15](图片素材/08-Codex桌面端任务工作流/15-Codex桌面版来了比我想象中要好得多-15.jpg)
+创建、worktree 和 `codex exec` 的分工，见 [Codex 定时任务](./06-Codex-Automations定时任务.md)。
 
-** 安全沙箱  ** ：Codex 默认在沙箱里执行，访问网络或修改工作区外的文件需要手动批准。Settings 里可以调整 Sandbox mode 和
-Approval policy，根据自己的使用场景选择合适的安全级别。
+## 插件和 Skill 从哪里装
 
-![Codex 桌面端任务界面 16](图片素材/08-Codex桌面端任务工作流/16-Codex桌面版来了比我想象中要好得多-16.jpg)
+官方插件文档写明：插件可以在 ChatGPT 网页、桌面和移动端的 Chat 与 Work 里用，也可以在桌面应用的 Codex 里用。Codex CLI 有插件浏览器，命令是在会话里输入 `/plugins`。IDE 扩展不支持插件。
 
-##  技术亮点
+桌面应用打开 Plugins 标签安装。装完后新开一个对话，插件带上的 Skill 和 MCP 工具才会出现。点名插件或 Skill 时，ChatGPT 的输入框文档写的是 `@`。Codex 里官方 Skills 文档写的是 `$` 或 `/skills`。
 
-** Worktrees 隔离  ** ：多个 Agent 改同一个项目也不会冲突。Codex 使用 Git worktrees 技术，为每个 Agent
-创建独立的工作目录，避免了并行任务之间的文件冲突。这在多线程开发场景下很实用。
+第三方 Skill 包要用 CLI 的 marketplace 命令安装时，按那个仓库自己的说明做，并新开会话。一个例子是 [安装 agent-skills 插件](../09-MCP与外部工具/09-Codex安装agent-skills插件-25个工程Skill怎么用.md)。不要把某次旧界面里的 Skill Installer 按钮当成现在的唯一入口。那套截图已经不在本文里。
 
-** 跨端同步  ** ：Desktop 会读取你 CLI 和 IDE 插件的历史记录和配置，无缝衔接。不需要重新配置，直接继承之前的工作环境。
+## 和设置篇的分工
 
-如果你想让多个 Agent 并行干活，或者需要设置定时任务自动巡检代码，桌面版的体验确实更好。
+| 你要做的事 | 看哪篇 |
+|---|---|
+| 选 ChatGPT 还是 Codex、写自定义指令、调个性、收紧权限、决定追问是否排队 | [桌面端协作设置](../10-配置模型与权限安全/02-Codex桌面端协作设置.md) |
+| 选项目或文件夹、并行开对话、写 Goal、审查 diff、看通知、建定时任务 | 本文 |
+| 把别的应用窗口拍进对话 | [Appshots](./18-Codex-Appshots-把当前应用窗口发给对话.md) |
+| 定时任务的 RRULE、worktree 和 cron 分工 | [定时任务](./06-Codex-Automations定时任务.md) |
 
+## 常见问题
 
+**Linux 能用这套桌面流程吗？** 官方下载步骤包含 Linux。Appshots 那一页只写了 macOS 和 Windows，不要把 Appshots 的快捷键用到 Linux 上。定时任务需要本地文件时，同样要求电脑和应用保持打开，文档没有把 Linux 排除在桌面应用之外。
+
+**旧文说定时任务只有桌面版才有，CLI 完全不能参与。** 管理界面确实不在 CLI 和 IDE 里。CLI 仍可以先把提示词和 Skill 试出来，也可以用 `codex exec` 配系统的计划任务。两条路的差别见定时任务那篇。
+
+**审查窗里的文件和我自己改的混在一起。** 这是文档里的设计。它显示仓库里的未提交状态，不只显示 Codex 的编辑。用 Last turn 看最近一轮，或先暂存你要保留的部分。
+
+## 下一步
+
+长任务的完成标准写得更细，看 [Codex Goal 模式](../11-自动化与高级工作流/05-Codex使用Goal模式运行长任务.md)。权限开关回到 [桌面端协作设置](../10-配置模型与权限安全/02-Codex桌面端协作设置.md)。
+
+## 参考资料
+
+- [OpenAI：ChatGPT desktop app](https://learn.chatgpt.com/docs/app)
+- [OpenAI：Projects and chats](https://learn.chatgpt.com/docs/projects)
+- [OpenAI：Long-running work](https://learn.chatgpt.com/docs/long-running-work)
+- [OpenAI：Code review](https://learn.chatgpt.com/docs/code-review)
+- [OpenAI：Notifications](https://learn.chatgpt.com/docs/notifications)
+- [OpenAI：Scheduled tasks](https://learn.chatgpt.com/docs/automations)
+- [OpenAI：Plugins](https://learn.chatgpt.com/docs/plugins)
