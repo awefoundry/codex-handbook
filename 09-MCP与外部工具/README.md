@@ -23,3 +23,4 @@
 ## 已上线文章
 
 - [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 安装 Google EGM 插件：先写设计文档，再让零上下文子代理审稿](./10-Codex安装Google-EGM插件-设计文档与子代理审稿.md)
