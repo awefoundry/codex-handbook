@@ -23,3 +23,4 @@
 ## 已上线文章
 
 - [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)

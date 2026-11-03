@@ -14,7 +14,7 @@
 |---|---|---|
 | 1 | [安装路线总览](./01-安装路线总览.md) | 待编写 |
 | 2 | [macOS 安装 Codex App：下载、安装、首次登录与进入 Codex 工作区](./02-macOS安装Codex-App.md) | 已收入 |
-| 3 | [Windows 安装 Codex App](./03-Windows安装Codex-App.md) | 已上线 |
+| 3 | [Windows 安装 Codex App（2026-11 更新）：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选](./03-Windows安装Codex-App.md) | 已上线 |
 | 4 | [macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式](./04-macOS安装Codex-CLI.md) | 已收入 |
 | 5 | [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
 | 6 | [VS Code 和兼容编辑器安装 Codex](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
@@ -32,19 +32,20 @@
 | 13 | [安装登录常见问题](./13-安装登录常见问题.md) | 持续补充，已发布 |
 | 14 | [Codex CLI 斜杠命令与快捷键](./14-斜杠命令与快捷键.md) | 已发布 |
 | 15 | [从 Claude Code 或 Cursor 迁移到 Codex：用 /import 导入配置与对话](./15-从Claude-Code或Cursor迁移到Codex-用import导入配置与对话.md) | 已收入 |
+| 17 | [Codex App Linux 版安装教程：Ubuntu、Debian、Fedora 和 Arch 的装法、更新与限制](./17-Linux安装Codex-App-Ubuntu-Debian-Fedora与Arch.md) | 已上线 |
 
 ## 按入口阅读
 
 ### 使用 Codex App
 
 1. 先看安装路线总览。
-2. 根据系统选择 macOS 或 Windows 安装教程。
+2. 根据系统选择 macOS、Windows 或 Linux 安装教程。
 3. 完成登录、打开本地项目和第一次修改。
 
 ### 使用 Codex CLI
 
 1. 先看安装路线总览。
-2. 根据系统选择 macOS，或 Windows 与 WSL 安装教程。
+2. 根据系统选择 macOS，或 Windows 与 WSL 安装教程。Linux 上的 CLI 安装命令写在 [Linux 版 Codex App](./17-Linux安装Codex-App-Ubuntu-Debian-Fedora与Arch.md) 的“和 CLI 怎么选”一节。
 3. 完成登录、打开本地项目和第一次修改。
 
 ### 使用 IDE
