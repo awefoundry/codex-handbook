@@ -36,7 +36,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-cobol-legacy-migration](https://codexguide.io/guides/codex-cobol-legacy-migration)
 
-> 核对依据：OpenAI 官方文章 [Advancing coding in low-resource programming languages](https://openai.com/index/low-resource-programming-languages/)（页面日期 2026-10-19）；开源评测 [openai/MultiLangBench](https://github.com/openai/MultiLangBench) README；模型入口 [learn.chatgpt.com/docs/models](https://learn.chatgpt.com/docs/models)；GnuCOBOL 官网编译器说明。**文中评测数字均为 OpenAI 厂商自测，已逐项标注。**「我的用法」是落地工作流，不是官方规定。本预览**未**在本机跑通 GnuCOBOL 端到端迁移（`client_validation_pending: true`），示例程序与命令仅作可照抄的流程模板。
+> 核对依据：OpenAI 官方文章 [Advancing coding in low-resource programming languages](https://openai.com/index/low-resource-programming-languages/)（页面日期 2026-10-19）；开源评测 [openai/MultiLangBench](https://github.com/openai/MultiLangBench) README；模型入口 [learn.chatgpt.com/docs/models](https://learn.chatgpt.com/docs/models)；GnuCOBOL 官网编译器说明。**文中评测数字均为 OpenAI 厂商自测，已逐项标注。**「我的用法」是落地工作流，不是官方规定。本预览**未**在本机跑通 GnuCOBOL 端到端迁移，示例程序与命令仅作可照抄的流程模板。
 
 把 COBOL 迁到 Java、Python 或 Rust，表面像「换语法」，实际风险在别处：定点数怎么截断、缺记录怎么处理、报表空格和换行是否一致。OpenAI 在 2026-10-19 的文章里强调：这类低资源语言训练语料少，但支撑大量关键业务；无论修 Bug 还是跨语言迁移，都要**保住系统依赖的行为**。
 
@@ -300,7 +300,7 @@ MultiLangBench 显示 Fortran、Visual Basic 随 GPT-6 Astra 同样大幅上升�
 2. **近饱和 ≠ 你的近饱和：** 官方写 nearly saturating 的是**该评测**；生产系统有中间件、JCL、编码页、联机协议与未文档化规则。
 3. **专家复核不能省：** 原文明确要求 expert review，并按业务规则与依赖测试。
 4. **金样例治理：** 谁有权改 fixtures，要走变更单；否则「对拍通过」会失去意义。
-5. **本预览未实跑 GnuCOBOL：** 合并进知识库前，建议在真实小程序上走通「录基线 → 迁移 → `cmp`」并更新 `verified_on`／去掉 `client_validation_pending`。
+5. **本预览未实跑 GnuCOBOL：** 合并进知识库前，建议在真实小程序上走通「录基线 → 迁移 → `cmp`」并更新 `verified_on`。
 
 ## 接下来读什么
 

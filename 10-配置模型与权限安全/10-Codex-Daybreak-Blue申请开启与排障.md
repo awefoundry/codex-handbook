@@ -159,7 +159,7 @@ Daybreak 是 OpenAI 的 Trusted Access for Cyber 计划，下面分 Blue 和 Red
 
 ## 相关阅读
 
-- [Codex 沙箱与主机权限风险](./08-Codex沙箱与主机权限风险.md)
+- [Codex 沙箱与主机权限风险](./05-Codex沙箱与主机权限风险.md)
 - [权限、沙箱和审批](https://codexguide.io/guides/codex-quan-xian-sha-xiang-yu-shen-pi)
 - [Codex 模型和推理强度怎么选](https://codexguide.io/guides/codex-model-reasoning-effort)
 

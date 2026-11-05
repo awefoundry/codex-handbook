@@ -1,3 +1,10 @@
+---
+title: "Windows 安装 Codex App：从下载到确认可用"
+description: "这篇教程介绍如何在 Windows 上安装 ChatGPT 桌面应用，并使用其中的 Codex。目前，Codex 已经集成到 ChatGPT 桌面应用中，没有单独的 Windows 安装包。"
+date_published: 2026-07-12
+date_modified: 2026-08-12
+---
+
 # Windows 安装 Codex App：从下载到确认可用
 
 > 这篇教程介绍如何在 Windows 上安装 ChatGPT 桌面应用，并使用其中的 Codex。目前，Codex 已经集成到 ChatGPT 桌面应用中，没有单独的 Windows 安装包。

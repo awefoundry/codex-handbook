@@ -223,7 +223,7 @@ codex --cd pages --ask-for-approval never "Show which instruction files are acti
 
 ## 相关阅读
 
-- [Codex config.toml 深入配置](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
+- [Codex config.toml 深入配置](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [权限与安全边界](https://codexguide.io/advanced/permissions-security)
 - [从零创建 Codex Skill](https://codexguide.io/guides/create-codex-skill)
 - [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)

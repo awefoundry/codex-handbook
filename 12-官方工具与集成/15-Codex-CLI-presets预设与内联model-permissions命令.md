@@ -247,7 +247,7 @@ label = ""
 
 **内联 `/model` 提示模型不可用。** 报错以 `is unavailable. Use /model to see available models.` 结尾。模型名必须和 `/model` 选择器里显示的一致，不确定时先只输入 `/model` 打开选择器看一眼。
 
-**想让新会话默认用某个模型。** 内联 `/model` 做不到，要改 `config.toml` 的 `model` 和 `model_reasoning_effort`。见 [config.toml 配置指南](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
+**想让新会话默认用某个模型。** 内联 `/model` 做不到，要改 `config.toml` 的 `model` 和 `model_reasoning_effort`。见 [config.toml 配置指南](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
 
 ## 参考资料
 

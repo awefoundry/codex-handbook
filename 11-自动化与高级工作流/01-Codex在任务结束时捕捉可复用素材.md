@@ -76,7 +76,7 @@ Codex 每次开始工作前都会读 `AGENTS.md`。官方文档说明的读取�
 - 多个项目都要用，写在全局的 `~/.codex/AGENTS.md`，再让具体项目用更近的规则覆盖。
 - 项目规则会随仓库共享。个人内容规划、私有素材路径和账号信息不要提交到公共仓库，放在全局规则里更合适。
 
-`AGENTS.md` 的完整写法和继承关系见 [AGENTS.md 怎么写](../10-配置模型与权限安全/09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)。
+`AGENTS.md` 的完整写法和继承关系见 [AGENTS.md 怎么写](../10-配置模型与权限安全/07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)。
 
 ### 可以直接复制的规则
 
@@ -301,4 +301,4 @@ Codex 的 Memories 也会“记住”经验，但用途不同：
 - Codex 经常忘记收尾检查时，再加一个带开关文件、只续跑一次的 Stop Hook，并用 `/hooks` 审核信任。
 - 素材候选是给你看的记录，Memories 是给 Codex 召回用的，规则不要交给 Memories。
 
-想把收尾检查扩展成包含验证、记录和交接的完整流程，见 [Codex 任务收尾系统](./04-Codex任务收尾系统.md)；想把跑通的流程直接变成可复用的 Skill，见 [Codex 用 Record and Replay 生成可复用 Skill](../07-Skills实战/05-Codex用Record-and-Replay生成可复用Skill.md)。
+想把收尾检查扩展成包含验证、记录和交接的完整流程，见 [Codex 任务收尾系统](./06-Codex任务收尾系统.md)；想把跑通的流程直接变成可复用的 Skill，见 [Codex 用 Record and Replay 生成可复用 Skill](../07-Skills实战/05-Codex用Record-and-Replay生成可复用Skill.md)。

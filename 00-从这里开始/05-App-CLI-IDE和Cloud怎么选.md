@@ -1,3 +1,12 @@
+---
+title: "Codex App、CLI、IDE 和 Cloud 怎么选：按工作环境与任务方式判断"
+description: "这篇文章写给已经决定使用 Codex，却被 App、CLI、IDE extension 和 Cloud 几个入口弄糊涂的读者。"
+url: /guides/app-cli-ide-he-cloud-zen-me-xuan
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Codex App、CLI、IDE 和 Cloud 怎么选：按工作环境与任务方式判断
 
 > 本文在线版：[codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan](https://codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan)

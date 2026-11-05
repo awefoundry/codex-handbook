@@ -1,3 +1,12 @@
+---
+title: "Codex 只读调查：先把项目摸清楚再改代码"
+description: "面对复杂或高风险的任务，直接让 Codex 动手是最贵的做法。改错了要回滚，改多了要排查，而它本来可以先只做一件事：把项目摸清楚，把证据交给你，再由你决定改不改。"
+url: /guides/codex-zhi-du-diao-cha-xian-ba-xiang-mu-mo-qing-chu-zai-gai-dai-ma
+status: published
+date_published: 2026-08-28
+date_modified: 2026-10-12
+---
+
 # Codex 只读调查：先把项目摸清楚再改代码
 
 > 本文在线版：[codexguide.io/guides/codex-zhi-du-diao-cha-xian-ba-xiang-mu-mo-qing-chu-zai-gai-dai-ma](https://codexguide.io/guides/codex-zhi-du-diao-cha-xian-ba-xiang-mu-mo-qing-chu-zai-gai-dai-ma)

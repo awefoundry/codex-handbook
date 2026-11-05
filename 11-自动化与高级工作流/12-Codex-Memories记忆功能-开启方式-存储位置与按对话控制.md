@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-memories](https://codexguide.io/guides/codex-memories)
 
-> 核对依据：learn.chatgpt.com《Memories》、Developer commands（`/memories`）、Configuration Reference（`features.memories` 与 `memories.*`）（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复结论。本机未完整走通桌面端记忆 UI 与目录实拍，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com《Memories》、Developer commands（`/memories`）、Configuration Reference（`features.memories` 与 `memories.*`）（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复结论。本机未完整走通桌面端记忆 UI 与目录实拍。
 
 Codex 可以把以前对话里有用的信息带到之后的任务里。这个能力叫 **Memories（本地记忆）**，**默认关闭**。打开之后，它会在后台从**符合条件**的旧对话里抽出记忆文件；生成过程要调模型，**可能消耗额度**——即使你当时没有在打字。
 
@@ -53,9 +53,9 @@ Codex 可以把以前对话里有用的信息带到之后的任务里。这个�
 
 **Computer History**（文档说明为 macOS 桌面功能）会把允许范围内的应用与网站活动整理成记忆和时间线，供 ChatGPT／Codex 引用。删 Codex 记忆时，本机若提供该功能，会**一并清空 Computer History**（见后文删除一节）。
 
-![图一　ChatGPT 网页 Settings → Personalization 的「ChatGPT memory」开关（这是网页记忆，不是 Codex 本机 Memories；数字与开关状态仅为截图像例）](../图片素材/11-自动化与高级工作流/09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图二-ChatGPT网页记忆开关.png)
+![图一　ChatGPT 网页 Settings → Personalization 的「ChatGPT memory」开关（这是网页记忆，不是 Codex 本机 Memories；数字与开关状态仅为截图像例）](../图片素材/11-自动化与高级工作流/12-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图二-ChatGPT网页记忆开关.png)
 
-![图二　同一 Personalization 页里的 Custom instructions：ChatGPT 与 Codex 分行（Codex 指令跨桌面与网页同步；与本机 Memories 库是不同能力）](../图片素材/11-自动化与高级工作流/09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图三-Personalization中的Codex自定义指令入口.png)
+![图二　同一 Personalization 页里的 Custom instructions：ChatGPT 与 Codex 分行（Codex 指令跨桌面与网页同步；与本机 Memories 库是不同能力）](../图片素材/11-自动化与高级工作流/12-Codex-Memories记忆功能-开启方式-存储位置与按对话控制/图三-Personalization中的Codex自定义指令入口.png)
 
 
 **不是什么：**
@@ -78,7 +78,7 @@ Codex 可以把以前对话里有用的信息带到之后的任务里。这个�
 
 同一页还有 **Delete Codex memories**（确认后重置本机记忆库；见后文）。
 
-![图三　Codex 桌面端 Settings → 个性化：启用本地记忆（Codex Memories）及相关开关（自定义指令内容已打码）](../图片素材/10-配置模型与权限安全/02-Codex桌面端协作设置/02-自定义指令与Memories.png)
+![图三　Codex 桌面端 Settings → 个性化：启用本地记忆（Codex Memories）及相关开关（自定义指令内容已打码）](../图片素材/10-配置模型与权限安全/03-Codex桌面端协作设置/02-自定义指令与Memories.png)
 
 同一页若还出现 **Chronicle Research Preview** 等开关，以你客户端当前可见项为准；本文只覆盖 Memories 相关开关，不展开该预览功能。
 

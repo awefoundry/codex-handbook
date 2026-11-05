@@ -1,3 +1,12 @@
+---
+title: "Codex 适合哪些人：判断标准、典型场景与学习起点"
+description: "判断自己是否适合 Codex，不先看职业名称，而看你要完成的任务：它是否依赖真实的代码、文件、配置或仓库，是否需要 AI 在项目里采取行动，以及结果能否被你或团队检查。"
+url: /guides/codex-shi-he-na-xie-ren
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-26
+---
+
 # Codex 适合哪些人：判断标准、典型场景与学习起点
 
 > 本文在线版：[codexguide.io/guides/codex-shi-he-na-xie-ren](https://codexguide.io/guides/codex-shi-he-na-xie-ren)

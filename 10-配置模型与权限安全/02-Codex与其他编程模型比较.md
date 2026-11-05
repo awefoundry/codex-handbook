@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-21
 date_modified: 2026-10-22
-client_validation_pending: false
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex
 keywords: [Codex vs Claude Code, GPT-6.1 Sol, Claude Code, Astra, Luna, 编程助手怎么选]
