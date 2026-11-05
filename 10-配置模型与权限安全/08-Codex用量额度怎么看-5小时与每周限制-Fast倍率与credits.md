@@ -17,11 +17,11 @@ order: 10
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-10-22
+date_modified: 2026-11-05
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting
 keywords: [Codex 用量, Codex 额度, usage limits, Fast mode, credits]
-related: [model-at-capacity-usage-reset]
+related: [model-at-capacity-usage-reset, codex-pro-business-premium-usage-increase]
 faq:
   - q: 为什么周额度还很多，却先碰到 5 小时限制？
     a: 两档并存时，两边都要有剩余才能继续用共享池。5 小时窗管短窗口内能用多少，可能在周额度仍充足时先耗尽。打开 Settings → Usage 看是哪一档到了、下次何时刷新。
@@ -42,6 +42,8 @@ faq:
 1. **我到底还有多少可以用？**
 2. **为什么「只发了几条」就掉这么快？**
 3. **要不要买 credits，还是被多扣了？**
+
+2026-10-29 起，Pro 与 Business Premium 的 Work / Codex 内含额度有一次上调，各档差在哪见 [用量上调](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)。本文仍讲面板怎么读，不重复那次调整。
 
 本文只解决「怎么读额度、倍率怎么算、觉得不对怎么查」。若界面是 **Selected model is at capacity**、或要分清容量满／额度用尽／重置类型，见姊妹篇《[Codex「Selected model is at capacity」与额度重置](https://codexguide.io/guides/codex-model-at-capacity-usage-reset)》（知识库路径 `15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md`）。
 

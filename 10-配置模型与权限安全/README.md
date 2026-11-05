@@ -28,6 +28,8 @@
 - [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
 - [Codex 防范 AGENTS.md 投毒：别在 Downloads 目录启动，5 分钟自查 config.toml 和 MCP](./15-Codex防范AGENTS.md投毒-Downloads目录风险与config.toml自查.md)
 - [Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)
+- [Codex 用量上调：Pro 100 和 Pro 500 翻倍、Pro 200 取消降额、Business Premium 也在内，怎么确认你的额度变了](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)
+- [Codex 网页搜索设置：cached、indexed、live、disabled 怎么选，--search 单次联网，allowed_domains 限定站点](./18-Codex网页搜索设置-cached-indexed-live与allowed_domains.md)
 - [Codex IDE 扩展安全自查：Cursor 扩展市场出现 Claude Code 后门后，怎么确认你装的是官方 openai.chatgpt](./19-Codex-IDE扩展安全自查-确认官方openai.chatgpt与扩展投毒防范.md)
 - [Codex 和 ChatGPT 用量合并：12 月起 Plus、Pro、Business 共用额度](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)
 - [Codex 内置浏览器本地文件读取风险：EMBRACE 漏洞修复前，别打开不可信的本地 HTML](./21-Codex内置浏览器本地文件读取风险-EMBRACE自查与防护.md)

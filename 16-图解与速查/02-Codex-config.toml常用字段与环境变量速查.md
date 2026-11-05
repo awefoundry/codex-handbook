@@ -17,7 +17,7 @@ order: 2
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-28
-date_modified: 2026-10-28
+date_modified: 2026-11-05
 verified_on: 2026-10-28
 tested_cli_version: 0.165.0
 official_ref: https://learn.chatgpt.com/docs/config-file/config-reference
@@ -104,7 +104,7 @@ in `sandbox_mode`
 | `web_search` | `cached`（默认）、`indexed`、`live`、`disabled` | 网页搜索模式。用 `--yolo` 等完全放开的设置时默认变成 `live` |
 | `windows.sandbox` | `mxc`、`elevated`、`unelevated` | Windows 原生沙箱实现 |
 
-沙箱和审批怎么搭配，见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
+沙箱和审批怎么搭配，见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。`web_search` 的四种模式、`--search` 和 `allowed_domains` 见 [网页搜索设置](../10-配置模型与权限安全/18-Codex网页搜索设置-cached-indexed-live与allowed_domains.md)。
 
 ## 项目信任与 AGENTS.md
 
@@ -212,6 +212,8 @@ Memories 详见 [Codex Memories 记忆功能](../11-自动化与高级工作流/
 | `RUST_LOG` | 日志详细程度，如 `debug`、`codex_core=debug` |
 | `CODEX_NON_INTERACTIVE` | 官方安装脚本跳过交互提问 |
 | `CODEX_INSTALL_DIR` | 官方安装脚本把 `codex` 装到哪 |
+
+`CODEX_ACCESS_TOKEN` 怎么创建、和 API Key 怎么选、为什么不能放进 fork 的 pull request，见 [访问令牌与服务账号](../11-自动化与高级工作流/14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)。
 
 `CODEX_HOME` 指向不存在的目录时，0.165.0 实测直接退出：
 
