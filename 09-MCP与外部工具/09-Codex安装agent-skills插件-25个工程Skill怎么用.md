@@ -41,7 +41,7 @@ faq:
 
 agent-skills 把软件工程里反复做的一类动作写成 Skill：写规格、拆任务、按测试实现、审查、加固、准备上线。它不是 OpenAI 的产品。作者是 Addy Osmani，许可证是 MIT，仓库简介是 “Production-grade engineering skills for AI coding agents”。
 
-和 [Superpowers](../08-插件工作流/06-Codex安装Superpowers插件-需求计划TDD工作流.md) 的差别在粒度。Superpowers 把“先问清需求、再写计划、测试先行”收成一套流程。agent-skills 按环节拆开，你可以点名其中一个，也可以让 Codex 按描述自己选。
+和 [Superpowers](../08-插件工作流/07-Codex安装Superpowers插件-需求计划TDD工作流.md) 的差别在粒度。Superpowers 把“先问清需求、再写计划、测试先行”收成一套流程。agent-skills 按环节拆开，你可以点名其中一个，也可以让 Codex 按描述自己选。
 
 ## 安装前先看这几项
 
@@ -200,7 +200,7 @@ agent-skills@agent-skills  installed, enabled  0.6.14   <marketplace 路径>
 - 不要把密钥、客户数据写进 Skill 或 `AGENTS.md`。
 - 浏览器类 Skill 会再依赖 MCP。MCP 的权限按那个服务器自己的配置，不因为这个插件是 MIT 就自动安全。
 
-想用扫描工具看第三方 Skill 时，可以先看知识库里已有的 [HOL Guard 插件安全检查](../13-社区生态与项目评测/01-Codex插件安全检查-HOL-Guard.md)。那是另一个第三方项目，不是这次安装的一部分。
+想用扫描工具看第三方 Skill 时，可以先看知识库里已有的 [HOL Guard 插件安全检查](../13-社区生态与项目评测/02-Codex插件安全检查-HOL-Guard.md)。那是另一个第三方项目，不是这次安装的一部分。
 
 ## 更新和卸载
 
@@ -227,7 +227,7 @@ codex plugin marketplace remove agent-skills
 
 ## 下一步
 
-想先做一条自己的 Skill，而不是装一整套，从 [从零创建 Codex Skill](../07-Skills实战/04-从零创建Codex-Skill.md) 开始。想要一套固定的需求到测试流程，看 [Superpowers](../08-插件工作流/06-Codex安装Superpowers插件-需求计划TDD工作流.md)。
+想先做一条自己的 Skill，而不是装一整套，从 [从零创建 Codex Skill](../07-Skills实战/04-从零创建Codex-Skill.md) 开始。想要一套固定的需求到测试流程，看 [Superpowers](../08-插件工作流/07-Codex安装Superpowers插件-需求计划TDD工作流.md)。
 
 ## 参考资料
 

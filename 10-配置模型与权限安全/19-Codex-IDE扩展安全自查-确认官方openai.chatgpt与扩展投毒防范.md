@@ -195,7 +195,7 @@ VS Code 默认会更新扩展。文档写明：
 - 安装前看标识符 `openai.chatgpt` 和已验证发布者，不按搜索结果里的名字“Codex”点击。
 - 扩展详情里的版本，和 Marketplace 或 Open VSX 上的当前版本对一下。对不上就先不要启用。
 - 本机用 `code --list-extensions --show-versions` 留一份记录，更新后再对一次。
-- 第三方 Skill、插件和 MCP 另有权限边界。扩展市场事件不会把沙箱风险一起解释完，见 [Codex 沙箱与主机权限](./08-Codex沙箱与主机权限风险.md) 和 [用 HOL Guard 做插件安全检查](../13-社区生态与项目评测/01-Codex插件安全检查-HOL-Guard.md)。
+- 第三方 Skill、插件和 MCP 另有权限边界。扩展市场事件不会把沙箱风险一起解释完，见 [Codex 沙箱与主机权限](./05-Codex沙箱与主机权限风险.md) 和 [用 HOL Guard 做插件安全检查](../13-社区生态与项目评测/02-Codex插件安全检查-HOL-Guard.md)。
 - 密钥、令牌不要放进 Codex 对话。自查时也不要把 `authorized_keys` 全文贴到聊天里。
 
 ## 常见问题

@@ -34,7 +34,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-serena-codebase-memory-mcp](https://codexguide.io/guides/codex-serena-codebase-memory-mcp)
 
-> 核对依据：oraios/serena README 与 [Codex 客户端说明](https://oraios.github.io/serena/02-usage/030_clients.html)、CHANGELOG（含 v2.0.0／v2.1.0）；DeusData/codebase-memory-mcp README（含 Quick Start、Multi-Agent Support、Performance、MCP Tools）；Codex 官方 MCP 扩展文档中的 `mcp_servers.*`／`startup_timeout_sec`／`enabled_tools`。文中「我的用法」是操作建议，不是官方规定。**本文未在同一真实仓库做「无 MCP／Serena／codebase-memory-mcp」对照实测**；厂商自测的 token 数字只作出处引用，不当作本站数据。`client_validation_pending: true`。
+> 核对依据：oraios/serena README 与 [Codex 客户端说明](https://oraios.github.io/serena/02-usage/030_clients.html)、CHANGELOG（含 v2.0.0／v2.1.0）；DeusData/codebase-memory-mcp README（含 Quick Start、Multi-Agent Support、Performance、MCP Tools）；Codex 官方 MCP 扩展文档中的 `mcp_servers.*`／`startup_timeout_sec`／`enabled_tools`。文中「我的用法」是操作建议，不是官方规定。**本文未在同一真实仓库做「无 MCP／Serena／codebase-memory-mcp」对照实测**；厂商自测的 token 数字只作出处引用，不当作本站数据。
 
 入门篇讲怎么接 MCP、怎么登录、怎么收紧权限（《[Codex MCP 入门](./01-Codex-MCP入门-config与mcp-login.md)》）。常用官方示例七项怎么选，见《[Codex 常用 MCP 推荐](./02-Codex常用MCP服务器推荐-官方示例7个怎么选.md)》。连不上／没有工具／OAuth 失败，见《[Codex MCP 排障](./03-Codex-MCP排障-连不上-没有工具与OAuth登录失败.md)》。
 
@@ -202,7 +202,7 @@ codebase-memory-mcp uninstall
 
 选题要求的对照是：同一仓库、同一任务，比较「不用代码智能 MCP／只用 Serena／只用 codebase-memory-mcp」的 token 与准确度。本预览环境**没有**做这次 bake-off，因此：
 
-- frontmatter 已设 `client_validation_pending: true`
+- 本篇没有同仓实测
 - **不编造**本站测得的 token、耗时、召回率
 - 不放假截图
 
@@ -257,6 +257,6 @@ codebase-memory-mcp uninstall
 1. 大仓库里，纯搜索＋读文件容易漏引用、堆 token；代码智能 MCP 提供符号／图结构视图。
 2. **Serena** = LSP（或 JetBrains）驱动的符号检索与编辑；Codex 用 `serena setup codex` 或手写 `start-mcp-server --context=codex`；App 记得激活项目；注意 GPL 与不受信任仓库策略。
 3. **codebase-memory-mcp** = 本地持久化知识图谱 + 调用链／影响面查询；装前审 `install.sh`，装后用 `/hooks` 信任，并弄清它改了 config／AGENTS 指针／skill。
-4. 厂商 token 对比只能当参考；本篇未做同仓实测，发布前建议按上文协议自测后再去掉 `client_validation_pending`。
+4. 厂商 token 对比只能当参考；本篇未做同仓实测，发布前建议按上文协议自测后再把实测结论补回本文。
 5. 一次只开一个代码智能 MCP，用 `enabled_tools` 裁工具，比「全装上再祈祷模型会选对」更稳。
 

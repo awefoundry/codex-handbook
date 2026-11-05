@@ -1,3 +1,12 @@
+---
+title: "用开源 img-convert Skill 批量压缩图片"
+description: "整理文章配图时，我经常重复做几件事。限制图片宽度，转成 WebP，控制文件大小，最后确认原图没有被覆盖。这个流程已经有人做成了开源工具和 Skill，没必要从零写一套。"
+url: /cases/img-convert-pi-liang-ya-suo-tu-pian
+status: published
+date_published: 2026-08-17
+date_modified: 2026-10-12
+---
+
 # 用开源 img-convert Skill 批量压缩图片
 
 > 本文在线版：[codexguide.io/cases/img-convert-pi-liang-ya-suo-tu-pian](https://codexguide.io/cases/img-convert-pi-liang-ya-suo-tu-pian)

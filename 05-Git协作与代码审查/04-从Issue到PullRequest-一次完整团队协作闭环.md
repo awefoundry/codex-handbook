@@ -1,3 +1,10 @@
+---
+title: "从 Issue 到 Pull Request，一次完整的团队协作闭环"
+description: "一条 Issue 交到开发者手里，最后应该留下什么？至少要有一条能追溯的路径，需求写清楚，工作从正确基线开始，改动在独立分支里完成，测试和 diff 有证据，Pull Request 能让别人快速看懂，Review 意见有回应，合并动作有人确认。"
+date_published: 2026-09-04
+date_modified: 2026-10-26
+---
+
 # 从 Issue 到 Pull Request，一次完整的团队协作闭环
 
 > 难度：进阶

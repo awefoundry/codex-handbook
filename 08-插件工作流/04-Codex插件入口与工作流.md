@@ -1,3 +1,12 @@
+---
+title: "Codex 插件入口：安装、调用与权限边界"
+description: "这两天 OpenAI 发了三个教育插件，K–12 老师、大学老师、大学生各一个。"
+url: /guides/codex-chajian-rukou-yu-gongzuoliu
+status: published
+date_published: 2026-08-24
+date_modified: 2026-10-12
+---
+
 # Codex 插件入口：安装、调用与权限边界
 
 > 本文在线版：[codexguide.io/guides/codex-chajian-rukou-yu-gongzuoliu](https://codexguide.io/guides/codex-chajian-rukou-yu-gongzuoliu)
