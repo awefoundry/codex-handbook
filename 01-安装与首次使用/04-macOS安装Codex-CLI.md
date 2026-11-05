@@ -14,7 +14,6 @@ source_tag: 官方功能
 entry_tags: [CLI]
 difficulty: 基础
 order: 4
-howto: true
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
@@ -22,6 +21,7 @@ date_modified: 2026-10-22
 official_ref: https://learn.chatgpt.com/docs/codex/cli
 keywords: [macOS 安装 Codex CLI, Homebrew 安装 Codex, brew install --cask codex, npm @openai/codex, codex login]
 related: [windows-wsl-install-codex-cli, deng-lu-codex, install-login-faq]
+howto: true
 faq:
   - q: Homebrew 该写 brew install codex 还是带 --cask？
     a: 官方 Codex CLI 文档与 formulae.brew.sh/cask/codex 都要求 `brew install --cask codex`；更新用 `brew upgrade --cask codex`。不要省略 --cask。
@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/macos-install-codex-cli](https://codexguide.io/guides/macos-install-codex-cli)
 
-> 核对依据：learn.chatgpt.com《[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Pricing](https://learn.chatgpt.com/docs/pricing)》《[Developer commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli)》，以及 [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)、npm 包 `@openai/codex`。文中「我的用法」是操作建议，不是官方强制规定。本篇尚未在真实 Mac 终端逐条截图验证，故 `client_validation_pending: true`；命令以官方文档原文为准。
+> 核对依据：learn.chatgpt.com《[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Pricing](https://learn.chatgpt.com/docs/pricing)》《[Developer commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli)》，以及 [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)、npm 包 `@openai/codex`。文中「我的用法」是操作建议，不是官方强制规定。本篇尚未在真实 Mac 终端逐条截图验证；命令以官方文档原文为准。
 
 知识库原稿只是约 190 字的占位大纲。本文按官方现行安装页补全为可跟做教程，并顺带纠正站内旧文常见的两处错误：**Homebrew 漏写 `--cask`**，以及把 ChatGPT 登录说成 **「必须 Plus」**。
 

@@ -1,3 +1,12 @@
+---
+title: "Codex 处理 GitHub Issue 并创建 Pull Request"
+description: "这篇教程写给已经使用 GitHub Issue 和 Pull Request 管理开发任务的读者。你需要先把目标仓库连接到 Codex cloud，并且拥有查看代码、创建分支和提交 Pull Request 所需的权限。"
+url: /guides/codex-github-issue-to-pr
+status: published
+date_published: 2026-08-18
+date_modified: 2026-10-26
+---
+
 # Codex 处理 GitHub Issue 并创建 Pull Request
 
 > 本文在线版：[codexguide.io/guides/codex-github-issue-to-pr](https://codexguide.io/guides/codex-github-issue-to-pr)

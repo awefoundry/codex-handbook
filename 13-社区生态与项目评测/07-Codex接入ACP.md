@@ -20,7 +20,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-20
 date_modified: 2026-10-22
-client_validation_pending: false
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://zed.dev/docs/ai/external-agents
 keywords: [Codex ACP, Zed Codex, codex-acp, ACP Registry, Agent Client Protocol, JetBrains Codex]
@@ -46,7 +45,7 @@ faq:
 
 合并说明（阅读时可跳过）：
 
-- 主页面 URL 不变：`/guides/codex-acp-integration`（知识库路径仍为 `13-社区生态与项目评测/06-Codex接入ACP.md`）。
+- 主页面 URL 不变：`/guides/codex-acp-integration`（知识库路径仍为 `13-社区生态与项目评测/07-Codex接入ACP.md`）。
 - 旧文 `/guides/codex-zed-acp-integration`（原 `13/02`）应 301 到本页；见 frontmatter `redirect_from`。
 - 原 `13/06` 里用 Claude Code／OpenClaw 的 `settings.json` 示例、以及「Codex 通过 Zed 自有适配器接入」的过时说法已删除；Zed／JetBrains 实操以 Registry 为准。
 

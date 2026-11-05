@@ -1,3 +1,12 @@
+---
+title: "Codex 视频工作流，4 个第三方 Skill 的用途、依赖与限制"
+description: "这篇文章写给希望用 Codex 处理视频生成、素材粗剪、字幕动画和发布前转码的读者。"
+url: /guides/codex-video-workflow-skills
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 视频工作流，4 个第三方 Skill 的用途、依赖与限制
 
 > 本文在线版：[codexguide.io/guides/codex-video-workflow-skills](https://codexguide.io/guides/codex-video-workflow-skills)

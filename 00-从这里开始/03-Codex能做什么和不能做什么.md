@@ -1,3 +1,12 @@
+---
+title: "Codex 能做什么和不能做什么：能力边界、使用条件与验证方法"
+description: "这篇文章写给准备把真实任务交给 Codex 的读者。"
+url: /guides/codex-neng-zuo-shen-me
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Codex 能做什么和不能做什么：能力边界、使用条件与验证方法
 
 > 本文在线版：[codexguide.io/guides/codex-neng-zuo-shen-me](https://codexguide.io/guides/codex-neng-zuo-shen-me)

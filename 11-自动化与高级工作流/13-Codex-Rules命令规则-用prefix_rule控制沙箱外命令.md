@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-rules-prefix-rule](https://codexguide.io/guides/codex-rules-prefix-rule)
 
-> 核对依据：learn.chatgpt.com《Rules》（developers.openai.com 同页会 308 到该文档）、以及《Non-interactive mode》中的 `--ignore-rules`（2026-10-22 抓取）。**官方标明 Rules 为实验功能，接口与行为可能变化。** 文中「我的用法」是操作建议，不是官方强制规定。本机未在真实 Codex TUI 里点选允许列表或跑完整会话，`client_validation_pending: true`；规则形状与 `execpolicy check` 命令按官方文档编写。
+> 核对依据：learn.chatgpt.com《Rules》（developers.openai.com 同页会 308 到该文档）、以及《Non-interactive mode》中的 `--ignore-rules`（2026-10-22 抓取）。**官方标明 Rules 为实验功能，接口与行为可能变化。** 文中「我的用法」是操作建议，不是官方强制规定。本机未在真实 Codex TUI 里点选允许列表或跑完整会话；规则形状与 `execpolicy check` 命令按官方文档编写。
 
 Codex 要在沙箱**外**跑命令时，往往会停下来问你。若同一类只读命令每次都弹窗，或你想**硬性禁止**某些危险前缀，官方提供的机制就是 **Rules**：在配置层旁边的 `rules/` 目录里写 `.rules` 文件，用 `prefix_rule(...)` 按**命令参数前缀**决定 `allow`／`prompt`／`forbidden`。
 
