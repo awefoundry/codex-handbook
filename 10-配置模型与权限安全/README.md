@@ -18,7 +18,7 @@
 - [Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol、Terra 对照工作流](./02-Codex与其他编程模型比较.md)
 - [Codex 桌面端协作设置，从入口到权限与任务纠偏](./03-Codex桌面端协作设置.md)
 - [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
-- [Codex 沙箱与主机权限：一次权限边界风险复盘](./05-Codex沙箱与主机权限风险.md)
+- [Codex 沙箱与主机权限风险（2026-11 更新）：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
 - [Codex 任务总跑偏？先检查这 5 个设置](./06-Codex设置检查清单-让任务按预期执行.md)
 - [Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
 - [Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
@@ -30,3 +30,4 @@
 - [Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)
 - [Codex IDE 扩展安全自查：Cursor 扩展市场出现 Claude Code 后门后，怎么确认你装的是官方 openai.chatgpt](./19-Codex-IDE扩展安全自查-确认官方openai.chatgpt与扩展投毒防范.md)
 - [Codex 和 ChatGPT 用量合并：12 月起 Plus、Pro、Business 共用额度](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)
+- [Codex 内置浏览器本地文件读取风险：EMBRACE 漏洞修复前，别打开不可信的本地 HTML](./21-Codex内置浏览器本地文件读取风险-EMBRACE自查与防护.md)
