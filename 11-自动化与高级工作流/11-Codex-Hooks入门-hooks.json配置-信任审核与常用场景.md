@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-hooks-guide](https://codexguide.io/guides/codex-hooks-guide)
 
-> 核对依据：learn.chatgpt.com／developers.openai.com 的 Hooks 文档（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复步骤。本机未跑通真实 Codex hook 脚本，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com／developers.openai.com 的 Hooks 文档（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。社区 issue 只作已知坑对照，不附带未证实的修复步骤。本机未跑通真实 Codex hook 脚本。
 
 你已经会让 Codex 改文件、跑命令。接下来常会想：**危险命令在执行前拦一下**，或**这一回合停下来时自动再跑测试／格式检查**。官方给的扩展点就是 **Hooks**：在智能体循环的固定时机，跑你指定的命令脚本，或调用已连接的 MCP 工具。
 

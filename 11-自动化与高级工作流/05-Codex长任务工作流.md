@@ -1,3 +1,12 @@
+---
+title: "Codex 长任务工作流，分开讨论、执行、审查与交接"
+description: "这篇文章适合已经能用 Codex 完成小修改，但在长任务中遇到上下文混乱、讨论打断执行、审查缺少独立视角或跨聊天交接困难的读者。"
+url: /guides/codex-long-task-collaboration-workflow
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 长任务工作流，分开讨论、执行、审查与交接
 
 > 本文在线版：[codexguide.io/guides/codex-long-task-collaboration-workflow](https://codexguide.io/guides/codex-long-task-collaboration-workflow)
@@ -16,7 +25,7 @@
 
 复杂任务需要足够的推理强度，但把所有工作塞进一个聊天，选择更高档位也不会自动消除上下文噪声。
 
-![模型功能中的推理强度选项](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/01-推理强度选项.png)
+![模型功能中的推理强度选项](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/01-推理强度选项.png)
 
 先按任务难度选择模型和推理强度。架构取舍、跨模块修改和回归风险较高的排查需要更充分的推理；机械搜索、读取日志或执行边界已经确定的小步骤，可以交给更快的模型或独立工作线程。
 
@@ -26,11 +35,11 @@
 
 Quick Chat 适合处理不应打断主任务的短问题。Windows 可以使用 `Ctrl + Alt + N`，也可以从“新聊天”旁的入口打开。
 
-![从新聊天旁打开 Quick Chat](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/02-Quick-Chat入口.png)
+![从新聊天旁打开 Quick Chat](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/02-Quick-Chat入口.png)
 
 例如主任务正在运行测试，你想确认一个配置字段的含义。把问题放进 Quick Chat，等结论明确后再决定是否加入主任务。
 
-![把 Quick Chat 结论添加回主任务](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/03-Quick-Chat结论回传.png)
+![把 Quick Chat 结论添加回主任务](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/03-Quick-Chat结论回传.png)
 
 回传时只发送已经确认的要求，不要把整段试探性讨论全部带回去。
 
@@ -38,15 +47,15 @@ Quick Chat 适合处理不应打断主任务的短问题。Windows 可以使用 
 
 Side Chat 会带着当前任务的相关上下文开始一段临时讨论，同时不打断主聊天。IDE 中可以使用 `/side`。
 
-![在输入框使用 side 命令](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/04-Side-Chat命令.png)
+![在输入框使用 side 命令](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/04-Side-Chat命令.png)
 
 看到某段内容需要单独展开时，也可以选中文字后进入 Side Chat。
 
-![从选中文字打开 Side Chat](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/05-选中文字打开Side-Chat.png)
+![从选中文字打开 Side Chat](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/05-选中文字打开Side-Chat.png)
 
 桌面端任务菜单同样提供入口。
 
-![从任务菜单打开 Side Chat](../图片素材/11-自动化与高级工作流/03-Codex长任务工作流/06-任务菜单打开Side-Chat.png)
+![从任务菜单打开 Side Chat](../图片素材/11-自动化与高级工作流/05-Codex长任务工作流/06-任务菜单打开Side-Chat.png)
 
 Side Chat 适合比较两种实现、检查迁移风险或整理新的执行指令。讨论结束后，把决定和理由压缩成几句话送回主任务。
 

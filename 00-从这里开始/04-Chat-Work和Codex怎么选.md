@@ -1,3 +1,12 @@
+---
+title: "Chat、ChatGPT Work 和 Codex 怎么选：按任务与交付物判断"
+description: "这篇文章写给已经打开 ChatGPT 或 Codex，却不确定应该选择 Chat、ChatGPT Work 还是 Codex 的读者。"
+url: /guides/chat-work-he-codex-zen-me-xuan
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Chat、ChatGPT Work 和 Codex 怎么选：按任务与交付物判断
 
 > 本文在线版：[codexguide.io/guides/chat-work-he-codex-zen-me-xuan](https://codexguide.io/guides/chat-work-he-codex-zen-me-xuan)

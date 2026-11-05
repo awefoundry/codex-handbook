@@ -30,3 +30,4 @@
 - [Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度](./14-Codex-Composer-Predictions桌面端Tab提示.md)
 - [Codex CLI /presets 预设与内联 /model、/permissions：0.164.0 一条命令切换模型、推理强度和权限](./15-Codex-CLI-presets预设与内联model-permissions命令.md)
 - [Codex 接入 Amazon Bedrock：CLI 登录向导、Runtime 与 Mantle 怎么选，以及 API Key 和 AWS 凭证怎么配](./16-Codex接入Amazon-Bedrock-登录向导与配置.md)
+- [Codex SDK 入门：用 TypeScript 或 Python 在自己的程序里启动、继续和恢复 Codex 线程](./17-Codex-SDK入门-TypeScript与Python启动继续和恢复线程.md)

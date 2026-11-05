@@ -86,7 +86,7 @@ faq:
 - 当前目录和会话保存时的目录不一样时，Codex 会问你用哪个目录。在 `config.toml` 里把 `tui.resume_cwd` 设为 `"current"` 或 `"session"` 可以不再询问；命令行里显式写 `-C` 时以 `-C` 为准。
 - `codex resume` 不接受 `--worktree`。想把会话分叉到新的 Git worktree，用 `codex fork <SESSION_ID> --worktree`，这时必须写明会话 ID，不能用 `--last`。
 
-长任务中断后怎么接着做，见 [Codex CLI 恢复长任务](../11-自动化与高级工作流/03-CodexCLI恢复长任务.md)。
+长任务中断后怎么接着做，见 [Codex CLI 恢复长任务](../11-自动化与高级工作流/04-CodexCLI恢复长任务.md)。
 
 ## 非交互执行：codex exec
 

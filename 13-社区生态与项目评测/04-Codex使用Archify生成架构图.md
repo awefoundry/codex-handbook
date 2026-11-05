@@ -1,3 +1,12 @@
+---
+title: "Codex 使用 Archify 生成可验证的代码架构图"
+description: "Archify 是第三方 Agent Skill。Codex 可以先读取代码仓库，整理系统边界和主调用路径，再让 Archify 把这些信息渲染成技术图。"
+url: /guides/codex-archify-architecture-diagrams
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 使用 Archify 生成可验证的代码架构图
 
 > 本文在线版：[codexguide.io/guides/codex-archify-architecture-diagrams](https://codexguide.io/guides/codex-archify-architecture-diagrams)
@@ -10,7 +19,7 @@ Archify 是第三方 Agent Skill。Codex 可以先读取代码仓库，整理系
 
 这类工具最容易出现的问题是图很好看，内容却和代码对不上。本文把代码证据、图表生成和验证分成三个阶段。
 
-![Codex 分析代码仓库后使用 Archify 生成架构图](../图片素材/13-社区生态与项目评测/03-Codex使用Archify生成架构图/01-Codex分析代码并生成架构图.jpg)
+![Codex 分析代码仓库后使用 Archify 生成架构图](../图片素材/13-社区生态与项目评测/04-Codex使用Archify生成架构图/01-Codex分析代码并生成架构图.jpg)
 
 ## Archify 能生成什么
 
@@ -24,9 +33,9 @@ Archify 当前支持 architecture、workflow、sequence、dataflow 和 lifecycle
 | dataflow | 数据来源、转换、存储和下游消费 |
 | lifecycle | 任务、订单或部署状态的变化 |
 
-![Archify 从代码摘要和自然语言生成可渲染的技术图](../图片素材/13-社区生态与项目评测/03-Codex使用Archify生成架构图/02-Archify生成技术图的工作流.png)
+![Archify 从代码摘要和自然语言生成可渲染的技术图](../图片素材/13-社区生态与项目评测/04-Codex使用Archify生成架构图/02-Archify生成技术图的工作流.png)
 
-![Archify 支持架构、流程、时序、数据流和生命周期图](../图片素材/13-社区生态与项目评测/03-Codex使用Archify生成架构图/03-Archify支持的五类技术图.png)
+![Archify 支持架构、流程、时序、数据流和生命周期图](../图片素材/13-社区生态与项目评测/04-Codex使用Archify生成架构图/03-Archify支持的五类技术图.png)
 
 ## 安装到 Codex
 
@@ -63,7 +72,7 @@ npx skills use tt-a1i/archify@archify --agent codex
 保存可编辑源文件和渲染结果。
 ```
 
-![Codex 使用 Archify 时先读代码、确定主路径，再渲染和检查](../图片素材/13-社区生态与项目评测/03-Codex使用Archify生成架构图/04-Codex使用Archify的实用方法.png)
+![Codex 使用 Archify 时先读代码、确定主路径，再渲染和检查](../图片素材/13-社区生态与项目评测/04-Codex使用Archify生成架构图/04-Codex使用Archify的实用方法.png)
 
 复杂项目可以拆成多张图。总览图只画边界和主路径，时序图解释一个请求，数据流图解释一批数据。把所有依赖塞进一张图通常会降低可读性。
 
@@ -71,7 +80,7 @@ npx skills use tt-a1i/archify@archify --agent codex
 
 让 Codex 对图中的每个节点和连接生成证据表。节点要对应代码、配置或已确认的外部事实，箭头要能说明调用、事件或数据关系。随后运行 Archify 提供的校验命令，并打开导出结果检查文字重叠、箭头方向和裁切。
 
-![Archify 的优点、适用范围和当前限制](../图片素材/13-社区生态与项目评测/03-Codex使用Archify生成架构图/05-Archify优点与限制.png)
+![Archify 的优点、适用范围和当前限制](../图片素材/13-社区生态与项目评测/04-Codex使用Archify生成架构图/05-Archify优点与限制.png)
 
 建议把可编辑源文件留在仓库，把 HTML、SVG 或 PNG 当成构建产物。代码结构变化后重新生成，并通过 Git diff 查看图表说明是否同步更新。
 

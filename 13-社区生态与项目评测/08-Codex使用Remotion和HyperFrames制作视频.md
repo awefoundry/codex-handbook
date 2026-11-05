@@ -1,10 +1,19 @@
+---
+title: "Codex 使用 Remotion 和 HyperFrames 制作视频"
+description: "Remotion 和 HyperFrames 都能把视频写成代码，Codex 可以读取脚本与素材，生成项目文件，启动预览并根据检查结果修改。它们是第三方工具，工作方式和适用场景不同。视频仍要经过人工审片，工具也不会自动解决素材版权、节奏和事实准确性。"
+url: /guides/codex-remotion-hyperframes-video
+status: published
+date_published: 2026-08-20
+date_modified: 2026-10-12
+---
+
 # Codex 使用 Remotion 和 HyperFrames 制作视频
 
 > 本文在线版：[codexguide.io/guides/codex-remotion-hyperframes-video](https://codexguide.io/guides/codex-remotion-hyperframes-video)
 
 Remotion 和 HyperFrames 都能把视频写成代码，Codex 可以读取脚本与素材，生成项目文件，启动预览并根据检查结果修改。它们是第三方工具，工作方式和适用场景不同。视频仍要经过人工审片，工具也不会自动解决素材版权、节奏和事实准确性。
 
-![线下活动视频成片示例](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/01-线下活动视频成片示例.jpg)
+![线下活动视频成片示例](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/01-线下活动视频成片示例.jpg)
 
 > 原稿中的成片示例，社交平台播放器界面保留用于说明竖屏视频结果。
 
@@ -14,11 +23,11 @@ Remotion 使用 React 组件和时间轴 API 生成视频。它适合长期维�
 
 HyperFrames 使用 HTML、CSS、媒体文件和时间属性描述画面。它面向 Agent 工作流，适合快速制作样片、网页转视频和短篇动效。当前 npm 包要求 Node.js 22 或更高版本，许可证为 Apache-2.0。
 
-![Remotion 与 HyperFrames 概览](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/02-Remotion与HyperFrames概览.jpg)
+![Remotion 与 HyperFrames 概览](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/02-Remotion与HyperFrames概览.jpg)
 
 > 概念示意，两套工具分别采用 React 和 HTML 路线。
 
-![代码生成视频的工作台](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/03-代码生成视频工作台.jpg)
+![代码生成视频的工作台](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/03-代码生成视频工作台.jpg)
 
 > 概念示意，代码、媒体素材、时间线和预览共同组成视频项目。
 
@@ -32,7 +41,7 @@ HyperFrames 使用 HTML、CSS、媒体文件和时间属性描述画面。它面
 
 这张表只用于选择起点。同一项目可以先用 HyperFrames 试视觉，再把稳定结构迁移到 Remotion。
 
-![Remotion 与 HyperFrames 适用场景](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/04-两套视频工具适用场景.jpg)
+![Remotion 与 HyperFrames 适用场景](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/04-两套视频工具适用场景.jpg)
 
 > 概念示意，工具选择取决于样片速度、技术栈和复用需求。
 
@@ -68,13 +77,13 @@ Codex 需要可执行的输入。至少准备视频用途、比例、时长、�
 - 关键画面能够解释脚本内容
 ```
 
-![Codex 视频制作六步流程](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/05-Codex视频制作流程.jpg)
+![Codex 视频制作六步流程](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/05-Codex视频制作流程.jpg)
 
 > 概念示意，准备、实现、预览和渲染需要分开验收。
 
 素材文件要使用能说明内容的名字，并按场景或用途分组。`final-final-v3.mp4` 这类名称会增加 Codex 误用素材的概率。
 
-![交给 Codex 的视频素材清单](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/06-视频素材清单.jpg)
+![交给 Codex 的视频素材清单](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/06-视频素材清单.jpg)
 
 > 概念示意，视频目标、脚本、素材、视觉规则和技术规格应同时提供。
 
@@ -140,7 +149,7 @@ npx remotion render
 
 Codex 需要读取素材、安装依赖、启动本地服务和写入输出目录。授权范围只覆盖当前视频项目，不要把无关目录、账号凭据和私人素材一并开放。
 
-![Codex 项目的访问权限设置](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/07-Codex项目访问权限.jpg)
+![Codex 项目的访问权限设置](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/07-Codex项目访问权限.jpg)
 
 > 实操界面，开始任务前确认 Codex 的项目访问范围。
 
@@ -150,7 +159,7 @@ Codex 需要读取素材、安装依赖、启动本地服务和写入输出目�
 
 活动回顾类视频可以先画出时间线，明确开场、主体和收尾各占多少时间。
 
-![六十秒活动回顾视频时间线](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/08-活动回顾视频时间线.jpg)
+![六十秒活动回顾视频时间线](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/08-活动回顾视频时间线.jpg)
 
 > 概念示意，时间线先确定信息节奏，再进入工程实现。
 
@@ -162,7 +171,7 @@ Codex 需要读取素材、安装依赖、启动本地服务和写入输出目�
 - 音乐、字体、图片和视频素材具备所需授权。
 - 输出分辨率、帧率、时长和文件名符合 Brief。
 
-![分阶段提示词工作流](../图片素材/13-社区生态与项目评测/07-Codex使用Remotion和HyperFrames制作视频/09-分阶段提示词工作流.jpg)
+![分阶段提示词工作流](../图片素材/13-社区生态与项目评测/08-Codex使用Remotion和HyperFrames制作视频/09-分阶段提示词工作流.jpg)
 
 > 概念示意，先完成判断和时间线，再生成工程并自动质检。
 

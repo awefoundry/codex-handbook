@@ -149,7 +149,7 @@ in `sandbox_mode`
 | `log_dir` | 路径，默认 `$CODEX_HOME/log` | 日志目录；显式设置后还会写纯文本的 `codex-tui.log` |
 | `sqlite_home` | 路径 | SQLite 状态库的位置 |
 
-Memories 详见 [Codex Memories 记忆功能](../11-自动化与高级工作流/09-Codex-Memories记忆功能-开启方式-存储位置与按对话控制.md)。
+Memories 详见 [Codex Memories 记忆功能](../11-自动化与高级工作流/12-Codex-Memories记忆功能-开启方式-存储位置与按对话控制.md)。
 
 ## 界面（`[tui]`）与其他体验
 
@@ -194,7 +194,7 @@ Memories 详见 [Codex Memories 记忆功能](../11-自动化与高级工作流/
 | `forced_login_method` | 只允许 `chatgpt` 或 `api` 登录 |
 | `cli_auth_credentials_store` | 凭证存哪：`file`、`keyring`、`auto`、`ephemeral` |
 
-内置提供商还有 `amazon-bedrock`（Amazon Bedrock）和 0.165.0 新增的 `gcp`（Google Cloud Vertex AI），见 [接入 Google Cloud](../12-官方工具与集成/13-Codex接入Google-Cloud-Model-Garden.md)、[接入 Amazon Bedrock](../12-官方工具与集成/16-Codex接入Amazon-Bedrock-登录向导与配置.md)；自定义提供商见 [model_providers 与 openai_base_url](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)。
+内置提供商还有 `amazon-bedrock`（Amazon Bedrock）和 0.165.0 新增的 `gcp`（Google Cloud Vertex AI），见 [接入 Google Cloud](../12-官方工具与集成/13-Codex接入Google-Cloud-Model-Garden.md)、[接入 Amazon Bedrock](../12-官方工具与集成/16-Codex接入Amazon-Bedrock-登录向导与配置.md)；自定义提供商见 [model_providers 与 openai_base_url](../10-配置模型与权限安全/11-Codex自定义模型提供商-model_providers与openai_base_url.md)。
 
 ## 环境变量
 

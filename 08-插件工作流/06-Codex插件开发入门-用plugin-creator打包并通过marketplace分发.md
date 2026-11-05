@@ -110,7 +110,7 @@ my-plugin/
 请一并创建个人 marketplace 条目，方便我本地测试。
 ```
 
-若要带已注册 MCP：先在 ChatGPT Plugins 用「Add custom MCP server」建连接，从 URL 复制 `plugin_asdk_app…` ID 交给 creator。生成后核对 `.app.json` 映射、清单里 `apps → ./.app.json`、`skills/` 内容；有个人 marketplace 则刷新后从本地源安装，**新开对话**再测。本预览环境未实跑 creator（见 `client_validation_pending`）。
+若要带已注册 MCP：先在 ChatGPT Plugins 用「Add custom MCP server」建连接，从 URL 复制 `plugin_asdk_app…` ID 交给 creator。生成后核对 `.app.json` 映射、清单里 `apps → ./.app.json`、`skills/` 内容；有个人 marketplace 则刷新后从本地源安装，**新开对话**再测。本预览环境未实跑 creator。
 
 ## 3. 手写可移植包：`plugin.json` 与 `mcp.json`
 
@@ -326,4 +326,4 @@ codex plugin marketplace remove marketplace-name
 - 姊妹篇：[从零创建 Codex Skill](https://codexguide.io/guides/create-codex-skill)（`create-codex-skill`）  
 - Hooks 事件、信任与限制：见官方 Hooks 文档；站内 Hooks 专文计划另发  
 
-本文按 2026-10-22 可访问的官方插件打包文档核对。`$plugin-creator` 与桌面端安装未在本预览环境实操（`client_validation_pending: true`）；命令与字段以你当前 Codex／ChatGPT 客户端及官方文档为准。
+本文按 2026-10-22 可访问的官方插件打包文档核对。`$plugin-creator` 与桌面端安装未在本预览环境实操；命令与字段以你当前 Codex／ChatGPT 客户端及官方文档为准。

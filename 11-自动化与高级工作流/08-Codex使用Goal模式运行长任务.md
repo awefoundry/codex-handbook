@@ -141,7 +141,7 @@ compile in strict mode without explicit `any` types, and make the full test suit
 
 唯一要避免的：**两个对话改同一批文件**。并行写代码时，用 [Git worktree](https://learn.chatgpt.com/docs/environments/git-worktrees) 给每个对话一个独立的检出目录。
 
-在一个任务内部拆分并行子任务，是另一种做法，见 [Codex Subagents 并行处理任务](./06-Codex使用Subagents并行处理任务.md)。
+在一个任务内部拆分并行子任务，是另一种做法，见 [Codex Subagents 并行处理任务](./09-Codex使用Subagents并行处理任务.md)。
 
 ## 什么时候不该用 Goal
 
@@ -153,7 +153,7 @@ compile in strict mode without explicit `any` types, and make the full test suit
 
 判断标准很简单：**目标稳定、过程能拆开、结果能验证**。三点都满足，长任务才值得交给 Goal 持续推进。
 
-任务中途断了、想从之前的会话接着做，见 [Codex CLI 恢复长任务](./03-CodexCLI恢复长任务.md)。
+任务中途断了、想从之前的会话接着做，见 [Codex CLI 恢复长任务](./04-CodexCLI恢复长任务.md)。
 
 ## 参考资料
 

@@ -177,7 +177,7 @@ terminal_title = ["spinner", "project"]   # 这是默认值
 | `thread-name`、`thread-id` | 会话名、会话 ID |
 | `codex-version`、`hostname` | Codex 版本、主机名 |
 
-项目名以 `/statusline` 里列出的为准，不同版本可能增减。额度相关的项目怎么理解，见 [Codex 用量额度怎么看](../10-配置模型与权限安全/10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
+项目名以 `/statusline` 里列出的为准，不同版本可能增减。额度相关的项目怎么理解，见 [Codex 用量额度怎么看](../10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 ## 改快捷键
 

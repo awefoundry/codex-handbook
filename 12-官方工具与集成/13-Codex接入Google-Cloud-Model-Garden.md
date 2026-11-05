@@ -255,7 +255,7 @@ ZDR 和 Confidential Compute 都还没上线。如果合规要求依赖这两项
 | 官方文档页 | 截至 10-28 还没有 | 有 | 有 |
 | 能改的字段 | `base_url`、`auth`、`http_headers` | `base_url`、`auth`、`aws`、`http_headers` | 全部 |
 
-详见 [接入 Amazon Bedrock](./16-Codex接入Amazon-Bedrock-登录向导与配置.md) 和 [自定义模型提供商](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)。
+详见 [接入 Amazon Bedrock](./16-Codex接入Amazon-Bedrock-登录向导与配置.md) 和 [自定义模型提供商](../10-配置模型与权限安全/11-Codex自定义模型提供商-model_providers与openai_base_url.md)。
 
 ## 本文不承诺的事
 
