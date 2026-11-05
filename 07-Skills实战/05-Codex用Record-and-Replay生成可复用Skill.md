@@ -120,7 +120,7 @@ computer_use = false
 | --- | --- | --- | --- |
 | 怎么来的 | 在 Mac 上演示一次，由产品起草 | 自己写 `SKILL.md` | 把 Skill、连接器、MCP 打成可安装的包 |
 | 适合 | 步骤稳定、更好演示 | 目录和验收已经清楚 | 要分发给别人或长期维护 |
-| 官方页面 | [Record & Replay](https://learn.chatgpt.com/docs/extend/record-and-replay) | [从零创建](./04-从零创建Codex-Skill.md) | [插件开发入门](../08-插件工作流/05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md) |
+| 官方页面 | [Record & Replay](https://learn.chatgpt.com/docs/extend/record-and-replay) | [从零创建](./04-从零创建Codex-Skill.md) | [插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md) |
 
 官方 “When to build another plugin” 一节写的是：Record & Replay 用来从一次演示快速得到 Skill。若要跨团队分发一份稳定的包、捆绑多个 Skill、放入连接器、添加 MCP 服务器，或管理安装元数据，把这套流程打包成自己的插件。演示稿可以当草稿，插件是以后要安装和更新的那一份。
 
@@ -134,7 +134,7 @@ computer_use = false
 
 ## 下一步
 
-手写和 `$skill-creator` 的路径见 [从零创建 Codex Skill](./04-从零创建Codex-Skill.md)。录制依赖的桌面操作权限见 [Computer Use](../12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用.md)。草稿要变成别人能安装的包时，再看 [插件开发入门](../08-插件工作流/05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
+手写和 `$skill-creator` 的路径见 [从零创建 Codex Skill](./04-从零创建Codex-Skill.md)。录制依赖的桌面操作权限见 [Computer Use](../12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用.md)。草稿要变成别人能安装的包时，再看 [插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
 
 ## 参考资料
 

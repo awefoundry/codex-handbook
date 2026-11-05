@@ -150,7 +150,7 @@ WSL1 支持到 Codex `0.114`。从 `0.115` 起，Linux 沙箱改为 `bubblewrap`
 
 官方页写了一条边界：原生 Windows 的 Agent 打开 `\\wsl$\` 上的项目时，Git 功能可能识别不到。要把仓库放在 Windows 盘上，再在 WSL 里通过 `/mnt/<盘符>/...` 访问。
 
-沙箱在原生 Windows 上怎么开、MXC 和 elevated 回退，见 [Codex Windows 沙箱](../10-配置模型与权限安全/11-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)。应用页提醒：在输入框下方选 Ask for approval，沙箱才会套用；Full access 时 Codex 不受项目目录限制。
+沙箱在原生 Windows 上怎么开、MXC 和 elevated 回退，见 [Codex Windows 沙箱](../10-配置模型与权限安全/09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)。应用页提醒：在输入框下方选 Ask for approval，沙箱才会套用；Full access 时 Codex 不受项目目录限制。
 
 ## 准备开发工具
 
@@ -206,7 +206,7 @@ export CODEX_HOME=/mnt/c/Users/<windows-user>/.codex
 
 ## 下一步
 
-登录见 [登录 Codex](./07-登录Codex.md)。只装终端里的 `codex`，走 [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)。原生 Windows 上的沙箱见 [Codex Windows 沙箱](../10-配置模型与权限安全/11-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)。
+登录见 [登录 Codex](./07-登录Codex.md)。只装终端里的 `codex`，走 [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)。原生 Windows 上的沙箱见 [Codex Windows 沙箱](../10-配置模型与权限安全/09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)。
 
 ## 参考资料
 

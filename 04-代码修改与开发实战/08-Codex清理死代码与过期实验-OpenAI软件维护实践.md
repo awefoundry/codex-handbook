@@ -240,7 +240,7 @@ rank all of them by estimated CI minutes saved per day based on this repo's CI r
 ## 接下来读什么
 
 - 模型与推理强度怎么选 → 知识库 `10-配置模型与权限安全/01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md`（`/guides/codex-model-reasoning-effort`）
-- 用 Goal 模式跑长审计 → `11-自动化与高级工作流/05-Codex使用Goal模式运行长任务.md`（`/guides/codex-goal-mode-long-running-work`）
+- 用 Goal 模式跑长审计 → `11-自动化与高级工作流/08-Codex使用Goal模式运行长任务.md`（`/guides/codex-goal-mode-long-running-work`）
 - 修复可复现 Bug 的最小补丁习惯 → `04-代码修改与开发实战/04-修复一个可复现Bug-让补丁只解决当前问题.md`（`/guides/codex-xiu-fu-ke-fu-xian-bug`）
 
 ## 参考资料

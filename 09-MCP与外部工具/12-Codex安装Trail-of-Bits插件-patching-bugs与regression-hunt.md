@@ -60,7 +60,7 @@ patching-bugs 的预检会确认 regression-hunt 已经安装。两个都装上�
 
 - 想自己控制一次最小修复，用练习仓库把测试补上，看 [修复一个可复现 Bug](../04-代码修改与开发实战/04-修复一个可复现Bug-让补丁只解决当前问题.md)。
 - 想先扫描仓库里可能的问题，看 [Codex Security CLI](../06-测试调试与质量保障/02-Codex-Security-CLI本地扫描仓库漏洞.md)。那是 OpenAI 的扫描工具，和这两个插件不是一回事。
-- 想自己打包插件，看 [插件开发入门](../08-插件工作流/05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
+- 想自己打包插件，看 [插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
 
 ## 回移植案例里的数字，和这两个插件分开看
 

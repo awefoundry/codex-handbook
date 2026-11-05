@@ -23,4 +23,9 @@
 ## 已上线文章
 
 - [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 安装第三方 Skill 前先扫描：用 NVIDIA SkillSpector 查提示注入和数据外泄](./07-Codex用SkillSpector扫描第三方Skill-提示注入与数据外泄检查.md)
+- [Codex 安装 OpenAI Developers 插件：安全创建 API Key、写入 .env.local 与排查 API 报错](./08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)
+- [Codex 安装 agent-skills 插件：用 codex plugin 装上 Addy Osmani 的 25 个工程 Skill](./09-Codex安装agent-skills插件-25个工程Skill怎么用.md)
+- [Codex 安装 Google EGM 插件：先写设计文档，再让零上下文子代理审稿](./10-Codex安装Google-EGM插件-设计文档与子代理审稿.md)
+- [Codex 接入 Mobile MCP：让 Codex 操作 iOS 模拟器、Android 模拟器和真机](./11-Codex接入Mobile-MCP-操作iOS模拟器与Android设备.md)（第三方项目 mobile-next/mobile-mcp，不是 OpenAI 官方服务器）
 - [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)

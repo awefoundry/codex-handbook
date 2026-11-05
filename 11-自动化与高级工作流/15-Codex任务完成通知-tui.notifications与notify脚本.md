@@ -203,7 +203,7 @@ notify = ["python3", "/绝对路径/notify.py"]
 
 ## 为什么写在项目 .codex/config.toml 里不生效
 
-高级配置写明：项目里的 `.codex/config.toml` 不能覆盖会重定向凭据、改宿主请求、改提供商认证、选择 profile，或在本机运行通知和遥测命令的键。`notify` 在被忽略的名单里。Codex 看到项目文件里的这些键会忽略，并在启动时警告。同名单里还有 `openai_base_url`、`model_provider`、`profiles`、`otel` 等。分层关系见 [config.toml 深入配置](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
+高级配置写明：项目里的 `.codex/config.toml` 不能覆盖会重定向凭据、改宿主请求、改提供商认证、选择 profile，或在本机运行通知和遥测命令的键。`notify` 在被忽略的名单里。Codex 看到项目文件里的这些键会忽略，并在启动时警告。同名单里还有 `openai_base_url`、`model_provider`、`profiles`、`otel` 等。分层关系见 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
 
 0.166.0 上，在一个已信任的项目里放入：
 
@@ -225,11 +225,11 @@ Ignored unsupported project-local config keys in /opt/codex-lab/project/.codex/c
 
 ## 和 Hooks 的区别
 
-[Hooks](./08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md) 写在 `hooks.json`，改完要在 `/hooks` 里按当前内容信任。`Stop` 在主回合将停时触发，返回 `decision: "block"` 会让 Codex 带着你的理由继续跑。
+[Hooks](./11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md) 写在 `hooks.json`，改完要在 `/hooks` 里按当前内容信任。`Stop` 在主回合将停时触发，返回 `decision: "block"` 会让 Codex 带着你的理由继续跑。
 
 `notify` 没有这套信任界面，也没有“继续跑”的返回值。它只是在 `agent-turn-complete` 时启动外部命令。审批提醒如果要在终端里出现，用 `tui.notifications` 里的 `approval-requested`，不要指望 `notify` 收到批准事件。
 
-长任务本身怎么写完成标准，见 [Goal 模式](./05-Codex使用Goal模式运行长任务.md)。通知只告诉你一轮停了，不代替完成标准。
+长任务本身怎么写完成标准，见 [Goal 模式](./08-Codex使用Goal模式运行长任务.md)。通知只告诉你一轮停了，不代替完成标准。
 
 ## 怎么确认配上了
 
@@ -251,7 +251,7 @@ Ignored unsupported project-local config keys in /opt/codex-lab/project/.codex/c
 
 ## 下一步
 
-配置分层和“哪个文件生效”看 [config.toml 深入配置](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。回合结束时要跑检查并可能续跑，用 [Hooks](./08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)，不要用 `notify` 去拦命令。
+配置分层和“哪个文件生效”看 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。回合结束时要跑检查并可能续跑，用 [Hooks](./11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)，不要用 `notify` 去拦命令。
 
 ## 参考资料
 
