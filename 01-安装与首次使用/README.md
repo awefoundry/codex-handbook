@@ -17,7 +17,7 @@
 | 3 | [Windows 安装 Codex App](./03-Windows安装Codex-App.md) | 已上线 |
 | 4 | [macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式](./04-macOS安装Codex-CLI.md) | 已收入 |
 | 5 | [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
-| 6 | [VS Code 和兼容编辑器安装 Codex](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
+| 6 | [VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
 | 7 | [登录 Codex](./07-登录Codex.md) | 已上线 |
 | 8 | [打开第一个本地项目](./08-打开第一个本地项目.md) | 已上线 |
 | 9 | [完成第一次修改并检查结果](./09-完成第一次修改并检查结果.md) | 已上线 |

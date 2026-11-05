@@ -28,3 +28,4 @@
 - [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
 - [Codex 防范 AGENTS.md 投毒：别在 Downloads 目录启动，5 分钟自查 config.toml 和 MCP](./15-Codex防范AGENTS.md投毒-Downloads目录风险与config.toml自查.md)
 - [Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)
+- [Codex IDE 扩展安全自查：Cursor 扩展市场出现 Claude Code 后门后，怎么确认你装的是官方 openai.chatgpt](./19-Codex-IDE扩展安全自查-确认官方openai.chatgpt与扩展投毒防范.md)
