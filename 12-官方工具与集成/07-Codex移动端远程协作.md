@@ -2,8 +2,8 @@
 id: codex-mobile-remote-collaboration
 title: Codex 移动端远程协作
 url: /guides/codex-mobile-remote-collaboration
-status: redirected
 redirect_to: /guides/codex-remote-control-mac
+status: redirected
 ---
 
 # Codex 移动端远程协作

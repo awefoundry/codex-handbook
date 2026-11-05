@@ -130,7 +130,7 @@ Goldfish 的定义就是不看先前对话。`docs/harnesses.md` 写：Codex 使
 
 同一页写明：如果环境没有子代理工具，审稿技能会停下来，不会在同一段上下文里充作 Goldfish 审稿。Cloud 支持在插件说明里被写成 partial。
 
-子代理怎么开、审批和用量怎么落，见 [Subagents](../11-自动化与高级工作流/06-Codex使用Subagents并行处理任务.md)。OpenAI 的 [Subagents](https://learn.chatgpt.com/codex/agent-configuration/subagents) 页写明：当前 Codex 版本默认可以跑子代理；每个子代理自己做模型和工具工作，因此比同等的单代理运行消耗更多 token。该页没有给出倍数。EGM 一次审稿实际扣多少额度，仓库和定价页都没有单独的数字，官方暂未说明。
+子代理怎么开、审批和用量怎么落，见 [Subagents](../11-自动化与高级工作流/09-Codex使用Subagents并行处理任务.md)。OpenAI 的 [Subagents](https://learn.chatgpt.com/codex/agent-configuration/subagents) 页写明：当前 Codex 版本默认可以跑子代理；每个子代理自己做模型和工具工作，因此比同等的单代理运行消耗更多 token。该页没有给出倍数。EGM 一次审稿实际扣多少额度，仓库和定价页都没有单独的数字，官方暂未说明。
 
 ## 什么任务值得用，什么任务不必用
 
@@ -142,7 +142,7 @@ EGM 也不代替测试。harnesses 页写：A review does not replace tests or h
 
 ## 和 Superpowers 怎么选
 
-[Superpowers](../08-插件工作流/06-Codex安装Superpowers插件-需求计划TDD工作流.md) 把需求、计划和测试先行串成一条工作流。EGM 只覆盖「写实现之前的设计文档，以及零上下文审稿」这一段。
+[Superpowers](../08-插件工作流/07-Codex安装Superpowers插件-需求计划TDD工作流.md) 把需求、计划和测试先行串成一条工作流。EGM 只覆盖「写实现之前的设计文档，以及零上下文审稿」这一段。
 
 已经决定怎么做、缺的是按工程环节拆好的步骤时，用对应的 Skill 或自己写的 Skill，见 [从零创建 Codex Skill](../07-Skills实战/04-从零创建Codex-Skill.md)。还没决定接口和失败行为时，先用 EGM 把设计写下来再审。
 

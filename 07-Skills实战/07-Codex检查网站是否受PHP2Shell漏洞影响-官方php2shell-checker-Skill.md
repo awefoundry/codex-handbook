@@ -36,7 +36,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-php2shell-checker-skill](https://codexguide.io/guides/codex-php2shell-checker-skill)
 
-> 核对依据：OpenAI《[php2shell-checker](https://github.com/openai/php2shell-checker)》README 与 `skills/phpcheck-url/SKILL.md`、`skills/phpcheck-server/SKILL.md`、OpenAI《[Patch the Planet: global response coordination as agents uncover critical vulnerabilities](https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/)》（2026-10-21）、PHP.net《[Security advisory: Critical remote code execution vulnerabilities, update now](https://www.php.net/archive/2026.php#2026-10-21-5)》及 GHSA 公告页。文中「我的用法」是操作顺序建议。本预览环境**没有**可对真实业务站做检查的授权测试站点，故不写假终端输出、不编造扫描结果、不放假截图；`client_validation_pending: true`。安全事实只引用上述官方来源，**不写利用细节、PoC、payload 或攻击步骤**。
+> 核对依据：OpenAI《[php2shell-checker](https://github.com/openai/php2shell-checker)》README 与 `skills/phpcheck-url/SKILL.md`、`skills/phpcheck-server/SKILL.md`、OpenAI《[Patch the Planet: global response coordination as agents uncover critical vulnerabilities](https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/)》（2026-10-21）、PHP.net《[Security advisory: Critical remote code execution vulnerabilities, update now](https://www.php.net/archive/2026.php#2026-10-21-5)》及 GHSA 公告页。文中「我的用法」是操作顺序建议。本预览环境**没有**可对真实业务站做检查的授权测试站点，故不写假终端输出、不编造扫描结果、不放假截图。安全事实只引用上述官方来源，**不写利用细节、PoC、payload 或攻击步骤**。
 
 2026 年 10 月 21 日，PHP 项目披露了两个可在**未认证**情况下导致远程代码执行的严重漏洞；社区与安全厂商常用「PHP2Shell」称呼这次事件。同一天，OpenAI 在协调披露文章里说明：他们把 **PHP 版本检查工具做成了 Codex Skill**，方便运维判断该装哪些更新。仓库是 **[openai/php2shell-checker](https://github.com/openai/php2shell-checker)**（Apache-2.0）。
 

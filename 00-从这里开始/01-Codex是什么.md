@@ -1,3 +1,12 @@
+---
+title: "Codex 是什么：能力、工作方式与使用边界"
+description: "Codex 是面向软件开发任务的 AI 编程助手。它可以在你提供的项目和权限范围内读取文件、理解代码、修改内容、执行命令，并通过测试或其他检查验证结果。"
+url: /guides/codex-shi-shen-me
+status: published
+date_published: 2026-07-12
+date_modified: 2026-10-13
+---
+
 # Codex 是什么：能力、工作方式与使用边界
 
 > 本文在线版：[codexguide.io/guides/codex-shi-shen-me](https://codexguide.io/guides/codex-shi-shen-me)

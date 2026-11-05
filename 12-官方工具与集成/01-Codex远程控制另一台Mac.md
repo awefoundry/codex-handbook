@@ -20,7 +20,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-17
 date_modified: 2026-10-22
-client_validation_pending: false
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/remote-connections
 keywords: [Codex 远程连接, Codex 手机控制电脑, Codex Remote, Codex SSH 远程项目, Codex Handoff]

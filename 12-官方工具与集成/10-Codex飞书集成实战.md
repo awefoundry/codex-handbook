@@ -1,3 +1,12 @@
+---
+title: "Codex 接入飞书：从群聊指令到本地任务执行"
+description: "用 Codex 有个一直没解决的别扭，它跑在我电脑的终端里，可我人不总在电脑前。"
+url: /guides/codex-feishu-ji-cheng-shi-zhan
+status: published
+date_published: 2026-08-24
+date_modified: 2026-10-13
+---
+
 # Codex 接入飞书：从群聊指令到本地任务执行
 
 > 本文在线版：[codexguide.io/guides/codex-feishu-ji-cheng-shi-zhan](https://codexguide.io/guides/codex-feishu-ji-cheng-shi-zhan)
