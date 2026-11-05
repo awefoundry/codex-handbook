@@ -17,10 +17,10 @@ order: 4
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-21
-date_modified: 2026-10-22
+date_modified: 2026-11-05
 official_ref: https://learn.chatgpt.com/docs/non-interactive-mode
 keywords: [codex exec, Codex GitHub Action, Codex CI, openai/codex-action, Codex 非交互模式, CODEX_API_KEY]
-related: [codex-automations-scheduled-tasks, codex-github-issue-pr-workflow, codex-rules-prefix-rule]
+related: [codex-automations-scheduled-tasks, codex-github-issue-pr-workflow, codex-rules-prefix-rule, codex-access-tokens-service-accounts]
 howto: true
 faq:
   - q: 以前脚本里的 --full-auto 还能用吗？
@@ -36,6 +36,8 @@ faq:
 > 本文在线版：[codexguide.io/guides/codex-automation-ci-scheduled-tasks](https://codexguide.io/guides/codex-automation-ci-scheduled-tasks)
 
 > 核对依据：learn.chatgpt.com《[Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)》《[Codex GitHub Action](https://learn.chatgpt.com/docs/github-action)》与 [openai/codex-action](https://github.com/openai/codex-action)（2026-10-22）。「我的用法」非官方强制流程。未在真实 runner 完整跑通示例。
+
+需要 ChatGPT 工作区身份、又不想在 CI 里打开浏览器时，用访问令牌或服务账号，见 [访问令牌与服务账号](./14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)。只调用 API、不需要工作区权限时，仍按本文使用 API Key。
 
 日常多半是敲 `codex`、在交互界面边聊边改。扫日志、补 changelog、PR 只读审查这类活，不必一直盯着点确认。
 
