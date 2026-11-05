@@ -18,7 +18,6 @@ author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-19
 date_modified: 2026-10-22
-client_validation_pending: false
 models: [gpt-6.1-sol]
 official_ref: https://learn.chatgpt.com/docs/automations
 keywords: [Codex 定时任务, Scheduled tasks, Codex Automations, RRULE, worktree, codex exec cron]

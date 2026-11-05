@@ -107,7 +107,7 @@ codex plugin remove unity@unity-agent-plugin
 和自己写 Skill、自己打包插件的关系：
 
 - 团队特有的流程，仍然用 [从零创建 Codex Skill](../07-Skills实战/04-从零创建Codex-Skill.md) 写在仓库里。
-- 要把技能、MCP 和 Hooks 打成别人能安装的包，见 [Codex 插件开发入门](../08-插件工作流/05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
+- 要把技能、MCP 和 Hooks 打成别人能安装的包，见 [Codex 插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
 - 这个 Unity 插件走的是同一套 marketplace 安装，内容由 Unity 维护。MCP 的配置和登录是另一条线，见 [Codex MCP 入门](./01-Codex-MCP入门-config与mcp-login.md)。
 
 ## 2026-11-05 仓库里的技能目录

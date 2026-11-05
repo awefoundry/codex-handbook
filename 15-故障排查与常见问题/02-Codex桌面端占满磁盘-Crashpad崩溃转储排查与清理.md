@@ -167,9 +167,9 @@ du -sh \
 
 **Worktree：** 官方 Worktrees 文档写明，每个 worktree 自带文件、依赖、构建缓存，磁盘很容易涨；桌面端默认**保留最近 15 个** Codex 管理的 worktree，可在设置里改上限或改手管。钉住的聊天、进行中的聊天、永久 worktree，不会按同一套「随便删」规则处理。定时任务频繁时，官方也提醒会积累大量 worktree——归档不再需要的定时运行、避免无必要地 pin。
 
-托管 worktree 怎么开、怎么 Handoff、自动清理规则的完整说明，见姊妹篇《[Codex Worktree 教程](../11-自动化与高级工作流/07-Codex用Worktree并行运行多个任务.md)》（知识库 `11-自动化与高级工作流/07-…`，id：`worktree-parallel-chats`）。**本篇只提醒：磁盘告急时，先分清 Crashpad 转储 vs 仍在用的 worktree，不要为了腾空间删掉未交接的工作副本。**
+托管 worktree 怎么开、怎么 Handoff、自动清理规则的完整说明，见姊妹篇《[Codex Worktree 教程](../11-自动化与高级工作流/10-Codex用Worktree并行运行多个任务.md)》（知识库 `11-自动化与高级工作流/07-…`，id：`worktree-parallel-chats`）。**本篇只提醒：磁盘告急时，先分清 Crashpad 转储 vs 仍在用的 worktree，不要为了腾空间删掉未交接的工作副本。**
 
-会话／归档体积异常时，优先在客户端里归档或删除**你确认不再需要**的聊天；CLI 多会话命名、恢复与归档见《[Codex CLI 管理多条任务线](../11-自动化与高级工作流/02-CodexCLI管理多条任务线.md)》（id：`cli-manage-multiple-sessions`）。分享日志前，官方要求先检查是否含敏感信息。
+会话／归档体积异常时，优先在客户端里归档或删除**你确认不再需要**的聊天；CLI 多会话命名、恢复与归档见《[Codex CLI 管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)》（id：`cli-manage-multiple-sessions`）。分享日志前，官方要求先检查是否含敏感信息。
 
 额度／容量类「用不了」和「磁盘满了」不是一类问题：前者见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。
 
