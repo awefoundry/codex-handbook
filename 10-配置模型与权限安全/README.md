@@ -26,3 +26,4 @@
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./10-Codex-Daybreak-Blue申请开启与排障.md)
 - [Codex 自定义模型提供商：model_providers 和 openai_base_url 怎么配，请求到底发去哪（0.164.0 实测）](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
 - [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
+- [Codex 防范 AGENTS.md 投毒：别在 Downloads 目录启动，5 分钟自查 config.toml 和 MCP](./15-Codex防范AGENTS.md投毒-Downloads目录风险与config.toml自查.md)
