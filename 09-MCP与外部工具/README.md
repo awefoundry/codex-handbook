@@ -23,3 +23,4 @@
 ## 已上线文章
 
 - [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 安装 Unity 官方插件：用 Skills 和 unity-cli 辅助开发](./13-Codex安装Unity插件-用Skills辅助Unity开发.md)

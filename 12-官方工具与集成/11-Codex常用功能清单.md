@@ -1,9 +1,9 @@
 ---
 id: codex-changyong-gongneng-qingdan
-title: Codex 常用功能清单（2026-10）：/config、即时 Steer、/keymap，以及仍值得每天用的几项
-seo_title: Codex 常用功能清单：/config 设置面板、即时 Steer、/keymap
-description: 按 2026-10 官方 changelog 与 Developer commands，整理 Codex CLI／TUI 里最值得先学会的功能：可搜索的 /config、回应中即时 Steer、/keymap 与 leader key，以及 /side、/review 等日常入口。
-lede: 功能一多，容易只剩「把整件事塞进一个会话」。先学会改设置、中途纠偏、改快捷键这三件事，再补讨论分流与审查。
+title: Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的入口
+seo_title: Codex 常用功能清单（2026-11）：Images 2.6 与本地线程内存
+description: 按 2026-11 整理 Codex 里最值得先学会的入口：可搜索的 /config、回应中的即时 Steer、/keymap，以及 Images 2.6 图像能力和本地长线程内存修复。每项都链到官方说明或专文。
+lede: 先学会改设置、中途纠偏和改快捷键。2026-11 再补上出图与编辑，以及长本地线程的内存核对。
 url: /guides/codex-changyong-gongneng-qingdan
 status: published
 section: guides
@@ -17,12 +17,11 @@ order: 11
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-09-01
-date_modified: 2026-10-22
-client_validation_pending: false
-models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
+date_modified: 2026-11-05
+models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra, gpt-image-2, gpt-image-2.6-flare, gpt-image-2.6-sunburst]
 official_ref: https://learn.chatgpt.com/docs/developer-commands
-keywords: [/config, Steer, /keymap, Codex 常用功能, leader key, /side, /review]
-related: [permissions-sandbox-approvals, usage-limits-credits]
+keywords: [/config, Steer, /keymap, Codex 常用功能, leader key, Images 2.6, 本地线程内存]
+related: [permissions-sandbox-approvals, usage-limits-credits, codex-images-2-6, codex-local-thread-memory]
 faq:
   - q: Steer 和按 Tab 排队有什么区别？
     a: 官方写明：Codex 正在工作时按 Enter 发送，是把新指令注入当前这一轮（即时 Steer）；按 Tab 则把提示、斜杠命令或本地命令排到下一轮。前者改正在做的事，后者等这一轮结束后再生效。
@@ -30,13 +29,17 @@ faq:
     a: 不一定。Codex CLI 0.163.0 起，/config 可搜索偏好、对支持项立即生效，并标明哪些改动需要重启。看到「需重启」提示时，按提示重启后再验证。
   - q: /keymap 的改动保存在哪里？
     a: 官方说明自定义绑定会写入 config.toml 的 tui.keymap。还可配置 leader key（默认 Ctrl+X）；上下文相关绑定优先于 tui.keymap.global，空绑定列表表示取消该动作。
+  - q: Images 2.6 在这条清单里怎么用？
+    a: 在对话里描述图像，或写上 $imagegen。内置出图使用 gpt-image-2，计入 Codex 一般用量。编辑可以在 overlay 里完成。帧数和 Flare、Sunburst 的字段见专文，不在 /config 里。
+  - q: 本地线程内存修复要记哪个版本号？
+    a: 2026-11-04 的工程师说明没有写出版本号。升级到当前客户端后，用同一条长本地线程看内存是否还随回复爬升。不要用 npm 上的 @openai/codex 版本号代替这次核对。
 ---
 
-# Codex 常用功能清单（2026-10）：/config、即时 Steer、/keymap，以及仍值得每天用的几项
+# Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的入口
 
 > 本文在线版：[codexguide.io/guides/codex-changyong-gongneng-qingdan](https://codexguide.io/guides/codex-changyong-gongneng-qingdan)
 
-> 核对依据：learn.chatgpt.com 的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)、[Developer settings](https://learn.chatgpt.com/docs/developer-settings)、[Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)，以及 2026-10-15 发布的 [Codex CLI 0.163.0 changelog](https://learn.chatgpt.com/docs/changelog)。文中「我的用法」是建议顺序，不是官方强制流程。界面文案随客户端变化，以你本机菜单为准。
+> 核对依据：learn.chatgpt.com 的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)、[Developer settings](https://learn.chatgpt.com/docs/developer-settings)、[Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)，2026-10-15 发布的 [Codex CLI 0.163.0 changelog](https://learn.chatgpt.com/docs/changelog)，以及 2026-11-04 的 [Images 2.6](https://openai.com/index/introducing-images-2-6/) 与 [本地线程内存说明](https://x.com/ajambrosino/status/2118028125707923513)。文中「我的用法」是建议顺序，不是官方强制流程。界面文案随客户端变化，以你本机菜单为准。2026-11-05 没有重新实测 /config 与 Steer。
 
 很多人第一次用 Codex，会把讨论、改文件、排错、复查全堆进同一个长会话。功能其实不少，但真正决定「顺不顺手」的，往往是几件小事：
 
@@ -44,7 +47,7 @@ faq:
 2. **它还在跑的时候，能不能及时纠偏**（不用干等一轮结束）。
 3. **常用操作能不能变成肌肉记忆**（快捷键、侧边讨论、单独审查）。
 
-2026-10 的 CLI 0.163.0，正好把前两件补强了：可搜索的 `/config`、回应中的即时 Steer、以及 `/keymap` 的 leader key。下面按「先学什么」列一张清单；每条都对应官方文档或正式 changelog，不写未核实的第三方技巧。
+2026-10 的 CLI 0.163.0，把前两件补强了：可搜索的 `/config`、回应中的即时 Steer，以及 `/keymap` 的 leader key。2026-11 又多了两个高频入口：在对话里生成和编辑图像（Images 2.6），以及本地长线程的内存是否还随回复爬升。下面按「先学什么」列一张清单；每条都对应官方文档、正式 changelog 或已单独成文的说明。
 
 ## 先看一张总表
 
@@ -58,6 +61,8 @@ faq:
 | 方案讨论不污染主会话 | `/side`（别名 `/btw`） | 临时侧聊，记录与主会话分开 |
 | 改完先看问题再动手修 | `/review` | 审查工作区变更；可用 `/diff` 看具体 diff |
 | 确认当前模型／权限／用量 | `/status` | 活跃模型、审批策略、可写根、token 用量等 |
+| 在对话里出图、改图或做 GIF | `$imagegen`，或直接描述图像 | Images 2.6；编辑在 overlay 中完成。详见专文 |
+| 长本地线程把内存越抬越高 | 升级当前客户端后再量一次 | 2026-11-04 公告没有写版本号。详见专文 |
 
 只读工具并行、Daybreak 等也在 0.163.0 里，属于「知道就好」：见文末补充，不必一上来就调。
 
@@ -186,11 +191,32 @@ TUI 的 `/daemon` 用于查看与托管后台服务相关的连接与操作。0.
 
 若只改两处：先练 **Steer vs Tab 排队**，再练 **`/config`**。前者减少「看它跑错却只能干等」，后者减少「改个设置要退出重来」。
 
+## 9. 图像：Images 2.6 与 `$imagegen`
+
+2026-11-04 起，Images 2.6 进入 ChatGPT、Codex 和 API。在 Codex 里要一张图或改一张图时：
+
+- 直接描述图像，或写上 `$imagegen` 显式调用图像技能。
+- 已有图片用参考图、`-i` / `--image`，或在 IDE 扩展里按住 Shift 拖进输入框。
+- 编辑改在 overlay 里完成，不再为了改图打开侧栏。可以选中一块区域，再说明这块要改什么、其余保持不变。
+- 内置出图使用文档中的模型名 `gpt-image-2`，计入 Codex 一般用量，平均比同类非出图回合快 3 到 5 倍耗尽额度。
+- API 侧再选 `gpt-image-2.6-flare` 或 `gpt-image-2.6-sunburst`。GIF 的 `frame_count` 属于生成接口，不是 `/config` 里的一项。
+
+步骤、用量和 API 字段见 [Codex Images 2.6](./19-Codex-Images-2.6-GIF生成与overlay编辑.md)。把当前窗口发给对话，或让 Codex 去点别的桌面应用，分别走窗口截图和 [Computer Use](./03-Codex使用Computer-Use操作桌面应用.md)，不要用出图代替。
+
+## 10. 性能：本地线程内存
+
+2026-11-04，Codex 工程师说明：本地线程变长后，即使用户没有再启动其他进程，内存也会升高；修复已经推出。公告和图都没有写 App 或 CLI 版本号。2026-11-05 查询时，npm 上 `@openai/codex` 的 latest 仍是 0.166.0，那一版的更新日志里也没有这条修复。
+
+升级到当前客户端后，打开同一条长本地线程，用系统的活动监视器或任务管理器看整个应用的物理内存是否还随回复爬升。磁盘被崩溃转储占满，是另一篇的排查。完整顺序见 [本地线程内存占用过高怎么办](../15-故障排查与常见问题/06-Codex本地线程内存占用过高怎么办.md)。
+
 ## 参考资料
 
 - [Developer commands（斜杠命令与交互快捷键）](https://learn.chatgpt.com/docs/developer-commands)
 - [Developer settings](https://learn.chatgpt.com/docs/developer-settings)
 - [Config basics（`config.toml` 与 `tui.keymap`）](https://learn.chatgpt.com/docs/config-file/config-basic)
 - [ChatGPT & Codex changelog · CLI 0.163.0（2026-10-15）](https://learn.chatgpt.com/docs/changelog)
+- [Introducing Images 2.6](https://openai.com/index/introducing-images-2-6/)（2026-11-04）
+- [Image generation](https://learn.chatgpt.com/docs/image-generation)
+- [Andrew Ambrosino：local threads 内存说明](https://x.com/ajambrosino/status/2118028125707923513)（2026-11-04）
 
 想继续系统学习 Codex，可以访问 [CodexGuide 教程网站](https://codexguide.io)。
