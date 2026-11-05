@@ -32,6 +32,7 @@
 | 13 | [安装登录常见问题](./13-安装登录常见问题.md) | 持续补充，已发布 |
 | 14 | [Codex CLI 斜杠命令与快捷键（0.165.0 更新）：按用途分组速查，任务运行中哪些能用](./14-斜杠命令与快捷键.md) | 已发布 |
 | 15 | [从 Claude Code 或 Cursor 迁移到 Codex：用 /import 导入配置与对话](./15-从Claude-Code或Cursor迁移到Codex-用import导入配置与对话.md) | 已收入 |
+| 16 | [Codex 多账号切换：手机端双账号与 CLI 的 CODEX_HOME](./16-Codex多账号切换-手机端双账号与CLI用CODEX_HOME分开登录.md) | 已收入 |
 
 ## 按入口阅读
 
