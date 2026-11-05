@@ -1,9 +1,9 @@
 ---
 id: model-reasoning-effort
-title: Codex 模型怎么选：推理强度和 GPT-6.1 Sol
-seo_title: Codex 模型怎么选：GPT-6.1 Sol、推理强度和速度档
-description: 2026 年 10 月 14 日起，ChatGPT 登录的 Codex 不再提供 GPT-5.5。本文按官方文档说明怎么改用 GPT-6.1 Sol、GPT-6 Luna 或 Astra，如何选择推理强度，以及 Fast 和 Ultrafast 怎样影响额度。
-lede: 付费套餐优先看 GPT-6.1 Sol，Free 和 Go 用 GPT-6 Luna。推理强度按任务加减，速度档另算。
+title: Codex 模型怎么选：GPT-6.1 Sol、Terra、Luna、Astra 和推理强度
+seo_title: Codex 模型怎么选：GPT-6.1 Sol、Terra、推理强度和速度档
+description: Codex 现在有 GPT-6.1 Sol、GPT-6.1 Terra、GPT-6 Luna 和 Astra 可选。本文按官方文档说明每个模型适合什么、推理强度怎么调、Fast 和 Ultrafast 怎样影响额度，以及 GPT-5.5 退役后怎么迁移。
+lede: 付费套餐写代码优先看 GPT-6.1 Sol，写作、看图和电脑操作试试 GPT-6.1 Terra，Free 和 Go 用 GPT-6 Luna。推理强度按任务加减，速度档另算。
 url: /guides/codex-model-reasoning-effort
 status: published
 section: guides
@@ -17,11 +17,11 @@ order: 1
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-19
-date_modified: 2026-10-22
-client_validation_pending: true
-models: [gpt-6.1-sol, gpt-6-sol, gpt-6-luna, gpt-6-astra]
+date_modified: 2026-10-27
+verified_on: 2026-10-27
+models: [gpt-6.1-sol, gpt-6.1-terra, gpt-6-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/models
-keywords: [Codex 模型选择, GPT-6.1 Sol, 推理强度, Ultrafast, model_reasoning_effort]
+keywords: [Codex 模型选择, GPT-6.1 Sol, GPT-6.1 Terra, 推理强度, Ultrafast, model_reasoning_effort]
 faq:
   - q: 用 API Key 登录的 Codex 还要换掉 GPT-5.5 吗？
     a: 不用。官方写明 OpenAI API，以及用 API Key 认证的 Codex 会话，不受这次退役影响。
@@ -29,12 +29,16 @@ faq:
     a: 不是。推理强度在桌面端只有轻度、中、高、极高四档（对应官方 Light、Medium、High、Extra High）。Ultrafast 是速度档，按更高倍率消耗额度，而且只对部分套餐开放。
   - q: 把推理强度调高会更快吗？
     a: 通常不会。更高的推理强度花更长时间，也用更多 token。想缩短等待，要看 Fast 或符合资格时的 Ultrafast。
+  - q: GPT-6.1 Terra 和 GPT-6.1 Sol 怎么选？
+    a: 复杂编码、跨模块修改用 GPT-6.1 Sol；根据材料写作、看截图和图表、目标明确的电脑操作和小范围修复，先试 GPT-6.1 Terra。Terra 的 credits 单价是 Sol 的一半。官方建议用同样的输入和推理强度各跑一次再比较。
 ---
 
-# Codex 模型怎么选：推理强度和 GPT-6.1 Sol
+# Codex 模型怎么选：GPT-6.1 Sol、Terra、Luna、Astra 和推理强度
 
 > 本文在线版：[codexguide.io/guides/codex-model-reasoning-effort](https://codexguide.io/guides/codex-model-reasoning-effort)
 
+> 2026-10-27 更新：GPT-6.1 Terra 已于 10 月 26 日（美国时间）在 Plus、Pro、Business、Enterprise、Edu 的 Work 和 Codex 上线，本文补上了 Terra 的定位、额度和配置写法。详细用法见 [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)。
+>
 > 2026 年 10 月 14 日起，用 ChatGPT 登录的 Codex 不再提供 GPT-5.5。付费套餐改用 GPT-6.1 Sol，Free 和 Go 在桌面端改用 GPT-6 Luna。用 API Key 登录的会话不受影响。
 
 打开 Codex 的模型菜单，很多人会先挑最强的模型，再把推理强度拉到最高。这样是不是最省事？
@@ -45,6 +49,7 @@ faq:
 
 - 日常改代码、补测试、常规调试，用 GPT-6.1 Sol，推理强度先用客户端默认档。
 - 跨模块调试、方案取舍、正确性复核，用 GPT-6.1 Sol + 高，不够再升极高。
+- 根据材料写说明和文档、看截图和图表、目标明确的电脑操作、小范围修复，先试 GPT-6.1 Terra。
 - 摘要、分类、抽取、格式转换和批量改写，用 GPT-6 Luna + 高。
 - 最难的端到端工作再考虑 GPT-6 Astra，从轻度起步。
 - 极高留给少数困难、多步骤、深度比速度和用量更重要的任务。
@@ -63,7 +68,7 @@ Codex 的高级菜单里有三组设置：模型、推理强度和速度。它�
 
 桌面端的推理强度只有四档：轻度、中、高、极高，对应官方文档的 Light、Medium、High、Extra High。CLI 里 Light 常对应 Low。CLI 可以用 `/model` 同时选择模型和推理强度。
 
-## GPT-6.1 Sol、Luna、Astra 分别适合什么
+## GPT-6.1 Sol、Terra、Luna、Astra 分别适合什么
 
 桌面端的模型菜单长这样，可选模型因套餐而异：
 
@@ -72,14 +77,17 @@ Codex 的高级菜单里有三组设置：模型、推理强度和速度。它�
 | 模型 | 更适合 | 不建议直接交给它 |
 |---|---|---|
 | GPT-6.1 Sol | 复杂编码、agent 工作流、跨模块修改、多阶段调试、最终复核 | 大量机械改写、简单摘要 |
+| GPT-6.1 Terra | 根据给定材料写作、看懂图片和屏幕、目标明确的电脑操作、范围明确的代码修复 | 最复杂的编码任务（官方建议仍用 Sol 或 Astra） |
 | GPT-6 Luna | 文件摘要、分类抽取、批量转换、变更说明初稿 | 需要持续判断的仓库级修改 |
 | GPT-6 Astra | 最难的端到端任务 | 日常开发，成本明显更高 |
 
-Astra 能力最强，GPT-6.1 Sol 接近它，成本低得多。所以付费套餐的日常主力是 GPT-6.1 Sol，Astra 只在 Sol 确实不够时再上。
+Astra 能力最强，GPT-6.1 Sol 接近它，成本低得多。所以付费套餐写代码的日常主力是 GPT-6.1 Sol，Astra 只在 Sol 确实不够时再上。
+
+GPT-6.1 Terra 是 10 月 26 日新上线的一档：更快，credits 单价是 Sol 的一半，官方定位是写作、视觉理解和电脑操作。官方 Model selection 页建议在三类任务上试它：根据提供的材料写简洁的文字、结果明确的电脑操作、范围明确的代码修复。注意两点：Chat 里没有 Terra；官方 Models 页给 Terra 列出的入口里没有 IDE 扩展。
 
 Enterprise 和 Edu 的 GPT-6.1 Sol 默认关闭，需要管理员打开。菜单里看不到某个模型时，先问管理员，别在配置里写一个菜单里没有的模型名。
 
-菜单里可能还能看到 GPT-5.6 Sol、Terra、Luna 等上一代模型，切换期内仍可使用。新写的脚本和配置，建议直接用 GPT-6.1 Sol 或 GPT-6 Luna。
+菜单里可能还能看到 GPT-5.6 Sol、GPT-5.6 Terra、GPT-5.6 Luna 等上一代模型，切换期内仍可使用。注意别把 GPT-5.6 Terra 和新的 GPT-6.1 Terra 搞混。新写的脚本和配置，建议直接用 GPT-6.1 Sol、GPT-6.1 Terra 或 GPT-6 Luna。
 
 ## 性价比不能只看单价
 
@@ -89,9 +97,10 @@ Enterprise 和 Edu 的 GPT-6.1 Sol 默认关闭，需要管理员打开。菜单
 |---|---:|---:|---:|
 | GPT-6 Astra | 250 | 25 | 1,250 |
 | GPT-6.1 Sol | 50 | 2.5 | 250 |
+| GPT-6.1 Terra | 25 | 1.25 | 125 |
 | GPT-6 Luna | 2.5 | 0.25 | 12.5 |
 
-GPT-6 Luna 的输入和输出单价是 GPT-6.1 Sol 的二十分之一，Astra 则是 Sol 的五倍。Plus 和标准 Business 每 5 小时的本地消息估算也差得很远：GPT-6.1 Sol 约 15–160 条，GPT-6 Luna 约 350–3,000 条，GPT-6 Astra 约 5–45 条。这些条数会随任务变化，剩余额度以用量面板或 CLI 的 `/status` 为准。
+GPT-6 Luna 的输入和输出单价是 GPT-6.1 Sol 的二十分之一，GPT-6.1 Terra 是 Sol 的一半，Astra 则是 Sol 的五倍。Plus 和标准 Business 每 5 小时的本地消息估算也差得很远：GPT-6.1 Sol 约 15–160 条，GPT-6.1 Terra 约 35–285 条，GPT-6 Luna 约 350–3,000 条，GPT-6 Astra 约 5–45 条。这些条数会随任务变化，剩余额度以用量面板或 CLI 的 `/status` 为准。
 
 单价只说明 token 贵不贵，不能直接说明哪个模型完成一次任务更便宜。推理强度、上下文长度、工具调用、输出长度和失败重试都会改变最终消耗。实际选择时，可以按这笔账来算：
 
@@ -99,11 +108,11 @@ GPT-6 Luna 的输入和输出单价是 GPT-6.1 Sol 的二十分之一，Astra �
 
 Luna 一次做对，当然最划算。如果它连续跑偏，而 GPT-6.1 Sol 一次通过测试，Sol 反而更省。
 
-速度档另外计费。相对同一模型的 Standard，Fast 的套餐内用量按 2.5 倍计，已购 credits 和企业按量按 2 倍计；Ultrafast 分别是 8 倍和 6 倍，而且只对 500 美元的 Pro 和符合条件的 Enterprise、Edu 开放。Fast 适合等待时间确实碍事的时候，别把它留成所有任务的默认值。
+速度档另外计费。相对同一模型的 Standard，Fast 的套餐内用量按 2.5 倍计，已购 credits 和企业按量按 2 倍计；Ultrafast 分别是 8 倍和 6 倍，而且只对 500 美元的 Pro 和符合条件的 Enterprise、Edu 开放。Fast 支持 GPT-6.1 Terra，Ultrafast 不支持。Fast 适合等待时间确实碍事的时候，别把它留成所有任务的默认值。
 
 ## 推理强度怎么选
 
-官方建议：GPT-6.1 Sol 从客户端默认档起步，Luna 从高（High）起步，Astra 从轻度（Light；配置里写作 `low`）起步，结果不够再逐级上调。
+官方建议：GPT-6.1 Sol 从客户端默认档起步，Luna 从高（High）起步，Astra 从轻度（Light；配置里写作 `low`）起步，结果不够再逐级上调。官方没有单独给 Terra 写起步档；API 文档里 Terra 的默认推理强度是 `medium`，官方建议拿它和 Sol 用同样的推理强度对比。
 
 桌面端的推理强度控件长这样，一共四档：
 
@@ -162,7 +171,13 @@ Luna 一次做对，当然最划算。如果它连续跑偏，而 GPT-6.1 Sol �
 model = "gpt-6.1-sol"
 ```
 
-推理强度在客户端里按任务调整即可；需要时也可在配置里写 `model_reasoning_effort`（例如 `"medium"`）。Free、Go，或者专门做抽取和批量改写的配置，可以写成：
+推理强度在客户端里按任务调整即可；需要时也可在配置里写 `model_reasoning_effort`（例如 `"medium"`）。主要用来写文档、看截图或做电脑操作的配置，可以写成（需要 Codex CLI 0.159.0 或更高）：
+
+```toml
+model = "gpt-6.1-terra"
+```
+
+Free、Go，或者专门做抽取和批量改写的配置，可以写成：
 
 ```toml
 model = "gpt-6-luna"
@@ -173,17 +188,19 @@ model = "gpt-6-luna"
 ```bash
 codex --model gpt-6.1-sol
 codex exec -m gpt-6.1-sol "Review the current changes"
+codex -m gpt-6.1-terra
 ```
 
 如果配置、自定义 Agent、定时任务或脚本里还写着 `gpt-5.5`，记得换成账号能选到的模型。改完新开一个会话，用 `/status` 确认实际用的是哪个模型。
 
-## 四套可以直接照用的组合
+## 五套可以直接照用的组合
 
 下面是**我的推荐组合**，方便照着试；不是官方强制档位表。官方对起步档的说法是：Sol 用客户端默认档，Luna 从高，Astra 从轻度。
 
 | 场景 | 推荐组合 | 升级条件 |
 |---|---|---|
 | 摘要、抽取、格式转换、批量改写 | GPT-6 Luna + 高 | 连续遗漏约束时换 GPT-6.1 Sol |
+| 按材料写说明、看截图、填表类电脑操作、小范围修复 | GPT-6.1 Terra + 默认档 | 改动波及多个模块，或两轮仍未通过测试时换 GPT-6.1 Sol |
 | 日常功能开发、补测试 | GPT-6.1 Sol + 默认档 | 涉及多个模块或两轮仍未通过测试时升到高 |
 | 复杂调试、架构规划、高风险修改 | GPT-6.1 Sol + 高 / 极高 | 仍缺关键证据时先补材料，不急着拉到最高 |
 | 最难的端到端任务 | GPT-6 Astra + 轻度起步 | 结果不够再逐级上调 |
@@ -194,13 +211,14 @@ codex exec -m gpt-6.1-sol "Review the current changes"
 
 公开价目和跑分只能帮你缩小范围，真正决定默认模型的，应该是你自己的任务。
 
-挑两个过去做过、结果可验证的任务，一个小改动，一个跨文件问题。用同一段提示词，让 GPT-6.1 Sol 和 GPT-6 Luna 各跑一次，记下是否一次通过、大致耗时、追问次数和你亲手改了多少。
+挑两个过去做过、结果可验证的任务，一个小改动，一个跨文件问题。用同一段提示词，让 GPT-6.1 Sol 和 GPT-6 Luna（写作和看图类任务换成 GPT-6.1 Terra）各跑一次，记下是否一次通过、大致耗时、追问次数和你亲手改了多少。
 
 如果 Luna 在简单任务里稳定一次通过，就让它继续做这类工作。如果跨文件任务里它经常重试，就把这部分交给 Sol。默认模型不需要永远固定，它只要符合你最近一个月最常做的事。
 
 ## 参考资料
 
 - [Models - OpenAI Codex](https://learn.chatgpt.com/docs/models)
+- [Model selection - OpenAI](https://learn.chatgpt.com/docs/model-selection)
 - [Pricing - OpenAI Codex](https://learn.chatgpt.com/docs/pricing)
 - [Speed - OpenAI Codex](https://learn.chatgpt.com/docs/agent-configuration/speed)
 - [Config basics - OpenAI Codex](https://learn.chatgpt.com/docs/config-file/config-basic)

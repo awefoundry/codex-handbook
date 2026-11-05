@@ -47,7 +47,7 @@ faq:
 - 不要在内置浏览器里打开来源不明的本地 HTML，哪怕链接是 Codex 自己给出来的。
 - 预览自己的页面时，用独立浏览器，或先起本地开发服务器，再打开 `http://localhost` 或 `http://127.0.0.1`。
 - 不要把来源不明的仓库标成信任。已经信任的项目，检查里面的 HTML 文件。
-- 沙箱和审批管的是 Codex 执行的命令，管不住你亲手在内置浏览器里点开的页面。主机侧还会执行项目文件的其他情况，见 [Codex 沙箱与主机权限风险](./08-Codex沙箱与主机权限风险.md)。
+- 沙箱和审批管的是 Codex 执行的命令，管不住你亲手在内置浏览器里点开的页面。主机侧还会执行项目文件的其他情况，见 [Codex 沙箱与主机权限风险](./05-Codex沙箱与主机权限风险.md)。
 
 内置浏览器只在桌面端。官方文档写明，Codex CLI 和 IDE 扩展里没有它。只用 CLI、从不开桌面端内置浏览器的人，不走这条点击路径。
 
@@ -106,7 +106,7 @@ Codex 的项目信任写在配置里。官方审批文档给出的例子是在�
 2026-11-02 重新查了两处：
 
 - [更新日志](https://learn.chatgpt.com/codex/changelog) 最新的 Codex CLI 正式版是 0.166.0，日期 2026-10-29。该页能看到的条目里，没有 EMBRACE、内置浏览器本地文件读取或对应补丁的说明。同一天 npm `latest` 也是 0.166.0。预览版不在这里当修复依据。
-- GitHub API 返回的 [openai/codex 安全公告](https://github.com/openai/codex/security/advisories) 只有一条：GHSA-w5fx-fh39-j5rw，2025-09-19 发布，标题是 Sandbox bypass due to bug in path configuration logic。那是更早的沙箱路径问题，在 CLI 0.39.0 修复，和这次浏览器报告不是同一件事。详见 [沙箱与主机权限](./08-Codex沙箱与主机权限风险.md)。
+- GitHub API 返回的 [openai/codex 安全公告](https://github.com/openai/codex/security/advisories) 只有一条：GHSA-w5fx-fh39-j5rw，2025-09-19 发布，标题是 Sandbox bypass due to bug in path configuration logic。那是更早的沙箱路径问题，在 CLI 0.39.0 修复，和这次浏览器报告不是同一件事。详见 [沙箱与主机权限](./05-Codex沙箱与主机权限风险.md)。
 
 因此：**截至 2026-11-02，未见 OpenAI 公布这次本地文件读取的修复版本。** The Register 在 10 月 29 日记下的「已知晓并在处理」仍然只是处理中的表态，不是补丁说明。
 

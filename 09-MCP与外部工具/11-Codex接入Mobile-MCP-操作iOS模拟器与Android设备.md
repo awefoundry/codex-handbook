@@ -49,7 +49,7 @@ README 写的用途是让 agent 通过结构化的无障碍快照，或基于截
 和本知识库里另外两篇的分工：
 
 - [Codex MCP 入门](./01-Codex-MCP入门-config与mcp-login.md) 讲配置文件、传输方式和登录。本文只加这一个服务器。
-- [Google 官方 Android Skills 插件](../13-社区生态与项目评测/08-Codex安装Google官方Android-Skills插件.md) 提供的是 Android 开发技能，不驱动一台正在运行的设备。
+- [Google 官方 Android Skills 插件](../13-社区生态与项目评测/09-Codex安装Google官方Android-Skills插件.md) 提供的是 Android 开发技能，不驱动一台正在运行的设备。
 
 README 还提到把探索过程写成 [mobilewright](https://github.com/mobile-next/mobilewright) 测试。那是另一个项目，本文不展开。
 

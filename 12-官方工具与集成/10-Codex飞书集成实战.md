@@ -66,7 +66,7 @@ README 的对应关系是：
 
 反方向是 README 里的「咖啡一下」：你人在电脑前用 Codex 或 Claude Code，离开时把它「需要审批、需要提问、任务完成」推到飞书私聊。你在手机上点确认或回答，本机继续跑；README 写机器保持不睡，回到电脑后终端交还。本文没有打开过这个开关，也没有飞书私聊截图。
 
-官方的 Codex Goal 是对话里的 `/goal`，完成标准怎么写见 [Goal 模式](../11-自动化与高级工作流/05-Codex使用Goal模式运行长任务.md)。这个桥在群里也提供 `/goal <目标>`，README 的含义是让本机 agent 多轮做到完成。群里的斜杠命令会按后端裁剪，和桌面端里的 `/goal` 是否逐项相同，以你装上的桥和 Codex 版本为准。
+官方的 Codex Goal 是对话里的 `/goal`，完成标准怎么写见 [Goal 模式](../11-自动化与高级工作流/08-Codex使用Goal模式运行长任务.md)。这个桥在群里也提供 `/goal <目标>`，README 的含义是让本机 agent 多轮做到完成。群里的斜杠命令会按后端裁剪，和桌面端里的 `/goal` 是否逐项相同，以你装上的桥和 Codex 版本为准。
 
 ## 安装
 
@@ -200,5 +200,5 @@ README 对这些命令的定义是：`start` 安装系统服务、开机或登�
 - 仓库与许可证：[modelzen/feishu-codex-bridge](https://github.com/modelzen/feishu-codex-bridge)（MIT，2026-11-02 查询的 README 与 0.6.14 命令帮助）
 - npm：`@modelzen/feishu-codex-bridge@0.6.14`
 - 权限背景：[Codex 权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
-- 群里的 `/goal` 和 Codex 自己的 Goal：[Codex Goal 模式](../11-自动化与高级工作流/05-Codex使用Goal模式运行长任务.md)
+- 群里的 `/goal` 和 Codex 自己的 Goal：[Codex Goal 模式](../11-自动化与高级工作流/08-Codex使用Goal模式运行长任务.md)
 - 不经过飞书的官方远程用法：[Codex 远程连接](./01-Codex远程控制另一台Mac.md)

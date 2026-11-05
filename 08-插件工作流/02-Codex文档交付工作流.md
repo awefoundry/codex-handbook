@@ -1,3 +1,12 @@
+---
+title: "Codex 处理文档、表格、幻灯片和 PDF 的完整工作流"
+description: "Codex 的文档类工具可以把同一批材料整理成文档、电子表格、幻灯片和 PDF。稳定的做法是先确定事实与数据，再依次生成各类交付物，最后检查内容是否一致。"
+url: /guides/codex-document-delivery-workflow
+status: published
+date_published: 2026-10-12
+date_modified: 2026-10-13
+---
+
 # Codex 处理文档、表格、幻灯片和 PDF 的完整工作流
 
 > 本文在线版：[codexguide.io/guides/codex-document-delivery-workflow](https://codexguide.io/guides/codex-document-delivery-workflow)
