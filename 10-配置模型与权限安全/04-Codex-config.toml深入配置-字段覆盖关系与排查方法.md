@@ -298,8 +298,8 @@ rm -rf "$HOME/codex-probe"
 
 - [Codex 模型和推理强度怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)
-- [Codex 沙箱与主机权限风险](./08-Codex沙箱与主机权限风险.md)
-- [Codex AGENTS.md 教程](./09-AGENTS.md怎么写-项目规则继承关系与验收标准.md)：项目规则写在 AGENTS.md，运行配置写在 config.toml。
+- [Codex 沙箱与主机权限风险](./05-Codex沙箱与主机权限风险.md)
+- [Codex AGENTS.md 教程](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)：项目规则写在 AGENTS.md，运行配置写在 config.toml。
 - [Codex 接入 Amazon Bedrock](../12-官方工具与集成/16-Codex接入Amazon-Bedrock-登录向导与配置.md)：用 `model_provider` 切换模型来源。
 
 ## 参考资料

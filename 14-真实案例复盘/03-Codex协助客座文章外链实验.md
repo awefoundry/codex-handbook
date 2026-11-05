@@ -21,7 +21,6 @@ contributors: [CodexGuide]
 date_published: 2026-08-17
 date_modified: 2026-10-22
 verified_on: 2026-10-22
-client_validation_pending: false
 official_ref: https://developers.google.com/search/docs/essentials/spam-policies
 keywords: [Codex SEO 外链, 客座文章, 出海 SEO, rel=sponsored, Adsy, Google 付费链接]
 related: []

@@ -282,7 +282,7 @@ base_url = "https://gateway.example.com/v1"
 env_key = "MYGATEWAY_API_KEY"
 ```
 
-上面的服务地址和名称只是示意。注意 `wire_api` 目前只支持 `responses`（不写时就是它），也就是说对方服务需要兼容 OpenAI Responses 接口。完整字段、请求到底发去哪、怎么验证，见[Codex 自定义模型提供商](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)。
+上面的服务地址和名称只是示意。注意 `wire_api` 目前只支持 `responses`（不写时就是它），也就是说对方服务需要兼容 OpenAI Responses 接口。完整字段、请求到底发去哪、怎么验证，见[Codex 自定义模型提供商](../10-配置模型与权限安全/11-Codex自定义模型提供商-model_providers与openai_base_url.md)。
 
 ## 常见问题
 
@@ -301,7 +301,7 @@ env_key = "MYGATEWAY_API_KEY"
 
 - 分系统安装：[macOS 安装 Codex CLI](../01-安装与首次使用/04-macOS安装Codex-CLI.md)
 - 图形界面登录：[登录 Codex](../01-安装与首次使用/07-登录Codex.md)
-- 接其他模型服务：[Codex 自定义模型提供商](../10-配置模型与权限安全/13-Codex自定义模型提供商-model_providers与openai_base_url.md)
+- 接其他模型服务：[Codex 自定义模型提供商](../10-配置模型与权限安全/11-Codex自定义模型提供商-model_providers与openai_base_url.md)
 
 ## 参考资料
 

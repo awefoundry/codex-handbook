@@ -59,7 +59,7 @@ OpenAI 在 2026-10-29 宣布：符合条件的 ChatGPT Pro 和 Business 订阅�
 | ChatGPT credits | ChatGPT 账单页 | 用量上限用完后继续用 Codex | 没有。API 额度不进 credits 余额 |
 | **API 额度（本文）** | [API Platform 账单页](https://platform.openai.com/settings/organization/billing/overview) | 调用 OpenAI API（Responses、Agents 等） | 就是它 |
 
-Codex 用量上限和 credits 的细节见[Codex 用量额度怎么看](./10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
+Codex 用量上限和 credits 的细节见[Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 ## 谁能领
 
@@ -151,7 +151,7 @@ Business 的算法是「(20 × Standard 席位数 + 100 × Premium 席位数) �
 1. **用 API Key 登录 Codex**（`codex login --with-api-key`，或在 App、IDE 里选「用 API Key 登录」）：Codex 按标准 API 价格计费，这笔订阅赠送的额度**不能**用来支付。
 2. **用 ChatGPT 账号登录 Codex**：用的是订阅自带的 Codex 用量上限和 credits，这笔 API 额度**不会**让上限变高。
 
-所以如果你的目标是「Codex 用得更多」，这项权益帮不上忙。要看的仍然是订阅档位、用量上限和 credits，见[Codex 用量额度怎么看](./10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。两种登录方式的区别见[Codex CLI 安装、登录与多入口配置](../12-官方工具与集成/09-CodexCLI国内使用与多入口配置.md)。
+所以如果你的目标是「Codex 用得更多」，这项权益帮不上忙。要看的仍然是订阅档位、用量上限和 credits，见[Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。两种登录方式的区别见[Codex CLI 安装、登录与多入口配置](../12-官方工具与集成/09-CodexCLI国内使用与多入口配置.md)。
 
 它适合的场景是：**用 Codex 写一个调用 OpenAI API 的应用**，应用运行时的 API 调用花这笔额度。比如让 Codex 帮你搭一个调用 Responses API 的小工具，工具自己的请求从额度里扣。在 Codex 里创建 API Key、写入项目，可以用官方的 OpenAI Developers 插件，见[Codex 安装 OpenAI Developers 插件](../09-MCP与外部工具/08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)。
 
@@ -199,7 +199,7 @@ Help Center 提醒要去掉截图里的敏感信息，不要发送密码或 API 
 
 ## 下一步
 
-- 搞清 Codex 自己的用量上限和 credits：[Codex 用量额度怎么看](./10-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
+- 搞清 Codex 自己的用量上限和 credits：[Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - 在 Codex 里安全创建 API Key、写进项目：[Codex 安装 OpenAI Developers 插件](../09-MCP与外部工具/08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)
 - 分清 ChatGPT 登录和 API Key 登录：[登录 Codex](../01-安装与首次使用/07-登录Codex.md)
 

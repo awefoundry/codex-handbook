@@ -144,7 +144,7 @@ Codex 0.165.0 源码里的算法（`ModelInfo::auto_compact_token_limit`）：
 model_auto_compact_token_limit = 200000
 ```
 
-按上面的算法，这个值超过窗口 90% 时会被压回 90%，不会生效。配置文件的分层和覆盖关系见[Codex config.toml 深入配置](../10-配置模型与权限安全/08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
+按上面的算法，这个值超过窗口 90% 时会被压回 90%，不会生效。配置文件的分层和覆盖关系见[Codex config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。
 
 ## 用 Hooks 管住压缩
 
@@ -156,7 +156,7 @@ model_auto_compact_token_limit = 200000
 | `PostCompact` | 压缩之后 | 同样按 `manual` / `auto` 匹配；返回 `continue: false` 时，Codex 压缩后停下 |
 | `SessionStart`（`source: "compact"`） | 压缩后、下一次请求模型之前 | 用 `additionalContext` 重新注入需要的上下文。任务中途自动压缩时，这段内容会直接交给紧接着的继续执行 |
 
-常见用法：压缩前把当前进度写进一个文件；压缩后用 `SessionStart` 把「项目约定」「当前任务目标」重新塞回去。Hooks 的配置方式和信任机制见[Codex Hooks 入门](../11-自动化与高级工作流/08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)。
+常见用法：压缩前把当前进度写进一个文件；压缩后用 `SessionStart` 把「项目约定」「当前任务目标」重新塞回去。Hooks 的配置方式和信任机制见[Codex Hooks 入门](../11-自动化与高级工作流/11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)。
 
 ## 压缩还是新开会话
 
@@ -171,7 +171,7 @@ model_auto_compact_token_limit = 200000
 | 只是想插问一个小问题 | `/side` 开一个临时旁支对话，不影响主对话 |
 | 任务很大，可以拆开 | 用 Subagents 把独立的部分交给子 Agent，主对话只收结果 |
 
-多条对话的命名、恢复和交接见[Codex CLI 管理多条任务线](../11-自动化与高级工作流/02-CodexCLI管理多条任务线.md)；拆给子 Agent 的做法见[Codex Subagents 怎么用](../11-自动化与高级工作流/06-Codex使用Subagents并行处理任务.md)。
+多条对话的命名、恢复和交接见[Codex CLI 管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)；拆给子 Agent 的做法见[Codex Subagents 怎么用](../11-自动化与高级工作流/09-Codex使用Subagents并行处理任务.md)。
 
 ## 少占上下文的习惯
 
@@ -183,8 +183,8 @@ model_auto_compact_token_limit = 200000
 ## 下一步
 
 - 上下文给多少才够用：[给 Codex 多大上下文才够用](../03-项目理解与上下文/04-给Codex多大上下文才够用.md)
-- 多条任务线怎么管：[Codex CLI 管理多条任务线](../11-自动化与高级工作流/02-CodexCLI管理多条任务线.md)
-- 压缩前后跑脚本：[Codex Hooks 入门](../11-自动化与高级工作流/08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)
+- 多条任务线怎么管：[Codex CLI 管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)
+- 压缩前后跑脚本：[Codex Hooks 入门](../11-自动化与高级工作流/11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)
 - 斜杠命令速查：[Codex CLI 斜杠命令与快捷键](../01-安装与首次使用/14-斜杠命令与快捷键.md)
 
 ## 参考资料
