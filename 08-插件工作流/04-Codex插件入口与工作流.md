@@ -42,7 +42,7 @@ faq:
 
 插件（Plugin）是 Codex 和 ChatGPT 共用的扩展包。一个插件可以带 Skills、MCP 服务、浏览器扩展和 Hooks，装一次就能把一整套工作流带进来，不用自己逐个配置。
 
-这篇讲用户这一侧：入口在哪、怎么装、怎么调用、卸载会留下什么。想自己做插件，看 [Codex 插件开发入门](./05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
+这篇讲用户这一侧：入口在哪、怎么装、怎么调用、卸载会留下什么。想自己做插件，看 [Codex 插件开发入门](./06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
 
 ## 先看结论
 
@@ -228,11 +228,11 @@ trusted_content_hash = "sha256:949c98ec…"
 
 这三个插件只通过 ChatGPT Edu 和 ChatGPT for Teachers 的机构部署提供。公告也强调，机构保留对可用工具和权限的控制。
 
-对普通 Codex 用户来说，这里值得参考的是打包思路：按角色把常用的 Skills、工具连接和工作流放进同一个插件，比一个个零散的 Skill 更好分发和管理。具体怎么打包，见 [Codex 插件开发入门](./05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
+对普通 Codex 用户来说，这里值得参考的是打包思路：按角色把常用的 Skills、工具连接和工作流放进同一个插件，比一个个零散的 Skill 更好分发和管理。具体怎么打包，见 [Codex 插件开发入门](./06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。
 
 ## 下一步
 
-- 想自己做插件并用 marketplace 分发：[Codex 插件开发入门](./05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)
+- 想自己做插件并用 marketplace 分发：[Codex 插件开发入门](./06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)
 - 装过第三方插件，想查它装了什么、信任了什么：[Codex 插件与 Hook 自查](../10-配置模型与权限安全/22-Codex插件与Hook自查-第三方应用自动安装与信任记录.md)
 - 插件里的 MCP 服务怎么配置和登录：[Codex MCP 入门](../09-MCP与外部工具/01-Codex-MCP入门-config与mcp-login.md)
 

@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-import-from-claude-code-cursor](https://codexguide.io/guides/codex-import-from-claude-code-cursor)
 
-> 核对依据：learn.chatgpt.com《[Import from another agent](https://learn.chatgpt.com/docs/import)》、同站《[Developer commands](https://learn.chatgpt.com/docs/developer-commands)》中的 `/import` 说明，以及 Codex CLI `0.140.0` release notes（首次加入 `/import`）与 2026-08-11 What’s new（桌面端导入与 Cursor）。文中「我的用法」是操作顺序建议，不是官方强制流程。本文未在本机实装 Claude Code／Cursor 做端到端导入，`client_validation_pending: true`。
+> 核对依据：learn.chatgpt.com《[Import from another agent](https://learn.chatgpt.com/docs/import)》、同站《[Developer commands](https://learn.chatgpt.com/docs/developer-commands)》中的 `/import` 说明，以及 Codex CLI `0.140.0` release notes（首次加入 `/import`）与 2026-08-11 What’s new（桌面端导入与 Cursor）。文中「我的用法」是操作顺序建议，不是官方强制流程。本文未在本机实装 Claude Code／Cursor 做端到端导入。
 
 已经在 Claude Code 或 Cursor 里攒了一套项目规则、斜杠命令、MCP 和近期对话时，换到 Codex **不必从零重写**。官方提供统一的导入流：桌面端走 **Settings → Import**，CLI 走 **`/import`**。
 

@@ -97,7 +97,7 @@ faq:
 
 CLI 里的 `/feedback` 是另一回事：按官方命令文档，它把日志或诊断信息发给 Codex 维护者，用来排查问题，发送前会提示你选要附带什么。
 
-**Daybreak 等 Trusted Access 会话。** 帮助中心写明：在个人账号上的 Daybreak 会话里，即使关了 Improve the model for everyone，OpenAI 也可能用这些交互内容改进模型，目的是加强防范网络滥用的安全措施。出了 Trusted Access 会话，你的开关照常生效。Daybreak 怎么申请和开启，见 [Codex Daybreak Blue](./12-Codex-Daybreak-Blue申请开启与排障.md)。
+**Daybreak 等 Trusted Access 会话。** 帮助中心写明：在个人账号上的 Daybreak 会话里，即使关了 Improve the model for everyone，OpenAI 也可能用这些交互内容改进模型，目的是加强防范网络滥用的安全措施。出了 Trusted Access 会话，你的开关照常生效。Daybreak 怎么申请和开启，见 [Codex Daybreak Blue](./10-Codex-Daybreak-Blue申请开启与排障.md)。
 
 ## 不会用于训练的情况
 

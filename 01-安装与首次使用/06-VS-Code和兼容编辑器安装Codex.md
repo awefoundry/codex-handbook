@@ -1,130 +1,181 @@
-# VS Code 和兼容编辑器安装 Codex
+---
+id: codex-vscode-install
+title: VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置
+seo_title: VS Code、Cursor、Windsurf 安装 Codex：核对 openai.chatgpt
+description: 在 VS Code、Cursor、Windsurf 和 VS Code Insiders 安装 Codex 前，先核对标识符 openai.chatgpt 和发布者。本文给出官方安装入口、登录、打开项目，以及 2026-10-31 的版本与市场来源。
+lede: 搜索结果里会有多个名叫 Codex 的扩展。只装标识符 openai.chatgpt、发布者核对通过的那一个。
+url: /guides/vs-code-jian-rong-bian-ji-qi-an-zhuang-codex
+status: published
+section: guides
+category: B-install-login
+topic: 认识、安装与环境
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [IDE]
+difficulty: 基础
+order: 6
+author: CodexGuide
+contributors: [CodexGuide]
+date_published: 2026-08-08
+date_modified: 2026-10-31
+verified_on: 2026-10-31
+official_ref: https://learn.chatgpt.com/docs/codex/ide
+keywords: [VS Code 安装 Codex, Cursor 安装 Codex, Windsurf Codex, openai.chatgpt, Codex IDE 扩展]
+related: [codex-ide-extension-security-check]
+howto: false
+faq:
+  - q: 官方扩展的标识符是什么？
+    a: openai.chatgpt。显示名是 Codex – OpenAI’s coding agent。2026-10-31 在 Visual Studio Marketplace 和 Open VSX 上的版本都是 26.51021.22027。
+  - q: Windsurf 和 VS Code Insiders 用另一份扩展吗？
+    a: 不用。官方 IDE 文档给 Windsurf 的入口是 windsurf:extension/openai.chatgpt，给 Insiders 的链接是同一条 Marketplace 页面。
+  - q: 装好了但侧栏没有图标？
+    a: 官方文档写明：在 VS Code、Cursor 或 Windsurf 里打开命令面板，运行 Codex: Open Codex Sidebar。
+---
 
-> 本文按当前界面整理。编辑器更新后，按钮名称和位置可能会变化，请以你看到的实际界面为准。
+# VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置
 
-Codex 可以直接安装到 VS Code、Cursor 等兼容编辑器中。安装完成后，打开 Codex 侧栏，完成登录，就可以在项目文件的上下文中使用它。
+> 本文在线版：[codexguide.io/guides/vs-code-jian-rong-bian-ji-qi-an-zhuang-codex](https://codexguide.io/guides/vs-code-jian-rong-bian-ji-qi-an-zhuang-codex)
+
+> 核对依据：[Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) 页面与 Gallery API、[Open VSX API](https://open-vsx.org/api/openai/chatgpt)、[Authentication](https://learn.chatgpt.com/docs/auth)、[VS Code 扩展市场文档](https://code.visualstudio.com/docs/configure/extensions/extension-marketplace)。市场数字核对于 2026-10-31。本文没有在编辑器里重新走完安装，保留的三张图是仓库里已有的实拍，图注写明画面里实际有什么。版本号以市场页面为准，不以旧截图上的版本为准。
+
+Codex 可以装进 VS Code，以及官方文档列出的 Cursor、Windsurf 和 VS Code Insiders。装之前先认出官方扩展，再登录、打开项目。
+
+2026 年 10 月 29 日 Cursor 扩展市场出现过被篡改的 Claude Code 扩展。没有证据表明 Codex 扩展受影响。自查命令和失陷指标写在 [Codex IDE 扩展安全自查](../10-配置模型与权限安全/19-Codex-IDE扩展安全自查-确认官方openai.chatgpt与扩展投毒防范.md)。下面的安装步骤把来源核对放进每一步。
 
 ## 先说结论
 
-- **VS Code**：从扩展市场搜索 Codex，核对发布者 OpenAI、认证标志和标识符 `openai.chatgpt` 后安装。
-- **Cursor**：操作方式与 VS Code 接近，扩展市场和 Codex 入口的位置可能略有不同。官方文档列出的兼容编辑器还包括 Windsurf。
-- **第一次使用**：安装后可以通过 ChatGPT 登录，也可以使用 API 密钥，然后按引导完成首次设置。
-- **开始处理项目**：先打开项目文件夹。当前打开的文件和选中的代码会作为上下文，其他参考文件可以另外添加。
+- 官方标识符是 `openai.chatgpt`，发布者在 Visual Studio Marketplace 上是已验证域名 openai.com 的 OpenAI。
+- 2026-10-31 的版本是 `26.51021.22027`。Marketplace 上这条版本的更新时间是 2026-10-23 21:27 UTC（北京时间 2026-10-24 05:27）。
+- 登录可以用 ChatGPT 账号，也可以用 API 密钥。官方认证文档对桌面应用、CLI 和 IDE 扩展都列出了这两种。
+- 开始改项目之前，先打开文件夹。当前文件和选中的代码会作为上下文。
 
-> **安全提醒**：密钥、令牌和其他敏感信息不要加入 Codex 上下文。安装扩展时，也要先核对官方发布者和认证标志。
+密钥和令牌不要放进 Codex 的上下文。
 
----
+## 装之前：怎么认出官方扩展
 
-## 一、在 VS Code 中安装 Codex
+同时满足下面几项再点安装：
 
-### 1. 打开扩展市场
+| 核对项 | 官方值 |
+|---|---|
+| 标识符 | `openai.chatgpt` |
+| 显示名 | Codex – OpenAI’s coding agent |
+| Marketplace 发布者 | OpenAI，域名 openai.com，已验证 |
+| 当前版本 | `26.51021.22027`（2026-10-31） |
+| 最低引擎 | `^1.96.2` |
 
-打开 VS Code 的扩展市场。扩展图标通常在左侧边栏，图标是四个小方块。
+Marketplace 页面同一天显示 16,214,174 次安装，说明文字是不含更新。Gallery API 的 `install` 字段是 16,181,564。两个数不一致，都会变，不能用来判断真伪。
 
-搜索 `Codex`，搜索结果里可能有多个同名扩展。官方扩展的名称是“Codex – OpenAI's coding agent”，发布者是带认证标志的 OpenAI。
+Open VSX 上同一标识符 `verified` 为 true，版本相同，时间戳 `2026-10-26T20:54:33Z`（北京时间 2026-10-27 04:54），下载量 12,919,792。API 里的发布记录是 GitHub 用户 `shijie-oai`，命名空间是 `openai`。看命名空间、verified 和版本，不要只看显示名。
 
-![VS Code 扩展市场中的 Codex](image-7.png)
+搜索 “Codex” 会遇到其他扩展。名字像，标识符不是 `openai.chatgpt`，就不要装。
 
-### 2. 核对扩展详情并安装
+## VS Code
 
-点击搜索结果，进入扩展详情页。确认发布者是 OpenAI，右侧“市场”信息里的标识符是 `openai.chatgpt`，再点击“安装”。
+官方文档的按钮是 `vscode:extension/openai.chatgpt`，对应市场页面：
 
-安装完成后，编辑器右上方和侧栏顶部会出现 Codex 入口，也就是图中箭头指向的位置。
+[https://marketplace.visualstudio.com/items?itemName=openai.chatgpt](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
 
-![Codex 扩展详情页和安装后出现的入口](image-9.png)
+也可以在 Quick Open（Ctrl+P，macOS 为 Cmd+P）里粘贴市场页面给出的命令：
 
-### 3. 打开 Codex 侧栏
+```text
+ext install openai.chatgpt
+```
 
-点击 Codex 图标打开侧栏。没有看到图标时，打开命令面板（Windows 上按 `Ctrl+Shift+P`，macOS 上按 `Cmd+Shift+P`），运行 `Codex: Open Codex Sidebar`。
+装完后点 Codex 图标。图标不在侧栏时，打开命令面板（Ctrl+Shift+P，macOS 为 Cmd+Shift+P），运行：
 
-### 4. 登录
+```text
+Codex: Open Codex Sidebar
+```
 
-网络正常时，侧栏会显示登录界面，可以选择“通过 ChatGPT 登录”或“使用 API 密钥”。
+这是官方 IDE 文档写的命令，VS Code、Cursor 和 Windsurf 共用这一句。
 
-![Codex 登录界面](image-10.png)
+## Cursor
 
-点击“通过 ChatGPT 登录”后，浏览器会打开登录页面。完成登录和授权后，回到 VS Code，侧栏会刷新为已登录状态。
+官方入口是 `cursor:extension/openai.chatgpt`。Cursor 有自己的扩展市场。2026-10-29 的安全事件发生在那个市场里的 Claude Code 包上，通告写明审计后没有其他扩展被篡改。安装时仍然要看本机详情里的标识符是不是 `openai.chatgpt`。
 
-如果侧栏没有显示登录界面，或者登录页面打不开，先检查网络和代理设置再重试。扩展已经安装，并不代表登录服务一定能够正常连接。
+活动栏的图标有时收在溢出菜单里。下面这张图是此前在 Cursor 里拍的，菜单中有一项 Codex，没有版本号。你的版本里，图标可能直接在活动栏上，也可能还在这个菜单里。
 
-> **登录时不要急着关页面**：如果浏览器没有自动切回编辑器，直接返回原来的 VS Code 窗口，重新查看 Codex 侧栏。登录完成前，不要关闭浏览器或编辑器。
+![Cursor 活动栏溢出菜单中列出 Codex](../图片素材/01-安装与首次使用/06-VS-Code和兼容编辑器安装Codex/01-Cursor活动栏菜单中的Codex.png)
 
-### 5. 完成首次设置
+图中菜单项包括资源管理器、搜索、源代码管理、扩展和 Codex。找不到时，用上一节的 `Codex: Open Codex Sidebar`，或重启 Cursor 后再看。
 
-登录后，侧栏会显示首次使用的说明，按引导点击“下一步”。
+## Windsurf 和 VS Code Insiders
 
-![首次设置引导](image-11.png)
+官方 IDE 文档把这两个也列在安装入口里：
 
-设置完成后，侧栏会进入对话界面，可以发送第一条消息。
+- Windsurf：`windsurf:extension/openai.chatgpt`
+- VS Code Insiders：打开同一条 Marketplace 页面 `itemName=openai.chatgpt`，不是另一个扩展 ID
 
-![设置完成后的对话界面](image-12.png)
+Windsurf 是否只从 Open VSX 拉取，官方这篇 IDE 文档没有写。无论它打开的是哪一个市场页面，详情里都要看到标识符 `openai.chatgpt`。Open VSX 上的核对项见上一节。
 
----
+Insiders 和稳定版 VS Code 可以各装一份。两边都用 `code-insiders --list-extensions --show-versions` 或稳定版的 `code --list-extensions --show-versions` 分开看。`code-insiders` 这条是按 VS Code 文档里 `code --list-extensions` 的同一类命令来写的，本文没有在 Insiders 里执行。
 
-## 二、打开项目并添加上下文
+## 登录和首次设置
 
-### 1. 打开项目文件夹
+官方认证文档写明，IDE 扩展支持：
 
-从左上角的“文件”菜单选择“打开文件夹”，打开要处理的项目。Codex 只能看到你打开的项目里的文件。
+- **ChatGPT 登录**：使用 ChatGPT 订阅或工作区里的 Codex 权限。
+- **API 密钥**：按 OpenAI Platform 的 API 用量计费。
 
-![从文件菜单打开项目文件夹](image-13.png)
+更完整的登录差异见 [登录 Codex](./07-登录Codex.md)。
 
-### 2. 先发一个只读请求
+下面这张图是此前在 Cursor 里拍的 Codex 侧栏。画面上有两个主按钮：「通过 ChatGPT 登录」和「使用 API 密钥」，下面还有一行「更多登录选项」。本文只把前两个按钮对应到官方认证文档。第三行以你当前版本的界面为准，不把它写成必须使用的第三种登录方式。
 
-打开项目后，当前打开的文件和选中的代码会作为上下文。需要其他参考文件时，可以通过输入框左下角的“+”添加。
+![Cursor 中 Codex 侧栏的 ChatGPT 登录和 API 密钥按钮](../图片素材/01-安装与首次使用/06-VS-Code和兼容编辑器安装Codex/02-Cursor登录按钮.png)
 
-第一次使用时，建议先让 Codex 只读了解项目，或者解释一个函数，并在请求里写明“不要修改文件”。
+点 ChatGPT 登录后，浏览器会打开授权页。完成后回到原来的编辑器窗口，再看侧栏。登录没有完成时，不要关掉浏览器或编辑器。
 
-![让 Codex 只读了解当前工作区](image-14.png)
+侧栏没有出现登录按钮时，先看网络和代理。扩展已经安装，只说明编辑器加载了扩展，不说明登录服务一定连得上。登录失败的其他情况见 [安装登录常见问题](./13-安装登录常见问题.md)。
 
-> **建议的第一次任务**：先让 Codex 解释一个函数，或完成一个范围很小的修改。确认修改、检查和撤销流程都正常后，再交给它更大的任务。
+仓库里还有几张更早的首次引导和对话截图，上面的扩展版本或模型名已经不是 2026-10-31 的市场版本，这次改写没有继续使用。首次引导的按钮文字以你打开侧栏后看到的为准。
 
----
+## 打开项目并添加上下文
 
-## 三、在 Cursor 中安装 Codex
+官方 IDE 文档写明：打开项目后再开始对话，当前打开的文件和选中的代码可以放进 composer。改完可以在编辑器旁边看 diff。任务变大时，可以从 IDE 交给云端，再回到可审查的结果。文档还建议在任务前后做 Git checkpoint，方便回退。
 
-Cursor 的操作方式与 VS Code 接近，扩展市场和 Codex 入口的位置会随版本变化。
+VS Code 里从文件菜单打开文件夹。下面这张图是文件菜单：能看到「打开文件夹」，快捷键显示为 Ctrl+K Ctrl+O。高亮的是下一项「从文件打开工作区」，不要把高亮那一项当成打开文件夹。
 
-### 1. 搜索并安装 Codex
+![VS Code 文件菜单列出打开文件夹，快捷键为 Ctrl+K Ctrl+O](../图片素材/01-安装与首次使用/06-VS-Code和兼容编辑器安装Codex/03-VS-Code文件菜单打开文件夹.png)
 
-打开 Cursor 的扩展市场，搜索 `Codex`。和 VS Code 一样，核对发布者 OpenAI 和标识符 `openai.chatgpt` 后点击“安装”。
+第一次先发一个只读请求，例如解释当前函数，并写明不要修改文件。确认侧栏、上下文和撤销都符合预期之后，再交给它会改文件的任务。
 
-![在 Cursor 中搜索并安装 Codex](image-20.png)
+Codex 只能读到你打开的工作区。多根工作区时，官方 [Projects and chats](https://learn.chatgpt.com/docs/projects) 写明：IDE 扩展把当前打开的文件夹或工作区当作本地项目，要为对话选中工作区根。扩展不提供网页和桌面应用里的 ChatGPT Projects 视图。
 
-### 2. 找到 Codex 入口
+## 怎么看已装版本、怎么更新
 
-安装后，Codex 入口可能收在侧栏顶部的下拉菜单里。点击下拉箭头，选择 Codex。
+VS Code 文档中的命令：
 
-![从侧栏下拉菜单找到 Codex](image-16.png)
+```bash
+code --list-extensions --show-versions
+```
 
-仍然没有看到 Codex 时，先切换到其他面板再切回来；还是没有，就重启 Cursor。
+输出里应有 `openai.chatgpt`。2026-10-31 的市场版本是 `26.51021.22027`。之后可以更新，标识符不能变成别的。
 
-### 3. 阅读说明并登录
+Cursor、Windsurf 若提供兼容命令行，常见写法是在对应命令上加 `--list-extensions --show-versions`。本文没有在这两款编辑器里执行。
 
-第一次打开时，侧栏会先显示权限、可能出错和账户用量的说明，点击“继续”。
+自动更新由 VS Code 的 `extensions.autoUpdate` 控制，也可以对单个扩展右键切换 Auto Update。默认会延迟约 12 小时（`extensions.autoUpdateDelay`）。这不是“Codex 已受市场投毒影响”的结论。要不要关，见安全自查那篇。更新时仍然只接受标识符为 `openai.chatgpt` 的包。
 
-![Cursor 中首次打开 Codex 的说明](image-17.png)
+扩展页上的 Update 会立刻安装，不等那 12 小时。
 
-然后点击“通过 ChatGPT 登录”，按浏览器中的提示完成登录，再回到 Cursor。VS Code 和 Cursor 可以使用同一个 ChatGPT 账号。
+## 常见问题
 
-![在 Cursor 中通过 ChatGPT 登录](image-19.png)
+**安装后没有图标。** 运行 `Codex: Open Codex Sidebar`。仍没有，重启编辑器，并确认扩展列表里是 `openai.chatgpt` 而不是另一个名字里带 Codex 的扩展。
 
----
+**Windows 提示先完成 Windows 设置。** 按编辑器里的提示做完，否则 Codex 不能创建或修改文件。这条来自旧文记录的界面提示，2026-10-31 没有在 Windows 上重装验证。提示文字变了，以当前界面为准。
 
-## 四、常见问题
+**浏览器授权完，编辑器仍是未登录。** 回到原来的窗口重新打开侧栏。还是未登录，重启编辑器。不要在授权页没完成时反复点登录。
 
-- **安装后找不到入口**：确认扩展已经安装，再运行命令面板里的 `Codex: Open Codex Sidebar`。也可以重启编辑器，让扩展重新加载。
-- **搜索结果里有多个 Codex**：只安装发布者为 OpenAI、带认证标志、标识符为 `openai.chatgpt` 的扩展。
-- **没有显示登录页面**：先检查网络和代理设置。页面打不开时，反复点击登录不会解决问题。
-- **浏览器登录后编辑器仍未登录**：回到原来的编辑器窗口，重新打开 Codex 侧栏；还是没有变化，就重启编辑器。
-- **Windows 上提示“完成 Windows 设置以继续”**：点击提示里的“继续”，按引导完成设置后，Codex 才能创建文件、编辑代码或执行操作。
-- **Codex 看不到项目文件**：确认打开的是项目文件夹，并在请求中添加需要参考的文件或当前文件。
+**Codex 看不到项目文件。** 确认打开的是文件夹或工作区，不是单个文件。需要别的文件时，按侧栏里添加上下文的控件把它加进这一轮。控件的图标会随版本变化，官方文档写的是可以把打开的文件、选区和最近的对话放进 composer。
 
-## 小结
+## 下一步
 
-安装完成后，先确认登录状态，再打开项目文件夹并添加上下文。第一次使用从小任务开始，确认流程正常后，再逐步扩大任务范围。
+登录方式的差别看 [登录 Codex](./07-登录Codex.md)。装完仍连不上，看 [安装登录常见问题](./13-安装登录常见问题.md)。要核对这次 Cursor 市场事件和本机扩展，看 [Codex IDE 扩展安全自查](../10-配置模型与权限安全/19-Codex-IDE扩展安全自查-确认官方openai.chatgpt与扩展投毒防范.md)。
 
 ## 参考资料
 
 - [OpenAI：Codex IDE extension](https://learn.chatgpt.com/docs/codex/ide)
-- [Visual Studio Marketplace：Codex – OpenAI's coding agent](https://marketplace.visualstudio.com/items?itemName=OpenAI.chatgpt)
+- [OpenAI：Authentication](https://learn.chatgpt.com/docs/auth)
+- [OpenAI：Projects and chats](https://learn.chatgpt.com/docs/projects)
+- [Visual Studio Marketplace：openai.chatgpt](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
+- [Open VSX API：openai/chatgpt](https://open-vsx.org/api/openai/chatgpt)
+- [VS Code：Extension Marketplace](https://code.visualstudio.com/docs/configure/extensions/extension-marketplace)

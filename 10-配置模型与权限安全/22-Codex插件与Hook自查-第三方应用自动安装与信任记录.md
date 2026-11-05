@@ -246,7 +246,7 @@ hooks = false
 
 ## 下一步
 
-Hook 的写法和 `/hooks` 界面，见 [Codex Hooks 入门](../11-自动化与高级工作流/08-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)。插件里到底能打包什么、marketplace 怎么配，见 [Codex 插件开发入门](../08-插件工作流/05-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。正常的安装、停用和卸载，见 [Codex 插件入口](../08-插件工作流/04-Codex插件入口与工作流.md)。`config.toml` 的分层和生效检查，见 [config.toml 深入配置](./08-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。MCP 的配置和登录，见 [Codex MCP 入门](../09-MCP与外部工具/01-Codex-MCP入门-config与mcp-login.md)。
+Hook 的写法和 `/hooks` 界面，见 [Codex Hooks 入门](../11-自动化与高级工作流/11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)。插件里到底能打包什么、marketplace 怎么配，见 [Codex 插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)。正常的安装、停用和卸载，见 [Codex 插件入口](../08-插件工作流/04-Codex插件入口与工作流.md)。`config.toml` 的分层和生效检查，见 [config.toml 深入配置](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。MCP 的配置和登录，见 [Codex MCP 入门](../09-MCP与外部工具/01-Codex-MCP入门-config与mcp-login.md)。
 
 ## 参考资料
 
