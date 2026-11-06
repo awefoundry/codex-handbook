@@ -17,11 +17,11 @@ order: 12
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-23
-date_modified: 2026-10-23
+date_modified: 2026-11-06
 models: [gpt-6-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/20001258-openai-daybreak-trusted-access-for-cyber-overview
 keywords: [Codex Daybreak, Daybreak Blue, Trusted Access for Cyber, Codex /daybreak, chatgpt.com/cyber]
-related: [codex-model-reasoning-effort]
+related: [codex-model-reasoning-effort, codex-gpt-6-cyber-daybreak-red]
 faq:
   - q: 个人能申请 Daybreak Red 吗？
     a: 不能。官方写明 Red 目前只对获批的企业和组织开放，个人申请通道只能申请 Blue，Blue 获批也不包含 Red。
@@ -35,7 +35,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-daybreak-blue](https://codexguide.io/guides/codex-daybreak-blue)
 
-> 核对依据：OpenAI Help Center《OpenAI Daybreak - Trusted Access for Cyber overview》和《Troubleshooting OpenAI Daybreak》，2026-10-23 核对。本文只讲授权防御场景下的申请与开关，不涉及 Daybreak Red 的使用，也不讨论任何攻击性操作。
+> 核对依据：OpenAI Help Center《OpenAI Daybreak - Trusted Access for Cyber overview》和《Troubleshooting OpenAI Daybreak》，2026-10-23 核对。2026-11-06 只补充了指向 GPT-6 Cyber 准入文的链接。本文只讲授权防御场景下的申请与开关，不写 Daybreak Red 的使用，也不讨论任何攻击性操作。
 
 做安全工作的人用 Codex，常碰到一种情况：明明是在审自己公司的代码、分析自己环境里抓到的样本，模型却按通用防护把请求拒了。Daybreak 就是 OpenAI 为这类场景准备的 Trusted Access 计划。
 
@@ -49,7 +49,7 @@ Daybreak 是 OpenAI 的 Trusted Access for Cyber 计划，下面分 Blue 和 Red
 | --- | --- | --- |
 | 标准（未开启） | 主线模型，标准防护 | 威胁建模、安全代码审查与修补等通用工作 |
 | Daybreak Blue | 在 GPT-5.5、GPT-5.6 Sol、GPT-6 Sol、GPT-6 Luna 等主线模型上减少拒绝；Astra 仍走标准防护；不含网络安全专用模型 | 漏洞分级、安全代码审查、恶意软件分析、检测工程、事件响应、补丁验证 |
-| Daybreak Red | 需单独审批、更严格的验证和访问控制，仅对获批企业和组织开放 | 本文不展开 |
+| Daybreak Red | 需单独审批、更严格的验证和访问控制，仅对获批企业和组织开放 | 2026-11-05 的 GPT-6 Cyber 准入见专文。本文仍不写 Red 的使用方法 |
 
 官方建议多数安全团队从 Blue 开始。下文也只讲 Blue。
 
@@ -162,6 +162,7 @@ Daybreak 是 OpenAI 的 Trusted Access for Cyber 计划，下面分 Blue 和 Red
 - [Codex 沙箱与主机权限风险](./05-Codex沙箱与主机权限风险.md)
 - [权限、沙箱和审批](https://codexguide.io/guides/codex-quan-xian-sha-xiang-yu-shen-pi)
 - [Codex 模型和推理强度怎么选](https://codexguide.io/guides/codex-model-reasoning-effort)
+- [Codex 用 GPT-6 Cyber 与 Daybreak Red：准入与边界](./24-Codex用GPT-6-Cyber与Daybreak-Red-准入与边界.md)
 
 ## 参考
 

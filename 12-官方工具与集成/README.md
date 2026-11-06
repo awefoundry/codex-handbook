@@ -33,3 +33,5 @@
 - [Codex SDK 入门：用 TypeScript 或 Python 在自己的程序里启动、继续和恢复 Codex 线程](./17-Codex-SDK入门-TypeScript与Python启动继续和恢复线程.md)
 - [Codex Appshots：同时按两侧 Command 或 Alt，把当前应用窗口发给对话，以及权限、发送目标和隐私边界](./18-Codex-Appshots-把当前应用窗口发给对话.md)
 - [Codex Images 2.6：在 Codex 里生成 GIF、overlay 圈选编辑，全套餐可用](./19-Codex-Images-2.6-GIF生成与overlay编辑.md)
+- [OpenAI 收购 Pierre：Codex 里的 Trees、Diffs 和即将并入的 Code Storage 意味着什么](./20-OpenAI收购Pierre-Codex里的Trees-Diffs与Code-Storage.md)
+- [Codex 与 Dot：在 iOS 通知里回复、分享照片，并继续 Codex 任务](./21-Codex与Dot-iOS通知回复与分享继续任务.md)
