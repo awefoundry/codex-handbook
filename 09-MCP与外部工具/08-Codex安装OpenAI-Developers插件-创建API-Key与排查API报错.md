@@ -17,7 +17,7 @@ order: 8
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-29
-date_modified: 2026-10-29
+date_modified: 2026-11-07
 verified_on: 2026-10-29
 tested_cli_version: 0.165.0
 official_ref: https://developers.openai.com/learn/developers-codex-plugin
@@ -34,7 +34,7 @@ faq:
     a: 这是已知问题 openai/codex#30978（截至 2026-10-29 仍未关闭）：桌面端会自动拒绝插件弹出的保存位置表单。可以改用 Codex CLI 走同样的流程。
   - q: ChatGPT 订阅送的 API 额度能用在这把 Key 上吗？
     a: 可以用在你应用自己的 API 调用上，前提是这把 Key 属于关联了订阅额度的那个 API 组织。但不能用来支付「用 API Key 登录 Codex」的费用。
-related: [mcp-getting-started, codex-chatgpt-subscription-api-credits]
+related: [mcp-getting-started, codex-chatgpt-subscription-api-credits, codex-developers-plugin-showcase-api-credits]
 ---
 
 # Codex 安装 OpenAI Developers 插件：安全创建 API Key、写入 .env.local 与排查 API 报错
@@ -219,6 +219,7 @@ GitHub issue [openai/codex#30978](https://github.com/openai/codex/issues/30978)�
 - MCP 的基本概念和权限边界：[Codex MCP 入门](./01-Codex-MCP入门-config与mcp-login.md)
 - 插件的安装、调用和权限：[Codex 插件入口与工作流](../08-插件工作流/04-Codex插件入口与工作流.md)
 - 订阅送的 API 额度怎么领、能用在哪：[Codex 与 ChatGPT 订阅 API 额度](../10-配置模型与权限安全/16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)
+- 插件里的 Showcase 标签，以及去 billing 领取 API 额度：[Codex 用 OpenAI Developers 插件 Showcase](./14-Codex-OpenAI-Developers插件Showcase与领取API额度.md)
 
 ## 参考资料
 

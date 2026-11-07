@@ -30,3 +30,5 @@
 - [Codex 接入 Mobile MCP：让 Codex 操作 iOS 模拟器、Android 模拟器和真机](./11-Codex接入Mobile-MCP-操作iOS模拟器与Android设备.md)（第三方项目 mobile-next/mobile-mcp，不是 OpenAI 官方服务器）
 - [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)
 - [Codex 安装 Unity 官方插件：用 Skills 和 unity-cli 辅助开发](./13-Codex安装Unity插件-用Skills辅助Unity开发.md)
+- [Codex 用 OpenAI Developers 插件 Showcase：周末 starter 项目，以及 Pro／Business 怎么领取 API 额度](./14-Codex-OpenAI-Developers插件Showcase与领取API额度.md)
+- [Codex 安装 Heptabase 插件：在对话里打开白板，读写卡片、Journal 与思维导图](./15-Codex安装Heptabase插件-对话内打开白板与知识卡片.md)（第三方插件，Heptabase 帮助中心；本文没有 Heptabase 账号）
