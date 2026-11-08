@@ -30,3 +30,5 @@
 - [Codex 接入 Mobile MCP：让 Codex 操作 iOS 模拟器、Android 模拟器和真机](./11-Codex接入Mobile-MCP-操作iOS模拟器与Android设备.md)（第三方项目 mobile-next/mobile-mcp，不是 OpenAI 官方服务器）
 - [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)
 - [Codex 安装 Unity 官方插件：用 Skills 和 unity-cli 辅助开发](./13-Codex安装Unity插件-用Skills辅助Unity开发.md)
+- [Codex 安装 Google 官方 Skills 与插件：google/skills 仓库的 BigQuery、Cloud SQL、Firestore 等 17 个插件怎么装](./16-Codex安装Google官方Skills与插件-google-skills仓库.md)（Google 维护的 google/skills，Apache-2.0。android/skills 与 EGM 各有专文）
+- [Codex 安装 Blender Agent Skills：用 28 个技能做建模、绑定、动画与游戏引擎导出](./17-Codex安装Blender-Agent-Skills-建模绑定动画与引擎导出.md)（第三方项目 EL4CTEO/blender-skills，MIT；本文未在 Blender 中实测）

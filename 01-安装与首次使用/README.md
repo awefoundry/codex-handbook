@@ -16,9 +16,9 @@
 | 2 | [macOS 安装 Codex App：下载、安装、首次登录与进入 Codex 工作区](./02-macOS安装Codex-App.md) | 已收入 |
 | 3 | [Windows 安装 Codex App（2026-11 更新）：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选](./03-Windows安装Codex-App.md) | 已上线 |
 | 4 | [macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式](./04-macOS安装Codex-CLI.md) | 已收入 |
-| 5 | [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
+| 5 | [Windows 和 WSL 安装 Codex CLI（2026-11 更新）：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
 | 6 | [VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
-| 7 | [登录 Codex](./07-登录Codex.md) | 已上线 |
+| 7 | [登录 Codex（2026-11 更新）：ChatGPT 账号、API Key、Sign in another way 与凭据存储方式](./07-登录Codex.md) | 已上线 |
 | 8 | [打开第一个本地项目](./08-打开第一个本地项目.md) | 已上线 |
 | 9 | [完成第一次修改并检查结果](./09-完成第一次修改并检查结果.md) | 已上线 |
 
