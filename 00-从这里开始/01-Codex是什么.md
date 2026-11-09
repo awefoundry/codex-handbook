@@ -1,10 +1,10 @@
 ---
 title: "Codex 是什么：能力、工作方式与使用边界"
-description: "Codex 是面向软件开发任务的 AI 编程助手。它可以在你提供的项目和权限范围内读取文件、理解代码、修改内容、执行命令，并通过测试或其他检查验证结果。"
+description: "Codex 是 OpenAI 推出的 AI 编程助手，可以在你授权的项目里读取代码、修改文件、执行命令，并通过测试检查结果。本文讲清它的工作方式、和 ChatGPT、Cursor、Claude Code 的区别、要不要付费，以及新手怎么开始。"
 url: /guides/codex-shi-shen-me
 status: published
 date_published: 2026-07-12
-date_modified: 2026-10-13
+date_modified: 2026-11-09
 ---
 
 # Codex 是什么：能力、工作方式与使用边界
@@ -17,7 +17,14 @@ date_modified: 2026-10-13
 
 ## 先说结论
 
-Codex 是面向软件开发任务的 AI 编程助手。它可以在你提供的项目和权限范围内读取文件、理解代码、修改内容、执行命令，并通过测试或其他检查验证结果。
+Codex 是 OpenAI 推出的 AI 编程助手，面向软件开发任务。它可以在你提供的项目和权限范围内读取文件、理解代码、修改内容、执行命令，并通过测试或其他检查验证结果。
+
+先记住几个基本事实：
+
+- **谁做的**：OpenAI。用 ChatGPT 账号登录就能用，也可以用 API Key。
+- **在哪里用**：桌面 App、命令行 CLI、VS Code 等编辑器的扩展，以及云端任务。
+- **要不要钱**：ChatGPT 的 Free、Go、Plus、Pro、Business、Edu 和 Enterprise 套餐都包含 Codex，套餐越高，可用额度越多。
+- **适合做什么**：读懂项目、改代码、修 Bug、跑测试、写脚本和文档这类结果可以检查的开发任务。
 
 把它理解成“可以在项目里动手的编程助手”，比把它理解成“更会写代码的聊天机器人”准确。
 
@@ -85,6 +92,25 @@ Codex 可以读取你允许它访问的文件夹。它通常会先查看 README�
 | 需要关注的风险 | 信息是否准确 | 信息准确性、文件改动、权限和外部操作 |
 
 这个区别也解释了为什么使用 Codex 时应该保持 Git 工作区清楚。你需要能够查看它改了哪些文件，必要时撤销修改，而不是只看最终回复写得是否顺畅。
+
+## Codex 和 ChatGPT、Cursor、Claude Code 有什么区别
+
+搜 Codex 的人，常常也在看另外几个工具。它们都能帮你写代码，但出发点不一样。
+
+| 工具 | 出自 | 主要形态 | 更适合 |
+|---|---|---|---|
+| Codex | OpenAI | 桌面 App、CLI、编辑器扩展、云端任务 | 把一个开发任务交出去，让它在项目里改文件、跑命令、给出验证结果 |
+| ChatGPT 对话 | OpenAI | 网页和 App 里的对话 | 讨论思路、解释代码、写片段，由你自己复制到项目里 |
+| Cursor | Anysphere | 基于 VS Code 的 AI 编辑器 | 习惯在编辑器里边写边问，需要补全和就地修改 |
+| Claude Code | Anthropic | CLI、编辑器扩展、桌面和网页 | 和 Codex 类似的编程智能体，使用 Anthropic 的 Claude 模型 |
+
+几点说明：
+
+- Codex 和 ChatGPT 用的是同一个账号，但 ChatGPT 对话主要给建议，Codex 会直接在项目里动手。怎么在两者之间分工，可以看 [Chat、Work 和 Codex 怎么选](04-Chat-Work和Codex怎么选.md)。
+- Cursor 是一个编辑器，Codex 是一个可以接入编辑器的助手。两者并不冲突，Codex 的扩展也可以装在 Cursor 里。
+- Claude Code 和 Codex 是同一类工具，差别主要在模型、套餐和各自的配套功能。选哪个，最好拿自己的项目各试一个小任务再决定。
+
+这张表只讲定位，不比较模型强弱。几家工具更新都很快，具体功能以各自官方文档为准。
 
 ## Codex 可以完成哪些任务
 
@@ -169,6 +195,30 @@ OpenAI 当前提供桌面 App、CLI、IDE 扩展和云端等入口。它们面�
 
 没有必要。先学会描述任务、检查修改和验证结果。等你发现某个流程反复出现，再学习 Skills、MCP 和插件会更自然。
 
+## 常见问题
+
+### Codex 免费吗？
+
+可以免费用。按 OpenAI 的 [价格说明](https://learn.chatgpt.com/docs/pricing)，ChatGPT 的 Free、Go、Plus、Pro、Business、Edu 和 Enterprise 套餐都包含 Codex。Free 适合试一试小的编程任务，额度用完要等重置或者升级套餐。
+
+也可以不用 ChatGPT 套餐，改用 API Key 登录，按 API 价格计费。这种方式能用 CLI、SDK 和编辑器扩展，但用不了 GitHub 代码审查、Slack 这类云端功能。
+
+### 不会编程能用 Codex 吗？
+
+能用，但会比较吃力。Codex 会替你写代码、跑命令，可是需求说得清不清楚、结果对不对，最后还要你来判断。完全没有编程基础的话，建议先从改一个本地网页这种结果一眼能看出来的小任务开始。
+
+### Codex 在国内能直接用吗？
+
+中国大陆和中国香港目前都不在 OpenAI 的 [支持国家和地区列表](https://developers.openai.com/api/docs/supported-countries) 里，所以没法直接注册和使用。能否使用以你所在地区和账号的实际情况为准。
+
+### 现在的 Codex 和 2021 年的 OpenAI Codex 是一回事吗？
+
+不是。2021 年 OpenAI 发布过一个也叫 Codex 的代码模型，当时 GitHub Copilot 就是基于它做的，这个模型后来已经停用。现在说的 Codex 是一个编程助手产品，背后用的是 OpenAI 当前的 GPT 系列模型。
+
+### 用 Codex 需要先装什么？
+
+先选一个入口就行：桌面 App、CLI 或编辑器扩展。不确定选哪个，可以看 [App、CLI、IDE 和 Cloud 怎么选](05-App-CLI-IDE和Cloud怎么选.md)。装好后用 ChatGPT 账号登录，具体步骤见 [登录 Codex](../01-安装与首次使用/07-登录Codex.md)。
+
 ## 下一步学习
 
 接下来可以进入 [安装与首次使用](../01-安装与首次使用/)，选择适合自己的入口，并完成第一个可验证的小任务。
@@ -179,6 +229,8 @@ OpenAI 当前提供桌面 App、CLI、IDE 扩展和云端等入口。它们面�
 
 - [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
 - [OpenAI Quickstart](https://learn.chatgpt.com/docs/quickstart)
+- [Codex Pricing](https://learn.chatgpt.com/docs/pricing)
+- [Supported countries and territories](https://developers.openai.com/api/docs/supported-countries)
 - [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing)
