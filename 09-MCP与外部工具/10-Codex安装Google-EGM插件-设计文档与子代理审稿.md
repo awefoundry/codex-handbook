@@ -27,8 +27,8 @@ howto: true
 faq:
   - q: EGM 是 Google 官方产品吗？
     a: 不是。仓库 README 和插件清单都写着 This is not an officially supported Google product。许可证是 Apache-2.0。
-  - q: Codex 里用 /egm: 前缀调用吗？
-    a: README 写明，/egm: 前缀用于 Antigravity CLI 和 Claude Code。在 Codex 里从 Skill 选择器选择对应的 EGM Skill。
+  - q: "Codex 里用 /egm: 前缀调用吗？"
+    a: "README 写明，/egm: 前缀用于 Antigravity CLI 和 Claude Code。在 Codex 里从 Skill 选择器选择对应的 EGM Skill。"
   - q: 审稿一次花多少额度？
     a: 官方暂未说明。仓库没有给出审稿的 token 或额度数字，本文不估算。
   - q: 会话不能新建子代理时会怎样？
