@@ -22,7 +22,7 @@ date_published: 2026-08-21
 date_modified: 2026-10-22
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/third-party/github
-keywords: [Codex GitHub Issue, Codex Pull Request, @codex review, Codex Security Review, Codex 自动代码审查, Code Review Rules]
+keywords: [Codex GitHub Issue, Codex Pull Request, "@codex review", Codex Security Review, Codex 自动代码审查, Code Review Rules]
 related: [permissions-sandbox-approvals, cli-manage-multiple-sessions, create-codex-skill]
 faq:
   - q: 在 Issue 评论里写 @codex，和在 PR 里写 @codex review 一样吗？
