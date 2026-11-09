@@ -30,3 +30,4 @@
 - [Codex 接入 Mobile MCP：让 Codex 操作 iOS 模拟器、Android 模拟器和真机](./11-Codex接入Mobile-MCP-操作iOS模拟器与Android设备.md)（第三方项目 mobile-next/mobile-mcp，不是 OpenAI 官方服务器）
 - [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)
 - [Codex 安装 Unity 官方插件：用 Skills 和 unity-cli 辅助开发](./13-Codex安装Unity插件-用Skills辅助Unity开发.md)
+- [Codex 用 agent-browser 做浏览器自动化：Skill 和 MCP 两种接法，snapshot 引用与常用命令](./18-Codex用agent-browser做浏览器自动化-Skill与MCP两种接法.md)（第三方项目 vercel-labs/agent-browser，不是 OpenAI 官方浏览器）

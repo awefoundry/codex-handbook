@@ -33,3 +33,4 @@
 - [Codex SDK 入门：用 TypeScript 或 Python 在自己的程序里启动、继续和恢复 Codex 线程](./17-Codex-SDK入门-TypeScript与Python启动继续和恢复线程.md)
 - [Codex Appshots：同时按两侧 Command 或 Alt，把当前应用窗口发给对话，以及权限、发送目标和隐私边界](./18-Codex-Appshots-把当前应用窗口发给对话.md)
 - [Codex Images 2.6：在 Codex 里生成 GIF、overlay 圈选编辑，全套餐可用](./19-Codex-Images-2.6-GIF生成与overlay编辑.md)
+- [Codex 语音怎么用：在 ChatGPT 桌面 App 用 Voice 指挥任务、语音听写与 CLI /voice](./23-Codex语音-ChatGPT-Voice指挥任务与语音听写.md)
