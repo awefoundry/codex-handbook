@@ -30,3 +30,5 @@
 - [Codex 接入 Mobile MCP：让 Codex 操作 iOS 模拟器、Android 模拟器和真机](./11-Codex接入Mobile-MCP-操作iOS模拟器与Android设备.md)（第三方项目 mobile-next/mobile-mcp，不是 OpenAI 官方服务器）
 - [Codex 安装 Trail of Bits 安全插件：用 patching-bugs 和 regression-hunt 复现漏洞、写补丁、查回归](./12-Codex安装Trail-of-Bits插件-patching-bugs与regression-hunt.md)
 - [Codex 安装 Unity 官方插件：用 Skills 和 unity-cli 辅助开发](./13-Codex安装Unity插件-用Skills辅助Unity开发.md)
+- [Codex 安装 Expo 官方插件：Expo Skills 与 Expo MCP 一次装好，开发和发布 React Native 应用](./19-Codex安装Expo官方插件-Expo-Skills与Expo-MCP.md)
+- [Codex Security 插件教程：在 Security 工作台扫描本地仓库、生成补丁并验证修复](./20-Codex-Security插件-Security工作台扫描本地仓库与修复验证.md)

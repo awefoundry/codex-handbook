@@ -33,3 +33,4 @@
 - [Codex SDK 入门：用 TypeScript 或 Python 在自己的程序里启动、继续和恢复 Codex 线程](./17-Codex-SDK入门-TypeScript与Python启动继续和恢复线程.md)
 - [Codex Appshots：同时按两侧 Command 或 Alt，把当前应用窗口发给对话，以及权限、发送目标和隐私边界](./18-Codex-Appshots-把当前应用窗口发给对话.md)
 - [Codex Images 2.6：在 Codex 里生成 GIF、overlay 圈选编辑，全套餐可用](./19-Codex-Images-2.6-GIF生成与overlay编辑.md)
+- [Codex 与 dot 连接多台电脑：指定在哪台电脑上跑本地 Codex 任务](./24-Codex与dot-连接多台电脑-指定电脑运行本地Codex任务.md)
