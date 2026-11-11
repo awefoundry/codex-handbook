@@ -1,7 +1,8 @@
 ---
 id: codex-acp-integration
 title: Codex 接入 ACP：在 Zed 和 JetBrains 里从 ACP Registry 安装 Codex，其他客户端用 codex-acp，以及 ACP 和 MCP 怎么分工
-seo_title: Codex 接入 ACP：Registry 安装、codex-acp、与 MCP 分工
+seo_title: "Codex 接入 ACP：连接兼容开发工具"
+seo_description: "ACP（Agent Client Protocol）让不同的 AI 编程 Agent 接入同一个编辑器。介绍 ACP 是什么、已接入的 30 多个 Agent、在 Zed 里接入的实操、多 Agent 协作，以及它和 MCP 的区别。"
 description: ACP 让 Zed、JetBrains 等编辑器直接使用 Codex。本文合并站内两篇旧教程，按 2026-10 现状重写：从 ACP Registry 安装，其他客户端用 @agentclientprotocol/codex-acp，登录与审批怎么处理，ACP 与 MCP 怎么分工，以及第一次连接后的验证方法。
 lede: 编辑器用 ACP 连上 Codex；认证、计费、沙箱仍由 Codex 自己管。
 url: /guides/codex-acp-integration

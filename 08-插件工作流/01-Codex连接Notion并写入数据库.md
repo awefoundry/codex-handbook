@@ -1,5 +1,7 @@
 ---
 title: "在 Codex 中连接 Notion：把调研结果写入数据库"
+seo_title: "在 Codex 中连接 Notion：把调研结果写入数据库"
+seo_description: "在 Codex 桌面端安装 Notion 插件，限制授权范围，用测试页面验证读取权限，再把调研整理成的结构化资料写入两个 Notion 数据库。附验收方法，示例只使用测试工作区。"
 description: "这篇教程适合已经能在 Codex 桌面端创建任务，并希望把调研结果直接整理到 Notion 的读者。完成后，你会连接 Notion 插件、验证页面读取权限，并把一组结构化资料写入两个数据库。"
 url: /guides/codex-notion-plugin-workflow
 status: published
