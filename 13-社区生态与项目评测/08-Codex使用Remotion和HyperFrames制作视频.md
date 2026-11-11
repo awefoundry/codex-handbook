@@ -1,5 +1,7 @@
 ---
 title: "Codex 使用 Remotion 和 HyperFrames 制作视频"
+seo_title: "Codex 使用 Remotion 和 HyperFrames 制作视频"
+seo_description: "Remotion 和 HyperFrames 都能用代码制作视频。让 Codex 读取脚本和素材、生成项目、启动预览，再按检查结果修改。对比两套工具怎么选、视频 Brief 怎么写、权限怎么收紧，以及预览时检查哪些关键帧。"
 description: "Remotion 和 HyperFrames 都能把视频写成代码，Codex 可以读取脚本与素材，生成项目文件，启动预览并根据检查结果修改。它们是第三方工具，工作方式和适用场景不同。视频仍要经过人工审片，工具也不会自动解决素材版权、节奏和事实准确性。"
 url: /guides/codex-remotion-hyperframes-video
 status: published

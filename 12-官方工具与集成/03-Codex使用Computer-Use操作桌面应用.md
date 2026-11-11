@@ -1,7 +1,8 @@
 ---
 id: codex-computer-use-desktop-apps
 title: Codex 使用 Computer Use 操作桌面应用（2026-10 更新）：安装授权、Win/macOS 差异，以及高风险场景的停手规则
-seo_title: Codex Computer Use：安装授权、Windows 与 macOS 差异、停手规则
+seo_title: "Codex Computer Use 教程：让 Codex 操作桌面应用"
+seo_description: "Codex 的 Computer Use 能看屏幕、点击窗口、输入文字，在多个桌面应用之间完成一段流程，支持 macOS 和 Windows（Windows 上运行时会占用前台鼠标键盘）。介绍安装授权、适合的任务和结果验收。"
 description: 任务只能在桌面图形界面里完成时，可以让 Codex 用 Computer Use 看屏幕、点击和输入。本文按官方文档整理插件安装与系统授权清单、应用授权和 Always allow、Windows 前台运行与 macOS 锁屏使用的差异，以及账号、支付、凭据等场景什么时候必须停下来。
 lede: 系统权限、应用授权、文件与命令权限是三套东西。三样都对上，再给它一个窄而明确的目标。
 url: /guides/codex-computer-use-desktop-apps

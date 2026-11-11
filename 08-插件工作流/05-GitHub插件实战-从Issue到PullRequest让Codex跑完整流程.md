@@ -1,7 +1,8 @@
 ---
 id: codex-github-issue-pr-workflow
 title: Codex 从 GitHub Issue 到 Pull Request：云任务、@codex review、Security Review 与自动审查一篇讲清
-seo_title: Codex GitHub Issue 到 PR：云任务、@codex review、Security Review
+seo_title: "GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程"
+seo_description: "不打开编辑器，只在 GitHub Issue 和 PR 评论区 @codex 派活：它会开分支、写代码、发 PR、跑 CI，还会给自己的 PR 提审查意见。拆解每一步该由人把关的地方，以及 AGENTS.md 里的审查规则。"
 description: 从一条可验收的 GitHub Issue 开始，用 Codex Cloud 写代码并开 PR，再用 @codex review、Automatic review、Code Review Rules 与 Security Review（research preview）审查，最后用 @codex fix 修复。合并站内三篇旧教程，对照 2026-10 官方 GitHub 文档。
 lede: 云任务把 Issue 推进到可审的 PR；审查与合并仍由人定规矩、拍板。
 url: /guides/codex-github-issue-pr-workflow
