@@ -35,3 +35,5 @@
 - [Codex 内置浏览器本地文件读取风险：EMBRACE 漏洞修复前，别打开不可信的本地 HTML](./21-Codex内置浏览器本地文件读取风险-EMBRACE自查与防护.md)
 - [Codex 插件和 Hook 自查：第三方应用自动安装后，怎么查 config.toml、信任记录和 MCP](./22-Codex插件与Hook自查-第三方应用自动安装与信任记录.md)
 - [Codex 对话会被用来训练吗：Improve the model、Include environments 和例外情况](./23-Codex对话会被用来训练吗-数据控制与Include-environments.md)
+- [Codex 套餐用在第三方工具：Sign in with ChatGPT 连接 OpenCode、Kilo Code、Warp 等，额度怎么算、怎么限额](./25-Codex套餐用在第三方工具-Sign-in-with-ChatGPT与App-limits.md)
+- [Codex 网络权限怎么配：permission profiles 的联网开关、network_proxy 域名白名单与本地服务访问](./26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)

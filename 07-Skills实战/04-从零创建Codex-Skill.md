@@ -1,9 +1,9 @@
 ---
 id: create-codex-skill
-title: 从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
-seo_title: 从零创建 Codex Skill：skill-creator、触发测试、禁用与插件打包
-description: 用 $skill-creator 或手写 SKILL.md 做一个最小可用 Skill，再测显式／隐式触发、用 config.toml 禁用，以及用插件打包分发。步骤对照 OpenAI Build skills 与 Package your plugin。
-lede: 先做出一个能触发的 Skill，再谈禁用和打包；描述决定会不会被选中，插件才是对外分发。
+title: 从零创建 Codex Skill（2026-11 更新）：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
+seo_title: 从零创建 Codex Skill：skill-creator、手写 SKILL.md、触发测试、禁用与插件打包
+description: 把反复复制的提示词整理成 Codex Skill：用 $skill-creator 或手写 SKILL.md 做出最小可用版本，再测显式和自动触发、用 config.toml 按路径或名字禁用、关闭内置 Skill，以及用插件分发。本文已合并原「给 Codex 写一个专属 Skill」，增加新建 Python 项目的完整示例。
+lede: 先做出一个能触发的 Skill，再谈禁用和打包。description 决定会不会被选中，插件才是给别人安装的方式。
 url: /guides/create-codex-skill
 status: published
 section: guides
@@ -17,27 +17,31 @@ order: 4
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-18
-date_modified: 2026-10-22
-models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
-official_ref: https://developers.openai.com/codex/skills
-keywords: [Codex Skill, skill-creator, SKILL.md, skills.config, 插件打包, 显式调用]
-related: [codex-zhuan-shu-skill]
+date_modified: 2026-11-11
+verified_on: 2026-11-11
+official_ref: https://learn.chatgpt.com/docs/build-skills
+keywords: [Codex Skill, skill-creator, SKILL.md, 专属 Skill, skills.config, skills.bundled, 插件打包, 显式调用]
+related: [codex-record-replay-skill, plugin-development-marketplace, codex-skillspector-skill-security-scan]
 faq:
   - q: $skill-creator 和手写 SKILL.md 哪个更好？
-    a: 都能做出可用 Skill。官方把 $skill-creator（ChatGPT Work 里是 @skill-creator）当作「用描述生成」的内置路径；你已经清楚目录与步骤时，手写文件夹同样有效。流程更好「演示」时，优先看 Record & Replay。
+    a: 都能做出可用的 Skill。$skill-creator（ChatGPT Work 里是 @skill-creator）会问你这个 Skill 做什么、什么时候触发、要不要脚本，默认只生成说明。你已经清楚步骤时，手写一个文件夹同样有效。流程更适合演示一遍时，用 Record & Replay。
   - q: 不想删文件，只想先关掉某个 Skill，怎么做？
-    a: 在 ~/.codex/config.toml 里用 [[skills.config]]，写上该 Skill 的 SKILL.md 路径，并设 enabled = false，然后重启 Codex。这是禁用本地 Skill，不是卸载插件。
-  - q: 把 Skill 文件夹打成 zip 发给同事算不算官方分发？
-    a: 官方推荐的可复用分发是插件：根目录 plugin.json，技能放在 skills/ 下，再通过 marketplace 安装。本地 .agents/skills 更适合本机或仓库内作者创作；跨人安装优先走插件，而不是自创 zip 约定。
+    a: 在 ~/.codex/config.toml 里加 [[skills.config]]，每条只写一个选择器：path 写 SKILL.md 的绝对路径（只匹配这一个），或 name 写 Skill 名（匹配所有同名 Skill），再设 enabled = false。多条都匹配时，最后一条生效。改完重启 Codex。
+  - q: 能把 Codex 自带的 skill-creator、skill-installer 关掉吗？
+    a: 可以按项目关。在这个项目受信任的 .codex/config.toml 里写 [skills.bundled] enabled = false，重启 Codex 后，内置的系统 Skill 在这个项目里不再启用。
+  - q: 把 Skill 文件夹打成 zip 发给同事算官方分发吗？
+    a: 官方推荐的分发方式是插件：根目录 plugin.json，Skill 放在 skills/ 下，再通过 marketplace 安装。本地 .agents/skills 适合本机或仓库内使用；要给别人装，优先打成插件。
 ---
 
-# 从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
+# 从零创建 Codex Skill（2026-11 更新）：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
 
 > 本文在线版：[codexguide.io/guides/create-codex-skill](https://codexguide.io/guides/create-codex-skill)
 
-> 核对依据：OpenAI《[Build skills](https://developers.openai.com/codex/skills)》（与 learn.chatgpt.com 同页）、以及《[Package your plugin](https://developers.openai.com/plugins/build/plugins)》。文中「我的用法」是操作顺序建议，不是官方强制流程。界面文案会随客户端变化，以你当前菜单为准。
+> 核对依据：官方文档《[Build skills](https://learn.chatgpt.com/docs/build-skills)》《[Skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins)》和《[Package your plugin](https://developers.openai.com/plugins/build/plugins)》，2026-11-11 重新核对。文中「我的用法」是操作建议，不是官方规定。界面文案会随客户端变化，以你当前菜单为准。
+>
+> 2026-11-11 更新：原文《给 Codex 写一个专属 Skill》已合并进本文（第 5 节的新建 Python 项目示例），旧网址会 301 跳转到这里；同时按最新文档补充了按名字禁用、关闭内置 Skill 和系统 Skill 列表。
 
-一段提示词要反复复制，或者同一项工作每次都要重新说明步骤、输入和验收条件——就可以整理成 **Skill**。Skill 是可复用工作流的作者格式；需要给别人安装、或和连接器一起带走时，再打成 **插件（plugin）**。
+用 Codex 久了，很多人会攒下一堆「固定提示词」：每次新建项目都贴同一大段规范，规范一改，还得回去找最新版。一段提示词要反复复制，或者同一项工作每次都要重新说明步骤、输入和验收条件，就可以整理成 **Skill**。Skill 是可复用工作流的作者格式；需要给别人安装、或和连接器一起带走时，再打成 **插件（plugin）**。
 
 这篇按一条主线走完：
 
@@ -91,9 +95,9 @@ Codex 会从仓库、用户、管理员和系统位置加载本地 Skill。对�
 | REPO | 从 `$CWD` 到 `$REPO_ROOT` 各层的 `.agents/skills` | 跟模块／仓库一起审查、共享 |
 | USER | `$HOME/.agents/skills` | 个人跨仓库复用 |
 | ADMIN | `/etc/codex/skills` | 机器／容器级默认 |
-| SYSTEM | Codex 内置 | 如 skill-creator、plan 等 |
+| SYSTEM | Codex 内置 | `skill-creator`、`skill-installer`，默认启用 |
 
-日常写自己的：个人用 `~/.agents/skills/my-skill/`，团队用仓库里的 `.agents/skills/my-skill/`。Windows 上用户目录随安装方式变化——以 `/skills` 列表里显示的真实路径为准，不要照抄别人的绝对路径。支持符号链接，扫描时会跟随目标。
+日常写自己的：个人用 `~/.agents/skills/my-skill/`，团队用仓库里的 `.agents/skills/my-skill/`。Windows 上用户目录随安装方式变化，以 `/skills` 列表里显示的真实路径为准，不要照抄别人的绝对路径。支持符号链接，扫描时会跟随目标。
 
 这些位置是 **作者创作与本地发现**。跨仓库、给别人安装、或和连接器一起分发，官方指向 **插件**，而不是只靠拷贝文件夹。
 
@@ -150,7 +154,57 @@ description: 根据已经确认的代码改动和验证结果生成中文发布�
 
 Codex 通常会自动发现变更；列表里看不到时，**重启 Codex** 再查一次。
 
-## 5. 渐进式加载：为什么描述要短而准
+
+## 5. 第二个例子：按团队规范新建 Python 项目（原《专属 Skill》）
+
+`release-note` 是只读型 Skill。再看一个会动手建文件的：每次新建 Python 项目都要贴一遍的规范，整理成 `new-python-project`。
+
+**第一步，建目录**（这类和具体仓库无关的，放用户级）：
+
+```bash
+mkdir -p ~/.agents/skills/new-python-project
+```
+
+**第二步，写 `SKILL.md`**：
+
+```md
+---
+name: new-python-project
+description: 当用户要新建、初始化一个 Python 项目或搭项目脚手架时使用。按团队规范生成目录结构、依赖管理和基础配置。不用于给已有项目加功能。
+---
+
+按以下规范初始化一个新的 Python 项目：
+
+1. 用 `uv` 初始化项目，不要用 pip + venv。
+2. 采用 src 布局：源码放在 `src/包名/` 下。
+3. 必备开发依赖：`ruff`（lint + format）、`pytest`（测试）。
+4. 生成 `pyproject.toml`，配置好 ruff 和 pytest 的基础规则。
+5. 建一个 `tests/` 目录，放一个能通过的占位测试。
+6. 生成 `README.md`，包含项目名、安装步骤、运行测试的命令。
+7. 建好后运行一次 `uv run pytest`，把真实结果告诉我；没跑成功就如实说明。
+```
+
+`description` 同时写了**什么时候用**（新建、初始化项目）和**什么时候不用**（给已有项目加功能），这是隐式触发准不准的关键。
+
+**第三步，试一下**。在空目录里用大白话说：
+
+```text
+帮我在这里新建一个叫 datakit 的 Python 项目
+```
+
+这句话和描述里的「新建 Python 项目」对得上，Codex 应该会选用这个 Skill。也可以直接点名：
+
+```text
+$new-python-project 项目名叫 datakit
+```
+
+以后规范变了，只改这一个文件。
+
+**什么时候给它加脚本**：如果生成配置文件这一步要求每次完全一样，不想让模型自由发挥，就在 `scripts/` 里放一个脚本（比如 `init_config.py`），再把 `SKILL.md` 里对应的那步改成「运行 `scripts/init_config.py` 生成配置」。判断标准见第 11 节。
+
+注意：这个例子会在环境里运行 `uv` 安装依赖，需要联网。在默认沙箱里，第一次可能会弹出审批。
+
+## 6. 渐进式加载：为什么描述要短而准
 
 ChatGPT／Codex **不会**一上来把所有 Skill 全文塞进上下文。它们先看到名称和描述（Codex 还会带上文件路径），决定使用某个 Skill 后，才读取完整 `SKILL.md`。`references/`、脚本等也只在流程需要时再加载。
 
@@ -158,7 +212,7 @@ ChatGPT／Codex **不会**一上来把所有 Skill 全文塞进上下文。它�
 
 因此：主文件保留执行流程和关键边界；大段背景放进 `references/`，并在正文里写清「何时读哪份」；只有需要确定性结果或外部工具时才加 `scripts/`。脚本会在工作环境里跑——涉及删除、网络、凭据或外部计费时，保留明确的审批与失败处理。
 
-## 6. 测试显式调用
+## 7. 测试显式调用
 
 激活方式官方写了两种：
 
@@ -179,7 +233,7 @@ ChatGPT／Codex **不会**一上来把所有 Skill 全文塞进上下文。它�
 
 找不到时：查目录层级、文件名是否正好是 `SKILL.md`、YAML 是否合法，再确认当前入口支持 **Standalone Skill**（桌面 App、CLI、IDE）。插件里的 Skill 还会出现在 Chat／Work 等更广的表面——和「只放在 `.agents/skills`」不是同一分发路径。
 
-## 7. 测试自动触发（以及不该触发）
+## 8. 测试自动触发（以及不该触发）
 
 显式通过后，再用自然语言测 `description`：
 
@@ -197,7 +251,7 @@ ChatGPT／Codex **不会**一上来把所有 Skill 全文塞进上下文。它�
 
 若只想允许 `$release-note`、不要自然语言误触，可在该 Skill 的 `agents/openai.yaml` 里设 `allow_implicit_invocation: false`（显式 `$` 仍可用）。
 
-## 8. 禁用：先关，不必删
+## 9. 禁用：先关，不必删
 
 本地 Skill 不想删文件、只想暂时关掉时，在 `~/.codex/config.toml` 写入：
 
@@ -207,11 +261,32 @@ path = "/path/to/skill/SKILL.md"
 enabled = false
 ```
 
-把 `path` 换成你机器上真实的 `SKILL.md` 路径（可从 `/skills` 列表核对）。改完后 **重启 Codex**。
+把 `path` 换成你机器上真实的 `SKILL.md` 绝对路径（可从 `/skills` 列表核对）。改完后 **重启 Codex**。
+
+官方规则补充：
+
+- 每条 `[[skills.config]]` **只写一个选择器**。`path` 只匹配这一个 `SKILL.md`；`name` 匹配**所有同名** Skill：
+
+  ```toml
+  [[skills.config]]
+  name = "release-note"
+  enabled = false
+  ```
+
+- 多条都匹配同一个 Skill 时，**最后一条生效**。
+
+想在某个项目里关掉 Codex 自带的系统 Skill（`skill-creator`、`skill-installer`），在这个项目受信任的 `.codex/config.toml` 里写：
+
+```toml
+[skills.bundled]
+enabled = false
+```
+
+同样要重启 Codex。
 
 这与「关掉某个已安装插件」不同。插件侧常用 `~/.codex/config.toml` 里形如 `[plugins."name@marketplace"]` 的 `enabled = false`；仓库级本地 marketplace 插件还可在项目 `.codex/config.toml` 里按 `plugin-name@marketplace-name` 开关。本文主线是 **本地 Skill 目录** 的禁用；插件开关按插件文档操作即可。
 
-## 9. 打包分发：本地文件夹 vs 插件
+## 10. 打包分发：本地文件夹 vs 插件
 
 | 目标 | 官方路径 |
 | --- | --- |
@@ -233,9 +308,9 @@ my-first-plugin/
 
 **我的用法：** 自己先在 `.agents/skills` 里把触发测稳，再拷进插件的 `skills/` 打包；不要一上来就为「也许要分享」建空插件。公开上架、工作区发布、MCP 鉴权等按《Package your plugin》走，本文不展开门户提交流程。
 
-## 10. 什么时候再加脚本和参考资料
+## 11. 什么时候再加脚本和参考资料
 
-纯说明能完成时，先保持纯说明。再考虑脚本的情况：
+纯说明能完成时，先保持纯说明。官方的说法是：能用说明解决的，就别写脚本。再考虑脚本的情况：
 
 - 同一条命令必须稳定执行，参数和输出格式清楚  
 - 人工复制步骤容易出错，脚本可先做只读检查或 dry run  
@@ -243,7 +318,7 @@ my-first-plugin/
 
 参考资料适合字段定义、团队规范和长示例。`SKILL.md` 应写明何时读哪一份，避免一次加载整个 `references/`。
 
-## 11. 发布前检查清单
+## 12. 发布前检查清单
 
 - `SKILL.md` 含有效的 `name` 和 `description`；描述靠前写清触发词与边界  
 - 名称与目录用途一致；步骤有明确输入、动作、输出  
@@ -256,9 +331,12 @@ my-first-plugin/
 
 ## 参考资料
 
-- [Build skills](https://developers.openai.com/codex/skills)（[learn 镜像](https://learn.chatgpt.com/docs/build-skills)）  
+- [Build skills](https://learn.chatgpt.com/docs/build-skills)  
 - [Package your plugin](https://developers.openai.com/plugins/build/plugins)  
 - [Plugins（Codex）](https://developers.openai.com/codex/plugins)  
+- [Skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins)  
 - Agent skills 规范与 openai/skills 示例见官方 Build skills 文末链接  
 
-本文按 2026-10-22 可访问的官方 Skill／插件文档核对。Standalone Skill 与插件 Skill 的可用入口不完全相同；以你当前客户端为准。
+相关阅读：《[Codex 用 Record & Replay 生成可复用 Skill](./05-Codex用Record-and-Replay生成可复用Skill.md)》《[Codex 插件开发入门](../08-插件工作流/06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)》《[用 SkillSpector 扫描第三方 Skill](../09-MCP与外部工具/07-Codex用SkillSpector扫描第三方Skill-提示注入与数据外泄检查.md)》；写得好的 description 实例，可以看《[Codex 安装 Modern Web Guidance 插件](./09-Codex安装Modern-Web-Guidance插件-让前端代码用现代Web-API.md)》里的「必须触发／不要触发」写法。  
+
+本文按 2026-11-11 可访问的官方 Skill／插件文档核对。Standalone Skill 与插件 Skill 的可用入口不完全相同；以你当前客户端为准。

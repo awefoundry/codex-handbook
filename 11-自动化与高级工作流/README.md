@@ -16,8 +16,7 @@
 
 - [Codex 任务结束时捕捉可复用素材：用 AGENTS.md 规则和 Stop Hook 生成素材候选](./01-Codex在任务结束时捕捉可复用素材.md)
 - [Codex 跨会话协作：开新会话交接任务、带上下文派生，不再靠复制粘贴](./02-Codex跨会话协作功能.md)
-- [Codex CLI 管理多条任务线：命名、恢复、fork、归档与跨会话交接](./03-CodexCLI管理多条任务线.md)
-- [Codex CLI 长任务如何恢复：保存、继续与检查会话](./04-CodexCLI恢复长任务.md)
+- [Codex CLI 管理多条任务线（2026-11 更新）：resume 恢复长任务、fork 分支、归档与交接](./03-CodexCLI管理多条任务线.md)
 - [Codex 长任务工作流（2026-11 更新）：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录](./05-Codex长任务工作流.md)
 - [Codex 任务收尾系统，用 Markdown 保存状态、决策与可复用流程](./06-Codex任务收尾系统.md)
 - [Codex 自动化与 CI：codex exec 非交互模式、GitHub Action 工作流 YAML、--output-schema 结构化输出与 API Key 安全（2026-10 更新）](./07-Codex自动化与定时任务-从手动流程到稳定执行.md)
