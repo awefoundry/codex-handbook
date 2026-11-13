@@ -290,7 +290,7 @@ CLI 侧目前没有对等的官方一键删除命令（见上节 #30299）。不
 | 「上次这个仓库我偏好用某种排错顺序」之类可回忆、可过期的偏好 | Memories 可以辅助；**关键约定仍应落盘到 AGENTS.md** |
 | 密钥、token、客户隐私、未证实的猜测 | **两边都不要写**；记忆侧即使打码也不能代替你的判断 |
 
-AGENTS.md 的写法与继承关系见《[AGENTS.md 怎么写](https://codexguide.io/advanced/agents-md)》；开工前设置检查见《[Codex 设置检查清单](https://codexguide.io/guides/codex-settings-checklist)》（个性化里的记忆开关也属于「先设好再干活」的一类项）。
+AGENTS.md 的写法与继承关系见《[AGENTS.md 怎么写](https://codexguide.io/advanced/agents-md)》；开工前设置检查见《[Codex 设置检查清单](https://codexguide.io/guides/codex-desktop-collaboration-settings)》（个性化里的记忆开关也属于「先设好再干活」的一类项）。
 
 **我的用法：** 团队红线只信任 Git 里的 `AGENTS.md`；Memories 当作「减少重复口述」的加速层。换机器、清记忆、关功能后，项目仍应靠仓库规则跑得起来。
 

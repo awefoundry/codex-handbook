@@ -35,3 +35,5 @@
 - [Codex 安装 Google 官方 Skills 与插件：google/skills 仓库的 BigQuery、Cloud SQL、Firestore 等 17 个插件怎么装](./16-Codex安装Google官方Skills与插件-google-skills仓库.md)（Google 维护的 google/skills，Apache-2.0。android/skills 与 EGM 各有专文）
 - [Codex 安装 Blender Agent Skills：用 28 个技能做建模、绑定、动画与游戏引擎导出](./17-Codex安装Blender-Agent-Skills-建模绑定动画与引擎导出.md)（第三方项目 EL4CTEO/blender-skills，MIT；本文未在 Blender 中实测）
 - [Codex 用 agent-browser 做浏览器自动化：Skill 和 MCP 两种接法，snapshot 引用与常用命令](./18-Codex用agent-browser做浏览器自动化-Skill与MCP两种接法.md)（第三方项目 vercel-labs/agent-browser，不是 OpenAI 官方浏览器）
+- [Codex 安装 Expo 官方插件：Expo Skills 与 Expo MCP 一次装好，开发和发布 React Native 应用](./19-Codex安装Expo官方插件-Expo-Skills与Expo-MCP.md)
+- [Codex Security 插件教程：在 Security 工作台扫描本地仓库、生成补丁并验证修复](./20-Codex-Security插件-Security工作台扫描本地仓库与修复验证.md)
