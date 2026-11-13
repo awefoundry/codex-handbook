@@ -36,3 +36,5 @@
 - [Codex 插件和 Hook 自查：第三方应用自动安装后，怎么查 config.toml、信任记录和 MCP](./22-Codex插件与Hook自查-第三方应用自动安装与信任记录.md)
 - [Codex 对话会被用来训练吗：Improve the model、Include environments 和例外情况](./23-Codex对话会被用来训练吗-数据控制与Include-environments.md)
 - [Codex 用 GPT-6 Cyber 与 Daybreak Red：准入、和 Astra / Blue 的分工，以及安全研究边界](./24-Codex用GPT-6-Cyber与Daybreak-Red-准入与边界.md)
+- [Codex 套餐用在第三方工具：Sign in with ChatGPT 连接 OpenCode、Kilo Code、Warp 等，额度怎么算、怎么限额](./25-Codex套餐用在第三方工具-Sign-in-with-ChatGPT与App-limits.md)
+- [Codex 网络权限怎么配：permission profiles 的联网开关、network_proxy 域名白名单与本地服务访问](./26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)
