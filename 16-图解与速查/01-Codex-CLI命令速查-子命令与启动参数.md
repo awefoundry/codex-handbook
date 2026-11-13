@@ -17,7 +17,7 @@ order: 1
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-26
-date_modified: 2026-11-05
+date_modified: 2026-11-08
 verified_on: 2026-11-05
 tested_cli_version: 0.166.0
 official_ref: https://learn.chatgpt.com/docs/developer-commands
@@ -157,7 +157,7 @@ Not inside a trusted directory and --skip-git-repo-check was not specified.
 | `codex review --commit <SHA>` | 某个提交引入的改动 |
 | `codex review --commit <SHA> --title "修复登录跳转"` | 在审查摘要里显示提交标题 |
 
-`codex review` 是非交互的。`codex exec review` 是同一功能在 `exec` 下的入口。提示词写 `-` 时从标准输入读。
+`codex review` 是非交互的。`codex exec review` 是同一功能在 `exec` 下的入口。提示词写 `-` 时从标准输入读。四个预设、`review_model` 和提交前怎么接，见 [Codex 本地代码审查](../05-Git协作与代码审查/07-Codex本地代码审查-review命令与codex-review.md)。该文在 Codex CLI 0.167.0 上核对了参数冲突和未登录时的报错。
 
 ## 登录与账号
 

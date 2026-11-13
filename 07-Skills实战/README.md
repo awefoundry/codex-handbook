@@ -17,7 +17,9 @@
 ## 已上线文章
 
 - [用 Codex 批量压缩图片并转换为 WebP（合并版）：img-convert Skill 安装、dry-run 与结果核对](./03-批量图片压缩与格式转换Skill.md)
-- [从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包](./04-从零创建Codex-Skill.md)
+- [从零创建 Codex Skill（2026-11 更新）：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包](./04-从零创建Codex-Skill.md)
 - [Codex 检查 PHP2Shell 漏洞：安装 OpenAI 官方 php2shell-checker Skill](./07-Codex检查网站是否受PHP2Shell漏洞影响-官方php2shell-checker-Skill.md)
 - [Codex 用 Record & Replay 录制可复用 Skill（2026-11 更新）：官方入口、录制步骤和 macOS 前提](./05-Codex用Record-and-Replay生成可复用Skill.md)
 - [给 Codex 写一个专属 Skill：从重复提示词到可复用工作流](./06-给Codex写一个专属Skill.md)
+- [Codex 安装 Hallmark 设计 Skill：50 套主题加浏览器检查，让页面少点 AI 模板味](./08-Codex安装Hallmark设计Skill-让页面少点AI模板味.md)（第三方项目 Nutlope/hallmark，Together AI 维护，不是 OpenAI 官方 Skill）
+- [Codex 安装 Modern Web Guidance 插件：Chrome 团队出品，让 Codex 写前端时用现代 Web API，不再堆旧 JavaScript](./09-Codex安装Modern-Web-Guidance插件-让前端代码用现代Web-API.md)

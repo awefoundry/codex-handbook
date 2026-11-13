@@ -1,9 +1,9 @@
 ---
 id: codex-subagents-parallel-work
-title: Codex Subagents 怎么用：内置 default / worker / explorer、自定义 Agent 的 TOML 写法、[agents] 默认模型和并发设置，以及子 Agent 的审批与用量
-seo_title: Codex Subagents：内置 Agent、自定义 TOML 与 [agents] 配置
-description: Codex 可以把独立工作交给多个子 Agent 并行处理再汇总。本文按 2026 年 10 月官方文档更新：改正自定义 Agent 不能覆盖沙箱与 MCP 的说法，讲清 default／worker／explorer、自定义 TOML、[agents] 默认模型与并发，以及 /subagents 审批和用量注意点。
-lede: 子 Agent 适合只读探索和可并行的审查；沙箱、审批和 MCP 跟父会话走，自定义 TOML 改不了这三项。
+title: Codex 使用 Subagents 并行处理任务（2026-11 更新）：/subagents、继承沙箱，和主会话怎么分工
+seo_title: Codex Subagents：/subagents、沙箱继承与主会话分工
+description: 并行调查会把主会话冲乱时，把只读或可隔离的工作交给子 agent。本文按 2026-11-06 的官方文档说明 /subagents、沙箱如何继承，以及和主会话、Goal、多任务线怎么分工。
+lede: 主会话留下需求和决定。子 agent 拿走中间噪声，并把摘要交回来。沙箱和审批跟父会话走，TOML 改不了。
 url: /guides/codex-subagents-parallel-work
 status: published
 section: guides
@@ -17,10 +17,11 @@ order: 6
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-19
-date_modified: 2026-10-22
+date_modified: 2026-11-06
+verified_on: 2026-11-06
 official_ref: https://learn.chatgpt.com/docs/agent-configuration/subagents
-keywords: [Codex Subagents, Codex 子 Agent, Codex 自定义 Agent, agents.max_concurrent_threads_per_session, default_subagent_model, Codex /subagents]
-related: [worktree-parallel-chats, model-reasoning-effort, goal-mode-long-running-work]
+keywords: [Codex Subagents, Codex /subagents, Codex 子代理, Codex 并行任务, 沙箱继承]
+related: [codex-goal-mode-long-running-work, codex-long-task-collaboration-workflow, cli-manage-multiple-sessions, worktree-parallel-chats, model-reasoning-effort]
 howto: true
 faq:
   - q: 自定义 Agent 的 TOML 能单独设只读沙箱或换一套 MCP 吗？
@@ -29,17 +30,33 @@ faq:
     a: 当前本地发布版一般在你明确要求，或项目／Skill 指令要求委托时才会派生。ChatGPT Work 在部分高档位上可以更主动地委托，那是另一套产品行为，不要和本地 Codex 混为一谈。
   - q: 子 Agent 弹出审批时，我还在主线程，怎么处理？
     a: CLI 交互会话里，非当前线程也可以弹出审批；覆盖层会标出源线程。按 o 打开那个线程，再批准、拒绝或回答。非交互流程里如果需要新审批，该操作会失败，错误回到父工作流。
+  - q: /subagents 会新开一个子 agent 吗？
+    a: 不会。2026-11-06 的斜杠命令文档写，/subagents 打开选择器，用来切换到一条已有的子线程，以便查看或继续它的工作。派生本身靠你在对话里要求，或靠 AGENTS.md、Skill 里的委托说明。
 ---
 
-# Codex Subagents 怎么用：内置 default / worker / explorer、自定义 Agent 的 TOML 写法、[agents] 默认模型和并发设置，以及子 Agent 的审批与用量
+# Codex 使用 Subagents 并行处理任务（2026-11 更新）：/subagents、继承沙箱，和主会话怎么分工
 
 > 本文在线版：[codexguide.io/guides/codex-subagents-parallel-work](https://codexguide.io/guides/codex-subagents-parallel-work)
 
-> 核对依据：learn.chatgpt.com《Subagents》（2026-10-22 抓取）。文中「我的用法」是操作建议，不是官方规定。本机未对真实多 Agent 会话逐项实测。
+> 核对依据：learn.chatgpt.com《[Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)》和《[Slash commands](https://learn.chatgpt.com/docs/cli/slash-commands)》，核对日期 2026-11-06。配置字段又对照了同一天的 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)。文中「我的用法」是操作建议，不是官方规定。本机未对真实多 Agent 会话逐项实测。
 
 主聊天里一边定需求、一边塞满探索笔记、测试日志和堆栈，时间一长，真正有用的约束会被冲淡。官方把这类问题叫 **上下文污染（context pollution）** 和 **上下文腐烂（context rot）**：中间噪声把主线程占满，后续判断更容易偏。
 
 **Subagents** 的做法是：把可并行、噪声大的工作挪到独立线程，只把摘要交回主 Agent。适合代码库探索、测试／日志排查、安全与可维护性审查这类「读得多、结论可并列」的活；并行写同一组文件时要格外小心。
+
+## 先看结论：什么工作交给子 agent，什么留在主会话
+
+主会话留下三样东西：需求、你做过的决定、最后要交付的结果。子 agent 拿走可以并列、噪声大的中间过程，交回短摘要和文件引用。
+
+| 留在主会话 | 交给子 agent | 不要交给子 agent 硬做 |
+| --- | --- | --- |
+| 完成标准、不能改的接口、你刚拍板的取舍 | 分目录探索、测试日志、崩溃栈、三类只读审查 | 多个线程同时改同一组文件 |
+| 看完摘要之后的方案，以及唯一的写入线程 | 等齐再汇总。提示里写明是否等待全部完成 | 后一步必须等前一步的具体输出才能开工 |
+| 父会话的沙箱和审批。子线程会继承它 | 在这个权限之内做只读或你允许的工具调用 | 在自定义 TOML 里另写一套沙箱。官方写明写了也不生效 |
+
+本地 Codex 一般要你开口，或项目／Skill 的指令要求委托，才会派生。不要假设它总会自己拆。ChatGPT Work 在 Ultra 上可以更主动地委托，那是 Work 的行为，不要和本地会话混成一件事。
+
+子 agent 各自做模型调用和工具调用，总 token 通常高于同等的单 agent 跑法。额度紧时，只拆真正独立的几块。
 
 ## 2026-10 更新说明：自定义 Agent 不能覆盖沙箱和 MCP
 
@@ -73,7 +90,7 @@ faq:
 
 官方建议：起步阶段优先用并行做 **读多写少** 的探索、测试、分拣和摘要；**写多** 的并行要更谨慎。
 
-**我的用法（建议）：** 所有子 Agent 先只读；主 Agent 看完摘要再定方案，最后由 **一个** 执行线程（或单独的 Worktree 会话）改代码。需要真正隔离写入时，优先看 Worktree 专文，而不是指望「多个子 Agent 各自改盘却互不打架」。
+**我的用法（建议）**：所有子 Agent 先只读；主 Agent 看完摘要再定方案，最后由 **一个** 执行线程（或单独的 Worktree 会话）改代码。需要真正隔离写入时，优先看 Worktree 专文，而不是指望「多个子 Agent 各自改盘却互不打架」。
 
 可以这样开口：
 
@@ -218,7 +235,7 @@ reviewer 找真实风险，docs_researcher（若已配置）核对补丁依赖�
 
 社区里曾有人反馈「主模型是 Sol 时，子 Agent 也全被绑成 Sol、没法指定」（例如 openai/codex#31814）。按现行文档，可用 `agents.default_subagent_model` 或自定义 Agent 文件给子 Agent 单独指定模型——这正是该配置存在的原因之一。
 
-**我的用法：** 探索类子任务默认 `gpt-6-luna` + 较高推理强度；最终裁定和复杂实现留在主线程或 `worker`／更强模型上。并发先从 3～6 试，而不是一上来拉满。
+**我的用法**：探索类子任务默认 `gpt-6-luna` + 较高推理强度；最终裁定和复杂实现留在主线程或 `worker`／更强模型上。并发先从 3～6 试，而不是一上来拉满。
 
 ## 管理子 Agent：`/subagents`、审批按 `o`
 
@@ -274,16 +291,26 @@ ChatGPT Work 网页侧栏主要是只读活动列表，不提供逐个停止／�
 全部只读，不修改文件。
 ```
 
-## 和相邻能力怎么分工
+## 和主会话、Goal、多任务线怎么分工
 
-| 需求 | 更合适的能力 |
+`/subagents` 不负责派生，也不负责把完成标准挂在对话上。2026-11-06 的斜杠命令文档写的是：输入 `/subagents` 后回车，从选择器里选一条线程，Codex 切到该线程，便于查看或继续。派生仍然用对话里的明确要求，例如「spawn two agents」「每个检查点一个 agent」，或写进适用的 `AGENTS.md`／Skill。
+
+桌面端从主线程展示的活动里打开子线程。IDE 在有后台 agent 面板时，可以展开看状态、停止全部活跃子 agent，或打开单个线程。你也可以直接说：转向某个子 agent、停掉它，或关掉已经完成的线程。
+
+和旁边几篇的边界：
+
+| 你现在的问题 | 用哪篇 |
 |---|---|
-| 同一仓库多聊天 **隔离写入** | Git Worktree／Handoff |
-| 超长目标、跨很长时间推进 | Goal 模式 |
-| 给主／子任务选模型与推理档 | 模型与推理强度专文 |
-| 生命周期脚本护栏 | Hooks（含 `SubagentStart`／`SubagentStop`） |
+| 这一条对话的完成标准、暂停和恢复 | [Goal 模式](./08-Codex使用Goal模式运行长任务.md)。`/goal` 挂在主对话上，不挂在每个子线程上 |
+| 主会话定方向，`/side` 插问，子 agent 分担，结束前写交接 | [长任务工作流](./05-Codex长任务工作流.md) |
+| 子线程的角色、TOML、继承来的沙箱、`/subagents` 切换 | 本文 |
+| 会话的命名、恢复、fork、归档 | [管理多条任务线](./03-CodexCLI管理多条任务线.md) |
+| 两条对话要同时改不同目录，需要单独的检出 | [Worktree](./10-Codex用Worktree并行运行多个任务.md) |
+| 给子任务选模型和推理档 | [模型与推理强度](../10-配置模型与权限安全/01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md) |
 
-Subagents 解决的是 **并行委托与摘要回流**；它不替代工作树隔离，也不替代你对父会话权限的选择。
+Worktree 解决的是磁盘上的隔离。Subagents 解决的是同一条父会话里的并行委托和摘要回流。自定义 agent 文件里的「不要改文件」只是指令，不会变成另一套只读沙箱。真要并行写，用 worktree 或单独的任务线，不要让多个子 agent 抢同一棵工作树。
+
+生命周期脚本仍然用 Hooks，包括 `SubagentStart` 和 `SubagentStop`。那是护栏，不是派生开关。
 
 ## 参考资料
 
