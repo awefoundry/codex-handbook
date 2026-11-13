@@ -22,7 +22,7 @@
 ### 二、从 Issue 走到可审查的 PR
 
 4. [从 Issue 到 Pull Request：一次完整的团队协作闭环](./04-从Issue到PullRequest-一次完整团队协作闭环.md)
-5. [怎样写出可审查的 Commit 和 PR：范围、证据与风险](./05-怎样写出可审查的Commit和PR-范围验证证据与风险.md)
+5. [Codex 帮你写可审查的 Commit 和 PR：按主题拆分提交、commit Skill、/review 自查与 PR 描述模板](./05-怎样写出可审查的Commit和PR-范围验证证据与风险.md)
 6. [如何做一次高质量 Code Review：正确性、安全、测试与可维护性](./06-如何做一次高质量CodeReview-正确性安全测试与可维护性.md)
 7. [Codex 本地代码审查：用 /review 与 codex review 审未提交改动、分支和单个 commit](./07-Codex本地代码审查-review命令与codex-review.md)
 8. Review 反馈怎么处理：追加提交、修改 PR 与保持讨论清晰（规划中）
@@ -52,4 +52,6 @@
 ## 已上线文章
 
 - [Codex 处理 GitHub Issue 并创建 Pull Request](./01-Codex处理GitHub-Issue并创建PR.md)
+- [Codex 帮你写可审查的 Commit 和 PR：按主题拆分提交、commit Skill、/review 自查与 PR 描述模板](./05-怎样写出可审查的Commit和PR-范围验证证据与风险.md)
 - [Codex 本地代码审查：用 /review 与 codex review 审未提交改动、分支和单个 commit](./07-Codex本地代码审查-review命令与codex-review.md)
+- [Codex 审查 GitLab 合并请求：@codex review、自动审查、自建 GitLab 服务账号与 AGENTS.md 审查规则](./09-Codex审查GitLab合并请求-自动审查与AGENTS.md审查规则.md)
