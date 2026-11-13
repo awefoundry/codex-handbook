@@ -6,19 +6,19 @@
 
 ## 首期主线
 
-尚未准备好的读者从本栏目选择一种入口并完成登录；已经能使用 App 或 CLI 的读者直接进入[快速上手：完成第一个本地网页任务](../快速上手/)。本栏目中的环境专文按状态表使用，标记为“待实操与编写”的页面不能当作已验证跟做教程。
+尚未准备好的读者从本栏目选择一种入口并完成登录；已经能使用 App 或 CLI 的读者直接进入[快速上手：完成第一个本地网页任务](../快速上手/)。本栏目中的环境专文按状态表使用。标记为“待实操与编写”的页面不能当作已验证跟做教程。标记为“未实机验证”的页面可以按官方文档阅读步骤，不能当成已经在对应系统上点过的截图教程。
 
 ## 核心路线
 
 | 顺序 | 内容 | 状态 |
 |---|---|---|
-| 1 | [安装路线总览](./01-安装路线总览.md) | 已收入 |
+| 1 | [Codex 安装路线总览（2026-11 更新）：补上 Linux App 专文，按系统选 App／CLI／IDE／Cloud](./01-安装路线总览.md) | 已发布 |
 | 2 | [macOS 安装 Codex App：下载、安装、首次登录与进入 Codex 工作区](./02-macOS安装Codex-App.md) | 已收入 |
 | 3 | [Windows 安装 Codex App（2026-11 更新）：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选](./03-Windows安装Codex-App.md) | 已上线 |
 | 4 | [macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式](./04-macOS安装Codex-CLI.md) | 已收入 |
-| 5 | [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
+| 5 | [Windows 和 WSL 安装 Codex CLI（2026-11 更新）：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
 | 6 | [VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
-| 7 | [登录 Codex](./07-登录Codex.md) | 已上线 |
+| 7 | [登录 Codex（2026-11 更新）：ChatGPT 账号、API Key、Sign in another way 与凭据存储方式](./07-登录Codex.md) | 已上线 |
 | 8 | [打开第一个本地项目](./08-打开第一个本地项目.md) | 已上线 |
 | 9 | [完成第一次修改并检查结果](./09-完成第一次修改并检查结果.md) | 已上线 |
 
@@ -26,10 +26,10 @@
 
 | 顺序 | 内容 | 状态 |
 |---|---|---|
-| 10 | [Xcode 中使用 Codex](./10-Xcode中使用Codex.md) | 待实操与编写 |
-| 11 | [JetBrains 中使用 Codex](./11-JetBrains中使用Codex.md) | 已发布 |
+| 10 | [Xcode 中使用 Codex（2026-11 更新）：Coding Assistant 选 Codex、小范围改代码与验证](./10-Xcode中使用Codex.md) | 已发布（按官方文档整理，未实机验证） |
+| 11 | [JetBrains 中使用 Codex（2026-11 更新）：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP](./11-JetBrains中使用Codex.md) | 已上线 |
 | 12 | [Codex 怎么更新和卸载（2026-11 更新）：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理](./12-Codex更新与卸载.md) | 已发布 |
-| 13 | [安装登录常见问题](./13-安装登录常见问题.md) | 持续补充，已发布 |
+| 13 | [Codex 装不上、登不进、一直 loading 怎么办（2026-11 更新）：安装脚本、登录方式、证书与日志排查](./13-安装登录常见问题.md) | 已上线 |
 | 14 | [Codex CLI 斜杠命令与快捷键（0.165.0 更新）：按用途分组速查，任务运行中哪些能用](./14-斜杠命令与快捷键.md) | 已发布 |
 | 15 | [从 Claude Code 或 Cursor 迁移到 Codex：用 /import 导入配置与对话](./15-从Claude-Code或Cursor迁移到Codex-用import导入配置与对话.md) | 已收入 |
 | 16 | [Codex 多账号切换：手机端双账号与 CLI 的 CODEX_HOME](./16-Codex多账号切换-手机端双账号与CLI用CODEX_HOME分开登录.md) | 已收入 |
