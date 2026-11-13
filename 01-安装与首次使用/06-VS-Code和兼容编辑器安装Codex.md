@@ -29,7 +29,7 @@ faq:
   - q: Windsurf 和 VS Code Insiders 用另一份扩展吗？
     a: 不用。官方 IDE 文档给 Windsurf 的入口是 windsurf:extension/openai.chatgpt，给 Insiders 的链接是同一条 Marketplace 页面。
   - q: 装好了但侧栏没有图标？
-    a: 官方文档写明：在 VS Code、Cursor 或 Windsurf 里打开命令面板，运行 Codex: Open Codex Sidebar。
+    a: "官方文档写明：在 VS Code、Cursor 或 Windsurf 里打开命令面板，运行 Codex: Open Codex Sidebar。"
 ---
 
 # VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置

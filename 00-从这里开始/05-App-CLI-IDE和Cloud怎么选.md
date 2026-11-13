@@ -1,5 +1,7 @@
 ---
 title: "Codex App、CLI、IDE 和 Cloud 怎么选：按工作环境与任务方式判断"
+seo_title: "Codex App、CLI、IDE 插件和 Cloud 的区别与选择"
+seo_description: "Codex 有 App、CLI、IDE 插件和 Cloud 四种入口。按任务在本机还是云端运行、你主要在哪个界面工作来选择。附四种入口对照表、选择流程，以及什么时候需要切换入口。"
 description: "这篇文章写给已经决定使用 Codex，却被 App、CLI、IDE extension 和 Cloud 几个入口弄糊涂的读者。"
 url: /guides/app-cli-ide-he-cloud-zen-me-xuan
 status: published
