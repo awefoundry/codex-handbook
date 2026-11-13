@@ -1,5 +1,7 @@
 ---
 title: "Codex 创建自定义桌宠，从参考图到动画精灵图"
+seo_title: "Codex 桌宠怎么开：启用 Pets 并用参考图自制宠物"
+seo_description: "Codex 桌宠（Pets）在桌面端设置的外观里开启，先选一只内置宠物；想要自己的角色，从 Create your own pet 安装 hatch-pet Skill，上传一张参考图生成动画精灵图。附提示词、动作检查和常见问题。"
 description: "Codex 桌面应用支持 Pets。你可以先启用内置宠物，也可以通过设置页里的自定义入口安装 hatch-pet Skill，再用一张参考图制作自己的动画角色。"
 url: /guides/codex-create-custom-pet
 status: published
