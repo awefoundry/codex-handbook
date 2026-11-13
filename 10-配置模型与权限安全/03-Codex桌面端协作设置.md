@@ -2,7 +2,7 @@
 id: codex-desktop-collaboration-settings
 title: Codex 桌面端设置怎么调（2026-11 更新）：权限模式、个人指令与 Memories、Follow-up behavior
 seo_title: "Codex 桌面端设置指南：自定义指令、权限与任务纠偏"
-seo_description: "开始让 Codex 读项目、改文件之前，先在桌面端调好这几项：选对工作入口，按任务风险选择权限模式，把个人指令写进这台电脑的全局 AGENTS.md，按需打开 Memories，并决定新消息是立即纠偏还是排队等待。个性选项已不再改变回复风格，文末附开工前检查清单。"
+seo_description: "开始让 Codex 读项目、改文件之前，先调好这几项：选对工作入口，写自定义指令，调整个性，按任务风险设置权限，决定新消息是立即纠偏还是排队等待，最后验证设置是否生效。"
 description: Codex 桌面端的设置在 2026 年改过几轮：个性选项不再改变风格，权限变成三档模式，个人指令写进全局 AGENTS.md。本文按官方文档讲清设置入口、权限模式怎么选、个人指令和 Memories 怎么开、Follow-up behavior 的 Steer 和 Queue 区别，并附开工前的检查清单。
 lede: 开工前看四样：选的是 Codex、权限模式、个人指令和 Memories、Follow-up behavior。原来的「亲和／务实个性」已经不再改变回复风格。
 url: /guides/codex-desktop-collaboration-settings
