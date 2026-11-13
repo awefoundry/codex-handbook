@@ -1,7 +1,8 @@
 ---
 id: codex-feishu-bridge
 title: Codex 接入飞书（2026-11 更新）：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务
-seo_title: Codex 接入飞书：feishu-codex-bridge 安装与三档权限
+seo_title: "Codex 接入飞书：在群聊里远程指挥本机 Codex"
+seo_description: "用开源项目 feishu-codex-bridge 把飞书和本机 Codex 连起来，在飞书群里发一条指令，电脑上的 Codex 就开始执行任务。介绍安装步骤、两种群的用法、常用命令和需要注意的安全边界。"
 description: feishu-codex-bridge 是把飞书群和本机 Codex 连起来的第三方开源工具，不是 OpenAI 或飞书官方集成。本文按 0.6.14 的 README 和命令帮助更新安装、后台服务、三档权限，以及谁能给机器人发消息。
 url: /guides/codex-feishu-ji-cheng-shi-zhan
 status: published

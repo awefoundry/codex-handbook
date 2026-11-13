@@ -1,7 +1,8 @@
 ---
 id: codex-changyong-gongneng-qingdan
 title: Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的入口
-seo_title: Codex 常用功能清单（2026-11）：Images 2.6 与本地线程内存
+seo_title: "Codex 常用功能清单：8 个容易漏掉的实用技巧"
+seo_description: "任务一长，讨论、日志和要求就混在一起。8 个容易忽略的 Codex 功能：调高推理强度、用 Quick Chat 和 Side Chat 分开讨论、单独 Review、配置 Subagent、用 @ 找回旧结论、写 HANDOFF 交接等。"
 description: 按 2026-11 整理 Codex 里最值得先学会的入口：可搜索的 /config、回应中的即时 Steer、/keymap，以及 Images 2.6 图像能力和本地长线程内存修复。每项都链到官方说明或专文。
 lede: 先学会改设置、中途纠偏和改快捷键。2026-11 再补上出图与编辑，以及长本地线程的内存核对。
 url: /guides/codex-changyong-gongneng-qingdan
