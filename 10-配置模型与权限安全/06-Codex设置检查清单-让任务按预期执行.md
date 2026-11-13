@@ -1,5 +1,7 @@
 ---
 title: "Codex 任务总跑偏？先检查这 5 个设置"
+seo_title: "Codex 总跑偏、乱改文件？先检查这 5 个设置"
+seo_description: "Codex 顺手改了无关文件、回复太啰嗦、权限确认太多、中途补充的要求不生效，多半是设置没调好。逐项检查入口、自定义指令、个性、权限和跟进处理方式这 5 个设置。"
 description: "忙了一圈，使用体验还是别扭。"
 url: /guides/codex-settings-checklist
 status: published

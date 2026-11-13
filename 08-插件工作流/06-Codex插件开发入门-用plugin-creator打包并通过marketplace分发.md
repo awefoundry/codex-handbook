@@ -24,7 +24,7 @@ keywords: [Codex 插件开发, plugin-creator, plugin.json, mcp.json, marketplac
 related: [create-codex-skill]
 faq:
   - q: $plugin-creator 和手写 plugin.json 哪个更好？
-    a: @plugin-creator／$plugin-creator 最快，默认出兼容布局并可写本地 marketplace；清楚字段时可手写根目录可移植 plugin.json 与 mcp.json。两者可并存。
+    a: "@plugin-creator／$plugin-creator 最快，默认出兼容布局并可写本地 marketplace；清楚字段时可手写根目录可移植 plugin.json 与 mcp.json。两者可并存。"
   - q: 带 Hooks 的插件能上公开插件目录吗？
     a: 不能。hooks 仅支持 Codex 桌面端手动安装的插件；含 hooks 者不能进公开目录。公开分发请去掉 hooks。
   - q: 个人 marketplace、仓库 marketplace 和公开目录有什么区别？

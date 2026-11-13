@@ -1,7 +1,8 @@
 ---
 id: codex-automations-scheduled-tasks
 title: Codex 定时任务（Scheduled tasks）怎么用：创建、在 Scheduled 查看结果、跑在本地还是 worktree，以及和 codex exec + cron 怎么分工
-seo_title: Codex 定时任务 Scheduled tasks：创建、本地／worktree、RRULE 与和 codex exec 分工
+seo_title: "Codex 定时任务 Automations：创建、运行条件与结果检查"
+seo_description: "Codex 桌面应用的 Automations 可以按计划重复运行任务，适合检查最近提交、汇总 Git 活动、整理 CI 失败和生成周期报告。说明怎样创建、设置运行条件、检查结果，以及哪些任务不适合。"
 description: Codex 定时任务按计划在后台跑检查与报告。按 2026 年 10 月官方文档说明：如何创建、在 Scheduled 看结果，本地项目还是 worktree，对话内定时与独立任务，事件触发范围，以及何时改用 codex exec + cron。
 lede: 旧名 Automations 已改叫 Scheduled tasks；先分清桌面端、网页端和 codex exec 三条路，再谈本地／worktree 与收件箱式结果。
 url: /guides/codex-automations-scheduled-tasks
