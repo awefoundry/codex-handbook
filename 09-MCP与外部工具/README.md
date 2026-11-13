@@ -34,3 +34,4 @@
 - [Codex 安装 Heptabase 插件：在对话里打开白板，读写卡片、Journal 与思维导图](./15-Codex安装Heptabase插件-对话内打开白板与知识卡片.md)（第三方插件，Heptabase 帮助中心；本文没有 Heptabase 账号）
 - [Codex 安装 Google 官方 Skills 与插件：google/skills 仓库的 BigQuery、Cloud SQL、Firestore 等 17 个插件怎么装](./16-Codex安装Google官方Skills与插件-google-skills仓库.md)（Google 维护的 google/skills，Apache-2.0。android/skills 与 EGM 各有专文）
 - [Codex 安装 Blender Agent Skills：用 28 个技能做建模、绑定、动画与游戏引擎导出](./17-Codex安装Blender-Agent-Skills-建模绑定动画与引擎导出.md)（第三方项目 EL4CTEO/blender-skills，MIT；本文未在 Blender 中实测）
+- [Codex 用 agent-browser 做浏览器自动化：Skill 和 MCP 两种接法，snapshot 引用与常用命令](./18-Codex用agent-browser做浏览器自动化-Skill与MCP两种接法.md)（第三方项目 vercel-labs/agent-browser，不是 OpenAI 官方浏览器）

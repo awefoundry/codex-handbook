@@ -36,3 +36,4 @@
 - [OpenAI 收购 Pierre：Codex 里的 Trees、Diffs 和即将并入的 Code Storage 意味着什么](./20-OpenAI收购Pierre-Codex里的Trees-Diffs与Code-Storage.md)
 - [Codex 与 Dot：在 iOS 通知里回复、分享照片，并继续 Codex 任务](./21-Codex与Dot-iOS通知回复与分享继续任务.md)
 - [Codex CLI 0.167.0：用 codex agents 打开命令中心，本机图片预览、跨后端会话切换与 GCP 登录](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)
+- [Codex 语音怎么用：在 ChatGPT 桌面 App 用 Voice 指挥任务、语音听写与 CLI /voice](./23-Codex语音-ChatGPT-Voice指挥任务与语音听写.md)
