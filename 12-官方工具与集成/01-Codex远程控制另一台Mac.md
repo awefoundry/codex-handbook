@@ -1,7 +1,8 @@
 ---
 id: codex-remote-control-mac
 title: Codex 远程连接：用手机或另一台电脑控制 Mac / Windows，SSH 远程项目和跨设备交接（Handoff）一篇讲清
-seo_title: Codex 远程连接：手机控制、SSH 远程项目与 Handoff
+seo_title: "Codex 远程连接：用手机控制 Mac 和 Windows 主机"
+seo_description: "把一台常开的电脑设为 Codex 主机，就能在手机上发任务、看进度、审查结果，代码和命令仍在主机上运行。说明 iOS、Android 扫码配对、Windows 主机的限制，以及 Mac 和 SSH 的安全边界。"
 description: Codex 可以让你在手机或另一台电脑上继续使用 Mac / Windows 主机上的项目：派发任务、批准命令、查看改动。本文合并站内两篇旧教程，按 2026 年 10 月官方文档重写配对步骤，并补上 SSH 远程项目、跨设备交接（Handoff）和 5 种常见故障的处理。
 lede: 手机和另一台电脑只是入口；项目、凭据、命令和桌面操作仍在已配对、在线的主机上。
 url: /guides/codex-remote-control-mac

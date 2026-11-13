@@ -1,7 +1,8 @@
 ---
 id: codex-cross-session-collaboration
 title: Codex 跨会话协作：开新会话交接任务、带上下文派生，不再靠复制粘贴
-seo_title: Codex 跨会话协作：交接、fork、queue 与 Goal 怎么分工
+seo_title: "Codex 跨会话协作功能"
+seo_description: "Codex 的跨会话协作功能，我已经用了一段时间。它帮我省掉了很多来回搬运信息的时间。"
 description: 一条会话塞进讨论、实现和测试，关键决策容易被冲掉。本文说明什么时候开新会话、交接时要写清哪些上下文，以及这和 /fork、queue、Goal 模式各自解决的问题。
 lede: 会话之间传递的是你写明的任务和上下文。命令负责复制转录、投递消息或钉住目标，磁盘隔离要另外安排。
 url: /guides/codex-cross-session-collaboration

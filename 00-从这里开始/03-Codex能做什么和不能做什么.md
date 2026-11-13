@@ -1,5 +1,7 @@
 ---
 title: "Codex 能做什么和不能做什么：能力边界、使用条件与验证方法"
+seo_title: "Codex 能做什么、不能做什么：能力边界与验证方法"
+seo_description: "Codex 能理解项目、修改文件、运行命令、调用工具并检查结果，但能否完成任务取决于四个条件：上下文、权限、运行环境和验证方法。列出常见任务的能力边界，以及判断它是否真正完成的方法。"
 description: "这篇文章写给准备把真实任务交给 Codex 的读者。"
 url: /guides/codex-neng-zuo-shen-me
 status: published

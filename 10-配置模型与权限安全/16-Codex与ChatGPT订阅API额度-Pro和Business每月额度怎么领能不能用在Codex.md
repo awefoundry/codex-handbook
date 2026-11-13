@@ -17,7 +17,7 @@ order: 16
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-29
-date_modified: 2026-10-29
+date_modified: 2026-11-07
 verified_on: 2026-10-29
 official_ref: https://developers.openai.com/api/docs/guides/chatgpt-api-credits
 keywords: [Codex API 额度, ChatGPT Pro API credits, ChatGPT Business API 额度, Codex API Key 计费, credit_balance_exhausted]
@@ -32,7 +32,7 @@ faq:
     a: 不能。每期额度在该订阅计费周期结束时过期，不结转。
   - q: 额度用完以后会自动扣我的钱吗？
     a: 不会自动扣。如果组织里还有自己买的 API 额度，就接着用买的；如果什么额度都没有了，API 请求会返回 HTTP 429，错误码 credit_balance_exhausted。领取和使用这笔额度都不需要绑定 API 付款方式。
-related: [usage-limits-credits, codex-openai-developers-plugin, codex-cli-multi-entry-setup]
+related: [usage-limits-credits, codex-openai-developers-plugin, codex-cli-multi-entry-setup, codex-developers-plugin-showcase-api-credits]
 ---
 
 # Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex
@@ -201,6 +201,7 @@ Help Center 提醒要去掉截图里的敏感信息，不要发送密码或 API 
 
 - 搞清 Codex 自己的用量上限和 credits：[Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - 在 Codex 里安全创建 API Key、写进项目：[Codex 安装 OpenAI Developers 插件](../09-MCP与外部工具/08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)
+- 插件里的 Showcase，以及和这篇额度说明的分工：[Codex 用 OpenAI Developers 插件 Showcase](../09-MCP与外部工具/14-Codex-OpenAI-Developers插件Showcase与领取API额度.md)
 - 分清 ChatGPT 登录和 API Key 登录：[登录 Codex](../01-安装与首次使用/07-登录Codex.md)
 
 ## 参考资料

@@ -1,5 +1,7 @@
 ---
 title: "Codex CLI 长任务如何恢复：保存、继续与检查会话"
+seo_title: "Codex CLI 中断后如何恢复：用 resume 继续长任务"
+seo_description: "Codex CLI 长任务被中断后，用 codex resume 恢复原会话，再逐项确认目标、git status、修改范围和测试结果，避免让 Codex 凭记忆“接着猜”。附保存现场的方法和恢复后的验收顺序。"
 description: "长任务中断后，最重要的不是让 Codex“接着猜”，而是恢复原会话并重新确认目标、修改范围和验证状态。会话历史不能替代 Git、测试和人工检查。"
 url: /guides/codex-cli-resume-long-task
 status: published

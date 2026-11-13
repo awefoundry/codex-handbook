@@ -1,5 +1,7 @@
 ---
 title: "Codex 是什么：能力、工作方式与使用边界"
+seo_title: "Codex 是什么：OpenAI 的 AI 编程助手能做什么、怎么用"
+seo_description: "Codex 是 OpenAI 推出的 AI 编程助手，能在你授权的项目里读代码、改文件、跑命令，并用测试检查结果。讲清它和 ChatGPT、Cursor、Claude Code 的区别，免费账号能不能用、国内能不能用，以及新手怎么开始。"
 description: "Codex 是 OpenAI 推出的 AI 编程助手，可以在你授权的项目里读取代码、修改文件、执行命令，并通过测试检查结果。本文讲清它的工作方式、和 ChatGPT、Cursor、Claude Code 的区别、要不要付费，以及新手怎么开始。"
 url: /guides/codex-shi-shen-me
 status: published
