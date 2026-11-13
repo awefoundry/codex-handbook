@@ -1,5 +1,7 @@
 ---
 title: "Chat、ChatGPT Work 和 Codex 怎么选：按任务与交付物判断"
+seo_title: "Chat、ChatGPT Work 和 Codex 的区别：按交付物选择"
+seo_description: "要回答和讨论选 Chat；要报告、表格、演示文稿这类可审阅的成果选 ChatGPT Work；要在项目里修改文件、运行命令并验证结果选 Codex。附选择流程、混合任务的拆分方法和常见任务对照。"
 description: "这篇文章写给已经打开 ChatGPT 或 Codex，却不确定应该选择 Chat、ChatGPT Work 还是 Codex 的读者。"
 url: /guides/chat-work-he-codex-zen-me-xuan
 status: published

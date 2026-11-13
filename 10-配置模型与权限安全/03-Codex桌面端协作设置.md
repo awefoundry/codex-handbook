@@ -1,5 +1,7 @@
 ---
 title: "Codex 桌面端协作设置，从入口到权限与任务纠偏"
+seo_title: "Codex 桌面端设置指南：自定义指令、权限与任务纠偏"
+seo_description: "开始让 Codex 读项目、改文件之前，先调好这几项：选对工作入口，写自定义指令，调整个性，按任务风险设置权限，决定新消息是立即纠偏还是排队等待，最后验证设置是否生效。"
 description: "这篇文章写给已经安装 ChatGPT 桌面端，准备让 Codex 读取项目、修改文件并运行命令的读者。"
 url: /guides/codex-desktop-collaboration-settings
 status: published

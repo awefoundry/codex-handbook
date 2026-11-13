@@ -1,7 +1,8 @@
 ---
 id: codex-github-issue-pr-workflow
 title: Codex 从 GitHub Issue 到 Pull Request：云任务、@codex review、Security Review 与自动审查一篇讲清
-seo_title: Codex GitHub Issue 到 PR：云任务、@codex review、Security Review
+seo_title: "GitHub Issue 到 Pull Request：让 Codex 跑完整协作流程"
+seo_description: "不打开编辑器，只在 GitHub Issue 和 PR 评论区 @codex 派活：它会开分支、写代码、发 PR、跑 CI，还会给自己的 PR 提审查意见。拆解每一步该由人把关的地方，以及 AGENTS.md 里的审查规则。"
 description: 从一条可验收的 GitHub Issue 开始，用 Codex Cloud 写代码并开 PR，再用 @codex review、Automatic review、Code Review Rules 与 Security Review（research preview）审查，最后用 @codex fix 修复。合并站内三篇旧教程，对照 2026-10 官方 GitHub 文档。
 lede: 云任务把 Issue 推进到可审的 PR；审查与合并仍由人定规矩、拍板。
 url: /guides/codex-github-issue-pr-workflow
@@ -22,7 +23,7 @@ date_published: 2026-08-21
 date_modified: 2026-10-22
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/third-party/github
-keywords: [Codex GitHub Issue, Codex Pull Request, @codex review, Codex Security Review, Codex 自动代码审查, Code Review Rules]
+keywords: [Codex GitHub Issue, Codex Pull Request, "@codex review", Codex Security Review, Codex 自动代码审查, Code Review Rules]
 related: [permissions-sandbox-approvals, cli-manage-multiple-sessions, create-codex-skill]
 faq:
   - q: 在 Issue 评论里写 @codex，和在 PR 里写 @codex review 一样吗？
