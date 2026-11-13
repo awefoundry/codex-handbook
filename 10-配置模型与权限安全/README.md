@@ -38,3 +38,5 @@
 - [Codex 用 GPT-6 Cyber 与 Daybreak Red：准入、和 Astra / Blue 的分工，以及安全研究边界](./24-Codex用GPT-6-Cyber与Daybreak-Red-准入与边界.md)
 - [Codex 套餐用在第三方工具：Sign in with ChatGPT 连接 OpenCode、Kilo Code、Warp 等，额度怎么算、怎么限额](./25-Codex套餐用在第三方工具-Sign-in-with-ChatGPT与App-limits.md)
 - [Codex 网络权限怎么配：permission profiles 的联网开关、network_proxy 域名白名单与本地服务访问](./26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)
+- [Codex 常驻 Agent 怎么上锁：照 OpenAI 内部 OpenClaw 部署配 requirements.toml、权限 profile 与 Auto-review](./27-Codex常驻Agent安全加固-照OpenAI的OpenClaw部署配requirements.toml与权限profile.md)
+- [Codex 内置浏览器企业策略：用 MDM 下发 Chrome 策略，Windows、macOS、Linux 三种位置与 chrome://policy 核对](./28-Codex内置浏览器企业策略-用MDM下发Chrome策略并在chrome-policy核对.md)

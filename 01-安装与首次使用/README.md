@@ -28,7 +28,7 @@
 |---|---|---|
 | 10 | [Xcode 中使用 Codex（2026-11 更新）：Coding Assistant 选 Codex、小范围改代码与验证](./10-Xcode中使用Codex.md) | 已发布（按官方文档整理，未实机验证） |
 | 11 | [JetBrains 中使用 Codex（2026-11 更新）：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP](./11-JetBrains中使用Codex.md) | 已上线 |
-| 12 | [Codex 更新与卸载](./12-Codex更新与卸载.md) | 已发布 |
+| 12 | [Codex 怎么更新和卸载（2026-11 更新）：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理](./12-Codex更新与卸载.md) | 已发布 |
 | 13 | [Codex 装不上、登不进、一直 loading 怎么办（2026-11 更新）：安装脚本、登录方式、证书与日志排查](./13-安装登录常见问题.md) | 已上线 |
 | 14 | [Codex CLI 斜杠命令与快捷键（0.165.0 更新）：按用途分组速查，任务运行中哪些能用](./14-斜杠命令与快捷键.md) | 已发布 |
 | 15 | [从 Claude Code 或 Cursor 迁移到 Codex：用 /import 导入配置与对话](./15-从Claude-Code或Cursor迁移到Codex-用import导入配置与对话.md) | 已收入 |
