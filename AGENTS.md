@@ -57,3 +57,29 @@
 - 保留第三方推广或返利链接时，在链接旁注明“（推广链接）”；没有链接的商业推荐注明“（推广信息）”。
 - 指向 codexguide.io 的链接不带 `utm_` 等追踪参数。
 - 已在 codexguide.io 上线的文章，在标题下一行写 `> 本文在线版：[codexguide.io/路径](https://codexguide.io/路径)`。新文章上线后补上这一行。
+
+## 搜索标题与网址
+
+- 已上线文章的 `url` 不改。两篇合并时，被合并的一篇改为 `status: redirected` 并写 `redirect_to: /guides/目标`，网站会做永久跳转。
+- 下面这些文章正在搜索结果里排名，它们 frontmatter 里的 `seo_title` 和 `seo_description` 是网站上线的标题和描述。改写或合并时这两项原样保留，不改、不删；只改 `title`、`description` 和正文。需要改时先和网站维护者确认。
+  - `/guides/app-cli-ide-he-cloud-zen-me-xuan`
+  - `/guides/chat-work-he-codex-zen-me-xuan`
+  - `/guides/codex-acp-integration`
+  - `/guides/codex-an-quan-yu-feng-xian-bian-jie`
+  - `/guides/codex-automations-scheduled-tasks`
+  - `/guides/codex-changyong-gongneng-qingdan`
+  - `/guides/codex-cli-manage-multiple-sessions`
+  - `/guides/codex-computer-use-desktop-apps`
+  - `/guides/codex-cong-mu-lu-dao-ru-kou`
+  - `/guides/codex-create-custom-pet`
+  - `/guides/codex-cross-session-collaboration`
+  - `/guides/codex-desktop-collaboration-settings`
+  - `/guides/codex-feishu-ji-cheng-shi-zhan`
+  - `/guides/codex-github-issue-pr-workflow`
+  - `/guides/codex-neng-zuo-shen-me`
+  - `/guides/codex-notion-plugin-workflow`
+  - `/guides/codex-remote-control-mac`
+  - `/guides/codex-remotion-hyperframes-video`
+  - `/guides/codex-shi-he-na-xie-ren`
+  - `/guides/codex-shi-shen-me`
+  - `/guides/codex-xin-shou-chang-jian-wu-qu`

@@ -16,7 +16,7 @@ difficulty: 入门
 order: 12
 author: CodexGuide
 contributors: [CodexGuide]
-date_published: 2026-07-12
+date_published: 2026-08-13
 date_modified: 2026-11-13
 verified_on: 2026-11-13
 official_ref: https://learn.chatgpt.com/docs/codex/cli
