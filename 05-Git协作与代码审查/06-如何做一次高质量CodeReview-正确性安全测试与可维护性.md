@@ -2,7 +2,7 @@
 title: "如何做一次高质量 Code Review：正确性、安全、测试与可维护性"
 description: "一次 Review 应该从 PR 要解决的问题开始，而不是从某一行代码开始。先打开关联的 Issue、设计说明和测试结果，确认这次改动要解决什么，哪些行为必须保持不变。"
 date_published: 2026-09-04
-date_modified: 2026-10-26
+date_modified: 2026-11-08
 ---
 
 # 如何做一次高质量 Code Review：正确性、安全、测试与可维护性
@@ -95,7 +95,7 @@ GitHub 的 Review 页面会把 Conversation、Commits、Checks 和 Files changed
 
 ## 人要做的判断
 
-Codex 可以帮助定位差异和缺口，但业务优先级、历史兼容、线上数据，以及团队是否接受某项风险，仍然需要项目负责人判断。
+Codex 可以帮助定位差异和缺口。业务优先级、历史兼容、线上数据，以及团队是否接受某项风险，仍然需要项目负责人判断。提交前要审未提交改动、相对基准分支的差异或某一个 commit 时，用 [Codex 本地代码审查](./07-Codex本地代码审查-review命令与codex-review.md) 里的 `/review` 和 `codex review`。
 
 `Approve` 也不等于代码完美。它表示当前证据足以支持合并，剩余风险已经被识别，并且有人愿意承担这个决定。
 
