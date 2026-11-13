@@ -20,7 +20,6 @@
 - [Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法（0.164.0 实测）](./04-Codex连接Sentry排查线上错误.md)
 - [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)
 - [Codex 定时任务（Scheduled tasks）怎么用：创建、查看结果，以及和 codex exec + cron 怎么分工](./06-Codex-Automations定时任务.md)
-- [Codex 移动端远程协作](./07-Codex移动端远程协作.md)（已合并到《Codex 远程连接》）
 - [Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)
 - [Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型](./09-CodexCLI国内使用与多入口配置.md)
 - [Codex 接入飞书（2026-11 更新）：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务](./10-Codex飞书集成实战.md)（第三方项目 feishu-codex-bridge，不是 OpenAI 或飞书官方集成；文章保留在本目录）
