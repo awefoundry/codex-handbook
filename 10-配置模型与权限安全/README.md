@@ -35,3 +35,5 @@
 - [Codex 内置浏览器本地文件读取风险：EMBRACE 漏洞修复前，别打开不可信的本地 HTML](./21-Codex内置浏览器本地文件读取风险-EMBRACE自查与防护.md)
 - [Codex 插件和 Hook 自查：第三方应用自动安装后，怎么查 config.toml、信任记录和 MCP](./22-Codex插件与Hook自查-第三方应用自动安装与信任记录.md)
 - [Codex 对话会被用来训练吗：Improve the model、Include environments 和例外情况](./23-Codex对话会被用来训练吗-数据控制与Include-environments.md)
+- [Codex 常驻 Agent 怎么上锁：照 OpenAI 内部 OpenClaw 部署配 requirements.toml、权限 profile 与 Auto-review](./27-Codex常驻Agent安全加固-照OpenAI的OpenClaw部署配requirements.toml与权限profile.md)
+- [Codex 内置浏览器企业策略：用 MDM 下发 Chrome 策略，Windows、macOS、Linux 三种位置与 chrome://policy 核对](./28-Codex内置浏览器企业策略-用MDM下发Chrome策略并在chrome-policy核对.md)
