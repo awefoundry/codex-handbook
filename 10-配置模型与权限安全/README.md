@@ -23,7 +23,7 @@
 - [Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex Windows 沙箱配置：启用 MXC 原生隔离，以及 elevated / unelevated 回退](./09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./10-Codex-Daybreak-Blue申请开启与排障.md)
-- [Codex 自定义模型提供商：model_providers 和 openai_base_url 怎么配，请求到底发去哪（0.164.0 实测）](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
+- [Codex 自定义模型提供商（2026-11 更新）：在终端里添加供应商，登录时用设备码对接网关](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
 - [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
 - [Codex 防范 AGENTS.md 投毒：别在 Downloads 目录启动，5 分钟自查 config.toml 和 MCP](./15-Codex防范AGENTS.md投毒-Downloads目录风险与config.toml自查.md)
 - [Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)

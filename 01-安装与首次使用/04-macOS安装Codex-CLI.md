@@ -1,9 +1,9 @@
 ---
 id: macos-install-codex-cli
-title: macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式，登录并跑通第一个只读任务
+title: macOS 安装 Codex CLI（2026-11 更新）：官方脚本、npm、Homebrew，装完用 codex update 升级
 seo_title: macOS 安装 Codex CLI：脚本、npm、brew --cask 与首次登录
-description: 在 macOS 上用官方安装脚本、npm 全局包或 Homebrew Cask 安装 Codex CLI，完成 ChatGPT 或 API Key 登录，并在项目目录跑通第一个只读任务。命令对照 learn.chatgpt.com 现行文档，纠正缺少 --cask 与「必须 Plus」的旧说法。
-lede: 三种安装方式选一种即可；装完先登录，再在项目目录发一条明确「不要改文件」的只读任务。
+description: 在 macOS 上用官方安装脚本、npm 或 Homebrew Cask 安装 Codex CLI，完成登录并跑通第一个只读任务。装好后优先用 codex update，并按原来的安装渠道核对路径；Homebrew 必须带 --cask，ChatGPT 登录也不是必须 Plus。
+lede: 三种安装方式选一种。装好后优先用 codex update 升级，再登录，并在项目目录发一条明确「不要改文件」的只读任务。
 url: /guides/macos-install-codex-cli
 status: published
 section: guides
@@ -17,10 +17,10 @@ order: 4
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-10-22
+date_modified: 2026-11-14
 official_ref: https://learn.chatgpt.com/docs/codex/cli
-keywords: [macOS 安装 Codex CLI, Homebrew 安装 Codex, brew install --cask codex, npm @openai/codex, codex login]
-related: [windows-wsl-install-codex-cli, deng-lu-codex, install-login-faq]
+keywords: [macOS 安装 Codex CLI, Homebrew 安装 Codex, brew install --cask codex, npm @openai/codex, codex update, codex login]
+related: [windows-wsl-install-codex-cli, deng-lu-codex, codex-install-login-troubleshooting, codex-update-uninstall]
 howto: true
 faq:
   - q: Homebrew 该写 brew install codex 还是带 --cask？
@@ -28,16 +28,18 @@ faq:
   - q: 必须先买 ChatGPT Plus 才能用 CLI 吗？
     a: 不是。ChatGPT 登录可用 Plus、Pro、Business、Edu、Enterprise 等包含 Codex CLI 的套餐；也可以用 API Key 按量计费。Free／Go 的 Codex 能力以官方 Pricing 与你账号界面为准，不要照搬「必须 Plus」。
   - q: 官方脚本、npm、Homebrew 可以同时装吗？
-    a: 可以并存，但 PATH 里只会先命中一份。`which -a codex` 若列出多条路径，更新或报错时常是在跑旧的那一份。三种方式选一种，装完再核对路径。
+    a: 可以并存，但 PATH 里只会先命中一份。`which -a codex` 若列出多条路径，更新或报错时常是在跑旧的那一份。三种方式选一种。装好后优先用 codex update，它会按安装来源调用对应的更新方式。
+  - q: 更新时还要再跑一遍当初的安装命令吗？
+    a: 优先运行 codex update。官方 CLI 文档的 macOS/Linux 标签页仍把脚本渠道的更新命令写成再执行 install.sh；npm 与 Homebrew 的手动命令分别是 npm install -g @openai/codex 和 brew upgrade --cask codex。细节与《Codex 怎么更新和卸载》一致。
 ---
 
-# macOS 安装 Codex CLI：官方脚本、npm、Homebrew 三种方式，登录并跑通第一个只读任务
+# macOS 安装 Codex CLI（2026-11 更新）：官方脚本、npm、Homebrew，装完用 codex update 升级
 
 > 本文在线版：[codexguide.io/guides/macos-install-codex-cli](https://codexguide.io/guides/macos-install-codex-cli)
 
-> 核对依据：learn.chatgpt.com《[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)》《[Authentication](https://learn.chatgpt.com/docs/auth)》《[Pricing](https://learn.chatgpt.com/docs/pricing)》《[Developer commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli)》，以及 [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)、npm 包 `@openai/codex`。文中「我的用法」是操作建议，不是官方强制规定。本篇尚未在真实 Mac 终端逐条截图验证；命令以官方文档原文为准。
+> 核对依据：learn.chatgpt.com《[Codex CLI](https://learn.chatgpt.com/docs/codex/cli)》（2026-11-14 打开；macOS/Linux 标签页的安装和更新命令都是再执行 `install.sh`）、《[Authentication](https://learn.chatgpt.com/docs/auth)》、《[Pricing](https://learn.chatgpt.com/docs/pricing)》、《[Developer commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli)》，以及 [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)、npm 包 `@openai/codex`。同一天 npm 注册表的 `latest` 是 `0.169.0`（发布时间 2026-11-13T08:43:21.818Z）。Linux 上的 `codex-cli 0.169.0` 里，`codex update --help` 的说明是 “Update Codex to the latest version”。写作环境不是 macOS，没有执行官方脚本、npm 全局安装或 `brew install --cask`，也没有 Mac 终端截图。文中「我的用法」是操作建议，不是官方强制规定。更新步骤与 [Codex 怎么更新和卸载](./12-Codex更新与卸载.md) 对齐。
 
-知识库原稿只是约 190 字的占位大纲。本文按官方现行安装页补全为可跟做教程，并顺带纠正站内旧文常见的两处错误：**Homebrew 漏写 `--cask`**，以及把 ChatGPT 登录说成 **「必须 Plus」**。
+本文按官方 CLI 文档整理 macOS 上的三种安装方式，并保留两处勘误：Homebrew 必须写成 `brew install --cask codex`；用 ChatGPT 登录时，套餐也不是「必须 Plus」。
 
 ## 你要完成什么
 
@@ -68,9 +70,9 @@ faq:
 
 | 方式 | 命令要点 | 适合 | 更新 |
 | --- | --- | --- | --- |
-| 官方脚本 | `curl … install.sh \| sh` | 不想依赖 Node／Homebrew | 再跑同一条安装命令 |
-| npm | `npm install -g @openai/codex` | 已有 Node.js LTS | 再执行同一条 npm 安装／更新 |
-| Homebrew Cask | `brew install --cask codex` | 已用 brew 管图形／CLI 工具 | `brew upgrade --cask codex` |
+| 官方脚本 | `curl … install.sh \| sh` | 不想依赖 Node／Homebrew | 优先 `codex update`；手动则再跑同一条安装命令 |
+| npm | `npm install -g @openai/codex` | 已有 Node.js LTS | 优先 `codex update`；手动则再执行同一条 npm 命令 |
+| Homebrew Cask | `brew install --cask codex` | 已用 brew 管图形／CLI 工具 | 优先 `codex update`；手动则 `brew upgrade --cask codex` |
 
 下面任选一节跟做，做完跳到「验证安装」。
 
@@ -84,7 +86,7 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 
 这条命令会下载并执行官方安装脚本。安装包列表见 [OpenAI Codex GitHub Releases](https://github.com/openai/codex/releases)。若你对「管道进 shell」敏感，先打开 [Codex CLI 文档](https://learn.chatgpt.com/docs/codex/cli)核对原文，再决定是否执行；也可以先把脚本下载到本地审阅后再 `sh`。
 
-更新时官方写的是**再跑同一条安装命令**，不是另找神秘 `codex update`（是否提供 `update` 子命令以你本机 `codex --help` 为准）。
+装好之后，升级优先用 `codex update`。官方 CLI 文档的 macOS/Linux 标签页仍把这一渠道的更新命令写成再执行同一条 `install.sh`；`codex update` 在脚本安装上会走到这一步，见下文「更新」。
 
 需要强制走 GitHub Releases 时，官方允许：
 
@@ -111,17 +113,20 @@ npm -v
 npm install -g @openai/codex
 ```
 
-更新同样再执行：
+升级优先使用 `codex update`。要自己指定 npm 渠道时，再执行同一条安装命令，或显式跟 latest：
 
 ```bash
 npm install -g @openai/codex
-```
-
-或显式跟 latest：
-
-```bash
 npm install -g @openai/codex@latest
 ```
+
+需要暂时固定某个正式版时，把版本号写在包名后面，例如 2026-11-14 核对到的正式版：
+
+```bash
+npm install -g @openai/codex@0.169.0
+```
+
+`codex update` 跟的是最新版，不会停在你写进文章里的版本号上。
 
 npm 全局目录因系统与权限而异。若提示权限错误，优先用 Node 官方安装器／nvm／fnm 把全局前缀放到用户目录，**不要**习惯性 `sudo npm install -g`，以免搞乱属主。
 
@@ -141,11 +146,13 @@ brew --version
 brew install --cask codex
 ```
 
-更新：
+手动沿 Homebrew 渠道升级：
 
 ```bash
 brew upgrade --cask codex
 ```
+
+已经装好时，也可以直接运行 `codex update`，由它识别 Homebrew 安装并调用这条升级。
 
 **常见错误**：写成 `brew install codex`（漏掉 `--cask`）。站内旧文《Codex CLI 国内使用与多入口配置》里也曾出现无 `--cask` 的写法；以官方 CLI 页与 Homebrew Cask 页为准。Codex CLI 在 Homebrew 上是 **Cask** 产物，不是随便猜的 formula 名。
 
@@ -162,7 +169,7 @@ which -a codex
 - 能打印版本号，说明命令可用；
 - `which -a codex` 若出现**多条路径**，记住当前 `command -v codex` 指向的那一条，以后更新要沿同一渠道，避免「明明更新了却还是旧版本」。
 
-当前公开包版本会随发布变化（例如 Homebrew Cask／npm 曾显示 `0.163.0` 一带）；**以你本机 `codex --version` 为准**，不要把文章里的示例版本号背成硬性要求。
+版本以本机 `codex --version` 为准。2026-11-14 核对时，npm 正式版 `latest` 是 `0.169.0`（2026-11-13 发布）；[Homebrew Cask：codex](https://formulae.brew.sh/cask/codex) 的安装命令仍是 `brew install --cask codex`，页面列出的版本也是 `0.169.0`。不要把旧文里的 `0.163.0` 当成当前版本。写作环境不是 Mac，没有在 macOS 上执行 `brew`，也没有在 Mac 上打印过 `codex --version`。
 
 ## 登录
 
@@ -231,15 +238,33 @@ codex
 - `codex login status` 显示已认证；
 - 只读任务返回了项目说明，且工作区文件未被改动（可用 `git status` 核对）。
 
-## 更新时沿用原渠道
+## 更新：优先 `codex update`，再按原渠道核对
 
-| 原安装方式 | 更新 |
+装好后的升级命令是：
+
+```bash
+codex update
+```
+
+0.169.0 的 `codex update --help` 把这条子命令说明为更新到最新版。[Codex 怎么更新和卸载](./12-Codex更新与卸载.md) 按官方 CLI 文档和安装器行为写明：它会先识别安装来源，再调用对应的更新方式。npm、bun、pnpm 等全局安装走对应的包管理器；Homebrew 安装执行 `brew upgrade --cask codex`；官方脚本安装会重新运行安装脚本。一般不用自己判断渠道。
+
+官方 [Codex CLI](https://learn.chatgpt.com/docs/codex/cli) 的 macOS/Linux 标签页，在 2026-11-14 仍把 “Update Codex” 显示为再执行：
+
+```bash
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+
+这是脚本渠道的手动更新，和 `codex update` 对脚本安装的处理一致。npm 或 Homebrew 装的那一份，不要改去跑 `install.sh`，否则可能在 PATH 里多出第二份 `codex`。
+
+手动更新时沿用原渠道：
+
+| 原安装方式 | 手动更新 |
 | --- | --- |
 | 官方脚本 | 再执行同一条 `curl … \| sh` |
-| npm | `npm install -g @openai/codex`（或 `@latest`） |
+| npm | `npm install -g @openai/codex`（或 `@latest`，或 `@0.169.0` 这类固定版本） |
 | Homebrew Cask | `brew upgrade --cask codex` |
 
-更新后重新打开终端，再跑 `codex --version` 与 `which -a codex`。卸载、清理 `~/.codex` 等见同栏目《Codex 更新与卸载》；Windows／WSL 命令见《Windows 和 WSL 安装 Codex CLI》。
+更新后重新打开终端，再跑 `codex --version` 与 `which -a codex`。`which -a` 列出多条路径时，先确认当前命中的是哪一条，再沿那一条的渠道升级。卸载、清理 `~/.codex` 见 [Codex 怎么更新和卸载](./12-Codex更新与卸载.md)。Windows 和 WSL 的安装命令见 [Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)。写作环境不是 macOS，上表里的 `brew` 和 `install.sh` 没有在 Mac 上执行。
 
 ## 常见问题
 
@@ -290,6 +315,6 @@ codex --version
 - [Pricing／Feature availability](https://learn.chatgpt.com/docs/pricing)
 - [Homebrew Cask：codex](https://formulae.brew.sh/cask/codex)
 - [npm：@openai/codex](https://www.npmjs.com/package/@openai/codex)
-- 同栏目：[登录 Codex](./07-登录Codex.md)、[Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)、[安装登录常见问题](./13-安装登录常见问题.md)、[Codex 更新与卸载](./12-Codex更新与卸载.md)
+- 同栏目：[登录 Codex](./07-登录Codex.md)、[Windows 和 WSL 安装 Codex CLI](./05-Windows和WSL安装Codex-CLI.md)、[安装登录常见问题](./13-安装登录常见问题.md)、[Codex 怎么更新和卸载](./12-Codex更新与卸载.md)
 
-官方资料核对日期：2026-10-22（Asia/Shanghai）。本篇未在真实 Mac 上截取终端／登录界面；上线前建议实机走通三种安装渠道之一并补脱敏截图。
+官方资料核对日期：2026-11-14（Asia/Shanghai）。安装命令以 CLI 文档为准。本篇未在真实 Mac 上执行三种安装渠道，也没有 Mac 截图。`codex update --help` 的说明来自 Linux 上的 Codex CLI 0.169.0。

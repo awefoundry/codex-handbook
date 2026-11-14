@@ -37,3 +37,6 @@
 - [Codex CLI 0.167.0：用 codex agents 打开命令中心，本机图片预览、跨后端会话切换与 GCP 登录](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)
 - [Codex 语音怎么用：在 ChatGPT 桌面 App 用 Voice 指挥任务、语音听写与 CLI /voice](./23-Codex语音-ChatGPT-Voice指挥任务与语音听写.md)
 - [Codex 与 dot 连接多台电脑：指定在哪台电脑上跑本地 Codex 任务](./24-Codex与dot-连接多台电脑-指定电脑运行本地Codex任务.md)
+- [Codex CLI 0.169.0：侧边对话多标签页、任务搜索、折叠回合详情，以及在终端连接 Cloud](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)
+- [Codex 在 Cloudflare Durable Objects 上跑：用 ContainerHarness 保持和本机一样的 CLI，会话写进对象存储](./26-Codex在Cloudflare-Durable-Objects上运行-ContainerHarness与会话持久化.md)（Cloudflare 的实验能力，不是 OpenAI 托管的 Codex Cloud）
+- [Codex 终端工作区：并排 side chat、多标签页，重启之后还能打开](./27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)
