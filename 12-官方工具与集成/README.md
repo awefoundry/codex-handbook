@@ -37,3 +37,4 @@
 - [Codex CLI 0.167.0：用 codex agents 打开命令中心，本机图片预览、跨后端会话切换与 GCP 登录](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)
 - [Codex 语音怎么用：在 ChatGPT 桌面 App 用 Voice 指挥任务、语音听写与 CLI /voice](./23-Codex语音-ChatGPT-Voice指挥任务与语音听写.md)
 - [Codex 与 dot 连接多台电脑：指定在哪台电脑上跑本地 Codex 任务](./24-Codex与dot-连接多台电脑-指定电脑运行本地Codex任务.md)
+- [Codex 给 dot 设自定义指令：和 ChatGPT 自定义指令分开，还能用自定义规则决定哪些事要先问你](./28-Codex给dot设自定义指令与自定义规则.md)
