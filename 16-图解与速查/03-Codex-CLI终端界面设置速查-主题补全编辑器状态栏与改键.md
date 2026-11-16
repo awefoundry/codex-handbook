@@ -1,8 +1,8 @@
 ---
 id: codex-cli-tui-customization
-title: Codex CLI 终端界面设置速查：主题、Shell 补全、外部编辑器、通知、状态栏和改键
+title: Codex CLI 终端界面设置速查（2026-11 更新）：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
 seo_title: Codex CLI 界面设置速查：主题、补全、Ctrl+G 编辑器、通知、状态栏与快捷键
-description: Codex CLI 的终端界面可以换代码高亮主题、加 Shell 补全、用 Ctrl+G 调外部编辑器写长提示、设置通知、定制状态栏和窗口标题，还能改快捷键。本文按官方文档和 0.165.0 实测整理每项怎么设、写在 config.toml 哪里。
+description: Codex CLI 的终端界面可以换主题、加 Shell 补全、用 Ctrl+G 写长提示、改状态栏和快捷键。2026-11 补上 0.169.0 的折叠轮次细节、0.168.0 的 osc777 通知、tmux 图片预览，以及 features.tui_workspace 并排侧边对话。osc777 目前和配置参考页不一致。
 lede: 不想每次都在终端里凑合用 Codex？这些设置大多一条斜杠命令就能改，改完会写进 config.toml。
 url: /guides/codex-cli-tui-customization
 status: published
@@ -17,11 +17,12 @@ order: 3
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-28
-date_modified: 2026-10-28
-verified_on: 2026-10-28
-tested_cli_version: 0.165.0
+date_modified: 2026-11-16
+verified_on: 2026-11-16
+tested_cli_version: 0.169.0
 official_ref: https://learn.chatgpt.com/docs/cli-customization
-keywords: [Codex CLI 主题, Codex 快捷键, Codex 补全, codex completion, tui.keymap, Codex 状态栏, Codex Ctrl+G]
+keywords: [Codex CLI 主题, Codex 快捷键, Codex 补全, codex completion, tui.keymap, Codex 状态栏, Codex Ctrl+G, tui.collapse_turn_details, osc777, tui_workspace]
+related: [codex-notifications-notify, codex-cli-commands-cheatsheet, codex-cli-0-167-agent-command-center]
 howto: true
 faq:
   - q: Codex CLI 怎么开 Tab 补全？
@@ -36,11 +37,11 @@ faq:
     a: 在 [tui] 下设 alternate_screen = "never"。默认 auto，在 Zellij 里会自动不用全屏备用屏幕。
 ---
 
-# Codex CLI 终端界面设置速查：主题、Shell 补全、外部编辑器、通知、状态栏和改键
+# Codex CLI 终端界面设置速查（2026-11 更新）：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
 
 > 本文在线版：[codexguide.io/guides/codex-cli-tui-customization](https://codexguide.io/guides/codex-cli-tui-customization)
 
-> 核对依据：OpenAI 官方文档 [CLI customization](https://learn.chatgpt.com/docs/cli-customization)、[Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)、[Advanced Configuration 的 TUI options](https://learn.chatgpt.com/docs/config-file/config-advanced) 和 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) 的 `tui.*` 字段。Shell 补全在 Linux 上用 `codex-cli 0.165.0` 实测；斜杠命令说明、默认快捷键和状态栏项目名对照了 [openai/codex](https://github.com/openai/codex) 仓库 `rust-v0.165.0` 版本的源码。测试机上的 Codex 没有登录，所以本文没有界面截图。核对日期 2026-10-28（北京时间）。
+> 核对依据：OpenAI 官方文档 [CLI customization](https://learn.chatgpt.com/docs/cli-customization)、[Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)、[Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced) 和 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)（2026-11-16 抓取），以及 [rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0)、[rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0) 的 Release。Shell 补全、keymap 未知字段报错和状态栏项目名仍是 2026-10-28 用 `codex-cli 0.165.0` 核对的记录，这次没有重跑。2026-11-16 用 `codex-cli 0.169.0` 核对了 `tui.notification_method`、`tui.collapse_turn_details` 和 `features.tui_workspace` 能否被配置加载接受。没有登录，没有全屏界面，没有 Ghostty、Kitty 或 tmux，所以没有截图。
 
 ## 先看总表
 
@@ -56,6 +57,10 @@ faq:
 | Vim 模式 | `/vim` | `tui.vim_mode_default` |
 | 方便复制的原始滚动输出 | `/raw` 或 `Alt+R` | `tui.raw_output_mode` |
 | 是否占满全屏 | — | `tui.alternate_screen` |
+| 折叠已完成轮次的细节 | 全屏 transcript 里的 **Collapse turn details** | `tui.collapse_turn_details` |
+| 并排侧边对话 | — | `features.tui_workspace` |
+| tmux 里的图片预览和宠物 | 终端侧设置，不在 config.toml | Ghostty、Kitty 的 tmux：`allow-passthrough all` |
+| 通知方式，含 osc777 | — | `tui.notification_method`，取舍见 [任务完成通知](../11-自动化与高级工作流/15-Codex任务完成通知-tui.notifications与notify脚本.md) |
 
 斜杠命令改的设置会保存进 `$CODEX_HOME/config.toml`（默认 `~/.codex/config.toml`）。字段和值的写法，见 [config.toml 常用字段速查](./02-Codex-config.toml常用字段与环境变量速查.md)。
 
@@ -133,20 +138,16 @@ export EDITOR="vim"
 
 ## 通知
 
-Codex 等你审批或者一轮任务结束时，可以发终端通知：
+Codex 等你审批或者一轮任务结束时，可以发终端通知。开关、事件类型、`notify` 脚本和项目级配置为什么会被忽略，都写在 [任务完成通知](../11-自动化与高级工作流/15-Codex任务完成通知-tui.notifications与notify脚本.md)。这里只留一行配置，以及和官方文档对不上的那一项：
 
 ```toml
 [tui]
-notifications = true              # 或只选部分类型，见下
-notification_method = "auto"      # auto（默认）、osc9、bel
-notification_condition = "unfocused"  # unfocused（默认）、always
+notifications = true
+notification_method = "auto" # 配置参考页：auto、osc9、bel。0.169.0 还接受 osc777
+notification_condition = "unfocused"
 ```
 
-- `notification_method`：`auto` 会在终端支持时用 OSC 9（很多终端会把它显示成桌面通知），否则退回 BEL 响铃。
-- `notification_condition`：默认只在终端窗口没焦点时提醒。
-- `notifications` 也可以写成数组，只提醒部分事件。0.165.0 源码里的事件类型名有 `agent-turn-complete`（一轮完成）、`approval-requested`（等你审批）、`plan-mode-prompt`、`async-question`。
-
-想在通知时运行自己的脚本（例如发到手机），用顶层的 `notify` 字段，见官方 [Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced) 的 Notifications 一节。
+2026-11-16 的 Configuration Reference 把 `tui.notification_method` 写成 `auto | osc9 | bel`，没有 `osc777`。rust-v0.168.0 的 Release 已经写了 `tui.notification_method = "osc777"`。同一天用 0.169.0 把非法值 `not-a-method` 放进配置，报错列出的期望值是 `auto`、`osc9`、`osc777`、`bel`。`osc777` 能被这次的 CLI 接受，配置参考页还没有把它列进去。审批通知的预览变长，也放在通知专文里，不在这里展开。
 
 ## 状态栏和窗口标题
 
@@ -210,7 +211,7 @@ interrupt_turn = "f12"
 Error loading config.toml: unknown configuration field `tui.keymap.global.not_an_action` in -c/--config override
 ```
 
-本文的 TOML 片段（主题、通知、状态栏、改键和下面的界面开关）都在 0.165.0 上用 `codex exec --strict-config` 检查过，没有未知字段。
+主题、状态栏、改键和下面原有界面开关的 TOML，是 0.165.0 上用 `codex exec --strict-config` 检查过的。2026-11-16 没有把这些旧片段在 0.169.0 上重跑。新键的检查见下一节。
 
 0.165.0 源码里几个常用动作的默认按键：
 
@@ -228,6 +229,46 @@ Error loading config.toml: unknown configuration field `tui.keymap.global.not_an
 | `history_search_previous`（搜历史） | composer | `Ctrl+R` |
 
 斜杠命令和更多日常快捷键，见 [斜杠命令与快捷键](../01-安装与首次使用/14-斜杠命令与快捷键.md)。
+
+## 0.168 和 0.169 补上的界面
+
+下面四项来自 Release 和 rust-v0.169.0 的配置 schema。没有登录，没有打开全屏 transcript，也没有 tmux，所以只核对了配置能不能被 0.169.0 接受，没有界面截图。
+
+### 折叠轮次细节
+
+rust-v0.169.0 Release 的原文是：在全屏 transcript 里打开 **Collapse turn details**，把每个提示下面已经完成的活动折起来，答案仍看得见，工具输出仍可搜索。
+
+配置键在该标签的 `config.schema.json` 里是 `tui.collapse_turn_details`，布尔值，默认 `false`。schema 的说明是：在全屏 transcript 里概括工具调用，并折叠已完成的轮次。配置面板上的标签就是 `Collapse turn details`，旁边的短说明是 `Summarize tool calls in the conversation`。2026-11-16 的 Configuration Reference 正文里没有这个键。写进 `config.toml` 的名字以 schema 里的 `tui.collapse_turn_details` 为准。
+
+```toml
+[tui]
+collapse_turn_details = true
+```
+
+0.169.0 上，独立 `CODEX_HOME` 里只写这一项，再执行 `codex exec --strict-config`。进程进入会话后因未登录在 API 返回 401，没有报未知字段。这只说明加载配置时接受了这个键，不说明折叠后的画面。
+
+### osc777
+
+见上一节，细节和排错在 [任务完成通知](../11-自动化与高级工作流/15-Codex任务完成通知-tui.notifications与notify脚本.md)。
+
+### 并排侧边对话
+
+rust-v0.168.0 Release：打开 `features.tui_workspace`，在主对话旁边看一条侧边对话。拖动分隔线改变两栏宽度，或按 `leader z` 放大当前这一栏。rust-v0.169.0 Release 接着写：这个可选的终端工作区支持多个侧边对话标签，可以用键盘或鼠标切换，重启 Codex 之后还能重新打开保存过的本地侧边对话。
+
+0.169.0 源码里，`toggle_pane_zoom` 登记为 leader 和弦 `z`，并且它属于侧栏动作。`features.tui_workspace` 没开时，侧栏动作不会登记，所以这条 `z` 也不会登记。2026-11-16 的 Configuration Reference 没有列出 `features.tui_workspace`。schema 里它是布尔值。
+
+```toml
+[features]
+tui_workspace = true
+```
+
+0.169.0 接受这个键，并在 `codex exec` 里警告：`Under-development features enabled: tui_workspace`。未登录，随后 401。没有看到并排的两栏，也没有按过 `leader z`。leader 键本身是哪一个组合，以你会话里的 `/keymap` 为准；本文不另写一个没有在 0.169.0 帮助里打印出来的默认 leader。
+
+### tmux 里的图片预览和宠物
+
+rust-v0.168.0 Release：在 Ghostty 和 Kitty 里，tmux 设了 `allow-passthrough all` 时，全屏 Codex 会显示图片预览和宠物。这是 tmux 的选项，不是 `config.toml` 的键。本文没有这两款终端，也没有 tmux，没有截图。0.167.0 的本机图片预览和 `codex agents` 见 [命令中心一文](../12-官方工具与集成/22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)。宠物怎么做见 [创建自定义桌宠](../12-官方工具与集成/05-Codex创建自定义桌宠.md)。
+
+子命令本身见 [CLI 命令速查](./01-Codex-CLI命令速查-子命令与启动参数.md)。
 
 ## 其他界面开关
 
@@ -267,3 +308,5 @@ Error loading config.toml: unknown configuration field `tui.keymap.global.not_an
 - [Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced)
 - [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)
 - [openai/codex rust-v0.165.0](https://github.com/openai/codex/releases/tag/rust-v0.165.0)
+- [openai/codex rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0)
+- [openai/codex rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)

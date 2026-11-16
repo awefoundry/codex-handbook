@@ -27,5 +27,5 @@
 - [Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度](./12-Codex-Memories记忆功能-开启方式-存储位置与按对话控制.md)
 - [Codex Rules 怎么写：用 prefix_rule 设置命令白名单和黑名单](./13-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)
 - [Codex 访问令牌和服务账号：在 CI 和定时任务里不用浏览器登录运行 codex exec（Business / Enterprise）](./14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)
-- [Codex 任务完成通知怎么设置：tui.notifications 终端提醒和 notify 脚本推送](./15-Codex任务完成通知-tui.notifications与notify脚本.md)
+- [Codex 任务完成通知（2026-11 更新）：0.168 起可选 osc777，审批通知会显示更长的命令预览](./15-Codex任务完成通知-tui.notifications与notify脚本.md)
 - [Codex GitHub Action 防提示注入：从 openai/codex 的 Issue 机器人漏洞看 allow-users、safety-strategy 与不可信输入](./16-Codex-GitHub-Action防提示注入-allow-users与safety-strategy.md)

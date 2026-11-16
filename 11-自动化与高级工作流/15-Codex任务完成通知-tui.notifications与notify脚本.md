@@ -1,8 +1,8 @@
 ---
 id: codex-notifications-notify
-title: Codex 任务完成通知怎么设置：tui.notifications 终端提醒和 notify 脚本推送
+title: Codex 任务完成通知（2026-11 更新）：0.168 起可选 osc777，审批通知会显示更长的命令预览
 seo_title: Codex 任务完成通知：tui.notifications 与 notify 脚本
-description: Codex 有两种完成提醒。tui.notifications 由终端发出，notify 在每轮结束时调用你的脚本。本文说明配置写在哪、事件里有哪些字段，以及项目级 config.toml 里的 notify 为什么会被忽略。
+description: Codex 有两种完成提醒。tui.notifications 由终端发出，notify 在每轮结束时调用你的脚本。0.168 起 Release 写了 osc777，审批通知会显示更长的命令预览；配置参考页仍只列 auto、osc9、bel。0.169.0 接受 osc777。本文仍没有拿到真实的通知 JSON。
 lede: 长任务不用一直盯着终端。终端自己的提醒和外部脚本是两条通道，notify 只能写在用户级配置里。
 url: /guides/codex-notifications-notify
 status: published
@@ -17,15 +17,15 @@ order: 15
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-11-03
-date_modified: 2026-11-03
-verified_on: 2026-11-03
-tested_cli_version: 0.166.0
+date_modified: 2026-11-16
+verified_on: 2026-11-16
+tested_cli_version: 0.169.0
 official_ref: https://learn.chatgpt.com/docs/config-file/config-advanced
-keywords: [Codex 通知, Codex notify, tui.notifications, Codex 任务完成提醒, Codex 桌面通知]
-related: [config-toml-guide, hooks-guide, codex-goal-mode-long-running-work]
+keywords: [Codex 通知, Codex notify, tui.notifications, Codex 任务完成提醒, Codex 桌面通知, osc777]
+related: [config-toml-guide, hooks-guide, codex-goal-mode-long-running-work, codex-cli-tui-customization, permissions-sandbox-approvals]
 faq:
   - q: notify 现在能收到哪些事件？
-    a: 官方高级配置写的是，目前只有 agent-turn-complete。脚本收到一个 JSON 参数，常见字段有 type、thread-id、turn-id、cwd、input-messages 和 last-assistant-message。
+    a: 官方高级配置写的是，目前只有 agent-turn-complete。脚本收到一个 JSON 参数，常见字段有 type、thread-id、turn-id、cwd、input-messages 和 last-assistant-message。0.168 的审批通知预览变长，说的是 tui 通知，不是 notify 的 JSON。
   - q: 写在项目的 .codex/config.toml 里为什么没反应？
     a: 官方说明项目级配置不能覆盖 notify。Codex 会忽略项目文件里的这个键，并在启动时警告。要写在用户级 ~/.codex/config.toml。0.166.0 的 doctor 会打出 Ignored unsupported project-local config keys。
   - q: tui.notifications 和 notify 要一起开吗？
@@ -34,11 +34,11 @@ faq:
     a: 不是同一套配置。Stop 写在 hooks.json 里，要先在 /hooks 中信任，并且可以让 Codex 继续跑。notify 只在支持的事件上启动外部程序，文档没有说它会改变这一回合。
 ---
 
-# Codex 任务完成通知怎么设置：tui.notifications 终端提醒和 notify 脚本推送
+# Codex 任务完成通知（2026-11 更新）：0.168 起可选 osc777，审批通知会显示更长的命令预览
 
 > 本文在线版：[codexguide.io/guides/codex-notifications-notify](https://codexguide.io/guides/codex-notifications-notify)
 
-> 核对依据：OpenAI 文档 [Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced) 的 Notifications 一节，以及 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) 里 `notify`、`tui.notifications`、`tui.notification_method`、`tui.notification_condition` 的条目（2026-11-03 抓取）。配置是否被接受、项目级 `notify` 是否报警，在 Linux 上的 Codex CLI 0.166.0 用 `codex doctor` 看过。本机没有登录，`codex exec` 在请求 API 时返回 401，**notify 脚本没有被调用**，所以下面没有贴一份真实的事件 JSON。ChatGPT 桌面端有没有另一套通知开关，这两篇文档没有写。
+> 核对依据：OpenAI 文档 [Advanced Configuration](https://learn.chatgpt.com/docs/config-file/config-advanced) 的 Notifications 一节，以及 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference) 里 `notify`、`tui.notifications`、`tui.notification_method`、`tui.notification_condition` 的条目（2026-11-16 再次抓取）。osc777 和审批通知文案来自 [rust-v0.168.0 Release](https://github.com/openai/codex/releases/tag/rust-v0.168.0)。配置是否被 0.169.0 接受，在 Linux 上用 `codex doctor` 和 `codex exec --strict-config` 看过。本机没有登录，`codex exec` 在请求 API 时返回 401，**notify 脚本没有被调用**，也没有看到一条真正弹出的 TUI 通知，所以下面没有贴一份真实的事件 JSON。终端界面总表见 [CLI 终端界面设置速查](../16-图解与速查/03-Codex-CLI终端界面设置速查-主题补全编辑器状态栏与改键.md)。ChatGPT 桌面端有没有另一套通知开关，这两篇文档没有写。
 
 一轮任务要跑几分钟甚至更久时，可以让 Codex 在结束时提醒你。配置文件里有两条通道：
 
@@ -67,18 +67,32 @@ notifications = ["agent-turn-complete", "approval-requested"]
 
 `agent-turn-complete` 是一轮代理结束。`approval-requested` 是 Codex 在等你批准。参考页没有把事件名字穷尽列成一张表，这里只写文档里点名的这两类。
 
-0.166.0 上，把上面的数组和下面两节的 `notification_method`、`notification_condition` 写进用户级配置后，`codex doctor` 没有因为这三个键报警。这次检查时终端是 `TERM=dumb`，没有图形焦点变化，所以没有看到一条真正弹出的 TUI 通知。
+2026-11-16 在 Codex CLI 0.169.0 上，把这个数组和下面的 `notification_method = "osc777"`、`notification_condition = "unfocused"` 写进独立 `CODEX_HOME` 的用户级配置后，`codex doctor` 的 `config.load` 状态是 ok，摘要是 config loaded。终端是 `TERM=dumb`，没有图形焦点变化，所以没有看到一条真正弹出的 TUI 通知。未登录的 `codex exec --strict-config` 也没有因为这三个键报未知字段，随后在 API 上 401。
 
-## notification_method：OSC 9 和 BEL
+## notification_method：OSC 9、OSC 777 和 BEL
+
+配置参考页目前写的是：
 
 ```toml
 [tui]
-notification_method = "auto" # auto、osc9 或 bel
+notification_method = "auto" # 该页列出的值：auto、osc9、bel
 ```
 
-默认是 `auto`。auto 时，Codex 优先发 OSC 9。OSC 9 是一段终端转义序列，有的终端会把它显示成桌面通知。终端看起来不支持时，退回 BEL，也就是响铃字符 `\x07`。
+默认是 `auto`。auto 时，Codex 优先发 OSC 9。OSC 9 是一段终端转义序列，有的终端会把它显示成桌面通知。终端看起来不支持时，退回 BEL，也就是响铃字符 `\x07`。想固定方式，配置参考页写出的值是 `osc9` 或 `bel`。
 
-想固定方式，把值写成 `osc9` 或 `bel`。终端完全忽略这两种序列时，开着这个键也不会有可见提醒，这时改用下一节的 `notify`。
+**Release 说明已经提到 osc777，配置参考尚未列出**。rust-v0.168.0 的 New Features 写：设置 `tui.notification_method = "osc777"` 用作终端通知。同一条还写，审批通知会显示更长的命令预览，并区分终端输入和网络访问请求（[#59256](https://github.com/openai/codex/pull/59256)）。2026-11-16 抓取的 Configuration Reference 仍是 `auto | osc9 | bel`，正文里没有 osc777。
+
+0.169.0 的程序接受这个值。把 `notification_method` 写成不存在的 `not-a-method` 时，`codex exec --strict-config` 在发请求之前就拒绝加载，原文是：
+
+```text
+unknown variant `not-a-method`, expected one of `auto`, `osc9`, `osc777`, `bel`
+```
+
+写成 `osc777` 时，配置能加载。本文没有一款会显示 OSC 777 的终端，所以没有看到这条序列变成桌面通知。界面上的总表只留一行，见 [终端界面设置速查](../16-图解与速查/03-Codex-CLI终端界面设置速查-主题补全编辑器状态栏与改键.md)。
+
+审批通知变长的是 TUI 自己的提醒，不是 `notify` 脚本收到的 JSON。Release 没有给出通知气泡的逐字文案，本文也不编。审批本身何时出现，见 [权限沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
+
+终端完全忽略这些序列时，开着这个键也不会有可见提醒，这时改用下一节的 `notify`。
 
 ## notification_condition：什么时候响
 
@@ -241,7 +255,7 @@ Ignored unsupported project-local config keys in /opt/codex-lab/project/.codex/c
 
 ## 常见问题
 
-**只有响铃，没有桌面气泡。** `notification_method` 处于 auto，当前终端不认 OSC 9，于是退回 BEL。换成 `notify` 加 `notify-send`，或换一个支持 OSC 9 的终端。
+**只有响铃，没有桌面气泡。** `notification_method` 处于 auto，当前终端不认 OSC 9，于是退回 BEL。换成 `notify` 加 `notify-send`，或换一个支持 OSC 9 的终端。0.168 起还可以把方式写成 `osc777`，前提是你的终端认 OSC 777。配置参考页还没列出这个值，以你这版 CLI 是否接受为准。本文没有看到 osc777 的气泡。
 
 **脚本完全没运行。** 看三件事：路径是不是用户级配置里的绝对路径；这一轮是不是真的结束了（认证失败不算 `agent-turn-complete`）；项目文件里的 `notify` 是不是被忽略了。
 
@@ -251,11 +265,13 @@ Ignored unsupported project-local config keys in /opt/codex-lab/project/.codex/c
 
 ## 下一步
 
-配置分层和“哪个文件生效”看 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。回合结束时要跑检查并可能续跑，用 [Hooks](./11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)，不要用 `notify` 去拦命令。
+配置分层和“哪个文件生效”看 [config.toml 深入配置](../10-配置模型与权限安全/04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)。回合结束时要跑检查并可能续跑，用 [Hooks](./11-Codex-Hooks入门-hooks.json配置-信任审核与常用场景.md)，不要用 `notify` 去拦命令。审批气泡对应哪一类请求，先看 [权限沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
 
 ## 参考资料
 
 - [Advanced Configuration：Notifications](https://learn.chatgpt.com/docs/config-file/config-advanced)
 - [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)
 - [Hooks](https://learn.chatgpt.com/docs/hooks)
+- [rust-v0.168.0 Release](https://github.com/openai/codex/releases/tag/rust-v0.168.0)
+- [rust-v0.169.0 Release](https://github.com/openai/codex/releases/tag/rust-v0.169.0)
 - [飞书自定义机器人](https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot)
