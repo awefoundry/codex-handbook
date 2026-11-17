@@ -14,7 +14,7 @@
 
 ## 已收入文章
 
-- [Codex「Selected model is at capacity」与额度重置：怎么判断、怎么等、怎么少踩坑](./01-Codex模型容量不足与额度重置排查.md)
+- [Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查（2026-11 更新）](./01-Codex模型容量不足与额度重置排查.md)
 - [Codex 桌面端占满磁盘怎么办：排查 Crashpad 崩溃转储，并安全清理 worktree 与会话数据](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)
 - [Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序](./03-Codex一直Reconnecting-stream-disconnected排查.md)
 

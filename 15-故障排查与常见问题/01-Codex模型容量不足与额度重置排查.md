@@ -1,9 +1,8 @@
 ---
 id: model-at-capacity-usage-reset
-title: Codex「Selected model is at capacity」与额度重置：怎么判断、怎么等、怎么少踩坑
-seo_title: Codex 容量不足与额度重置：at capacity、用量耗尽怎么分
-description: 看到 Selected model is at capacity，先分清是服务容量、用量耗尽，还是重置时机问题。本文按官方文档说明怎么查 Settings → Usage 与 /status，以及自动重置、banked reset、付费即时重置各自怎么用。
-lede: 容量满、额度用完、重置还没到，是三件不同的事。先对症，再决定等、换模型，还是用重置。
+title: Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查（2026-11 更新）
+description: Codex 弹出 Selected model is at capacity 时，先分清是服务容量、用量耗尽还是重置问题。本文更新了 Codex 团队 11-16 公布的容量错误占比趋势（峰值 6.82%，11-12 降到 0.085%），说明这张图能证明什么、不能证明什么，以及遇到报错时还是按 60 秒分流来查。
+lede: 容量满、额度用完、重置还没到，是三件不同的事。11 月的趋势图只覆盖到 11 月 12 日，遇到报错仍先分流。
 url: /guides/codex-model-at-capacity-usage-reset
 status: published
 section: guides
@@ -17,25 +16,27 @@ order: 1
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-10-22
+date_modified: 2026-11-17
 models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra]
 official_ref: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting
-keywords: [Codex at capacity, Selected model is at capacity, Codex 额度重置, usage reset, banked reset]
-related: [usage-limits-credits]
+keywords: [Codex at capacity, 模型容量不足, Retry-After, Codex 容量错误占比, Selected model is at capacity, Codex 额度重置, usage reset, banked reset]
+related: [usage-limits-credits, reconnecting-network-troubleshooting, codex-doctor]
 faq:
   - q: 用量面板还有剩余，为什么仍然出现 at capacity？
     a: 容量提示和套餐用量不是同一件事。用量有剩余时仍可能遇到服务侧容量或路由问题。先看 OpenAI Status，再换模型或新开会话试一次；持续失败时用客户端反馈并带上反馈 ID。
+  - q: 11 月 16 日那张趋势图能不能用来判断我以后不会再遇到 at capacity？
+    a: 不能。原帖用了 might have，图的口径是「日活跃用户里至少有一轮以容量错误结束」的比例，区间只到 2026-11-12。11 月 12 日标成 0.085%，之后以你自己遇到的报错为准。
   - q: Support 能帮我手动清零用量吗？
     a: 不能。官方写明 OpenAI Support 不会重置 ChatGPT 或 Codex 的用量限制。额度用完后，等面板显示的重置时间，或使用账号里已有的重置／credits 等选项。
   - q: 买了即时重置，为什么下周的自动重置日期变了？
     a: 这是预期行为。付费即时重置会立刻恢复适用额度，并在你之后第一次在 Work 或 Codex 发请求时开始新的一周；下一次自动周重置是那次请求之后的 7 天，不一定是付款后的 7 天。
 ---
 
-# Codex「Selected model is at capacity」与额度重置：怎么判断、怎么等、怎么少踩坑
+# Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查（2026-11 更新）
 
 > 本文在线版：[codexguide.io/guides/codex-model-at-capacity-usage-reset](https://codexguide.io/guides/codex-model-at-capacity-usage-reset)
 
-> 核对依据：OpenAI Help Center 的 Codex 套餐与用量说明、付费周重置、banked reset，以及 learn.chatgpt.com 的 Pricing。文中「我的用法」是排查顺序建议，不是官方规定。
+> 核对依据：OpenAI Help Center 的 Codex 套餐与用量说明、付费周重置、banked reset，learn.chatgpt.com 的 Pricing，以及 2026-10-29 更新日志里 Codex CLI 0.166.0 的提交说明。2026-11-16 的趋势图来自 Codex 团队成员 Tibo 的帖子，不是官方文档。文中「我们的建议」是排查顺序，不是官方规定。
 
 任务做到一半，界面弹出：
 
@@ -45,7 +46,7 @@ faq:
 
 **容量满、额度用完、重置还没到，是三件不同的事。** 混在一起，要么白等，要么在额度还没用完时误买重置，要么把服务故障当成自己的账号问题。
 
-本文只解决「怎么判断、怎么等、怎么少踩坑」。套餐额度怎么读、Fast／credits 怎么算、觉得被多扣怎么查，见计划中的姊妹篇《Codex 用量额度怎么看》（知识库路径 `10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md`，计划网址 `/guides/codex-usage-limits-credits`）。
+本文解决「怎么判断、怎么等、怎么少踩坑」，并说明 2026-11-16 那张容量错误占比图可以怎么读。套餐额度怎么读、Fast／credits 怎么算、觉得被多扣怎么查，见[《Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits》](../10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 ## 先做 60 秒分流
 
@@ -68,12 +69,64 @@ faq:
 
 Work 与 Codex 在多数个人／商务套餐里**共用**同一份主用量。换模型**不会**把共享池加满；它只可能避开某一个暂时满载的模型入口。
 
+一直显示 Reconnecting 或 stream disconnected，先看[《Codex 一直显示 Reconnecting 怎么办》](./03-Codex一直Reconnecting-stream-disconnected排查.md)。怀疑安装、登录或本机网络，用 [Codex doctor](./04-Codex-doctor自检-安装配置登录与网络排查.md) 做低风险自检。这两类现象和 at capacity 不是同一条报错。
+
+## 11 月更新：团队公布的容量错误趋势
+
+2026-11-16 05:55 UTC，Codex 团队成员 Tibo（@thsottiaux，简介写着 “Codex & ChatGPT @OpenAI”）发了一条帖子，原文是：
+
+> Codex team might have actually fixed the "model at capacity" errors that have been pestering you.
+
+帖子地址：[https://x.com/thsottiaux/status/2122206990101536852](https://x.com/thsottiaux/status/2122206990101536852)。2026-11-17 查询公开接口：8,544 赞、239 转发、355 引用、2,164 回复。这些数字会变。
+
+帖子配了一张图。本文不转载原图，只把图上能读到的文字做成表。图的标题是 “Codex users hitting a capacity error”。副标题是 “Share of daily active users with at least one turn ending in a capacity error”，直译是：日活跃用户里，至少有一轮以容量错误结束的人所占比例。区间写的是 “Oct 15 – Nov 12, 2026 · UTC”。
+
+图上标出的最高点是 **6.82%**，落在横轴 10 月 19 日；区间右端 11 月 12 日标为 **0.085%**。中间那些日子能看见折线起伏，图上没有逐日标出百分比，这里不补数字。
+
+图下方标题是 “Retry-After release markers”。六个节点的英文按图上原文列出，中文是本文的直译，用来帮助阅读，不是官方译文，也不补充图上没有的实现细节。
+
+| 编号 | 图上的日期 | 图上的英文 | 直译 |
+|---|---|---|---|
+| 1 | Oct 15 | Desktop release carries WebSocket retry fix | 桌面端版本带有 WebSocket 重试修复 |
+| 2 | Oct 22 | Responses adds a delay on ordinary overloads | Responses 为普通的过载加上一段延迟 |
+| 3 | Oct 23 | Service-tier overloads get a retry time | 服务层级的过载会得到一个重试时间 |
+| 4 | Oct 24 | Codex forwards retry and stop instructions | Codex 转发重试和停止指令 |
+| 5 | Oct 30 | Responses adds a delay for NO_MORE_RETRY | Responses 为 NO_MORE_RETRY 加上一段延迟 |
+| 6 | Nov 6 | Responses keeps the delay in WebSocket errors | Responses 在 WebSocket 错误里保留这段延迟 |
+
+来源：Codex 团队成员 Tibo 发布的图，不是官方文档，原帖措辞是 might have，图只覆盖到 11-12，之后的情况以你自己的实际遇到为准。
+
+同一天能对上的官方更新日志，是更早的 Codex CLI 0.166.0。changelog 把这个版本放在 2026-10-29。[完整提交列表](https://learn.chatgpt.com/codex/changelog)里有一条：
+
+> #57452 Distinguish policy-restricted capacity failures from server overloads
+
+直译：把策略限制造成的容量失败，和服务过载区分开。它写在 0.166.0 的提交列表里，不在该版本面向读者的 New Features 摘要里。本文只引用这句说明，不推测界面文案因此改成了什么。2026-11-17 在 changelog 里没有找到把 10 月 15 日至 11 月 12 日这张占比图写成正式公告的条目。更早版本里有处理 Retry-After 的提交（例如 #50418、#51440），那些是客户端如何遵守重试时间，不是这张图的官方解读。
+
+## 这张图能说明什么，不能说明什么
+
+能从原帖和图上直接读到的，是这几件事：
+
+- 口径是「当天活跃用户中，至少有一轮以容量错误结束」的比例，不是全部请求的失败率，也不是你个人账号的用量百分比。
+- 在这张图的区间里，标出来的高点是 10 月 19 日的 6.82%，标出来的末端是 11 月 12 日的 0.085%。
+- 图把六个日期标成 Retry-After 相关的发布节点。节点句子就是上一节的表，没有更多技术说明。
+- 帖子正文用了 might have（也许已经）。这是作者当时的判断。图和帖子都没有写「之后不会再出现」。
+
+这张图没有写出的，也不要替它补上：
+
+- 它没有覆盖 11 月 12 日之后。帖子发在 11 月 16 日，图的右端仍停在 11 月 12 日。
+- 它没有按套餐、地区、模型或客户端拆开。你今天在某一个模型上遇到 at capacity，不能用「整体比例已经很低」否定这次报错。
+- 它没有说用量耗尽、重置日期变化、Reconnecting 也会一起消失。那三件事仍然按各自的面板和报错文案处理。
+- 六个节点只是图上的短句。NO_MORE_RETRY、service-tier、WebSocket 这些词按原文保留；本文不编它们在服务端的具体行为。
+
+所以，11 月更新改变的是「怎么读最近这次公开说明」，不是分流表本身。现在遇到 Selected model is at capacity，仍然先做上一节的 60 秒分流。
+
 ## 情况一：Selected model is at capacity
 
 界面提示你**当前选中的模型暂时接不下新请求**，并建议换一个模型。它说的是服务侧容量／准入，不是「周额度已经变成 0」。
 
-OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列改动，显著降低这类提示；**当它仍出现时，任务最终应能自行继续，而不是一直卡死**（2026-10-15，[Day 11](https://x.com/i/status/2110750421367287996)）。这是产品说明，不是「你一定等得到成功」。额度明显有剩余却仍报 at capacity 时，**先按容量问题处理**，不要一上来就买重置。
+2026-10-15，同一位工程师在 [Day 11](https://x.com/thsottiaux/status/2110750421367287996) 写过：团队加了算力并做了一系列改动，显著降低这类提示；当它仍出现时，任务最终应能自行继续，而不是一直卡死。那也是产品说明，不是「你一定等得到成功」。2026-11-16 的帖子改用了 might have。额度明显有剩余却仍报 at capacity 时，**先按容量问题处理**，不要一上来就买重置。
 
+**我们的建议**：现在遇到仍先按分流判断。报错里如果有重试提示或倒计时，等这一轮结束再决定要不要重发，别连续狂点重发。图上的节点提到了 retry，但没有规定你的客户端一定显示倒计时；看不到重试提示时，就按下面的顺序换模型或新开会话，不要为了试探连续点掉重置。
 
 界面上常见的样子是任务进行中突然出现英文提示，有时还会带自动重试倒计时（对话内容已打码，仅保留报错文案）：
 
@@ -92,7 +145,7 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 不是官方强制步骤，按这个顺序通常更省事：
 
 1. **看状态页**：[status.openai.com](https://status.openai.com/) 是否标了 Codex、ChatGPT Work 或相关组件异常。有公告就跟着公告走，别反复改本地配置。
-2. **等自动重试结束一轮**。客户端若在倒计时重试，先让它跑完；工程师说明过这类提示最终应能自行继续。
+2. **等自动重试结束一轮**。客户端若在倒计时重试，先让它跑完。
 3. **换一个仍可用的模型试一次短任务**（例如从 Astra 换到 GPT-6.1 Sol，或换到 Luna）。目的是验证「是不是某一个模型入口满了」，不是指望换模型恢复额度。
 4. **新开一个会话／线程**再发同样的短请求。有人只在某一个线程里反复失败，新会话却正常——这更像路由或会话状态问题，而不是额度。
 5. **确认登录的是同一个、正确的个人或工作区账号**，然后完全退出并重启桌面端或 CLI。
@@ -104,7 +157,7 @@ OpenAI 工程师 @thsottiaux 公开写过：团队加了算力并做了一系列
 
 ### 怎么确认
 
-官方建议：接近或已经碰到 Codex 限制时，打开 Settings 或用量面板，看**哪一档额度耗尽**、credits 余额、以及显示的重置时间；CLI 会话里用 `/status`。
+官方建议：接近或已经碰到 Codex 限制时，打开 Settings 或用量面板，看**哪一档额度耗尽**、credits 余额、以及显示的重置时间；CLI 会话里用 `/status`。面板上的 5 小时窗、每周窗、Fast 倍率和 credits 怎么读，见[用量额度一文](../10-配置模型与权限安全/08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly limit、剩余百分比与 Resets in 倒计时），下方是 Credits（余额与 Add more／Automatic reload）。界面写明额度在 Codex、Work、Workspace Agents 与 ChatGPT for Excel 之间共享，不含普通 Chat。
 
@@ -118,11 +171,13 @@ Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly
 
 当前公开说明里：**Pro 100／Pro 200／Pro 500 在 Work 与 Codex 暂无 5 小时限制**，但仍有套餐内用量；Plus 等套餐通常同时看 5 小时与每周。以 Settings → Usage 为准，不要背死别人截图里的数字。
 
-用量和任务有关：模型、上下文、推理强度、速度档（Fast／Ultrafast）、工具调用、本地还是云端，都会改变同一句话的消耗。所以「我只发了几条」不能直接否定面板读数——细节留给姊妹篇。
+用量和任务有关：模型、上下文、推理强度、速度档（Fast／Ultrafast）、工具调用、本地还是云端，都会改变同一句话的消耗。所以「我只发了几条」不能直接否定面板读数。
 
 ### 撞到限制时官方允许什么
 
-- 若在**正在进行的一轮（turn）**中途撞到限制，Codex **可以继续完成这一轮**，但仍受公平使用约束。
+2026-11-17 打开的帮助中心《Using Codex with your ChatGPT plan》仍写明：
+
+- 若在**正在进行的一轮（turn）**中途撞到限制，对有包含额度或按 credits 计费的套餐，Codex **可以继续完成这一轮**，但仍受公平使用约束。Enterprise 若按美元做 token 计费，是否能继续还要看工作区预算和用户限额。
 - 这一轮结束后，看横幅或 Usage 页给出的选项：等重置、使用已有 reset、购买 credits（Plus／Pro 等支持时）、升级，或按企业流程找管理员。
 - **OpenAI Support 不会手动重置** ChatGPT 或 Codex 用量。认为计数有误，或到了显示的重置时间仍不能用，再联系 Support 并附截图与时间。
 
@@ -171,30 +226,34 @@ Usage 的 Overview 页大致长这样：上方是 Plan limits（本例为 Weekly
 
 ### 活动发放的自动重置
 
-OpenAI 偶尔会给符合条件的用户做一次性自动刷新或发放 banked reset。资格与过期以当时公告为准，**以后不保证还有**。Support 不负责审查「本该」是否领到免费活动重置，也不补发或延期。
+OpenAI 偶尔会给符合条件的用户做一次性自动刷新或发放 banked reset。资格与过期以当时公告为准，**以后不保证还有**。帮助中心写明：不会只因为你不符合某次一次性重置、没注意到已经正确加上的重置，或没在过期前用掉 banked reset，就再补一次重置、credits 或退款。认为计数有误，或过了显示的重置时间仍不能用，再联系 Support。
 
-工程师动态里也会出现「今日 limit reset」一类通知（如 2026-10-17 的 [Day 13](https://x.com/i/status/2111492673890824348)）。那是当时的活动，不是日常排障步骤；日常仍看 Settings → Usage。
+工程师动态里也会出现「今日 limit reset」一类通知（如 2026-10-17 的 [Day 13](https://x.com/thsottiaux/status/2111492673890824348)）。那是当时的活动，不是日常排障步骤；日常仍看 Settings → Usage。
 
-另有与按钮无关的「有效用量」改进：例如通过子 agent 复用上下文、延长缓存、改善路由（[Day 12](https://x.com/i/status/2111244596131111253)）。它不会在 at capacity 时多出按钮；任务怎么更耐用，见姊妹篇。
+另有与按钮无关的「有效用量」改进：例如通过子 agent 复用上下文、延长缓存、改善路由（[Day 12](https://x.com/thsottiaux/status/2111244596131111253)）。它不会在 at capacity 时多出按钮。
 
 ## 少踩坑
 
-1. **先读 Usage／`/status`。** at capacity 且额度充足 → 不当成额度耗尽。
-2. **付费重置不能存粮。** 想先用完再买，就等接近用完再付款。
-3. **Banked reset 过期不补。** 额度很满时强行点，可能根本扣不掉。
-4. **Support 不手动清零。** 争议请带截图、重置时间、客户端、模型、Feedback ID、时区。
-5. **企业／Edu 找管理员**，不要套用 Plus 的购买重置路径。
-6. **API Key 会话按 API 计费**，不走 ChatGPT 套餐的 Usage 面板；本文针对 ChatGPT 登录的 Codex／Work。
+1. **先读 Usage／`/status`。** at capacity 且额度充足 → 不当成额度耗尽。11 月的趋势图不能代替你这次的面板。
+2. **有重试提示就等一轮。** 连续狂点重发不会让图上的比例变成你这次的结果。
+3. **付费重置不能存粮。** 想先用完再买，就等接近用完再付款。
+4. **Banked reset 过期不补。** 额度很满时强行点，可能根本扣不掉。
+5. **Support 不手动清零。** 争议请带截图、重置时间、客户端、模型、Feedback ID、时区。
+6. **企业／Edu 找管理员**，不要套用 Plus 的购买重置路径。
+7. **API Key 会话按 API 计费**，不走 ChatGPT 套餐的 Usage 面板；本文针对 ChatGPT 登录的 Codex／Work。
+8. **报错长得像断线或本机故障时，换文章。** Reconnecting 见[断线排查](./03-Codex一直Reconnecting-stream-disconnected排查.md)；安装、配置、登录和网络用 [doctor](./04-Codex-doctor自检-安装配置登录与网络排查.md)。
 
-排障顺序可以记成：`at capacity` → Status／等待／换模型／新会话；`usage limit` → 看是 5h 还是 weekly → 等刷新或按规则用 reset／credits；刚重置数字不对 → 先刷新 Usage、核对账号，不要连续再点重置。
+排障顺序可以记成：`at capacity` → Status／等待重试提示／换模型／新会话；`usage limit` → 看是 5h 还是 weekly → 等刷新或按规则用 reset／credits；刚重置数字不对 → 先刷新 Usage、核对账号，不要连续再点重置。
 
 ## 参考资料
 
-- [Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting)
+- [Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan-usage-limits-and-troubleshooting)（2026-11-17 打开；其中 “Can Support reset my usage limits?” 仍写 No）
 - [Paid weekly Work and Codex rate limit resets](https://help.openai.com/en/articles/20001507-paid-weekly-work-and-codex-rate-limit-resets)
 - [How resets work in Codex（banked／自动／付费）](https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work)
 - [Managing usage with GPT-6 Astra in Work and Codex](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex)
 - [Pricing（用量估算与撞限后选项）](https://learn.chatgpt.com/docs/pricing)
+- [ChatGPT & Codex changelog](https://learn.chatgpt.com/codex/changelog)（0.166.0，2026-10-29，提交 #57452）
+- [Tibo，2026-11-16，容量错误占比](https://x.com/thsottiaux/status/2122206990101536852)（帖子和图，不是官方文档）
 - [OpenAI Status](https://status.openai.com/)
 
 想继续系统学习 Codex，可以访问 [CodexGuide 教程网站](https://codexguide.io)。
