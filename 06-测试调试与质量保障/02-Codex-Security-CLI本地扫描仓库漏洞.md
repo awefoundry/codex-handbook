@@ -1,6 +1,6 @@
 ---
 id: codex-security-cli
-title: Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI（0.6.0 实测）
+title: Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI
 seo_title: Codex Security CLI 上手：本地扫描仓库漏洞与 CI 接入
 description: Codex Security CLI（@openai/codex-security）可在终端扫描整个仓库、目录或 diff，输出报告和结构化结果，并按严重级别控制 CI 退出码。本文用 0.6.0 实测安装、dry-run 预检和常见报错，讲清登录、扫描范围、结果文件和 GitHub Actions 接入。
 url: /guides/codex-security-cli
@@ -34,7 +34,7 @@ faq:
     a: 不是。官方文档写明退出码 0 不代表每个文件都审查过，覆盖缺口不会改变退出码，要看 coverage.json 里的排除项、延后项和待确认问题。
 ---
 
-# Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI（0.6.0 实测）
+# Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI
 
 > 本文在线版：[codexguide.io/guides/codex-security-cli](https://codexguide.io/guides/codex-security-cli)
 

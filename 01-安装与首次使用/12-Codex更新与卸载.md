@@ -1,6 +1,6 @@
 ---
 id: codex-update-uninstall
-title: Codex 怎么更新和卸载（2026-11 更新）：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理
+title: Codex 怎么更新和卸载：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理
 seo_title: Codex 怎么更新和卸载：CLI、桌面 App 与 VS Code 扩展
 description: 更新和卸载 Codex 要沿用原来的安装渠道。本文讲清怎么判断 CLI 是 npm、Homebrew 还是安装脚本装的，codex update 怎么用，ChatGPT 桌面端在三个系统上怎么更新和卸载，VS Code 扩展怎么处理，以及卸载时怎样保留或清理 ~/.codex。
 lede: 先认清是哪条渠道装的，再沿原渠道更新或卸载。删程序不等于删登录、配置和会话。
@@ -33,7 +33,7 @@ faq:
     a: 管理员可能在 requirements.toml 里设置了 [features] in_app_updates = false。这时 Settings > General 里的 In-app updates 会显示 Managed，更新由公司的 MDM 或软件分发平台统一推送。
 ---
 
-# Codex 怎么更新和卸载（2026-11 更新）：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理
+# Codex 怎么更新和卸载：CLI 用 codex update、桌面 App 与 IDE 扩展，按安装来源处理
 
 > 本文在线版：[codexguide.io/guides/codex-geng-xin-yu-xie-zai](https://codexguide.io/guides/codex-geng-xin-yu-xie-zai)
 

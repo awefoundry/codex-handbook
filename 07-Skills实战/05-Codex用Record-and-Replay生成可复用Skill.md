@@ -1,6 +1,6 @@
 ---
 id: codex-record-replay-skill
-title: Codex 用 Record & Replay 录制可复用 Skill（2026-11 更新）：官方入口、录制步骤和 macOS 前提
+title: Codex 用 Record & Replay 录制可复用 Skill：官方入口、录制步骤和 macOS 前提
 seo_title: Codex Record & Replay：在 Mac 上录一次操作生成 Skill
 description: Record & Replay 把你在 Mac 上演示的一次操作整理成可重复使用的 Skill。本文按官方文档更新入口、录制和停止的步骤，说明 macOS 与 Computer Use 两个前提，以及管理员如何关闭。
 lede: 步骤稳定、用嘴说不清的桌面流程，可以在 Mac 上录一次。入口在 Plugins 的加号菜单里，不在插件列表中搜索一个叫 Record & Replay 的插件。
@@ -32,7 +32,7 @@ faq:
     a: Record & Replay 适合自己先得到一份草稿。要发给团队、捆绑多个 Skill、带上连接器或 MCP，官方建议按插件来打包。见 Build plugins。
 ---
 
-# Codex 用 Record & Replay 录制可复用 Skill（2026-11 更新）：官方入口、录制步骤和 macOS 前提
+# Codex 用 Record & Replay 录制可复用 Skill：官方入口、录制步骤和 macOS 前提
 
 > 本文在线版：[codexguide.io/guides/codex-record-replay-skill](https://codexguide.io/guides/codex-record-replay-skill)
 

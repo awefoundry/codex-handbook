@@ -1,6 +1,6 @@
 ---
 id: cli-manage-multiple-sessions
-title: Codex CLI 管理多条任务线（2026-11 更新）：resume 恢复长任务、fork 分支、归档与交接
+title: Codex CLI 管理多条任务线：resume 恢复长任务、fork 分支、归档与交接
 seo_title: "Codex CLI 管理多条任务线：命名、切换与 fork"
 seo_description: "当你同时处理重构、排错和测试时，不必为每条任务线开一个终端窗口。Codex CLI 可以保存会话、给会话命名、在会话之间切换，并从已有会话 fork 出一条独立分支。"
 description: 用 /rename、codex resume、/fork、archive 和 delete 管好多条 Codex CLI 任务线。本文已合并原「恢复长任务」：中断前怎么留现场、恢复后先核对什么；并补充 0.167.0 的会话列表变化，说明 fork 和 Git worktree 的区别，以及跨会话怎么交接。
@@ -36,7 +36,7 @@ faq:
     a: Codex CLI 0.167.0 修复了这个问题：切换模型提供方后，保存的会话仍会显示；如果某个会话无法恢复，可以查看它的记录，并生成一段可编辑的提示词，在新会话里接着做。
 ---
 
-# Codex CLI 管理多条任务线（2026-11 更新）：resume 恢复长任务、fork 分支、归档与交接
+# Codex CLI 管理多条任务线：resume 恢复长任务、fork 分支、归档与交接
 
 > 本文在线版：[codexguide.io/guides/codex-cli-manage-multiple-sessions](https://codexguide.io/guides/codex-cli-manage-multiple-sessions)
 

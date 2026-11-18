@@ -1,6 +1,6 @@
 ---
 id: codex-plugin-security-hol-guard
-title: Codex 插件安全检查（2026-11 更新）：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描
+title: Codex 插件安全检查：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描
 seo_title: Codex 插件安全检查：HOL Guard 与 plugin-scanner 用法
 description: HOL Guard 是开源的本地 AI 代理安全工具，接入 Codex 后在执行命令、调用 MCP 前做检查；plugin-scanner 在发布插件前打分。本文按 3.59.0 重写安装、接入、防护档位和审批，附 plugin-scanner 扫 Expo 插件和 command test 的真实输出。
 lede: 装插件之前用 plugin-scanner 扫一遍，跑 Codex 时让 HOL Guard 在执行前把关。两者都是第三方开源工具，不能代替你自己看代码。
@@ -33,7 +33,7 @@ faq:
     a: 没有。写作环境是共享的 Linux 机器，为避免改动它的 Codex 配置，只在临时环境里实测了 plugin-scanner scan 和 hol-guard command test，这两条都不会修改 Codex 配置。接入 Codex 的步骤来自 HOL Guard 的 README 和文档。
 ---
 
-# Codex 插件安全检查（2026-11 更新）：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描
+# Codex 插件安全检查：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描
 
 > 本文在线版：[codexguide.io/guides/codex-plugin-security-hol-guard](https://codexguide.io/guides/codex-plugin-security-hol-guard)
 

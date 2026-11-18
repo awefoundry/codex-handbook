@@ -1,5 +1,5 @@
 ---
-title: "Codex App、CLI、IDE 和 Cloud 怎么选（2026-11 更新）：CLI 现在能在终端连 Cloud、开终端工作区，可复用 Cloud 环境怎么影响选择"
+title: "Codex App、CLI、IDE 和 Cloud 怎么选：CLI 现在能在终端连 Cloud、开终端工作区，可复用 Cloud 环境怎么影响选择"
 seo_title: "Codex App、CLI、IDE 插件和 Cloud 的区别与选择"
 seo_description: "Codex 有 App、CLI、IDE 插件和 Cloud 四种入口。按任务在本机还是云端运行、你主要在哪个界面工作来选择。附四种入口对照表、选择流程，以及什么时候需要切换入口。"
 description: "Codex 有 App、CLI、IDE 插件和 Cloud 四种入口。本文按任务在本机还是云端运行、你主要在哪个界面工作来选，并按 0.169 更新了 CLI 的终端工作区和终端里连接 Cloud 的新能力，以及可复用 Cloud 环境对选择的影响。"
@@ -9,7 +9,7 @@ date_published: 2026-07-12
 date_modified: 2026-11-17
 ---
 
-# Codex App、CLI、IDE 和 Cloud 怎么选（2026-11 更新）：CLI 现在能在终端连 Cloud、开终端工作区，可复用 Cloud 环境怎么影响选择
+# Codex App、CLI、IDE 和 Cloud 怎么选：CLI 现在能在终端连 Cloud、开终端工作区，可复用 Cloud 环境怎么影响选择
 
 > 本文在线版：[codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan](https://codexguide.io/guides/app-cli-ide-he-cloud-zen-me-xuan)
 

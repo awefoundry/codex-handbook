@@ -1,6 +1,6 @@
 ---
 id: codex-subagents-parallel-work
-title: Codex 使用 Subagents 并行处理任务（2026-11 更新）：/subagents、继承沙箱，和主会话怎么分工
+title: Codex 使用 Subagents 并行处理任务：/subagents、继承沙箱，和主会话怎么分工
 seo_title: Codex Subagents：/subagents、沙箱继承与主会话分工
 description: 并行调查会把主会话冲乱时，把只读或可隔离的工作交给子 agent。本文按 2026-11-06 的官方文档说明 /subagents、沙箱如何继承，以及和主会话、Goal、多任务线怎么分工。
 lede: 主会话留下需求和决定。子 agent 拿走中间噪声，并把摘要交回来。沙箱和审批跟父会话走，TOML 改不了。
@@ -34,7 +34,7 @@ faq:
     a: 不会。2026-11-06 的斜杠命令文档写，/subagents 打开选择器，用来切换到一条已有的子线程，以便查看或继续它的工作。派生本身靠你在对话里要求，或靠 AGENTS.md、Skill 里的委托说明。
 ---
 
-# Codex 使用 Subagents 并行处理任务（2026-11 更新）：/subagents、继承沙箱，和主会话怎么分工
+# Codex 使用 Subagents 并行处理任务：/subagents、继承沙箱，和主会话怎么分工
 
 > 本文在线版：[codexguide.io/guides/codex-subagents-parallel-work](https://codexguide.io/guides/codex-subagents-parallel-work)
 

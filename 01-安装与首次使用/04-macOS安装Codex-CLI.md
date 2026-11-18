@@ -1,6 +1,6 @@
 ---
 id: macos-install-codex-cli
-title: macOS 安装 Codex CLI（2026-11 更新）：官方脚本、npm、Homebrew，装完用 codex update 升级
+title: macOS 安装 Codex CLI：官方脚本、npm、Homebrew，装完用 codex update 升级
 seo_title: macOS 安装 Codex CLI：脚本、npm、brew --cask 与首次登录
 description: 在 macOS 上用官方安装脚本、npm 或 Homebrew Cask 安装 Codex CLI，完成登录并跑通第一个只读任务。装好后优先用 codex update，并按原来的安装渠道核对路径；Homebrew 必须带 --cask，ChatGPT 登录也不是必须 Plus。
 lede: 三种安装方式选一种。装好后优先用 codex update 升级，再登录，并在项目目录发一条明确「不要改文件」的只读任务。
@@ -33,7 +33,7 @@ faq:
     a: 优先运行 codex update。官方 CLI 文档的 macOS/Linux 标签页仍把脚本渠道的更新命令写成再执行 install.sh；npm 与 Homebrew 的手动命令分别是 npm install -g @openai/codex 和 brew upgrade --cask codex。细节与《Codex 怎么更新和卸载》一致。
 ---
 
-# macOS 安装 Codex CLI（2026-11 更新）：官方脚本、npm、Homebrew，装完用 codex update 升级
+# macOS 安装 Codex CLI：官方脚本、npm、Homebrew，装完用 codex update 升级
 
 > 本文在线版：[codexguide.io/guides/macos-install-codex-cli](https://codexguide.io/guides/macos-install-codex-cli)
 

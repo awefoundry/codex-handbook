@@ -1,6 +1,6 @@
 ---
 id: codex-document-delivery-workflow
-title: Codex 生成文档、表格、幻灯片和 PDF（2026-11 更新）：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收
+title: Codex 生成文档、表格、幻灯片和 PDF：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收
 seo_title: Codex 生成文档、表格、幻灯片和 PDF：预览、批注与交付验收
 description: 用 Codex 把同一批材料做成文档、表格、幻灯片和 PDF，稳妥的顺序是先定事实和数据，再逐个生成，最后交叉核对。本文按官方文档讲清桌面端、CLI、IDE 怎么预览和修改文件，$documents、$spreadsheets、@Presentations 怎么用，以及交付清单。
 lede: 生成成功不等于内容正确。先把事实和数字定下来，再生成文件；每一步只用上一步已经核对过的结果。
@@ -33,7 +33,7 @@ faq:
     a: 官方用例里有 $template-creator，可以把现有 PowerPoint 转成可复用的个人模板，保留版式、字体、颜色和品牌元素。官方也提醒，模板匹配和复杂的图表、形状编辑仍可能需要手动调整。
 ---
 
-# Codex 生成文档、表格、幻灯片和 PDF（2026-11 更新）：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收
+# Codex 生成文档、表格、幻灯片和 PDF：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收
 
 > 本文在线版：[codexguide.io/guides/codex-document-delivery-workflow](https://codexguide.io/guides/codex-document-delivery-workflow)
 

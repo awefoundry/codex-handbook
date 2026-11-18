@@ -1,6 +1,6 @@
 ---
 id: codex-custom-model-provider
-title: Codex 自定义模型提供商（2026-11 更新）：在终端里添加供应商，登录时用设备码对接网关
+title: Codex 自定义模型提供商：在终端里添加供应商，登录时用设备码对接网关
 seo_title: Codex 自定义模型提供商：model_providers 与 openai_base_url 配置
 description: 想让 Codex 走公司网关、代理或第三方模型服务，除了在 config.toml 写 model_providers 或 openai_base_url，现在也可以在终端里添加、编辑供应商，并在 SSH 场景使用设备码。本文按 0.169.0 更新操作入口，并保留请求路径、鉴权头和保留 ID 的说明。
 lede: 只改内置 OpenAI 的地址用 openai_base_url。独立服务用自己的 provider ID。0.168 起可以在 Sessions 里为新对话选默认供应商。
@@ -35,7 +35,7 @@ faq:
     a: 不会。0.169.0 在已经 --trust 的仓库里仍会提示 Ignored unsupported project-local config keys，provider 保持用户级的值。未信任的仓库则连项目配置一起不加载。
 ---
 
-# Codex 自定义模型提供商（2026-11 更新）：在终端里添加供应商，登录时用设备码对接网关
+# Codex 自定义模型提供商：在终端里添加供应商，登录时用设备码对接网关
 
 > 本文在线版：[codexguide.io/guides/codex-custom-model-provider](https://codexguide.io/guides/codex-custom-model-provider)
 

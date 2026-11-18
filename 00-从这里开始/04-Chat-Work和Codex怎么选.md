@@ -1,5 +1,5 @@
 ---
-title: "Chat、ChatGPT Work 和 Codex 怎么选（2026-11 更新）：加上 dot、跨设备继续 Work 任务和 ChatGPT Space，哪些任务交给谁"
+title: "Chat、ChatGPT Work 和 Codex 怎么选：加上 dot、跨设备继续 Work 任务和 ChatGPT Space，哪些任务交给谁"
 seo_title: "Chat、ChatGPT Work 和 Codex 的区别：按交付物选择"
 seo_description: "要回答和讨论选 Chat；要报告、表格、演示文稿这类可审阅的成果选 ChatGPT Work；要在项目里修改文件、运行命令并验证结果选 Codex。附选择流程、混合任务的拆分方法和常见任务对照。"
 description: "要回答和讨论选 Chat，要报告、表格、演示文稿这类成果选 ChatGPT Work，要在项目里改文件、跑命令选 Codex。本文按 2026-11 的官方说明补上 dot、Work 跨设备继续任务和 ChatGPT Space 的位置，并更新混合任务的拆分方法。"
@@ -9,7 +9,7 @@ date_published: 2026-07-12
 date_modified: 2026-11-17
 ---
 
-# Chat、ChatGPT Work 和 Codex 怎么选（2026-11 更新）：加上 dot、跨设备继续 Work 任务和 ChatGPT Space，哪些任务交给谁
+# Chat、ChatGPT Work 和 Codex 怎么选：加上 dot、跨设备继续 Work 任务和 ChatGPT Space，哪些任务交给谁
 
 > 本文在线版：[codexguide.io/guides/chat-work-he-codex-zen-me-xuan](https://codexguide.io/guides/chat-work-he-codex-zen-me-xuan)
 

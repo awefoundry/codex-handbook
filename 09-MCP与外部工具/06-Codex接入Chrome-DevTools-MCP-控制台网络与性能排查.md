@@ -1,6 +1,6 @@
 ---
 id: codex-chrome-devtools-mcp
-title: Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）
+title: Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹
 seo_title: Codex 接入 Chrome DevTools MCP：控制台、网络与性能排查
 description: Chrome DevTools MCP 让 Codex 直接打开 Chrome，读取控制台报错、网络请求和性能轨迹。本文用 Codex CLI 0.164.0 和 chrome-devtools-mcp 1.12.0 实测安装、常用工具、无头与隔离模式、连接已打开的 Chrome，以及隐私和权限设置。
 url: /guides/codex-chrome-devtools-mcp
@@ -33,7 +33,7 @@ faq:
     a: 上游文档建议在 config.toml 里用 cmd /c npx 启动，补上 SystemRoot 和 PROGRAMFILES 环境变量，并把启动超时调到 20 秒（startup_timeout_ms = 20_000）。
 ---
 
-# Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹（1.12.0 实测）
+# Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹
 
 > 本文在线版：[codexguide.io/guides/codex-chrome-devtools-mcp](https://codexguide.io/guides/codex-chrome-devtools-mcp)
 

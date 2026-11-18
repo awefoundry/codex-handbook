@@ -1,6 +1,6 @@
 ---
 id: codex-superpowers-plugin
-title: Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活（0.164.0 实测）
+title: Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活
 seo_title: Codex 安装 Superpowers 插件：需求澄清、计划与 TDD 工作流
 description: Superpowers 是 GitHub 上很火的开源 Skills 插件，已收录进 Codex 官方插件目录。本文讲官方目录和作者仓库两种装法，用 Codex CLI 0.164.0 实测作者仓库版的安装、查看和卸载，讲清它带来的 15 个 Skills、默认工作流、适合什么任务，以及版本差异和遥测开关。
 url: /guides/codex-superpowers-plugin
@@ -34,7 +34,7 @@ faq:
     a: 在 /plugins 插件浏览器里卸载，或者运行 codex plugin remove superpowers@<市场名>。
 ---
 
-# Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活（0.164.0 实测）
+# Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活
 
 > 本文在线版：[codexguide.io/guides/codex-superpowers-plugin](https://codexguide.io/guides/codex-superpowers-plugin)
 

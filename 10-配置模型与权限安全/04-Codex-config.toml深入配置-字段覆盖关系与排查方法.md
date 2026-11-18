@@ -1,6 +1,6 @@
 ---
 id: config-toml-guide
-title: Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）
+title: Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查
 seo_title: Codex config.toml 配置指南：层级、-c 覆盖、Profile 与生效检查
 description: Codex 的 config.toml 按 7 个层级解析，CLI 参数、受信任项目、Profile 文件、用户配置依次覆盖。本文用 0.164.0 隔离实测演示怎么看 exec 启动摘要确认生效值、-c 临时覆盖、Profile 单独文件写法、--strict-config 查错，以及不生效时的排查顺序。
 url: /advanced/config-toml
@@ -33,7 +33,7 @@ faq:
     a: 交互界面用 /status；脚本里看 codex exec 开头打印的启动摘要，里面有 model、provider、approval、sandbox、reasoning effort 等最终值。
 ---
 
-# Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）
+# Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查
 
 > 本文在线版：[codexguide.io/advanced/config-toml](https://codexguide.io/advanced/config-toml)
 

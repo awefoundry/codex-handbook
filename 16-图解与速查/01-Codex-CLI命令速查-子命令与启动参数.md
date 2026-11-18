@@ -1,6 +1,6 @@
 ---
 id: codex-cli-commands-cheatsheet
-title: Codex CLI 命令速查（0.169.0 更新）：补上 --trust、终端工作区、任务搜索和本地诊断包
+title: Codex CLI 命令速查：补上 --trust、终端工作区、任务搜索和本地诊断包
 seo_title: Codex CLI 命令速查：子命令与启动参数一览
 description: 按用途整理 Codex CLI 0.169.0 的子命令和常用启动参数。2026-11-15 在 Linux 上重数 codex --help，除 help 外仍是 26 个。这一版要补上的是 codex exec / review 的 --trust、命令中心里搜索旧任务、终端工作区，以及 Ctrl+S 保存诊断 ZIP。
 lede: 子命令还是 26 个。0.169.0 要单独记住的是 --trust，以及命令中心搜索、终端工作区和本地诊断包这三件终端里的事。
@@ -34,7 +34,7 @@ faq:
     a: 官方命令文档写明，codex mcp-server 和单独的 codex-mcp-server 程序已经移除，改用 codex app-server。
 ---
 
-# Codex CLI 命令速查（0.169.0 更新）：补上 --trust、终端工作区、任务搜索和本地诊断包
+# Codex CLI 命令速查：补上 --trust、终端工作区、任务搜索和本地诊断包
 
 > 本文在线版：[codexguide.io/guides/codex-cli-commands-cheatsheet](https://codexguide.io/guides/codex-cli-commands-cheatsheet)
 

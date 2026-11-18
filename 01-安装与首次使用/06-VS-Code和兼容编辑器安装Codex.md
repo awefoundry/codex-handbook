@@ -1,6 +1,6 @@
 ---
 id: codex-vscode-install
-title: VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置
+title: VS Code、Cursor 和 Windsurf 安装 Codex：核对官方扩展 openai.chatgpt、登录与首次设置
 seo_title: VS Code、Cursor、Windsurf 安装 Codex：核对 openai.chatgpt
 description: 在 VS Code、Cursor、Windsurf 和 VS Code Insiders 安装 Codex 前，先核对标识符 openai.chatgpt 和发布者。本文给出官方安装入口、登录、打开项目，以及 2026-10-31 的版本与市场来源。
 lede: 搜索结果里会有多个名叫 Codex 的扩展。只装标识符 openai.chatgpt、发布者核对通过的那一个。
@@ -32,7 +32,7 @@ faq:
     a: "官方文档写明：在 VS Code、Cursor 或 Windsurf 里打开命令面板，运行 Codex: Open Codex Sidebar。"
 ---
 
-# VS Code、Cursor 和 Windsurf 安装 Codex（2026-10 更新）：核对官方扩展 openai.chatgpt、登录与首次设置
+# VS Code、Cursor 和 Windsurf 安装 Codex：核对官方扩展 openai.chatgpt、登录与首次设置
 
 > 本文在线版：[codexguide.io/guides/vs-code-jian-rong-bian-ji-qi-an-zhuang-codex](https://codexguide.io/guides/vs-code-jian-rong-bian-ji-qi-an-zhuang-codex)
 

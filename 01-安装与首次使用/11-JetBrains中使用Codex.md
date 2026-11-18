@@ -1,6 +1,6 @@
 ---
 id: codex-jetbrains-ide
-title: JetBrains 中使用 Codex（2026-11 更新）：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP
+title: JetBrains 中使用 Codex：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP
 seo_title: JetBrains 中使用 Codex：登录、操作模式、Plan 与 MCP
 description: JetBrains 的 AI Assistant 可以在 AI Chat 里使用 Codex。本文按官方文档整理三种登录、操作模式和 Plan、AGENTS.md、Skills、MCP，以及 .aiignore 不生效。没有安装 JetBrains IDE，没有实测。
 lede: 在 AI Chat 里选择 Codex，用 JetBrains AI、ChatGPT 账号或 OpenAI 直接签发的 API Key 登录。操作模式决定它能不能改文件和上网。
@@ -32,7 +32,7 @@ faq:
     a: JetBrains 写明不能。Codex 帮助页和 Agents 总表都写 Codex 不遵守 AI Assistant 的 .aiignore，列在里面的文件仍可能被读取。
 ---
 
-# JetBrains 中使用 Codex（2026-11 更新）：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP
+# JetBrains 中使用 Codex：AI Assistant 三种登录、四种操作模式、Plan、Skills 与 MCP
 
 > 本文在线版：[codexguide.io/guides/codex-jetbrains-ide](https://codexguide.io/guides/codex-jetbrains-ide)
 

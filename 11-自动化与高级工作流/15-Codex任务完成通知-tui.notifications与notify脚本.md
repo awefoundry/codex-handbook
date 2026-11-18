@@ -1,6 +1,6 @@
 ---
 id: codex-notifications-notify
-title: Codex 任务完成通知（2026-11 更新）：0.168 起可选 osc777，审批通知会显示更长的命令预览
+title: Codex 任务完成通知：0.168 起可选 osc777，审批通知会显示更长的命令预览
 seo_title: Codex 任务完成通知：tui.notifications 与 notify 脚本
 description: Codex 有两种完成提醒。tui.notifications 由终端发出，notify 在每轮结束时调用你的脚本。0.168 起 Release 写了 osc777，审批通知会显示更长的命令预览；配置参考页仍只列 auto、osc9、bel。0.169.0 接受 osc777。本文仍没有拿到真实的通知 JSON。
 lede: 长任务不用一直盯着终端。终端自己的提醒和外部脚本是两条通道，notify 只能写在用户级配置里。
@@ -34,7 +34,7 @@ faq:
     a: 不是同一套配置。Stop 写在 hooks.json 里，要先在 /hooks 中信任，并且可以让 Codex 继续跑。notify 只在支持的事件上启动外部程序，文档没有说它会改变这一回合。
 ---
 
-# Codex 任务完成通知（2026-11 更新）：0.168 起可选 osc777，审批通知会显示更长的命令预览
+# Codex 任务完成通知：0.168 起可选 osc777，审批通知会显示更长的命令预览
 
 > 本文在线版：[codexguide.io/guides/codex-notifications-notify](https://codexguide.io/guides/codex-notifications-notify)
 

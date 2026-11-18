@@ -1,6 +1,6 @@
 ---
 id: model-reasoning-effort
-title: Codex 模型怎么选（2026-11 更新）：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配
+title: Codex 模型怎么选：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配
 seo_title: Codex 模型怎么选：GPT-6.2 Sol、Astra、推理强度和速度档
 description: Codex 现在可选 GPT-6.2 Astra、GPT-6.2 Sol、GPT-6.1 Terra 和 GPT-6 Luna。本文按 2026-11-17 的官方 Models 与 Model selection 页更新：每个模型适合什么、推理强度怎么调、Fast 与 Ultrafast 怎样影响额度，以及旧模型怎么迁移。
 lede: 付费套餐写代码先试 GPT-6.2 Sol，最难的项目再上 GPT-6.2 Astra。Terra 仍适合写作、看图和电脑操作，Luna 留给结果已经写清楚的重复工作。
@@ -35,7 +35,7 @@ faq:
     a: 按 2026-11-17 的 Model selection 页，在现有代码库里修 bug、加功能，起步组合是 GPT-6.2 Sol 加 Medium。最难的开放问题再用 GPT-6.2 Astra。GPT-6.1 Terra 和 GPT-6 Luna 仍在官方推荐里，分别对应可核对的小修复，以及结果已经写清楚的重复工作。
 ---
 
-# Codex 模型怎么选（2026-11 更新）：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配
+# Codex 模型怎么选：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配
 
 > 本文在线版：[codexguide.io/guides/codex-model-reasoning-effort](https://codexguide.io/guides/codex-model-reasoning-effort)
 

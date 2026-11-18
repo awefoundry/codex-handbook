@@ -1,6 +1,6 @@
 ---
 id: codex-memories
-title: Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
+title: Codex Memories 记忆功能：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
 seo_title: Codex Memories：开启、memories 与 memories_v2 目录、/memories 与省额度
 description: Codex Memories 默认关闭，开启后会在后台把旧对话整理成本地记忆，并可能消耗额度。本文按官方文档和 0.165.0 实测讲清开启方式、memories 与 memories_v2 两个目录、/memories 按对话控制、常用配置键，以及外部 Agent 记忆导入目前的状态。
 lede: Memories 是本机回忆层，不是团队强制规则。先会开关与额度门槛，再决定要不要让后台生成。
@@ -35,7 +35,7 @@ faq:
     a: 必须始终遵守的团队规则、验收标准和目录边界写进 AGENTS.md（或入库文档）。Memories 只作辅助回忆层，不要当成唯一规则来源。官方：Keep required team guidance in AGENTS.md… Treat memories as a helpful recall layer。
 ---
 
-# Codex Memories 记忆功能（2026-10 更新）：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
+# Codex Memories 记忆功能：开启方式、存储位置（memories 与 memories_v2）、/memories 按对话控制与额度
 
 > 本文在线版：[codexguide.io/guides/codex-memories](https://codexguide.io/guides/codex-memories)
 

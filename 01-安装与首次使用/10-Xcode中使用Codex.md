@@ -1,6 +1,6 @@
 ---
 id: xcode-zhong-shi-yong-codex
-title: Xcode 中使用 Codex（2026-11 更新）：Coding Assistant 选 Codex、小范围改代码与验证
+title: Xcode 中使用 Codex：Coding Assistant 选 Codex、小范围改代码与验证
 seo_title: Xcode 中使用 Codex：Coding Assistant 选择 Codex 并核对 diff
 description: Xcode 用自带的 coding assistant 选择 Codex，不安装 VS Code 那份扩展。本文按 OpenAI 的 IDE 文档和 Apple 的 Intelligence 设置页整理准备、只读任务、小范围修改和用 Xcode 测试验收。没有 Xcode 实机，截图待补。
 lede: 在 coding assistant 里新建对话并选择 Codex。先解释选中的代码，再改一小块，用 Xcode 自己的测试看结果。
@@ -34,7 +34,7 @@ faq:
     a: 没有。写作环境没有 Xcode。步骤来自 2026-11-07 打开的 OpenAI IDE 文档和 Apple《Setting up coding intelligence》。截图待补。
 ---
 
-# Xcode 中使用 Codex（2026-11 更新）：Coding Assistant 选 Codex、小范围改代码与验证
+# Xcode 中使用 Codex：Coding Assistant 选 Codex、小范围改代码与验证
 
 > 本文在线版：[codexguide.io/guides/xcode-zhong-shi-yong-codex](https://codexguide.io/guides/xcode-zhong-shi-yong-codex)
 

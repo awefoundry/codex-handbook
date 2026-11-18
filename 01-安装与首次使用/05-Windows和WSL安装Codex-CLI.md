@@ -1,6 +1,6 @@
 ---
 id: windows-wsl-install-codex-cli
-title: Windows 和 WSL 安装 Codex CLI（2026-11 更新）：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选
+title: Windows 和 WSL 安装 Codex CLI：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选
 seo_title: Windows 和 WSL 安装 Codex CLI：install.ps1、npm 与 WSL2
 description: 在 Windows 上安装 Codex CLI，可以用官方的 PowerShell 安装脚本、npm 全局包，或在 WSL2 里按 Linux 方式安装。本文说明三种方式的命令、下载源回退、安装后怎样验证，以及原生 Windows 和 WSL2 怎么选。
 lede: 项目在 Windows 盘上、平时用 PowerShell，就用原生安装。工具链在 Linux 里，就在 WSL2 里安装。两套环境各有各的 codex。
@@ -34,7 +34,7 @@ faq:
     a: /guides/windows-wsl-install-codex-cli。本文只写 CLI 的三种安装。是否与现网的 /advanced/windows 互链，留到网站上线时再定。
 ---
 
-# Windows 和 WSL 安装 Codex CLI（2026-11 更新）：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选
+# Windows 和 WSL 安装 Codex CLI：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选
 
 > 本文在线版：[codexguide.io/guides/windows-wsl-install-codex-cli](https://codexguide.io/guides/windows-wsl-install-codex-cli)
 

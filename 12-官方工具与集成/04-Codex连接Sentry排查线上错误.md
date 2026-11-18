@@ -1,6 +1,6 @@
 ---
 id: codex-sentry-error-triage
-title: Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法（0.164.0 实测）
+title: Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法
 seo_title: Codex 连接 Sentry 排查线上错误：插件、远程 MCP 与自建接入
 description: 把 Sentry 接进 Codex，可以让它读取线上错误的 Issue、堆栈和事件，再回到仓库找原因。本文结合官方文档和 Codex CLI 0.164.0 实测，讲清官方插件、远程 MCP、自建 Sentry 三种接法，项目范围、OAuth 权限、工具审批和排查流程。
 url: /guides/codex-sentry-error-triage
@@ -34,7 +34,7 @@ faq:
     a: 可以把 MCP 服务器的 default_tools_approval_mode 设成 writes，让没有标记为只读的工具在调用前都要你确认；也可以用 enabled_tools 或 disabled_tools 限制可用工具。官方 Sentry 插件里的 Skill 本身是只读的。
 ---
 
-# Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法（0.164.0 实测）
+# Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法
 
 > 本文在线版：[codexguide.io/guides/codex-sentry-error-triage](https://codexguide.io/guides/codex-sentry-error-triage)
 
