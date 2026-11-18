@@ -37,3 +37,4 @@
 - [Codex 用 agent-browser 做浏览器自动化：Skill 和 MCP 两种接法，snapshot 引用与常用命令](./18-Codex用agent-browser做浏览器自动化-Skill与MCP两种接法.md)（第三方项目 vercel-labs/agent-browser，不是 OpenAI 官方浏览器）
 - [Codex 安装 Expo 官方插件：Expo Skills 与 Expo MCP 一次装好，开发和发布 React Native 应用](./19-Codex安装Expo官方插件-Expo-Skills与Expo-MCP.md)
 - [Codex Security 插件教程：在 Security 工作台扫描本地仓库、生成补丁并验证修复](./20-Codex-Security插件-Security工作台扫描本地仓库与修复验证.md)
+- [Codex 安装 Obsidian 官方 Skills：让 Codex 读写 Markdown、Bases 和 Canvas，还能调用 Obsidian CLI](./26-Codex安装Obsidian官方Skills-Markdown-Bases-Canvas与Obsidian-CLI.md)（Obsidian 维护的 obsidian-skills，MIT。CLI 0.169.1 上装过插件，没有在 Obsidian 里改过库）
