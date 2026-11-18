@@ -14,13 +14,13 @@
 
 ## 已上线文章
 
-- [Codex 模型怎么选：GPT-6.1 Sol、Terra、Luna、Astra 和推理强度](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
+- [Codex 模型怎么选（2026-11 更新）：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol、Terra 对照工作流](./02-Codex与其他编程模型比较.md)
 - [Codex 桌面端设置怎么调（2026-11 更新）：权限模式、个人指令与 Memories、Follow-up behavior](./03-Codex桌面端协作设置.md)
 - [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [Codex 沙箱与主机权限风险（2026-11 更新）：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
 - [Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
-- [Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率和 credits](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
+- [Codex 用量额度怎么看（2026-11 更新）：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex Windows 沙箱配置：启用 MXC 原生隔离，以及 elevated / unelevated 回退](./09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./10-Codex-Daybreak-Blue申请开启与排障.md)
 - [Codex 自定义模型提供商（2026-11 更新）：在终端里添加供应商，登录时用设备码对接网关](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
@@ -39,3 +39,4 @@
 - [Codex 网络权限怎么配：permission profiles 的联网开关、network_proxy 域名白名单与本地服务访问](./26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)
 - [Codex 常驻 Agent 怎么上锁：照 OpenAI 内部 OpenClaw 部署配 requirements.toml、权限 profile 与 Auto-review](./27-Codex常驻Agent安全加固-照OpenAI的OpenClaw部署配requirements.toml与权限profile.md)
 - [Codex 内置浏览器企业策略：用 MDM 下发 Chrome 策略，Windows、macOS、Linux 三种位置与 chrome://policy 核对](./28-Codex内置浏览器企业策略-用MDM下发Chrome策略并在chrome-policy核对.md)
+- [Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)
