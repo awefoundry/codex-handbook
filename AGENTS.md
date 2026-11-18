@@ -84,3 +84,4 @@
   - `/guides/codex-shi-he-na-xie-ren`
   - `/guides/codex-shi-shen-me`
   - `/guides/codex-xin-shou-chang-jian-wu-qu`
+  - `/guides/deng-lu-codex`
