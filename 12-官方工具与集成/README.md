@@ -16,16 +16,16 @@
 
 - [Codex 远程连接：用手机或另一台电脑控制 Mac / Windows，SSH 远程项目和跨设备交接](./01-Codex远程控制另一台Mac.md)
 - [Codex 浏览器操作与登录态：内置浏览器、浏览器扩展和 Computer Use 怎么选](./02-Codex浏览器操作与登录态功能.md)
-- [Codex 使用 Computer Use 操作桌面应用（2026-10 更新）：安装授权、Win/macOS 差异，以及高风险场景的停手规则](./03-Codex使用Computer-Use操作桌面应用.md)
-- [Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法（0.164.0 实测）](./04-Codex连接Sentry排查线上错误.md)
+- [Codex 使用 Computer Use 操作桌面应用：安装授权、Win/macOS 差异，以及高风险场景的停手规则](./03-Codex使用Computer-Use操作桌面应用.md)
+- [Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法](./04-Codex连接Sentry排查线上错误.md)
 - [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)
 - [Codex 定时任务（Scheduled tasks）怎么用：创建、查看结果，以及和 codex exec + cron 怎么分工](./06-Codex-Automations定时任务.md)
-- [Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)
-- [Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型](./09-CodexCLI国内使用与多入口配置.md)
-- [Codex 接入飞书（2026-11 更新）：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务](./10-Codex飞书集成实战.md)（第三方项目 feishu-codex-bridge，不是 OpenAI 或飞书官方集成；文章保留在本目录）
+- [Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)
+- [Codex CLI 安装、登录与多入口配置：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型](./09-CodexCLI国内使用与多入口配置.md)
+- [Codex 接入飞书：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务](./10-Codex飞书集成实战.md)（第三方项目 feishu-codex-bridge，不是 OpenAI 或飞书官方集成；文章保留在本目录）
 - [Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的几项](./11-Codex常用功能清单.md)
 - [Codex Cloud 云端环境配置：发布可复用环境、设置联网与网络密钥](./12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)
-- [Codex 接入 Google Cloud Vertex AI（2026-10 更新）：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配](./13-Codex接入Google-Cloud-Model-Garden.md)
+- [Codex 接入 Google Cloud Vertex AI：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配](./13-Codex接入Google-Cloud-Model-Garden.md)
 - [Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度](./14-Codex-Composer-Predictions桌面端Tab提示.md)
 - [Codex CLI /presets 预设与内联 /model、/permissions：0.164.0 一条命令切换模型、推理强度和权限](./15-Codex-CLI-presets预设与内联model-permissions命令.md)
 - [Codex 接入 Amazon Bedrock：CLI 登录向导、Runtime 与 Mantle 怎么选，以及 API Key 和 AWS 凭证怎么配](./16-Codex接入Amazon-Bedrock-登录向导与配置.md)

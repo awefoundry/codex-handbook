@@ -1,6 +1,6 @@
 ---
 id: model-at-capacity-usage-reset
-title: Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查（2026-11 更新）
+title: Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查
 seo_title: Codex 容量不足与额度重置：at capacity、用量耗尽怎么分
 description: Codex 弹出 Selected model is at capacity 时，先分清是服务容量、用量耗尽还是重置问题。本文更新了 Codex 团队 11-16 公布的容量错误占比趋势（峰值 6.82%，11-12 降到 0.085%），说明这张图能证明什么、不能证明什么，以及遇到报错时还是按 60 秒分流来查。
 lede: 容量满、额度用完、重置还没到，是三件不同的事。11 月的趋势图只覆盖到 11 月 12 日，遇到报错仍先分流。
@@ -33,7 +33,7 @@ faq:
     a: 这是预期行为。付费即时重置会立刻恢复适用额度，并在你之后第一次在 Work 或 Codex 发请求时开始新的一周；下一次自动周重置是那次请求之后的 7 天，不一定是付款后的 7 天。
 ---
 
-# Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查（2026-11 更新）
+# Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查
 
 > 本文在线版：[codexguide.io/guides/codex-model-at-capacity-usage-reset](https://codexguide.io/guides/codex-model-at-capacity-usage-reset)
 

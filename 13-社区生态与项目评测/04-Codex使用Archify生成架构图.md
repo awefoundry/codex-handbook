@@ -1,6 +1,6 @@
 ---
 id: codex-archify-architecture-diagrams
-title: Codex 使用 Archify 生成架构图（2026-11 更新）：新装法、10 种图表和 doctor 校验
+title: Codex 使用 Archify 生成架构图：新装法、10 种图表和 doctor 校验
 seo_title: Codex 使用 Archify 生成架构图：安装、10 种图和 doctor
 description: Archify 是把说明或仓库画成独立 HTML 图的第三方 Skill，不是 Codex 官方功能。本文按 v3.2.0 改写安装：先列出再安装，用 doctor 校验，并说明 10 种图表、单页 explainer 和更新检查怎样关掉。
 lede: 先确认安装源里只有一个 archify，再装进 Codex，最后用 doctor 看渲染器是否齐全。
@@ -32,7 +32,7 @@ faq:
     a: README 写明它可能请求固定的稳定版清单，只为了显示可选的更新提醒，不会下载或安装更新。设置 ARCHIFY_UPDATE_CHECK_DISABLED=1 可以关掉这次联网和提醒状态的写入。
 ---
 
-# Codex 使用 Archify 生成架构图（2026-11 更新）：新装法、10 种图表和 doctor 校验
+# Codex 使用 Archify 生成架构图：新装法、10 种图表和 doctor 校验
 
 > 本文在线版：[codexguide.io/guides/codex-archify-architecture-diagrams](https://codexguide.io/guides/codex-archify-architecture-diagrams)
 

@@ -1,6 +1,6 @@
 ---
 id: codex-doctor
-title: Codex doctor 自检（2026-11 更新）：对照 0.169，反馈问题时可以用 Ctrl+S 把诊断包存到本地
+title: Codex doctor 自检：对照 0.169，反馈问题时可以用 Ctrl+S 把诊断包存到本地
 seo_title: Codex doctor 自检：排查安装、配置、登录和网络问题
 description: codex doctor 一条命令检查 Codex 的安装、配置、登录、运行环境、Git、终端、网络和后台服务。本文用 Codex CLI 0.169.0 重跑了 --summary 和 --json。0.169.0 的发布说明另写了：在终端报告编辑器里按 Ctrl+S，即使关闭上传也可以把诊断 ZIP 存到本地。
 url: /guides/codex-doctor
@@ -33,7 +33,7 @@ faq:
     a: 官方帮助称它是脱敏报告，实测接口地址会被替换成 <redacted>，但本地文件路径仍然保留。路径里有用户名时，发出去之前自己再检查一遍。
 ---
 
-# Codex doctor 自检（2026-11 更新）：对照 0.169，反馈问题时可以用 Ctrl+S 把诊断包存到本地
+# Codex doctor 自检：对照 0.169，反馈问题时可以用 Ctrl+S 把诊断包存到本地
 
 > 本文在线版：[codexguide.io/guides/codex-doctor](https://codexguide.io/guides/codex-doctor)
 

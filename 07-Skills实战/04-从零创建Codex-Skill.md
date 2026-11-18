@@ -1,6 +1,6 @@
 ---
 id: create-codex-skill
-title: 从零创建 Codex Skill（2026-11 更新）：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
+title: 从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
 seo_title: 从零创建 Codex Skill：skill-creator、手写 SKILL.md、触发测试、禁用与插件打包
 description: 把反复复制的提示词整理成 Codex Skill：用 $skill-creator 或手写 SKILL.md 做出最小可用版本，再测显式和自动触发、用 config.toml 按路径或名字禁用、关闭内置 Skill，以及用插件分发。本文已合并原「给 Codex 写一个专属 Skill」，增加新建 Python 项目的完整示例。
 lede: 先做出一个能触发的 Skill，再谈禁用和打包。description 决定会不会被选中，插件才是给别人安装的方式。
@@ -33,7 +33,7 @@ faq:
     a: 官方推荐的分发方式是插件：根目录 plugin.json，Skill 放在 skills/ 下，再通过 marketplace 安装。本地 .agents/skills 适合本机或仓库内使用；要给别人装，优先打成插件。
 ---
 
-# 从零创建 Codex Skill（2026-11 更新）：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
+# 从零创建 Codex Skill：$skill-creator 或手写 SKILL.md，测试触发、禁用和打包
 
 > 本文在线版：[codexguide.io/guides/create-codex-skill](https://codexguide.io/guides/create-codex-skill)
 

@@ -1,6 +1,6 @@
 ---
 id: agents-md
-title: Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
+title: Codex AGENTS.md 怎么写：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
 seo_title: Codex AGENTS.md 怎么写：继承规则、验收与 Memories/Skills 分工
 description: AGENTS.md 用来固定项目约定、目录边界和验收命令。本文按官方文档更新读取与合并规则（override、fallback、32 KiB 上限），说明它和 config.toml、Memories、Skills 的分工，并给出一套能用文件和 diff 证明规则生效的本地验收方法。
 lede: 必须遵守的规则写进仓库里的 AGENTS.md；可以忘的偏好交给 Memories；可复用的流程做成 Skill。
@@ -30,7 +30,7 @@ faq:
     a: 不建议。官方 Memories 文档明确说，必须遵守的团队规则应放在 AGENTS.md 或入库文档里，记忆只是辅助的回忆层。
 ---
 
-# Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
+# Codex AGENTS.md 怎么写：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工
 
 > 本文在线版：[codexguide.io/advanced/agents-md](https://codexguide.io/advanced/agents-md)
 

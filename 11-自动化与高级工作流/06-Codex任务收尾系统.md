@@ -1,6 +1,6 @@
 ---
 id: codex-task-closeout-memory-system
-title: Codex 任务收尾怎么做（2026-11 更新）：AGENTS.md、Memories 与 Markdown 交接记录各管什么
+title: Codex 任务收尾怎么做：AGENTS.md、Memories 与 Markdown 交接记录各管什么
 seo_title: Codex 任务收尾：AGENTS.md、Memories 与交接记录分工
 description: Codex 做完任务，下次还要重新解释？本文讲清三层分工：AGENTS.md 放必须遵守的规则，Memories 是默认关闭、后台生成的回忆层，Markdown 交接记录保存有证据的状态和决策。附五步收尾流程、写入前对账动作、可直接复制的收尾提示词和隐私边界。
 lede: 规则进 AGENTS.md，线索交给 Memories，项目状态和决策写进你自己能审查的 Markdown。
@@ -33,7 +33,7 @@ faq:
     a: 不写 API Key、Token、Cookie、密码，不写完整私人聊天和客户资料，也不写没有证据的推测。删除、发布、费用和账号操作仍要人工确认。
 ---
 
-# Codex 任务收尾怎么做（2026-11 更新）：AGENTS.md、Memories 与 Markdown 交接记录各管什么
+# Codex 任务收尾怎么做：AGENTS.md、Memories 与 Markdown 交接记录各管什么
 
 > 本文在线版：[codexguide.io/guides/codex-task-closeout-memory-system](https://codexguide.io/guides/codex-task-closeout-memory-system)
 

@@ -1,6 +1,6 @@
 ---
 id: codex-desktop-task-workflow
-title: Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
+title: Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
 seo_title: Codex 桌面端任务：项目、并行对话、审查与定时任务
 description: Codex 在 ChatGPT 桌面应用里使用，支持 macOS、Windows 和 Linux。本文按官方文档整理选项目或文件夹、并行开对话、Plan 与 Goal、审查改动、通知和定时任务，并说明它和设置篇怎么分工。
 lede: 桌面端现在是 ChatGPT 应用里的 Codex。这篇只讲任务怎么往下做；权限、个性和自定义指令放在设置篇。
@@ -33,7 +33,7 @@ faq:
     a: 官方写明不能。创建和管理在 ChatGPT 网页或桌面应用的 Scheduled 里。CLI 和 IDE 适合先把提示词、Skill 或工作区改动试出来。
 ---
 
-# Codex 桌面端任务工作流（2026-10 更新）：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
+# Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
 
 > 本文在线版：[codexguide.io/guides/codex-desktop-task-workflow](https://codexguide.io/guides/codex-desktop-task-workflow)
 

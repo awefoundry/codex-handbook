@@ -1,6 +1,6 @@
 ---
 id: codex-goal-mode-long-running-work
-title: Codex 使用 Goal 模式运行长任务（2026-11 更新）：/goal 启动、暂停恢复，和 Plan、长任务工作流怎么分工
+title: Codex 使用 Goal 模式运行长任务：/goal 启动、暂停恢复，和 Plan、长任务工作流怎么分工
 seo_title: Codex Goal 模式：/goal 启动、暂停恢复，和 Plan 怎么分工
 description: 任务要跑很久时，用 /goal 把完成标准挂在当前对话上。本文按 2026-11-06 的官方文档说明怎么启动、暂停、恢复和并行，以及它和 Plan 模式、长任务工作流怎么分工。
 lede: Goal 管的是这一条对话的完成标准。计划还没定时用 Plan。主会话、侧边提问和子任务怎么摆，看长任务工作流。
@@ -35,7 +35,7 @@ faq:
     a: 配置参考把它定义成正整数：新 Goal 的默认 token 预算，以及一个 Goal 能请求的上限。不写这项，就是没有配置过的限制。Long-running work 没有要求在目标文本里写预算。本文没有在本机改过这个字段。
 ---
 
-# Codex 使用 Goal 模式运行长任务（2026-11 更新）：/goal 启动、暂停恢复，和 Plan、长任务工作流怎么分工
+# Codex 使用 Goal 模式运行长任务：/goal 启动、暂停恢复，和 Plan、长任务工作流怎么分工
 
 > 本文在线版：[codexguide.io/guides/codex-goal-mode-long-running-work](https://codexguide.io/guides/codex-goal-mode-long-running-work)
 

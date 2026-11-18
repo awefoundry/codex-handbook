@@ -1,6 +1,6 @@
 ---
 id: codex-plan-mode
-title: Codex Plan 模式（2026-11 更新）：0.169 起「清空上下文后执行」会把完整计划交给新会话，交接失败时原会话保留
+title: Codex Plan 模式：0.169 起「清空上下文后执行」会把完整计划交给新会话，交接失败时原会话保留
 seo_title: Codex Plan 模式：/plan、Shift+Tab 与先计划后执行
 description: Plan 模式让 Codex 先读代码、问清需求，你确认后再改文件。0.169.0 起「Yes, clear context and implement」会把完整的已批准计划交给新会话；交接失败时留下当前会话。弹窗上的三句英文选项与 0.166.0 相同。
 lede: 复杂任务先计划，这是官方 Best practices 里排第一的做法。Plan 模式把「先问清楚」变成一个开关。
@@ -33,7 +33,7 @@ faq:
     a: 能。config.toml 里的 plan_mode_reasoning_effort 只作用于 Plan 模式，不设时用内置的默认值。CLI 里在 Plan 模式下改推理强度时，也可以选只改 Plan 模式，还是同时改全局默认。
 ---
 
-# Codex Plan 模式（2026-11 更新）：0.169 起「清空上下文后执行」会把完整计划交给新会话，交接失败时原会话保留
+# Codex Plan 模式：0.169 起「清空上下文后执行」会把完整计划交给新会话，交接失败时原会话保留
 
 > 本文在线版：[codexguide.io/guides/codex-plan-mode](https://codexguide.io/guides/codex-plan-mode)
 

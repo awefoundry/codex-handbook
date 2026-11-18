@@ -17,8 +17,8 @@
 ## 已上线文章
 
 - [Codex 视频工作流，4 个第三方 Skill 的用途、依赖与限制](./01-Codex视频工作流的4个第三方Skill.md)
-- [Codex 插件安全检查（2026-11 更新）：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描](./02-Codex插件安全检查-HOL-Guard.md)
-- [Codex 使用 Archify 生成架构图（2026-11 更新）：新装法、10 种图表和 doctor 校验](./04-Codex使用Archify生成架构图.md)
+- [Codex 插件安全检查：HOL Guard 拦截高风险操作，plugin-scanner 发布前扫描](./02-Codex插件安全检查-HOL-Guard.md)
+- [Codex 使用 Archify 生成架构图：新装法、10 种图表和 doctor 校验](./04-Codex使用Archify生成架构图.md)
 - [Codex 使用 Text-to-Lottie 制作界面动效](./05-Codex使用Text-to-Lottie制作动效.md)
 - [Codex 连接 ChatCut 完成视频粗剪、字幕与导出](./06-Codex连接ChatCut剪辑视频.md)
 - [Codex 接入 ACP：在 Zed 和 JetBrains 里从 ACP Registry 安装 Codex，其他客户端用 codex-acp](./07-Codex接入ACP.md)

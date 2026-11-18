@@ -1,6 +1,6 @@
 ---
 id: codex-desktop-collaboration-settings
-title: Codex 桌面端设置怎么调（2026-11 更新）：权限模式、个人指令与 Memories、Follow-up behavior
+title: Codex 桌面端设置怎么调：权限模式、个人指令与 Memories、Follow-up behavior
 seo_title: "Codex 桌面端设置指南：自定义指令、权限与任务纠偏"
 seo_description: "开始让 Codex 读项目、改文件之前，先调好这几项：选对工作入口，写自定义指令，调整个性，按任务风险设置权限，决定新消息是立即纠偏还是排队等待，最后验证设置是否生效。"
 description: Codex 桌面端的设置在 2026 年改过几轮：个性选项不再改变风格，权限变成三档模式，个人指令写进全局 AGENTS.md。本文按官方文档讲清设置入口、权限模式怎么选、个人指令和 Memories 怎么开、Follow-up behavior 的 Steer 和 Queue 区别，并附开工前的检查清单。
@@ -34,7 +34,7 @@ faq:
     a: 不是。官方文档写明本地 Codex Memories 默认关闭，在 Settings > Personalization 里打开 Enable Codex memories，或在 config.toml 的 [features] 里写 memories = true。
 ---
 
-# Codex 桌面端设置怎么调（2026-11 更新）：权限模式、个人指令与 Memories、Follow-up behavior
+# Codex 桌面端设置怎么调：权限模式、个人指令与 Memories、Follow-up behavior
 
 > 本文在线版：[codexguide.io/guides/codex-desktop-collaboration-settings](https://codexguide.io/guides/codex-desktop-collaboration-settings)
 

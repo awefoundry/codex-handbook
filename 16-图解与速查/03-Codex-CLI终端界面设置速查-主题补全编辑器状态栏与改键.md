@@ -1,6 +1,6 @@
 ---
 id: codex-cli-tui-customization
-title: Codex CLI 终端界面设置速查（2026-11 更新）：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
+title: Codex CLI 终端界面设置速查：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
 seo_title: Codex CLI 界面设置速查：主题、补全、Ctrl+G 编辑器、通知、状态栏与快捷键
 description: Codex CLI 的终端界面可以换主题、加 Shell 补全、用 Ctrl+G 写长提示、改状态栏和快捷键。2026-11 补上 0.169.0 的折叠轮次细节、0.168.0 的 osc777 通知、tmux 图片预览，以及 features.tui_workspace 并排侧边对话。osc777 目前和配置参考页不一致。
 lede: 不想每次都在终端里凑合用 Codex？这些设置大多一条斜杠命令就能改，改完会写进 config.toml。
@@ -37,7 +37,7 @@ faq:
     a: 在 [tui] 下设 alternate_screen = "never"。默认 auto，在 Zellij 里会自动不用全屏备用屏幕。
 ---
 
-# Codex CLI 终端界面设置速查（2026-11 更新）：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
+# Codex CLI 终端界面设置速查：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知
 
 > 本文在线版：[codexguide.io/guides/codex-cli-tui-customization](https://codexguide.io/guides/codex-cli-tui-customization)
 

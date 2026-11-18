@@ -1,6 +1,6 @@
 ---
 id: codex-long-task-collaboration-workflow
-title: Codex 长任务工作流（2026-11 更新）：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录
+title: Codex 长任务工作流：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录
 seo_title: Codex 长任务工作流：/side、Subagents、审查与交接
 description: 长任务容易越做越乱。本文按官方 Long-running work 的思路，讲清主任务怎么保持方向，临时问题和方案讨论放哪，什么工作交给 Subagents，修改完怎么独立审查，以及结束前留一份能让下一轮接得上的交接记录。
 lede: 决定留在主会话。插问用 /side。又吵又可以并行的只读工作交给 Subagents。改完再单独审查，暂停前写交接。
@@ -34,7 +34,7 @@ faq:
     a: CLI 0.166.0 的更新日志写，恢复或分叉时会保留已经确认过的审批和权限设置。同一条还写，推理 token 的计数会跨恢复和分叉保留，避免过早压缩。本文没有拿一条旧会话做恢复实验。
 ---
 
-# Codex 长任务工作流（2026-11 更新）：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录
+# Codex 长任务工作流：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录
 
 > 本文在线版：[codexguide.io/guides/codex-long-task-collaboration-workflow](https://codexguide.io/guides/codex-long-task-collaboration-workflow)
 

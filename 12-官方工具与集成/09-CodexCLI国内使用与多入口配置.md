@@ -1,6 +1,6 @@
 ---
 id: codex-cli-multi-entry-setup
-title: Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
+title: Codex CLI 安装、登录与多入口配置：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
 seo_title: Codex CLI 安装与登录：ChatGPT 登录、API Key 登录、IDE 扩展怎么配
 description: 一篇讲清 Codex CLI 的安装、登录和多入口：四种官方安装方式，ChatGPT 登录和 API Key 登录的区别与命令，远程和无浏览器环境怎么登录，凭证存在哪，IDE 扩展怎么装，以及接第三方模型该用 model_providers。登录命令在 0.165.0 实测。
 lede: 先选入口，再选登录方式。两种登录方式的计费完全不同，这是最常踩的坑。
@@ -36,7 +36,7 @@ faq:
 related: [macos-install-codex-cli, codex-custom-model-provider, codex-chatgpt-subscription-api-credits, codex-doctor]
 ---
 
-# Codex CLI 安装、登录与多入口配置（2026-10 更新）：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
+# Codex CLI 安装、登录与多入口配置：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型
 
 > 本文在线版：[codexguide.io/guides/codex-cli-multi-entry-setup](https://codexguide.io/guides/codex-cli-multi-entry-setup)
 

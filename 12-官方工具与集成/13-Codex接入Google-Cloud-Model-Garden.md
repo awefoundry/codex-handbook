@@ -1,6 +1,6 @@
 ---
 id: codex-google-cloud-model-garden
-title: Codex 接入 Google Cloud Vertex AI（2026-10 更新）：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配
+title: Codex 接入 Google Cloud Vertex AI：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配
 seo_title: Codex 接入 Google Cloud Vertex AI：model_provider gcp 配置、模型与报错
 description: Codex CLI 0.165.0 起内置 Google Cloud Vertex AI provider。本文讲清 model_provider = "gcp" 怎么配、项目和区域怎么设、gcloud 凭证怎么准备、能用哪些模型、常见报错，并保留 Model Garden 预览、计费与治理的官方说明。
 lede: 0.165.0 以后，本地 Codex 接 Google Cloud 不用再等文档：设好项目 ID、登录 gcloud，再写一行 model_provider = "gcp"。
@@ -38,7 +38,7 @@ faq:
     a: 通过 Google Cloud Marketplace 交易，出现在 Google Cloud 账单上，可抵扣已有的 GCP 承诺消费；Google 还说会计入跨模型厂商的 Flexible Savings Plans。
 ---
 
-# Codex 接入 Google Cloud Vertex AI（2026-10 更新）：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配
+# Codex 接入 Google Cloud Vertex AI：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配
 
 > 本文在线版：[codexguide.io/guides/codex-google-cloud-model-garden](https://codexguide.io/guides/codex-google-cloud-model-garden)
 

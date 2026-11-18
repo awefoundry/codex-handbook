@@ -14,16 +14,16 @@
 
 ## 已上线文章
 
-- [Codex 模型怎么选（2026-11 更新）：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
+- [Codex 模型怎么选：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol、Terra 对照工作流](./02-Codex与其他编程模型比较.md)
-- [Codex 桌面端设置怎么调（2026-11 更新）：权限模式、个人指令与 Memories、Follow-up behavior](./03-Codex桌面端协作设置.md)
-- [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查（0.164.0 实测）](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
-- [Codex 沙箱与主机权限风险（2026-11 更新）：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
-- [Codex AGENTS.md 怎么写（2026-10 更新）：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
-- [Codex 用量额度怎么看（2026-11 更新）：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
+- [Codex 桌面端设置怎么调：权限模式、个人指令与 Memories、Follow-up behavior](./03-Codex桌面端协作设置.md)
+- [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
+- [Codex 沙箱与主机权限风险：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
+- [Codex AGENTS.md 怎么写：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
+- [Codex 用量额度怎么看：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex Windows 沙箱配置：启用 MXC 原生隔离，以及 elevated / unelevated 回退](./09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./10-Codex-Daybreak-Blue申请开启与排障.md)
-- [Codex 自定义模型提供商（2026-11 更新）：在终端里添加供应商，登录时用设备码对接网关](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
+- [Codex 自定义模型提供商：在终端里添加供应商，登录时用设备码对接网关](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
 - [Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
 - [Codex 防范 AGENTS.md 投毒：别在 Downloads 目录启动，5 分钟自查 config.toml 和 MCP](./15-Codex防范AGENTS.md投毒-Downloads目录风险与config.toml自查.md)
 - [Codex 与 ChatGPT 订阅 API 额度：Pro 和 Business 每月最高 500 美元怎么领，能不能用在 Codex](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)

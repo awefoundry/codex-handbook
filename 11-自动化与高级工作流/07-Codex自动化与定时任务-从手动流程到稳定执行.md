@@ -1,6 +1,6 @@
 ---
 id: codex-automation-ci-scheduled-tasks
-title: Codex 自动化与 CI（2026-11 更新）：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
+title: Codex 自动化与 CI：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
 seo_title: Codex 自动化与 CI：codex exec、GitHub Action 与 API Key 安全
 description: codex exec 可以让 Codex 在脚本和 CI 里一次性跑完任务。2026-11 对照 Non-interactive 文档和 0.169.0：未信任目录即使 --sandbox workspace-write 也不加载项目配置和 MCP，需要 --trust；--full-auto 仍停用，--approve-for-me 不能再和 --sandbox 写在一起。
 lede: 无人值守用 codex exec。CI 克隆出来的仓库默认未信任，要项目配置或项目 MCP 时加 --trust。密钥仍然只绑 Codex 那一步。
@@ -35,7 +35,7 @@ faq:
     a: 本文聚焦 codex exec 与 CI／GitHub Action。桌面／网页 Scheduled tasks（旧称 Automations）见姊妹篇；crontab 与 Scheduled 的分工也以那篇为准，这里不展开 cron 表。
 ---
 
-# Codex 自动化与 CI（2026-11 更新）：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
+# Codex 自动化与 CI：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
 
 > 本文在线版：[codexguide.io/guides/codex-automation-ci-scheduled-tasks](https://codexguide.io/guides/codex-automation-ci-scheduled-tasks)
 

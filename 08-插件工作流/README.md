@@ -14,9 +14,9 @@
 ## 已上线文章
 
 1. [在 Codex 中连接 Notion：把调研结果写入数据库](./01-Codex连接Notion并写入数据库.md)
-2. [Codex 生成文档、表格、幻灯片和 PDF（2026-11 更新）：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收](./02-Codex文档交付工作流.md)
+2. [Codex 生成文档、表格、幻灯片和 PDF：桌面端预览与批注、官方用例里的 Skill，以及交付前怎么验收](./02-Codex文档交付工作流.md)
 3. [Codex 内容生产工作流](./03-Codex内容生产工作流.md)
 4. [Codex 插件入口怎么用：桌面端 Plugins 目录、CLI /plugins 与权限边界](./04-Codex插件入口与工作流.md)
 5. [Codex 从 GitHub Issue 到 Pull Request：云任务、@codex review、Security Review 与自动审查一篇讲清](./05-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)
 6. [Codex 插件开发入门：用 $plugin-creator 打包 Skills、MCP 与 Hooks，再用 marketplace 分发](./06-Codex插件开发入门-用plugin-creator打包并通过marketplace分发.md)
-7. [Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活（0.164.0 实测）](./07-Codex安装Superpowers插件-需求计划TDD工作流.md)
+7. [Codex 安装 Superpowers 插件：让 Codex 按“先问需求、再写计划、测试先行”的流程干活](./07-Codex安装Superpowers插件-需求计划TDD工作流.md)

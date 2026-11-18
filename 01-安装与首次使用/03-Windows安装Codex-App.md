@@ -1,6 +1,6 @@
 ---
 id: windows-install-codex-app
-title: Windows 安装 Codex App（2026-11 更新）：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选
+title: Windows 安装 Codex App：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选
 seo_title: Windows 安装 Codex App：Microsoft Store、winget 与离线 MSIX
 description: Codex 已并入 ChatGPT 桌面端。本文按官方文档写 Windows 上的 Microsoft Store、winget 和企业离线 MSIX 三种装法，以及 Agent 跑在原生 Windows 还是 WSL2、开发工具和配置目录怎么准备。
 lede: 普通电脑用 Microsoft Store 或 winget。访问不了商店时，用官方文档上的离线 MSIX 和许可证，不要从第三方网站解析安装包。
@@ -32,7 +32,7 @@ faq:
     a: Windows 应用用 %USERPROFILE%\.codex。WSL 里的 Codex CLI 默认用 Linux 家目录。要和 Windows 共用同一份配置，可在 WSL 里把 CODEX_HOME 指到 /mnt/c/Users/<windows-user>/.codex。
 ---
 
-# Windows 安装 Codex App（2026-11 更新）：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选
+# Windows 安装 Codex App：Microsoft Store、winget 和离线 MSIX，原生与 WSL2 怎么选
 
 > 本文在线版：[codexguide.io/guides/windows-install-codex-app](https://codexguide.io/guides/windows-install-codex-app)
 

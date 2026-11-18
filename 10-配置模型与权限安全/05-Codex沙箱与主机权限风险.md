@@ -1,6 +1,6 @@
 ---
 id: codex-sandbox-host-trust
-title: Codex 沙箱与主机权限风险（2026-11 更新）：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防
+title: Codex 沙箱与主机权限风险：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防
 seo_title: Codex 沙箱与主机权限：git show 逃逸和现行防护
 description: 沙箱只管 Codex 执行的命令，管不住沙箱外的程序事后执行它写下的文件。本文更正旧文把 GHSA-w5fx-fh39-j5rw 当成 git show 编号的错误，并按 0.166.0 的源码和官方文档说明现在的权限、Rules 和 Hooks。
 url: /guides/codex-sha-xiang-yu-zhu-ji-quan-feng-xian
@@ -32,7 +32,7 @@ faq:
     a: 不安全。官方写明，decision 为 allow 的 prefix_rule 会让匹配命令在沙箱外运行，并且不再询问。过宽的 git show 前缀会把参数也一起放出去。
 ---
 
-# Codex 沙箱与主机权限风险（2026-11 更新）：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防
+# Codex 沙箱与主机权限风险：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防
 
 > 本文在线版：[codexguide.io/guides/codex-sha-xiang-yu-zhu-ji-quan-feng-xian](https://codexguide.io/guides/codex-sha-xiang-yu-zhu-ji-quan-feng-xian)
 
