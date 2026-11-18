@@ -1,7 +1,7 @@
 ---
 id: usage-limits-credits
 title: Codex 用量额度怎么看（2026-11 更新）：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条
-seo_title: Codex 用量额度：GPT-6.2 的 Fast、Ultrafast 倍率与 credits
+seo_title: Codex 用量额度：5 小时／每周限制、Fast 倍率与 credits
 description: 读懂 Settings → Usage 里的 5 小时与每周限制，弄清 Fast 与 Ultrafast 倍率和 credits 怎么扣。本文按 2026-11-17 的官方定价页补上 GPT-6.2 Astra 与 Sol 的倍率、credits 单价和 Plus 每 5 小时的消息估算，并说明觉得被多扣时怎么查。
 lede: 先看 Usage 里是哪一档到了。GPT-6.2 的 Fast 按 2 倍计，Ultrafast 的套餐内含按 6 倍计；5 小时条数是估算，不是固定上限。
 url: /guides/codex-usage-limits-credits
