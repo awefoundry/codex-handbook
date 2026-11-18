@@ -1,7 +1,8 @@
 ---
 id: deng-lu-codex
 title: 登录 Codex：ChatGPT 账号、API Key、Sign in another way 与凭据存储方式
-seo_title: 登录 Codex：ChatGPT 账号、API Key 与凭据存储
+seo_title: Codex 怎么登录：ChatGPT 账号与 API Key 两种方式
+seo_description: Codex App、CLI 和 IDE 插件都支持 ChatGPT 账号登录和 API Key 两种方式。分入口说明登录步骤，包括 CLI 的 codex login，以及登录失败时的排查方法和凭据安全注意事项。
 description: Codex 可以用 ChatGPT 账号或 API Key 登录。桌面端把 API Key 放在 Sign in another way，IDE 扩展使用 Use API Key。本文说明三端步骤、MFA、cli_auth_credentials_store 的四种存法，以及怎样查看当前账号和工作区。
 lede: 先选一个入口登录。ChatGPT 账号走浏览器，API Key 从标准输入或桌面端的另一条入口进入。凭据按密码保管。
 url: /guides/deng-lu-codex
