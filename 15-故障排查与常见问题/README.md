@@ -20,7 +20,7 @@
 
 ## 已上线文章
 
-- [Codex doctor 自检：一条命令排查安装、配置、登录和网络问题](./04-Codex-doctor自检-安装配置登录与网络排查.md)
+- [Codex doctor 自检（2026-11 更新）：对照 0.169，反馈问题时可以用 Ctrl+S 把诊断包存到本地](./04-Codex-doctor自检-安装配置登录与网络排查.md)
 - [Codex 提示 Device limit reached 怎么办：ChatGPT 付费账号的设备与银行卡限制、退款和申诉](./05-Codex提示Device-limit-reached-设备与银行卡限制怎么处理.md)
 - [Codex 本地线程内存优化：长对话不再越跑越占 RAM](./06-Codex本地线程内存占用过高怎么办.md)
 
