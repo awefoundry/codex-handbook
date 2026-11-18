@@ -37,5 +37,6 @@
 - [Codex 用 agent-browser 做浏览器自动化：Skill 和 MCP 两种接法，snapshot 引用与常用命令](./18-Codex用agent-browser做浏览器自动化-Skill与MCP两种接法.md)（第三方项目 vercel-labs/agent-browser，不是 OpenAI 官方浏览器）
 - [Codex 安装 Expo 官方插件：Expo Skills 与 Expo MCP 一次装好，开发和发布 React Native 应用](./19-Codex安装Expo官方插件-Expo-Skills与Expo-MCP.md)
 - [Codex Security 插件教程：在 Security 工作台扫描本地仓库、生成补丁并验证修复](./20-Codex-Security插件-Security工作台扫描本地仓库与修复验证.md)
+- [Codex 安装 Microsoft 官方 .NET Skills：把 dotnet/skills 加进插件市场，按需安装测试、MSBuild、Blazor 和 MAUI 等插件](./21-Codex安装Microsoft官方NET-Skills-dotnet-skills仓库.md)（dotnet 组织的 dotnet/skills，MIT；市场清单 16 个，另有未列入的 dotnet-experimental。本文没有执行安装）
 - [Codex 安装 context-mode 插件：把大段命令输出挡在上下文之外，附 hooks 信任步骤和 ELv2 许可证说明](./22-Codex安装context-mode插件-把大段工具输出挡在上下文之外.md)（第三方项目 mksglu/context-mode，ELv2。Codex CLI 0.169.0 上装过插件并信任 hooks；没有登录会话，没有配图。21 仍空着）
 - [Codex 安装 Plannotator：在浏览器里批注计划和代码审查，用 Stop hook 把反馈送回 Codex](./23-Codex安装Plannotator-浏览器批注计划与代码审查并回传反馈.md)（第三方项目 backnotprop/plannotator，Apache-2.0。没有执行安装脚本，没有配图）

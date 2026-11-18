@@ -19,7 +19,7 @@
 - [Codex CLI 管理多条任务线（2026-11 更新）：resume 恢复长任务、fork 分支、归档与交接](./03-CodexCLI管理多条任务线.md)
 - [Codex 长任务工作流（2026-11 更新）：主任务定方向，/side 讨论、Subagents 分担、独立审查，最后留交接记录](./05-Codex长任务工作流.md)
 - [Codex 任务收尾怎么做（2026-11 更新）：AGENTS.md、Memories 与 Markdown 交接记录各管什么](./06-Codex任务收尾系统.md)
-- [Codex 自动化与 CI：codex exec 非交互模式、GitHub Action 工作流 YAML、--output-schema 结构化输出与 API Key 安全（2026-10 更新）](./07-Codex自动化与定时任务-从手动流程到稳定执行.md)
+- [Codex 自动化与 CI（2026-11 更新）：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP](./07-Codex自动化与定时任务-从手动流程到稳定执行.md)
 - [Codex 使用 Goal 模式运行长任务（2026-11 更新）：/goal 启动、暂停恢复，和 Plan、长任务工作流怎么分工](./08-Codex使用Goal模式运行长任务.md)
 - [Codex 使用 Subagents 并行处理任务（2026-11 更新）：/subagents、继承沙箱，和主会话怎么分工](./09-Codex使用Subagents并行处理任务.md)
 - [Codex Worktree 教程：用 Git worktree 并行跑多个任务，并把结果交回本地](./10-Codex用Worktree并行运行多个任务.md)

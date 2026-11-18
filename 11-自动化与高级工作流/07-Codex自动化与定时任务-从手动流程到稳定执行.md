@@ -1,9 +1,9 @@
 ---
 id: codex-automation-ci-scheduled-tasks
-title: Codex 自动化与 CI：codex exec 非交互模式、GitHub Action 工作流 YAML、--output-schema 结构化输出与 API Key 安全（2026-10 更新）
+title: Codex 自动化与 CI（2026-11 更新）：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
 seo_title: Codex 自动化与 CI：codex exec、GitHub Action 与 API Key 安全
-description: codex exec 可以让 Codex 在脚本和 CI 里一次性跑完任务。本文按 2026 年 10 月官方文档更新：可复制的 GitHub Action 工作流 YAML、--full-auto 停用后的写法、API Key 避免 job 级泄露、--json 事件流与 --output-schema，以及 resume 两阶段流水线。
-lede: 无人值守用 codex exec；CI 优先 openai/codex-action，密钥只绑 Codex 那一步。
+description: codex exec 可以让 Codex 在脚本和 CI 里一次性跑完任务。2026-11 对照 Non-interactive 文档和 0.169.0：未信任目录即使 --sandbox workspace-write 也不加载项目配置和 MCP，需要 --trust；--full-auto 仍停用，--approve-for-me 不能再和 --sandbox 写在一起。
+lede: 无人值守用 codex exec。CI 克隆出来的仓库默认未信任，要项目配置或项目 MCP 时加 --trust。密钥仍然只绑 Codex 那一步。
 url: /guides/codex-automation-ci-scheduled-tasks
 status: published
 section: guides
@@ -17,25 +17,29 @@ order: 4
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-21
-date_modified: 2026-11-05
+date_modified: 2026-11-15
+verified_on: 2026-11-15
+tested_cli_version: 0.169.0
 official_ref: https://learn.chatgpt.com/docs/non-interactive-mode
-keywords: [codex exec, Codex GitHub Action, Codex CI, openai/codex-action, Codex 非交互模式, CODEX_API_KEY]
-related: [codex-automations-scheduled-tasks, codex-github-issue-pr-workflow, codex-rules-prefix-rule, codex-access-tokens-service-accounts]
+keywords: [codex exec, Codex GitHub Action, Codex CI, openai/codex-action, codex exec --trust, CODEX_API_KEY]
+related: [codex-automations-scheduled-tasks, codex-github-issue-pr-workflow, codex-rules-prefix-rule, codex-access-tokens-service-accounts, codex-github-action-prompt-injection, codex-cli-commands-cheatsheet]
 howto: true
 faq:
   - q: 以前脚本里的 --full-auto 还能用吗？
-    a: 不能。官方 Non-interactive mode 写明 --full-auto 已不再支持。需要改文件时改用 --sandbox workspace-write；若要让审批请求走自动审查，再用 --approve-for-me（仍配合 workspace-write 沙箱）。
+    a: 不能。2026-11-15 的 Non-interactive mode 仍写明 --full-auto 已不再支持。改文件用 --sandbox workspace-write。要自动审批就单独用 --approve-for-me，它自己会走 workspace-write。0.169.0 上把 --sandbox 和 --approve-for-me 写在一起会退出，退出码 2。
+  - q: CI 里已经写了 --sandbox workspace-write，项目里的 MCP 为什么还是没加载？
+    a: 0.169.0 起，未信任目录里的项目配置和 MCP 保持关闭，workspace-write 不会把目录变成已信任。codex exec 或 codex review 加上 --trust，才会把这个项目记成信任并在以后的会话里加载。Git 仓库检查是另一件事，克隆下来的 CI 仓库通常已经是 Git 仓库，缺的是项目信任。
   - q: 能不能把 OPENAI_API_KEY 或 CODEX_API_KEY 写在整个 job 的 env 里？
     a: 不要。官方要求：不要把这些密钥设成会 checkout 或跑仓库可控代码的 job 级环境变量；构建脚本、测试、依赖生命周期钩子或同 job 里被攻破的 action 都能读到。密钥只给调用 Codex 的那一步；GitHub Actions 优先用 openai/codex-action，由它启动 Responses API 代理。
   - q: crontab 定时跑和本文是什么关系？
     a: 本文聚焦 codex exec 与 CI／GitHub Action。桌面／网页 Scheduled tasks（旧称 Automations）见姊妹篇；crontab 与 Scheduled 的分工也以那篇为准，这里不展开 cron 表。
 ---
 
-# Codex 自动化与 CI：codex exec 非交互模式、GitHub Action 工作流 YAML、--output-schema 结构化输出与 API Key 安全（2026-10 更新）
+# Codex 自动化与 CI（2026-11 更新）：0.169 起未信任目录要加 --trust，否则 exec 不会加载项目配置和 MCP
 
 > 本文在线版：[codexguide.io/guides/codex-automation-ci-scheduled-tasks](https://codexguide.io/guides/codex-automation-ci-scheduled-tasks)
 
-> 核对依据：learn.chatgpt.com《[Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)》《[Codex GitHub Action](https://learn.chatgpt.com/docs/github-action)》与 [openai/codex-action](https://github.com/openai/codex-action)（2026-10-22）。「我的用法」非官方强制流程。未在真实 runner 完整跑通示例。
+> 核对依据：learn.chatgpt.com《[Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)》（2026-11-15）、[Command line options](https://learn.chatgpt.com/docs/developer-commands) 里的 `codex exec` 旗标表（同一天；该页还没有 `--trust`）、GitHub Release [rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)（发布于 2026-11-13T08:37:05Z），以及 [openai/codex-action](https://github.com/openai/codex-action) 标签 `v1`（对象 `1d82a3dba7c7988ec71ecae1ed5b8e8db96495c5`）的 `action.yml`。Linux 上 npm `@openai/codex@0.169.0`，`codex --version` 为 `codex-cli 0.169.0`。`--trust` 的警告和配置写入在独立 `CODEX_HOME` 里核对过。没有在真实 GitHub runner 上跑通示例。「我的用法」不是官方强制流程。
 
 需要 ChatGPT 工作区身份、又不想在 CI 里打开浏览器时，用访问令牌或服务账号，见 [访问令牌与服务账号](./14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)。只调用 API、不需要工作区权限时，仍按本文使用 API Key。
 
@@ -43,13 +47,15 @@ faq:
 
 **`codex exec`** 是非交互入口：一条命令给任务，规划、执行后退出。进度走 `stderr`，最终答复走 `stdout`，可进 shell、管道和 CI。GitHub 上优先用 `openai/codex-action@v1`：安装 CLI、按需起 Responses API 代理，再按你声明的权限跑 `codex exec`。
 
-## 2026-10 更新说明：`--full-auto` 已停用，补齐 Action YAML 与密钥写法
+## 2026-11 更新：补上 `--trust`，并改掉和 `--sandbox` 叠用的 `--approve-for-me`
 
-相对旧版，这次加厚三件事：
+2026-10 已经写过的三件事，2026-11-15 再对照文档后仍然成立，其中审批旗标的写法要改：
 
-1. **`--full-auto` 不再支持** → `--sandbox workspace-write`；需要自动审批再用 `--approve-for-me`（官方：审批走自动审查，并配合 workspace-write）。
-2. **可复制的 Actions 示例**：PR 评审，以及「CI 失败后出补丁」双 job（密钥与写权限拆开）。
-3. **API Key 安全**：`OPENAI_API_KEY`／`CODEX_API_KEY` 勿写成会跑仓库可控代码的 **job 级** `env`；只绑 Codex 步骤；优先 `openai/codex-action`。
+1. **`--full-auto` 仍然不再支持。** 改文件用 `--sandbox workspace-write`。要自动审批就用 `--approve-for-me`。0.169.0 的帮助写明它会走自动审查并使用 workspace-write 沙箱，而且**不能和 `--sandbox` 同时出现**。本机同时加上这两个旗标时，原文是 `error: the argument '--sandbox <SANDBOX_MODE>' cannot be used with '--approve-for-me'`，退出码 2。
+2. **可复制的 Actions 示例**仍是 PR 评审，以及「CI 失败后出补丁」双 job。Non-interactive 页现在把 `open_pr` 的 `git commit` / `gh pr create` 也写全了，本文补上这段。
+3. **API Key 安全**不变：`OPENAI_API_KEY`／`CODEX_API_KEY` 不要写成会跑仓库可控代码的 **job 级** `env`；只绑 Codex 步骤；优先 `openai/codex-action`。
+
+这次新加的是第 4 件：**未信任目录。** Release 写明，`codex exec` 在未信任目录里不加载项目配置和 MCP 服务器，即使已经写了 `--sandbox workspace-write`。要明确保存项目信任，给 `codex exec` 或 `codex review` 加 `--trust`。见下面专节。命令速查里的旗标位置见 [CLI 命令速查](../16-图解与速查/01-Codex-CLI命令速查-子命令与启动参数.md)。Action 的 `allow-users` 和 `safety-strategy` 见 [防提示注入](./16-Codex-GitHub-Action防提示注入-allow-users与safety-strategy.md)。
 
 桌面／网页 **Scheduled tasks**（旧称 Automations）见《[定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md)》；交互式 Issue→PR 见《[GitHub Issue 到 PR](../08-插件工作流/05-GitHub插件实战-从Issue到PullRequest让Codex跑完整流程.md)》。
 
@@ -74,7 +80,7 @@ codex exec "summarize the repository structure and list the top 5 risky areas"
 codex exec "generate release notes for the last 10 commits" | tee release-notes.md
 ```
 
-**管道：** 若 stdin 有内容且你又写了提示词参数，官方约定是——提示词是指令，管道内容是额外上下文：
+**管道**： 若 stdin 有内容且你又写了提示词参数，官方约定是——提示词是指令，管道内容是额外上下文：
 
 ```bash
 git diff origin/main...HEAD \
@@ -140,18 +146,44 @@ codex exec --ephemeral "triage this repository and suggest next steps"
 # 允许改工作区
 codex exec --sandbox workspace-write "给 src/foo.py 补上类型注解"
 
-# 需要自动处理审批请求时（配合 workspace-write）
-codex exec --sandbox workspace-write --approve-for-me "按测试失败最小修复"
+# 需要自动处理审批请求时：单独用这个旗标，不要再加 --sandbox
+codex exec --approve-for-me "按测试失败最小修复"
 
 # 仅在受控隔离环境（如一次性 CI 容器）才考虑
 codex exec --sandbox danger-full-access "…"
 ```
 
-旧脚本把 `--full-auto` 换成 `--sandbox workspace-write`（需要自动审批再加 `--approve-for-me`）。`danger-full-access` 仅限隔离 runner／容器。
+旧脚本把 `--full-auto` 换成 `--sandbox workspace-write`。要自动审批时，整条命令改成 `--approve-for-me`，不要再保留 `--sandbox`。`danger-full-access` 仅限隔离 runner／容器。
+
+## 未信任目录：`--trust` 和 Git 仓库检查是两件事
+
+0.169.0 的 Release 原文是：`codex exec` 在未信任目录里保持项目配置和 MCP 服务器关闭，即使带了 `--sandbox workspace-write`。使用 `--trust`（`codex exec` 或 `codex review`）来明确保存项目信任。
+
+2026-11-15 的 Non-interactive 页和命令参考的 `codex exec` 旗标表都还没有 `--trust`。旗标以 0.169.0 的 `--help` 和这次运行为准。`codex exec --help` 与 `codex review --help` 对这个旗标的说明相同：
+
+```text
+Save trust for this project and future chats, including MCP commands outside the sandbox.
+Persists even with --ephemeral. Does not override an explicitly untrusted project
+```
+
+本机在一个新建的 Git 仓库里放了 `.codex/config.toml`，其中 `model_reasoning_effort = "high"`。独立 `CODEX_HOME`、未登录、`codex exec --sandbox workspace-write` 的结果：
+
+- 未信任时，stderr 先出现警告，随后启动信息里的 `reasoning effort` 仍是 `none`。警告原文：`Untrusted project-local configuration is disabled. Run codex exec --trust to allow project configuration and MCP servers for this and future chats in the project, including MCP commands outside the sandbox. Explicitly untrusted projects must have their trust setting updated first.`
+- 加上 `--trust` 之后，`$CODEX_HOME/config.toml` 写入了 `[projects."<仓库绝对路径>"]`，`trust_level = "trusted"`。这次写入发生在一次因 `--strict-config` 拒绝未知字段而退出的运行里，退出码 1，信任记录已经留下。
+- 同一个已信任的 `CODEX_HOME` 里，下一次不再加 `--trust`，启动信息里的 `reasoning effort` 变成 `high`，和项目配置一致。
+- 另一个还没有信任记录的新仓库，同样把 `model_reasoning_effort` 设成 `high`，仍然只看到警告，`reasoning effort` 保持 `none`。
+
+所以 `--sandbox workspace-write` 只放宽沙箱，不加载项目级 `.codex/config.toml`，也不启用项目里的 MCP。命令会继续往下跑（这次最终因未登录得到 401），而不是在信任检查处直接失败。CI 日志里要找的是上面那句 `Untrusted project-local configuration is disabled`。
+
+没有做的两件事：没有把 MCP 进程真正拉起来（未知字段在启动前就让 `--strict-config` 退出了）；没有用 `--ephemeral` 复测「即使临时会话也会把信任写进配置」。帮助写了会持久化。也没有把一个项目先标成明确不信任，再看 `--trust` 会不会被拒绝。警告和帮助都写了：已经明确不信任的项目，要先改信任设置，`--trust` 不会覆盖它。
+
+**和 `--skip-git-repo-check` 分开。** 在一个不是 Git 仓库的目录里，0.169.0 仍然拒绝，原文是 `Not inside a trusted directory and --skip-git-repo-check was not specified.`，退出码 1。`actions/checkout` 检出的是 Git 仓库，这条错误通常不会出现。CI 上缺的是项目信任，不是 Git 仓库检查。
+
+**对 GitHub Action 的含义。** 官方 Non-interactive 示例没有写 `--trust`。2026-11-15 的 `openai/codex-action` `v1` 标签里，`codex-args` 的说明是：可以给 `codex exec` 追加参数；受保护的运行会拒绝与已强制的权限、信任、提供商或命令保护相冲突的参数。`codex-home` 的说明是 “Trusted Codex home/config directory”。`codex-version` 默认是空字符串。本文没有跑这个 Action，所以不知道把 `--trust` 放进 `codex-args` 会被接受还是被拒绝，也不知道默认安装到哪一个 CLI 版本。需要项目配置或项目 MCP 时，先看 job 日志里的 CLI 版本和那句 untrusted 警告，再决定要不要加旗标。密钥和 `safety-strategy` 的约束不变，见 [防提示注入](./16-Codex-GitHub-Action防提示注入-allow-users与safety-strategy.md)。
 
 `--dangerously-bypass-approvals-and-sandbox`（`--yolo`）跳过确认与沙箱，只适合已隔离环境；主力机不要图省事开。
 
-**我的用法：** CI 审查默认 `read-only`；要改文件的 autofix 用 `workspace-write`（或 Action 侧等价的权限配置），密钥与 `contents: write` 分到不同 job。
+**我的用法**： CI 审查默认 `read-only`；要改文件的 autofix 用 `workspace-write`（或 Action 侧等价的权限配置），密钥与 `contents: write` 分到不同 job。
 
 ## `--json` 事件流与 `--output-schema`
 
@@ -363,12 +395,38 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: codex-fix-patch
-      - run: git apply --index codex.patch
-      # 随后 git switch -c / commit / push / gh pr create
-      # 完整脚本见官方 Non-interactive 文档同名示例
+      - name: Apply Codex patch
+        run: git apply --index codex.patch
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          FAILED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_ID: ${{ github.event.workflow_run.run_id }}
+        run: |
+          branch="codex/auto-fix-$RUN_ID"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "Auto-fix failing CI via Codex"
+          git push origin "$branch"
+
+          {
+            echo "Codex generated this patch after CI failed for \`$FAILED_HEAD_SHA\`."
+            echo
+            echo "Review the changes before merging."
+          } > pr-body.md
+
+          gh pr create \
+            --base "$FAILED_HEAD_BRANCH" \
+            --head "$branch" \
+            --title "Auto-fix failing CI via Codex" \
+            --body-file pr-body.md
 ```
 
-`open_pr` 的完整 `gh pr create` 脚本见官方 Non-interactive 同名示例。**我的用法：** autofix 过人审；prompt 写死最小改动；PR／issue 文本先消毒。
+上面的 `open_pr` 收尾来自 2026-11-15 的 Non-interactive 页同名示例。**我的用法**： autofix 过人审；prompt 写死最小改动；PR／issue 文本先消毒。这个示例本身没有 `--trust`。若补丁要依赖项目级配置或项目 MCP，先按上一节看日志，不要假设 `sandbox: workspace-write` 已经把它们打开。
 
 ## API Key 安全：只给 Codex 那一步
 
@@ -416,14 +474,16 @@ done
 ## 快速对照清单
 
 1. 对话 → `codex`；无人值守／CI → `codex exec` 或 `openai/codex-action@v1`
-2. 去掉 `--full-auto` → `--sandbox workspace-write`［+ `--approve-for-me`］
-3. 最终文本 → `-o`；事件流 → `--json`；稳定字段 → `--output-schema` + `-o`
-4. 一次性 CI → `--ephemeral`；干净环境 → `--ignore-user-config`／`--ignore-rules`
-5. GitHub：secret 只进 Action；禁止 job 级 API key；写权限与密钥分 job
-6. 两阶段 → `resume --last`；定时 → Scheduled 专文
+2. 去掉 `--full-auto`。改文件用 `--sandbox workspace-write`。自动审批只用 `--approve-for-me`，不要和 `--sandbox` 叠用
+3. 需要项目 `.codex/config.toml` 或项目 MCP → `codex exec --trust` 或 `codex review --trust`。`workspace-write` 不会代替信任。非 Git 目录才是 `--skip-git-repo-check`
+4. 最终文本 → `-o`；事件流 → `--json`；稳定字段 → `--output-schema` + `-o`
+5. 一次性 CI → `--ephemeral`；干净环境 → `--ignore-user-config`／`--ignore-rules`。帮助写 `--trust` 即使加了 `--ephemeral` 也会留下信任记录，本文没有复测这一点
+6. GitHub：secret 只进 Action；禁止 job 级 API key；写权限与密钥分 job。Action 是否接受 `codex-args` 里的 `--trust`，看 v1 的拒绝规则和当次日志
+7. 两阶段 → `resume --last`；定时 → Scheduled 专文。令牌登录见 [访问令牌与服务账号](./14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)
 
 ## 参考
 
 - [Non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode)
+- [rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)（`--trust` 与未信任目录）
 - [Codex GitHub Action](https://learn.chatgpt.com/docs/github-action) · [openai/codex-action](https://github.com/openai/codex-action)
 - 姊妹篇：[Scheduled tasks](https://codexguide.io/guides/codex-automations-scheduled-tasks) · [Issue→PR](https://codexguide.io/guides/codex-github-issue-pr-workflow) · [Rules](https://codexguide.io/guides/codex-rules-prefix-rule)
