@@ -40,3 +40,4 @@
 - [Codex CLI 0.169.0：侧边对话多标签页、任务搜索、折叠回合详情，以及在终端连接 Cloud](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)
 - [Codex 在 Cloudflare Durable Objects 上跑：用 ContainerHarness 保持和本机一样的 CLI，会话写进对象存储](./26-Codex在Cloudflare-Durable-Objects上运行-ContainerHarness与会话持久化.md)（Cloudflare 的实验能力，不是 OpenAI 托管的 Codex Cloud）
 - [Codex 终端工作区：并排 side chat、多标签页，重启之后还能打开](./27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)
+- [Codex 给 dot 设自定义指令：和 ChatGPT 自定义指令分开，还能用自定义规则决定哪些事要先问你](./28-Codex给dot设自定义指令与自定义规则.md)
