@@ -40,3 +40,5 @@
 - [Codex 安装 Microsoft 官方 .NET Skills：把 dotnet/skills 加进插件市场，按需安装测试、MSBuild、Blazor 和 MAUI 等插件](./21-Codex安装Microsoft官方NET-Skills-dotnet-skills仓库.md)（dotnet 组织的 dotnet/skills，MIT；市场清单 16 个，另有未列入的 dotnet-experimental。本文没有执行安装）
 - [Codex 安装 context-mode 插件：把大段命令输出挡在上下文之外，附 hooks 信任步骤和 ELv2 许可证说明](./22-Codex安装context-mode插件-把大段工具输出挡在上下文之外.md)（第三方项目 mksglu/context-mode，ELv2。Codex CLI 0.169.0 上装过插件并信任 hooks；没有登录会话，没有配图。21 仍空着）
 - [Codex 安装 Plannotator：在浏览器里批注计划和代码审查，用 Stop hook 把反馈送回 Codex](./23-Codex安装Plannotator-浏览器批注计划与代码审查并回传反馈.md)（第三方项目 backnotprop/plannotator，Apache-2.0。没有执行安装脚本，没有配图）
+- [Codex 安装 Floorplan 插件：让 Codex 把整个代码库画成可点击的架构地图，还能做密钥与权限健康检查](./24-Codex安装Floorplan插件-把代码库画成可点击的架构地图并做健康检查.md)（第三方项目 haydenschmitty/floorplan，MIT。Codex CLI 0.169.0 上未登录安装了 0.11.0，没有打开地图界面）
+- [Codex 安装 Stop That Shit（别再造史了）：用 Skill 和 Hook 拦住 Codex 的范围膨胀、无用防御和越权修改](./25-Codex安装Stop-That-Shit-用Skill和Hook拦住范围膨胀与无用防御.md)（第三方项目 lennney/stop-that-shit，MIT，固定 tag 0.2.5。未登录核对了 Hook 清单，没有打开 /hooks 信任界面）
