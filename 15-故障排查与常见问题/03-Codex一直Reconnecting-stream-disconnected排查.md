@@ -1,9 +1,9 @@
 ---
 id: reconnecting-network-troubleshooting
-title: Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序（国内代理、公司证书、WebSocket 回退）
-seo_title: Codex Reconnecting / stream disconnected：代理、证书与 WebSocket 排查顺序
-description: Codex 回复前反复 Reconnecting 1/5～5/5，或报 stream disconnected before completion，多数和网络、代理、证书或 WebSocket 回退有关，也可能是服务端问题。本文按官方文档给出排查顺序：先看 Status，再查本机网络与代理、公司 CA、WebSocket 回退与客户端版本，最后用 Feedback ID 反馈。
-lede: 先别急着改代理。Reconnecting x/5 往往是流式传输在重试——先分清是服务端、本机网络，还是证书／WebSocket。
+title: Codex 一直显示 Reconnecting 怎么办：0.170 起过大的 WebSocket 会立刻回退 HTTP，Cloud 会话会自动重连并保留恢复中的回合
+seo_title: Codex Reconnecting：0.170 的 WebSocket 回退与 Cloud 重连
+description: Codex 回复前反复出现 Reconnecting，或报 stream disconnected，多数和网络、代理、证书或 WebSocket 有关。本文按 0.170.0 的官方发布说明补上：过大的 WebSocket 会立刻回退 HTTP，Cloud 会话断线会自动重连并保留正在恢复的回合，并给出从 Status 到本机网络的排查顺序。
+lede: 先分清是服务端、本机网络，还是证书。0.170.0 只把过大的 WebSocket 立刻改走 HTTP；Cloud 会话另有自动重连。
 url: /guides/codex-reconnecting-network-troubleshooting
 status: published
 section: guides
@@ -17,41 +17,45 @@ order: 3
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-10-22
+date_modified: 2026-11-19
+verified_on: 2026-11-19
+tested_cli_version: 0.170.0
 official_ref: https://learn.chatgpt.com/docs/reference/troubleshooting
-keywords: [Codex Reconnecting, Codex stream disconnected, Codex 一直重连, Codex 国内代理, Codex WebSocket, CODEX_CA_CERTIFICATE]
-related: [desktop-crashpad-disk-space, model-at-capacity-usage-reset]
+keywords: [Codex Reconnecting, Codex stream disconnected, Codex WebSocket 回退, Codex Cloud 重连, 0.170.0]
+related: [codex-doctor, cloud-environments, codex-cli-0-169-side-chat-cloud-connection, desktop-crashpad-disk-space, model-at-capacity-usage-reset]
 faq:
   - q: Reconnecting 1/5 到 5/5 是不是一定坏了？
-    a: 不一定。官方配置里 stream_max_retries 默认是 5，界面上的 x/5 与这个重试预算一致。有人在 WebSocket 失败后会看到 Falling back from WebSockets to HTTPS，随后仍能正常回答。先看 Status 与是否最终回退成功，再决定改本机配置。
+    a: 不一定。本文沿用的 Configuration Reference 里，自定义 provider 的 stream_max_retries 默认是 5，界面上的 x/5 与这个重试预算一致。0.170.0 的发布说明没有改这个默认值。它新增的是：过大的 WebSocket 请求立刻回退 HTTP，不再做多余重试。先看 Status，再看是不是最终走通了 HTTP。
+  - q: 升到 0.170.0 之后 Cloud 断线还会丢回合吗？
+    a: 发布说明写的是改进 Cloud 会话的自动重连，并在客户端重连时保留正在进行的恢复回合。#60969 的标题具体到空闲 Cloud 会话在短暂断流后重连。本文没有 Cloud 环境，没有拔网线复现。本机代理和证书问题不会因为这一条自动消失。
   - q: 公司网络做了 HTTPS 解密，应该设哪个证书变量？
     a: 官方 Environment variables 写明：CODEX_CA_CERTIFICATE（优先）与 SSL_CERT_FILE 作用于 HTTPS、登录和 WebSocket 客户端；前者优先于后者。指向 PEM 格式的 CA 包路径。改完后重启 CLI／桌面端再试。
   - q: 能不能把「关掉 WebSocket」当成官方推荐修复？
     a: 不能。Configuration Reference 提供了自定义 provider 的 supports_websockets 字段；社区 issue 里有人用自定义 provider 并设 supports_websockets = false 强制走 HTTPS。这是社区验证过的配置写法，不是 OpenAI 发布的「官方推荐修复」。优先仍是 Status → 网络／代理 → 证书 → 升级客户端。
 ---
 
-# Codex 一直显示 Reconnecting 怎么办：stream disconnected 的常见原因和排查顺序（国内代理、公司证书、WebSocket 回退）
+# Codex 一直显示 Reconnecting 怎么办：0.170 起过大的 WebSocket 会立刻回退 HTTP，Cloud 会话会自动重连并保留恢复中的回合
 
 > 本文在线版：[codexguide.io/guides/codex-reconnecting-network-troubleshooting](https://codexguide.io/guides/codex-reconnecting-network-troubleshooting)
 
-> 核对依据：learn.chatgpt.com 的 Troubleshooting、Environment variables、Configuration Reference／Advanced Configuration；[status.openai.com](https://status.openai.com/)；openai/codex 上与重连相关的 **issue 讨论**（#18960、#13041、#14297、#3355 等，只作症状对照）。文中「我的用法」是排查顺序建议，不是官方规定。**本预览环境没有国内代理／公司 CA／真机 Mac 实验室**，代理与证书步骤标为需本机验证。
+> 核对依据：2026-11-19 打开的 [Troubleshooting](https://learn.chatgpt.com/docs/reference/troubleshooting)。这一页仍然写桌面端和 CLI 可以携带不同的 Codex 版本，反馈仍是在输入框输入 `/`，日志路径也与下文第 7 节一致。这一页没有新增「过大 WebSocket 立刻回退」或「Cloud 自动重连」的段落，那两条只来自 [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0) 和 [更新日志](https://learn.chatgpt.com/codex/changelog) 2026-11-18。`stream_max_retries`、`supports_websockets` 和 `CODEX_CA_CERTIFICATE` 沿用本文 2026-10-22 对 Configuration Reference、Advanced Configuration、Environment variables 的阅读；0.170.0 的发布说明没有改这些默认值，本文这次没有把整份配置参考重读一遍。[status.openai.com](https://status.openai.com/) 当天可以打开。issue #18960、#13041、#14297、#3355 当天返回 HTTP 200，只作症状对照。文中「我的用法」是排查顺序建议，不是官方规定。**本环境没有国内代理、公司 CA、Cloud 环境和真机 Mac，也没有制造一次断线。** 2026-11-19 只核对了 Linux 上 `codex-cli 0.170.0` 的 `codex --version`。
 
 发了一条提示，界面却在转：`Reconnecting... 2/5`，下面挂着 `stream disconnected before completion: websocket closed by server before response.completed`；有人会连到 `5/5`，再看到 `Falling back from WebSockets to HTTPS transport`。睡眠唤醒、换网或公司网关后，请求也可能直接失败。这些在 openai/codex [#18960](https://github.com/openai/codex/issues/18960)、[#13041](https://github.com/openai/codex/issues/13041)、[#14297](https://github.com/openai/codex/issues/14297)、[#3355](https://github.com/openai/codex/issues/3355) 里反复出现——**是社区症状，不是 OpenAI 正式故障公告**。
 
 本文只解决一件事：**按固定顺序排查**，避免一上来就改代理、换证书、或照搬未核实的第三方说法。
 
-**推荐顺序（先读这一段）：**
+**推荐顺序（先读这一段）**：
 
 1. **Status**（服务端）→ 2. **本机网络／睡眠唤醒** → 3. **代理／TUN／系统代理** → 4. **公司 CA（`CODEX_CA_CERTIFICATE`）** → 5. **WebSocket 回退与自定义 provider** → 6. **客户端版本** → 7. **Feedback ID 与日志**。
 
-额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)》（id：`desktop-crashpad-disk-space`）。
+额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)》（id：`desktop-crashpad-disk-space`）。安装、登录和网络的自检命令见 [Codex doctor](./04-Codex-doctor自检-安装配置登录与网络排查.md)。Cloud 环境本身怎么创建，见 [Codex Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。0.169.0 起终端里的可选 Cloud 连接，见 [Codex CLI 0.169.0](../12-官方工具与集成/25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
 
 ## 先看懂报错：三句话分别是什么意思
 
 
 下面是桌面端一次典型现场：先反复 `Reconnecting... x/5`，随后出现 `stream disconnected before completion`（对话与 Request ID 已打码，仅保留报错链路）：
 
-![图一　Reconnecting 1/5～5/5 后出现 stream disconnected（对话已打码；图源公开 issue，仅作报错示意）](../图片素材/15-故障排查与常见问题/03-Codex一直Reconnecting-stream-disconnected排查/图一-Reconnecting与stream-disconnected.png)
+![图一　Reconnecting 1/5～5/5 后出现 stream disconnected（对话已打码；图源公开 issue，拍摄早于 0.170.0，仅作报错文案示意）](../图片素材/15-故障排查与常见问题/03-Codex一直Reconnecting-stream-disconnected排查/图一-Reconnecting与stream-disconnected.png)
 
 | 你看到的文案 | 大致含义 | 先别做什么 |
 |---|---|---|
@@ -67,11 +71,11 @@ faq:
 | `request_max_retries` | `4` | 对 provider 的 HTTP 请求重试次数 |
 | `stream_idle_timeout_ms` | `300000`（5 分钟） | 流空闲超时 |
 
-**重要边界：** 内置 OpenAI provider **不能**用 `[model_providers.openai]` 覆盖。官方 Advanced Configuration 写明：要改内置 OpenAI 的 base URL，用顶层 `openai_base_url`，不要新建／覆盖保留 ID `openai`。后面「强制 HTTPS」一节用的是**另起一个自定义 provider ID**，不是改 `[model_providers.openai]`。
+**重要边界**：内置 OpenAI provider **不能**用 `[model_providers.openai]` 覆盖。官方 Advanced Configuration 写明：要改内置 OpenAI 的 base URL，用顶层 `openai_base_url`，不要新建／覆盖保留 ID `openai`。后面「强制 HTTPS」一节用的是**另起一个自定义 provider ID**，不是改 `[model_providers.openai]`。
 
 ## 1. 先排除服务端：Status 与近期 issue
 
-**我的用法：** 同一时间很多人同时报 `Reconnecting`／`websocket closed` 时，先打开 [status.openai.com](https://status.openai.com/)，看 **Codex**（Web／API／CLI／VS Code extension）以及 ChatGPT／Responses 相关组件，再决定动不动本机。
+**我的用法**：同一时间很多人同时报 `Reconnecting`／`websocket closed` 时，先打开 [status.openai.com](https://status.openai.com/)，看 **Codex**（Web／API／CLI／VS Code extension）以及 ChatGPT／Responses 相关组件，再决定动不动本机。
 
 - Status 有公告或「Monitoring／Investigating」：跟着公告走；本机狂改代理通常浪费时间。
 - Status 全绿，但 openai/codex 上同一小时内涌入同类 issue：仍可能是边缘／区域性问题；把时间点记下来，继续本机核对，同时准备 Feedback。
@@ -159,18 +163,34 @@ tail -F ./.codex-log/codex-tui.log
 3. 出现 `Falling back from WebSockets to HTTPS transport`；
 4. HTTPS 路径若通，回合可以继续。
 
-因此：**「先 Reconnecting 几次再开始答」不一定等于坏掉**——尤其在代理对 WSS 不友好、但对 HTTPS 友好的网络上（[#14297](https://github.com/openai/codex/issues/14297)、[#19821](https://github.com/openai/codex/issues/19821) 一类讨论）。若回退后稳定可用，你可以：
+因此：**「先 Reconnecting 几次再开始答」不一定等于坏掉**——尤其在代理对 WSS 不友好、但对 HTTPS 友好的网络上（[#14297](https://github.com/openai/codex/issues/14297)、[#19821](https://github.com/openai/codex/issues/19821) 一类讨论）。0.170.0 没有把这条社区路径改写成「所有断线都不再重试」。若回退后稳定可用，你可以：
 
 - 接受「每次多等一轮回退」（体验差但能工作）；或
 - 用下一小节的**社区配置写法**跳过 WS（需本机验证）。
 
 若 **HTTPS 也失败**，或回退前就反复丢回合，回到 Status／代理／证书，而不是只盯着 WebSocket。
 
+### 0.170.0：过大的 WebSocket 立刻走 HTTP
+
+2026-11-18 的 Release 和更新日志写：
+
+> Oversized WebSocket requests now fall back to HTTP without unnecessary retries. (#60840, #60841)
+
+#60840 的标题是 “Fall back to HTTP immediately for oversized WebSocket requests”，#60841 的标题是 “Honor advertised WebSocket message size limits”。
+
+读的时候只取这三层意思：
+
+- 对象是 **过大的** WebSocket 请求，不是每一次 `Reconnecting`。
+- 回退发生在多余重试之前。发布说明用了 “immediately” 的提交标题，和 “without unnecessary retries” 的正文。
+- 发布说明没有写出字节阈值，也没有写 `stream_max_retries` 从 5 改成别的数。上面表格里的默认 5 仍按 2026-10-22 读到的 Configuration Reference 保留。
+
+所以：升到 0.170.0 之后，如果一条特别大的请求不再把 `1/5` 到 `5/5` 走满就出现 HTTP 回退，这和发布说明一致。如果短提示仍然数到 `5/5`，先回到 Status、代理和证书，不要把现象解释成「0.170 把重试次数改没了」。本文没有构造一条超限请求，没有看到回退日志。
+
 ### 社区实践：自定义 provider 关闭 WebSocket（官方字段 + 社区用法）
 
 Configuration Reference 为自定义 provider 提供了布尔字段 **`supports_websockets`**（该 provider 是否支持 Responses API 的 WebSocket 传输）。社区在 [#18960](https://github.com/openai/codex/issues/18960) 等讨论里验证过类似写法：新建一个**非保留 ID** 的 provider，设 `supports_websockets = false`，并把 `model_provider` 指过去，从而一开始就走 HTTPS。
 
-**再次强调：** 这是社区在 issue 里验证的配置组合；**不是** OpenAI 文档里的「官方推荐修复步骤」。内置 `openai` ID 不可覆盖；下面用自定义 ID 举例：
+**再次强调**：这是社区在 issue 里验证的配置组合；**不是** OpenAI 文档里的「官方推荐修复步骤」。内置 `openai` ID 不可覆盖；下面用自定义 ID 举例：
 
 ```toml
 # ~/.codex/config.toml —— 社区常用写法，请本机验证后再长期使用
@@ -185,15 +205,33 @@ supports_websockets = false
 
 保存后重启 CLI／桌面端，再发短提示：若不再出现满额 `Reconnecting... 5/5` 且能完成回合，说明你的环境更适合 HTTPS 传输。若仍然失败，问题多半不在「要不要 WS」，而在代理、证书或服务端。
 
-组织网关优先按官方 gateway／`openai_base_url` 文档配置，不要随意改生产地址。
+组织网关优先按官方 gateway／`openai_base_url` 文档配置，不要随意改生产地址。0.170.0 的「过大请求立刻回退」是客户端自己的路径。它不要求你新建一个 `supports_websockets = false` 的 provider。社区写法仍然只在你想跳过 WebSocket、并且接受「这不是官方推荐修复」时再考虑。
 
 ### 自定义 provider 上的重试与超时（可选）
 
 只在确认走自定义 provider 时调整；**不能**用 `[model_providers.openai]` 改内置默认。可在该表下设置 `request_max_retries`（默认 4）、`stream_max_retries`（默认 5）、`stream_idle_timeout_ms`（默认 300000）。先保持默认；把重试加很大**修不好**坏代理，只会让失败更慢。
 
-## 6. 客户端版本：App 与 CLI 可能不同步
+## 5.1 Cloud 会话：自动重连，正在恢复的回合还在
 
-官方 Troubleshooting 写明：ChatGPT 桌面端与 Codex CLI **可能携带不同的 Codex 版本**，功能与修复到达时间可能不一致。
+这一节只适用于 **Cloud 会话**。本机对话里的 `Reconnecting... x/5` 仍按上面的 Status、网络、代理、证书和 WebSocket 顺序查。
+
+0.170.0 的原文是：
+
+> Improved automatic reconnection for Cloud conversations and preserved active recovery turns when clients reconnect. (#60969, #61014)
+
+#60969 的标题是 “Reconnect idle Cloud conversations after transient stream loss”。#61014 的标题是 “Preserve active recovery turns when clients reconnect”。
+
+合在一起：Cloud 会话的自动重连有改进；空闲会话在短暂断流后会重连；客户端重新连上时，正在进行的恢复回合会被保留。发布说明没有写重连要等多少秒，也没有写本机 `Reconnecting 5/5` 会因此消失。
+
+终端里从 0.169.0 开始可以开可选的 Cloud 连接，步骤不在这篇重复，见 [Codex CLI 0.169.0](../12-官方工具与集成/25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。环境、联网和密钥见 [Codex Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。本文没有 Cloud 环境，没有把一条恢复中的回合断开再接上。
+
+## 6. 客户端版本：先升到 0.170.0，再判断是不是旧客户端的重试
+
+官方 Troubleshooting 写明：ChatGPT 桌面端与 Codex CLI **可能携带不同的 Codex 版本**，功能与修复到达时间可能不一致。2026-11-19 重读这一页，这句话还在。
+
+如果现象像「过大的请求把 WebSocket 重试走满」，先看两侧是不是还停在 0.170.0 之前。0.170.0 才会按发布说明立刻把这类请求改走 HTTP。版本已经是 `codex-cli 0.170.0`、短提示仍然数满 `5/5`，再回到第 1 到第 4 节，那更像网络、代理或证书，而不是「还没装上这个修复」。
+
+怎么钉住 0.170.0，见 [Codex CLI 0.170.0](../12-官方工具与集成/29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)。`codex update` 的帮助写的是更新到最新版。本文 2026-11-19 在 Linux 上用 npm 安装后，`codex --version` 为 `codex-cli 0.170.0`。没有在这台机器上复现 Reconnecting。
 
 ```bash
 codex --version
@@ -226,24 +264,31 @@ macOS 上查看桌面端捆绑的 CLI（官方给出的兼容路径）：
 2. 刚睡眠／换网／切 VPN：等链路稳定，短提示重试；对照 [#3355](https://github.com/openai/codex/issues/3355)。  
 3. 分清代理形态（系统代理 vs TUN vs 仅终端变量）；同一时间只改一处；CLI 与桌面分开验证。  
 4. 公司 TLS：设 `CODEX_CA_CERTIFICATE`（优先）或 `SSL_CERT_FILE`，重启客户端。  
-5. 看是否出现 `Falling back from WebSockets to HTTPS`：回退成功 → 网络对 HTTPS 更友好；可考虑社区自定义 provider + `supports_websockets = false`（本机验证）。  
-6. 不要用 `[model_providers.openai]` 覆盖内置 provider；改 base URL 用 `openai_base_url`。  
-7. `codex --version` 与桌面捆绑版本对齐并升级。  
-8. `/` 反馈拿到 ID；跟帖 issue 时只贴元数据与打码日志。
+5. 看是否出现 `Falling back from WebSockets to HTTPS`：回退成功 → 网络对 HTTPS 更友好。过大请求在 0.170.0 上会立刻走 HTTP；这不改变自定义 provider 上 `stream_max_retries` 的默认 5。社区自定义 provider + `supports_websockets = false` 仍须本机验证，不是官方推荐修复。  
+6. Cloud 会话另看 0.170.0：短暂断流后的自动重连，以及重连时正在恢复的回合还在。本机 `x/5` 不要直接套这条。  
+7. 不要用 `[model_providers.openai]` 覆盖内置 provider；改 base URL 用 `openai_base_url`。  
+8. `codex --version` 与桌面捆绑版本对齐。要判断是不是旧客户端对过大 WebSocket 的多余重试，先升到 0.170.0。  
+9. `/` 反馈拿到 ID；跟帖 issue 时只贴元数据与打码日志。
 
 ## 小结
 
-- `Reconnecting... x/5` 与默认 `stream_max_retries = 5` 一致，常常是流重试，而不是「配置一定坏了」。  
-- **先 Status，再本机网络，再代理，再公司 CA，再谈 WebSocket 策略与版本。**  
+- `Reconnecting... x/5` 与本文沿用的默认 `stream_max_retries = 5` 一致，常常是流重试。0.170.0 没有在发布说明里改这个默认值。  
+- **先 Status，再本机网络，再代理，再公司 CA，再谈 WebSocket 与版本。**  
 - 证书：官方支持 `CODEX_CA_CERTIFICATE`／`SSL_CERT_FILE` 覆盖 HTTPS、登录与 WebSocket。  
-- WebSocket → HTTPS 回退是客户端已有路径；强制关 WS 属于**社区配置实践**（使用官方字段 `supports_websockets`），须本机验证。  
-- 官方公开环境变量页**未**把 SOCKS／HTTP 代理变量写成 Codex 专用项——不要传播未核实的「不支持某某协议」结论。  
+- 过大的 WebSocket 从 0.170.0 起立刻回退 HTTP，不再做多余重试。普通断线仍可能先重试再回退。  
+- Cloud 会话从 0.170.0 起改进自动重连，并在客户端重连时保留正在进行的恢复回合。  
+- 强制关 WS 属于**社区配置实践**（使用官方字段 `supports_websockets`），须本机验证。  
+- 官方公开环境变量页**未**把 SOCKS／HTTP 代理变量写成 Codex 专用项。未核实的「不支持某某协议」不要当成结论。  
 - 反馈带 Feedback ID 与可复核元数据；日志先脱敏。
 
 参考：
 
 - [Troubleshooting（Feedback and logs；版本差异）](https://learn.chatgpt.com/docs/reference/troubleshooting)  
+- [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0)  
+- [更新日志 2026-11-18](https://learn.chatgpt.com/codex/changelog)  
 - [Environment variables（`CODEX_CA_CERTIFICATE`／`SSL_CERT_FILE`／`RUST_LOG`／`log_dir`）](https://learn.chatgpt.com/docs/config-file/environment-variables)  
 - [Configuration Reference／Advanced Configuration（`stream_max_retries`、`supports_websockets`、`openai_base_url`）](https://learn.chatgpt.com/docs/config-file/config-reference)  
 - [OpenAI Status](https://status.openai.com/)  
 - 社区症状（非官方手册）：[openai/codex#18960](https://github.com/openai/codex/issues/18960)、[#13041](https://github.com/openai/codex/issues/13041)、[#14297](https://github.com/openai/codex/issues/14297)、[#3355](https://github.com/openai/codex/issues/3355)
+
+2026-11-19 打开并读过正文的是 Troubleshooting、rust-v0.170.0 和更新日志。Environment variables 与 Configuration Reference 的链接仍指向 2026-10-22 写本文时用过的页面；这次没有重读整页，所以默认重试次数没有按新版本改写。#19821 当天页面可访问，讨论正文没有重读。
