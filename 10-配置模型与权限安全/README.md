@@ -15,7 +15,7 @@
 ## 已上线文章
 
 - [Codex 模型怎么选：GPT-6.2 Astra 与 Sol 上线后，Sol、Terra、Luna、Astra 和推理强度怎么搭配](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
-- [Codex 与 Claude Code 怎么选（2026-10）：GPT-6.1 Sol、Terra 对照工作流](./02-Codex与其他编程模型比较.md)
+- [Codex 与 Claude Code 怎么选：按 GPT-6.2 Astra 与 Sol 更新对照，Terra 和 Luna 放在什么位置](./02-Codex与其他编程模型比较.md)
 - [Codex 桌面端设置怎么调：权限模式、个人指令与 Memories、Follow-up behavior](./03-Codex桌面端协作设置.md)
 - [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [Codex 沙箱与主机权限风险：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
