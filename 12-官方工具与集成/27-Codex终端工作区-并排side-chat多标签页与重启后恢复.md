@@ -1,9 +1,9 @@
 ---
 id: codex-terminal-workspace-side-chat
-title: Codex 终端工作区：并排 side chat、多标签页，重启之后还能打开
-seo_title: Codex 终端工作区：并排 side chat、多标签页与重启后恢复
-description: 从 Codex CLI 0.168 起，打开终端工作区可以在主对话旁边开 side chat；0.169 又加上多标签页，并能在重启后打开已保存的本地 side chat。本文按官方 Release 说明怎么启用、怎么切换和缩放窗格，以及和主会话、命令中心的分工。
-lede: 工作区是可选的。先打开 features.tui_workspace，再在 0.169 里使用多个本地 side-chat 标签。本文没有拍到 TUI。
+title: Codex 终端工作区：0.171 起默认开启，侧栏能预览文档和图片、打开子代理记录，并排 side chat 与多标签页照常用
+seo_title: Codex 终端工作区：默认开启、文档与图片预览、子代理记录
+description: Codex CLI 0.171.0 起终端工作区默认开启：主对话旁可以搜索预览文档、预览图片、打开子代理记录，并排 side chat、多标签页和重启后恢复照常可用。本文按 0.171.0 发布说明和官方命令文档更新开启与关闭方式、侧栏用法和常见问题。
+lede: 0.171.0 起工作区默认开着。不想用就把它设成 false。侧栏新增的是可搜索的文档预览、图片预览和子代理记录；本文没有进入 TUI。
 url: /guides/codex-terminal-workspace-side-chat
 status: published
 section: guides
@@ -17,150 +17,153 @@ order: 27
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-11-14
-date_modified: 2026-11-14
-verified_on: 2026-11-14
-tested_cli_version: 0.169.0
-official_ref: https://github.com/openai/codex/releases/tag/rust-v0.169.0
-keywords: [Codex 终端工作区, tui_workspace, side chat, 侧边对话标签页, leader z, Collapse turn details]
-related: [codex-cli-0-169-side-chat-cloud-connection, codex-cli-0-167-agent-command-center, cli-manage-multiple-sessions]
+date_modified: 2026-11-20
+verified_on: 2026-11-20
+tested_cli_version: 0.171.0
+official_ref: https://github.com/openai/codex/releases/tag/rust-v0.171.0
+keywords: [Codex 终端工作区, tui_workspace, Codex 文档预览, Codex 子代理记录, side chat]
+related: [codex-cli-0-171-sol-default-workspace-exec-remote, codex-cli-0-169-side-chat-cloud-connection, codex-subagents-parallel-work, cli-manage-multiple-sessions]
 howto: true
 faq:
-  - q: 不升级到 0.169，只有 0.168 能用工作区吗？
-    a: 0.168 的 Release 已经有 features.tui_workspace、分隔条和 leader z。多个 side-chat 标签页，以及重启后打开已保存的本地 side chat，写在 0.169 的 Release 里。
-  - q: 打开工作区的配置键是什么？
-    a: Release 写的是 features.tui_workspace。0.169.0 上它位于 codex features list，阶段是 under development，未写入配置时有效状态是 false。可以用 codex --enable tui_workspace，或在 config.toml 的 [features] 里设为 true。
-  - q: leader z 的 leader 是哪一个键？
-    a: 0.168 的 Release 只写了按 leader z 放大当前获得焦点的窗格，没有写出 leader 键的默认按键。本文不补充 Release 里没有的键位。
-  - q: 重启后所有侧边对话都会回来吗？
-    a: Release 写的是重新打开已保存的本地 side chat。它没有写未保存的临时窗格、Cloud 会话或另一台机器上的会话会自动出现。
+  - q: 0.171 还要先打开 features.tui_workspace 吗？
+    a: 不用。2026-11-20 在空配置的 codex-cli 0.171.0 上，codex features list 里 tui_workspace 是 stable，有效状态是 true。0.169.0 那时它是 under development，未写入配置时是 false。
+  - q: 不想用工作区，怎么关？
+    a: 只关这一次，用 codex --disable tui_workspace。0.171.0 的 --help 写明 --disable 等价于 -c features.<name>=false。要写进配置，用 codex features disable tui_workspace，或在 config.toml 的 [features] 里设 tui_workspace = false。本文用 disable 子命令写过，随后 features list 变为 false。
+  - q: 侧栏里的文档、图片和子代理记录有快捷键吗？
+    a: 0.171.0 的 Release 只写了这三类内容在主对话旁边，没有写出按键或菜单名。本文没有进入 TUI，不补充界面细节。
+  - q: 以前手动把 tui_workspace 设成 true，升级后会怎样？
+    a: 空配置下默认已经是开。那一行 true 和默认一致，不会变成关。要关，必须写成 false。本文没有热加载配置，改完要重新启动这次 codex。
 ---
 
-# Codex 终端工作区：并排 side chat、多标签页，重启之后还能打开
+# Codex 终端工作区：0.171 起默认开启，侧栏能预览文档和图片、打开子代理记录，并排 side chat 与多标签页照常用
 
 > 本文在线版：[codexguide.io/guides/codex-terminal-workspace-side-chat](https://codexguide.io/guides/codex-terminal-workspace-side-chat)
 
-> 核对依据：GitHub Release [rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0) 与 [rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)，以及 ChatGPT Learn [更新日志](https://learn.chatgpt.com/docs/changelog) 2026-11-13 的对应条目。2026-11-14 在 Linux 上的 `codex-cli 0.169.0` 核对了 `features.tui_workspace` 的默认状态，并用 `-c features.tui_workspace=true` 确认这一版接受该键。没有登录，没有进入交互式 TUI，没有看到并排窗格、标签或全屏转录，因此没有配图。界面名称以 Release 的英文为准。版本之间还多了哪些命令，见 [Codex CLI 0.169.0](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
+> 核对依据：GitHub Release [rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)、[rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0)、[rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)，以及 2026-11-20 打开的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)。2026-11-20 在 Linux 的 `codex-cli 0.171.0` 上，空 `CODEX_HOME` 的 `codex features list` 里 `tui_workspace` 为 stable / true；`codex features disable tui_workspace` 之后变为 stable / false，并在 `config.toml` 写下 `[features] tui_workspace = false`。没有登录，没有进入交互式 TUI，没有看到侧栏、标签或全屏转录，因此没有新配图。这一版发布说明和该不该升，见 [Codex CLI 0.171.0](./30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)。
 
-这篇给已经会在终端里跑 Codex、想把一条主对话和旁边的侧边对话放在同一个工作区里的人。0.167 的命令中心见 [Codex CLI 0.167.0](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)。`resume`、`fork` 和 `/side` 见 [管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)。
+这篇给已经会在终端里跑 Codex、想知道工作区现在是开还是关、侧栏里多了什么的人。子代理本身怎么派，见 [Subagents](../11-自动化与高级工作流/09-Codex使用Subagents并行处理任务.md)。`resume` 和 `fork` 见 [管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)。
 
-## 先看结论
+## 先说结论
 
-普通的一次 `codex` 是一块会话区域。终端工作区是另一层可选布局：主对话还在，旁边可以有 side conversation。
+0.171.0 起，终端工作区默认开启。Release 的原文是：
 
-两版 Release 的分工：
+> Enabled the TUI workspace by default, with searchable document previews, image previews, and subagent transcripts alongside the main conversation. (#61352, #61888, #61889, #61919, #62157)
 
-- 0.168：打开 `features.tui_workspace` 后，在主对话旁边查看 side conversation。拖动分隔条改变两块窗格的宽度，或按 `leader z` 放大当前获得焦点的窗格。
-- 0.169：这个可选工作区支持多个 side-chat 标签页，用键盘或鼠标切换；重启 Codex 之后，可以重新打开已保存的本地 side chat。全屏转录里可以打开 **Collapse turn details**。
-
-工作区默认关着。它不代替 `codex resume`，也不代替命令中心。下面只使用 Release 和 0.169.0 帮助里出现过的名称。
-
-## 怎么打开
-
-先确认版本：
+不想用，就把它关掉。0.171.0 的 `codex --help` 写明 `--disable <FEATURE>` 等价于 `-c features.<name>=false`。只影响这一次启动：
 
 ```bash
-codex --version
+codex --disable tui_workspace
 ```
 
-多个标签页和重启后恢复写在 0.169。本文核对时的正式版输出是 `codex-cli 0.169.0`。只要 0.168 的并排窗格、还没有标签页时，不要按 0.169 的恢复行为来期待。
-
-0.169.0 的 `codex features list` 把 `tui_workspace` 标为 under development，未写入配置时有效状态是 false。`codex exec --help` 写明 `--enable` 等价于 `-c features.<name>=true`。只想这一次打开：
+要以后都关，Developer commands 写 `codex features` 的 `enable` 和 `disable` 会把改动写入配置，对以后的会话生效。2026-11-20 在独立 `CODEX_HOME` 里执行：
 
 ```bash
-codex --enable tui_workspace
+codex features disable tui_workspace
 ```
 
-准备以后都用工作区时，写在用户级 `~/.codex/config.toml`（Windows 上是用户目录下的 `.codex/config.toml`）：
+输出是 `Disabled feature tui_workspace in config.toml.` 随后 `codex features list` 里这一行是 `stable`、有效状态 `false`。写出来的配置是：
 
 ```toml
 [features]
-tui_workspace = true
+tui_workspace = false
 ```
 
-2026-11-14 用独立的 `CODEX_HOME` 执行 `codex exec --strict-config -c features.tui_workspace=true`，进程接受了这个键，并警告 `Under-development features enabled: tui_workspace`，随后因为没有登录而无法完成模型请求。警告说明开关仍被标成未完成，行为可能变化。这次没有画出 TUI。
+同一天用 `codex exec --strict-config -c features.tui_workspace=false` 启动时，进程接受了这个键，没有报未知字段。未登录，模型请求随后 401。这只说明关闭的写法能被这一版加载。
 
-发布说明没有给出新建 side chat 的按键或斜杠命令。打开工作区之后，以你屏幕上实际出现的控件为准。对不上 Release 里的 side conversation、分隔条或标签时，先核对 `codex --version`，再对照 Release 原文。
+0.168 和 0.169 的布局能力还在，只是不再默认关闭：
 
-## 主对话和 side chat 分别放什么
+- 0.168：主对话旁边可以有 side conversation。拖动分隔条改变两块窗格的宽度，或按 `leader z` 放大当前获得焦点的窗格。
+- 0.169：多个 side-chat 标签页，用键盘或鼠标切换；重启之后可以重新打开已保存的本地 side chat。全屏转录里可以打开 **Collapse turn details**。
 
-Release 只说明了布局：side conversation 在主对话旁边，0.169 还可以有多个本地标签。它没有规定哪些话必须放在侧面。
+工作区不代替 `codex resume`，也不代替命令中心。下面凡是界面名称，仍以对应 Release 的英文为准。本文没有进入 TUI。
 
-下面是用法上的划分，不是官方规则。主对话保留你要落地的任务：改哪些文件、怎样验收、做到哪一步。侧面用来问一条不会改写主线结论的问题，例如某个函数的调用方、一条报错的含义，或要不要把范围再缩小。问完把仍然有效的结论用一句话写回主对话，侧面标签就可以关掉。
+## 侧栏新增：文档预览、图片预览、子代理记录
 
-不要把侧面当成第二个会自动改仓库的隐藏会话来用，除非你在那一块窗格里也看清了它的权限和它正在碰的目录。Release 没有写 side chat 使用另一份沙箱。0.169 的提交说明里有 “Ensure side-chat policy reaches the first model request”，那只说明策略需要传到第一次模型请求，没有公开另一套权限名称。本文没有打开窗格，没有比较两块窗格的审批提示。
+0.171.0 的发布说明把三件事放在主对话旁边：可搜索的文档预览、图片预览、子代理记录。对应的提交标题是：
 
-[管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md) 里的 `/side`（别名 `/btw`）是会话内的短暂分叉，官方说明是不把这段旁支写进主线转录。0.168 的 side conversation 是工作区里的并排窗格。两份 Release 都没有写它们是不是同一个功能。本文保持两个名字，不把 `/side` 说成打开标签页的命令。
+- #61352：把 TUI 工作区标为 stable，并默认开启
+- #61888：只读的文档预览
+- #61889：文档预览里的搜索、选择和链接导航
+- #61919：侧栏图片预览，并在回答之后展示生成的图片
+- #62157：在 TUI 侧栏打开子代理记录
 
-## 切换、拖动分隔条与 leader z
+这些标题来自该 Release 的提交列表，不是一份界面说明书。Release 顶部那句已经是用户能核对的全部：主对话旁边可以搜索预览文档、预览图片、查看子代理记录。它没有写快捷键、侧栏宽度或菜单的中文名。
 
-0.168 Release 写了两件事：
+子代理和主会话怎么分工，见 [Subagents](../11-自动化与高级工作流/09-Codex使用Subagents并行处理任务.md)。那篇讲的是派发和沙箱继承，不是 0.171 的侧栏。本文没有打开过一份子代理记录。
 
-- 拖动分隔条，改变窗格宽度。
-- 按 `leader z`，放大当前获得焦点的窗格。
+## 并排 side chat 与 /side
 
-0.169 Release 补的是标签之间的移动：用键盘或鼠标在多个 side-chat 标签之间切换。它没有列出方向键、数字键或鼠标单击的具体组合，所以这里不补充。
+0.168 的 Release 说明了布局：side conversation 在主对话旁边。0.169 补了多个本地标签。两版 Release 都没有把 `/side` 写成打开标签页的命令。
 
-`leader z` 里的 leader 也没有在 Release 里展开成某一个默认按键。在自己的终端里对不上时，不要改用网上另一套前缀。工作区跟做以你这一版界面上看得到的分隔条和标签为准。本文没有拖过分隔条，也没有按过 `leader z`。
+2026-11-20 的 Developer commands 把两者接上了，原文是：side chat 默认是临时的；在本地全屏会话里，如果 `features.tui_workspace` 已开启并且有已保存的历史，`/side` 会重新打开已有的 side chat，`/side` 后面带上文字会新开一条。重启 Codex 之后，可以从侧栏重新打开已保存的 side chat。`/side` 在另一条 side chat 里面不可用，review 模式里也不可用。
 
-放大的是「当前获得焦点的窗格」。Release 没有写放大之后怎样恢复并排。操作前先确认焦点在你想放大的那一块，避免把主对话放成全屏后找不到侧面。
+同一页的例子是 `/side Check whether this plan has an obvious risk`。抓取到的命令表把「`/side` 后面的参数」显示成了空的尖括号位置，本文不补一个页面上没有读全的占位符。带文字的用法以这一页的例句为准。
 
-## 重启后如何打开已保存的本地 side chat
+`/side` 的别名仍是 `/btw`。官方对这条命令的用途说明没有变：在主对话继续的时候，另开一段转录分开的侧边对话；侧边模式里仍能看到主对话是否还在跑。
 
-0.169 的原句是：reopen saved local side chats after restarting Codex。拆开是三个条件：已经保存、属于本地 side chat、Codex 重新启动之后可以再打开。
+本文没有输入 `/side`，没有比较两块窗格的审批提示。0.169 的提交说明里有 “Ensure side-chat policy reaches the first model request”，那只说明策略需要传到第一次模型请求，没有公开另一套权限名称。不要把侧面当成一份自动换了沙箱的隐藏会话。
 
-本文能核对的边界只有这句原文：
+## 多标签页、任务搜索与重启后恢复
 
-- 它写的是本地 side chat，不是发布说明同一节里的 Cloud 会话。Cloud 连接是 0.169 的另一条 opt-in 能力，见 [0.169.0 一文](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
-- 它写的是已保存的对话。没有在退出前保存的窗格，不要默认它还会在。
+0.169 Release 写的是：用键盘或鼠标在多个 side-chat 标签之间切换。它没有列出方向键、数字键或鼠标单击的具体组合，所以这里不补充。
+
+`leader z` 仍只来自 0.168 的 Release：放大当前获得焦点的窗格。Release 没有写出 leader 键的默认按键，也没有写放大之后怎样恢复并排。对不上时，不要改用另一套前缀。本文没有拖过分隔条，也没有按过 `leader z`。
+
+重启后的原句仍是 0.169 的：reopen saved local side chats after restarting Codex。2026-11-20 的 Developer commands 用侧栏复述了同一边界：可以从侧栏重新打开已保存的 side chat。拆开是三个条件：已经保存、属于本地 side chat、Codex 重新启动之后可以再打开。
+
+- 它写的是本地 side chat，不是 Cloud 会话。Cloud 连接见 [0.169.0 一文](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
+- 它写的是已保存的对话。没有保存的临时窗格，不要默认它还会在。Developer commands 也写 side chat 默认是临时的，工作区打开并且有已保存历史时才走上面的重新打开。
 - 它没有写保存文件的路径、数量上限，或卸载 CLI 之后标签是否还在。
 
-重启后如果工作区是空的，先看 `codex --version` 是不是 0.169 或更新的正式版，以及 `features.tui_workspace` 是否仍为 true。主会话本身的恢复用 `codex resume`，不依赖工作区开关。命令中心里按名称、提示预览或工作目录搜索旧任务，是 0.169 的另一项能力，同样没有在本文里打开。
+命令中心里按名称、提示预览或工作目录搜索旧任务，是 0.169 的另一项能力，不在 `features.tui_workspace` 这一个开关里。0.171.0 的 `codex agents --help` 仍把子命令说明为打开命令中心以浏览和切换会话。帮助文本没有出现 side chat。本文没有打开命令中心。
 
-## 和命令中心、resume、fork 的关系
+0.169 把 **Collapse turn details** 放在全屏转录里：把已经完成的活动折到每条提示下面，回答保持可见，工具输出仍然可以搜索。0.171.0 的 Release 顶部没有再提这一项。本文没有打开全屏转录，不把「没写在 0.171 顶部」理解成已经删除。中文界面若没有这句英文，以 Release 里的英文名称为准去对屏幕上的文字。
 
-三件事管的不是同一层：
+## 和 resume、fork 的关系
 
 | 你要做的事 | 用什么 | 依据 |
 | --- | --- | --- |
-| 在当前终端里，主对话旁边看另一段对话 | 打开 `features.tui_workspace` | 0.168 Release |
-| 同一工作区里保留多个本地侧面标签，重启后再打开 | 0.169 的 side-chat 标签 | 0.169 Release |
+| 主对话旁边的工作区 | 0.171.0 起默认开着；关掉用 `--disable tui_workspace` 或 `[features] tui_workspace = false` | 0.171.0 Release，以及当天的 `--help` |
+| 在工作区里重新打开或新开 side chat | `/side`，或 `/side` 后面带上文字 | 2026-11-20 的 Developer commands |
+| 多个本地侧面标签，重启后再从侧栏打开已保存的 | 0.169 的 side-chat 标签；命令文档写从侧栏重新打开 | 0.169 Release，Developer commands |
 | 离开很久，按目录或名字回到主会话 | `codex resume`、`/resume` | [管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md) |
-| 从某条会话复制出一条新的聊天记录 | `/fork`、`codex fork` | 同上；fork 不自动隔离磁盘上的文件 |
-| 在多条会话之间浏览、切换，并搜索更早的任务 | `codex agents`；搜索是 0.169 的发布说明 | [0.167 命令中心](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)、[0.169.0](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md) |
-
-0.169.0 的 `codex agents --help` 仍把子命令说明为打开命令中心以浏览和切换会话。帮助文本没有出现 side chat 或 tui_workspace。工作区是当前 TUI 的布局；命令中心是另一条浏览会话的入口。
-
-## Collapse turn details 什么时候有用
-
-0.169 把 **Collapse turn details** 放在全屏转录里：把已经完成的活动折到每条提示下面，回答保持可见，工具输出仍然可以搜索。
-
-适合转录已经很长、你要先看到每轮回答、必要时再展开工具输出的时候。Release 没有把它写成工作区专属，也没有给出快捷键或菜单的上一级。本文没有打开全屏转录。中文界面若没有这句英文，不要猜测另一个翻译；以 Release 里的英文名称为准去对屏幕上的文字。
-
-折叠只影响转录怎么显示。它不删除工具输出，Release 写明工具输出仍可搜索。本文没有输入搜索词去验证。
+| 从某条会话复制出一条新的聊天记录 | `/fork`、`codex fork` | 同上 |
+| 在多条会话之间浏览并搜索更早的任务 | `codex agents` | [0.169.0](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md) |
 
 ## 常见问题
 
-### 找不到开关
+### 终端太窄
 
-`codex features list` 里看 `tui_workspace` 这一行。0.169.0 上未配置时是 false，阶段是 under development。配置写在用户级 `config.toml` 的 `[features]` 表，或用 `--enable tui_workspace`。写到项目里的 `.codex/config.toml` 之前，先确认这一版是否接受项目级的 features；本文没有把这个键放进项目配置做试验。改完要重新启动这次 `codex`，正在运行的界面不会因为你在另一个编辑器里保存了文件就自动打开工作区。本文没有验证热加载。
+0.171.0 的 Release 和当天的 `--help` 都没有写工作区的最小列数，也没有写窄终端时侧栏会不会自动收起。本文没有进入 TUI，看不到窄窗口下的布局。对不上并排时，先把终端拉宽，再核对 `codex --version` 和 `tui_workspace` 的有效状态，不要按一篇文章里没有的列数去调。
+
+### tmux
+
+0.168 的 Release 写过另一件和图片有关的事：在 Ghostty 和 Kitty 里，tmux 设了 `allow-passthrough all` 时，全屏 Codex 会显示图片预览和宠物。那是 tmux 的选项，不是 `config.toml` 的键。说明见 [终端界面设置](../16-图解与速查/03-Codex-CLI终端界面设置速查-主题补全编辑器状态栏与改键.md)。
+
+0.171 的侧栏图片预览是 Release 里的另一句，没有写它是否依赖同一条 tmux 设置。本文没有 tmux，没有 Ghostty 或 Kitty，没有核对这两件事是不是同一个开关。
+
+### 旧配置里手动开过 tui_workspace
+
+0.169.0 上，这个开关未写入配置时是关的，阶段是 under development，启用时会警告功能仍在开发中。0.171.0 的空配置里，阶段已是 `stable`，有效状态是 `true`。这次用 `-c features.tui_workspace=false` 启动时，没有看到以前那种 `Under-development features enabled: tui_workspace`。本文没有再打开 `true` 去对比警告是否还在。
+
+如果你的 `config.toml` 里还有 `tui_workspace = true`，它和现在的默认一致，工作区仍然开着。空目录里没有这一行时，有效状态也是开。本文没有先写成 `true` 再删掉那一行重测。要关，写成 `false`，或执行 `codex features disable tui_workspace`。
+
+改的是文件的话，正在运行的界面不会因为你在另一个编辑器里保存了配置就马上切换。本文没有验证热加载。重新启动这次 `codex` 再看。
 
 ### 标签丢了
 
-先分清丢的是哪一种。Release 只承诺可以重新打开已保存的本地 side chat。临时开的、没有保存的、或属于 Cloud 连接的会话，不在这句之内。主会话还在时，用 `codex resume` 或命令中心找它，而不是只在侧边标签栏里翻。
+先分清丢的是哪一种。Release 和命令文档只承诺可以重新打开已保存的本地 side chat。临时开的、没有保存的、或属于 Cloud 连接的会话，不在这句之内。主会话还在时，用 `codex resume` 或命令中心找它。
 
 ### 只有本地 side chat
 
-0.169 的恢复句写的是 local side chats。同一版 Release 里的 Cloud 连接可以归档或恢复 Cloud 会话，但那是 macOS 和 Linux 上的另一项 opt-in，Release 没有把它并进 `features.tui_workspace`。本文没有打开 Cloud 连接，没有看到 Cloud 会话出现在侧边标签里。
-
-### 打开之后行为不稳定
-
-0.169.0 在启用这个开关时会警告功能仍在开发中，可能不可预测。遇到窗格打不开、标签无法切换时，先记下 `codex --version` 的原文，再对照 [0.169.0 的发布说明](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。不要为了绕过警告去关 `suppress_unstable_features_warning`，除非你已经知道自己在抑制什么；那条警告文本只说明可以这样关掉提示，不代表功能已经稳定。
+0.169 的恢复句写的是 local side chats。同一版 Release 里的 Cloud 连接是 macOS 和 Linux 上的另一项 opt-in，Release 没有把它并进 `features.tui_workspace`。本文没有打开 Cloud 连接，没有看到 Cloud 会话出现在侧边标签里。
 
 ## 参考资料
 
-- [GitHub Release rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0)
+- [GitHub Release rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)
 - [GitHub Release rust-v0.169.0](https://github.com/openai/codex/releases/tag/rust-v0.169.0)
-- [ChatGPT 与 Codex 更新日志](https://learn.chatgpt.com/docs/changelog)
-- 同库：[Codex CLI 0.169.0](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)、[Codex CLI 0.167.0](./22-Codex-CLI-0.167-agent命令中心本机图片与GCP登录.md)、[管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)
+- [GitHub Release rust-v0.168.0](https://github.com/openai/codex/releases/tag/rust-v0.168.0)
+- [Developer commands](https://learn.chatgpt.com/docs/developer-commands)
+- 同库：[Codex CLI 0.171.0](./30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)、[Codex CLI 0.169.0](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)、[Subagents](../11-自动化与高级工作流/09-Codex使用Subagents并行处理任务.md)
 
-官方资料核对日期：2026-11-14（Asia/Shanghai）。依据是 Release 说明和 0.169.0 的配置键检查，没有拍到终端工作区界面。
+官方资料核对日期：2026-11-20（Asia/Shanghai）。关闭方式在 0.171.0 的帮助和 `features` 子命令上核对过。没有进入终端工作区，没有新截图。
