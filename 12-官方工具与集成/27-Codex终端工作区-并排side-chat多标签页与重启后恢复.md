@@ -97,7 +97,7 @@ tui_workspace = false
 
 2026-11-20 的 Developer commands 把两者接上了，原文是：side chat 默认是临时的；在本地全屏会话里，如果 `features.tui_workspace` 已开启并且有已保存的历史，`/side` 会重新打开已有的 side chat，`/side` 后面带上文字会新开一条。重启 Codex 之后，可以从侧栏重新打开已保存的 side chat。`/side` 在另一条 side chat 里面不可用，review 模式里也不可用。
 
-同一页的例子是 `/side Check whether this plan has an obvious risk`。抓取到的命令表把「`/side` 后面的参数」显示成了空的尖括号位置，本文不补一个页面上没有读全的占位符。带文字的用法以这一页的例句为准。
+`/side` 后面可以直接接一句要问的话。Developer commands 的例句是 `/side Check whether this plan has an obvious risk`，带文字的用法以这句为准。
 
 `/side` 的别名仍是 `/btw`。官方对这条命令的用途说明没有变：在主对话继续的时候，另开一段转录分开的侧边对话；侧边模式里仍能看到主对话是否还在跑。
 
