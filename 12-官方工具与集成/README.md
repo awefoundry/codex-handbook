@@ -39,6 +39,8 @@
 - [Codex 与 dot 连接多台电脑：指定在哪台电脑上跑本地 Codex 任务](./24-Codex与dot-连接多台电脑-指定电脑运行本地Codex任务.md)
 - [Codex CLI 0.169.0：侧边对话多标签页、任务搜索、折叠回合详情，以及在终端连接 Cloud](./25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)
 - [Codex 在 Cloudflare Durable Objects 上跑：用 ContainerHarness 保持和本机一样的 CLI，会话写进对象存储](./26-Codex在Cloudflare-Durable-Objects上运行-ContainerHarness与会话持久化.md)（Cloudflare 的实验能力，不是 OpenAI 托管的 Codex Cloud）
-- [Codex 终端工作区：并排 side chat、多标签页，重启之后还能打开](./27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)
+- [Codex 终端工作区：0.171 起默认开启，侧栏能预览文档和图片、打开子代理记录，并排 side chat 与多标签页照常用](./27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)
 - [Codex 给 dot 设自定义指令：和 ChatGPT 自定义指令分开，还能用自定义规则决定哪些事要先问你](./28-Codex给dot设自定义指令与自定义规则.md)
 - [Codex CLI 0.170.0：终端实时语音用上 WebRTC，同名 MCP 可按环境分开，Cloud 断线会自动重连](./29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)
+- [Codex CLI 0.171.0：GPT-6.2 Sol 成为默认模型，终端工作区默认开启，codex exec 也能用 --remote 连已有 app server](./30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)
+- [Codex 远程终端：在服务器上跑 codex app-server，本机用 codex --remote 连接，0.171 起 codex exec 也能接上](./31-Codex远程终端-app-server-listen与codex-remote连接.md)

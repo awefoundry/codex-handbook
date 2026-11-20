@@ -15,3 +15,4 @@
 
 - [Codex 做上线前端到端验收：用浏览器扩展接管已登录的浏览器，按测试用例逐条取证](./01-Codex做上线前端到端验收.md)
 - [Codex Security CLI 上手：用 codex-security 在本地扫描仓库漏洞，并接进 CI](./02-Codex-Security-CLI本地扫描仓库漏洞.md)
+- [Codex 自动排查性能回归：拆解 OpenAI 的 Performance Factory，把排查流程写成 Skill、告警自动开任务、部署后再复核](./03-Codex自动排查性能回归-拆解OpenAI-Performance-Factory.md)
