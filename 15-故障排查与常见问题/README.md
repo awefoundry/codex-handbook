@@ -16,7 +16,7 @@
 
 - [Codex 模型容量不足（at capacity）错误为什么少了：团队公布的 10-15 至 11-12 趋势图怎么读，遇到时还要怎么排查](./01-Codex模型容量不足与额度重置排查.md)
 - [Codex 桌面端占满磁盘怎么办：排查 Crashpad 崩溃转储，并安全清理 worktree 与会话数据](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)
-- [Codex 一直显示 Reconnecting 怎么办：0.170 起过大的 WebSocket 会立刻回退 HTTP，Cloud 会话会自动重连并保留恢复中的回合](./03-Codex一直Reconnecting-stream-disconnected排查.md)
+- [Codex 一直显示 Reconnecting 怎么办：大请求先回退 HTTP 再重试，WebSocket 大小上限已提到 128 MB，Cloud 会话会自动重连](./03-Codex一直Reconnecting-stream-disconnected排查.md)
 
 ## 已上线文章
 

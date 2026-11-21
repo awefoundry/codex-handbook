@@ -23,7 +23,7 @@
 - [Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)
 - [Codex CLI 安装、登录与多入口配置：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型](./09-CodexCLI国内使用与多入口配置.md)
 - [Codex 接入飞书：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务](./10-Codex飞书集成实战.md)（第三方项目 feishu-codex-bridge，不是 OpenAI 或飞书官方集成；文章保留在本目录）
-- [Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的几项](./11-Codex常用功能清单.md)
+- [Codex 常用功能清单：更新到 CLI 0.171，终端工作区、Sol 默认模型和 /side 等每天都会用到的入口](./11-Codex常用功能清单.md)
 - [Codex Cloud 云端环境配置：发布可复用环境、设置联网与网络密钥](./12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)
 - [Codex 接入 Google Cloud Vertex AI：0.165.0 内置 gcp provider，项目、区域、gcloud 凭证怎么配](./13-Codex接入Google-Cloud-Model-Garden.md)
 - [Codex Composer Predictions 怎么用：桌面端 Tab 接受下一步提示、Settings 开关，以及为什么不占用量额度](./14-Codex-Composer-Predictions桌面端Tab提示.md)
