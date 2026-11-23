@@ -21,7 +21,7 @@ date_modified: 2026-11-21
 verified_on: 2026-11-21
 tested_cli_version: 0.171.0
 official_ref: https://openai.com/index/inside-the-codex-sandbox
-keywords: [Codex 沙箱, Inside the Codex sandbox, :workspace 权限 profile, Seatbelt bubblewrap MXC, Codex 默认关闭网络]
+keywords: [Codex 沙箱, Inside the Codex sandbox, ":workspace 权限 profile", Seatbelt bubblewrap MXC, Codex 默认关闭网络]
 related: [codex-sandbox-host-trust, permissions-sandbox-approvals, codex-network-permissions-proxy, codex-sandbox-command, windows-sandbox-mxc]
 faq:
   - q: Codex 沙箱是一台虚拟机或一个 Docker 容器吗？
