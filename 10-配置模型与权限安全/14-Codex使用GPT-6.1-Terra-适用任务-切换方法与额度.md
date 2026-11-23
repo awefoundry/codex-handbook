@@ -1,9 +1,9 @@
 ---
 id: codex-gpt-6-1-terra
-title: Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少
-seo_title: Codex 使用 GPT-6.1 Terra：适用任务、切换方法与额度
-description: GPT-6.1 Terra 已在 Codex 上线。本文按官方文档说明哪些套餐和入口能用、CLI 怎么切换、额度和 credits 比 GPT-6.1 Sol 省多少，以及写作、看图、电脑操作和小范围修复时什么时候选 Terra。
-lede: Terra 更快、更省额度，擅长写作、看图和电脑操作；最难的编码任务仍然交给 GPT-6.1 Sol 或 Astra。
+title: "Codex 使用 GPT-6.1 Terra：GPT-6.2 Sol 成为默认后，Terra 还适合哪些任务、怎么切换，额度和 Sol、Astra 怎么比"
+seo_title: "Codex 使用 GPT-6.1 Terra：默认已是 GPT-6.2 Sol 后怎么切换"
+description: "GPT-6.2 Sol 已是 Codex CLI 的默认模型，GPT-6.1 Terra 还值得用吗？本文按官方模型页和价格页更新：Terra 适合写作、看图和电脑操作，哪些套餐和入口能用，怎么用 codex -m 切换，额度和 credits 与 GPT-6.2 Sol、Astra 怎么比。"
+lede: "日常编码留在默认的 GPT-6.2 Sol。Terra 仍然是写作、看图和电脑操作上更快、credits 更低的一档，模型 id 还是 gpt-6.1-terra。"
 url: /guides/codex-gpt-6-1-terra
 status: published
 section: guides
@@ -17,252 +17,148 @@ order: 14
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-27
-date_modified: 2026-10-27
-verified_on: 2026-10-27
-tested_cli_version: 0.164.0
-models: [gpt-6.1-terra, gpt-6.1-sol, gpt-6-astra, gpt-6-luna]
-official_ref: https://learn.chatgpt.com/docs/models
-keywords: [Codex GPT-6.1 Terra, gpt-6.1-terra, Codex Terra 额度, Codex 模型切换, codex -m gpt-6.1-terra]
+date_modified: 2026-11-22
+verified_on: 2026-11-22
+tested_cli_version: 0.171.0
+models: [gpt-6.1-terra, gpt-6.2-sol, gpt-6.2-astra, gpt-6-luna]
+official_ref: "https://learn.chatgpt.com/docs/models"
+keywords: [Codex GPT-6.1 Terra, gpt-6.1-terra, Terra 和 GPT-6.2 Sol 区别, Codex Terra 额度, "codex -m gpt-6.1-terra"]
+related: [codex-gpt-6-2-astra-sol, model-reasoning-effort, usage-limits-credits]
 howto: true
 faq:
-  - q: 哪些套餐能在 Codex 里用 GPT-6.1 Terra？
-    a: 官方 Changelog 和 Pricing 写的是 Plus、Pro、Business、Enterprise 和 Edu 的 Work 与 Codex。Enterprise 还要看工作区是否开放、管理员是否允许。Chat 里没有 Terra，也不支持阿联酋推理驻留。
-  - q: Codex CLI 怎么切到 Terra？
-    a: 需要 Codex CLI 0.159.0 或更高版本。启动时用 codex -m gpt-6.1-terra，或者在会话里输入 /model 选择；想长期默认就在 ~/.codex/config.toml 里写 model = "gpt-6.1-terra"。
-  - q: Terra 比 GPT-6.1 Sol 省多少额度？
-    a: 按 Pricing 页，Terra 的 credits 单价是 GPT-6.1 Sol 的一半（每百万 token 输入 25、缓存输入 1.25、输出 125）；Plus 和标准 Business 每 5 小时本地消息估算是 35–285 条，GPT-6.1 Sol 是 15–160 条。实际条数随任务变化。
-  - q: IDE 扩展能用 Terra 吗？
-    a: 截至 2026-10-27，官方 Models 页给 Terra 列出的入口是桌面端的 Work 和 Codex、Work 网页版、Codex CLI、credits 和 API，没有列 IDE 扩展。以你扩展里的模型菜单为准。
-  - q: Terra 能用 Fast 和 Ultrafast 吗？
-    a: Fast 支持 Terra，套餐内用量按 Standard 的 2.5 倍计，credits 按 2 倍计。Ultrafast 只支持 GPT-6 Astra 和 GPT-6.1 Sol，不支持 Terra。
+  - q: "哪些套餐和入口能用 GPT-6.1 Terra？"
+    a: "2026-11-22 的 Pricing 写：Work 和 Codex 上的 Plus、Pro、Business、Enterprise、Edu 可用。Chat 里没有。不支持阿联酋推理驻留。Enterprise 还取决于工作区是否提供，以及管理员控制。Models 详情卡片列出桌面端的 Work 和 Codex、Work 网页版、CLI、credits 和 API，没有列出 Codex IDE 扩展。"
+  - q: "Codex CLI 怎么切到 Terra？默认不是它吗？"
+    a: "0.171.0 起模型目录的默认选择是 GPT-6.2 Sol。Terra 需要 CLI 0.159.0 或更高。启动时用 codex -m gpt-6.1-terra，或 codex --model gpt-6.1-terra。交互会话用 /model。长期默认写在 config.toml 的 model。"
+  - q: "Terra 的 Fast 倍率是多少，能开 Ultrafast 吗？"
+    a: "2026-11-22 的 Pricing：GPT-6.1 Sol 和 GPT-6.1 Terra 的 Fast，套餐内含是 Standard 的 2.5 倍，credits 和企业按量是 2 倍。Ultrafast 表里没有 Terra。"
+  - q: "IDE 扩展能选 Terra 吗？"
+    a: "同一天的 Models 详情里，GPT-6.1 Sol 和 GPT-6 Luna 有 Codex IDE extension，GPT-6.1 Terra 的卡片没有这一行。配置示例还写：同一份 config.toml 要给 IDE 扩展用时，选每个客户端都能用的模型，举例是 gpt-6.1-sol。以扩展菜单为准。"
 ---
 
-# Codex 使用 GPT-6.1 Terra：适合哪些任务、怎么切换，额度比 Sol 多多少
+# Codex 使用 GPT-6.1 Terra：GPT-6.2 Sol 成为默认后，Terra 还适合哪些任务、怎么切换，额度和 Sol、Astra 怎么比
 
 > 本文在线版：[codexguide.io/guides/codex-gpt-6-1-terra](https://codexguide.io/guides/codex-gpt-6-1-terra)
 
-> 核对依据：OpenAI 官方 [Changelog（2026-10-26 条目）](https://learn.chatgpt.com/docs/changelog)、[Models](https://learn.chatgpt.com/docs/models)、[Model selection](https://learn.chatgpt.com/docs/model-selection)、[Pricing](https://learn.chatgpt.com/docs/pricing)、[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)、[API 模型页](https://developers.openai.com/api/docs/models/gpt-6.1-terra) 和 [发布文 Introducing GPT-6.1 Terra](https://openai.com/index/introducing-gpt-6-1-terra/)。CLI 部分在 Linux 上用 `codex-cli 0.164.0` 实测了 `-m gpt-6.1-terra` 的启动输出；测试机上的 Codex **没有登录**，所以没有 Terra 的对话结果，也没有桌面端截图。核对日期 2026-10-27（北京时间）。
+> 核对依据：2026-11-22 的 [Models](https://learn.chatgpt.com/docs/models) 和 [Pricing](https://learn.chatgpt.com/docs/pricing)，以及 [rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)（2026-11-20T00:44:47Z）里「模型目录加入 GPT-6.2 Sol 和 Astra，Sol 是默认选择」。CLI 核对在 Linux、`codex-cli 0.171.0`、独立 `CODEX_HOME`、未登录。没有桌面端，没有配图。GPT-6.2 两款怎么选，见 [Codex 用 GPT-6.2 Astra 和 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。额度总表见 [用量额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。推理档位见 [模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)。
 
-2026 年 10 月 26 日（美国时间），OpenAI 把 GPT-6.1 Terra 加进了 ChatGPT Work 和 Codex。它的定位很明确：快、省额度，擅长写作、看懂图片和屏幕、在应用里操作。
+这篇只回答 Terra 还在什么位置。它不重复 GPT-6.2 的总览。
 
-这篇只回答四个问题：谁能用、在哪里切换、比 GPT-6.1 Sol 省多少、什么任务交给它。
+## 先说结论：GPT-6.2 上线后 Terra 的位置
 
-## 一句话结论
+[Models](https://learn.chatgpt.com/docs/models) 现在的建议是：难的端到端工作选 **GPT-6.2 Astra**，日常编码、写作和跨多份材料的工作选 **GPT-6.2 Sol**。同一页对 Terra 的原句是：GPT-6.1 Terra is a fast, efficient choice for writing, visual understanding, and computer use。后文把它放在「日常写作和视觉工作」：把话说清楚、读图片和屏幕、在支持的应用里把任务做完。例子是起草方案、看视觉材料、按源文件填表。
 
-- **适合交给 Terra**：根据给定材料写说明、邮件、方案初稿；看截图、图表、设计稿后总结或核对；用 Computer Use 或浏览器完成目标明确的操作（填表、录入、整理）；范围很小、有测试能验证的代码修复。
-- **仍然交给 GPT-6.1 Sol 或 GPT-6 Astra**：跨模块重构、难排查的 bug、需要长时间规划的端到端编码。发布文原话是：最复杂的编程任务，GPT-6.1 Sol 和 GPT-6 Astra 仍是更好的选择。
-- **省额度**：Terra 的 credits 单价是 GPT-6.1 Sol 的一半。
+0.171.0 的发布说明把 GPT-6.2 Sol 写成模型目录的默认选择。2026-11-22 未登录的 `codex exec` 启动摘要里，不指定 `-m` 时打印的是 `model: gpt-6.2-sol`。Terra 不再是对照「当前默认编码模型」时的那一档；默认编码模型是 Sol。
 
-## 谁能用，在哪些入口能用
+模型显示名仍是 **GPT-6.1 Terra**，CLI 的 id 仍是 `gpt-6.1-terra`。
 
-按官方 Changelog 和 Pricing 页：
+## 一张表：Astra、Sol、Terra、Luna
 
-| 项目 | 说明 |
+数字来自 2026-11-22 的 Pricing。5 小时一列是 Plus 和标准 Business 的**本地消息估算**，两列相同，不是固定条数。credits 是 Standard 速度下每 100 万 token。Fast 是相对同一模型 Standard 的倍率。
+
+| 模型 | CLI id | 官方定位（Models） | Plus / 标准 Business，每 5 小时 | credits：输入 / 缓存输入 / 输出 | Fast：套餐内含 / credits | Ultrafast |
+|---|---|---|---|---|---|---|
+| GPT-6.2 Astra | `gpt-6.2-astra` | 最难的端到端工作 | 6–50 | 200 / 10 / 1,000 | 2 倍 / 2 倍 | 套餐内含 6 倍；credits 在 2027-02-28 前 3 倍，2027-03-01（太平洋时间）起 6 倍 |
+| GPT-6.2 Sol | `gpt-6.2-sol` | 日常编码和写作；CLI 默认 | 17–180 | 50 / 2.5 / 250 | 2 倍 / 2 倍 | 与 Astra 同一行 |
+| GPT-6.1 Terra | `gpt-6.1-terra` | 写作、看图、电脑操作 | 35–285 | 25 / 1.25 / 125 | 2.5 倍 / 2 倍 | 表中没有 |
+| GPT-6 Luna | `gpt-6-luna` | 目标明确、可重复的大批量任务 | 350–3,000 | 2.5 / 0.25 / 12.5 | 2.5 倍 / 2 倍 | 表中没有 |
+
+同一页上 GPT-6.1 Sol 的 5 小时估算仍是 15–160，credits 与 GPT-6.2 Sol 相同，是 50 / 2.5 / 250。Fast 它和 Terra 在一行。不要把「GPT-6.1 Sol」和「GPT-6.2 Sol」看成同一个默认模型。
+
+Terra 的三列 credits 都是 GPT-6.2 Sol 的一半。GPT-6.2 Astra 的输入是 200 credits，Terra 是 25。Luna 更便宜，Models 把它留给抽取、分类、格式已经清楚的任务。
+
+Pricing 的美元脚注只写了 GPT-6.2 Astra（每百万 token 输入 8 美元、缓存输入 0.40 美元、输出 40 美元）和 GPT-6.2 Sol（2、0.10、10 美元）。脚注没有写 Terra 的美元单价。用 API Key 时，Pricing 写按 [API pricing](https://developers.openai.com/api/docs/pricing) 计费。本文不再沿用 2026-10 那篇里的 Terra 美元单价。
+
+本地消息和云端任务共用套餐额度，还可能有每周限制。Pro 目前没有 5 小时限制。Enterprise / Edu 如果是灵活定价，没有固定速率，按 credits 计。这些句子都在 Pricing 的用量表脚注里。完整算法和「觉得被多扣」的查法在 [用量额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。10/29 和 10/08 里 Fast、Ultrafast 和 credits 的对应行，与上表是同一页来源。
+
+## 哪些套餐和入口能用
+
+Pricing 的 Feature availability：
+
+> GPT-6.1 Terra is available in Work and Codex on Plus, Pro, Business, Enterprise, and Edu plans. It does not support UAE inference residency. It isn't available in Chat. Access requires the corresponding surface; Enterprise access also depends on workspace availability and administrator controls.
+
+因此：
+
+| 项目 | 2026-11-22 的写法 |
 |---|---|
 | 套餐 | Plus、Pro、Business、Enterprise、Edu |
-| 可用的地方 | ChatGPT Work 和 Codex；**Chat 里没有** |
-| 桌面端 / Work 网页版 | 在 **Advanced** 的模型列表里选 GPT-6.1 Terra |
-| 手机 | Work 支持在手机上用 Terra |
-| Codex CLI | 需要 0.159.0 或更高版本 |
-| IDE 扩展 | Models 页的入口清单里**没有列出**（Sol、Luna 都列了） |
-| Enterprise | 取决于工作区是否开放和管理员设置 |
+| Chat | 不可用 |
+| Work 和 Codex | 可用，而且要有对应入口的权限 |
 | 数据驻留 | 不支持阿联酋（UAE）推理驻留 |
+| Enterprise | 取决于工作区是否提供，以及管理员控制 |
 
-有一处官方说法不一致：发布文写的是「Plus、Pro、Enterprise 和 Edu」，没有提 Business；Changelog 和 Pricing 页都写了 Business。本文按 Changelog 和 Pricing 写。你的账号能不能用，以模型菜单里有没有 GPT-6.1 Terra 为准。
+GPT-6.2 Astra 和 Sol 在 Enterprise、Edu 是另一句：默认关闭，管理员要在工作区模型设置里打开。Terra 这段没有写「默认关闭」。找不到 Terra 时仍要问管理员，但不要把 GPT-6.2 的默认关闭原句套到 Terra 上。
 
-Enterprise 和 Edu 用户在菜单里找不到 Terra，先问管理员，不要在配置里硬写一个菜单里没有的模型名。
+Models 详情卡片给 Terra 标了这些入口：桌面端的 Work 和 Codex、ChatGPT Work 网页版、Codex CLI、ChatGPT Credits、API。卡片上没有 Codex IDE extension。同一页的 GPT-6.1 Sol 和 GPT-6 Luna 有这一行。
 
-## 怎么切换到 Terra
+CLI 的版本门槛仍在 Models 页：GPT-6.1 Terra requires Codex CLI 0.159.0 or later，命令是 `codex -m gpt-6.1-terra`。
 
-### 桌面端和 Work 网页版
+## 怎么切换
 
-在输入框下方的模型控件里打开 **Advanced**，从模型列表里选 **GPT-6.1 Terra**。官方 Models 页说明，桌面端默认显示的是几档 Power 预设，具体模型要在 Advanced 里选。
+### 桌面端和 Work
+
+Models 页写：在 ChatGPT 桌面应用的 Work 或 Codex 里，用输入框下方的模型和推理控件选择可用模型，并调整推理强度。如果看到 Power 滑杆，打开 **Advanced** 再选具体模型。页面举的例子是 GPT-6.2 Astra，不是 Terra 的按钮截图。本文没有桌面应用，没有看到 Terra 在当前菜单里的位置。选得到 GPT-6.1 Terra 再用；选不到就停在套餐、入口和管理员这三件事上。
 
 ### Codex CLI
 
-先确认版本不低于 0.159.0：
+2026-11-22 的版本是 `codex-cli 0.171.0`。未登录、`--sandbox read-only`、`--ephemeral` 时：
 
 ```bash
-codex --version
+codex exec --skip-git-repo-check --sandbox read-only -m gpt-6.1-terra "Reply with the single word ok"
 ```
 
-版本太旧就升级：
-
-```bash
-npm install -g @openai/codex@latest
-```
-
-启动时指定模型：
-
-```bash
-codex -m gpt-6.1-terra
-```
-
-已经在会话里，就输入 `/model`，选 GPT-6.1 Terra，再选推理强度。
-
-非交互运行也一样：
-
-```bash
-codex exec -m gpt-6.1-terra "根据 docs/changelog.md 写一段面向用户的更新说明，只用文件里已有的信息"
-```
-
-下面是测试机上 `codex exec -m gpt-6.1-terra` 的实际启动输出（Codex 0.164.0，**未登录**，会话 ID 已省略）。可以看到模型和推理强度都按参数生效了：
+启动摘要里有：
 
 ```text
-OpenAI Codex v0.164.0
---------
+OpenAI Codex v0.171.0
 model: gpt-6.1-terra
 provider: openai
 approval: never
 sandbox: read-only
-reasoning effort: medium
---------
-warning: Model metadata for `gpt-6.1-terra` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.
+reasoning effort: none
 ```
 
-后面是 401 未认证的重连报错，因为测试机没有登录。那条 `Model metadata ... not found` 警告的意思是：CLI 本地没有这个模型的元数据，只能用默认值。测试机没登录，拿不到线上的模型列表，所以出现这条警告；登录后会不会出现，我们在测试机上没法确认。如果你登录后也看到它，先把 CLI 升到最新版再试。
+随后请求因未登录失败，HTTPS 回退的状态是 `401 Unauthorized`。没有模型回复。`approval: never` 和 `sandbox: read-only` 来自这次 `codex exec` 和 `--sandbox`，不是 Terra 自己的权限。`reasoning effort: none` 也只是这次未登录摘要，不能当成登录后的默认推理档。Models 页写 GPT-6.2 从客户端当前档起步；Terra 的档位以 `/model` 里看得到的为准。本文没有打开交互会话，没有执行 `/model`。
+
+同一环境下不写 `-m`，摘要里的模型是 `gpt-6.2-sol`。把 `-m` 换成一个不存在的 id 时，才会出现 `Model metadata for ... not found`。`gpt-6.1-terra` 这次没有这句警告。2026-10-27 在 0.164.0 上，未登录的 Terra 曾经打出过这句警告；0.171.0 的这次运行没有。那次警告不再当作当前行为。
+
+交互会话里，Models 页写用 `/model` 切换模型或推理强度。非交互的官方例子是 `codex exec -m gpt-6.2-sol`。Terra 把模型 id 换成 `gpt-6.1-terra` 即可。
 
 ### 写进配置
 
-想让新会话默认用 Terra，在 `~/.codex/config.toml` 里写：
+桌面端、CLI 和 IDE 扩展读同一份 `config.toml`。只想让新的 CLI 或桌面 Codex 会话默认用 Terra：
 
 ```toml
 model = "gpt-6.1-terra"
-model_reasoning_effort = "medium"
 ```
 
-桌面端、CLI 和 IDE 扩展读同一份 `config.toml`。注意 IDE 扩展的模型清单里官方没有列 Terra，如果你主要在 IDE 里用 Codex，默认模型写 Terra 前先确认扩展菜单里能选到它。
+Models 页的配置示例把 `model = "gpt-6.2-sol"` 标成给 app 或 CLI。如果这份文件还要给 IDE 扩展用，页面要求改选每个客户端都能用的模型，举例是 `gpt-6.1-sol`。Terra 的详情卡片没有 IDE 扩展。主要在 IDE 里工作时，不要把默认模型写成一个菜单里没有的 id。
 
-`model_reasoning_effort` 可以写的档位取决于模型和客户端。API 文档给 Terra 列出的推理强度是 `none`、`low`、`medium`（默认）、`high`、`xhigh` 和 `max`；Codex 客户端里实际能选哪几档，以 `/model` 里显示的为准。
+## 什么时候选 Terra，什么时候留在默认的 Sol
 
-## 额度和 credits：和 Sol、Luna、Astra 对比
+留在 **GPT-6.2 Sol**：改代码、审日常 diff、把几份材料收成计划。这是 Models 给 Sol 的范围，也是 0.171.0 的默认选择。跨服务排错、要按模板交付的难题，换 **GPT-6.2 Astra**，条件见 [GPT-6.2 一文](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
 
-### 套餐内额度
+改用 **GPT-6.1 Terra** 的情况，按 Models 页：
 
-Pricing 页给出的 Plus 和标准 Business 每 5 小时本地消息估算：
+- 根据已有材料写清楚：方案、说明、给特定读者的文字。
+- 看截图、图表、屏幕，并标出看不清的数字。Models 的例子是让它总结仪表盘截图，引用标签和数值，看不清就直说。
+- 在已经配好的浏览器或电脑操作里，完成目标明确的填表、录入。先看 [浏览器](https://learn.chatgpt.com/docs/browser) 和 [Computer Use](https://learn.chatgpt.com/docs/computer-use) 的前提。本站的操作边界在 [使用 Computer Use 操作桌面应用](../12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用.md)。
 
-| 模型 | Plus / 标准 Business（每 5 小时） |
-|---|---:|
-| GPT-6 Astra | 5–45 |
-| GPT-6.1 Sol | 15–160 |
-| **GPT-6.1 Terra** | **35–285** |
-| GPT-6 Sol | 15–150 |
-| GPT-6 Luna | 350–3,000 |
+范围很小、有测试能核对的代码修复，可以用 Terra 试一次。连续过不了测试，或改动已经跨出单个函数，回到默认的 GPT-6.2 Sol，而不是继续加长提示。
 
-这是估算区间，不是固定上限。本地消息和云端任务共用套餐额度，还可能有每周限制。剩余额度看用量面板或 CLI 的 `/status`。Pricing 页也写明，Terra 上线后 Work 和 Codex 的整体套餐限额没有变，只是同样的额度用 Terra 能做更多事。
-
-Codex 团队的 Tibo（@thsottiaux）在 [X 上的说法](https://x.com/thsottiaux/status/2114800277677092936) 是 Terra 在 API 和订阅里的用量是 GPT-6.1 Sol 的 2 倍。这和下面 credits 单价减半的数字一致；Pricing 页的消息条数区间是另一种估算方式，两者不完全对应。
-
-### credits 单价
-
-Standard 速度下，每 100 万 token 的 credits：
-
-| 模型 | 输入 | 缓存输入 | 输出 |
-|---|---:|---:|---:|
-| GPT-6 Astra | 250 | 25 | 1,250 |
-| GPT-6.1 Sol | 50 | 2.5 | 250 |
-| **GPT-6.1 Terra** | **25** | **1.25** | **125** |
-| GPT-6 Luna | 2.5 | 0.25 | 12.5 |
-| GPT-5.6 Terra | 50 | 5 | 300 |
-
-Terra 的输入和输出单价都是 GPT-6.1 Sol 的一半，Astra 的十分之一。Luna 更便宜，但能力明显弱一档，适合格式已经写死的批量工作。
-
-用 API Key 登录的 Codex 按 API 价格计费：Terra 每百万 token 输入 1 美元、缓存输入 0.05 美元、输出 5 美元，上下文窗口 1,050,000 token，最大输出 128,000 token。
-
-### 速度档
-
-- **Fast** 支持 Terra。套餐内用量按 Standard 的 2.5 倍计，已购 credits 和企业按量计费按 2 倍计。
-- **Ultrafast** 只支持 GPT-6 Astra 和 GPT-6.1 Sol，**不支持 Terra**。
-
-Terra 本身已经比 Sol 快（发布文说在 Agents' Last Exam 上完成任务的速度是 GPT-6 Astra 和 GPT-6.1 Sol 的三倍多），大多数时候不需要再开 Fast。
-
-## 什么任务交给 Terra
-
-官方 [Model selection](https://learn.chatgpt.com/docs/model-selection) 页建议在这三类任务上试 Terra：
-
-1. **根据给定材料写简洁的文字**：更新说明、PR 描述、方案初稿、邮件。
-2. **目标明确的电脑操作**：用 [Computer Use](https://codexguide.io/guides/codex-computer-use-desktop-apps) 或浏览器在应用里填表、录入、整理信息。
-3. **范围明确的代码修复**：一个函数的 bug、一处样式问题，并且有回归测试能验证。
-
-前提是给它清楚的输入、要求和验证方法，比如「改完跑 `npm test`」「保存后检查表格里的记录」。
-
-下面几个提示词可以直接改了用：
+下面这条只复述 Models 页的例子，不是本文跑出来的结果：
 
 ```text
-根据 docs/release-notes-draft.md 和最近 10 个提交，写一段面向用户的更新说明。
-只写文件和提交里已有的信息，不确定的地方标出来，不要补充。
+Review these dashboard screenshots and summarize the main changes.
+Refer to the chart labels and values, and flag anything you can't read confidently.
 ```
 
-```text
-看 screenshots/ 目录里的三张仪表盘截图，总结主要变化。
-引用图表标签和数值；看不清的数字直接说看不清，不要猜。
-```
-
-```text
-修复 src/utils/date.ts 里 formatRange 在跨年时显示错误的问题。
-只改这个函数和它的测试，改完运行 npm test -- date，报告实际结果。
-```
-
-### 什么时候换回 Sol 或 Astra
-
-- Terra 连续两轮没有通过测试，或者改动开始波及多个模块。
-- 任务需要先读懂大量代码再定方案。
-- 你发现自己在反复补充约束，Terra 还是理解偏。
-
-这时直接换 GPT-6.1 Sol，比继续给 Terra 加推理强度更省事。发布文里的一组数字可以参考：Terminal-Bench 4.0 上，Terra 在最高推理强度下解决了 50.3% 的任务，是 GPT-5.6 Terra（21.5%）的两倍多，但官方仍然把最复杂的编程任务留给 Sol 和 Astra。
-
-## 用同一个任务对比 Terra 和 Sol
-
-官方建议的做法是：**同样的输入、同样的推理强度**，分别让 Terra 和 GPT-6.1 Sol 跑一次，再看结果。
-
-1. 挑一个你做过、结果能验证的任务。
-2. CLI 里可以这样分别跑：
-
-   ```bash
-   codex exec -m gpt-6.1-terra -c model_reasoning_effort='"medium"' "同一段提示词"
-   codex exec -m gpt-6.1-sol   -c model_reasoning_effort='"medium"' "同一段提示词"
-   ```
-
-3. 写作类任务，除了准确和长度，还要看是否适合读者、语气对不对、有没有有用的细节。
-4. 电脑操作类任务，检查实际保存的结果，以及它报告的完成情况是否属实。
-5. 记下用了多少额度（`/status`）、花了多久、你自己改了多少。
-
-如果 Terra 在这类任务上稳定达标，就把它设成这类任务的默认模型。
-
-## 常见问题
-
-### 模型菜单里没有 GPT-6.1 Terra
-
-按顺序检查：
-
-1. 套餐是不是 Plus、Pro、Business、Enterprise 或 Edu。
-2. 你是不是在 Chat 里找。Terra 只在 Work 和 Codex 里。
-3. 桌面端要打开 **Advanced** 才能看到具体模型。
-4. Enterprise / Edu：问管理员工作区有没有开放。
-5. CLI：`codex --version` 是否低于 0.159.0。
-
-### CLI 提示模型不存在或请求失败
-
-先升级 CLI，再用 `/model` 看列表里有没有 Terra。账号里没有这个模型时，在配置里写 `gpt-6.1-terra` 也用不了。
-
-### 用 API Key 登录能用吗
-
-API 已经提供 `gpt-6.1-terra`。用 API Key 登录的 Codex，模型是否可用取决于你的 API 组织和项目。
-
-## 相关阅读
-
-- [Codex 模型怎么选：GPT-6.1 Sol、Terra、Luna、Astra 和推理强度](01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
-- [Codex 与 Claude Code 怎么选](02-Codex与其他编程模型比较.md)
-- [Codex 使用 Computer Use 操作桌面应用](../12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用.md)
+Fast 会把 Terra 的套餐内含用量按 2.5 倍计。Terra 的 credits 已经是 Sol 的一半；要不要再开 Fast，先看 [用量额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md) 里的倍率，而不是假设「快」不额外扣额度。
 
 ## 参考资料
 
-- [Changelog - OpenAI Codex](https://learn.chatgpt.com/docs/changelog)
-- [Models - OpenAI Codex](https://learn.chatgpt.com/docs/models)
-- [Model selection - OpenAI](https://learn.chatgpt.com/docs/model-selection)
-- [Pricing - OpenAI Codex](https://learn.chatgpt.com/docs/pricing)
-- [Speed - OpenAI Codex](https://learn.chatgpt.com/docs/agent-configuration/speed)
-- [GPT-6.1 Terra - OpenAI API](https://developers.openai.com/api/docs/models/gpt-6.1-terra)
-- [Introducing GPT-6.1 Terra - OpenAI](https://openai.com/index/introducing-gpt-6-1-terra/)
-
-想继续系统学习 Codex，可以访问 [CodexGuide 教程网站](https://codexguide.io)。
+- [Models](https://learn.chatgpt.com/docs/models)
+- [Pricing](https://learn.chatgpt.com/docs/pricing)
+- [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)
+- [rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)
+- [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)（`model` 写在同一份 `config.toml`）

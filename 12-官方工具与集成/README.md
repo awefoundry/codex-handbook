@@ -44,3 +44,5 @@
 - [Codex CLI 0.170.0：终端实时语音用上 WebRTC，同名 MCP 可按环境分开，Cloud 断线会自动重连](./29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)
 - [Codex CLI 0.171.0：GPT-6.2 Sol 成为默认模型，终端工作区默认开启，codex exec 也能用 --remote 连已有 app server](./30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)
 - [Codex 远程终端：在服务器上跑 codex app-server，本机用 codex --remote 连接，0.171 起 codex exec 也能接上](./31-Codex远程终端-app-server-listen与codex-remote连接.md)
+- [Codex 接入 Linear：把 issue 指派给 Codex、在评论里 @Codex，用 Triage 规则自动分配，本地再接 Linear MCP](./32-Codex接入Linear-指派issue-评论提及Codex与Triage规则自动分配.md)（按官方文档整理。Linear 集成仍走计划弃用的 Codex Cloud（Legacy）。没有 Linear 工作区，没有配图）
+- [Codex 在 Slack 里怎么用：@Codex 换成 @ChatGPT，仓库任务交给 Codex Cloud，共享环境、审批卡片和跟进怎么处理](./33-Codex在Slack里委派仓库任务-提及ChatGPT交给Codex-Cloud与共享环境.md)（按官方文档整理。只认已发布并共享的 Cloud 环境。没有 Slack 工作区，没有配图）

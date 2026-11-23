@@ -43,3 +43,4 @@
 - [Codex 安装 Floorplan 插件：让 Codex 把整个代码库画成可点击的架构地图，还能做密钥与权限健康检查](./24-Codex安装Floorplan插件-把代码库画成可点击的架构地图并做健康检查.md)（第三方项目 haydenschmitty/floorplan，MIT。Codex CLI 0.169.0 上未登录安装了 0.11.0，没有打开地图界面）
 - [Codex 安装 Stop That Shit（别再造史了）：用 Skill 和 Hook 拦住 Codex 的范围膨胀、无用防御和越权修改](./25-Codex安装Stop-That-Shit-用Skill和Hook拦住范围膨胀与无用防御.md)（第三方项目 lennney/stop-that-shit，MIT，固定 tag 0.2.5。未登录核对了 Hook 清单，没有打开 /hooks 信任界面）
 - [Codex 安装 Obsidian 官方 Skills：让 Codex 读写 Markdown、Bases 和 Canvas，还能调用 Obsidian CLI](./26-Codex安装Obsidian官方Skills-Markdown-Bases-Canvas与Obsidian-CLI.md)（Obsidian 维护的 obsidian-skills，MIT。CLI 0.169.1 上装过插件，没有在 Obsidian 里改过库）
+- [Codex 安装 graphify：把代码库变成可查询的知识图谱，用 $graphify 建图，再用 query、path、explain 代替 grep](./27-Codex安装graphify-把代码库变成可查询的知识图谱.md)（第三方项目 Graphify-Labs/graphify，Apache-2.0，PyPI 包名 graphifyy。Linux 上装了 0.9.115，并对一个小例子建过图。没有打开 Codex 会话）

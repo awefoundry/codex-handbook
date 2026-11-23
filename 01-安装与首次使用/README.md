@@ -19,7 +19,7 @@
 | 5 | [Windows 和 WSL 安装 Codex CLI：签名 PowerShell 安装脚本、npm 与 WSL2 怎么选](./05-Windows和WSL安装Codex-CLI.md) | 已上线 |
 | 6 | [VS Code、Cursor 和 Windsurf 安装 Codex：核对官方扩展 openai.chatgpt、登录与首次设置](./06-VS-Code和兼容编辑器安装Codex.md) | 已上线 |
 | 7 | [登录 Codex：ChatGPT 账号、API Key、Sign in another way 与凭据存储方式](./07-登录Codex.md) | 已上线 |
-| 8 | [打开第一个本地项目](./08-打开第一个本地项目.md) | 已上线 |
+| 8 | [第 3 课：Codex 打开第一个本地项目，在 App、CLI 或 IDE 里选对练习目录，用一条只读提示确认两个文件](./08-打开第一个本地项目.md) | 已上线 |
 | 9 | [完成第一次修改并检查结果](./09-完成第一次修改并检查结果.md) | 已上线 |
 
 ## 扩展路线
