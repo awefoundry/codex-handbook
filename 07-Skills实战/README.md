@@ -22,3 +22,4 @@
 - [Codex 用 Record & Replay 录制可复用 Skill：官方入口、录制步骤和 macOS 前提](./05-Codex用Record-and-Replay生成可复用Skill.md)
 - [Codex 安装 Hallmark 设计 Skill：50 套主题加浏览器检查，让页面少点 AI 模板味](./08-Codex安装Hallmark设计Skill-让页面少点AI模板味.md)（第三方项目 Nutlope/hallmark，Together AI 维护，不是 OpenAI 官方 Skill）
 - [Codex 安装 Modern Web Guidance 插件：Chrome 团队出品，让 Codex 写前端时用现代 Web API，不再堆旧 JavaScript](./09-Codex安装Modern-Web-Guidance插件-让前端代码用现代Web-API.md)
+- [Codex 自定义提示词已弃用：把 ~/.codex/prompts 里的 /prompts 斜杠命令迁移成 Skills](./10-Codex自定义提示词已弃用-把prompts斜杠命令迁移成Skills.md)

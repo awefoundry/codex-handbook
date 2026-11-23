@@ -17,7 +17,7 @@
 3. [Codex 能做什么和不能做什么：能力边界、使用条件与验证方法](./03-Codex能做什么和不能做什么.md)
 4. [Chat、ChatGPT Work 和 Codex 怎么选：加上 dot、跨设备继续 Work 任务和 ChatGPT Space，哪些任务交给谁](./04-Chat-Work和Codex怎么选.md)
 5. [Codex App、CLI、IDE 和 Cloud 怎么选：CLI 现在能在终端连 Cloud、开终端工作区，可复用 Cloud 环境怎么影响选择](./05-App-CLI-IDE和Cloud怎么选.md)
-6. [第一次使用 Codex 前要准备什么：账号、项目、Git、权限和验收清单](./06-第一次使用前要准备什么.md)
+6. [第 1 课：Codex 第一次使用前要准备什么，选定 App、CLI 或 IDE 一个入口并准备练习目录](./06-第一次使用前要准备什么.md)
 7. [完成第一个真实任务：从任务描述到验证提交的完整闭环](./07-完成第一个真实任务.md)
 8. [Codex 新手常见误区：哪些做法最容易让任务失控](./08-Codex新手常见误区.md)
 

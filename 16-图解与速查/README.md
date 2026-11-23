@@ -19,3 +19,4 @@
 - [Codex config.toml 常用字段与环境变量速查（0.165.0）](./02-Codex-config.toml常用字段与环境变量速查.md)
 - [Codex CLI 终端界面设置速查：补上折叠轮次细节、tmux 里的图片预览和 osc777 通知](./03-Codex-CLI终端界面设置速查-主题补全编辑器状态栏与改键.md)
 - [Codex 术语表：官方 111 个术语中英对照，按用途分组并附对应中文教程](./04-Codex术语表-官方术语中英对照与对应教程.md)
+- [Codex IDE 扩展设置速查：chatgpt.* 编辑器设置、命令快捷键绑定，和 config.toml 各管什么](./05-Codex-IDE扩展设置速查-编辑器设置-命令快捷键与config.toml分工.md)
