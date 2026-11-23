@@ -40,3 +40,5 @@
 - [Codex 常驻 Agent 怎么上锁：照 OpenAI 内部 OpenClaw 部署配 requirements.toml、权限 profile 与 Auto-review](./27-Codex常驻Agent安全加固-照OpenAI的OpenClaw部署配requirements.toml与权限profile.md)
 - [Codex 内置浏览器企业策略：用 MDM 下发 Chrome 策略，Windows、macOS、Linux 三种位置与 chrome://policy 核对](./28-Codex内置浏览器企业策略-用MDM下发Chrome策略并在chrome-policy核对.md)
 - [Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)
+- [Codex 沙箱怎么工作：拆解 OpenAI 官方《Inside the Codex sandbox》，:workspace 权限 profile 默认放行什么、拦住什么，三个系统分别怎么执行](./30-Codex沙箱怎么工作-拆解OpenAI官方文章-workspace权限profile与三系统实现.md)
+- [Codex sandbox 命令：用权限 profile 在沙箱里试跑任意命令，验证 profile 拦不拦得住，并给 MCP 服务器套上沙箱](./31-Codex-sandbox命令-用权限profile测试脚本和MCP服务器的沙箱.md)
