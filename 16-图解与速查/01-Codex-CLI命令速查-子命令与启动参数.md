@@ -317,7 +317,7 @@ $ codex sandbox -- touch /etc/zz_codex_test
 touch: cannot touch '/etc/zz_codex_test': Read-only file system
 ```
 
-`sandbox` 还有子命令 `uninstall`，帮助写的是移除旧版 Windows 沙箱的机器级账号和网络规则。本文在 Linux 上没有运行它。升级和卸载见 [Codex 更新与卸载](../01-安装与首次使用/12-Codex更新与卸载.md)。
+`sandbox` 还有子命令 `uninstall`，帮助写的是移除旧版 Windows 沙箱的机器级账号和网络规则。本文在 Linux 上没有运行它。0.171.0 上怎么用 `-P` 验证权限 profile，见 [Codex sandbox 命令](../10-配置模型与权限安全/31-Codex-sandbox命令-用权限profile测试脚本和MCP服务器的沙箱.md)。升级和卸载见 [Codex 更新与卸载](../01-安装与首次使用/12-Codex更新与卸载.md)。
 
 ## 会话管理
 

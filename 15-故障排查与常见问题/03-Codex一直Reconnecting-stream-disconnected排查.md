@@ -1,9 +1,9 @@
 ---
 id: reconnecting-network-troubleshooting
-title: Codex 一直显示 Reconnecting 怎么办：0.170 起过大的 WebSocket 会立刻回退 HTTP，Cloud 会话会自动重连并保留恢复中的回合
-seo_title: Codex Reconnecting：0.170 的 WebSocket 回退与 Cloud 重连
-description: Codex 回复前反复出现 Reconnecting，或报 stream disconnected，多数和网络、代理、证书或 WebSocket 有关。本文按 0.170.0 的官方发布说明补上：过大的 WebSocket 会立刻回退 HTTP，Cloud 会话断线会自动重连并保留正在恢复的回合，并给出从 Status 到本机网络的排查顺序。
-lede: 先分清是服务端、本机网络，还是证书。0.170.0 只把过大的 WebSocket 立刻改走 HTTP；Cloud 会话另有自动重连。
+title: Codex 一直显示 Reconnecting 怎么办：大请求先回退 HTTP 再重试，WebSocket 大小上限已提到 128 MB，Cloud 会话会自动重连
+seo_title: Codex Reconnecting：WebSocket 128 MB 上限与回退 HTTP
+description: Codex 反复显示 Reconnecting 或 stream disconnected 时按顺序排查：先看服务状态，再查网络、代理和证书。并说明 WebSocket 大小上限提到 128 MB、超限回退 HTTP 的含义，以及 Cloud 会话的自动重连。
+lede: 先分清是服务端、本机网络，还是证书。WebSocket 大小上限已提到 128 MB；超限会回退 HTTP。这不代替 Status、代理和证书。
 url: /guides/codex-reconnecting-network-troubleshooting
 status: published
 section: guides
@@ -17,15 +17,15 @@ order: 3
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-11-19
-verified_on: 2026-11-19
+date_modified: 2026-11-21
+verified_on: 2026-11-21
 tested_cli_version: 0.170.0
 official_ref: https://learn.chatgpt.com/docs/reference/troubleshooting
-keywords: [Codex Reconnecting, Codex stream disconnected, Codex WebSocket 回退, Codex Cloud 重连, 0.170.0]
-related: [codex-doctor, cloud-environments, codex-cli-0-169-side-chat-cloud-connection, desktop-crashpad-disk-space, model-at-capacity-usage-reset]
+keywords: [Codex Reconnecting, Codex WebSocket 128 MB, Codex 回退 HTTP, stream disconnected, x-codex-websocket-max-message-bytes]
+related: [codex-doctor, codex-cli-0-170-voice-mcp-reconnect, codex-custom-model-provider, cloud-environments, codex-cli-0-169-side-chat-cloud-connection, desktop-crashpad-disk-space, model-at-capacity-usage-reset]
 faq:
   - q: Reconnecting 1/5 到 5/5 是不是一定坏了？
-    a: 不一定。本文沿用的 Configuration Reference 里，自定义 provider 的 stream_max_retries 默认是 5，界面上的 x/5 与这个重试预算一致。0.170.0 的发布说明没有改这个默认值。它新增的是：过大的 WebSocket 请求立刻回退 HTTP，不再做多余重试。先看 Status，再看是不是最终走通了 HTTP。
+    a: 不一定。本文沿用的 Configuration Reference 里，自定义 provider 的 stream_max_retries 默认是 5，界面上的 x/5 与这个重试预算一致。0.170.0 的发布说明没有改这个默认值。过大的请求会改走 HTTP，不再把重试走满；2026-11-20 工程师说 WebSocket 大小上限已从 16 MB 提到 128 MB。短提示如果仍然数到 5/5，先看 Status、网络和证书。
   - q: 升到 0.170.0 之后 Cloud 断线还会丢回合吗？
     a: 发布说明写的是改进 Cloud 会话的自动重连，并在客户端重连时保留正在进行的恢复回合。#60969 的标题具体到空闲 Cloud 会话在短暂断流后重连。本文没有 Cloud 环境，没有拔网线复现。本机代理和证书问题不会因为这一条自动消失。
   - q: 公司网络做了 HTTPS 解密，应该设哪个证书变量？
@@ -34,21 +34,25 @@ faq:
     a: 不能。Configuration Reference 提供了自定义 provider 的 supports_websockets 字段；社区 issue 里有人用自定义 provider 并设 supports_websockets = false 强制走 HTTPS。这是社区验证过的配置写法，不是 OpenAI 发布的「官方推荐修复」。优先仍是 Status → 网络／代理 → 证书 → 升级客户端。
 ---
 
-# Codex 一直显示 Reconnecting 怎么办：0.170 起过大的 WebSocket 会立刻回退 HTTP，Cloud 会话会自动重连并保留恢复中的回合
+# Codex 一直显示 Reconnecting 怎么办：大请求先回退 HTTP 再重试，WebSocket 大小上限已提到 128 MB，Cloud 会话会自动重连
 
 > 本文在线版：[codexguide.io/guides/codex-reconnecting-network-troubleshooting](https://codexguide.io/guides/codex-reconnecting-network-troubleshooting)
 
-> 核对依据：2026-11-19 打开的 [Troubleshooting](https://learn.chatgpt.com/docs/reference/troubleshooting)。这一页仍然写桌面端和 CLI 可以携带不同的 Codex 版本，反馈仍是在输入框输入 `/`，日志路径也与下文第 7 节一致。这一页没有新增「过大 WebSocket 立刻回退」或「Cloud 自动重连」的段落，那两条只来自 [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0) 和 [更新日志](https://learn.chatgpt.com/codex/changelog) 2026-11-18。`stream_max_retries`、`supports_websockets` 和 `CODEX_CA_CERTIFICATE` 沿用本文 2026-10-22 对 Configuration Reference、Advanced Configuration、Environment variables 的阅读；0.170.0 的发布说明没有改这些默认值，本文这次没有把整份配置参考重读一遍。[status.openai.com](https://status.openai.com/) 当天可以打开。issue #18960、#13041、#14297、#3355 当天返回 HTTP 200，只作症状对照。文中「我的用法」是排查顺序建议，不是官方规定。**本环境没有国内代理、公司 CA、Cloud 环境和真机 Mac，也没有制造一次断线。** 2026-11-19 只核对了 Linux 上 `codex-cli 0.170.0` 的 `codex --version`。
+> 核对依据：2026-11-19 打开的 [Troubleshooting](https://learn.chatgpt.com/docs/reference/troubleshooting)，2026-11-21 再次返回 HTTP 200。这一页仍然写桌面端和 CLI 可以携带不同的 Codex 版本，反馈仍是在输入框输入 `/`，日志路径也与下文第 7 节一致。这一页没有「128 MB」或「Cloud 自动重连」的段落。0.170.0 的立刻回退来自 [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0)。上限数字来自 Charlie Marsh 2026-11-20 的串帖，见第 5 节；[#60841](https://github.com/openai/codex/pull/60841) 与 [#60840](https://github.com/openai/codex/pull/60840) 只证明客户端怎么读上限、怎么回退，不证明当前上限是 128 MB。[更新日志](https://learn.chatgpt.com/codex/changelog) 2026-11-21 已收录 11-20 的 CLI 0.171.0。`stream_max_retries`、`supports_websockets` 和 `CODEX_CA_CERTIFICATE` 沿用本文 2026-10-22 对 Configuration Reference、Advanced Configuration、Environment variables 的阅读；后来的发布说明没有改这些默认值，本文这次没有把整份配置参考重读一遍。[status.openai.com](https://status.openai.com/) 2026-11-21 可以打开。文中「我的用法」是排查顺序建议，不是官方规定。**本环境没有国内代理、公司 CA、Cloud 环境和真机 Mac，也没有制造一次断线，没有构造一条超限请求。** `tested_cli_version` 仍是 2026-11-19 核对过的 0.170.0。2026-11-21 另装了 `codex-cli 0.171.0`，只跑了 `codex --version`，没有复现 Reconnecting。
 
 发了一条提示，界面却在转：`Reconnecting... 2/5`，下面挂着 `stream disconnected before completion: websocket closed by server before response.completed`；有人会连到 `5/5`，再看到 `Falling back from WebSockets to HTTPS transport`。睡眠唤醒、换网或公司网关后，请求也可能直接失败。这些在 openai/codex [#18960](https://github.com/openai/codex/issues/18960)、[#13041](https://github.com/openai/codex/issues/13041)、[#14297](https://github.com/openai/codex/issues/14297)、[#3355](https://github.com/openai/codex/issues/3355) 里反复出现——**是社区症状，不是 OpenAI 正式故障公告**。
 
 本文只解决一件事：**按固定顺序排查**，避免一上来就改代理、换证书、或照搬未核实的第三方说法。
 
+## 先说结论：先分清服务端、本机网络还是证书
+
+128 MB 只解释「请求大到过了 WebSocket 上限」这一类。短提示反复 `Reconnecting`，仍然先看服务端，再看本机网络、代理和证书。Cloud 会话的自动重连是另一条路径，不要套到本机的 `x/5` 上。官方没有说明「要享受 128 MB 上限，需不需要升级客户端」。
+
 **推荐顺序（先读这一段）**：
 
 1. **Status**（服务端）→ 2. **本机网络／睡眠唤醒** → 3. **代理／TUN／系统代理** → 4. **公司 CA（`CODEX_CA_CERTIFICATE`）** → 5. **WebSocket 回退与自定义 provider** → 6. **客户端版本** → 7. **Feedback ID 与日志**。
 
-额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)》（id：`desktop-crashpad-disk-space`）。安装、登录和网络的自检命令见 [Codex doctor](./04-Codex-doctor自检-安装配置登录与网络排查.md)。Cloud 环境本身怎么创建，见 [Codex Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。0.169.0 起终端里的可选 Cloud 连接，见 [Codex CLI 0.169.0](../12-官方工具与集成/25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
+额度用完、模型容量不足是另一类问题，见《[容量不足与额度重置](./01-Codex模型容量不足与额度重置排查.md)》（id：`model-at-capacity-usage-reset`）。磁盘被 Crashpad 撑满见《[桌面端 Crashpad 磁盘](./02-Codex桌面端占满磁盘-Crashpad崩溃转储排查与清理.md)》（id：`desktop-crashpad-disk-space`）。安装、登录和网络的自检命令见 [Codex doctor](./04-Codex-doctor自检-安装配置登录与网络排查.md)。自定义 provider 和 `openai_base_url` 见 [自定义模型提供商](../10-配置模型与权限安全/11-Codex自定义模型提供商-model_providers与openai_base_url.md)。Cloud 环境本身怎么创建，见 [Codex Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。0.170.0 里和重连写在一起的发布说明，见 [Codex CLI 0.170.0](../12-官方工具与集成/29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)。0.169.0 起终端里的可选 Cloud 连接，见 [Codex CLI 0.169.0](../12-官方工具与集成/25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。
 
 ## 先看懂报错：三句话分别是什么意思
 
@@ -170,21 +174,36 @@ tail -F ./.codex-log/codex-tui.log
 
 若 **HTTPS 也失败**，或回退前就反复丢回合，回到 Status／代理／证书，而不是只盯着 WebSocket。
 
-### 0.170.0：过大的 WebSocket 立刻走 HTTP
+### 上限由服务端在握手里声明，工程师说已经从 16 MB 提到 128 MB
 
-2026-11-18 的 Release 和更新日志写：
+先分清三层来源。不要把它们写成同一句话。
+
+**发布说明里有的。** 2026-11-18 的 [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0) 写：
 
 > Oversized WebSocket requests now fall back to HTTP without unnecessary retries. (#60840, #60841)
 
-#60840 的标题是 “Fall back to HTTP immediately for oversized WebSocket requests”，#60841 的标题是 “Honor advertised WebSocket message size limits”。
+对象是过大的 WebSocket 请求，不是每一次 `Reconnecting`。回退发生在多余重试之前。发布说明没有写字节数，也没有改 `stream_max_retries` 的默认 5。
 
-读的时候只取这三层意思：
+**代码能证明的。** [#60841](https://github.com/openai/codex/pull/60841) 于 2026-11-11T18:59:28Z 合并，标题是 “Honor advertised WebSocket message size limits”。正文写：从握手响应里读取 `x-codex-websocket-max-message-bytes`，在发送前检查序列化请求的字节长度；超过服务器声明的上限，就走已有的 HTTP 回退，而不先把这条过大的消息上传上去。缺了这个头，或者头无效，就忽略。这只证明客户端会读**服务器在握手里声明的那个数**。它没有把这个数写成 16 MB 或 128 MB。
 
-- 对象是 **过大的** WebSocket 请求，不是每一次 `Reconnecting`。
-- 回退发生在多余重试之前。发布说明用了 “immediately” 的提交标题，和 “without unnecessary retries” 的正文。
-- 发布说明没有写出字节阈值，也没有写 `stream_max_retries` 从 5 改成别的数。上面表格里的默认 5 仍按 2026-10-22 读到的 Configuration Reference 保留。
+[#60840](https://github.com/openai/codex/pull/60840) 于 2026-11-11T18:58:52Z 合并，标题是 “Fall back to HTTP immediately for oversized WebSocket requests”。正文写：在任何文本帧到达之前就收到关闭码 `1009`，表示请求超过了对端的消息大小上限；再换一条 WebSocket 重试解决不了这个上限，于是直接换 HTTP，包括预热阶段。已经收到过文本帧之后的大小关闭，以及其他关闭码，仍按普通的流重试。
 
-所以：升到 0.170.0 之后，如果一条特别大的请求不再把 `1/5` 到 `5/5` 走满就出现 HTTP 回退，这和发布说明一致。如果短提示仍然数到 `5/5`，先回到 Status、代理和证书，不要把现象解释成「0.170 把重试次数改没了」。本文没有构造一条超限请求，没有看到回退日志。
+**工程师在串帖里说的。** OpenAI 的 Charlie Marsh（@charliermarsh）于 2026-11-20T18:44:03Z 发了[主帖](https://x.com/charliermarsh/status/2123849871480463669)。2026-11-21 打开该页，主帖公开计数是 1,009 赞、28 转发、12 引用、60 回复、146 收藏。展示数没有从页面里再核对。主帖原文是：Codex 用 WebSocket 发模型请求，以便随时间增量发送；WebSocket 大小上限已从 16 MB 提到 128 MB（8 倍），大回合从而避免回退 HTTP；如果请求仍然超过上限，现在大约快 5 倍。
+
+同一串帖里的后文，2026-11-21 从页面数据里读到的原话要点是：
+
+- 以前回合太大时，会先把请求的大部分经 WebSocket 上传，服务器才能以「太大」拒绝，然后客户端再重试。上传和重试都花时间，而这件事情本来就会失败。
+- 一旦因为大回合落回 HTTP，就停在 HTTP 上，失去增量发送，于是之后每次模型请求都要重新上传这个「大回合」。
+- 先把上限明显提高，整体 HTTP 回退率下降大约 20%。他注明分母包含所有回退原因，例如连接失败和超时，所以这是一个很大的比例。
+- 服务端现在会立刻告诉客户端「请求太大」，从而跳过那些无谓的上传再重试。对其他已知再回退 HTTP 也不会成功的 HTTP 状态码，也用了类似规则。
+- 这需要客户端和服务端两边的一些优化；净效果应是大回合明显更快、更省。
+- 他希望以后把 WebSocket 上限提到和 HTTP 一样的 1 GB。这是计划，不是已经生效的数字。
+
+串帖没有写从哪个客户端版本起生效，也没有回答「要不要升级客户端才能受益」。本文也不替他回答。能并排放的只有：上限的**数字**来自这篇串帖；上限**由握手响应头声明、超限则不先上传就回退 HTTP** 来自 #60841。串帖没有出现响应头的名字，所以不能把「128 MB 就是 `x-codex-websocket-max-message-bytes` 现在的值」写成已经证实的等式。它是对照之后的合理解读，不是发布说明里的句子。
+
+**还没进稳定版发布说明的后续改动。** [#62749](https://github.com/openai/codex/pull/62749) 于 2026-11-20T12:23:32Z 合并，[#62771](https://github.com/openai/codex/pull/62771) 于 2026-11-20T14:27:18Z 合并。两者都晚于 0.171.0 的发布时间 2026-11-20T00:44:47Z。#62749 处理的是上传写到一半失败时，仍能读到服务器的「消息过大」回复；#62771 是写入阻塞时也读取服务器消息。它们已经合进主干。本文不写它们进了哪个版本。
+
+所以：一条特别大的请求不再把 `1/5` 到 `5/5` 走满就出现 HTTP 回退，和 0.170.0 的发布说明一致。短提示仍然数到 `5/5`，先回到 Status、代理和证书，不要解释成「重试次数被改没了」或「还没升到能用 128 MB 的那一版」。本文没有构造一条超限请求，没有看到回退日志。关闭 WebSocket 仍然不是官方修复，见下一小节。
 
 ### 社区实践：自定义 provider 关闭 WebSocket（官方字段 + 社区用法）
 
@@ -225,13 +244,20 @@ supports_websockets = false
 
 终端里从 0.169.0 开始可以开可选的 Cloud 连接，步骤不在这篇重复，见 [Codex CLI 0.169.0](../12-官方工具与集成/25-Codex-CLI-0.169-侧边对话标签页任务搜索与终端Cloud连接.md)。环境、联网和密钥见 [Codex Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。本文没有 Cloud 环境，没有把一条恢复中的回合断开再接上。
 
-## 6. 客户端版本：先升到 0.170.0，再判断是不是旧客户端的重试
+## 6. 客户端版本：0.170 与 0.171 分别写了什么，128 MB 要不要升级没有官方答案
 
-官方 Troubleshooting 写明：ChatGPT 桌面端与 Codex CLI **可能携带不同的 Codex 版本**，功能与修复到达时间可能不一致。2026-11-19 重读这一页，这句话还在。
+官方 Troubleshooting 写明：ChatGPT 桌面端与 Codex CLI **可能携带不同的 Codex 版本**，功能与修复到达时间可能不一致。2026-11-21 这一页仍返回 HTTP 200；2026-11-19 读到的那句版本差异，本文没有逐字重读，不把它改写成已经消失。
 
-如果现象像「过大的请求把 WebSocket 重试走满」，先看两侧是不是还停在 0.170.0 之前。0.170.0 才会按发布说明立刻把这类请求改走 HTTP。版本已经是 `codex-cli 0.170.0`、短提示仍然数满 `5/5`，再回到第 1 到第 4 节，那更像网络、代理或证书，而不是「还没装上这个修复」。
+和这条排障直接相关的稳定版说明是：
 
-怎么钉住 0.170.0，见 [Codex CLI 0.170.0](../12-官方工具与集成/29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)。`codex update` 的帮助写的是更新到最新版。本文 2026-11-19 在 Linux 上用 npm 安装后，`codex --version` 为 `codex-cli 0.170.0`。没有在这台机器上复现 Reconnecting。
+- **0.170.0**（2026-11-18）：过大的 WebSocket 请求立刻回退 HTTP（#60840、#60841）；Cloud 会话改进自动重连，并在客户端重连时保留正在恢复的回合。同名 MCP 可跨环境使用是实验性的，见 [Codex CLI 0.170.0](../12-官方工具与集成/29-Codex-CLI-0.170-TUI实时语音-同名MCP与Cloud重连.md)。
+- **0.171.0**（2026-11-20，发布时刻 2026-11-20T00:44:47Z）：[更新日志](https://learn.chatgpt.com/codex/changelog) 2026-11-21 已收录。和网络回退无关的条目里，有一条企业 MCP 登录修复：身份提供者只发 ID token、不发 refresh token 时也能登录（#62129）。它不改变本节的排查顺序。默认模型和终端工作区见 [Codex CLI 0.171.0](../12-官方工具与集成/30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)。
+
+如果现象像「过大的请求把 WebSocket 重试走满」，0.170.0 的发布说明已经把「立刻改走 HTTP」写进了这一版。版本早于 0.170.0 时，发布说明没有把这条行为算进去。版本已经是 0.170.0 或 0.171.0、短提示仍然数满 `5/5`，回到第 1 到第 4 节。那更像网络、代理或证书。
+
+128 MB 这一档不要用同样的句子。串帖说客户端和服务端都做了优化，但没有写最低版本，也没有回答要不要升级。#60841 能证明的是客户端会读取握手里的上限；0.170.0 的发布说明点名了这个 PR。上限数字本身是 2026-11-20 的服务端说明。官方没有说明只升级其中一侧够不够。#62749 和 #62771 已在主干，晚于 0.171.0 发布，不把它们算进 0.170.0 或 0.171.0。
+
+`codex update` 的帮助写的是更新到最新版。2026-11-21 查询，npm 的 `latest` 仍是 `0.171.0`（该版本发布时间 2026-11-20T00:51:29.762Z）。同一天还有 `0.173.0-alpha.4`，本文不采用 alpha。要钉住正式版，用 `npm install -g @openai/codex@0.171.0`。本文 2026-11-19 在 Linux 上核对过 `codex-cli 0.170.0`；2026-11-21 另装 0.171.0 后 `codex --version` 为 `codex-cli 0.171.0`。没有在这台机器上复现 Reconnecting。
 
 ```bash
 codex --version
@@ -264,10 +290,10 @@ macOS 上查看桌面端捆绑的 CLI（官方给出的兼容路径）：
 2. 刚睡眠／换网／切 VPN：等链路稳定，短提示重试；对照 [#3355](https://github.com/openai/codex/issues/3355)。  
 3. 分清代理形态（系统代理 vs TUN vs 仅终端变量）；同一时间只改一处；CLI 与桌面分开验证。  
 4. 公司 TLS：设 `CODEX_CA_CERTIFICATE`（优先）或 `SSL_CERT_FILE`，重启客户端。  
-5. 看是否出现 `Falling back from WebSockets to HTTPS`：回退成功 → 网络对 HTTPS 更友好。过大请求在 0.170.0 上会立刻走 HTTP；这不改变自定义 provider 上 `stream_max_retries` 的默认 5。社区自定义 provider + `supports_websockets = false` 仍须本机验证，不是官方推荐修复。  
+5. 看是否出现 `Falling back from WebSockets to HTTPS`：回退成功 → 网络对 HTTPS 更友好。过大请求从 0.170.0 的发布说明起会立刻走 HTTP。工程师于 2026-11-20 说上限已从 16 MB 提到 128 MB；这不改变自定义 provider 上 `stream_max_retries` 的默认 5，也没有官方句子说明必须先升级客户端。社区自定义 provider + `supports_websockets = false` 仍须本机验证，不是官方推荐修复。  
 6. Cloud 会话另看 0.170.0：短暂断流后的自动重连，以及重连时正在恢复的回合还在。本机 `x/5` 不要直接套这条。  
 7. 不要用 `[model_providers.openai]` 覆盖内置 provider；改 base URL 用 `openai_base_url`。  
-8. `codex --version` 与桌面捆绑版本对齐。要判断是不是旧客户端对过大 WebSocket 的多余重试，先升到 0.170.0。  
+8. `codex --version` 与桌面捆绑版本对齐。要判断是不是旧客户端对过大 WebSocket 的多余重试，发布说明从 0.170.0 写起。128 MB 是否还要再升一版，官方没有回答。  
 9. `/` 反馈拿到 ID；跟帖 issue 时只贴元数据与打码日志。
 
 ## 小结
@@ -275,7 +301,8 @@ macOS 上查看桌面端捆绑的 CLI（官方给出的兼容路径）：
 - `Reconnecting... x/5` 与本文沿用的默认 `stream_max_retries = 5` 一致，常常是流重试。0.170.0 没有在发布说明里改这个默认值。  
 - **先 Status，再本机网络，再代理，再公司 CA，再谈 WebSocket 与版本。**  
 - 证书：官方支持 `CODEX_CA_CERTIFICATE`／`SSL_CERT_FILE` 覆盖 HTTPS、登录与 WebSocket。  
-- 过大的 WebSocket 从 0.170.0 起立刻回退 HTTP，不再做多余重试。普通断线仍可能先重试再回退。  
+- 过大的 WebSocket 从 0.170.0 的发布说明起立刻回退 HTTP，不再做多余重试。普通断线仍可能先重试再回退。  
+- 2026-11-20 工程师说 WebSocket 上限已从 16 MB 提到 128 MB。#60841 证明客户端读取握手响应头 `x-codex-websocket-max-message-bytes`。两句话不要合成「发布说明写了 128 MB」。官方没有说明要不要升级客户端。  
 - Cloud 会话从 0.170.0 起改进自动重连，并在客户端重连时保留正在进行的恢复回合。  
 - 强制关 WS 属于**社区配置实践**（使用官方字段 `supports_websockets`），须本机验证。  
 - 官方公开环境变量页**未**把 SOCKS／HTTP 代理变量写成 Codex 专用项。未核实的「不支持某某协议」不要当成结论。  
@@ -285,10 +312,14 @@ macOS 上查看桌面端捆绑的 CLI（官方给出的兼容路径）：
 
 - [Troubleshooting（Feedback and logs；版本差异）](https://learn.chatgpt.com/docs/reference/troubleshooting)  
 - [rust-v0.170.0](https://github.com/openai/codex/releases/tag/rust-v0.170.0)  
-- [更新日志 2026-11-18](https://learn.chatgpt.com/codex/changelog)  
+- [rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)  
+- [更新日志](https://learn.chatgpt.com/codex/changelog)（2026-11-21 已收录 CLI 0.171.0）  
+- [Charlie Marsh 串帖](https://x.com/charliermarsh/status/2123849871480463669)（2026-11-20T18:44:03Z）  
+- [openai/codex#60841](https://github.com/openai/codex/pull/60841)、[#60840](https://github.com/openai/codex/pull/60840)  
+- [openai/codex#62749](https://github.com/openai/codex/pull/62749)、[#62771](https://github.com/openai/codex/pull/62771)（2026-11-20 合入主干，不归属到某个稳定版）  
 - [Environment variables（`CODEX_CA_CERTIFICATE`／`SSL_CERT_FILE`／`RUST_LOG`／`log_dir`）](https://learn.chatgpt.com/docs/config-file/environment-variables)  
 - [Configuration Reference／Advanced Configuration（`stream_max_retries`、`supports_websockets`、`openai_base_url`）](https://learn.chatgpt.com/docs/config-file/config-reference)  
 - [OpenAI Status](https://status.openai.com/)  
 - 社区症状（非官方手册）：[openai/codex#18960](https://github.com/openai/codex/issues/18960)、[#13041](https://github.com/openai/codex/issues/13041)、[#14297](https://github.com/openai/codex/issues/14297)、[#3355](https://github.com/openai/codex/issues/3355)
 
-2026-11-19 打开并读过正文的是 Troubleshooting、rust-v0.170.0 和更新日志。Environment variables 与 Configuration Reference 的链接仍指向 2026-10-22 写本文时用过的页面；这次没有重读整页，所以默认重试次数没有按新版本改写。#19821 当天页面可访问，讨论正文没有重读。
+2026-11-21 打开并读过的是 Charlie Marsh 串帖页面、#60841、#60840、#62749、#62771、rust-v0.171.0 和更新日志里的 0.171.0 条目。Troubleshooting 与 status.openai.com 当天返回 HTTP 200，没有逐段重读。Environment variables 与 Configuration Reference 的链接仍指向 2026-10-22 写本文时用过的页面；这次没有重读整页，所以默认重试次数没有按新版本改写。#19821 的讨论正文没有重读。串帖页面里的互动计数以当天嵌入数据为准，展示数未核对。

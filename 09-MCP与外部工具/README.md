@@ -14,7 +14,7 @@
 
 ## 已收入文章
 
-- [Codex MCP 入门：config.toml、/mcp login、Docs MCP 与权限边界](./01-Codex-MCP入门-config与mcp-login.md)
+- [Codex MCP 入门：config.toml、/mcp login、Docs MCP 与权限边界，补上 OAuth 客户端注册、远程环境、插件自带 MCP 和服务器 instructions](./01-Codex-MCP入门-config与mcp-login.md)
 - [Codex 常用 MCP 推荐：官方列出的 7 个 MCP 服务器怎么选](./02-Codex常用MCP服务器推荐-官方示例7个怎么选.md)
 - [Codex MCP 排障：服务器连不上、工具不显示、OAuth 登录失败](./03-Codex-MCP排障-连不上-没有工具与OAuth登录失败.md)
 - [Codex 代码智能 MCP 实测：Serena 和 codebase-memory-mcp 怎么装、怎么选](./04-Codex代码智能MCP-Serena与codebase-memory-mcp怎么装怎么选.md)
@@ -43,4 +43,5 @@
 - [Codex 安装 Floorplan 插件：让 Codex 把整个代码库画成可点击的架构地图，还能做密钥与权限健康检查](./24-Codex安装Floorplan插件-把代码库画成可点击的架构地图并做健康检查.md)（第三方项目 haydenschmitty/floorplan，MIT。Codex CLI 0.169.0 上未登录安装了 0.11.0，没有打开地图界面）
 - [Codex 安装 Stop That Shit（别再造史了）：用 Skill 和 Hook 拦住 Codex 的范围膨胀、无用防御和越权修改](./25-Codex安装Stop-That-Shit-用Skill和Hook拦住范围膨胀与无用防御.md)（第三方项目 lennney/stop-that-shit，MIT，固定 tag 0.2.5。未登录核对了 Hook 清单，没有打开 /hooks 信任界面）
 - [Codex 安装 Obsidian 官方 Skills：让 Codex 读写 Markdown、Bases 和 Canvas，还能调用 Obsidian CLI](./26-Codex安装Obsidian官方Skills-Markdown-Bases-Canvas与Obsidian-CLI.md)（Obsidian 维护的 obsidian-skills，MIT。CLI 0.169.1 上装过插件，没有在 Obsidian 里改过库）
+- [Codex 安装 graphify：把代码库变成可查询的知识图谱，用 $graphify 建图，再用 query、path、explain 代替 grep](./27-Codex安装graphify-把代码库变成可查询的知识图谱.md)（第三方项目 Graphify-Labs/graphify，Apache-2.0，PyPI 包名 graphifyy。Linux 上装了 0.9.115，并对一个小例子建过图。没有打开 Codex 会话）
 - [Codex 安装 UI UX Pro Max Skill：用 uipro init --ai codex 装进项目，按产品类型生成设计系统再写界面](./28-Codex安装UI-UX-Pro-Max-Skill-按产品类型生成设计系统再写界面.md)（第三方项目 nextlevelbuilder/ui-ux-pro-max-skill，MIT。CLI 0.171.0 上装过 npm 模板和插件市场，没有在会话里生成界面。27 仍空着）

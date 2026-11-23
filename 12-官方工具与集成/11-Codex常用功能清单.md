@@ -1,10 +1,10 @@
 ---
 id: codex-changyong-gongneng-qingdan
-title: Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的入口
+title: Codex 常用功能清单：更新到 CLI 0.171，终端工作区、Sol 默认模型和 /side 等每天都会用到的入口
 seo_title: "Codex 常用功能清单：8 个容易漏掉的实用技巧"
 seo_description: "任务一长，讨论、日志和要求就混在一起。8 个容易忽略的 Codex 功能：调高推理强度、用 Quick Chat 和 Side Chat 分开讨论、单独 Review、配置 Subagent、用 @ 找回旧结论、写 HANDOFF 交接等。"
-description: 按 2026-11 整理 Codex 里最值得先学会的入口：可搜索的 /config、回应中的即时 Steer、/keymap，以及 Images 2.6 图像能力和本地长线程内存修复。每项都链到官方说明或专文。
-lede: 先学会改设置、中途纠偏和改快捷键。2026-11 再补上出图与编辑，以及长本地线程的内存核对。
+description: 按 CLI 0.171 整理 Codex 里最值得先学会的入口：可搜索的 /config、回应中的即时 Steer、/keymap、/side 并排对话、默认开启的终端工作区，以及 Images 2.6 和本地线程内存。每项都链到官方说明或专文。
+lede: 先学会改设置、中途纠偏和改快捷键。0.171 起默认模型和终端工作区都变了，细节链到专文，不在这篇展开。
 url: /guides/codex-changyong-gongneng-qingdan
 status: published
 section: guides
@@ -18,11 +18,13 @@ order: 11
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-09-01
-date_modified: 2026-11-05
-models: [gpt-6.1-sol, gpt-6-luna, gpt-6-astra, gpt-image-2, gpt-image-2.6-flare, gpt-image-2.6-sunburst]
+date_modified: 2026-11-21
+verified_on: 2026-11-21
+tested_cli_version: 0.171.0
+models: [gpt-6.2-sol, gpt-6.2-astra, gpt-6.1-sol, gpt-6-luna, gpt-6-astra, gpt-image-2, gpt-image-2.6-flare, gpt-image-2.6-sunburst]
 official_ref: https://learn.chatgpt.com/docs/developer-commands
-keywords: [/config, Steer, /keymap, Codex 常用功能, leader key, Images 2.6, 本地线程内存]
-related: [permissions-sandbox-approvals, usage-limits-credits, codex-images-2-6, codex-local-thread-memory]
+keywords: [Codex 常用功能清单, /config, /side, 终端工作区, /keymap, Codex 技巧]
+related: [codex-cli-0-171-sol-default-workspace-exec-remote, codex-terminal-workspace-side-chat, codex-gpt-6-2-astra-sol, permissions-sandbox-approvals, usage-limits-credits, codex-images-2-6, codex-local-thread-memory]
 faq:
   - q: Steer 和按 Tab 排队有什么区别？
     a: 官方写明：Codex 正在工作时按 Enter 发送，是把新指令注入当前这一轮（即时 Steer）；按 Tab 则把提示、斜杠命令或本地命令排到下一轮。前者改正在做的事，后者等这一轮结束后再生效。
@@ -36,11 +38,11 @@ faq:
     a: 2026-11-04 的工程师说明没有写出版本号。升级到当前客户端后，用同一条长本地线程看内存是否还随回复爬升。不要用 npm 上的 @openai/codex 版本号代替这次核对。
 ---
 
-# Codex 常用功能清单（2026-11）：补上 Images 2.6、本地线程内存修复，以及仍值得每天用的入口
+# Codex 常用功能清单：更新到 CLI 0.171，终端工作区、Sol 默认模型和 /side 等每天都会用到的入口
 
 > 本文在线版：[codexguide.io/guides/codex-changyong-gongneng-qingdan](https://codexguide.io/guides/codex-changyong-gongneng-qingdan)
 
-> 核对依据：learn.chatgpt.com 的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)、[Developer settings](https://learn.chatgpt.com/docs/developer-settings)、[Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)，2026-10-15 发布的 [Codex CLI 0.163.0 changelog](https://learn.chatgpt.com/docs/changelog)，以及 2026-11-04 的 [Images 2.6](https://openai.com/index/introducing-images-2-6/) 与 [本地线程内存说明](https://x.com/ajambrosino/status/2118028125707923513)。文中「我的用法」是建议顺序，不是官方强制流程。界面文案随客户端变化，以你本机菜单为准。2026-11-05 没有重新实测 /config 与 Steer。
+> 核对依据：2026-11-21 打开的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)、[rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0) 和 [更新日志](https://learn.chatgpt.com/codex/changelog) 里的 CLI 0.171.0。空配置下 `codex features list`（`codex-cli 0.171.0`）里 `tui_workspace` 为 stable / true，`tui_extensions_statusline` 为 experimental / false。没有打开 TUI，没有重新实测 `/config`、Steer 和 `/keymap`。`/config` 与 Steer 的起始版本仍按 2026-10-15 的 CLI 0.163.0。Images 2.6 与本地线程内存沿用 2026-11-04 的原文，npm 的 latest 在 2026-11-21 另查了一次。文中「我的用法」是建议顺序，不是官方强制流程。下面编号 1 到 8 仍是原来的八项目录，0.171 的默认值单独成节，避免和搜索描述里的「8 个」错位。
 
 很多人第一次用 Codex，会把讨论、改文件、排错、复查全堆进同一个长会话。功能其实不少，但真正决定「顺不顺手」的，往往是几件小事：
 
@@ -48,7 +50,7 @@ faq:
 2. **它还在跑的时候，能不能及时纠偏**（不用干等一轮结束）。
 3. **常用操作能不能变成肌肉记忆**（快捷键、侧边讨论、单独审查）。
 
-2026-10 的 CLI 0.163.0，把前两件补强了：可搜索的 `/config`、回应中的即时 Steer，以及 `/keymap` 的 leader key。2026-11 又多了两个高频入口：在对话里生成和编辑图像（Images 2.6），以及本地长线程的内存是否还随回复爬升。下面按「先学什么」列一张清单；每条都对应官方文档、正式 changelog 或已单独成文的说明。
+2026-10 的 CLI 0.163.0，把前两件补强了：可搜索的 `/config`、回应中的即时 Steer，以及 `/keymap` 的 leader key。2026-11-20 的 CLI 0.171.0 改了两件每天会碰到的默认值：模型目录的默认选择是 GPT-6.2 Sol，终端工作区默认开启。下面按「先学什么」列一张清单；每条都对应官方文档、正式 changelog 或已单独成文的说明。
 
 ## 先看一张总表
 
@@ -59,7 +61,7 @@ faq:
 | 这一轮先别打断，只记下下一句 | `Tab` 排队 | 排队的提示／斜杠／本地命令在**下一轮**才解析执行 |
 | 改快捷键、设 leader key | `/keymap` | 写入 `tui.keymap`；leader 默认 `Ctrl+X`；提示保持到选定或取消；语音静音改到 `F9` |
 | 重启托管后台服务 | `/daemon` | 会提示可能打断的工作，确认后重启并自动重连 |
-| 方案讨论不污染主会话 | `/side`（别名 `/btw`） | 临时侧聊，记录与主会话分开 |
+| 方案讨论不污染主会话 | `/side` | 记录与主会话分开。0.171 起终端工作区默认开启，已保存的侧聊可以在侧栏里重新打开 |
 | 改完先看问题再动手修 | `/review` | 审查工作区变更；可用 `/diff` 看具体 diff |
 | 确认当前模型／权限／用量 | `/status` | 活跃模型、审批策略、可写根、token 用量等 |
 | 在对话里出图、改图或做 GIF | `$imagegen`，或直接描述图像 | Images 2.6；编辑在 overlay 中完成。详见专文 |
@@ -125,16 +127,28 @@ TUI 的 `/daemon` 用于查看与托管后台服务相关的连接与操作。0.
 
 ## 5. `/side`：方案讨论留在侧边
 
-原文强调的 Side Chat，在官方斜杠表里对应 **`/side`（别名 `/btw`）**：开一个**临时侧聊**，记录与主会话分开；也可带一句内联问题，例如 `/side 这个方案有没有明显风险`。
+2026-11-21 的 Developer commands 写：`/side` 用来在主对话继续的同时，另开一条对话问后续问题。可以带一句内联文字。侧聊记录与主对话分开；人在侧聊里时，界面仍显示主对话的状态，方便判断主对话是否还在跑。
 
-官方限制：
+同一页的限制：
 
-- 已在侧聊里时，不能再开一层 `/side`；
+- 侧聊默认是临时的。
+- 在开启了 `features.tui_workspace`、并且有已保存历史的本地全屏会话里，单独的 `/side` 会重新打开已有侧聊，`/side` 后面带提示则会新开一条。重启之后，可以从侧栏再打开保存过的侧聊。
+- 已在侧聊里时，不能再开一层 `/side`。
 - **审查模式（review）期间不可用**。
 
-主会话还在跑时，侧聊里仍能看到主会话状态，方便判断要不要回去 Steer。
+0.171.0 起终端工作区默认开启，所以上面「工作区开着才能从侧栏找回侧聊」对空配置已经成立。怎么关、侧栏里还有哪些预览，见下一节链到的专文，这里不重复。本文没有打开 TUI，没有看到侧栏。斜杠命令总表仍把 `/btw` 写成 `/side` 的别名；详细的 `/side` 小节没有再写一遍这个别名。本文没有在 TUI 里输入 `/btw`。
 
 **我的用法**：架构二选一、要不要引入依赖、风险清单——放 `/side`；已经定稿的执行指令，再回到主会话。不要把侧聊当长期档案；需要留档时用 `/export` 或自己的交接笔记。
+
+## 0.171 起的默认值：GPT-6.2 Sol 与终端工作区
+
+这一节不是第 9 条技巧。Release 和空配置上的 `features list` 只说明两件默认值，用法都有专文。
+
+- **GPT-6.2 Sol** 是模型目录的默认选择，Astra 同时进了目录（#62106）。套餐、企业开关和你自己写过的 `model` 仍会改变实际看到的模型。怎么选、怎么切换，见 [GPT-6.2 Astra 与 Sol](../10-配置模型与权限安全/29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
+- **终端工作区默认开启**（#61352 等）。0.171.0、空配置下，`tui_workspace` 的 stage 是 `stable`，有效状态是 `true`。并排的 `/side`、多标签页、重启后恢复，以及文档、图片和子代理记录的预览，见 [终端工作区](./27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)。
+- 升级说明、`codex exec --remote`、`/rc` 与 `/remote` 不在这篇展开，见 [Codex CLI 0.171.0](./30-Codex-CLI-0.171-默认GPT-6.2-Sol-终端工作区默认开启与exec-remote.md)。
+
+2026-11-21 查询，npm `latest` 是 `0.171.0`。`0.173.0-alpha.4` 同一天存在，本文不采用。
 
 （桌面端若还有「快速聊天／旁路入口」，以你当前 App 菜单为准；CLI／TUI 以 `/side` 为官方入口。）
 
@@ -184,11 +198,11 @@ TUI 的 `/daemon` 用于查看与托管后台服务相关的连接与操作。0.
 
 不是官方步骤，按这个顺序改，通常第二天就能感到差别：
 
-1. **更新到含 `/config` 的 CLI**（changelog 示例：`npm install -g @openai/codex@0.163.0`，或以你安装渠道的当前稳定版为准）。
-2. 打开 **`/config`**，确认默认模型与审批／沙箱相关项；需重启的项记下来。
+1. **更新到当前稳定版 CLI**。2026-11-21 的 npm `latest` 是 0.171.0：`npm install -g @openai/codex@0.171.0`。`/config`、Steer 和 `/keymap` 从 0.163.0 就有；0.171 改的是默认模型和终端工作区。
+2. 打开 **`/config`**，确认默认模型与审批／沙箱相关项；需重启的项记下来。目录默认是 GPT-6.2 Sol 时，以你账号里实际列出来的为准。
 3. 故意做一次 **Steer**：让它开始改文件后，发一句收窄范围，确认它转向而不是无视。
 4. 打开 **`/keymap`**，确认打断与复制键；leader 不熟就保持 `Ctrl+X`。
-5. 下一场稍大的任务：方案分歧用 **`/side`**，落地后用 **`/review`**，必要时 **`/diff`**。
+5. 下一场稍大的任务：方案分歧用 **`/side`**，落地后用 **`/review`**，必要时 **`/diff`**。工作区默认开着时，侧聊可以留在侧栏。
 
 若只改两处：先练 **Steer vs Tab 排队**，再练 **`/config`**。前者减少「看它跑错却只能干等」，后者减少「改个设置要退出重来」。
 
@@ -206,7 +220,7 @@ TUI 的 `/daemon` 用于查看与托管后台服务相关的连接与操作。0.
 
 ## 10. 性能：本地线程内存
 
-2026-11-04，Codex 工程师说明：本地线程变长后，即使用户没有再启动其他进程，内存也会升高；修复已经推出。公告和图都没有写 App 或 CLI 版本号。2026-11-05 查询时，npm 上 `@openai/codex` 的 latest 仍是 0.166.0，那一版的更新日志里也没有这条修复。
+2026-11-04，Codex 工程师说明：本地线程变长后，即使用户没有再启动其他进程，内存也会升高；修复已经推出。公告和图都没有写 App 或 CLI 版本号。2026-11-05 查询时，npm 上 `@openai/codex` 的 latest 仍是 0.166.0，那一版的更新日志里也没有这条修复。2026-11-21 查询时 latest 已是 0.171.0；0.171.0 Release 顶部的新功能、修复和杂项里仍然没有这条内存说明。所以版本归属维持原状：不要用当天的 npm 版本号代替那次公告。
 
 升级到当前客户端后，打开同一条长本地线程，用系统的活动监视器或任务管理器看整个应用的物理内存是否还随回复爬升。磁盘被崩溃转储占满，是另一篇的排查。完整顺序见 [本地线程内存占用过高怎么办](../15-故障排查与常见问题/06-Codex本地线程内存占用过高怎么办.md)。
 
@@ -215,7 +229,8 @@ TUI 的 `/daemon` 用于查看与托管后台服务相关的连接与操作。0.
 - [Developer commands（斜杠命令与交互快捷键）](https://learn.chatgpt.com/docs/developer-commands)
 - [Developer settings](https://learn.chatgpt.com/docs/developer-settings)
 - [Config basics（`config.toml` 与 `tui.keymap`）](https://learn.chatgpt.com/docs/config-file/config-basic)
-- [ChatGPT & Codex changelog · CLI 0.163.0（2026-10-15）](https://learn.chatgpt.com/docs/changelog)
+- [ChatGPT & Codex changelog](https://learn.chatgpt.com/codex/changelog)（2026-11-21 已收录 CLI 0.171.0；`/config` 与 Steer 的起始版本仍是 2026-10-15 的 0.163.0）
+- [rust-v0.171.0](https://github.com/openai/codex/releases/tag/rust-v0.171.0)
 - [Introducing Images 2.6](https://openai.com/index/introducing-images-2-6/)（2026-11-04）
 - [Image generation](https://learn.chatgpt.com/docs/image-generation)
 - [Andrew Ambrosino：local threads 内存说明](https://x.com/ajambrosino/status/2118028125707923513)（2026-11-04）
