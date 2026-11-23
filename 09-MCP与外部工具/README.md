@@ -22,7 +22,7 @@
 
 ## 已上线文章
 
-- [Codex 接入 Chrome DevTools MCP：让 Codex 读控制台、网络请求和性能轨迹](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
+- [Codex 接入 Chrome DevTools MCP：读控制台、网络请求和性能轨迹，再装官方 7 个 Skills 和 chrome-devtools CLI](./06-Codex接入Chrome-DevTools-MCP-控制台网络与性能排查.md)
 - [Codex 安装第三方 Skill 前先扫描：用 NVIDIA SkillSpector 查提示注入和数据外泄](./07-Codex用SkillSpector扫描第三方Skill-提示注入与数据外泄检查.md)
 - [Codex 安装 OpenAI Developers 插件：安全创建 API Key、写入 .env.local 与排查 API 报错](./08-Codex安装OpenAI-Developers插件-创建API-Key与排查API报错.md)
 - [Codex 安装 agent-skills 插件：用 codex plugin 装上 Addy Osmani 的 25 个工程 Skill](./09-Codex安装agent-skills插件-25个工程Skill怎么用.md)
@@ -44,3 +44,4 @@
 - [Codex 安装 Stop That Shit（别再造史了）：用 Skill 和 Hook 拦住 Codex 的范围膨胀、无用防御和越权修改](./25-Codex安装Stop-That-Shit-用Skill和Hook拦住范围膨胀与无用防御.md)（第三方项目 lennney/stop-that-shit，MIT，固定 tag 0.2.5。未登录核对了 Hook 清单，没有打开 /hooks 信任界面）
 - [Codex 安装 Obsidian 官方 Skills：让 Codex 读写 Markdown、Bases 和 Canvas，还能调用 Obsidian CLI](./26-Codex安装Obsidian官方Skills-Markdown-Bases-Canvas与Obsidian-CLI.md)（Obsidian 维护的 obsidian-skills，MIT。CLI 0.169.1 上装过插件，没有在 Obsidian 里改过库）
 - [Codex 安装 graphify：把代码库变成可查询的知识图谱，用 $graphify 建图，再用 query、path、explain 代替 grep](./27-Codex安装graphify-把代码库变成可查询的知识图谱.md)（第三方项目 Graphify-Labs/graphify，Apache-2.0，PyPI 包名 graphifyy。Linux 上装了 0.9.115，并对一个小例子建过图。没有打开 Codex 会话）
+- [Codex 安装 UI UX Pro Max Skill：用 uipro init --ai codex 装进项目，按产品类型生成设计系统再写界面](./28-Codex安装UI-UX-Pro-Max-Skill-按产品类型生成设计系统再写界面.md)（第三方项目 nextlevelbuilder/ui-ux-pro-max-skill，MIT。CLI 0.171.0 上装过 npm 模板和插件市场，没有在会话里生成界面。27 仍空着）
