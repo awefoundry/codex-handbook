@@ -46,3 +46,4 @@
 - [Codex 远程终端：在服务器上跑 codex app-server，本机用 codex --remote 连接，0.171 起 codex exec 也能接上](./31-Codex远程终端-app-server-listen与codex-remote连接.md)
 - [Codex 接入 Linear：把 issue 指派给 Codex、在评论里 @Codex，用 Triage 规则自动分配，本地再接 Linear MCP](./32-Codex接入Linear-指派issue-评论提及Codex与Triage规则自动分配.md)（按官方文档整理。Linear 集成仍走计划弃用的 Codex Cloud（Legacy）。没有 Linear 工作区，没有配图）
 - [Codex 在 Slack 里怎么用：@Codex 换成 @ChatGPT，仓库任务交给 Codex Cloud，共享环境、审批卡片和跟进怎么处理](./33-Codex在Slack里委派仓库任务-提及ChatGPT交给Codex-Cloud与共享环境.md)（按官方文档整理。只认已发布并共享的 Cloud 环境。没有 Slack 工作区，没有配图）
+- [Codex CLI 0.172.0：斜杠命令按 Tab 补全参数，可选 MCP 服务器首次调用才启动，codex exec resume 恢复沙箱权限](./34-Codex-CLI-0.172-斜杠命令Tab补全-MCP按需启动与exec-resume恢复权限.md)（依据更新日志和 GitHub Release rust-v0.172.0。Linux 上 `codex-cli 0.172.0` 核对了帮助、功能开关和配置拒绝信息。没有打开 TUI，没有配图）
