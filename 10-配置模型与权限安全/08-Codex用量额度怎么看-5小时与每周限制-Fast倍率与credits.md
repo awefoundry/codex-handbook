@@ -1,9 +1,9 @@
 ---
 id: usage-limits-credits
-title: "Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率、credits，以及 Business 新工作区 11 月 30 日前创建可得双倍每周额度"
-seo_title: "Codex 用量额度：Business 新工作区双倍每周额度"
-description: "读懂 Settings → Usage 的 5 小时与每周限制，以及 Fast、Ultrafast 倍率和 credits。2026-11-23 至 11-30 新建的 Business 工作区，Standard 与 Premium 席位在 12-31 前有 Work 和 Codex 的双倍每周额度。"
-lede: "先看 Usage 里是哪一档到了。GPT-6.2 的 Fast 按 2 倍计，Ultrafast 的套餐内含按 6 倍计。Business 的双倍每周额度只覆盖 11 月 23 日至 30 日新建的工作区，到 2026-12-31 为止。"
+title: "Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率与 credits"
+seo_title: "Codex 用量额度：5 小时与每周限制、Fast 倍率与 credits"
+description: "读懂 Settings → Usage 的 5 小时与每周限制，以及 Fast、Ultrafast 倍率和 credits。官方在 2026 年 11 月宣布的 Business 新工作区双倍每周额度是限时活动，有效期至 2026-12-31；超过该日期后按常规额度计算，以官方页面为准。"
+lede: "先看 Usage 里是哪一档到了。GPT-6.2 的 Fast 按 2 倍计，Ultrafast 的套餐内含按 6 倍计。Business 新工作区双倍每周额度是官方在 2026 年 11 月宣布的限时活动，有效期至 2026-12-31；超过该日期后按常规额度计算。"
 url: /guides/codex-usage-limits-credits
 status: published
 section: guides
@@ -21,7 +21,7 @@ date_modified: 2026-11-24
 verified_on: 2026-11-24
 models: [gpt-6.2-astra, gpt-6.2-sol, gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/pricing
-keywords: [Codex 用量额度, Codex Business 双倍用量, Codex Ultrafast 倍率, GPT-6.2 credits, Codex 5 小时限制]
+keywords: [Codex 用量额度, Codex Business 每周额度, Codex Ultrafast 倍率, GPT-6.2 credits, Codex 5 小时限制]
 related: [model-reasoning-effort, codex-pro-business-premium-usage-increase, codex-chatgpt-shared-usage-limits, codex-gpt-6-2-astra-sol]
 faq:
   - q: 为什么周额度还很多，却先碰到 5 小时限制？
@@ -32,11 +32,11 @@ faq:
     a: 定价页写：GPT-6.2 两款用 credits 或符合条件的 Enterprise 按量支付时，到 2027-02-28 按 3 倍计，2027-03-01（太平洋时间）起按 6 倍计。套餐内含用量全程都是 6 倍。
   - q: credits 和付费即时重置是一回事吗？
     a: 不是。credits 是套餐内含用完后的按量续用余额；付费即时重置会立刻恢复适用的套餐额度并改动周重置日程。细节见姊妹篇《容量不足与额度重置》。
-  - q: 已有的 Business 工作区能享受这次双倍每周额度吗？
-    a: 帮助中心写，2026-11-23 至 11-30 新建的工作区，Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。已有和重新激活的工作区在加席位或续费时仍按原来的每周额度。Standard 的 5 小时限制仍然适用。
+  - q: 已有的 Business 工作区能享受 2026 年 11 月那次双倍每周额度吗？
+    a: 不能。官方在 2026 年 11 月宣布的限时活动规定：仅 2026-11-23 至 2026-11-30 新建的工作区，其 Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。已有和重新激活的工作区在加席位或续费时仍按原来的每周额度，不在活动范围内。Standard 的 5 小时限制仍然适用。超过 2026-12-31 后按常规额度计算，以官方页面为准。
 ---
 
-# Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率、credits，以及 Business 新工作区 11 月 30 日前创建可得双倍每周额度
+# Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率与 credits
 
 > 本文在线版：[codexguide.io/guides/codex-usage-limits-credits](https://codexguide.io/guides/codex-usage-limits-credits)
 
@@ -48,24 +48,28 @@ faq:
 2. **为什么「只发了几条」就掉这么快？**
 3. **要不要买 credits，还是被多扣了？**
 
-2026-10-29 起，Pro 与 Business Premium 的 Work / Codex 内含额度有一次上调，各档差在哪见 [用量上调](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)。12 月起 Plus、Pro、Business 的共用额度见 [用量合并](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)。本文仍讲面板怎么读，以及 2026-11-24 定价页上的倍率和单价。限时的 Business 双倍每周额度写在下一节，到期日是 2026-12-31。
+2026-10-29 起，Pro 与 Business Premium 的 Work / Codex 内含额度有一次上调，各档差在哪见 [用量上调](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)。12 月起 Plus、Pro、Business 的共用额度见 [用量合并](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)。本文仍讲面板怎么读，以及 2026-11-24 定价页上的倍率和单价。官方在 2026 年 11 月宣布的 Business 新工作区双倍每周额度是限时活动，细节写在下一节，有效期至 2026-12-31；超过该日期后按常规额度计算。
 
-## Business 新工作区限时双倍每周额度
+## Business 新工作区限时双倍每周额度（2026 年 11 月活动）
 
-2026-11-24 打开的帮助中心 [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits) 有一节 “Temporary weekly usage increase for new Business workspaces”。原文是：2026-11-23 至 2026-11-30 创建的 ChatGPT Business 工作区，Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。Standard 的 5 小时限制仍然适用。已有工作区和重新激活的工作区，在加席位或续费时保持原来的每周额度。
+> 官方在 2026 年 11 月宣布的限时活动（活动期：2026-11-23 至 2026-11-30 新建的 ChatGPT Business 工作区；双倍额度有效期至 2026-12-31）；超过该日期后按常规额度计算，以[官方帮助中心页面](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)为准。
+
+2026-11-24 核对的帮助中心 [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits) 有一节 “Temporary weekly usage increase for new Business workspaces”。原文写：2026-11-23 至 2026-11-30 创建的 ChatGPT Business 工作区，Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。Standard 的 5 小时限制仍然适用。已有工作区和重新激活的工作区，在加席位或续费时保持原来的每周额度。
+
+同一天的 [ChatGPT Business 注册说明](https://help.openai.com/en/articles/8980713-sign-up-for-chatgpt-business) 还写：该活动也适用于在 2026-12-31 前向这座新建工作区添加的符合条件的席位。已有工作区、重新激活的工作区不在活动范围内。
 
 同一天的 [chatgpt.com/business](https://chatgpt.com/business/) 首页写：“Create a new ChatGPT Business workspace by Nov 30 and get double the included usage on Standard and Premium seats through Dec 31.” 首页这句写的是包含用量加倍，截止日期是 11 月 30 日创建、12 月 31 日为止。每周、以及只覆盖 Work 和 Codex，以帮助中心那一节为准。
 
-适用时看这四条：
+活动规则可以按这几条核对：
 
 - 工作区是在 2026-11-23 到 2026-11-30 之间创建的。
-- Standard 和 Premium 席位都在帮助中心的句子里。
-- 加倍的是 Work 和 Codex 的每周包含额度，期限写到 2026-12-31。
+- Standard 和 Premium 席位都在帮助中心的句子里；按注册说明，2026-12-31 前向这座新建工作区添加的符合条件席位也在内。
+- 加倍的是 Work 和 Codex 的每周包含额度，有效期至 2026-12-31；超过该日期后按常规额度计算。
 - Standard 的 5 小时限制仍然适用。帮助中心同一页写 Premium 席位的 Work 和 Codex 包含用量更高，并且没有 5 小时用量限制。首页也写 Premium 没有 5 小时限制。
 
-已有工作区、重新激活后再加席位或续费，帮助中心写的是保持原来的每周额度。这篇帮助文章没有写其他形式的加赠。到期日以 “through December 31, 2026” 为准。
+已有工作区、重新激活后再加席位或续费，帮助中心写的是保持原来的每周额度，不在这次限时活动范围内。这篇帮助文章没有写其他形式的加赠。到期日以 “through December 31, 2026” 为准。
 
-这是限时规则。它不改变下面的 Fast、Ultrafast 倍率和 credits 单价。Pro、Plus 的个人套餐不在这一节里。GPT-6.2 怎么选见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
+这是一条带起止日期的限时规则，不改变下面的 Fast、Ultrafast 倍率和 credits 单价。Pro、Plus 的个人套餐不在这一节里。GPT-6.2 怎么选见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
 
 本文只解决「怎么读额度、倍率怎么算、觉得不对怎么查」。若界面是 **Selected model is at capacity**、或要分清容量满／额度用尽／重置类型，见 [Codex「Selected model is at capacity」与额度重置](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
 
@@ -270,7 +274,8 @@ Pricing 把「让限制更耐用」写成可操作建议，核心是减上下文
 - [Using Credits for Flexible Usage in ChatGPT (Personal plans)](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-personal-plans)
 - [Speed（Fast／Ultrafast）](https://learn.chatgpt.com/docs/agent-configuration/speed)
 - [Pricing（估算区间、倍率表、credits 单价）](https://learn.chatgpt.com/docs/pricing)
-- [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)（2026-11-23 至 11-30 新建工作区的双倍每周额度）
-- [ChatGPT Business](https://chatgpt.com/business/)（首页的 11 月 30 日前创建、12 月 31 日前双倍包含用量）
+- [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)（2026 年 11 月限时活动：新建工作区双倍每周额度，有效期至 2026-12-31）
+- [Sign up for ChatGPT Business](https://help.openai.com/en/articles/8980713-sign-up-for-chatgpt-business)（同一活动也适用于 2026-12-31 前向新建工作区添加的符合条件席位）
+- [ChatGPT Business](https://chatgpt.com/business/)（首页同期宣传：11 月 30 日前创建、双倍包含用量至 12 月 31 日）
 - [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 用 GPT-6.2 Astra 和 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)
