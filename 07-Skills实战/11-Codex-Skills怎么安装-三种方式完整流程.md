@@ -26,9 +26,9 @@ faq:
   - q: 装完 Skill 之后为什么还是找不到？
     a: 安装后必须新开一次 Codex 会话。已打开的会话不会重新扫描刚加入的 Skill 文件。
   - q: $skill-installer 和 plugin marketplace 有什么区别？
-    a: $skill-installer 装的是 OpenAI 官方精选 Skill，单个文件放进 ~/.agents/skills；plugin marketplace 装的是第三方打包的 Skill 集合，可以同时带多个 Skill 甚至 MCP 工具。
+    a: $skill-installer 是 Codex 自带的 Skill，按名字安装官方精选的单个 Skill；plugin marketplace 安装的是插件，一个插件可以同时带多个 Skill 和 MCP 工具。
   - q: IDE 扩展能用插件里的 Skill 吗？
-    a: IDE 扩展不支持 plugin 安装。需要用 CLI 或 ChatGPT 桌面应用安装插件，安装后 IDE 扩展里的会话才能使用对应 Skill。
+    a: 官方插件文档写明 IDE 扩展不支持插件，需要用 CLI 或 ChatGPT 应用安装。手动放进 .agents/skills 目录的单个 Skill 不受这条限制。
 ---
 
 # Codex Skills 怎么安装：$skill-installer、文件目录和 plugin marketplace 三种方式
@@ -70,17 +70,11 @@ $skill-installer <skill名称>
 $skill-installer linear
 ```
 
-Codex 会把这个 Skill 文件下载到 `~/.agents/skills/<skill名称>/SKILL.md`，作用于你的所有仓库。也可以把 Skill 下载到别的位置，让它只对当前项目生效（见下一节）。
+`skill-installer` 是 Codex 自带的系统 Skill。官方文档还写明，可以让它从其他仓库下载 Skill。
 
-安装完成后，新开一次会话，输入 `/skills` 可以确认 Skill 已经出现在列表中。
+安装完成后，新开一次会话，输入 `/skills` 确认 Skill 已经出现在列表中。
 
-如果不知道有哪些官方精选 Skill，可以在会话里问：
-
-```text
-$skill-installer
-```
-
-不带名字运行时，Codex 会列出当前可用的 Skill。
+> 本文没有在已登录会话里实际运行 `$skill-installer`，Skill 落到哪个目录、输出什么，以你当前界面为准。
 
 ## 方式二：手动放文件
 
@@ -90,9 +84,11 @@ Codex 会扫描下面几个目录：
 
 | 目录 | 适用范围 |
 |---|---|
-| `~/.agents/skills/` | 个人，作用于所有仓库 |
-| `.agents/skills/`（仓库根目录） | 项目级，只对这个仓库有效 |
-| `.agents/skills/`（CWD 的上一级） | 项目级，Git 仓库通用位置 |
+| `$CWD/.agents/skills/` | 启动 Codex 的当前目录 |
+| `$CWD/../.agents/skills/` | 当前目录的上一级（在 Git 仓库内） |
+| `$REPO_ROOT/.agents/skills/` | 仓库根目录，整个仓库共用 |
+| `$HOME/.agents/skills/` | 个人，作用于所有仓库 |
+| `/etc/codex/skills/` | 管理员级，整台机器共用 |
 
 创建个人目录并放入一个 Skill 的步骤：
 
@@ -149,9 +145,10 @@ codex plugin add <插件名>@<marketplace名>
 codex plugin add agent-skills@agent-skills
 ```
 
-安装成功后输出类似：
+在 `codex-cli 0.166.0` 上实测，两条命令的输出是：
 
 ```text
+Added marketplace `agent-skills` from https://github.com/addyosmani/agent-skills.git.
 Added plugin `agent-skills` from marketplace `agent-skills`.
 ```
 
@@ -171,10 +168,10 @@ codex plugin list
 
 ```text
 PLUGIN                     STATUS              VERSION  SOURCE
-agent-skills@agent-skills  installed, enabled  0.6.14   agent-skills
+agent-skills@agent-skills  installed, enabled  0.6.14   <marketplace 路径>
 ```
 
-更新 marketplace 下的插件：
+刷新已登记的 Git marketplace 快照：
 
 ```bash
 codex plugin marketplace upgrade
@@ -232,16 +229,16 @@ CLI 里也可以输入 `/skills` 打开浏览器，从列表里选。
 从第三方 GitHub 仓库安装插件前，建议核查：
 
 - 仓库作者、许可证和最近更新时间。
-- `plugin.json` 里声明的权限（Interactive、Read、Write）。
+- 插件根目录的 `plugin.json`，看它会带上哪些 Skill 和 MCP 工具。
 - 打算用的那个 `SKILL.md` 的内容，确认步骤和你的项目规则不冲突。
 
 扫描第三方 Skill 有没有提示注入风险，可以用 [SkillSpector](/guides/codex-skillspector-skill-security-scan)。
 
 ## 常见问题
 
-**IDE 扩展装不了插件。** IDE 扩展不支持 plugin 安装入口。在 CLI 或桌面应用里安装，安装后 IDE 里的新会话才能用对应 Skill。
+**IDE 扩展装不了插件。** 官方插件文档写明 IDE 扩展不支持插件，要用 CLI 或 ChatGPT 应用安装。手动放进 `.agents/skills` 的单个 Skill 不受这条限制。
 
-**codex plugin marketplace add 时报网络错误。** 命令需要访问 GitHub，确认网络通畅后重试。本地克隆仓库的话，把路径换成本地目录也可以：`codex plugin marketplace add /path/to/local/clone`。
+**连不上 GitHub。** 先把仓库克隆到本地，再把本地路径登记成 marketplace：`codex plugin marketplace add /path/to/local/clone`。
 
 **同名 Skill 有多个。** Codex 会保留所有同名 Skill，不会自动覆盖。用 `config.toml` 的 `[[skills.config]]` 按路径指定启用哪一个，细节见[从零创建 Codex Skill](/guides/create-codex-skill)里的禁用部分。
 
