@@ -1,9 +1,9 @@
 ---
 id: usage-limits-credits
-title: Codex 用量额度怎么看：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条
-seo_title: Codex 用量额度：5 小时／每周限制、Fast 倍率与 credits
-description: 读懂 Settings → Usage 里的 5 小时与每周限制，弄清 Fast 与 Ultrafast 倍率和 credits 怎么扣。本文按 2026-11-17 的官方定价页补上 GPT-6.2 Astra 与 Sol 的倍率、credits 单价和 Plus 每 5 小时的消息估算，并说明觉得被多扣时怎么查。
-lede: 先看 Usage 里是哪一档到了。GPT-6.2 的 Fast 按 2 倍计，Ultrafast 的套餐内含按 6 倍计；5 小时条数是估算，不是固定上限。
+title: "Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率、credits，以及 Business 新工作区 11 月 30 日前创建可得双倍每周额度"
+seo_title: "Codex 用量额度：Business 新工作区双倍每周额度"
+description: "读懂 Settings → Usage 的 5 小时与每周限制，以及 Fast、Ultrafast 倍率和 credits。2026-11-23 至 11-30 新建的 Business 工作区，Standard 与 Premium 席位在 12-31 前有 Work 和 Codex 的双倍每周额度。"
+lede: "先看 Usage 里是哪一档到了。GPT-6.2 的 Fast 按 2 倍计，Ultrafast 的套餐内含按 6 倍计。Business 的双倍每周额度只覆盖 11 月 23 日至 30 日新建的工作区，到 2026-12-31 为止。"
 url: /guides/codex-usage-limits-credits
 status: published
 section: guides
@@ -17,28 +17,30 @@ order: 10
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-10-22
-date_modified: 2026-11-18
-verified_on: 2026-11-18
+date_modified: 2026-11-24
+verified_on: 2026-11-24
 models: [gpt-6.2-astra, gpt-6.2-sol, gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/pricing
-keywords: [Codex 用量额度, Codex Ultrafast 倍率, GPT-6.2 credits, Codex Fast 倍率, Codex 5 小时限制]
+keywords: [Codex 用量额度, Codex Business 双倍用量, Codex Ultrafast 倍率, GPT-6.2 credits, Codex 5 小时限制]
 related: [model-reasoning-effort, codex-pro-business-premium-usage-increase, codex-chatgpt-shared-usage-limits, codex-gpt-6-2-astra-sol]
 faq:
   - q: 为什么周额度还很多，却先碰到 5 小时限制？
     a: 两档并存时，两边都要有剩余才能继续用共享池。5 小时窗管短窗口内能用多少，可能在周额度仍充足时先耗尽。打开 Settings → Usage 看是哪一档到了、下次何时刷新。
   - q: Fast 模式到底贵多少？
-    a: 以 2026-11-18 的定价页为准。GPT-6.2 Astra 和 GPT-6.2 Sol 的 Fast，套餐内含和 credits／PAYG 都按 Standard 的 2 倍计。GPT-6.1 Sol、GPT-6.1 Terra、GPT-6 Astra、GPT-6 Sol、GPT-6 Luna 的 Fast，内含是 2.5 倍，credits／PAYG 是 2 倍。
+    a: 以 2026-11-24 的定价页为准。GPT-6.2 Astra 和 GPT-6.2 Sol 的 Fast，套餐内含和 credits／PAYG 都按 Standard 的 2 倍计。GPT-6.1 Sol、GPT-6.1 Terra、GPT-6 Astra、GPT-6 Sol、GPT-6 Luna 的 Fast，内含是 2.5 倍，credits／PAYG 是 2 倍。
   - q: Ultrafast 的 3 倍会一直持续吗？
     a: 定价页写：GPT-6.2 两款用 credits 或符合条件的 Enterprise 按量支付时，到 2027-02-28 按 3 倍计，2027-03-01（太平洋时间）起按 6 倍计。套餐内含用量全程都是 6 倍。
   - q: credits 和付费即时重置是一回事吗？
     a: 不是。credits 是套餐内含用完后的按量续用余额；付费即时重置会立刻恢复适用的套餐额度并改动周重置日程。细节见姊妹篇《容量不足与额度重置》。
+  - q: 已有的 Business 工作区能享受这次双倍每周额度吗？
+    a: 帮助中心写，2026-11-23 至 11-30 新建的工作区，Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。已有和重新激活的工作区在加席位或续费时仍按原来的每周额度。Standard 的 5 小时限制仍然适用。
 ---
 
-# Codex 用量额度怎么看：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条
+# Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率、credits，以及 Business 新工作区 11 月 30 日前创建可得双倍每周额度
 
 > 本文在线版：[codexguide.io/guides/codex-usage-limits-credits](https://codexguide.io/guides/codex-usage-limits-credits)
 
-> 核对依据：OpenAI Help Center 的 Codex 套餐与用量、个人计划 credits，以及 learn.chatgpt.com 的 [Pricing](https://learn.chatgpt.com/docs/pricing) 和 [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)。倍率、credits 单价和 5 小时估算以定价页为准，查询日期 2026-11-18。文中「我的用法」是使用建议，不是官方规定。模型怎么选见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)，GPT-6.2 的切换和资格见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
+> 核对依据：OpenAI Help Center 的 Codex 套餐与用量、个人计划 credits、[ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)，以及 learn.chatgpt.com 的 [Pricing](https://learn.chatgpt.com/docs/pricing) 和 [Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)。倍率、credits 单价和 5 小时估算以定价页为准，查询日期 2026-11-24。Business 双倍每周额度以帮助中心原文为准，同一天核对。文中「我的用法」是使用建议，不是官方规定。模型怎么选见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)，GPT-6.2 的切换和资格见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。Pro 与 Business 的月度 API 额度见 [订阅 API 额度](./16-Codex与ChatGPT订阅API额度-Pro和Business每月额度怎么领能不能用在Codex.md)，12 月起的共用额度见 [用量合并](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)。
 
 打开 Usage，看到百分比往下掉，很多人会问三件事：
 
@@ -46,7 +48,24 @@ faq:
 2. **为什么「只发了几条」就掉这么快？**
 3. **要不要买 credits，还是被多扣了？**
 
-2026-10-29 起，Pro 与 Business Premium 的 Work / Codex 内含额度有一次上调，各档差在哪见 [用量上调](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)。12 月起 Plus、Pro、Business 的共用额度见 [用量合并](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)。本文仍讲面板怎么读，以及 2026-11-17 定价页上的倍率和单价。
+2026-10-29 起，Pro 与 Business Premium 的 Work / Codex 内含额度有一次上调，各档差在哪见 [用量上调](./17-Codex用量上调-Pro100与Pro500翻倍-Pro200取消降额.md)。12 月起 Plus、Pro、Business 的共用额度见 [用量合并](./20-Codex和ChatGPT用量合并-12月起共用额度按token计算.md)。本文仍讲面板怎么读，以及 2026-11-24 定价页上的倍率和单价。限时的 Business 双倍每周额度写在下一节，到期日是 2026-12-31。
+
+## Business 新工作区限时双倍每周额度
+
+2026-11-24 打开的帮助中心 [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits) 有一节 “Temporary weekly usage increase for new Business workspaces”。原文是：2026-11-23 至 2026-11-30 创建的 ChatGPT Business 工作区，Standard 和 Premium 席位在 2026-12-31 前获得 Work 和 Codex 的双倍每周包含额度。Standard 的 5 小时限制仍然适用。已有工作区和重新激活的工作区，在加席位或续费时保持原来的每周额度。
+
+同一天的 [chatgpt.com/business](https://chatgpt.com/business/) 首页写：“Create a new ChatGPT Business workspace by Nov 30 and get double the included usage on Standard and Premium seats through Dec 31.” 首页这句写的是包含用量加倍，截止日期是 11 月 30 日创建、12 月 31 日为止。每周、以及只覆盖 Work 和 Codex，以帮助中心那一节为准。
+
+适用时看这四条：
+
+- 工作区是在 2026-11-23 到 2026-11-30 之间创建的。
+- Standard 和 Premium 席位都在帮助中心的句子里。
+- 加倍的是 Work 和 Codex 的每周包含额度，期限写到 2026-12-31。
+- Standard 的 5 小时限制仍然适用。帮助中心同一页写 Premium 席位的 Work 和 Codex 包含用量更高，并且没有 5 小时用量限制。首页也写 Premium 没有 5 小时限制。
+
+已有工作区、重新激活后再加席位或续费，帮助中心写的是保持原来的每周额度。这篇帮助文章没有写其他形式的加赠。到期日以 “through December 31, 2026” 为准。
+
+这是限时规则。它不改变下面的 Fast、Ultrafast 倍率和 credits 单价。Pro、Plus 的个人套餐不在这一节里。GPT-6.2 怎么选见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
 
 本文只解决「怎么读额度、倍率怎么算、觉得不对怎么查」。若界面是 **Selected model is at capacity**、或要分清容量满／额度用尽／重置类型，见 [Codex「Selected model is at capacity」与额度重置](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
 
@@ -77,7 +96,7 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 
 **5 小时新窗何时开始**：上一窗结束后，你在 Work／Codex **再发第一条消息**时，新窗才开始——不是墙上时钟一到就自动开一扇新门。
 
-**Pro 特例（当前公开说明）**：Pricing 写 **Pro 方案目前没有 5 小时限制**，但仍有套餐内含用量；以 Settings → Usage 为准。Plus、Business Standard 等通常要同时看两档。
+**Pro 与 Business Premium**：Pricing 写 **Pro 方案目前没有 5 小时限制**，但仍有套餐内含用量。帮助中心的 Business 模型页写 Premium 席位没有 5 小时用量限制，Standard 的 5 小时限制仍然适用。以 Settings → Usage 为准。Plus、Business Standard 通常要同时看两档。
 
 额度**不是固定「还能发 N 条」**。下一节的本地消息区间只是**估算**。云端任务往往比本地短消息更吃额度。**不要把别人截图里的数字背成自己的上限。**
 
@@ -109,9 +128,9 @@ Overview 大致分三块（具体卡片以你的套餐为准）：
 
 ## Fast 与 Ultrafast：倍率怎么读
 
-依据 Pricing 的 Speed multipliers 和 Speed 页。倍率相对**同一模型的 Standard**。Credits／PAYG 指已购买的 credits，以及 Enterprise 按量。以官方定价页为准，查询日期 **2026-11-18**。
+依据 Pricing 的 Speed multipliers 和 Speed 页。倍率相对**同一模型的 Standard**。Credits／PAYG 指已购买的 credits，以及 Enterprise 按量。以官方定价页为准，查询日期 **2026-11-24**。
 
-帮助中心 [Managing usage with GPT-6 Astra](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex) 文首已经写 GPT-6.2 Astra 和 Sol 当天正在推出，但同一页的 Ultrafast 一节仍只写 GPT-6 Astra 与 GPT-6.1 Sol，并写 Plus、Pro 100 美元、Pro 200 美元和 Business 在发布时不含 Ultrafast、购买 credits 也不会打开它。这和 2026-11-17 的 Changelog、What's new、Speed 不一致：后三处写 Pro 200 美元可以把 Ultrafast 用在 GPT-6.2 Sol。本文的资格和倍率采定价页、Speed 和 Changelog。
+帮助中心 [Managing usage with GPT-6 Astra](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex) 在 2026-11-24 打开时标着 Updated: 4 days ago。文首让 GPT-6.2 Astra 和 Sol 的用量与 Ultrafast 去看 ChatGPT Work and Codex。同一页的 Ultrafast 一节仍以 GPT-6 Astra 与 GPT-6.1 Sol 为主，并写 Plus、Pro 100 美元、Pro 200 美元和 Business 在发布时不含 Ultrafast、购买 credits 也不会打开它。GPT-6.2 的倍率以下面的定价页为准，资格以当天的 Speed 页为准。
 
 ### Fast
 
@@ -125,7 +144,7 @@ Speed 页写 Fast 支持上表这些模型。用 ChatGPT 登录时，CLI 和 IDE
 
 **生成速度和计费倍率是两列数**。Speed 页写：对 GPT-6.2 Astra 和 GPT-5.6，Fast 的出 token 速度大约是 Standard 的 **1.5 倍**。这句没有写 GPT-6.2 Sol，也不要把它填进上表的 2 倍或 2.5 倍里。
 
-CLI 可用 `/fast` 开关，再输入一次回到 Standard。Speed 页写明 CLI 会记住这次选择。配置参考里，`[features].fast_mode` 默认是 true，作用是打开 Fast 选择以及 `service_tier = "fast"` 这条路径；本文没有改过这个键，也没有把 `service_tier` 写成一份已验证的默认配置。受管客户端里，`requirements.toml` 的 `features.fast_mode` 可以把 Fast 钉住开或关，那不是一条普通的起始默认。0.169.1 的 `--help` 没有列出 `/fast`，斜杠命令来自 Speed 文档。本文没有登录，没有在交互会话里切换速度。
+CLI 可用 `/fast` 开关，再输入一次回到 Standard。Speed 页写明 CLI 会记住这次选择。配置参考里，`[features].fast_mode` 默认是 true，作用是打开 Fast 选择以及 `service_tier = "fast"` 这条路径；本文没有改过这个键，也没有把 `service_tier` 写成一份已验证的默认配置。受管客户端里，`requirements.toml` 的 `features.fast_mode` 可以把 Fast 钉住开或关，那不是一条普通的起始默认。0.169.1 的 `--help` 没有列出 `/fast`。2026-11-24 的 0.172.0 `--help` 同样没有斜杠命令表，`/fast` 与 `/ultrafast` 以当天的 Speed 页为准。本文没有登录，没有在交互会话里切换速度。
 
 ### Ultrafast
 
@@ -139,10 +158,9 @@ CLI 可用 `/fast` 开关，再输入一次回到 Standard。Speed 页写明 CLI
 
 Speed 页的生成速度：GPT-6.2 两款的 Ultrafast 最多大约是 Standard 的 **4.5 倍**。Codex 里 GPT-6 Astra 的 Ultrafast 最多大约是它自己 Standard 的 **8 倍**。这些都是出 token 的速度，不是上表的计费倍数。
 
-谁能开，按 Changelog、What's new 和 Speed：
+谁能开，按 2026-11-24 的 Speed 页：
 
-- Pro 每月 200 美元：Ultrafast 可以用在 **GPT-6.2 Sol**。
-- Pro 每月 500 美元：GPT-6.2 两款都可以。先扣内含，再扣 credits。
+- Pro：能用哪些模型取决于套餐。同一页写明 Pro 每月 500 美元可以用 GPT-6.2 两款，先扣内含，再扣 credits，并指向 “GPT-6.2 Ultrafast availability by Pro plan”。本文没有另打开一份独立的分档页，所以不补其他 Pro 档的型号名单。
 - Enterprise、Edu：两款都可以，但要符合条件的协议（Enterprise 为 credits 或按美元用量；Edu 为 credits），并且所有者另外打开这项权限。默认关闭。
 - GPT-6 Astra 和 GPT-6.1 Sol 的 Ultrafast：Speed 页写的是 Pro 500 美元和符合条件的 Enterprise、Edu。
 
@@ -154,7 +172,7 @@ CLI 用 `/ultrafast`，再输入一次回到 Standard。选择会被记住。
 
 ## GPT-6.2 的 credits 单价与 Plus、Business 的 5 小时消息估算
 
-下面同样来自定价页，查询日期 2026-11-18。credits 是 Standard 速度下每 100 万 token 的单价。它和套餐内含的「还能发多少条」不是同一个数。
+下面同样来自定价页，查询日期 2026-11-24。credits 是 Standard 速度下每 100 万 token 的单价。它和套餐内含的「还能发多少条」不是同一个数。定价页还有 GPT-5.6、Daybreak、GPT-Rosalind-Research 和 GPT-Image-2 的单价。那些不在本文这张 Codex 常用模型表里。
 
 | 模型 | 输入 | 缓存输入 | 输出 |
 |---|---:|---:|---:|
@@ -162,12 +180,13 @@ CLI 用 `/ultrafast`，再输入一次回到 Standard。选择会被记住。
 | GPT-6.2 Sol | 50 credits | 2.5 credits | 250 credits |
 | GPT-6 Astra | 250 credits | 25 credits | 1,250 credits |
 | GPT-6.1 Sol | 50 credits | 2.5 credits | 250 credits |
+| GPT-6 Sol | 50 credits | 5 credits | 250 credits |
 | GPT-6.1 Terra | 25 credits | 1.25 credits | 125 credits |
 | GPT-6 Luna | 2.5 credits | 0.25 credits | 12.5 credits |
 
 按美元用量计费时，同一页写 GPT-6.2 Astra 为每 100 万 token 输入 8 美元、缓存输入 0.40 美元、输出 40 美元；GPT-6.2 Sol 为 2 美元、0.10 美元、10 美元。发布文把同一组数字写成标准 API 价格。用 API Key 时走 API 价格。
 
-Plus 和 Standard Business 的**本地消息**估算（每 5 小时）。Pricing 写明这不是固定条数上限，云端任务可能更吃额度。Pricing 写 Pro 目前没有 5 小时限制；帮助中心把这一点写成 Pro 100、Pro 200 和 Pro 500。同一篇帮助文章里的估算表还没有 GPT-6.2 和 GPT-6.1 Terra，停在 Astra 5–45、GPT-6.1 Sol 15–160 等旧行。下表以 Pricing 页为准。
+Plus 和 Standard Business 的**本地消息**估算（每 5 小时）。Pricing 写明这不是固定条数上限，云端任务可能更吃额度。Pricing 写 Pro 目前没有 5 小时限制；2026-11-24 的帮助中心仍把这一点写成 Pro 100、Pro 200 和 Pro 500。同一篇帮助文章的估算表还没有 GPT-6.2 和 GPT-6.1 Terra，行是 Astra 5–45、GPT-6.1 Sol 15–160、GPT-6 Sol 15–150、Luna 350–3,000。Business 模型页的 Standard 席位表也没有 GPT-6.2，并把 GPT-6.1 Sol 与 GPT-6 Sol 合成 15–150。下表以 Pricing 页为准。
 
 | 模型 | Plus | Standard Business |
 |---|---|---|
@@ -251,5 +270,7 @@ Pricing 把「让限制更耐用」写成可操作建议，核心是减上下文
 - [Using Credits for Flexible Usage in ChatGPT (Personal plans)](https://help.openai.com/en/articles/12642688-using-credits-for-flexible-usage-in-chatgpt-personal-plans)
 - [Speed（Fast／Ultrafast）](https://learn.chatgpt.com/docs/agent-configuration/speed)
 - [Pricing（估算区间、倍率表、credits 单价）](https://learn.chatgpt.com/docs/pricing)
+- [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)（2026-11-23 至 11-30 新建工作区的双倍每周额度）
+- [ChatGPT Business](https://chatgpt.com/business/)（首页的 11 月 30 日前创建、12 月 31 日前双倍包含用量）
 - [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 用 GPT-6.2 Astra 和 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)

@@ -20,7 +20,7 @@
 - [Codex config.toml 配置指南：配置层级、-c 临时覆盖、Profile 文件和生效检查](./04-Codex-config.toml深入配置-字段覆盖关系与排查方法.md)
 - [Codex 沙箱与主机权限风险：git show 白名单逃逸复盘，和现在怎么用权限、Rules、Hooks 防](./05-Codex沙箱与主机权限风险.md)
 - [Codex AGENTS.md 怎么写：项目规则继承、验收标准，以及和 Memories、Skills 怎么分工](./07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)
-- [Codex 用量额度怎么看：GPT-6.2 的 Fast 2x、Ultrafast 6x 倍率和 credits 单价，Plus 每 5 小时能发多少条](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
+- [Codex 用量额度怎么看：5 小时与每周限制、Fast 倍率、credits，以及 Business 新工作区 11 月 30 日前创建可得双倍每周额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex Windows 沙箱配置：启用 MXC 原生隔离，以及 elevated / unelevated 回退](./09-Codex-Windows沙箱-启用MXC与elevated-unelevated回退.md)
 - [Codex Daybreak Blue 怎么用：申请 Trusted Access、App 开关与 CLI /daybreak，以及审批后仍被拒时怎么查](./10-Codex-Daybreak-Blue申请开启与排障.md)
 - [Codex 自定义模型提供商：在终端里添加供应商，登录时用设备码对接网关](./11-Codex自定义模型提供商-model_providers与openai_base_url.md)
