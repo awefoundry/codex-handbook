@@ -1,31 +1,54 @@
 ---
-title: "Codex 能做什么和不能做什么：能力边界、使用条件与验证方法"
+id: codex-neng-zuo-shen-me
+title: "Codex 能做什么和不能做什么：按现行官方文档核对能力边界、四个使用条件和完成验证方法"
 seo_title: "Codex 能做什么、不能做什么：能力边界与验证方法"
 seo_description: "Codex 能理解项目、修改文件、运行命令、调用工具并检查结果，但能否完成任务取决于四个条件：上下文、权限、运行环境和验证方法。列出常见任务的能力边界，以及判断它是否真正完成的方法。"
-description: "这篇文章写给准备把真实任务交给 Codex 的读者。"
+description: "Codex 能读项目、改文件、跑命令，也能用浏览器、Computer Use、定时任务和 Cloud，但一次任务能不能做成，取决于上下文、权限、运行环境和验证。本文按现行官方文档列出边界和检查方法。"
+lede: "能改文件，只说明它有这个动作。这次改得对不对，要看上下文、权限、环境和你拿得到的证据。"
 url: /guides/codex-neng-zuo-shen-me
 status: published
+section: guides
+category: A-getting-started
+topic: 认识、安装与环境
+content_type: 解释
+source_tag: 官方功能
+entry_tags: [App, CLI, IDE, Cloud]
+difficulty: 基础
+order: 3
+author: CodexGuide
+contributors: [CodexGuide]
 date_published: 2026-07-12
-date_modified: 2026-10-13
+date_modified: 2026-11-25
+verified_on: 2026-11-25
+official_ref: https://learn.chatgpt.com/docs/features
+keywords: [Codex 能做什么, Codex 不能做什么, Codex 能力边界, Codex 适合什么任务, Codex 怎么验证结果]
+related: [permissions-sandbox-approvals, codex-xin-shou-chang-jian-wu-qu, cloud-environments]
+faq:
+  - q: "能修改代码，是不是等于这次修改是对的？"
+    a: "不是。能编辑文件是一项能力。这次修改是否正确，要看 diff、实际跑过的检查，以及还没有验证的部分。流畅的完成说明不能代替这些证据。"
+  - q: "把权限开到最大，判断会更准吗？"
+    a: "不会。Permissions 页写明，更换谁来审查请求并不会扩大沙箱。Ask for approval 和 Approve for me 的工作区边界相同。"
+  - q: "Cloud 是不是比本地什么都能做？"
+    a: "Cloud 文档写的是在云端环境里检查代码、做出改动并运行命令或测试。它不会自动补上环境里没有的依赖、测试命令和项目说明。"
 ---
 
-# Codex 能做什么和不能做什么：能力边界、使用条件与验证方法
+# Codex 能做什么和不能做什么：按现行官方文档核对能力边界、四个使用条件和完成验证方法
 
 > 本文在线版：[codexguide.io/guides/codex-neng-zuo-shen-me](https://codexguide.io/guides/codex-neng-zuo-shen-me)
 
-> 难度：基础
->
-> 类型：能力边界
+> 核对依据：2026-11-25 打开的 [Features](https://learn.chatgpt.com/docs/features)、[Working with agents](https://learn.chatgpt.com/docs/working-with-agents)、[Permissions](https://learn.chatgpt.com/docs/permission-modes) 和 [Codex Cloud](https://learn.chatgpt.com/docs/cloud)。没有打开桌面应用，没有跑 Cloud 任务，没有新截图。文中那张权限页图片是知识库里已有的官方页截图。
 
 ## 这篇文章适合谁
 
 这篇文章写给准备把真实任务交给 Codex 的读者。
 
-前两篇已经解释了 [Codex 是什么](./01-Codex是什么.md)，以及 [哪些人适合使用 Codex](./02-Codex适合哪些人.md)。接下来需要把能力边界讲清楚：它能执行哪些工作，完成这些工作需要什么条件，哪些判断仍然必须由人负责。
+[Codex 是什么](./01-Codex是什么.md) 讲了它和普通对话的差别。[哪些人适合使用 Codex](./02-Codex适合哪些人.md) 讲了判断标准。接下来要把能力边界讲清楚：它能执行哪些工作，完成这些工作需要什么条件，哪些判断仍然必须由人负责。做完之后如果结果经常失控，接着看 [新手常见误区](./08-Codex新手常见误区.md)。
 
 ## 先说结论
 
-Codex 可以理解项目、修改文件、运行命令、调用工具并检查结果。它能否完成某个具体任务，还取决于四件事：有没有足够的上下文、是否获得必要权限、当前环境能不能运行，以及有没有明确的验证方法。
+Codex 可以理解你允许它读取的项目、修改文件、运行命令、调用浏览器和外部工具，并按你给出的方法检查结果。它也可以在 Cloud 里跑编码任务。它能否完成某个具体任务，还取决于四件事：有没有足够的上下文、是否获得必要权限、当前环境能不能运行，以及有没有明确的验证方法。
+
+[Working with agents](https://learn.chatgpt.com/docs/working-with-agents) 把代理写成三件事放在一起：用来理解和计划的模型、用来收集信息或采取动作的工具，以及用来划定边界的护栏和人的监督。你仍然负责决定结果能不能用。写得流畅的总结，不能单独证明任务已经做成。
 
 “Codex 能修改代码”是一项能力。“这次代码修改正确”是一个需要证据的结论。
 
@@ -45,6 +68,8 @@ flowchart LR
 少了其中任何一项，任务都可能停在中间。
 
 例如，Codex 可以阅读测试失败信息并修改相关代码。但如果依赖没有安装、测试环境无法启动，或者报错只出现在生产环境，它就无法在当前环境中证明问题已经解决。
+
+Working with agents 在交给代理之前问三件事：能不能说清结果和“做完”是什么意思，代理能不能拿到需要的信息和工具，你能不能评估结果并在出错时恢复。三个问题对上上面这四个条件。
 
 ## Codex 能做什么
 
@@ -83,7 +108,7 @@ Codex 可以在权限允许时执行终端命令，例如安装依赖、运行�
 
 这类能力让它可以形成完整过程：先查找问题，再修改文件，随后运行检查。如果命令失败，它还可以根据输出继续排查。
 
-命令能否执行取决于当前环境。缺少运行时、系统依赖、网络、账号或环境变量时，Codex 只能说明缺少什么，不能凭空补出真实环境。
+命令能否执行取决于当前环境。缺少运行时、系统依赖、网络、账号或环境变量时，Codex 只能说明缺少什么，不能凭空补出真实环境。终端里并排看对话和命令输出，见 [终端工作区](../12-官方工具与集成/27-Codex终端工作区-并排side-chat多标签页与重启后恢复.md)。2026-11-25 打开的 Features 落地页没有一张名叫「终端」的卡片，这一篇是 CLI 界面，不是那张功能目录上的入口。
 
 ### 调试问题和补充测试
 
@@ -105,11 +130,25 @@ Codex 可以查看 Git diff、提交历史和 Pull Request 修改，寻找明显
 
 代码审查适合用它做第一轮扫描，但不应该省略项目负责人或领域专家的判断。很多问题与业务规则、历史兼容和线上数据有关，这些信息未必存在于代码中。
 
-### 使用浏览器、搜索和外部工具
+### 浏览器、Computer Use、文件、定时任务和 Cloud
 
 根据使用入口和配置，Codex 可以使用浏览器、网络搜索、MCP、插件或其他集成读取外部信息并采取操作。
 
 这些能力不是默认无限开放的。能否使用某个工具，取决于工具是否安装、是否完成认证、当前权限策略和组织要求。
+
+2026-11-25 的 [Features](https://learn.chatgpt.com/docs/features) 把一批入口分成工作流和能力。下面只列和「动手完成一件工作」直接相关、站内已经有专文的几项。表中「文档里的范围」是该入口页面或 Cloud 页的主题，不是本文实测过的点击路径。
+
+| 入口 | 文档里的范围 | 站内文章 |
+| --- | --- | --- |
+| Browser | 让 ChatGPT 浏览网站并采取动作，同时你保持控制 | [浏览器操作与登录态](../12-官方工具与集成/02-Codex浏览器操作与登录态功能.md) |
+| Computer use | 让 ChatGPT 通过视觉界面与应用交互 | [Computer Use](../12-官方工具与集成/03-Codex使用Computer-Use操作桌面应用.md) |
+| Scheduled tasks | 安排重复工作，并查看已经完成的结果 | [定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md) |
+| Work with files | 创建、预览和修改文档及其他生成的文件 | [生成文档、表格、幻灯片和 PDF](../08-插件工作流/02-Codex文档交付工作流.md) |
+| Codex Cloud | 在云端环境里检查代码、做出改动，并运行命令或测试 | [Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md) |
+
+Cloud 不在 Features 落地页的那组卡片里，它有单独的 [Codex Cloud](https://learn.chatgpt.com/docs/cloud) 页。该页写：可以从网页、手机或桌面应用查看改动并继续；每条任务有自己的工作区，电脑休眠时任务仍可以继续；如果默认环境可用，可以不先选仓库就开始。它没有写 Cloud 会自动比本机更正确。
+
+桌面端把相关对话和文件夹放进项目的方式，见 [桌面端项目](../12-官方工具与集成/35-Codex桌面端项目-ChatGPT项目与本地项目-多文件夹锁定对话与Quick-chat.md)。
 
 ## Codex 不能做什么
 
@@ -125,7 +164,7 @@ Codex 不会自动知道私人仓库、线上数据库、内部文档和第三�
 
 Codex 可能误解需求、遗漏边界条件、使用不合适的 API，或者写出能够通过部分测试但仍有问题的代码。
 
-代码看起来合理、命令返回成功、页面能够打开，这些都只是证据的一部分。最终还需要结合测试范围、实际业务和人工审查判断。
+代码看起来合理、命令返回成功、页面能够打开，这些都只是证据的一部分。最终还需要结合测试范围、实际业务和人工审查判断。Working with agents 写明：流畅的文字或自信的总结，不足以确立任务已经成功。
 
 ### 不能替你补全没有说出口的需求
 
@@ -139,23 +178,31 @@ Codex 可能误解需求、遗漏边界条件、使用不合适的 API，或者�
 
 它可以检查静态代码并给出推断，但需要明确写出验证范围。例如：“已通过代码检查和单元测试，尚未连接真实支付环境。”
 
+Cloud 也一样。云端任务使用的是那个环境里的仓库、依赖和工具。环境里没有的服务，不会因为任务跑在 Cloud 上就出现。
+
 ### 不能绕过权限边界
 
-OpenAI 官方文档把权限分为不同模式。权限决定 Codex 可以在什么范围内编辑文件、运行命令和使用网络，以及什么时候需要审批。
+[Permissions](https://learn.chatgpt.com/docs/permission-modes) 写：权限决定桌面端里的 ChatGPT，以及 CLI 或 IDE 里的 Codex，如何处理编辑文件、运行命令和使用网络这类本地动作。你选择的模式划定它可以自己做的范围，以及什么需要复查。
+
+多数工作从 **Ask for approval** 开始。它让 ChatGPT 在当前工作区内工作，在越过这个边界之前停下来。
+
+**Approve for me** 把符合条件的审批请求交给自动审查。更换谁来审查，并不会扩大沙箱。该页写明，Approve for me 保持和 Ask for approval 相同的工作区边界，只是把越过边界的请求送去自动审查。
+
+有某个模式可用，不等于当前对话已经选中它。可用模式还取决于应用版本、执行环境、本地配置和组织要求。托管要求也可以限制 Ask for approval。CLI 里调整权限的命令，该页写的是 `/permissions`。
+
+页面插图的说明文字里能看到 Full access 可以被打开。2026-11-25 的正文没有定义 Full access 会改工作区外的哪些文件、会不会联网。本文不补写文档里没有的那一档行为。
 
 ![OpenAI 官方 Permissions 页面](../图片素材/00-从这里开始/03-Codex能做什么和不能做什么/01-官方Permissions权限模式.png)
 
-> 图片来源：[OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)。
+> 图片来源：[OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)。这是知识库里已有的官方页截图。2026-11-25 该页正文比图中可能显示的模式列表更短，上面的段落以当天的正文为准。
 
-默认从需要审批的模式开始更合适。为了少点几次确认而直接开放全部权限，会扩大误删除、数据泄露和意外操作的影响范围。
-
-权限扩大的是行动范围，不会让 Codex 的判断自动变得更准确。
+为了少点几次确认而放宽边界，扩大的是行动范围，不会让 Codex 的判断自动变得更准确。权限怎么收紧，见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
 
 ### 不能承担最终责任
 
 生产发布、数据库迁移、支付、安全、合规和客户数据处理都需要明确负责人。
 
-Codex 可以帮助准备变更、执行检查和整理风险，但不能替团队承担业务后果。高风险操作应该有备份、审批、回滚方案和人工确认。
+Codex 可以帮助准备变更、执行检查和整理风险，但不能替团队承担业务后果。高风险操作应该有备份、审批、回滚方案和人工确认。Working with agents 写明：代理没有同事那种对结果的责任，你仍然要决定工作能不能用。
 
 ## 常见任务的能力边界
 
@@ -166,14 +213,16 @@ Codex 可以帮助准备变更、执行检查和整理风险，但不能替团�
 | 修复 Bug | 根据复现和日志定位并修改 | 能复现问题或运行失败测试 | 原问题是否消失，是否引入回归 |
 | 代码审查 | 查找错误、风险和测试缺口 | 有明确 diff 和项目规则 | 业务背景、历史约束和优先级 |
 | 修改配置 | 编辑配置并运行检查 | 知道目标环境和配置优先级 | 密钥、权限和不同环境的差异 |
-| 操作外部服务 | 通过 MCP、插件或集成调用工具 | 已安装、认证并获得授权 | 写操作范围、数据影响和撤销方式 |
+| 操作外部服务 | 通过浏览器、Computer Use、MCP、插件或集成调用工具 | 已安装、认证并获得授权 | 写操作范围、数据影响和撤销方式 |
+| 定时重复的工作 | 按计划运行已经稳定的流程 | 项目、提示词、周期和运行环境已经定下来 | 失败时怎样发现，结果是否仍然有人看 |
+| 在 Cloud 里改代码 | 在云端环境中检查、修改并运行命令或测试 | 环境里有需要的仓库、依赖和工具 | 改动、检查结果，以及要不要提交或开 PR |
 | 发布到生产环境 | 准备命令、检查清单和变更说明 | 完整发布环境与团队流程 | 必须由负责人确认并保留回滚方案 |
 
 这张表里没有“完全自动、无需检查”的任务。任务越接近生产环境和重要数据，人工检查越不能省。
 
 ## 怎样判断 Codex 是否真的完成了任务
 
-不要只看最后一句“已完成”。可以按下面的顺序检查。
+不要只看最后一句“已完成”。Working with agents 把复查写成工作的一部分：看看得见的步骤、来源、工具动作和结果，再对照任务说明检查是否完整、重要说法有没有依据、要求的动作是否真的发生。可以按下面的顺序检查。
 
 ### 查看它实际改了什么
 
@@ -196,11 +245,11 @@ Codex 可以帮助准备变更、执行检查和整理风险，但不能替团�
 - 是否存在跨平台、浏览器或版本差异。
 - 是否有需要产品、设计、安全或业务人员确认的决定。
 
-可靠的 Codex 结果会把这些限制写出来。只汇报成功、不说明检查范围的结果，需要继续追问。
+可靠的结果会把这些限制写出来。只汇报成功、不说明检查范围的结果，需要继续追问。
 
 ## 一个更稳妥的任务写法
 
-下面是一段真实任务写法，用来说明怎样把能力和验证条件放在一起。
+下面是一段任务写法，用来说明怎样把能力和验证条件放在一起。它不是某次会话的实录。
 
 ```text
 请修复用户资料页在邮箱为空时出现的报错。
@@ -231,16 +280,17 @@ Codex 可以帮助准备变更、执行检查和整理风险，但不能替团�
 
 ## 下一步学习
 
-下一篇会比较 Chat、ChatGPT Work 和 Codex，帮助读者根据主要交付物选择入口。
+权限边界的具体开关，见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。容易让任务失控的做法，见 [新手常见误区](./08-Codex新手常见误区.md)。
 
 准备实际操作的读者，可以进入 [安装与首次使用](../01-安装与首次使用/)；想先学会怎样描述任务，可以进入 [核心概念与任务方法](../02-核心概念与任务方法/)。
 
 ## 参考资料
 
-- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
-- [OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)
-- [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
-- [Agent approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)
+- [Features](https://learn.chatgpt.com/docs/features)
+- [Working with agents](https://learn.chatgpt.com/docs/working-with-agents)
+- [Permissions](https://learn.chatgpt.com/docs/permission-modes)
+- [Codex Cloud](https://learn.chatgpt.com/docs/cloud)
+- [Prompting](https://learn.chatgpt.com/docs/prompting)
 - [Sandbox](https://learn.chatgpt.com/docs/sandboxing)
 - [Code review](https://learn.chatgpt.com/docs/code-review)
 

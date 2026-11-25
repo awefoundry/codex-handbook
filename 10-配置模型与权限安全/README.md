@@ -42,3 +42,4 @@
 - [Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)
 - [Codex 沙箱怎么工作：拆解 OpenAI 官方《Inside the Codex sandbox》，:workspace 权限 profile 默认放行什么、拦住什么，三个系统分别怎么执行](./30-Codex沙箱怎么工作-拆解OpenAI官方文章-workspace权限profile与三系统实现.md)
 - [Codex sandbox 命令：用权限 profile 在沙箱里试跑任意命令，验证 profile 拦不拦得住，并给 MCP 服务器套上沙箱](./31-Codex-sandbox命令-用权限profile测试脚本和MCP服务器的沙箱.md)
+- [Codex 额度重置怎么用：banked reset 在哪看、怎么兑换，80% 门槛和下次刷新时间为什么会变](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)（按帮助中心整理三种重置、80% 门槛和刷新时间。Linux 上未登录的 codex-cli 0.172.0 只核对了帮助文本，没有打开 /usage 菜单，没有配图）
