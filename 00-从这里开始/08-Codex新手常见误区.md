@@ -1,21 +1,42 @@
 ---
-title: "Codex 新手常见误区：哪些做法最容易让任务失控"
+id: codex-xin-shou-chang-jian-wu-qu
+title: "Codex 新手常见误区：21 个让任务失控的做法，按现行权限模式、Plan 模式和 Skills 文档逐条核对"
 seo_title: "Codex 新手常见误区：哪些做法最容易让任务失控"
 seo_description: "Codex 改了很多文件却没解决问题、提示越写越长越不稳定、显示完成但项目仍有问题，往往源于几类常见误区。从任务设计、上下文管理、权限安全、验证和 Git 几方面说明怎样避免。"
-description: "这篇文章写给已经开始使用 Codex，却经常遇到下面情况的读者： Codex 改了很多文件，但真正的问题没有解决。 提示写得越来越长，结果反而越来越不稳定。 任务显示完成，打开页面或运行项目后仍然有问题。 同一个仓库同时开几个任务，最后不知道修改来自哪里。 安装了很多 MCP、Skills 和插件，却没有形成稳定工作流。"
+description: "Codex 改了很多文件却没解决问题、提示越写越长、显示完成但项目仍有问题，往往是任务范围、上下文、权限或验证没对齐。本文按现行官方文档核对 21 个误区，并链到对应的站内教程。"
+lede: "先把一个任务收成一个可以验收的结果。复杂任务先计划，权限从 Ask for approval 开始，接受结果之前看 diff。"
 url: /guides/codex-xin-shou-chang-jian-wu-qu
 status: published
+section: guides
+category: A-getting-started
+topic: 认识、安装与环境
+content_type: 解释
+source_tag: 官方功能
+entry_tags: [App, CLI, IDE, Cloud]
+difficulty: 基础
+order: 8
+author: CodexGuide
+contributors: [CodexGuide]
 date_published: 2026-07-12
-date_modified: 2026-10-13
+date_modified: 2026-11-25
+verified_on: 2026-11-25
+official_ref: https://learn.chatgpt.com/guides/best-practices
+keywords: [Codex 新手误区, Codex 常见错误, Codex 任务失控, Codex Full access, Codex 使用技巧]
+related: [codex-prompting-guide, codex-neng-zuo-shen-me, worktree-parallel-chats]
+faq:
+  - q: "21 条都要避开，才算会用 Codex 吗？"
+    a: "不用。先让一个任务只对应一个可以验收的结果。复杂或含糊的任务用 Plan 模式。多数工作从 Ask for approval 开始。接受结果前看 diff 和实际跑过的检查。"
+  - q: "Full access 是默认权限吗？"
+    a: "2026-11-25 的 Permissions 页没有把某一档写成所有客户端的出厂选中项。它写多数工作从 Ask for approval 开始，并提醒某个模式可用不等于当前对话已经选中它。插图里能看到 Full access，正文没有定义它会改哪些工作区外的文件。"
+  - q: "插件、MCP 和 Skills 装得越多，Codex 是不是越强？"
+    a: "不是。Skills 页把技能写成可复用流程，插件是可以装进去的技能和工具包。Best practices 建议先加一两个能去掉真实手工环节的工具。第三方技能先扫描。"
 ---
 
-# Codex 新手常见误区：哪些做法最容易让任务失控
+# Codex 新手常见误区：21 个让任务失控的做法，按现行权限模式、Plan 模式和 Skills 文档逐条核对
 
 > 本文在线版：[codexguide.io/guides/codex-xin-shou-chang-jian-wu-qu](https://codexguide.io/guides/codex-xin-shou-chang-jian-wu-qu)
 
-> 难度：基础
->
-> 类型：使用误区与纠正方法
+> 核对依据：2026-11-25 打开的 [Best practices](https://learn.chatgpt.com/guides/best-practices)、[Working with agents](https://learn.chatgpt.com/docs/working-with-agents)、[Prompting](https://learn.chatgpt.com/docs/prompting)、[Permissions](https://learn.chatgpt.com/docs/permission-modes)、[Skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins) 和 [Codex Cloud](https://learn.chatgpt.com/docs/cloud)。没有打开桌面应用，没有新截图。文中的 Common mistakes 图片是知识库里已有的官方页截图。
 
 ## 这篇文章适合谁
 
@@ -43,22 +64,26 @@ date_modified: 2026-10-13
 
 ## 官方怎样提醒新手
 
-OpenAI 的 Codex Best Practices 已经列出一组常见错误，包括：
+[Working with agents](https://learn.chatgpt.com/docs/working-with-agents) 把一次交接写成四样东西要说清：要完成什么、给谁、范围里有什么和没有什么；哪些来源和约束该遵守，缺信息时怎么办；哪些可以自己做，哪些要批准，何时停；交付物的格式和你怎样判断质量。它同时写明，代理没有同事那种对结果的责任，你仍然要决定结果能不能用。流畅的文字或自信的总结，不足以证明任务已经做成。
 
-- 把长期规则全部塞进提示词，而不是放入 `AGENTS.md` 或 Skill。
-- 不告诉 Codex 怎样构建和测试，导致它无法检查自己的工作。
-- 多步骤复杂任务跳过计划。
-- 尚未理解工作流就开放完整电脑权限。
-- 多个实时任务修改同一批文件，却不使用 Git worktree 隔离。
-- 手动流程还不稳定就创建定时任务。
-- 把 Codex 当成必须逐步盯着的工具。
-- 用一个任务承载整个项目，造成上下文膨胀和结果变差。
+[Prompting](https://learn.chatgpt.com/docs/prompting) 写，短提示常常就够。更大或更重要的任务，再补上有用的部分：**Goal**（要它做什么）、**Context**（哪些信息或来源有帮助）、**Output**（格式、长度或详细程度）、**Boundaries**（什么必须保持不变，什么要先问你）。不需要把每一项都填满，也没有规定的格式。怎么把这四项写成一次任务，见 [提示词怎么写](../02-核心概念与任务方法/09-Codex提示词怎么写-目标上下文边界与官方示例.md)。
+
+2026-11-25 的 [Best practices](https://learn.chatgpt.com/guides/best-practices) 仍然有 Common mistakes 一节。当天页面上的八条是：
+
+- 把长期规则全部塞进提示词，而不是放进 `AGENTS.md` 或技能。
+- 不告诉代理怎样构建和测试，使它看不到自己的工作。
+- 多步骤、复杂的任务跳过计划。
+- 还不了解工作流，就把整台电脑的完整权限交给 Codex。
+- 多个实时任务改同一批文件，却不用 Git worktree。
+- 手动流程还不可靠，就去安排重复任务。
+- 把 Codex 当成必须一步一步盯着的东西，而不是和你自己的工作并行。
+- 用一个对话装下整个项目，而不是一个对话对应一个连贯结果。这会让上下文膨胀，结果变差。
 
 ![OpenAI Best Practices 中的 Common mistakes](../图片素材/00-从这里开始/08-Codex新手常见误区/01-官方Best-Practices常见误区.png)
 
-> 图片来源：[Codex Best Practices](https://learn.chatgpt.com/guides/best-practices#common-mistakes)。本文以官方列表为基础，并结合前七篇中的任务、权限、Git 和验证方法进一步展开。
+> 图片来源：[Codex Best Practices](https://learn.chatgpt.com/guides/best-practices#common-mistakes)。这是知识库里已有的官方页截图。2026-11-25 该页的 Common mistakes 仍是上面八条。本文没有重拍。
 
-下面有些内容是 OpenAI 官方直接给出的建议，有些是本知识库根据这些原则做的编辑归纳。涉及产品行为和权限边界时，以文末官方资料为准。
+下面有些内容是这些官方页面直接写出的建议，有些是本知识库按同样的边界做的编辑归纳。涉及产品行为和权限名称时，以当天打开的官方页面为准。能力边界的总表见 [Codex 能做什么和不能做什么](./03-Codex能做什么和不能做什么.md)。
 
 ## 误区是怎样让任务失控的
 
@@ -86,7 +111,7 @@ flowchart TD
 
 对于“优化登录页面”，Codex 可能理解为改布局、提高性能、重构组件、补测试或调整文案。每个方向都合理，但未必是你要的。
 
-**更好的做法**：至少写出目标、相关范围、不能破坏的内容和完成条件。
+**更好的做法**：至少写出目标、相关范围、不能破坏的内容和完成条件。写法可以对照 [提示词怎么写](../02-核心概念与任务方法/09-Codex提示词怎么写-目标上下文边界与官方示例.md)。
 
 ```text
 目标：减少登录页面首次加载时的 JavaScript 体积。
@@ -103,7 +128,7 @@ flowchart TD
 
 “重构整个项目”通常没有统一的完成标准。任务进行几小时后，用户很难判断哪些变化必要，哪些只是顺手修改。
 
-**更好的做法**：把大目标拆成能够独立验收的结果。例如先梳理依赖关系，再迁移一个模块，补齐对应测试，最后处理剩余模块。
+**更好的做法**：把大目标拆成能够独立验收的结果。例如先梳理依赖关系，再迁移一个模块，补齐对应测试，最后处理剩余模块。一次只交给一个可以检查的结果，见 [能做什么和不能做什么](./03-Codex能做什么和不能做什么.md) 里的四个条件。
 
 每个子任务都应该能单独提交或放弃。拆分的重点不在句子数量，而在于每一步都有明确边界和证据。
 
@@ -111,7 +136,7 @@ flowchart TD
 
 涉及多个模块、数据库迁移、权限模型或外部系统的任务，如果目标还没说清就开始编辑，后面往往需要大面积返工。
 
-OpenAI Best Practices 建议复杂、含糊或难以描述的任务先进入计划阶段。Codex 可以先调查仓库、提出问题和列出修改顺序，再等待确认。
+2026-11-25 的 Best practices 写：任务复杂、含糊或难以描述时，先让 Codex 计划再写代码。对多数人，Plan 模式是最直接的做法。它让 Codex 收集上下文、提出澄清问题，并在实现之前做出更完整的计划。切换方式是 `/plan` 或 Shift+Tab。站内步骤见 [Plan 模式](../02-核心概念与任务方法/08-Codex-Plan模式-先出计划再动手.md)。
 
 **更好的做法**：先要求计划，不修改文件。
 
@@ -127,7 +152,7 @@ OpenAI Best Practices 建议复杂、含糊或难以描述的任务先进入计�
 
 如果你已经确定实现方案，当然可以直接要求执行；如果只是怀疑某个文件有问题，应该把它写成调查线索，不要写成结论。
 
-**更好的做法**：明确不可改变的约束，把可讨论的实现留给调查和计划。
+**更好的做法**：明确不可改变的约束，把可讨论的实现留给调查和计划。Prompting 也写，从要的结果说起；只有过程本身重要时，才去规定过程。
 
 ```text
 报错似乎与 retry.ts 有关，这是调查线索，不代表必须只改这个文件。请先确认根因，再给出最小修改方案。
@@ -141,7 +166,7 @@ OpenAI Best Practices 建议复杂、含糊或难以描述的任务先进入计�
 
 上下文也有成本。文件、工具结果、MCP 数据和历史对话都会占用任务可以处理的信息空间。
 
-**更好的做法**：先提供最相关的文件、错误、示例和规范。让 Codex 根据调查结果继续读取，而不是一开始就把所有内容推过去。
+**更好的做法**：先提供最相关的文件、错误、示例和规范。让 Codex 根据调查结果继续读取，而不是一开始就把所有内容推过去。上下文变长之后怎么压缩、何时新开，见 [上下文窗口与压缩](../02-核心概念与任务方法/07-Codex上下文窗口与压缩-compact自动压缩与何时新开会话.md)。
 
 可以先说：
 
@@ -153,7 +178,7 @@ OpenAI Best Practices 建议复杂、含糊或难以描述的任务先进入计�
 
 代码风格、测试命令、目录结构和禁止事项如果每次都重复，提示会越来越长，也容易出现版本不一致。
 
-OpenAI 建议把稳定、长期生效的项目规则放进 `AGENTS.md`。重复工作形成固定方法后，可以再整理成 Skill。
+Best practices 把 `AGENTS.md` 写成会自动进入上下文的项目说明，用来放仓库结构、怎样运行、构建和测试命令、约定和怎样算做完。重复工作形成固定方法后，再整理成 Skill。`AGENTS.md` 怎么分层，见 [AGENTS.md 怎么写](../10-配置模型与权限安全/07-AGENTS.md怎么写-项目规则继承关系与验收标准.md)。
 
 **更好的做法**：
 
@@ -170,7 +195,7 @@ OpenAI 建议把稳定、长期生效的项目规则放进 `AGENTS.md`。重复�
 
 官方建议一个任务对应一个连贯的工作结果。如果工作仍是同一个问题，可以留在原任务；目标真正分叉时再新建或 fork。
 
-**更好的做法**：用“能否独立验收和提交”判断是否拆任务。
+**更好的做法**：用“能否独立验收和提交”判断是否拆任务。Best practices 写，工作仍是同一个问题时留在原对话；真正分叉时再 fork。多条任务线怎么切换，见 [CLI 管理多条任务线](../11-自动化与高级工作流/03-CodexCLI管理多条任务线.md)。
 
 - “调查支付失败并修复根因”可以是一个任务。
 - “修支付 Bug、重做结算页面、更新营销文案”应该拆开。
@@ -182,7 +207,7 @@ OpenAI 建议把稳定、长期生效的项目规则放进 `AGENTS.md`。重复�
 
 另一种极端是完全不看过程，直到任务结束才发现方向早已偏离。
 
-**更好的做法**：让 Codex 连续完成低风险调查和验证，同时要求它在范围变化、高风险操作、关键假设不确定时暂停。
+**更好的做法**：让 Codex 连续完成低风险调查和验证，同时要求它在范围变化、高风险操作、关键假设不确定时暂停。Working with agents 把这叫做继续、改方向，或停下来做决定。已经做完的动作，改一句提示不会撤销。
 
 你需要看方向、边界和证据，不需要遥控每一次普通文件读取。
 
@@ -190,19 +215,19 @@ OpenAI 建议把稳定、长期生效的项目规则放进 `AGENTS.md`。重复�
 
 ### 误区 9：为了少弹窗，第一次就开启 Full access
 
-Full access 可以让 Codex 修改工作区外的文件并运行联网命令。它减少审批，也扩大了错误、数据泄露和意外操作的影响范围。
+2026-11-25 的 [Permissions](https://learn.chatgpt.com/docs/permission-modes) 没有把 Full access 写成所有客户端的默认值，也没有在正文里定义它会改工作区外的哪些文件、会不会联网。插图说明里能看到 Full access 可以被打开。同一天的 Best practices 把「还不了解工作流，就把整台电脑的完整权限交给 Codex」列为常见错误，并建议新手从默认权限开始，审批和沙箱先收紧，只在可信仓库或明确需要时再放宽。
 
-OpenAI 的权限文档建议多数工作从 `Ask for approval` 开始。权限不足时，再针对清楚的需求逐步开放。
+该页写明，多数工作从 **Ask for approval** 开始。它让 ChatGPT 在当前工作区内工作，越过这个边界之前会停下来。**Approve for me** 把符合条件的请求交给自动审查，工作区边界与 Ask for approval 相同。更换谁来审查，并不会扩大沙箱。某个模式出现在列表里，不等于当前对话已经选中它。
 
-**更好的做法**：先保持工作区边界。只有当任务确实需要访问外部目录或网络，而且你理解将执行的动作时，才批准对应请求。
+**更好的做法**：先保持工作区边界。只有当任务确实需要越过当前工作区，而且你理解将执行的动作时，才批准对应请求。模式名称和沙箱怎么配合，见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
 
-权限高低不会自动提高推理质量。Full access 只解决“能不能执行”，无法保证判断正确。
+权限高低不会自动提高推理质量。少几次弹窗，只改变谁来放行，不保证判断正确。
 
 ### 误区 10：权限请求只看“允许”按钮
 
 批准权限前没有查看命令、目标目录和网络地址，等于放弃了重要的安全检查。
 
-**更好的做法**：看到请求时快速确认四件事：
+**更好的做法**：看到请求时快速确认四件事。权限请求和沙箱的差别，仍见 [权限、沙箱与审批](../02-核心概念与任务方法/06-权限沙箱与审批-什么时候放行什么时候收紧.md)。
 
 1. 动作是否服务于当前任务。
 2. 会读取、创建、覆盖还是删除什么。
@@ -225,7 +250,7 @@ OpenAI 的权限文档建议多数工作从 `Ask for approval` 开始。权限�
 - 发布截图前检查邮箱、本地用户名、私有路径和 Token。
 - 把 `~/.codex/auth.json` 按密码文件处理。
 
-敏感信息不应该成为提示写得更“完整”的代价。
+敏感信息不应该成为提示写得更“完整”的代价。训练开关和 Include environments 的边界，见 [对话会被用来训练吗](../10-配置模型与权限安全/23-Codex对话会被用来训练吗-数据控制与Include-environments.md)。
 
 ## 四、验证和 Git 上的误区
 
@@ -240,7 +265,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-能够运行项目时，再记录最小构建、测试或人工检查结果。基线失败也没关系，关键是把已有问题和本次任务分开。
+能够运行项目时，再记录最小构建、测试或人工检查结果。基线失败也没关系，关键是把已有问题和本次任务分开。Git 状态、diff 和 blame 怎么读，见 [怎样读懂 Git 状态](../05-Git协作与代码审查/02-Codex如何读懂Git-status-diff-log与blame.md)。
 
 ### 误区 13：Codex 说“完成了”，任务就完成了
 
@@ -256,7 +281,7 @@ git log -1 --oneline
 | 文档链接有效 | 相对链接和外部链接检查通过 |
 | Cloud 任务可合并 | 环境成功运行检查，diff 经过审查 |
 
-看不到证据时，直接要求 Codex 说明哪些检查已运行、哪些无法运行以及原因。
+看不到证据时，直接要求 Codex 说明哪些检查已运行、哪些无法运行以及原因。怎样把「做完」写成可以检查的条件，见 [能做什么和不能做什么](./03-Codex能做什么和不能做什么.md)。
 
 ### 误区 14：测试通过，所以不用看 diff
 
@@ -272,13 +297,13 @@ git diff
 
 重点检查修改范围、删除内容、依赖和配置变化，以及是否出现任务没有要求的重构。
 
-测试回答“部分行为是否仍然正确”，diff 回答“项目到底发生了什么”。两者不能互相替代。
+测试回答“部分行为是否仍然正确”，diff 回答“项目到底发生了什么”。两者不能互相替代。本地审查命令见 [本地代码审查](../05-Git协作与代码审查/07-Codex本地代码审查-review命令与codex-review.md)。
 
 ### 误区 15：多个任务同时修改同一个工作目录
 
 并行看起来更快，但几个任务写同一批文件时，容易互相覆盖、误读 Git 状态和让验证结果失效。
 
-OpenAI 官方建议并行本地任务使用 Git worktree 隔离。每个任务拥有独立目录和分支，完成后再分别审查和合并。
+2026-11-25 的 Best practices 仍然把「多个实时任务改同一批文件、却不用 Git worktree」列为常见错误。每个任务拥有独立目录和分支，完成后再分别审查和合并。步骤见 [用 Worktree 并行](../11-自动化与高级工作流/10-Codex用Worktree并行运行多个任务.md)。
 
 **更好的做法**：
 
@@ -300,7 +325,7 @@ git diff --cached --stat
 git diff --cached --check
 ```
 
-提交应该对应一个能够说清楚的结果。提交信息再漂亮，也无法弥补内容范围混乱。
+提交应该对应一个能够说清楚的结果。提交信息再漂亮，也无法弥补内容范围混乱。怎样让一次提交可以被审查，见 [写出可审查的 Commit 和 PR](../05-Git协作与代码审查/05-怎样写出可审查的Commit和PR-范围验证证据与风险.md)。
 
 ## 五、扩展工具和 Cloud 上的误区
 
@@ -308,7 +333,7 @@ git diff --cached --check
 
 扩展确实能增加工具和上下文，但每个扩展也会带来认证、权限、配置、工具选择和上下文成本。
 
-OpenAI Best Practices 建议只在工具能够解除真实工作中的手动环节时再添加，先从一两个明确需求开始。
+2026-11-25 的 Best practices 写：只在工具能去掉你已经在重复的手工环节时再添加，先从一两个开始。[Skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins) 把技能定义成可复用的流程说明，把插件定义成可以装进去的技能和 MCP 包。第三方 `SKILL.md` 是写给代理执行的说明，装进会改文件的仓库之前先扫描，见 [SkillSpector](../09-MCP与外部工具/07-Codex用SkillSpector扫描第三方Skill-提示注入与数据外泄检查.md)。
 
 **更好的做法**：
 
@@ -323,17 +348,19 @@ OpenAI Best Practices 建议只在工具能够解除真实工作中的手动环�
 
 一个流程每次都需要大量纠偏时，定时执行只会稳定地产生不稳定结果。
 
-官方建议先让流程手动可靠，再把重复方法整理成 Skill，最后考虑定时任务。
+Best practices 写：技能定义方法，定时任务定义日程。流程还需要大量纠正时，先把它做成技能；等它可预测了，再考虑安排重复运行。创建和管理定时任务的入口见 [定时任务](../12-官方工具与集成/06-Codex-Automations定时任务.md)。
 
 **更好的做法**：自动化前确认输入来源、权限、失败处理、验收标准和输出位置都已经稳定。至少连续手动成功几次，并知道失败时怎样恢复。
 
 ### 误区 19：Cloud 一定比本地更强
 
-Cloud 的优势是隔离、并行、后台运行和团队复现。它不会自动补齐缺失的依赖、测试命令和项目文档。
+2026-11-25 的 [Codex Cloud](https://learn.chatgpt.com/docs/cloud) 写的是：把编码任务交给云端环境，从排查 bug 到做功能；每条任务有自己的工作区，电脑休眠时仍可以继续；然后在网页、手机或桌面应用里查看改动并继续。默认环境可用时，可以不先选仓库就开始，也可以检出已连接的 GitHub 或 GitLab 账号能交给 Codex 的仓库。
 
-项目只在某台电脑上能运行，或者依赖尚未提交的文件时，本地 App、CLI 或 IDE 反而更容易获得正确上下文。
+该页列出适合 Cloud 的情况包括：工作应该在远端跑、多条任务要同一套准备好的环境、工作流需要服务凭证、以及从 CLI 发起云端任务。它没有写 Cloud 会自动比本机更正确，也没有写它会补上环境里没有的依赖和测试命令。
 
-**更好的做法**：按任务环境选择入口。需要后台和并行时用 Cloud；依赖本机状态、需要高频互动时先在本地完成。具体判断可以参考 [App、CLI、IDE 和 Cloud 怎么选](./05-App-CLI-IDE和Cloud怎么选.md)。
+项目只在某台电脑上能运行，或者依赖尚未提交的文件时，本地 App、CLI 或 IDE 更容易拿到那份上下文。环境怎么发布、联网和密钥怎么放，见 [Cloud 云端环境](../12-官方工具与集成/12-Codex-Cloud云端环境-创建发布环境-联网与密钥设置.md)。
+
+**更好的做法**：按任务环境选择入口。需要后台运行、同一套云端环境或服务凭证时用 Cloud；依赖本机状态、需要高频互动时先在本地完成。四个入口怎么取舍，见 [App、CLI、IDE 和 Cloud 怎么选](./05-App-CLI-IDE和Cloud怎么选.md)。
 
 ### 误区 20：找到一条万能提示词，以后就不用调整
 
@@ -341,7 +368,7 @@ Cloud 的优势是隔离、并行、后台运行和团队复现。它不会自�
 
 同一句“请先思考、逐步执行、确保正确”不会自动告诉 Codex 使用哪个测试命令，也不会发现仓库中的真实规则。
 
-**更好的做法**：保留稳定的任务骨架，把具体目标、上下文和完成条件按当前工作填写。重复规则进入 `AGENTS.md`，重复流程进入 Skill。
+**更好的做法**：保留稳定的任务骨架，把具体目标、上下文和完成条件按当前工作填写。重复规则进入 `AGENTS.md`，重复流程进入 Skill。提示词的 Goal、Context、Output、Boundaries 见 [提示词怎么写](../02-核心概念与任务方法/09-Codex提示词怎么写-目标上下文边界与官方示例.md)。
 
 比起收集一百条提示词，更值得积累的是：什么任务适合拆分、什么证据可以验收、哪些错误应该写进项目规则。
 
@@ -351,7 +378,7 @@ Codex 可以在短时间内修改很多文件，但代码量不是价值指标�
 
 速度也要结合审查成本。五分钟生成、两小时排错的修改，并不比四十分钟完成且容易验证的方案高效。
 
-**更好的做法**：关注结果是否解决问题、修改是否足够小、验证是否可信、后续是否容易维护。
+**更好的做法**：关注结果是否解决问题、修改是否足够小、验证是否可信、后续是否容易维护。小范围修改怎样收住，见 [能做什么和不能做什么](./03-Codex能做什么和不能做什么.md)。
 
 ## 快速判断自己卡在哪个误区
 
@@ -375,7 +402,7 @@ Codex 可以在短时间内修改很多文件，但代码量不是价值指标�
 1. 一个任务只对应一个连贯结果。
 2. 写清 Goal、Context、Constraints 和 Done when。
 3. 复杂任务先调查和计划，小任务直接执行。
-4. 默认使用 Ask for approval，逐项理解高风险请求。
+4. 多数工作从 Ask for approval 开始，逐项理解越过工作区的请求。某个模式出现在列表里，不等于当前对话已经选中它。
 5. 开始前记录 Git 和项目基线。
 6. 修改后运行与完成条件对应的验证。
 7. 接受结果前查看完整 diff 和暂存区。
@@ -404,17 +431,18 @@ Codex 可以在短时间内修改很多文件，但代码量不是价值指标�
 
 ## 参考资料
 
-- [Codex Best Practices](https://learn.chatgpt.com/guides/best-practices)
-- [OpenAI Prompting](https://learn.chatgpt.com/docs/prompting)
+- [Best practices](https://learn.chatgpt.com/guides/best-practices)
+- [Working with agents](https://learn.chatgpt.com/docs/working-with-agents)
+- [Prompting](https://learn.chatgpt.com/docs/prompting)
+- [Permissions](https://learn.chatgpt.com/docs/permission-modes)
+- [Skills and plugins](https://learn.chatgpt.com/docs/skills-and-plugins)
+- [Codex Cloud](https://learn.chatgpt.com/docs/cloud)
 - [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
-- [OpenAI Permissions](https://learn.chatgpt.com/docs/permission-modes)
-- [Codex Code Review](https://learn.chatgpt.com/docs/code-review)
-- [Git worktrees](https://learn.chatgpt.com/docs/environments/git-worktrees)
-- [Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp)
+- [Code review](https://learn.chatgpt.com/docs/code-review)
 - [Build skills](https://learn.chatgpt.com/docs/build-skills)
-- [Build plugins](https://learn.chatgpt.com/docs/build-plugins)
 - [Scheduled tasks](https://learn.chatgpt.com/docs/automations)
-- [Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment)
-- [Codex Manual](https://learn.chatgpt.com/docs/codex-manual.md)
+- [提示词怎么写](../02-核心概念与任务方法/09-Codex提示词怎么写-目标上下文边界与官方示例.md)
+- [能做什么和不能做什么](./03-Codex能做什么和不能做什么.md)
+- [用 Worktree 并行](../11-自动化与高级工作流/10-Codex用Worktree并行运行多个任务.md)
 
 Codex 的权限、配置、工具和任务管理方式可能随版本与工作区设置变化。

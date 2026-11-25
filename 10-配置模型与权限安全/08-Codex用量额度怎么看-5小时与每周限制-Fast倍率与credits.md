@@ -71,7 +71,7 @@ faq:
 
 这是一条带起止日期的限时规则，不改变下面的 Fast、Ultrafast 倍率和 credits 单价。Pro、Plus 的个人套餐不在这一节里。GPT-6.2 怎么选见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
 
-本文只解决「怎么读额度、倍率怎么算、觉得不对怎么查」。若界面是 **Selected model is at capacity**、或要分清容量满／额度用尽／重置类型，见 [Codex「Selected model is at capacity」与额度重置](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
+本文只解决「怎么读额度、倍率怎么算、觉得不对怎么查」。若界面是 **Selected model is at capacity**、或要分清容量满／额度用尽／重置类型，见 [Codex「Selected model is at capacity」与额度重置](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。账户里存着的 banked reset 在桌面端、网页和 CLI 的 `/usage` 里怎么兑换，以及为什么会提示现在还不需要重置，见 [Codex 额度重置怎么用](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)。
 
 ## 先打开正确的面板
 
