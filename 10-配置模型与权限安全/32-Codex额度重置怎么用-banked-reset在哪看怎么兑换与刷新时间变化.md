@@ -2,7 +2,7 @@
 id: codex-banked-reset
 title: "Codex 额度重置怎么用：banked reset 在哪看、怎么兑换，80% 门槛和下次刷新时间为什么会变"
 seo_title: "Codex banked reset：在哪看、怎么兑换、刷新时间为何变"
-description: "banked reset 是存在账户里、由你决定何时使用的一次 Codex 额度重置。本文按帮助中心说明桌面端、网页和 CLI 的 /usage 怎么兑换，80% 门槛、刷新时间变化，以及 Business 福利各自的出处。"
+description: "banked reset 是存在账户里、由你决定何时使用的一次 Codex 额度重置。本文按帮助中心说明桌面端、网页和 CLI 的 /usage 怎么兑换，以及 80% 门槛和下次刷新时间为什么会变。"
 lede: "先看 Usage 里有没有可用的重置、它覆盖哪一档、什么时候过期。剩余还很高时，帮助中心写明兑不出去。"
 url: /guides/codex-banked-reset
 status: published
@@ -22,7 +22,7 @@ verified_on: 2026-11-25
 tested_cli_version: 0.172.0
 official_ref: https://help.openai.com/en/articles/20001498-how-resets-work-in-codex
 keywords: [Codex 额度重置, Codex banked reset, Codex Redeem reset, Codex /usage, ChatGPT Business Codex 重置]
-related: [usage-limits-credits, model-at-capacity-usage-reset, codex-gpt-6-2-astra-sol]
+related: [usage-limits-credits, model-at-capacity-usage-reset]
 howto: true
 faq:
   - q: "手机上能兑换 banked reset 吗？"
@@ -31,15 +31,13 @@ faq:
     a: "这次重置要覆盖的额度里，至少有一档剩余低于 80% 才能用。全部都在 80% 或以上时，重置继续留在账户里，直到你以后用掉或它过期。"
   - q: "兑换之后，原来的周五刷新还会发生吗？"
     a: "帮助中心的例子是：原本周五结束的周期如果在周二被重置重启，下一次刷新改到下一周的周二，原来的周五不再适用。订阅扣费日不因此改变。以下次在 Usage 里看到的时间为准。"
-  - q: "ChatGPT Business 每个人都会收到一次 banked reset 吗？"
-    a: "帮助中心没有写已有 Business 团队的发放名单、到期日或是否每人一份。Tibo 的帖子和定价页也没有这些细节。以你自己 Usage 页上的 Available 和到期时间为准。"
 ---
 
 # Codex 额度重置怎么用：banked reset 在哪看、怎么兑换，80% 门槛和下次刷新时间为什么会变
 
 > 本文在线版：[codexguide.io/guides/codex-banked-reset](https://codexguide.io/guides/codex-banked-reset)
 
-> 核对依据：2026-11-25 打开的帮助中心 [How resets work in Codex](https://help.openai.com/en/articles/20001498-how-resets-work-in-codex)（页面标注 Updated: 28 days ago）、[Response speed and usage resets in Work and Codex](https://help.openai.com/en/articles/20001596-response-speed-and-usage-resets-in-work-and-codex)（同样标注 28 天前更新）和 [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)（标注 15 小时前更新）。CLI 斜杠命令对照的是同一天的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)。Linux 上 `codex-cli 0.172.0` 未登录，`codex --help` 没有列出斜杠命令。没有打开交互式 TUI，没有登录桌面端或网页，没有配图。
+> 核对依据：2026-11-25 打开的帮助中心 [How resets work in Codex](https://help.openai.com/en/articles/20001498-how-resets-work-in-codex)（页面标注 Updated: 28 days ago）和 [Response speed and usage resets in Work and Codex](https://help.openai.com/en/articles/20001596-response-speed-and-usage-resets-in-work-and-codex)（同样标注 28 天前更新）。CLI 斜杠命令对照的是同一天的 [Developer commands](https://learn.chatgpt.com/docs/developer-commands)。Linux 上 `codex-cli 0.172.0` 未登录，`codex --help` 没有列出斜杠命令。没有打开交互式 TUI，没有登录桌面端或网页，没有配图。
 
 5 小时和每周额度怎么读、Fast 倍率怎么算，见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。界面写的是 **Selected model is at capacity**、要先分清容量满还是额度用尽，见 [容量不足与额度重置排查](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。本文只讲重置本身：账户里存着的那一次怎么找、什么条件下能兑换、兑换后刷新时间为什么会变。
 
@@ -165,34 +163,6 @@ banked reset 不是现金，不是 API credits，也不能当作可转让的余�
 
 免费推广重置的限制，帮助中心写明：支持不审查个人是否符合资格，不调查一次免费重置该不该发放或有没有加上，不改活动条款，也不把某个账户加进活动。支持不提供人工或 courtesy 的推广重置，不延长到期日，也不替换没收到、已过期、误用、或随后又被另一次重置盖过的免费重置。不为这些免费福利提供 credits、退款或其他补偿。付费购买和其他账单另算。
 
-## ChatGPT Business 这次分别说了什么
-
-这一节是 2026 年 11 月的限时说法。三处来源并不相同。超过各自写明的日期之后，不要再把下面的加赠当成仍然有效；常规额度和 Fast 倍率以当时的定价页和 Usage 页为准。Fast 平时怎么扣，见 [用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)，本文不重复倍率表。GPT-6.2 的 Ultrafast 和额度怎么选，见 [GPT-6.2 Astra 与 Sol](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)。
-
-**Tibo 的帖子，不是帮助中心。** 2026-11-25 打开 [这条帖子](https://x.com/thsottiaux/status/2125299248782778588)，页面给出的发布时间是 2026-11-24T18:43:21Z（北京时间 11 月 25 日 02:43），作者是 Tibo（@thsottiaux）。页面描述里的原文是：
-
-```text
-To all the ChatGPT Business teams out there. We have two small things for you, a banked reset and fast mode at no extra charge through Dec 31. Have fun!
-```
-
-按这句，对象是 ChatGPT Business 团队，内容是一次 banked reset，以及到 12 月 31 日为止 Fast 模式不额外收费。帖子没有写重置何时进账户、何时到期、是否每个席位一份。这次打开没有读取赞和展示次数，正文不写这些数字，也不把这句写成帮助中心已经发布的规则。
-
-**定价页，说的是新签约。** 2026-11-25 打开的 [ChatGPT 定价页 Business 栏](https://chatgpt.com/pricing/?type=team) 有这句：
-
-```text
-Sign up for ChatGPT Business by Nov 30 and get 2x included usage and fast mode at no extra cost for all seats through Dec 31.
-```
-
-这是在 11 月 30 日前签约 ChatGPT Business，所有席位在 12 月 31 日前得到 2 倍内含用量，以及不额外收费的 Fast。它没有写「已有团队发放 banked reset」。
-
-**帮助中心，只写了新建工作区的双倍每周额度。** [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits) 的 Temporary weekly usage increase 一节写：2026 年 11 月 23 日至 11 月 30 日创建的 ChatGPT Business 工作区，Standard 和 Premium 席位的 Work 与 Codex 每周内含用量加倍，到 2026 年 12 月 31 日为止。Standard 的 5 小时限制仍然适用。已有工作区，以及重新激活的工作区，在加席位或续费时保持原来的每周额度。这一页没有写已有团队的 banked reset，也没有写 Fast 不额外扣费。
-
-三句不要合成一句。已有团队能不能在 Usage 里看到一次 banked reset，以该页的 **Available**、覆盖范围和到期时间为准。本文不推测发放时间、到期日或是否每人一份。
-
-Fast 的入口以速度文档为准，不把「不额外收费」写成永久规则。2026-11-25 的 [Fast and Ultrafast modes](https://learn.chatgpt.com/docs/agent-configuration/speed) 写：在网页版 ChatGPT Work 或 Codex 桌面应用里，打开输入框底部的模型或推理强度选择器；如果看得到 Ultrafast，点闪电图标打开速度菜单；如果只有 Standard 和 Fast，点闪电图标就在两者之间切换。CLI 里用 `/fast` 或 `/ultrafast` 选择速度，再输入当前这条命令则回到 Standard。选择会被记住。平时的额度倍率以定价页为准，站内对照在用量一文，这里不展开。该速度页没有出现配置键 `service_tier`，本文也不写。
-
-2026 年 12 月 31 日之后，不要默认 Business 的 Fast 仍不额外扣额度，也不要默认新建工作区的双倍每周额度还在。到期后按当时的帮助中心和定价页计算。
-
 ## 怎样确认这次重置已经生效
 
 帮助中心没有给出一个单独的成功动画。可以核对的是：
@@ -208,8 +178,5 @@ Fast 的入口以速度文档为准，不把「不额外收费」写成永久规
 
 - [How resets work in Codex](https://help.openai.com/en/articles/20001498-how-resets-work-in-codex)
 - [Response speed and usage resets in Work and Codex](https://help.openai.com/en/articles/20001596-response-speed-and-usage-resets-in-work-and-codex)
-- [ChatGPT Business models and limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)
-- [ChatGPT 定价页（Business）](https://chatgpt.com/pricing/?type=team)
 - [Developer commands 的 /usage](https://learn.chatgpt.com/docs/developer-commands)
-- [Fast and Ultrafast modes](https://learn.chatgpt.com/docs/agent-configuration/speed)
 - [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
