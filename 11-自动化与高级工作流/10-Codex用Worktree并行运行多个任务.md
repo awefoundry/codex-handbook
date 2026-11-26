@@ -160,7 +160,7 @@ npm install
 npm run build
 ```
 
-可按 macOS／Windows／Linux 分别覆盖默认脚本。配置放在项目根 `.codex`；单体仓库有多个子项目时，打开**含有这份 `.codex` 的那个项目目录**，否则桌面端可能读不到同事共享的环境。
+可按 macOS／Windows／Linux 分别覆盖默认脚本。配置放在项目根 `.codex`；单体仓库有多个子项目时，打开**含有这份 `.codex` 的那个项目目录**，否则桌面端可能读不到同事共享的环境。同一份本地环境还可以定义 Actions，在集成终端里一键跑常用命令；它和 setup 的差别写在 [桌面端任务工作流](../12-官方工具与集成/08-Codex桌面端任务工作流.md) 的「集成终端和 Actions」一节。
 
 ## 托管 worktree 与永久 worktree
 

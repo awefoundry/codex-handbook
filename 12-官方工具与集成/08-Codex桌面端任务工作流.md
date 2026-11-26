@@ -2,7 +2,7 @@
 id: codex-desktop-task-workflow
 title: Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务
 seo_title: Codex 桌面端任务：项目、并行对话、审查与定时任务
-description: Codex 在 ChatGPT 桌面应用里使用，支持 macOS、Windows 和 Linux。本文按官方文档整理选项目或文件夹、并行开对话、Plan 与 Goal、审查改动、通知和定时任务，并说明它和设置篇怎么分工。
+description: Codex 在 ChatGPT 桌面应用里使用，支持 macOS、Windows 和 Linux。本文按官方文档整理选项目、并行对话、Plan 与 Goal、审查、集成终端与 Actions、通知和定时任务，并说明它和设置篇怎么分工。
 lede: 桌面端现在是 ChatGPT 应用里的 Codex。这篇只讲任务怎么往下做；权限、个性和自定义指令放在设置篇。
 url: /guides/codex-desktop-task-workflow
 status: published
@@ -17,12 +17,12 @@ order: 8
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-08-20
-date_modified: 2026-10-31
+date_modified: 2026-11-26
 verified_on: 2026-10-31
 models: [gpt-6.1-sol]
 official_ref: https://learn.chatgpt.com/docs/app
-keywords: [Codex 桌面端, ChatGPT 桌面应用 Codex, Codex 项目与对话, Codex 并行任务, Codex 桌面端工作流]
-related: [codex-automations-scheduled-tasks, codex-appshots, codex-goal-mode-long-running-work]
+keywords: [Codex 桌面端, ChatGPT 桌面应用 Codex, Codex 项目与对话, Codex 并行任务, Codex 集成终端, Codex Actions]
+related: [codex-automations-scheduled-tasks, codex-appshots, codex-goal-mode-long-running-work, worktree-parallel-chats]
 howto: false
 faq:
   - q: 还要单独下载一个只含 Codex 的桌面版吗？
@@ -37,7 +37,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-desktop-task-workflow](https://codexguide.io/guides/codex-desktop-task-workflow)
 
-> 核对依据：2026-10-31 的官方文档 [ChatGPT desktop app](https://learn.chatgpt.com/docs/app)、[Projects and chats](https://learn.chatgpt.com/docs/projects)、[Long-running work](https://learn.chatgpt.com/docs/long-running-work)、[Code review](https://learn.chatgpt.com/docs/code-review)、[Notifications](https://learn.chatgpt.com/docs/notifications)、[Scheduled tasks](https://learn.chatgpt.com/docs/automations)、[Plugins](https://learn.chatgpt.com/docs/plugins)。本文没有运行桌面应用，没有新截图。旧文里 2026 年 8 月独立 Codex 桌面版的截图已经删除，那些界面不能再当作当前步骤。
+> 核对依据：2026-10-31 的官方文档 [ChatGPT desktop app](https://learn.chatgpt.com/docs/app)、[Projects and chats](https://learn.chatgpt.com/docs/projects)、[Long-running work](https://learn.chatgpt.com/docs/long-running-work)、[Code review](https://learn.chatgpt.com/docs/code-review)、[Notifications](https://learn.chatgpt.com/docs/notifications)、[Scheduled tasks](https://learn.chatgpt.com/docs/automations)、[Plugins](https://learn.chatgpt.com/docs/plugins)。2026-11-26 补上 [Integrated terminal](https://learn.chatgpt.com/docs/integrated-terminal) 和 [Local environments](https://learn.chatgpt.com/docs/environments/local-environment) 的「集成终端和 Actions」一节。本文没有运行桌面应用，没有新截图。旧文里 2026 年 8 月独立 Codex 桌面版的截图已经删除，那些界面不能再当作当前步骤。
 
 Codex 的桌面用法，是在 ChatGPT 桌面应用里选 Codex，而不是再装一个单独的 “Codex 桌面版”。官方开始步骤是：安装应用，登录，选择工作位置，发送第一条消息。下载页写的是 macOS、Windows 或 Linux。
 
@@ -128,6 +128,47 @@ CLI 和 IDE 没有桌面应用这份 Projects 视图。CLI 把启动目录当作
 
 Pull request 用 Code Review 插件，和本地 `/review` 不是同一个入口。插件可以看描述、改动、评论和检查。GitHub 代码审查已正式提供。GitLab 合并请求支持在文档里标为预览。桌面应用自带 Code Review，可以从已安装插件把它固定到侧栏。在对话里审查不会自动在 GitHub 上发评论或合并，要你自己选择提交。
 
+## 集成终端和 Actions
+
+这一节只按 2026-11-26 的 [Integrated terminal](https://learn.chatgpt.com/docs/integrated-terminal) 和 [Local environments](https://learn.chatgpt.com/docs/environments/local-environment) 写。两页很短，单独成篇会凑字数，所以并进本文。没有打开桌面应用，没有配图。
+
+**集成终端**解决的是人在当前对话旁边自己跑命令。**Action** 是经常要跑的命令，收成顶栏按钮，点下去仍在集成终端里执行。**setup 脚本**是另一件事：新建 worktree 时自动把依赖和构建补上。三件事都只在 ChatGPT 桌面应用里的 Codex 配置。用之前先在应用里选 **Codex**。
+
+ChatGPT 能读当前终端的输出，因此可以检查正在跑的开发服务器，或引用一次失败的构建。文档没有把这写成另一套审批。命令能读什么、能改什么，仍由这个对话的沙箱决定。
+
+### 打开终端，并在旁边验证
+
+打开方式：选 **New tab**，再选 **Terminal**；或按 Ctrl+`。终端跟这个对话当前的项目或 worktree，不是电脑上随便一个目录。对话如果在 worktree 里开始，终端就在那份检出里。
+
+官方点名的常见命令是 `git status`、`git pull --rebase`、`pnpm test` 或 `npm test`、`pnpm run lint`，以及其他这个项目自己的检查。一次性排查直接在终端里打，不必先做成 Action。
+
+应用里另有一批 Git 控件，和终端并列。diff 窗显示当前检出的改动，可以留行内评论。可以暂存或还原单独的块，暂存或还原整个文件，提交，推送分支，以及创建 pull request。应用里没有露出来的 Git 操作，再用集成终端。并行改动要和本地检出隔开时，让任务在 worktree 里开始，见 [用 Worktree 并行运行多个任务](../11-自动化与高级工作流/10-Codex用Worktree并行运行多个任务.md)。
+
+Cmd+K 打开的是应用命令面板，不会清掉终端。清屏是 Ctrl+L。这一页没有另给 Windows 或 Linux 的清屏键，本文不推测。
+
+### 把常用命令做成 Action
+
+Action 在本地环境里定义，例如启动开发服务器或跑测试。它们出现在桌面应用顶栏。Node.js 的例子是一个叫 “Run” 的 Action：
+
+```bash
+npm start
+```
+
+命令因系统而不同时，分别为 macOS、Windows 和 Linux 写脚本。每个 Action 选一个图标。文档没有列出图标的完整名单，也没有写出「新建」按钮的每一步。设置窗格里能看到项目的 Actions 列表，以你这一版应用上的字段为准。
+
+setup 在新对话开始、创建新 worktree 时自动跑。TypeScript 的例子是：
+
+```bash
+npm install
+npm run build
+```
+
+同样可以按 macOS、Windows 或 Linux 覆盖默认脚本。setup 把环境补到能开始工作；Action 等你从顶栏点，用来做开始之后反复要跑的命令。
+
+配置放在项目根的 `.codex` 文件夹，可以提交进 Git 给同事用。仓库里有不止一个项目时，要打开含有这份 `.codex` 的那个目录。提交前看一眼里面没有密钥或本机绝对路径：同事新建 worktree 时，setup 会自动执行。`.codex` 里每个文件的字段名，这一页没有列出，本文不编样例。
+
+本地环境只在桌面端的 Codex 里。CLI 的终端工作区是另一套侧栏对话，不是这一节的集成终端。
+
 ## 通知和长任务跟进
 
 [Notifications](https://learn.chatgpt.com/docs/notifications) 写明，桌面通知在设置里选择：从不提示、只在 ChatGPT 在后台时提示，或总是提示。权限请求和提问可以单独开关。操作系统可能会再要一次通知权限。
@@ -174,7 +215,7 @@ IDE 扩展没有单独的通知开关。要在回合结束时跑外部程序，�
 | 你要做的事 | 看哪篇 |
 |---|---|
 | 选 ChatGPT 还是 Codex、写自定义指令、调个性、收紧权限、决定追问是否排队 | [桌面端协作设置](../10-配置模型与权限安全/03-Codex桌面端协作设置.md) |
-| 选项目或文件夹、并行开对话、写 Goal、审查 diff、看通知、建定时任务 | 本文 |
+| 选项目或文件夹、并行开对话、写 Goal、审查 diff、用集成终端和 Actions、看通知、建定时任务 | 本文 |
 | 把别的应用窗口拍进对话 | [Appshots](./18-Codex-Appshots-把当前应用窗口发给对话.md) |
 | 定时任务的 RRULE、worktree 和 cron 分工 | [定时任务](./06-Codex-Automations定时任务.md) |
 
@@ -185,6 +226,8 @@ IDE 扩展没有单独的通知开关。要在回合结束时跑外部程序，�
 **旧文说定时任务只有桌面版才有，CLI 完全不能参与。** 管理界面确实不在 CLI 和 IDE 里。CLI 仍可以先把提示词和 Skill 试出来，也可以用 `codex exec` 配系统的计划任务。两条路的差别见定时任务那篇。
 
 **审查窗里的文件和我自己改的混在一起。** 这是文档里的设计。它显示仓库里的未提交状态，不只显示 Codex 的编辑。用 Last turn 看最近一轮，或先暂存你要保留的部分。
+
+**Cmd+K 为什么没有清掉终端？** 它打开的是应用命令面板。清屏用 Ctrl+L。Action 和 setup 也不是一回事：setup 在新建 worktree 时自动跑，Action 要你从顶栏点。
 
 ## 下一步
 

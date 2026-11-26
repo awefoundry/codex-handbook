@@ -18,9 +18,9 @@
 - [Codex 浏览器操作与登录态：内置浏览器、浏览器扩展和 Computer Use 怎么选](./02-Codex浏览器操作与登录态功能.md)
 - [Codex 使用 Computer Use 操作桌面应用：安装授权、Win/macOS 差异，以及高风险场景的停手规则](./03-Codex使用Computer-Use操作桌面应用.md)
 - [Codex 连接 Sentry 排查线上错误：官方插件、远程 MCP 和自建 Sentry 三种接法](./04-Codex连接Sentry排查线上错误.md)
-- [Codex 创建自定义桌宠，从参考图到动画精灵图](./05-Codex创建自定义桌宠.md)
+- [Codex 桌宠怎么用：桌面端悬浮宠物、终端宠物和网页宠物怎么选，/pet 开关、状态提示和自制 hatch-pet 宠物](./05-Codex创建自定义桌宠.md)
 - [Codex 定时任务（Scheduled tasks）怎么用：创建、查看结果，以及和 codex exec + cron 怎么分工](./06-Codex-Automations定时任务.md)
-- [Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)
+- [Codex 桌面端任务工作流：在 ChatGPT 桌面应用里用项目、并行对话、审查和定时任务](./08-Codex桌面端任务工作流.md)（2026-11-26 补了「集成终端和 Actions」一节。官方两页不够单独成篇，没有另建 12/37）
 - [Codex CLI 安装、登录与多入口配置：ChatGPT 登录、API Key 登录、IDE 扩展与第三方模型](./09-CodexCLI国内使用与多入口配置.md)
 - [Codex 接入飞书：用 feishu-codex-bridge 在群里派任务，安装、三档权限和后台服务](./10-Codex飞书集成实战.md)（第三方项目 feishu-codex-bridge，不是 OpenAI 或飞书官方集成；文章保留在本目录）
 - [Codex 常用功能清单：更新到 CLI 0.171，终端工作区、Sol 默认模型和 /side 等每天都会用到的入口](./11-Codex常用功能清单.md)
@@ -48,3 +48,4 @@
 - [Codex 在 Slack 里怎么用：@Codex 换成 @ChatGPT，仓库任务交给 Codex Cloud，共享环境、审批卡片和跟进怎么处理](./33-Codex在Slack里委派仓库任务-提及ChatGPT交给Codex-Cloud与共享环境.md)（按官方文档整理。只认已发布并共享的 Cloud 环境。没有 Slack 工作区，没有配图）
 - [Codex CLI 0.172.0：斜杠命令按 Tab 补全参数，可选 MCP 服务器首次调用才启动，codex exec resume 恢复沙箱权限](./34-Codex-CLI-0.172-斜杠命令Tab补全-MCP按需启动与exec-resume恢复权限.md)（依据更新日志和 GitHub Release rust-v0.172.0。Linux 上 `codex-cli 0.172.0` 核对了帮助、功能开关和配置拒绝信息。没有打开 TUI，没有配图）
 - [Codex 桌面端项目怎么用：ChatGPT 项目和本地项目的区别，一个项目接多个文件夹、锁定对话与 Quick chat](./35-Codex桌面端项目-ChatGPT项目与本地项目-多文件夹锁定对话与Quick-chat.md)（按 Projects and chats 整理。Linux 上 `codex-cli 0.172.0` 核对了 `--cd` / `-C`。没有打开桌面应用，没有配图）
+- [Codex 用 Sites 做网站并发布：一句话描述需求，先存版本再上线，设置谁能访问，托管怎么计费](./36-Codex用Sites做网站并发布-描述需求保存版本设置访问权限与托管计费.md)（按 Sites 一组官方文档和帮助中心整理。没有登录，没有创建站点，没有配图）
