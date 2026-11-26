@@ -39,7 +39,7 @@ faq:
 
 > 本文在线版：[codexguide.io/guides/codex-create-custom-pet](https://codexguide.io/guides/codex-create-custom-pet)
 
-> 核对依据：2026-11-26 打开的 [Pets](https://learn.chatgpt.com/docs/pets)，以及 [Settings](https://developers.openai.com/codex/app/settings) 的 Pets 一节。Settings 页写：在 Settings > Pets 里选内置或自定义宠物，再用 `/pet`、Show pet 或 Hide pet 控制悬浮层；选 Mini 可以只留聊天控件、不显示宠物。没有打开桌面应用，没有打开交互式 CLI，没有安装 hatch-pet，没有新截图。下面保留的一张菜单图是较早的独立 Codex 应用，不作为现行入口。
+> 核对依据：2026-11-26 打开的 [Pets](https://learn.chatgpt.com/docs/pets)，以及 [Settings](https://developers.openai.com/codex/app/settings) 的 Pets 一节。Settings 页写：在 Settings > Pets 里选内置或自定义宠物，再用 `/pet`、Show pet 或 Hide pet 控制悬浮层；选 Mini 可以只留聊天控件、不显示宠物。没有打开桌面应用，没有打开交互式 CLI，没有安装 hatch-pet，没有配图。
 
 Pets 是可选的动画伙伴，用来跟着工作看进度。它出现在哪里、显示什么，取决于你用的界面。选哪一只只改外观，不改 ChatGPT 怎样完成任务。
 
@@ -77,10 +77,6 @@ IDE 扩展没有宠物选择器，也没有悬浮层。要用自己的宠物，�
 操作系统开了减少动态效果时，宠物用静止帧，不再播放精灵动画。
 
 旧文写的入口是「设置 > 外观 > 启用 Pets」，自制入口写成 `Settings > Pets > Create your own pet`。2026-11-26 的 Pets 页和 Settings 页都没有「外观里启用 Pets」或 “Create your own pet” 这两个字。外观页现在写的是主题、强调色和字体。现行入口是个人资料菜单或 **Settings > Pets**，自制是 **Create pet**。
-
-下面这张是较早独立 Codex 应用的菜单，菜单项是 About Codex、Quit Codex。它不是现在的 ChatGPT 桌面应用路径。先留在这里，避免把一张真实旧菜单说成现行步骤。
-
-![较早的 Codex 应用菜单，Settings 被标出；菜单项含 About Codex 与 Quit Codex](../图片素材/12-官方工具与集成/05-Codex创建自定义桌宠/03-Codex设置入口.jpg)
 
 ## 用宠物开新对话
 
