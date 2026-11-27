@@ -1,17 +1,45 @@
 ---
-title: "Codex 升级依赖：从 package 文件到兼容性确认"
+id: codex-upgrade-dependency
+title: "Codex 升级依赖：先查网络权限和审批，只升一个目标包，用测试和锁文件 diff 确认兼容性，失败怎么回滚"
 description: "依赖升级的命令通常只有一行，影响却会落到导入路径、运行时版本、锁文件和下游调用方。把 date-fns 从 v2 升到 v3，当作一次小型变更来处理，能更早发现问题，也更容易回滚。"
+lede: "先确认沙箱允不允许这次安装去联网，再只升一个包。锁文件 diff 和测试都过了，才算这次升级结束。"
 url: /guides/codex-sheng-ji-yi-lai-package-jian-rong-xing
 status: published
+section: guides
+category: D-project-dev
+topic: 代码修改与开发实战
+content_type: 教程
+source_tag: 官方功能
+entry_tags: [CLI, App, IDE]
+difficulty: 进阶
+order: 7
+author: CodexGuide
+contributors: [CodexGuide]
 date_published: 2026-09-03
-date_modified: 2026-10-12
+date_modified: 2026-11-27
+verified_on: 2026-11-27
+official_ref: https://learn.chatgpt.com/docs/sandboxing
+keywords: [Codex 升级依赖, Codex npm install 审批, Codex 网络权限, 锁文件 diff, date-fns 升级]
+related: [codex-network-permissions-proxy, codex-rules-prefix-rule, permissions-sandbox-approvals]
+howto: true
+faq:
+  - q: "npm install 被拦住，是不是命令写错了？"
+    a: "先看是不是沙箱边界。2026-11-27 的 Sandbox 页写明，包管理器命令继承沙箱，沙箱决定命令能不能用网络。被拦住的网络访问属于越界，on-request 时会停下来等审批。这和命令本身有没有拼写错误是两件事。"
+  - q: "为了把包装上，能不能直接开 Full access？"
+    a: "Sandbox 页把 Full access 写成 sandbox_mode = \"danger-full-access\" 再加上 approval_policy = \"never\"，文件系统和网络边界都会去掉。一次安装更符合该页的建议：审批如果提供「一次」和「整个会话」，选能让任务继续的最窄范围。"
+  - q: "prefix rule 写成整个 npm 可以吗？"
+    a: "Rules 页用精确前缀控制沙箱外的命令。Auto-review 页明确不推荐 [\"python\"]、[\"curl\"] 这种宽规则，例子是 [\"cargo\", \"test\"] 和 [\"pnpm\", \"run\", \"lint\"]。宽前缀会把许多沙箱外命令一起放开。本文不自造一条官方没写过的 npm 规则。"
+  - q: "锁文件 diff 里出现了别的包，测试却是绿的，能提交吗？"
+    a: "先停。这次升级的锁文件 diff 里只应出现目标包及其依赖的变化。测试通过不能解释一份混进来的无关依赖。"
 ---
 
-# Codex 升级依赖：从 package 文件到兼容性确认
+# Codex 升级依赖：先查网络权限和审批，只升一个目标包，用测试和锁文件 diff 确认兼容性，失败怎么回滚
 
 > 本文在线版：[codexguide.io/guides/codex-sheng-ji-yi-lai-package-jian-rong-xing](https://codexguide.io/guides/codex-sheng-ji-yi-lai-package-jian-rong-xing)
 
-> 测试环境：Windows 11 24H2（Build 26100）；PowerShell 7.6.4；Codex CLI 0.147.0；Node.js 22.22.3；npm 10.9.8；Git 2.47.0；2026-09-03 核验。
+> 核对依据：升级流程仍是 2026-09-03 在 Codex CLI 0.147.0 上的记录，见下一段，这次没有重跑那些命令。联网和审批一节按 2026-11-27 打开的 [Sandbox](https://learn.chatgpt.com/docs/sandboxing)、[Permissions](https://learn.chatgpt.com/docs/permission-modes) 和 [Rules](https://learn.chatgpt.com/docs/agent-configuration/rules)。没有新截图。原有图片保留。
+
+> 2026-09-03 在 Codex CLI 0.147.0 上的记录，不是 2026-11-27 的现行输出：Windows 11 24H2（Build 26100）；PowerShell 7.6.4；Node.js 22.22.3；npm 10.9.8；Git 2.47.0。下面的安装命令和 `git diff` 顺序来自这次记录里的做法，不是这次重新执行后的终端输出。
 
 依赖升级的命令通常只有一行，影响却会落到导入路径、运行时版本、锁文件和下游调用方。把 `date-fns` 从 v2 升到 v3，当作一次小型变更来处理，能更早发现问题，也更容易回滚。
 
@@ -19,7 +47,7 @@ date_modified: 2026-10-12
 
 这里用 `date-fns` 举例，是因为它足够典型。大版本之间调整过模块入口和部分 API，项目里又常常散落着几十处调用。换成任何一个被广泛引用的包，流程都一样。
 
-如果你还不熟悉“先调查、后修改”的 Codex 工作方式，可以先阅读《别急着让 Codex 改代码：先让它交一份只读调查报告》，再回到本文执行依赖升级。
+如果你还不熟悉“先调查、后修改”的 Codex 工作方式，可以先看 [只读调查](../03-项目理解与上下文/05-只读调查怎么做-先让Codex把项目摸清楚.md)，再回到本文执行依赖升级。依赖在项目里怎么串起来，见 [依赖调用链](../03-项目理解与上下文/09-依赖调用链怎么追-从接口路由到数据流.md)。
 
 ## 先确认升级前的状态
 
@@ -62,11 +90,27 @@ npm --version
 
 追问时可以把问题问死。哪些导出在新版本被移除或改名，项目里哪几行代码用到了它们，替代写法是什么。让 Codex 把结论落到文件名和行号上，你才有办法自己核对一遍。官方迁移文档同样值得打开，它列出的破坏性变更清单，正好用来检查调查报告有没有漏项。
 
-如果调查发现改动点超过十几处，或者集中在公共工具函数上，那就不该继续按“一次升级”推进。更稳妥的做法是先提一个只做适配、不换版本的准备补丁，把调用方式统一到新旧都兼容的写法上，再单独提交版本升级。
+如果调查发现改动点超过十几处，或者集中在公共工具函数上，那就不该继续按“一次升级”推进。更稳妥的做法是先提一个只做适配、不换版本的准备补丁，把调用方式统一到新旧都兼容的写法上，再单独提交版本升级。适配补丁本身怎样收成最小修改，见 [修复一个可复现 Bug](./04-修复一个可复现Bug-让补丁只解决当前问题.md)。
 
 ![只读兼容性计划](../图片素材/04-代码修改与开发实战/07-安装或升级依赖-从package文件到兼容性确认/02-只读兼容性计划.png)
 
 图二  只读调查先列出破坏性变更、受影响文件、验证命令和回滚点，再决定动不动手。
+
+## 联网和审批：install 被拦时先看什么
+
+`npm install` 一类命令要出网拉包。2026-11-27 的 Sandbox 页写明：本地对话在 ChatGPT 桌面端、Codex CLI 或 IDE 扩展里跑命令时，命令在沙箱里执行。`git`、包管理器和测试命令继承同一套边界。沙箱规定能改哪些文件，以及命令能不能使用网络。留在边界里可以继续；要越出去，审批接手。
+
+`workspace-write` 被写成本地工作的默认低摩擦模式：可以读文件、在工作区内编辑，并在这个边界里跑常规本地命令。`danger-full-access` 会去掉文件系统和网络边界，文档写明只在你确实要完整访问时使用。`on-request` 下，代理在沙箱里工作，要越界才问。Sandbox 页把「被拦住的网络访问」列为需要审批的越界例子之一，和沙箱提权、仍需批准的有副作用工具调用放在一起。本文没有在这三页里读到「workspace-write 默认禁止一切联网」这种原句，所以不把某个没读到的默认值写成结论。
+
+被拦时，官方文档对应三种不同的做法。适合哪一种，看你要的是一次例外，还是以后都这样。
+
+**批准一次**：Sandbox 页写，审批如果提供不同范围，例如批准一次或整个会话，选择能让任务继续的最窄范围。一次 `npm install` 被拦，批准这一次就符合这句。不要为了装一个包改成 Full access。该页把 Full access 写成 `sandbox_mode = "danger-full-access"` 再加上 `approval_policy = "never"`，文件系统和网络边界会一起去掉。Permissions 页同时写明，**Approve for me** 不会扩大沙箱，它只是把越界请求交给自动审阅。
+
+**改网络规则**：沙箱决定命令能访问哪些网络资源，但 Sandbox、Permissions 和 Rules 这三页没有给出域名白名单的字段示例。要把「能连哪些域名」写成配置，见 [网络权限](../10-配置模型与权限安全/26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)。那篇核对的是 2026-11-11 的 Permissions 页，并带有当时的命令记录。本文不把那些记录写成 2026-11-27 的默认值。适合项目以后会反复访问固定的包源时再去改规则，而不是为了这一次安装关掉沙箱。
+
+**用 prefix rule**：Rules 页写，规则用来控制 Codex 在沙箱外能跑哪些命令，并且标明规则仍是实验性的，可能会变。`prefix_rule` 的 `decision` 默认是 `allow`。匹配时最严的决定胜出：`forbidden` 高于 `prompt`，`prompt` 高于 `allow`。`allow` 是在沙箱外运行且不再提示，`prompt` 是每次匹配都先问，`forbidden` 是不提示就拦住。Sandbox 页写，工作流需要一次特定例外时，用规则允许、提示或禁止沙箱外的命令前缀，通常比把访问面整体放宽更合适。精确前缀的例子在 Auto-review 页：`["cargo", "test"]`、`["pnpm", "run", "lint"]`。同一页不推荐 `["python"]`、`["curl"]` 这种宽规则。安装命令用哪一个前缀，以你的包管理器为准。本文不自造一条官方页面上没有的 npm 规则。怎么写、怎么用 `codex execpolicy check` 看结果，见 [Codex Rules](../11-自动化与高级工作流/13-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)。
+
+在 TUI 里把一条命令加进允许列表时，Rules 页写明 Codex 会写到用户层的 `~/.codex/rules/default.rules`。Smart approvals 默认开启时，Codex 可能在提权请求里提议一条 `prefix_rule`。接受之前要看清那个前缀。
 
 ## 只升级一个目标包
 
@@ -127,16 +171,17 @@ git status --short --branch
 
 记录失败原因这一步不要省。把报错信息、失败的命令和当时的版本号留进 issue 或一段笔记，下次再尝试同一个升级时，能直接省掉一轮重复调查。升级失败不算白做，至少下次不用再从头猜一遍。
 
-## 最后检查这六项
+## 最后检查这七项
 
 - 升级范围只有目标依赖和必要的锁文件变化。
 - 所有导入点、调用点和受影响 API 都已列出。
 - Node、npm 与项目实际运行环境的边界已确认。
 - 安装、定向检查、测试或构建至少完成一组有效验证。
 - diff 中没有无关依赖、格式化文件或配置漂移。
+- 锁文件 diff 里只应出现目标包及其依赖的变化。
 - 保留了可以恢复到升级前状态的回滚点。
 
-六项都通过之后，再把结论写进提交信息。升级了哪个包，从哪个版本到哪个版本，做过哪些验证，还有哪些已知未覆盖的风险。几个月后有人排查异常行为，`git log` 里的这几句话通常比翻文档更快。
+七项都通过之后，再把结论写进提交信息。升级了哪个包，从哪个版本到哪个版本，做过哪些验证，还有哪些已知未覆盖的风险。几个月后有人排查异常行为，`git log` 里的这几句话通常比翻文档更快。
 
 ![一轮可控的依赖升级](../图片素材/04-代码修改与开发实战/07-安装或升级依赖-从package文件到兼容性确认/05-一轮可控的依赖升级.png)
 
@@ -144,4 +189,4 @@ git status --short --branch
 
 换成 pnpm 或 yarn，只需要替换安装与还原命令，判断顺序不变。需要同时升级多个包时，最好一个一个来，每个都单独留一个可回滚的提交点。
 
-如果你准备把这套流程固定到日常开发里，可以继续看 [Codex 工作流，从任务到可回滚结果](https://codexguide.io/codex/workflows)，把计划、最小修改和验证串成一条能重复执行的流程。
+如果这次升级还要改调用方，把适配收成一次最小修改，见 [修复一个可复现 Bug](./04-修复一个可复现Bug-让补丁只解决当前问题.md)。安装时的网络和命令前缀，分别见 [网络权限](../10-配置模型与权限安全/26-Codex网络权限-network_proxy域名白名单与本地服务访问.md) 和 [Codex Rules](../11-自动化与高级工作流/13-Codex-Rules命令规则-用prefix_rule控制沙箱外命令.md)。

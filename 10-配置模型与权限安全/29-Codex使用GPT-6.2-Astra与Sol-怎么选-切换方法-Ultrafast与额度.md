@@ -1,9 +1,9 @@
 ---
 id: codex-gpt-6-2-astra-sol
-title: Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开
+title: "Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开"
 seo_title: Codex GPT-6.2 Astra 与 Sol：怎么选、怎么切换、Ultrafast 与额度
-description: GPT-6.2 Astra 和 GPT-6.2 Sol 已在 Codex 上线。本文按官方文档说明 Astra 与 Sol 各适合什么任务、哪些套餐和入口能用、App 与 CLI 怎么切换、Fast 与 Ultrafast 怎么选，以及额度和 credits 怎么算，Enterprise 和 Edu 管理员要先做什么。
-lede: 写代码先试 GPT-6.2 Sol。跨服务排查、要按模板交付的难题再上 Astra。Enterprise 和 Edu 默认关闭，管理员要先打开。
+description: GPT-6.2 Astra 和 Sol 已在 Codex 上线。本文按官方文档说明两款各适合什么任务、哪些套餐和入口能用、App 与 CLI 怎么切换、Fast 与 Ultrafast 怎么选，以及额度和 credits 怎么算，Enterprise 和 Edu 管理员要先做什么。
+lede: 写代码先试 GPT-6.2 Sol。跨服务排查再上 Astra。
 url: /guides/codex-gpt-6-2-astra-sol
 status: published
 section: guides
@@ -17,13 +17,13 @@ order: 29
 author: CodexGuide
 contributors: [CodexGuide]
 date_published: 2026-11-18
-date_modified: 2026-11-18
-verified_on: 2026-11-18
+date_modified: 2026-11-27
+verified_on: 2026-11-27
 tested_cli_version: 0.169.1
 models: [gpt-6.2-astra, gpt-6.2-sol, gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna, gpt-6-astra]
 official_ref: https://learn.chatgpt.com/docs/models
 keywords: [Codex GPT-6.2, GPT-6.2 Astra, GPT-6.2 Sol, Ultrafast, gpt-6.2-sol]
-related: [model-reasoning-effort, usage-limits-credits, codex-gpt-6-1-terra, codex-prompting-gpt-6-2]
+related: [model-reasoning-effort, usage-limits-credits, codex-gpt-6-1-terra, codex-prompting-gpt-6-2, codex-banked-reset, model-at-capacity-usage-reset]
 howto: true
 faq:
   - q: 哪些套餐能在 Codex 里用 GPT-6.2 Astra 和 Sol？
@@ -38,11 +38,13 @@ faq:
 
 # Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开
 
-> 核对依据：OpenAI [Changelog 2026-11-17](https://learn.chatgpt.com/codex/changelog)、[GPT-6.2 What's new](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)、[Models](https://learn.chatgpt.com/docs/models)、[Model selection](https://learn.chatgpt.com/docs/model-selection)、[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)、[Pricing](https://learn.chatgpt.com/docs/pricing)、[Workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability) 和发布文 [Introducing GPT-6.2 Astra and Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol/)。CLI 在 Linux 上用 npm 的 `@openai/codex@0.169.1`（`codex --version` 为 `codex-cli 0.169.1`）核对了 `-m`。测试用的是独立 `CODEX_HOME`，**没有登录**，所以没有模型回复，也没有桌面端截图。核对日期 2026-11-18。
+> 本文在线版：[codexguide.io/guides/codex-gpt-6-2-astra-sol](https://codexguide.io/guides/codex-gpt-6-2-astra-sol)
 
-2026 年 11 月 17 日，Changelog 把 GPT-6.2 Astra 和 GPT-6.2 Sol 放进 ChatGPT Work 和 Codex。Astra 面向最难的项目，Sol 面向日常编码、写作和多步骤工作。Changelog 同时写：用 GPT-6.2 Sol，同一份付费套餐能比 GPT-6.1 Sol 完成更多任务。
+> 核对依据：模型与额度按 [Pricing](https://learn.chatgpt.com/docs/pricing)、[What's new 索引](https://learn.chatgpt.com/docs/whats-new)、[GPT-6.2 What's new](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)、[Models](https://learn.chatgpt.com/docs/models)、[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) 和 [Changelog](https://learn.chatgpt.com/docs/changelog)。2026-11-27 再次打开 Pricing：5 小时本地消息估算仍是 Astra 6–50、Sol 17–180（Plus 与 Standard Business）。Changelog 的 HTML 能打开，最新日期见到 2026-11-24；同一地址加 `.md` 返回 404。2026-11-18 在 Linux 上用 `@openai/codex@0.169.1` 核对过 `-m` 的记录仍留在「怎么切换」一节，这次没有重跑 CLI，也没有登录。
 
-这篇只回答六件事：谁能用、在哪里切换、两款各交给什么任务、Fast 和 Ultrafast 怎么算、credits 和 5 小时估算怎么读、Enterprise／Edu 管理员要先打开什么。模型搭配和推理强度的完整选择表见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)。用量面板怎么读见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
+2026 年 11 月 17 日，Changelog 把 GPT-6.2 Astra 和 GPT-6.2 Sol 放进 ChatGPT Work 和 Codex。Astra 面向最难的项目，Sol 面向日常编码、写作和多步骤工作。Changelog 同时写：用 GPT-6.2 Sol，同一份付费套餐能比 GPT-6.1 Sol 完成更多任务。这句在 2026-11-27 的 Changelog 里还在。
+
+下面仍按这几件事组织：谁能用、在哪里切换、两款各交给什么任务、Fast 和 Ultrafast 怎么算、credits 和 5 小时估算怎么读、Enterprise／Edu 管理员要先打开什么。模型搭配和推理强度的完整选择表见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)。用量面板怎么读见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 发布公告里还列出了多项基准和安全评估。本文不把那些分数写成结论，需要看分数时直接读 [原文](https://openai.com/index/introducing-gpt-6-2-astra-sol/)。
 
@@ -152,7 +154,7 @@ Models 页对推理强度的建议：GPT-6.2 Astra 和 Sol 都从**客户端当�
 - **Fast／Ultrafast** 是速度档，用更多额度换更快出 token。
 - **Ultra** 是另一件事：让子代理并行处理能拆开的工作。它不是 Ultrafast。
 
-下面的倍率来自 Pricing 的 Speed multipliers，相对**同一模型的 Standard**。查询日期 2026-11-18。
+下面的倍率来自 Pricing 的 Speed multipliers，相对**同一模型的 Standard**。2026-11-18 抄下这张表，2026-11-27 再打开 Pricing，表内数字没有变。
 
 ### Fast
 
@@ -214,6 +216,8 @@ ChatGPT Work 和 Codex **共用**价格、credits 和用量限制。条数不是
 
 同一页还有 Terra、GPT-6 Sol 和 Luna 的估算，完整表和「觉得被多扣时怎么查」放在 [用量额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
+这张估算表来自官方 Pricing 页，可能不反映近期调整，实际消耗以 Usage 面板为准。
+
 Standard 速度下，每 100 万 token 的 credits 单价：
 
 | 模型 | 输入 | 缓存输入 | 输出 |
@@ -231,6 +235,13 @@ GPT-6.2 Sol 的 credits 单价和 GPT-6.1 Sol 相同。Astra 低于上一代 GPT
 - 发布文把同一组数字写成 **标准 API 价格**，并写 Astra 的输入和输出比 GPT-6 Astra 低 20%，缓存输入低 60%；Sol 沿用 GPT-6.1 Sol 的 API 价格。
 
 用 API Key 跑 Codex 时走 API 价格，不走 ChatGPT 套餐面板上的倍率。
+
+## 怎么省
+
+- **日常编码先用 Sol**。Models 页把 GPT-6.2 Sol 放在 everyday work：改代码、起草、把几份材料收成一份计划。Astra 留给最难的端到端工作。What's new 同样写：难题用 Astra，日常编码和写作用 Sol。
+- **推理强度按任务调**。Models 页写，范围清楚的小任务适合 Light，CLI 里对应 Low。Max 用在深度比速度或用量更重要的时候。Pricing 写明：模型选择、上下文、推理、工具使用、检索和缓存都会影响用量。官方文档没有给出「从 High 降到 Light 能省百分之几」。
+- **Fast 和 Ultrafast 更吃额度**。Speed 页写，两者都比同一模型的 Standard 生成得更快，也更多使用套餐用量或 credits。倍率以 Pricing 的 Speed multipliers 为准。2026-11-27 核对，两款 GPT-6.2 的 Fast 仍是套餐内含 2 倍、credits 2 倍。Ultrafast 的套餐内含仍是 6 倍；credits 和符合条件的企业按量，到 2027-02-28 为 3 倍，2027-03-01（太平洋时间）起为 6 倍。资格和入口见上面的 Fast 与 Ultrafast 一节，不要为了省额度去开这两档。
+- **看 Usage**。5 小时估算怎么读、Fast 倍率在面板上怎么理解，见 [用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。banked reset 能不能兑、80% 门槛是什么，见 [额度重置怎么用](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)。界面写容量满时，先和额度用尽分开，见 [容量不足与额度重置排查](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
 
 ## 和 GPT-6.1 Sol、Terra、Luna 怎么搭配
 
@@ -256,6 +267,7 @@ GPT-5.5 的退役说明没有被这次上线取消：2026-10-14 中午（太平�
 - [Pricing](https://learn.chatgpt.com/docs/pricing)
 - [Workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability)
 - [Introducing GPT-6.2 Astra and Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol/)
+- [Changelog](https://learn.chatgpt.com/docs/changelog)（2026-11-27 打开 HTML；同一地址加 `.md` 为 404。最新日期见到 2026-11-24）
 - [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex 使用 GPT-6.1 Terra](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)

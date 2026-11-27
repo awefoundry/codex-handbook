@@ -48,3 +48,4 @@
 - [Codex 在 Slack 里怎么用：@Codex 换成 @ChatGPT，仓库任务交给 Codex Cloud，共享环境、审批卡片和跟进怎么处理](./33-Codex在Slack里委派仓库任务-提及ChatGPT交给Codex-Cloud与共享环境.md)（按官方文档整理。只认已发布并共享的 Cloud 环境。没有 Slack 工作区，没有配图）
 - [Codex CLI 0.172.0：斜杠命令按 Tab 补全参数，可选 MCP 服务器首次调用才启动，codex exec resume 恢复沙箱权限](./34-Codex-CLI-0.172-斜杠命令Tab补全-MCP按需启动与exec-resume恢复权限.md)（依据更新日志和 GitHub Release rust-v0.172.0。Linux 上 `codex-cli 0.172.0` 核对了帮助、功能开关和配置拒绝信息。没有打开 TUI，没有配图）
 - [Codex 桌面端项目怎么用：ChatGPT 项目和本地项目的区别，一个项目接多个文件夹、锁定对话与 Quick chat](./35-Codex桌面端项目-ChatGPT项目与本地项目-多文件夹锁定对话与Quick-chat.md)（按 Projects and chats 整理。Linux 上 `codex-cli 0.172.0` 核对了 `--cd` / `-C`。没有打开桌面应用，没有配图）
+- [Codex 浏览器批注 API：用 oai-annotation 属性让网页里的卡片、文字和 canvas 对象能被精确批注，并带上额外上下文](./38-Codex浏览器批注API-用oai-annotation属性让网页元素可被精确批注.md)（按 Annotations Extensibility、Browser 的 Comment on the page 和 DevDay 2026 的 Website annotations 整理。没有登录桌面端，没有配图）

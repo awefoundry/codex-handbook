@@ -14,7 +14,7 @@
 
 ## 文章索引
 
-- [01-Codex 是如何工作的](./01-Codex是如何工作的.md)
+- [01-Codex 是如何工作的](./01-Codex是如何工作的.md)（2026-11-27 更新：按 Sandbox、Permissions、Prompting、Working with agents 和 Quickstart 核对入口，并补上每一步的控制手段。原有图片保留）
 - [05-Codex 安全与风险边界：什么时候该收紧权限](./05-安全与风险边界-到底该不该放手让它碰你的代码.md)
 - [Codex 权限、沙箱与审批：补上 0.170 里子线程不再丢掉沙箱限制，并对照最新的 permission profiles 文档](./06-权限沙箱与审批-什么时候放行什么时候收紧.md)
 - [Codex 上下文窗口与压缩：/compact、自动压缩阈值、/status 查看用量，什么时候该新开会话](./07-Codex上下文窗口与压缩-compact自动压缩与何时新开会话.md)
