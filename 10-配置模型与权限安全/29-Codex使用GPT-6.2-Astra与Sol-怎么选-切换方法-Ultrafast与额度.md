@@ -1,9 +1,9 @@
 ---
 id: codex-gpt-6-2-astra-sol
-title: "Codex 用 GPT-6.2 Astra 和 Sol（更新）：11 月 26 日额度更正后同样的活更吃额度，Astra 约快 40%、Sol 约快 25% 触顶，怎么看用量、怎么省"
+title: "Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开"
 seo_title: Codex GPT-6.2 Astra 与 Sol：怎么选、怎么切换、Ultrafast 与额度
 description: GPT-6.2 Astra 和 Sol 已在 Codex 上线。本文按官方文档说明两款各适合什么任务、哪些套餐和入口能用、App 与 CLI 怎么切换、Fast 与 Ultrafast 怎么选，以及额度和 credits 怎么算，Enterprise 和 Edu 管理员要先做什么。
-lede: 写代码先试 GPT-6.2 Sol。跨服务排查再上 Astra。2026-11-26 的计费更正之后，同样的活比上周更吃套餐用量，5 小时估算以 Usage 为准。
+lede: 写代码先试 GPT-6.2 Sol。跨服务排查再上 Astra。
 url: /guides/codex-gpt-6-2-astra-sol
 status: published
 section: guides
@@ -36,15 +36,15 @@ faq:
     a: 2026-11-18 的 Models 详情和 Pricing Feature availability 把 Codex 入口写成 App 和 CLI，没有把 IDE 扩展列进去。同一页的配置示例 model = "gpt-6.2-sol" 标明是给 app 或 CLI；如果这份配置还要给 IDE 扩展用，页面建议改选每个客户端都能用的模型，举例是 gpt-6.1-sol。以扩展里的模型菜单为准。
 ---
 
-# Codex 用 GPT-6.2 Astra 和 Sol（更新）：11 月 26 日额度更正后同样的活更吃额度，Astra 约快 40%、Sol 约快 25% 触顶，怎么看用量、怎么省
+# Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开
 
 > 本文在线版：[codexguide.io/guides/codex-gpt-6-2-astra-sol](https://codexguide.io/guides/codex-gpt-6-2-astra-sol)
 
-> 核对依据：模型与额度仍按 [Pricing](https://learn.chatgpt.com/docs/pricing)、[What's new 索引](https://learn.chatgpt.com/docs/whats-new)、[GPT-6.2 What's new](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)、[Models](https://learn.chatgpt.com/docs/models)、[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) 和 [Changelog](https://learn.chatgpt.com/docs/changelog)。2026-11-27 再次打开这几页：Pricing 的 5 小时本地消息估算仍是 Astra 6–50、Sol 17–180（Plus 与 Standard Business），页面没有计费更正的说明。Changelog 的 HTML 能打开，最新日期见到 2026-11-24，没有这次更正；同一地址加 `.md` 返回 404。计费更正只来自 X 上 @thsottiaux 的两则帖子，见下文，那不是官方文档。2026-11-18 在 Linux 上用 `@openai/codex@0.169.1` 核对过 `-m` 的记录仍留在「怎么切换」一节，这次没有重跑 CLI，也没有登录。
+> 核对依据：模型与额度按 [Pricing](https://learn.chatgpt.com/docs/pricing)、[What's new 索引](https://learn.chatgpt.com/docs/whats-new)、[GPT-6.2 What's new](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)、[Models](https://learn.chatgpt.com/docs/models)、[Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) 和 [Changelog](https://learn.chatgpt.com/docs/changelog)。2026-11-27 再次打开 Pricing：5 小时本地消息估算仍是 Astra 6–50、Sol 17–180（Plus 与 Standard Business）。Changelog 的 HTML 能打开，最新日期见到 2026-11-24；同一地址加 `.md` 返回 404。2026-11-18 在 Linux 上用 `@openai/codex@0.169.1` 核对过 `-m` 的记录仍留在「怎么切换」一节，这次没有重跑 CLI，也没有登录。
 
-2026 年 11 月 17 日，Changelog 把 GPT-6.2 Astra 和 GPT-6.2 Sol 放进 ChatGPT Work 和 Codex。Astra 面向最难的项目，Sol 面向日常编码、写作和多步骤工作。Changelog 同时写：用 GPT-6.2 Sol，同一份付费套餐能比 GPT-6.1 Sol 完成更多任务。这句在 2026-11-27 的 Changelog 里还在。它和下面「比上周更吃额度」不是同一次比较。
+2026 年 11 月 17 日，Changelog 把 GPT-6.2 Astra 和 GPT-6.2 Sol 放进 ChatGPT Work 和 Codex。Astra 面向最难的项目，Sol 面向日常编码、写作和多步骤工作。Changelog 同时写：用 GPT-6.2 Sol，同一份付费套餐能比 GPT-6.1 Sol 完成更多任务。这句在 2026-11-27 的 Changelog 里还在。
 
-下面仍按这几件事组织：谁能用、在哪里切换、两款各交给什么任务、Fast 和 Ultrafast 怎么算、credits 和 5 小时估算怎么读、Enterprise／Edu 管理员要先打开什么。11 月 26 日的计费更正单独成节，不改这几件事的官方分工。模型搭配和推理强度的完整选择表见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)。用量面板怎么读见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
+下面仍按这几件事组织：谁能用、在哪里切换、两款各交给什么任务、Fast 和 Ultrafast 怎么算、credits 和 5 小时估算怎么读、Enterprise／Edu 管理员要先打开什么。模型搭配和推理强度的完整选择表见 [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)。用量面板怎么读见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
 发布公告里还列出了多项基准和安全评估。本文不把那些分数写成结论，需要看分数时直接读 [原文](https://openai.com/index/introducing-gpt-6-2-astra-sol/)。
 
@@ -55,34 +55,6 @@ faq:
 - **写作、看图、在应用里操作、范围很小的修复**：仍可以先试 [GPT-6.1 Terra](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)。
 - **Enterprise 和 Edu**：两款默认关闭。成员在菜单里找不到时，先让管理员在工作区模型设置里打开，不要在配置里写一个菜单里没有的模型名。
 - **普通 Chat 里没有这两款**。What's new 写明：要在 ChatGPT 里用，请打开 Work。
-- **2026-11-26 的计费更正之后**，同样的活会比上周更多消耗套餐用量。文中和 Pricing 页的 5 小时估算可能没有反映这次更正，以设置里的 Usage 为准。细节在下一节。
-
-## 11 月 26 日的额度更正
-
-这一节的事实来自 X 帖子，不是官方文档。2026-11-27 打开的 Pricing、What's new 和 Changelog 都还没有对应说明。
-
-2026-11-26 02:50:10 UTC（页面显示 2:50 AM · Nov 26, 2026，北京时间 10:50），账号 [@thsottiaux](https://x.com/thsottiaux/status/2125784147889393806)（页面显示名为 Tibo，简介是 “Codex & ChatGPT @OpenAI”）发帖。帖子原文的要点是：
-
-- GPT-6.2 上线时出现计费错误，错误地给大多数用户的 GPT-6.2 Astra 和 Sol 用量打了折扣。现已更正。
-- 更正之后，同样的活会更多地消耗套餐用量。
-- 对比上周，达到限额的速度 GPT-6.2 Astra 快 40%，Sol 快 25%。帖子用的比较基准是 “Comparing to last week”。
-- 用量仍应比 6 Astra 和 6.1 Sol 更耐用。帖子写的是 “go further in usage compared to 6 Astra and 6.1 Sol”。
-- 其他模型没受影响。
-- 不会对过去的用量补收差额。
-- 作为道歉，给 Go、Plus、Pro 和 Business 的所有人各补发一次 banked reset。
-
-同一天 07:26:16 UTC（页面显示 7:26 AM · Nov 26, 2026，北京时间 15:26），同一账号另发一帖，正文是 “Banked reset is online”：<https://x.com/thsottiaux/status/2125853628250599730>。打开这页时没有看到它引用前一则的 status id，所以这里只记成同一天的后续说明。banked reset 在设置里怎么看、什么条件下能兑换，见 [额度重置怎么用](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)。那篇按帮助中心整理，帮助中心本身没有写这次道歉补发。
-
-截至 2026-11-27 核对：
-
-- [Pricing](https://learn.chatgpt.com/docs/pricing) 的 5 小时本地消息估算仍是 GPT-6.2 Astra 6–50、GPT-6.2 Sol 17–180，Plus 与 Standard Business 两列相同。页面没有这次更正的说明。
-- [What's new](https://learn.chatgpt.com/docs/whats-new) 和 [GPT-6.2 What's new](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol) 没有这次更正。
-- [Changelog](https://learn.chatgpt.com/docs/changelog) 的 HTML 里，日期最新见到 2026-11-24，搜不到这次计费错误。`https://learn.chatgpt.com/docs/changelog.md` 返回 404。
-- 帮助中心 [Managing usage with GPT-6 Astra](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex) 和 [How resets work in Codex](https://help.openai.com/en/articles/20001498-how-resets-work-in-codex) 也没有这则更正。用帮助中心搜索 “GPT-6.2 billing mistake Astra”，返回页里没有一篇讲这件事的文章。
-
-因此：文中和 Pricing 页的 5 小时估算可能没有反映这次更正，以设置里的 Usage 为准。本文不把 6–50、17–180 按 40% 或 25% 折算成新的条数。帖子里的两个百分比只描述「对比上周、达到限额的速度」，不是本文算出来的消息条数。
-
-用量面板怎么读，见 [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。界面写的是容量满还是额度用尽，见 [容量不足与额度重置排查](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
 
 ## 谁能用、在哪些入口能用
 
@@ -244,7 +216,7 @@ ChatGPT Work 和 Codex **共用**价格、credits 和用量限制。条数不是
 
 同一页还有 Terra、GPT-6 Sol 和 Luna 的估算，完整表和「觉得被多扣时怎么查」放在 [用量额度](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。
 
-2026-11-27 再对过上面这张 5 小时估算，数字仍是表里这些。它可能没有反映 11 月 26 日的计费更正。不要按 40% 或 25% 把这些区间折算成新的条数。以设置里的 Usage 为准。
+这张估算表来自官方 Pricing 页，可能不反映近期调整，实际消耗以 Usage 面板为准。
 
 Standard 速度下，每 100 万 token 的 credits 单价：
 
@@ -266,12 +238,10 @@ GPT-6.2 Sol 的 credits 单价和 GPT-6.1 Sol 相同。Astra 低于上一代 GPT
 
 ## 怎么省
 
-这一节只写官方文档已经说过的做法。X 帖子里的 40% 和 25% 不在这里换算成少用多少条。
-
 - **日常编码先用 Sol**。Models 页把 GPT-6.2 Sol 放在 everyday work：改代码、起草、把几份材料收成一份计划。Astra 留给最难的端到端工作。What's new 同样写：难题用 Astra，日常编码和写作用 Sol。
 - **推理强度按任务调**。Models 页写，范围清楚的小任务适合 Light，CLI 里对应 Low。Max 用在深度比速度或用量更重要的时候。Pricing 写明：模型选择、上下文、推理、工具使用、检索和缓存都会影响用量。官方文档没有给出「从 High 降到 Light 能省百分之几」。
 - **Fast 和 Ultrafast 更吃额度**。Speed 页写，两者都比同一模型的 Standard 生成得更快，也更多使用套餐用量或 credits。倍率以 Pricing 的 Speed multipliers 为准。2026-11-27 核对，两款 GPT-6.2 的 Fast 仍是套餐内含 2 倍、credits 2 倍。Ultrafast 的套餐内含仍是 6 倍；credits 和符合条件的企业按量，到 2027-02-28 为 3 倍，2027-03-01（太平洋时间）起为 6 倍。资格和入口见上面的 Fast 与 Ultrafast 一节，不要为了省额度去开这两档。
-- **看 Usage，不看折算**。5 小时估算怎么读、Fast 倍率在面板上怎么理解，见 [用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。收到的 banked reset 能不能兑、80% 门槛是什么，见 [额度重置怎么用](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)。界面写容量满时，先和额度用尽分开，见 [容量不足与额度重置排查](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
+- **看 Usage**。5 小时估算怎么读、Fast 倍率在面板上怎么理解，见 [用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)。banked reset 能不能兑、80% 门槛是什么，见 [额度重置怎么用](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)。界面写容量满时，先和额度用尽分开，见 [容量不足与额度重置排查](../15-故障排查与常见问题/01-Codex模型容量不足与额度重置排查.md)。
 
 ## 和 GPT-6.1 Sol、Terra、Luna 怎么搭配
 
@@ -297,9 +267,7 @@ GPT-5.5 的退役说明没有被这次上线取消：2026-10-14 中午（太平�
 - [Pricing](https://learn.chatgpt.com/docs/pricing)
 - [Workspace model availability](https://learn.chatgpt.com/docs/enterprise/workspace-model-availability)
 - [Introducing GPT-6.2 Astra and Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol/)
-- [Changelog](https://learn.chatgpt.com/docs/changelog)（2026-11-27 打开 HTML；`.md` 为 404。最新日期见到 2026-11-24，没有计费更正）
-- [@thsottiaux，2026-11-26 02:50 UTC](https://x.com/thsottiaux/status/2125784147889393806)（社交媒体说明，非官方文档）
-- [@thsottiaux，2026-11-26 07:26 UTC，“Banked reset is online”](https://x.com/thsottiaux/status/2125853628250599730)（社交媒体说明，非官方文档）
+- [Changelog](https://learn.chatgpt.com/docs/changelog)（2026-11-27 打开 HTML；同一地址加 `.md` 为 404。最新日期见到 2026-11-24）
 - [Codex 模型怎么选](./01-Codex模型怎么选-推理强度Low-Medium-High有什么区别.md)
 - [Codex 用量额度怎么看](./08-Codex用量额度怎么看-5小时与每周限制-Fast倍率与credits.md)
 - [Codex 使用 GPT-6.1 Terra](./14-Codex使用GPT-6.1-Terra-适用任务-切换方法与额度.md)
