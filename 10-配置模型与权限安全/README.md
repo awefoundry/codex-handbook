@@ -39,7 +39,8 @@
 - [Codex 网络权限怎么配：permission profiles 的联网开关、network_proxy 域名白名单与本地服务访问](./26-Codex网络权限-network_proxy域名白名单与本地服务访问.md)
 - [Codex 常驻 Agent 怎么上锁：照 OpenAI 内部 OpenClaw 部署配 requirements.toml、权限 profile 与 Auto-review](./27-Codex常驻Agent安全加固-照OpenAI的OpenClaw部署配requirements.toml与权限profile.md)
 - [Codex 内置浏览器企业策略：用 MDM 下发 Chrome 策略，Windows、macOS、Linux 三种位置与 chrome://policy 核对](./28-Codex内置浏览器企业策略-用MDM下发Chrome策略并在chrome-policy核对.md)
-- [Codex 用 GPT-6.2 Astra 和 Sol：怎么选、怎么切换，Ultrafast 与额度怎么算，Enterprise 要管理员先开](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)
+- [Codex 用 GPT-6.2 Astra 和 Sol（更新）：11 月 26 日额度更正后同样的活更吃额度，Astra 约快 40%、Sol 约快 25% 触顶，怎么看用量、怎么省](./29-Codex使用GPT-6.2-Astra与Sol-怎么选-切换方法-Ultrafast与额度.md)（2026-11-27 更新：补上 X 上的计费更正。Pricing 的 5 小时估算未改，没有配图）
 - [Codex 沙箱怎么工作：拆解 OpenAI 官方《Inside the Codex sandbox》，:workspace 权限 profile 默认放行什么、拦住什么，三个系统分别怎么执行](./30-Codex沙箱怎么工作-拆解OpenAI官方文章-workspace权限profile与三系统实现.md)
 - [Codex sandbox 命令：用权限 profile 在沙箱里试跑任意命令，验证 profile 拦不拦得住，并给 MCP 服务器套上沙箱](./31-Codex-sandbox命令-用权限profile测试脚本和MCP服务器的沙箱.md)
 - [Codex 额度重置怎么用：banked reset 在哪看、怎么兑换，80% 门槛和下次刷新时间为什么会变](./32-Codex额度重置怎么用-banked-reset在哪看怎么兑换与刷新时间变化.md)（按帮助中心整理三种重置、80% 门槛和刷新时间。Linux 上未登录的 codex-cli 0.172.0 只核对了帮助文本，没有打开 /usage 菜单，没有配图）
+- [Codex Auto-review 怎么用：哪些审批会交给审阅者、会拦什么、看得到什么，被拒绝后怎么重试，怎么调策略](./33-Codex-Auto-review怎么用-哪些审批会交给审阅者-拦什么-被拒绝后怎么办与策略调整.md)（按 Auto-review、Permissions、Rules 和 Managed configuration 整理。没有登录桌面端，没有打开 TUI，没有配图）
