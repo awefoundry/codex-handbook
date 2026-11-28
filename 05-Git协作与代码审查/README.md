@@ -16,7 +16,7 @@
 ### 一、先把 Git 现场和隔离方式搞清楚
 
 1. Git 协作前先检查什么：仓库、分支与脏工作区（规划中）
-2. [Codex 如何读懂 Git：status、diff、log 与 blame](./02-Codex如何读懂Git-status-diff-log与blame.md)
+2. [Codex 读懂 Git：status、diff、log、blame 先固定比较基线，再用 /review 和审查面板核对改动范围](./02-Codex如何读懂Git-status-diff-log与blame.md)（2026-11-28 更新）
 3. 分支和 Worktree 怎么选：隔离任务、并行工作与恢复现场（规划中）
 
 ### 二、从 Issue 走到可审查的 PR
