@@ -29,3 +29,4 @@
 - [Codex 访问令牌和服务账号：在 CI 和定时任务里不用浏览器登录运行 codex exec（Business / Enterprise）](./14-Codex访问令牌与服务账号-CI和定时任务免浏览器登录.md)
 - [Codex 任务完成通知：0.168 起可选 osc777，审批通知会显示更长的命令预览](./15-Codex任务完成通知-tui.notifications与notify脚本.md)
 - [Codex GitHub Action 防提示注入：从 openai/codex 的 Issue 机器人漏洞看 allow-users、safety-strategy 与不可信输入](./16-Codex-GitHub-Action防提示注入-allow-users与safety-strategy.md)
+- [Codex Computer History 怎么用：开启条件、记录什么不记录什么、数据存在哪、怎么暂停和清除](./17-Codex-Computer-History怎么用-开启条件-记录什么-本地存储与隐私控制.md)（2026-11-28。按 Computer History 与 Memories 页整理。没有登录桌面端，没有配图）

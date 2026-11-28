@@ -112,7 +112,7 @@ memories                                 stable             true
 
 ![图三　Codex 桌面端 Settings → 个性化：启用本地记忆（Codex Memories）及相关开关（自定义指令内容已打码）](../图片素材/10-配置模型与权限安全/03-Codex桌面端协作设置/02-自定义指令与Memories.png)
 
-同一页若还出现 **Chronicle Research Preview** 等开关，以你客户端当前可见项为准；本文只覆盖 Memories 相关开关，不展开该预览功能。
+同一页若还出现 **Chronicle Research Preview** 等开关，以你客户端当前可见项为准；本文只覆盖 Memories 相关开关，不展开该预览功能。Computer History 的开启条件、记录范围、本地存储和清除，见 [Codex Computer History 怎么用](./17-Codex-Computer-History怎么用-开启条件-记录什么-本地存储与隐私控制.md)。
 
 ### CLI 与配置文件
 

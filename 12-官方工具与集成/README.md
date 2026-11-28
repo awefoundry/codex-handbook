@@ -48,3 +48,4 @@
 - [Codex 在 Slack 里怎么用：@Codex 换成 @ChatGPT，仓库任务交给 Codex Cloud，共享环境、审批卡片和跟进怎么处理](./33-Codex在Slack里委派仓库任务-提及ChatGPT交给Codex-Cloud与共享环境.md)（按官方文档整理。只认已发布并共享的 Cloud 环境。没有 Slack 工作区，没有配图）
 - [Codex CLI 0.172.0：斜杠命令按 Tab 补全参数，可选 MCP 服务器首次调用才启动，codex exec resume 恢复沙箱权限](./34-Codex-CLI-0.172-斜杠命令Tab补全-MCP按需启动与exec-resume恢复权限.md)（依据更新日志和 GitHub Release rust-v0.172.0。Linux 上 `codex-cli 0.172.0` 核对了帮助、功能开关和配置拒绝信息。没有打开 TUI，没有配图）
 - [Codex 桌面端项目怎么用：ChatGPT 项目和本地项目的区别，一个项目接多个文件夹、锁定对话与 Quick chat](./35-Codex桌面端项目-ChatGPT项目与本地项目-多文件夹锁定对话与Quick-chat.md)（按 Projects and chats 整理。Linux 上 `codex-cli 0.172.0` 核对了 `--cd` / `-C`。没有打开桌面应用，没有配图）
+- [Codex 图片输入：截图和设计稿怎么发给 Codex，App、IDE 按住 Shift 拖入，CLI 用 codex -i 一次传多张，提示词怎么围绕图片写](./39-Codex图片输入-截图和设计稿怎么发给Codex-codex-i与按住Shift拖入.md)（2026-11-28。按 Image inputs、Prompting、Developer commands 和 Appshots 整理。没有打开桌面端或 IDE，没有配图）
