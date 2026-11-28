@@ -32,6 +32,8 @@ faq:
     a: "暂停后不再收集新的交互事件。官方同时写明，已经在进行的摘要仍可能继续，直到完成。"
   - q: "清除历史能不能撤销？删 Codex 记忆会怎样？"
     a: "清除最近 10 分钟、1 小时、1 天或全部，会删掉对应的交互事件和由此生成的记忆，不能撤销。Memories 页写明，在本机删除 Codex memories 时，如果提供 Computer History，也会一并清空。"
+  - q: "本机上的 Computer History 文件加密了吗？"
+    a: "没有。官方在存储说明里写明，这些文件可能包含敏感信息，Computer History 不会加密它们，以同一 macOS 用户身份运行的其他程序可能读取到。要保护好 Mac 账户，并排除不想记录的来源。"
 ---
 
 # Codex Computer History 怎么用：开启条件、记录什么不记录什么、数据存在哪、怎么暂停和清除
@@ -51,7 +53,7 @@ Computer History 把你允许的应用和网站活动整理成记忆，以及一
 - 它依赖 Memories。用 API key 或 Amazon Bedrock 时不可用。
 - 它取代更早的 Chronicle 研究预览，但是重做的系统，不是改名。
 - 记录交互事件和 macOS 辅助功能能提供的文本。历史里不放截图，不录麦克风和系统音频，无痕浏览不进入。
-- 临时事件文件最多留 48 小时。生成的记忆是纯文本 Markdown，留在本机，直到你删除。
+- 临时事件文件最多留 48 小时。生成的记忆是纯文本 Markdown，不加密，留在本机，直到你删除。
 - OpenAI 在服务器上处理事件文件以生成记忆，处理后不保留这些事件文件（法律要求除外），也不用它们训练。之后对话里用到的记忆内容，按你的数据控制，可能用于改进模型。
 
 ## 谁能用
@@ -153,6 +155,8 @@ Enterprise 管理员的入口写在 **Workspace Settings > Permissions & roles**
 交互事件流先临时存在你的 Mac 上，供 ChatGPT 和 Codex 生成记忆、并整理建议的工作流。事件文件放在 ChatGPT 的 **App Group** 里，官方的说法是：其他应用未经明确许可不能访问这些文件。ChatGPT 和 Codex 在 48 小时后删除这些事件文件。临时事件文件的保留时间是最多 48 小时。
 
 生成出来的记忆和 Codex 的本地记忆是同一类东西：纯文本 Markdown，你可以阅读和修改。路径是 `$CODEX_HOME/memories/extensions/skysight/`，通常解析为 `~/.codex/memories/extensions/skysight/`。这些记忆文件会留到你删除或清除。时间线里可以在 Finder 中显示对应文件。
+
+这些文件可能包含敏感信息，Computer History 不会加密它们，以同一 macOS 用户身份运行的其他程序可能读取到；要保护好 Mac 账户，并排除不想记录的来源。
 
 发给 OpenAI 的部分，按同一页：
 
